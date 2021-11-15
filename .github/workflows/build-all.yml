@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - beta
 
 jobs:
   deploy:
@@ -20,10 +21,3 @@ jobs:
         run: yarn install
       - name: build
         run: yarn build
-      - uses: JS-DevTools/npm-publish@v1
-        with:
-          dry-run: true
-          token: ${{ secrets.NPM_TOKEN }}
-      - if: steps.publish.outputs.type != 'none'
-        run: |
-          echo "Version changed: ${{ steps.publish.outputs.old-version }} => ${{ steps.publish.outputs.version }}"

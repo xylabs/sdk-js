@@ -1,6 +1,6 @@
 [![logo][]](https://xylabs.com)
 
-# sdk-xyo-js
+# @xylabs/sdk-js
 
 [![npm-badge][]][npm-link]
 [![bch-badge][]][bch-link]
@@ -10,7 +10,6 @@
 
 ## Table of Contents
 
--   [Title](#sdk-xyo-js)
 -   [Description](#description)
 -   [Install](#install)
 -   [Maintainers](#maintainers)

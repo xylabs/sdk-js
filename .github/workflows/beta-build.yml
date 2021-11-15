@@ -1,17 +1,17 @@
-name: Build sdk-js
+name: Build sdk-js (beta)
 
 on:
   push:
     branches:
-      - develop
+      - beta
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@develop
+      - uses: actions/checkout@beta
         with:
-          ref: develop
+          ref: beta
       - uses: actions/setup-node@v2-beta
         with:
           node-version: "14"

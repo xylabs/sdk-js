@@ -46,7 +46,7 @@ See the [LICENSE](LICENSE) file for license details
 
 ## Credits
 
-Made with 🔥and ❄️ by [XY Labs](https://xylabs.com)
+Made with 🔥 and ❄️ by  [XY Labs](https://xylabs.com)
 
 [logo]: https://cdn.xy.company/img/brand/XYPersistentCompany_Logo_Icon_Colored.svg
 

@@ -59,7 +59,7 @@ See the [LICENSE](LICENSE) file for license details
 [npm-badge]: https://img.shields.io/npm/v/@xylabs/sdk-js.svg
 [npm-link]: https://www.npmjs.com/package/@xylabs/sdk-js
 
-[bch-badge]: https://bettercodehub.com/edge/badge/xylabs/sdk-js?branch=master
+[bch-badge]: https://bettercodehub.com/edge/badge/xylabs/sdk-js?branch=main
 [bch-link]: https://bettercodehub.com/results/xylabs/sdk-js
 
 [codacy-badge]: https://app.codacy.com/project/badge/Grade/c8e15e14f37741c18cfb47ac7245c698

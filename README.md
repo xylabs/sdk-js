@@ -3,6 +3,7 @@
 # @xylabs/sdk-js
 
 [![main-build][]][main-build-link]
+[![beta-build][]][beta-build-link]
 [![npm-badge][]][npm-link]
 [![bch-badge][]][bch-link]
 [![codacy-badge][]][codacy-link]

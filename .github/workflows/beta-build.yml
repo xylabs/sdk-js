@@ -1,4 +1,4 @@
-name: Build sdk-js (beta)
+name: Build (Beta)
 
 on:
   push:

@@ -1,4 +1,4 @@
-name: Build sdk-js (main)
+name: Build
 
 on:
   push:

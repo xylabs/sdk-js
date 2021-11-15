@@ -2,6 +2,8 @@
 
 # @xylabs/sdk-js
 
+[![main-build][]][main-build-link]
+[![beta-build][]][beta-build-link]
 [![npm-badge][]][npm-link]
 [![bch-badge][]][bch-link]
 [![codacy-badge][]][codacy-link]
@@ -47,6 +49,12 @@ See the [LICENSE](LICENSE) file for license details
 Made with 🔥and ❄️ by [XY Labs](https://xylabs.com)
 
 [logo]: https://cdn.xy.company/img/brand/XYPersistentCompany_Logo_Icon_Colored.svg
+
+[main-build]: https://github.com/xylabs/sdk-js/actions/workflows/main-build.yml/badge.svg
+[main-build-link]: https://github.com/xylabs/sdk-js/actions/workflows/main-build.yml
+
+[beta-build]: https://github.com/xylabs/sdk-js/actions/workflows/beta-build.yml/badge.svg
+[beta-build-link]: https://github.com/xylabs/sdk-js/actions/workflows/beta-build.yml
 
 [npm-badge]: https://img.shields.io/npm/v/@xylabs/sdk-js.svg
 [npm-link]: https://www.npmjs.com/package/@xylabs/sdk-js

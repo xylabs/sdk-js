@@ -1,0 +1,67 @@
+{
+  "name": "@xylabs/sdk-js",
+  "homepage": "https://xylabs.com",
+  "bugs": {
+    "url": "https://github.com/xylabs/sdk-js/issues",
+    "email": "support@xylabs.com"
+  },
+  "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
+  "author": {
+    "name": "XY Labs Development Team",
+    "url": "https://xylabs.com",
+    "email": "support@xylabs.com"
+  },
+  "license": "LGPL-3.0",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xylabs/sdk-js.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "xylabs",
+    "utility",
+    "typescript",
+    "esm"
+  ],
+  "version": "2.2.7",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
+  "peerDependencies": {
+    "@types/bn.js": "^5",
+    "axios": "^0",
+    "bn.js": "^5"
+  },
+  "optionalDependencies": {
+    "rollbar": "^2.24.0"
+  },
+  "scripts": {
+    "compile": "tsc -p tsconfig.build.json",
+    "lint-pkg": "npmPkgJsonLint .",
+    "test": "jest"
+  },
+  "resolutions": {
+    "uuid": "^8"
+  },
+  "devDependencies": {
+    "@types/bn.js": "^5.1.0",
+    "@types/jest": "^27",
+    "@types/mocha": "^9",
+    "@xylabs/eslint-config": "2.0.33",
+    "@xylabs/ts-scripts": "^1.0.17",
+    "axios": "^0.24.0",
+    "bn.js": "^5.2.0",
+    "eslint": "^8",
+    "jest": "^27.3.1",
+    "npm-package-json-lint": "^5.4.2",
+    "npm-package-json-lint-config-default": "^3.0.0",
+    "prettier": "^2.4.1",
+    "rollbar": "^2.24.0",
+    "ts-jest": "^27.0.7",
+    "typescript": "^4"
+  }
+}

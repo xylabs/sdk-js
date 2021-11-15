@@ -50,11 +50,11 @@ See the [LICENSE](LICENSE) file for license details
 
 [logo]: https://cdn.xy.company/img/brand/XYPersistentCompany_Logo_Icon_Colored.svg
 
-[main-build]: https://github.com/xylabs/sdk-js/actions/workflows/main-build.yml/badge.svg
-[main-build-link]: https://github.com/xylabs/sdk-js/actions/workflows/main-build.yml
+[main-build]: https://github.com/xylabs/sdk-js/actions/workflows/build-main.yml/badge.svg
+[main-build-link]: https://github.com/xylabs/sdk-js/actions/workflows/build-main.yml
 
-[beta-build]: https://github.com/xylabs/sdk-js/actions/workflows/beta-build.yml/badge.svg
-[beta-build-link]: https://github.com/xylabs/sdk-js/actions/workflows/beta-build.yml
+[beta-build]: https://github.com/xylabs/sdk-js/actions/workflows/build-beta.yml/badge.svg
+[beta-build-link]: https://github.com/xylabs/sdk-js/actions/workflows/build-beta.yml
 
 [npm-badge]: https://img.shields.io/npm/v/@xylabs/sdk-js.svg
 [npm-link]: https://www.npmjs.com/package/@xylabs/sdk-js

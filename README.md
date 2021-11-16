@@ -12,11 +12,12 @@
 
 ## Table of Contents
 
--   [Description](#description)
--   [Install](#install)
--   [Maintainers](#maintainers)
--   [License](#license)
--   [Credits](#credits)
+- [Description](#description)
+- [Install](#install)
+- [Scripts](#scripts)
+- [Maintainers](#maintainers)
+- [License](#license)
+- [Credits](#credits)
 
 ## Description
 
@@ -36,9 +37,35 @@ Using yarn:
 $ yarn add @xylabs/sdk-js
 ```
 
+## Scripts
+
+### Build
+Builds the project as if it will be deployed
+```
+yarn build
+```
+
+### Start
+Starts the project in the browser for testing, with auto reload
+```
+yarn start
+```
+
+### Lint
+Runs the linter (eslint) for the project
+```
+yarn lint
+```
+
+### Dependencies
+Shows a dependency report for the project
+```
+yarn deps
+```
+
 ## Maintainers
 
--   [Arie Trouw](https://github.com/arietrouw) (https://arietrouw.com)
+- [Arie Trouw](https://github.com/arietrouw) (https://arietrouw.com)
 
 ## License
 

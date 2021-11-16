@@ -3,6 +3,8 @@ ignores: [
   "@xylabs/eslint-config",
   "@rollup/plugin-typescript",
   "@types/mocha",
+  "@types/jest",
+  "ts-jest",
   "eslint",
   "npm-package-json-lint-config-default"
 ]

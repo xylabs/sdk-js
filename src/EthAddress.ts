@@ -30,7 +30,7 @@ class EthAddress {
 
   static fromString(value?: string, base = 16) {
     if (value) {
-      const bn = new BigNumber(value.startsWith('0x') ? value.substr(2) : value, base)
+      const bn = new BigNumber(value.startsWith('0x') ? value.substring(2) : value, base)
       return new EthAddress(bn)
     }
   }

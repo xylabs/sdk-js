@@ -1,10 +1,14 @@
 ignores: [
   "@xylabs/ts-scripts",
   "@xylabs/eslint-config",
-  "@rollup/plugin-typescript",
   "@types/mocha",
   "@types/jest",
   "ts-jest",
+  "ts-node",
+  "remark-lint",
+  "remark-cli",
+  "remark-preset-lint-recommended",
+  "remark-preset-lint-markdown-style-guide",
   "eslint",
   "npm-package-json-lint-config-default"
 ]

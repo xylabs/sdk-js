@@ -12,17 +12,12 @@
 
 ## Table of Contents
 
-- [@xylabs/sdk-js](#xylabssdk-js)
-  - [Table of Contents](#table-of-contents)
-  - [Description](#description)
-  - [Install](#install)
-  - [Common Scripts](#common-scripts)
-  - [Custom Scripts](#custom-scripts)
-    - [Start](#start)
-    - [Lint](#lint)
-  - [Maintainers](#maintainers)
-  - [License](#license)
-  - [Credits](#credits)
+- [Description](#description)
+- [Install](#install)
+- [Scripts](#scripts)
+- [Maintainers](#maintainers)
+- [License](#license)
+- [Credits](#credits)
 
 ## Description
 
@@ -42,11 +37,9 @@ Using yarn:
 $ yarn add @xylabs/sdk-js
 ```
 
-## Common Scripts
+## Scripts
 
-See [ts-scripts](https://github.com/xylabs/ts-scripts/blob/main/README.md) for list of common scripts to build, etc...
-
-## Custom Scripts
+See [ts-scripts](https://github.com/xylabs/ts-scripts/blob/main/README.md) for list of shared scripts. The below scripts are custom scripts for this repo.
 
 ### Start
 
@@ -61,7 +54,7 @@ $ yarn start
 Upgraded lint for readme, etc...
 
 ```sh
-$ yarn eslint .
+$ yarn lint
 ```
 
 ## Maintainers

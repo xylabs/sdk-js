@@ -28,13 +28,13 @@ SDK for base code for Typescript and Javascript Libraries.
 Using npm:
 
 ```sh
-$ npm i --save @xylabs/sdk-js
+npm i --save @xylabs/sdk-js
 ```
 
 Using yarn:
 
 ```sh
-$ yarn add @xylabs/sdk-js
+yarn add @xylabs/sdk-js
 ```
 
 ## Scripts
@@ -46,7 +46,7 @@ See [ts-scripts](https://github.com/xylabs/ts-scripts/blob/main/README.md) for l
 Starts the project in the browser for testing, with auto reload using Storybook
 
 ```sh
-$ yarn start
+yarn start
 ```
 
 ### Lint
@@ -54,7 +54,7 @@ $ yarn start
 Upgraded lint for readme, etc...
 
 ```sh
-$ yarn lint
+yarn lint
 ```
 
 ## Maintainers

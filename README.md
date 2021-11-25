@@ -12,12 +12,12 @@
 
 ## Table of Contents
 
-- [Description](#description)
-- [Install](#install)
-- [Scripts](#scripts)
-- [Maintainers](#maintainers)
-- [License](#license)
-- [Credits](#credits)
+-   [Description](#description)
+-   [Install](#install)
+-   [Scripts](#scripts)
+-   [Maintainers](#maintainers)
+-   [License](#license)
+-   [Credits](#credits)
 
 ## Description
 
@@ -59,7 +59,7 @@ $ yarn lint
 
 ## Maintainers
 
-- [Arie Trouw](https://github.com/arietrouw) (<https://arietrouw.com>)
+-   [Arie Trouw](https://github.com/arietrouw) (<https://arietrouw.com>)
 
 ## License
 

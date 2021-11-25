@@ -39,23 +39,7 @@ yarn add @xylabs/sdk-js
 
 ## Scripts
 
-See [ts-scripts](https://github.com/xylabs/ts-scripts/blob/main/README.md) for list of shared scripts. The below scripts are custom scripts for this repo.
-
-### Start
-
-Starts the project in the browser for testing, with auto reload using Storybook
-
-```sh
-yarn start
-```
-
-### Lint
-
-Upgraded lint for readme, etc...
-
-```sh
-yarn lint
-```
+See [ts-scripts](https://github.com/xylabs/ts-scripts/blob/main/README.md) for list of shared scripts.
 
 ## Maintainers
 

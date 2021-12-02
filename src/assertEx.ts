@@ -17,4 +17,4 @@ const assertEx = <T>(expr?: T | null, message?: string): T => {
   throw new AssertExError(message)
 }
 
-export default assertEx
+export { assertEx }

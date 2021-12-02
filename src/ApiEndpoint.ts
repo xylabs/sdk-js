@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import XyoWorldApiConfig from './ApiConfig'
+import { XyoWorldApiConfig } from './ApiConfig'
 
 class ApiEndpoint<T> {
   private config: XyoWorldApiConfig
@@ -50,4 +50,4 @@ class ApiEndpoint<T> {
   }
 }
 
-export default ApiEndpoint
+export { ApiEndpoint }

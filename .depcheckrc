@@ -7,5 +7,6 @@ ignores: [
   "ts-jest",
   "ts-node",
   "eslint",
-  "npm-package-json-lint-config-default"
+  "npm-package-json-lint-config-default",
+  "typescript"
 ]

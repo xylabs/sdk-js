@@ -1,4 +1,4 @@
-import ApiEndpoint from './ApiEndpoint'
+import { ApiEndpoint } from './ApiEndpoint'
 
 describe('ApiEndpoint', () => {
   test('checking happy path', () => {

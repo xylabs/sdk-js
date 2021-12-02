@@ -4,4 +4,4 @@ interface XyoWorldApiConfig {
   userid?: string
 }
 
-export default XyoWorldApiConfig
+export type { XyoWorldApiConfig }

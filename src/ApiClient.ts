@@ -1,4 +1,4 @@
-import ApiStage from './ApiStage'
+import { ApiStage } from './ApiStage'
 
 abstract class ApiClient {
   public constructor(token?: string | null, stage?: ApiStage) {
@@ -13,4 +13,4 @@ abstract class ApiClient {
   abstract endPoint(): string
 }
 
-export default ApiClient
+export { ApiClient }

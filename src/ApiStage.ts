@@ -4,4 +4,4 @@ enum ApiStage {
   Prod = 'prod',
 }
 
-export default ApiStage
+export { ApiStage }

@@ -1,4 +1,4 @@
-import ApiStage from './ApiStage'
+import { ApiStage } from './ApiStage'
 
 const getApiStage = (hostname: string) => {
   if (hostname.startsWith('localhost')) {
@@ -10,4 +10,4 @@ const getApiStage = (hostname: string) => {
   }
 }
 
-export default getApiStage
+export { getApiStage }

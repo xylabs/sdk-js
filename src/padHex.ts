@@ -11,4 +11,4 @@ const padHex = (hex: string, byteCount?: number) => {
   return result
 }
 
-export default padHex
+export { padHex }

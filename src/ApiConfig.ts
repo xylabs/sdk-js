@@ -1,7 +1,7 @@
-interface XyoWorldApiConfig {
+interface ApiConfig {
   apiDomain: string
   token?: string
   userid?: string
 }
 
-export type { XyoWorldApiConfig }
+export type { ApiConfig }

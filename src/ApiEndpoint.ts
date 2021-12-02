@@ -1,12 +1,12 @@
 import axios from 'axios'
 
-import { XyoWorldApiConfig } from './ApiConfig'
+import { ApiConfig } from './ApiConfig'
 
 class ApiEndpoint<T> {
-  private config: XyoWorldApiConfig
+  private config: ApiConfig
   private path: string
 
-  constructor(config: XyoWorldApiConfig, path: string) {
+  constructor(config: ApiConfig, path: string) {
     this.config = config
     this.path = path
   }

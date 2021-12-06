@@ -58,7 +58,7 @@ class EthAddress {
   }
 
   public toHex() {
-    return padHex(this.address.toString(16), 16)
+    return padHex(this.address.toString(16), 20)
   }
 
   public toShortString(length = 2) {

@@ -4,7 +4,7 @@ import { padHex } from './padHex'
 
 export const isEthAddress = (obj: { type: string }) => obj?.type === EthAddress.type
 
-class EthAddress {
+export class EthAddress {
   public type = EthAddress.type
 
   private address: BigNumber
@@ -68,5 +68,3 @@ class EthAddress {
     return `0x${part1}...${part2}`
   }
 }
-
-export { EthAddress }

@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/esm",
-    "rootDir": "src"
+    "module": "CommonJS",
+    "outDir": "./dist/cjs",
+    "rootDir": "src",
+    "target": "es6"
   },
   "exclude": ["src/**/*.spec.ts"],
   "extends": "./tsconfig.json",

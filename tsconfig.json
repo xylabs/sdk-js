@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",
     "rootDir": "."
   },
   "exclude": ["node_modules", "dist"],

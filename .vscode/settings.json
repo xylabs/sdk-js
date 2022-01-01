@@ -6,7 +6,7 @@
     "**/.DS_Store": true,
     "**/node_modules": true,
     "**/build": true,
-    "**/dist": false,
+    "**/dist": true,
     "**/.webpack": true,
     "**/.serverless": true,
     "**/.rollup.cache": true
@@ -21,6 +21,8 @@
   "eslint.alwaysShowStatus": true,
   "eslint.format.enable": true,
   "eslint.lintTask.enable": true,
+  "eslint.useESLintClass": true,
+  "eslint.debug": true,
   "files.autoSave": "onFocusChange",
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",

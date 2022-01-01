@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
-    "outDir": "dist"
+    "outDir": "./dist"
   },
-  "exclude": ["dist/**/*"],
-  "extends": "./tsconfig.base.json"
+  "exclude": ["src/**/*.spec.ts"],
+  "extends": "@xylabs/tsconfig",
+  "include": ["src"]
 }

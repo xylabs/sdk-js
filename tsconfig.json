@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",
-    "rootDir": "."
+    "outDir": "dist"
   },
-  "exclude": ["node_modules", "dist"],
-  "extends": "./tsconfig.es.json"
+  "exclude": ["dist/**/*"],
+  "extends": "./tsconfig.base.json"
 }

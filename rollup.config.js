@@ -54,49 +54,18 @@ function emitModulePackageFile() {
   }
 }
 
-const es5BrowserBuildPlugins = [
-  json(),
-  strip({
-    functions: ['debugAssert.*'],
-  }),
-  typescriptPlugin({
-    tsconfig: './tsconfig.rollup.browser.esm5.json',
-    typescript,
-  }),
-]
-
-const es2017BrowserBuildPlugins = [
-  json(),
-  strip({
-    functions: ['debugAssert.*'],
-  }),
-  typescriptPlugin({
-    tsconfig: './tsconfig.rollup.browser.esm2017.json',
-    typescript,
-  }),
-]
-
-const es5NodeBuildPlugins = [
-  json(),
-  strip({
-    functions: ['debugAssert.*'],
-  }),
-  typescriptPlugin({
-    tsconfig: './tsconfig.rollup.node.esm5.json',
-    typescript,
-  }),
-]
-
-const es2017NodeBuildPlugins = [
-  json(),
-  strip({
-    functions: ['debugAssert.*'],
-  }),
-  typescriptPlugin({
-    tsconfig: './tsconfig.rollup.node.esm2017.json',
-    typescript,
-  }),
-]
+const getPlugIns = (outDir) => {
+  return [
+    json(),
+    strip({
+      functions: ['debugAssert.*'],
+    }),
+    typescriptPlugin({
+      outDir,
+      typescript,
+    }),
+  ]
+}
 
 const browserBuilds = [
   {
@@ -105,7 +74,7 @@ const browserBuilds = [
       index: './src/index.ts',
     },
     output: [{ dir: './dist/esm5', format: 'es', sourcemap: true }],
-    plugins: [...es5BrowserBuildPlugins, replace(generateBuildTargetReplaceConfig('esm', 5))],
+    plugins: [...getPlugIns('./dist/esm5'), replace(generateBuildTargetReplaceConfig('esm', 5))],
   },
   {
     external: (id) => deps.some((dep) => id === dep || id.startsWith(`${dep}/`)),
@@ -117,7 +86,7 @@ const browserBuilds = [
       format: 'es',
       sourcemap: true,
     },
-    plugins: [...es2017BrowserBuildPlugins, replace(generateBuildTargetReplaceConfig('esm', 2017))],
+    plugins: [...getPlugIns('./dist/esm2017'), replace(generateBuildTargetReplaceConfig('esm', 2017))],
   },
 ]
 
@@ -128,7 +97,7 @@ const nodeBuilds = [
       index: './src/index.ts',
     },
     output: [{ dir: './dist/node', format: 'cjs', sourcemap: true }],
-    plugins: [...es5NodeBuildPlugins, replace(generateBuildTargetReplaceConfig('cjs', 5))],
+    plugins: [...getPlugIns('./dist/node'), replace(generateBuildTargetReplaceConfig('cjs', 5))],
   },
   {
     external: (id) => deps.some((dep) => id === dep || id.startsWith(`${dep}/`)),
@@ -137,7 +106,7 @@ const nodeBuilds = [
     },
     output: [{ dir: './dist/node-esm', format: 'es', sourcemap: true }],
     plugins: [
-      ...es2017NodeBuildPlugins,
+      ...getPlugIns('./dist/node-esm'),
       replace(generateBuildTargetReplaceConfig('esm', 2017)),
       emitModulePackageFile(),
     ],

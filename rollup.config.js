@@ -1,7 +1,7 @@
 import json from '@rollup/plugin-json'
+import replace from '@rollup/plugin-replace'
 import strip from '@rollup/plugin-strip'
-import replace from 'rollup-plugin-replace'
-import typescriptPlugin from 'rollup-plugin-typescript2'
+import typescriptPlugin from '@rollup/plugin-typescript'
 import typescript from 'typescript'
 
 import pkg from './package.json'
@@ -37,6 +37,7 @@ function generateBuildTargetReplaceConfig(moduleFormat, languageTarget) {
 
   return {
     [BUILD_TARGET_MAGIC_STRING]: buildTarget,
+    preventAssignment: true,
   }
 }
 
@@ -53,27 +54,46 @@ function emitModulePackageFile() {
   }
 }
 
-const es5BuildPlugins = [
+const es5BrowserBuildPlugins = [
   json(),
   strip({
     functions: ['debugAssert.*'],
   }),
   typescriptPlugin({
+    tsconfig: './tsconfig.rollup.browser.esm5.json',
     typescript,
   }),
 ]
 
-const es2017BuildPlugins = [
+const es2017BrowserBuildPlugins = [
   json(),
   strip({
     functions: ['debugAssert.*'],
   }),
   typescriptPlugin({
-    tsconfigOverride: {
-      compilerOptions: {
-        target: 'es2017',
-      },
-    },
+    tsconfig: './tsconfig.rollup.browser.esm2017.json',
+    typescript,
+  }),
+]
+
+const es5NodeBuildPlugins = [
+  json(),
+  strip({
+    functions: ['debugAssert.*'],
+  }),
+  typescriptPlugin({
+    tsconfig: './tsconfig.rollup.node.esm5.json',
+    typescript,
+  }),
+]
+
+const es2017NodeBuildPlugins = [
+  json(),
+  strip({
+    functions: ['debugAssert.*'],
+  }),
+  typescriptPlugin({
+    tsconfig: './tsconfig.rollup.node.esm2017.json',
     typescript,
   }),
 ]
@@ -82,22 +102,22 @@ const browserBuilds = [
   {
     external: (id) => deps.some((dep) => id === dep || id.startsWith(`${dep}/`)),
     input: {
-      index: 'index.ts',
+      index: './src/index.ts',
     },
-    output: [{ dir: 'dist/esm5', format: 'es', sourcemap: true }],
-    plugins: [...es5BuildPlugins, replace(generateBuildTargetReplaceConfig('esm', 5))],
+    output: [{ dir: './dist/esm5', format: 'es', sourcemap: true }],
+    plugins: [...es5BrowserBuildPlugins, replace(generateBuildTargetReplaceConfig('esm', 5))],
   },
   {
     external: (id) => deps.some((dep) => id === dep || id.startsWith(`${dep}/`)),
     input: {
-      index: 'index.ts',
+      index: './src/index.ts',
     },
     output: {
-      dir: 'dist/esm2017',
+      dir: './dist/esm2017',
       format: 'es',
       sourcemap: true,
     },
-    plugins: [...es2017BuildPlugins, replace(generateBuildTargetReplaceConfig('esm', 2017))],
+    plugins: [...es2017BrowserBuildPlugins, replace(generateBuildTargetReplaceConfig('esm', 2017))],
   },
 ]
 
@@ -105,18 +125,22 @@ const nodeBuilds = [
   {
     external: (id) => deps.some((dep) => id === dep || id.startsWith(`${dep}/`)),
     input: {
-      index: 'index.node.ts',
+      index: './src/index.ts',
     },
-    output: [{ dir: 'dist/node', format: 'cjs', sourcemap: true }],
-    plugins: [...es5BuildPlugins, replace(generateBuildTargetReplaceConfig('cjs', 5))],
+    output: [{ dir: './dist/node', format: 'cjs', sourcemap: true }],
+    plugins: [...es5NodeBuildPlugins, replace(generateBuildTargetReplaceConfig('cjs', 5))],
   },
   {
     external: (id) => deps.some((dep) => id === dep || id.startsWith(`${dep}/`)),
     input: {
-      index: 'index.node.ts',
+      index: './src/index.ts',
     },
-    output: [{ dir: 'dist/node-esm', format: 'es', sourcemap: true }],
-    plugins: [...es2017BuildPlugins, replace(generateBuildTargetReplaceConfig('esm', 2017)), emitModulePackageFile()],
+    output: [{ dir: './dist/node-esm', format: 'es', sourcemap: true }],
+    plugins: [
+      ...es2017NodeBuildPlugins,
+      replace(generateBuildTargetReplaceConfig('esm', 2017)),
+      emitModulePackageFile(),
+    ],
   },
 ]
 

@@ -1,6 +1,7 @@
 ignores: [
   "@xylabs/ts-scripts",
   "@xylabs/eslint-config",
+  "@xylabs/tsconfig",
   "@types/mocha",
   "@types/jest",
   "@types/node",

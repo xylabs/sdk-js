@@ -1034,9 +1034,9 @@
     ts-prune "^0.10"
 
 "@xylabs/tsconfig@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@xylabs/tsconfig/-/tsconfig-1.0.5.tgz#7449cafbfbf1f9f83aa0841094a955c4fa54cd6c"
-  integrity sha512-kRTTY3pGim9zIDTGuZNsIsVdyhUS71HzQikJl4NDIO5Y5YFRP314OdXD8w1ECsU5ZTxs+5PIzCqNY5+MXiATpQ==
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@xylabs/tsconfig/-/tsconfig-1.0.6.tgz#b9d654e73e378a97c227497e8705127b8b7f65ef"
+  integrity sha512-dfT9GKKFulqnWGqlWLXGt5i7ZegGhbczMP4TFng0JcpPQNzXKFwWBxhulnfhfByM2njXkoRC5JbyMeXUY1a/XA==
 
 abab@^2.0.3, abab@^2.0.5:
   version "2.0.5"

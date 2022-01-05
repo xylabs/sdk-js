@@ -11,6 +11,7 @@
   },
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "devDependencies": {
+    "@babel/core": "7.16.7",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-replace": "^3.0.1",
     "@rollup/plugin-strip": "^2.1.0",
@@ -23,6 +24,7 @@
     "@xylabs/ts-scripts": "^1.0.24",
     "@xylabs/tsconfig": "^1.0.5",
     "axios": "^0.24.0",
+    "babel-jest": "^27.4.6",
     "bn.js": "^5.2.0",
     "eslint": "^8",
     "jest": "^27.4.5",

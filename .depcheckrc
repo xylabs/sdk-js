@@ -1,10 +1,12 @@
 ignores: [
+  "@babel/core",
   "@xylabs/ts-scripts",
   "@xylabs/eslint-config",
   "@xylabs/tsconfig",
   "@types/mocha",
   "@types/jest",
   "@types/node",
+  "babel-jest",
   "ts-jest",
   "ts-node",
   "eslint",

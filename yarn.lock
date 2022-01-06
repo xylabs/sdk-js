@@ -1003,14 +1003,33 @@
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.2.26.tgz#7acd1621783571b9a82eca1f041b4a0a983481d9"
   integrity sha512-vPV6Cq+NIWbH5pZu+V+2QHE9y1qfuTq49uNWw4f7FDEeZaDU2H2cx5jcUZOAKW7qTrUS4k6qZPbMy1x4N96nbA==
 
-"@xylabs/eslint-config@2.1.9", "@xylabs/eslint-config@^2.1.6":
-  version "2.1.9"
-  resolved "https://registry.yarnpkg.com/@xylabs/eslint-config/-/eslint-config-2.1.9.tgz#91a9127276e45838cab6ea2def121e0bcf446be6"
-  integrity sha512-4YmuVlPA5Fgtpy3zlqQrhj0thC6Efy+I9xEYLzSt8C5PXWgI1/npjzwUPOVNJIc6NoNxTtWjmwgKSq0HzkGIdQ==
+"@xylabs/eslint-config@2.2.6":
+  version "2.2.6"
+  resolved "https://registry.yarnpkg.com/@xylabs/eslint-config/-/eslint-config-2.2.6.tgz#0bf0a0ca7602ba1a45e4bac41a85a682df785f15"
+  integrity sha512-ndiFlw2d1N9DkRP9OD29gEA9ukyl5ENgJ0MSr59y/FquS4g3CD2IdBvgLhCRDn60oKv67rP5SmR5r+2upAXA4A==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^5.7.0"
     "@typescript-eslint/parser" "^5.7.0"
     eslint-config-prettier "^8.3.0"
+    eslint-import-resolver-typescript "^2.5.0"
+    eslint-plugin-import "^2.25.2"
+    eslint-plugin-json-es "^1.5.4"
+    eslint-plugin-md "^1.0.19"
+    eslint-plugin-no-secrets "^0.8.9"
+    eslint-plugin-prettier "^4.0.0"
+    eslint-plugin-simple-import-sort "^7.0.0"
+    eslint-plugin-sort-keys-fix "^1.1.2"
+    remark-preset-lint-markdown-style-guide "^5.1.2"
+
+"@xylabs/eslint-config@^2.1.6":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@xylabs/eslint-config/-/eslint-config-2.2.4.tgz#afca2069b0f4a8d11f00ff40b47fa876f6a2592f"
+  integrity sha512-oaNV2yAMLB0GnZMpGAow06faFJybFWW+yS0s65O40LCD9Kscj7UhyuIC6HOu+fIfS96OXJ9yO2p1RIaY656xLg==
+  dependencies:
+    "@typescript-eslint/eslint-plugin" "^5.7.0"
+    "@typescript-eslint/parser" "^5.7.0"
+    eslint-config-prettier "^8.3.0"
+    eslint-import-resolver-typescript "^2.5.0"
     eslint-plugin-import "^2.25.2"
     eslint-plugin-json-es "^1.5.4"
     eslint-plugin-md "^1.0.19"
@@ -1033,10 +1052,10 @@
     npm-package-json-lint-config-default "^3.0.0"
     ts-prune "^0.10"
 
-"@xylabs/tsconfig@^1.0.5":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@xylabs/tsconfig/-/tsconfig-1.0.6.tgz#b9d654e73e378a97c227497e8705127b8b7f65ef"
-  integrity sha512-dfT9GKKFulqnWGqlWLXGt5i7ZegGhbczMP4TFng0JcpPQNzXKFwWBxhulnfhfByM2njXkoRC5JbyMeXUY1a/XA==
+"@xylabs/tsconfig@^1.0.8":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@xylabs/tsconfig/-/tsconfig-1.0.8.tgz#880c1beed67322484588efd786984029807fb849"
+  integrity sha512-I8rsMzDwhlp22Aur5pOw6MwFlps+yww3792lr1bxHF6I0jHU5kO+00rGFil0mrKAMFGYH56RwA0IJzNfxws3XA==
 
 abab@^2.0.3, abab@^2.0.5:
   version "2.0.5"
@@ -2152,6 +2171,17 @@ eslint-import-resolver-node@^0.3.6:
     debug "^3.2.7"
     resolve "^1.20.0"
 
+eslint-import-resolver-typescript@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/eslint-import-resolver-typescript/-/eslint-import-resolver-typescript-2.5.0.tgz#07661966b272d14ba97f597b51e1a588f9722f0a"
+  integrity sha512-qZ6e5CFr+I7K4VVhQu3M/9xGv9/YmwsEXrsm3nimw8vWaVHRDrQRp26BgCypTxBp3vUp4o5aVEJRiy0F2DFddQ==
+  dependencies:
+    debug "^4.3.1"
+    glob "^7.1.7"
+    is-glob "^4.0.1"
+    resolve "^1.20.0"
+    tsconfig-paths "^3.9.0"
+
 eslint-module-utils@^2.7.2:
   version "2.7.2"
   resolved "https://registry.yarnpkg.com/eslint-module-utils/-/eslint-module-utils-2.7.2.tgz#1d0aa455dcf41052339b63cada8ab5fd57577129"
@@ -2760,7 +2790,7 @@ glob-parent@^6.0.1:
   dependencies:
     is-glob "^4.0.3"
 
-glob@^7.1.1, glob@^7.1.2, glob@^7.1.3, glob@^7.1.4, glob@^7.1.6:
+glob@^7.1.1, glob@^7.1.2, glob@^7.1.3, glob@^7.1.4, glob@^7.1.6, glob@^7.1.7:
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.2.0.tgz#d15535af7732e02e948f4c41628bd910293f6023"
   integrity sha512-lmLf6gtyrPq8tTjSmrO94wBeQbFR3HbLHbuyD69wuyQkImp2hWqMGB47OX65FBkPffO641IP9jWa1z4ivqG26Q==
@@ -3147,9 +3177,9 @@ is-ci@^2.0.0:
     ci-info "^2.0.0"
 
 is-core-module@^2.4.0, is-core-module@^2.8.0:
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/is-core-module/-/is-core-module-2.8.0.tgz#0321336c3d0925e497fd97f5d95cb114a5ccd548"
-  integrity sha512-vd15qHsaqrRL7dtH6QNuy0ndJmRDrS9HAM1CAiSifNUFv4x1a0CCVsj18hJ1mShxIG6T2i1sO78MkP56r0nYRw==
+  version "2.8.1"
+  resolved "https://registry.yarnpkg.com/is-core-module/-/is-core-module-2.8.1.tgz#f59fdfca701d5879d0a6b100a40aa1560ce27211"
+  integrity sha512-SdNCUs284hr40hFTFP6l0IfZ/RSrMXF3qgoRHd3/79unUTvrFO/JoXwkGm+5J/Oe3E/b5GsnG330uUNgRpu1PA==
   dependencies:
     has "^1.0.3"
 
@@ -3778,7 +3808,7 @@ jest-worker@^27.4.6:
     merge-stream "^2.0.0"
     supports-color "^8.0.0"
 
-jest@^27.4.5:
+jest@^27.4.7:
   version "27.4.7"
   resolved "https://registry.yarnpkg.com/jest/-/jest-27.4.7.tgz#87f74b9026a1592f2da05b4d258e57505f28eca4"
   integrity sha512-8heYvsx7nV/m8m24Vk26Y87g73Ba6ueUd0MWed/NXMhSZIm62U/llVbS0PJe1SHunbyXjJ/BqG1z9bFjGUIvTg==
@@ -6349,7 +6379,7 @@ rollbar@^2.24.0:
   optionalDependencies:
     decache "^3.0.5"
 
-rollup@^2.62.0:
+rollup@^2.63.0:
   version "2.63.0"
   resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.63.0.tgz#fe2f7fec2133f3fab9e022b9ac245628d817c6bb"
   integrity sha512-nps0idjmD+NXl6OREfyYXMn/dar3WGcyKn+KBzPdaLecub3x/LrId0wUcthcr8oZUAcZAR8NKcfGGFlNgGL1kQ==
@@ -6391,9 +6421,9 @@ safe-buffer@~5.2.0:
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
 sass@^1.29.0:
-  version "1.45.2"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.45.2.tgz#130b428c1692201cfa181139835d6fc378a33323"
-  integrity sha512-cKfs+F9AMPAFlbbTXNsbGvg3y58nV0mXA3E94jqaySKcC8Kq3/8983zVKQ0TLMUrHw7hF9Tnd3Bz9z5Xgtrl9g==
+  version "1.46.0"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.46.0.tgz#923117049525236026a7ede69715580eb0fac751"
+  integrity sha512-Z4BYTgioAOlMmo4LU3Ky2txR8KR0GRPLXxO38kklaYxgo7qMTgy+mpNN4eKsrXDTFlwS5vdruvazG4cihxHRVQ==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
     immutable "^4.0.0"
@@ -6960,7 +6990,7 @@ ts-prune@^0.10:
     "true-myth" "^4.1.0"
     ts-morph "^13.0.1"
 
-tsconfig-paths@^3.12.0:
+tsconfig-paths@^3.12.0, tsconfig-paths@^3.9.0:
   version "3.12.0"
   resolved "https://registry.yarnpkg.com/tsconfig-paths/-/tsconfig-paths-3.12.0.tgz#19769aca6ee8f6a1a341e38c8fa45dd9fb18899b"
   integrity sha512-e5adrnOYT6zqVnWqZu7i/BQ3BnhzvGbjEjejFXO20lKIKpwTaupkCPgEfv4GZK1IBciJUEhYs3J3p75FdaTFVg==

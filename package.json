@@ -88,5 +88,5 @@
   "sideEffects": false,
   "type": "module",
   "types": "dist/index.d.ts",
-  "version": "2.3.22"
+  "version": "2.3.24"
 }

@@ -607,6 +607,14 @@
     node-gyp "^8.2.0"
     read-package-json-fast "^2.0.1"
 
+"@rollup/plugin-image@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@rollup/plugin-image/-/plugin-image-2.1.1.tgz#898d6b59ac0025d7971ef45640ab330cb0663b0c"
+  integrity sha512-AgP4U85zuQJdUopLUCM+hTf45RepgXeTb8EJsleExVy99dIoYpt3ZlDYJdKmAc2KLkNntCDg6BPJvgJU3uGF+g==
+  dependencies:
+    "@rollup/pluginutils" "^3.1.0"
+    mini-svg-data-uri "^1.2.3"
+
 "@rollup/plugin-json@^4.1.0":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-json/-/plugin-json-4.1.0.tgz#54e09867ae6963c593844d8bd7a9c718294496f3"
@@ -1057,6 +1065,24 @@
     eslint-plugin-simple-import-sort "^7.0.0"
     eslint-plugin-sort-keys-fix "^1.1.2"
     remark-preset-lint-markdown-style-guide "^5.1.2"
+
+"@xylabs/rollup-config@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@xylabs/rollup-config/-/rollup-config-1.0.5.tgz#59c60a8fd679119f79cb37cc89778dadaeaf0db3"
+  integrity sha512-lTct7aMqZoJgbPV5IDGDDySTIZuPSUU++wp7KtNTBlrwpYmz4fiaI3yDVetPaZLrcmdyW8o4C+GD5KffTdgsFw==
+  dependencies:
+    "@rollup/plugin-image" "^2.1.1"
+    "@rollup/plugin-json" "^4.1.0"
+    "@rollup/plugin-replace" "^3.0.1"
+    "@rollup/plugin-strip" "^2.1.0"
+    "@rollup/plugin-typescript" "^8.3.0"
+    depcheck "^1.4.2"
+    eslint-plugin-sonarjs "^0.10.0"
+    npm-check-updates "^12"
+    npm-package-json-lint "^5.4.2"
+    npm-package-json-lint-config-default "^3.0.0"
+    rollup "^2.63.0"
+    ts-prune "^0.10"
 
 "@xylabs/ts-scripts@^1.0.24":
   version "1.0.24"
@@ -4290,6 +4316,11 @@ min-indent@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/min-indent/-/min-indent-1.0.1.tgz#a63f681673b30571fbe8bc25686ae746eefa9869"
   integrity sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==
+
+mini-svg-data-uri@^1.2.3:
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/mini-svg-data-uri/-/mini-svg-data-uri-1.4.3.tgz#43177b2e93766ba338931a3e2a84a3dfd3a222b8"
+  integrity sha512-gSfqpMRC8IxghvMcxzzmMnWpXAChSA+vy4cia33RgerMS8Fex95akUyQZPbxJJmeBGiGmK7n/1OpUX8ksRjIdA==
 
 minimatch@^3.0.4:
   version "3.0.4"

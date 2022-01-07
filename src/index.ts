@@ -12,5 +12,7 @@ import { getApiStage } from './getApiStage'
 import { Log } from './Log'
 import { Override } from './Override'
 
+export * from './forget'
+
 export { ApiClient, ApiEndpoint, ApiStage, assertEx, BigNumber, delay, EthAddress, getApiStage, isEthAddress, Log }
 export type { ApiConfig, Override }

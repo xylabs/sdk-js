@@ -1,5 +1,3 @@
-//not using "export *" since that causes a problem importing into node
-
 import { ApiClient } from './ApiClient'
 import { ApiConfig } from './ApiConfig'
 import { ApiEndpoint } from './ApiEndpoint'

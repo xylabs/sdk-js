@@ -87,7 +87,6 @@
     "test": "jest"
   },
   "sideEffects": false,
-  "type": "module",
   "types": "dist/index.d.ts",
   "version": "2.3.25"
 }

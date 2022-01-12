@@ -887,7 +887,7 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@typescript-eslint/eslint-plugin@^5.7.0", "@typescript-eslint/eslint-plugin@^5.9.0":
+"@typescript-eslint/eslint-plugin@^5.9.0":
   version "5.9.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-5.9.0.tgz#382182d5cb062f52aac54434cfc47c28898c8006"
   integrity sha512-qT4lr2jysDQBQOPsCCvpPUZHjbABoTJW8V9ZzIYKHMfppJtpdtzszDYsldwhFxlhvrp7aCHeXD1Lb9M1zhwWwQ==
@@ -914,7 +914,7 @@
     eslint-scope "^5.1.1"
     eslint-utils "^3.0.0"
 
-"@typescript-eslint/parser@^5.7.0", "@typescript-eslint/parser@^5.9.0":
+"@typescript-eslint/parser@^5.9.0":
   version "5.9.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-5.9.0.tgz#fdbb08767a4caa6ca6ccfed5f9ffe9387f0c7d97"
   integrity sha512-/6pOPz8yAxEt4PLzgbFRDpZmHnXCeZgPDrh/1DaVKOjvn/UPMlWhbx/gA96xRi2JxY1kBl2AmwVbyROUqys5xQ==
@@ -1025,39 +1025,19 @@
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.2.26.tgz#7acd1621783571b9a82eca1f041b4a0a983481d9"
   integrity sha512-vPV6Cq+NIWbH5pZu+V+2QHE9y1qfuTq49uNWw4f7FDEeZaDU2H2cx5jcUZOAKW7qTrUS4k6qZPbMy1x4N96nbA==
 
-"@xylabs/eslint-config@2.2.10":
-  version "2.2.10"
-  resolved "https://registry.yarnpkg.com/@xylabs/eslint-config/-/eslint-config-2.2.10.tgz#eee029dd5dd7c2573b7791ec429444c9696c12aa"
-  integrity sha512-llc99myB4CAoho7ZzQ2OdSxAXmkO/2bXM5VuWUZtI/XwCw/rdTcLy9euk2nwN7FJneX8wF+Y7sAgdRuQrV/Y+w==
+"@xylabs/eslint-config@2.2.11", "@xylabs/eslint-config@^2.1.6":
+  version "2.2.11"
+  resolved "https://registry.yarnpkg.com/@xylabs/eslint-config/-/eslint-config-2.2.11.tgz#60d8f4dc26dad0e3c883094a1553770b70a20be6"
+  integrity sha512-G+38kjOqcJLWZbkRVeAkEVZo3fAYy8wJmAsG8U1cbYBN/ARdIyIPkrItlOyl2y+20k/T3TEX0HrmINszkDWntg==
   dependencies:
     "@babel/core" "^7.16.7"
     "@babel/eslint-parser" "^7.16.5"
     "@rushstack/eslint-patch" "^1.1.0"
     "@typescript-eslint/eslint-plugin" "^5.9.0"
     "@typescript-eslint/parser" "^5.9.0"
-    eslint "^8"
     eslint-config-prettier "^8.3.0"
     eslint-import-resolver-typescript "^2.5.0"
     eslint-plugin-import "^2.25.4"
-    eslint-plugin-json-es "^1.5.4"
-    eslint-plugin-md "^1.0.19"
-    eslint-plugin-no-secrets "^0.8.9"
-    eslint-plugin-prettier "^4.0.0"
-    eslint-plugin-simple-import-sort "^7.0.0"
-    eslint-plugin-sort-keys-fix "^1.1.2"
-    prettier "^2"
-    remark-preset-lint-markdown-style-guide "^5.1.2"
-
-"@xylabs/eslint-config@^2.1.6":
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/@xylabs/eslint-config/-/eslint-config-2.2.4.tgz#afca2069b0f4a8d11f00ff40b47fa876f6a2592f"
-  integrity sha512-oaNV2yAMLB0GnZMpGAow06faFJybFWW+yS0s65O40LCD9Kscj7UhyuIC6HOu+fIfS96OXJ9yO2p1RIaY656xLg==
-  dependencies:
-    "@typescript-eslint/eslint-plugin" "^5.7.0"
-    "@typescript-eslint/parser" "^5.7.0"
-    eslint-config-prettier "^8.3.0"
-    eslint-import-resolver-typescript "^2.5.0"
-    eslint-plugin-import "^2.25.2"
     eslint-plugin-json-es "^1.5.4"
     eslint-plugin-md "^1.0.19"
     eslint-plugin-no-secrets "^0.8.9"
@@ -2235,7 +2215,7 @@ eslint-module-utils@^2.7.2:
     debug "^3.2.7"
     find-up "^2.1.0"
 
-eslint-plugin-import@^2.25.2, eslint-plugin-import@^2.25.4:
+eslint-plugin-import@^2.25.4:
   version "2.25.4"
   resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.25.4.tgz#322f3f916a4e9e991ac7af32032c25ce313209f1"
   integrity sha512-/KJBASVFxpu0xg1kIBn9AUa8hQVnszpwgE7Ld0lKAlx7Ie87yzEzCgSkekt+le/YVhiaosO4Y14GDAOc41nfxA==
@@ -4999,7 +4979,7 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@^2, prettier@^2.5.1:
+prettier@^2.5.1:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.5.1.tgz#fff75fa9d519c54cf0fce328c1017d94546bc56a"
   integrity sha512-vBZcPRUR5MZJwoyi3ZoyQlc1rXeEck8KgeC9AwwOn+exuxLxq5toTRDTSaVrXHxelDMHy9zlicw8u66yxoSUFg==

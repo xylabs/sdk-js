@@ -875,9 +875,9 @@
   integrity sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==
 
 "@types/node@*", "@types/node@^17":
-  version "17.0.13"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.13.tgz#5ed7ed7c662948335fcad6c412bb42d99ea754e3"
-  integrity sha512-Y86MAxASe25hNzlDbsviXl8jQHb0RDvKt4c40ZJQ1Don0AAL0STLZSs4N+6gLEO55pedy7r2cLwS+ZDxPm/2Bw==
+  version "17.0.14"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.14.tgz#33b9b94f789a8fedd30a68efdbca4dbb06b61f20"
+  integrity sha512-SbjLmERksKOGzWzPNuW7fJM7fk3YXVTFiZWB/Hs99gwhk+/dnrQRPBQjPW9aO+fi1tAffi9PrwFvsmOKmDTyng==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
@@ -1078,10 +1078,10 @@
     prettier "^2"
     remark-preset-lint-markdown-style-guide "^5"
 
-"@xylabs/rollup-config@^1.1.4":
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/@xylabs/rollup-config/-/rollup-config-1.1.4.tgz#a955181c1f12e81b1f48538cd7b5e8c171c33aff"
-  integrity sha512-xO16SVXHRHvliZZXIfTnR7eXuTIeJsgSOoZpLGt6quUknWpjU9EOWDiW0ern3kAYI4vcC49k24KdAIVZ+MXflg==
+"@xylabs/rollup-config@^1.1.5":
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/@xylabs/rollup-config/-/rollup-config-1.1.5.tgz#9ecb2eecb67b91f3318c712271e22964fcf2f13a"
+  integrity sha512-KkoDqjKysMIY10bCpuyfc6XnzGbjtfkT97GTtS3ogt4CkIxR5oET9excCgON8Q9mcUni9Fy8kjxgokrxSuUR9A==
   dependencies:
     "@rollup/plugin-image" "^2.1.1"
     "@rollup/plugin-json" "^4.1.0"
@@ -1090,10 +1090,10 @@
     "@rollup/plugin-typescript" "^8.3.0"
     rollup "^2.66.1"
 
-"@xylabs/ts-scripts@^1.0.35":
-  version "1.0.35"
-  resolved "https://registry.yarnpkg.com/@xylabs/ts-scripts/-/ts-scripts-1.0.35.tgz#0e96b5616ed51f5b0062ce7e592dc912535e49eb"
-  integrity sha512-1WyHle2dapiUP0NdZXvmaIXRiSqWKdFcYbu0HlP63swji6YH8gngS3cwAf6F2iZ3vHoZ71qZeX6aEU0YIot9xQ==
+"@xylabs/ts-scripts@^1.0.37":
+  version "1.0.37"
+  resolved "https://registry.yarnpkg.com/@xylabs/ts-scripts/-/ts-scripts-1.0.37.tgz#e3e76f396e3857014970bcd2941235a8627bf25c"
+  integrity sha512-FXPJY1jfEO4hKdsRVs6pGIEDTllu6kTsVaGcVfbbOL3RYg/DOkDDlJINys6SlKtM9XcoePIvWrTToMu7+Yup9Q==
   dependencies:
     "@xylabs/eslint-config" "^2.2.14"
     depcheck "^1.4.3"
@@ -2094,9 +2094,9 @@ duplexer3@^0.1.4:
   integrity sha1-7gHdHKwO08vH/b6jfcCo8c4ALOI=
 
 electron-to-chromium@^1.4.17:
-  version "1.4.58"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.58.tgz#cd980b08338210b591c25492857a518fe286b1d4"
-  integrity sha512-7LXwnKyqcEaMFVXOer+2JPfFs1D+ej7yRRrfZoIH1YlLQZ81OvBNwSCBBLtExVkoMQQgOWwO0FbZVge6U/8rhQ==
+  version "1.4.60"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.60.tgz#2b824d862f068a9794b2b75d66ad40ff44745f18"
+  integrity sha512-h53hbEiKC6hijelDgxgkgAUC3PKyR7TmIfvjHnBjUGPMg/3sBuTyG6eDormw+lY24uUJvHkUPzB8dpK8b2u3Sw==
 
 emittery@^0.8.1:
   version "0.8.1"
@@ -4741,7 +4741,7 @@ mute-stream@0.0.8:
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.8.tgz#1630c42b2251ff81e2a283de96a5497ea92e5e0d"
   integrity sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjIm2nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA==
 
-nanoid@^3.1.30:
+nanoid@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.2.0.tgz#62667522da6673971cca916a6d3eff3f415ff80c"
   integrity sha512-fmsZYa9lpn69Ad5eDn7FMcnnSR+8R34W9qJEijxYhTbfOWzr22n1QxCMzXLK+ODyW2973V3Fux959iQoUxzUIA==
@@ -5267,13 +5267,13 @@ pluralize@^8.0.0:
   integrity sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==
 
 postcss@^8.1.10:
-  version "8.4.5"
-  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.5.tgz#bae665764dfd4c6fcc24dc0fdf7e7aa00cc77f95"
-  integrity sha512-jBDboWM8qpaqwkMwItqTQTiFikhs/67OYVvblFFTM7MrZjt6yMKd6r2kgXizEbTTljacm4NldIlZnhbjr84QYg==
+  version "8.4.6"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.6.tgz#c5ff3c3c457a23864f32cb45ac9b741498a09ae1"
+  integrity sha512-OovjwIzs9Te46vlEx7+uXB0PLijpwjXGKXjVGGPIGubGpq7uh5Xgf6D6FiJ/SzJMBosHDp6a2hiXOS97iBXcaA==
   dependencies:
-    nanoid "^3.1.30"
+    nanoid "^3.2.0"
     picocolors "^1.0.0"
-    source-map-js "^1.0.1"
+    source-map-js "^1.0.2"
 
 prelude-ls@^1.2.1:
   version "1.2.1"
@@ -6776,9 +6776,9 @@ safe-buffer@~5.2.0:
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
 sass@^1.29.0:
-  version "1.49.4"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.49.4.tgz#d2655e03e52b2212ab65d392bdef6d0931d8637c"
-  integrity sha512-xUU5ZlppOjgfEyIIcHpnmY+f+3/ieaadp25S/OqZ5+jBPeTAMJJblkhM6UD9jb4j/lzglz7VOL5kglYt+CvNdQ==
+  version "1.49.6"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.49.6.tgz#bc9f30bd450e8007e8601e2e0db8676da08bbea8"
+  integrity sha512-b6/xpPgSfnM2FObLVsSU8HmNPp9VyVesprFMBDZ+kdLXpRyqhObdn1jjAxW/iDg5cN7Z7pKnkFlKHJKwXJ2Q9w==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
     immutable "^4.0.0"
@@ -6921,7 +6921,7 @@ socks@^2.6.1:
     ip "^1.1.5"
     smart-buffer "^4.1.0"
 
-"source-map-js@>=0.6.2 <2.0.0", source-map-js@^1.0.1:
+"source-map-js@>=0.6.2 <2.0.0", source-map-js@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.0.2.tgz#adbc361d9c62df380125e7f161f71c826f1e490c"
   integrity sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==

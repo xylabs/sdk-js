@@ -19,9 +19,9 @@
     "@types/jest": "^27",
     "@types/mocha": "^9",
     "@types/node": "^17",
-    "@xylabs/eslint-config": "2.2.13",
+    "@xylabs/eslint-config": "2.2.14",
     "@xylabs/rollup-config": "^1.1.4",
-    "@xylabs/ts-scripts": "^1.0.33",
+    "@xylabs/ts-scripts": "^1.0.35",
     "@xylabs/tsconfig": "^1.0.9",
     "babel-jest": "^27.4.6",
     "eslint": "^8",
@@ -77,9 +77,6 @@
     "uuid": "^8"
   },
   "scripts": {
-    "compile": "rimraf dist && yarn compile-rollup && yarn compile-tsc",
-    "compile-rollup": "rollup -c",
-    "compile-tsc": "tsc -p tsconfig.json",
     "lint-pkg": "npmPkgJsonLint .",
     "test": "jest"
   },

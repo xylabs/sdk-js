@@ -1,5 +1,6 @@
 import { assertEx } from './assertEx'
 import { BigNumber } from './BigNumber'
+import { ellipsize } from './ellipsize'
 import { padHex } from './padHex'
 
 export const isEthAddress = (obj: { type: string }) => obj?.type === EthAddress.type
@@ -62,9 +63,6 @@ export class EthAddress {
   }
 
   public toShortString(length = 2) {
-    const hex = this.toHex()
-    const part1 = hex.slice(0, length)
-    const part2 = hex.slice(hex.length - length, hex.length)
-    return `0x${part1}...${part2}`
+    return `0x${ellipsize(this.toHex(), length)}`
   }
 }

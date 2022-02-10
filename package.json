@@ -84,6 +84,6 @@
   },
   "sideEffects": false,
   "types": "dist/index.d.ts",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "packageManager": "yarn@3.1.1"
 }

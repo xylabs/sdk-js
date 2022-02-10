@@ -4,7 +4,7 @@
     "name": "XY Labs Development Team",
     "url": "https://xylabs.com"
   },
-  "browser": "dist/esm2017/browser.js",
+  "browser": "dist/esm2017/index.js",
   "bugs": {
     "email": "support@xylabs.com",
     "url": "https://github.com/xylabs/sdk-js/issues"
@@ -24,16 +24,13 @@
     "@xylabs/rollup-config": "^1.1.5",
     "@xylabs/ts-scripts": "^1.0.41",
     "@xylabs/tsconfig": "^1.0.12",
-    "axios": "^0.25.0",
     "babel-jest": "^27.5.1",
-    "bn.js": "^5.2.0",
     "eslint": "^8",
     "jest": "^27.5.1",
     "npm-package-json-lint": "^5.4.2",
     "npm-package-json-lint-config-default": "^3.0.0",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
-    "rollbar": "^2.24.0",
     "rollup": "^2.67.1",
     "ts-jest": "^27.1.3",
     "ts-node": "^10.5.0",
@@ -63,21 +60,11 @@
   "main": "dist/node/index.js",
   "module": "dist/index.js",
   "name": "@xylabs/sdk-js",
-  "peerDependencies": {
+  "dependencies": {
     "axios": "^0",
     "bn.js": "^5",
+    "buffer": "^6.0.3",
     "rollbar": "^2"
-  },
-  "peerDependenciesMeta": {
-    "axios": {
-      "optional": true
-    },
-    "bn.js": {
-      "optional": true
-    },
-    "rollbar": {
-      "optional": true
-    }
   },
   "private": false,
   "publishConfig": {

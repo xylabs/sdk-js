@@ -10,6 +10,7 @@ import { getApiStage } from './getApiStage'
 import { Log } from './Log'
 import { Override } from './Override'
 
+export * from './bufferPolyfill'
 export * from './ellipsize'
 export * from './forget'
 

@@ -62,7 +62,7 @@
   "module": "dist/index.js",
   "name": "@xylabs/sdk-js",
   "dependencies": {
-    "axios": "^0.25.0",
+    "axios": "^0.26.1",
     "bn.js": "^5.2.0",
     "buffer": "^6.0.3",
     "rollbar": "^2.24.0"

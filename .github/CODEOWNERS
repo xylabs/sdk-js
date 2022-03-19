@@ -1,0 +1,5 @@
+# @Developers owns all directories in the repository 
+# except for the `/src` subdirectory, as its owners 
+# are left empty.
+/ @xylabs/select-developers
+/src

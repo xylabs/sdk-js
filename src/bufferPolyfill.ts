@@ -1,7 +1,7 @@
-import { Buffer } from 'safe-buffer'
+import { Buffer } from './Buffer'
 
 //make sure we have a global Buffer object if in browser
-/** @deprecated use safe-buffer npm package instead */
+/** @deprecated use buffer npm package instead */
 export const bufferPolyfill = () => {
   if (window !== undefined) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

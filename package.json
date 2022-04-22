@@ -19,7 +19,6 @@
     "@types/bn.js": "^5.1.0",
     "@types/jest": "^27.4.1",
     "@types/mocha": "^9.1.1",
-    "@types/node": "^17.0.25",
     "@xylabs/eslint-config": "2.3.22",
     "@xylabs/rollup-config": "^1.1.15",
     "@xylabs/ts-scripts": "^1.0.53",
@@ -64,8 +63,8 @@
   "dependencies": {
     "axios": "^0.26.1",
     "bn.js": "^5.2.0",
-    "rollbar": "^2.25.0",
-    "safe-buffer": "^5.2.1"
+    "buffer": "^6.0.3",
+    "rollbar": "^2.25.0"
   },
   "publishConfig": {
     "access": "public"

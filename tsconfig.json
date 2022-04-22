@@ -1,6 +1,3 @@
 {
-  "compilerOptions": {
-    "typeRoots": ["./node_modules/@types"]
-  },
   "extends": "@xylabs/tsconfig"
 }

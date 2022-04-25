@@ -4,7 +4,6 @@
     "name": "XY Labs Development Team",
     "url": "https://xylabs.com"
   },
-  "browser": "dist/esm2017/index.js",
   "bugs": {
     "email": "support@xylabs.com",
     "url": "https://github.com/xylabs/sdk-js/issues"
@@ -37,15 +36,22 @@
     "tslib": "^2.4.0",
     "typescript": "^4.6.3"
   },
-  "esm5": "dist/esm5/index.js",
+  "browser": "dist/browserIndex.js",
+  "docs": "dist/docs.json",
   "exports": {
     ".": {
-      "esm5": "./dist/esm5/index.js",
       "node": {
-        "import": "./dist/node-esm/index.js",
-        "require": "./dist/node/index.js"
+        "import": "./dist/bundle/node-esm/index.js",
+        "require": "./dist/bundle/node/index.js"
+      },
+      "browser": {
+        "import": "./dist/browserIndex.js",
+        "require": "./dist/bundle/cjs5/index.js"
       },
       "default": "./dist/index.js"
+    },
+    "./dist/docs.json": {
+      "default": "./dist/docs.json"
     },
     "./package.json": "./package.json"
   },
@@ -83,6 +89,6 @@
   },
   "sideEffects": false,
   "types": "dist/index.d.ts",
-  "version": "2.4.12",
+  "version": "2.5.0",
   "packageManager": "yarn@3.1.1"
 }

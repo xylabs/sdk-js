@@ -67,6 +67,7 @@
   "module": "dist/index.js",
   "name": "@xylabs/sdk-js",
   "dependencies": {
+    "@types/node": "^17.0.27",
     "axios": "^0.26.1",
     "bn.js": "^5.2.0",
     "buffer": "^6.0.3",

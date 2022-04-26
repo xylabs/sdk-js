@@ -63,7 +63,7 @@
     "esm"
   ],
   "license": "LGPL-3.0",
-  "main": "dist/node/index.js",
+  "main": "dist/bundle/node/index.js",
   "module": "dist/index.js",
   "name": "@xylabs/sdk-js",
   "dependencies": {

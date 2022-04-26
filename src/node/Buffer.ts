@@ -1,2 +1,2 @@
-type NodeBuffer = Buffer
-export { NodeBuffer }
+import { Buffer } from 'buffer'
+export { Buffer as NodeBuffer }

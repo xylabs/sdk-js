@@ -42,7 +42,7 @@ class Log {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public error(...params: any[]) {
     console.error(params)
-    if (this.devMode) {
+    if (!this.devMode) {
       this.rollbar?.error(params)
     }
   }
@@ -50,28 +50,28 @@ class Log {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public warn(...params: any[]) {
     console.warn(params)
-    if (this.devMode) {
+    if (!this.devMode) {
       this.rollbar?.warn(params)
     }
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public info(...params: any[]) {
-    if (this.devMode) {
+    if (!this.devMode) {
       console.info(params)
     }
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public debug(...params: any[]) {
-    if (this.devMode) {
+    if (!this.devMode) {
       console.debug(params)
     }
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public log(...params: any[]) {
-    if (this.devMode) {
+    if (!this.devMode) {
       console.log(params)
     }
   }

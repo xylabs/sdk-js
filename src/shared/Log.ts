@@ -42,7 +42,7 @@ class Log {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public error(...params: any[]) {
     console.error(params)
-    if (this.devMode) {
+    if (!this.devMode) {
       this.rollbar?.error(params)
     }
   }
@@ -50,7 +50,7 @@ class Log {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public warn(...params: any[]) {
     console.warn(params)
-    if (this.devMode) {
+    if (!this.devMode) {
       this.rollbar?.warn(params)
     }
   }

@@ -68,7 +68,7 @@
   "name": "@xylabs/sdk-js",
   "dependencies": {
     "@types/node": "^17.0.27",
-    "axios": "^0.26.1",
+    "axios": "^0.27.2",
     "bn.js": "^5.2.0",
     "buffer": "^6.0.3",
     "rollbar": "^2.25.0"

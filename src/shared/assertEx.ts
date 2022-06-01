@@ -5,7 +5,7 @@ class AssertExError extends Error {}
 
 /**
  *
- * Intended for simple null/undefiend checks for variables
+ * Intended for simple null/undefined checks for variables
  *
  * @param expr - Expression to be evaluated for truthiness
  * @param message - Message in Error if expression is false

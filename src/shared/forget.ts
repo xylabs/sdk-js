@@ -5,7 +5,7 @@ interface ForgetTimeoutConfig {
   cancel: () => void
 }
 
-//used to explicitly launch an async funtion (or Promise) with awaiting it
+//used to explicitly launch an async function (or Promise) with awaiting it
 export const forget = (promise: Promise<unknown>, timeout?: ForgetTimeoutConfig) => {
   let completed = false
 

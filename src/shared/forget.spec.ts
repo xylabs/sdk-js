@@ -2,7 +2,7 @@ import { delay } from './delay'
 import { forget } from './forget'
 
 
-describe('foget', () => {
+describe('forget', () => {
   test('checking happy path', async () => {
     let cancelled = false
     forget(delay(100), {delay: 200, cancel: () => cancelled = true })

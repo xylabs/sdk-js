@@ -1,6 +1,6 @@
 import { delay } from './delay'
 
-interface ForgetTimeoutConfig {
+export interface ForgetTimeoutConfig {
   delay: number
   cancel: () => void
 }

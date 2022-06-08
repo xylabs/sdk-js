@@ -1,16 +1,12 @@
 ignores: [
   "@babel/core",
-  "@xylabs/ts-scripts",
-  "@xylabs/eslint-config",
-  "@xylabs/tsconfig",
-  "@types/mocha",
   "@types/jest",
-  "@types/node",
+  "@types/mocha",
+  "@xylabs/ts-scripts",
+  "@xylabs/tsconfig",
   "babel-jest",
-  "ts-jest",
+  "buffer",
   "ts-node",
-  "eslint",
-  "rollup",
-  "npm-package-json-lint-config-default",
-  "typescript"
+  "ts-jest",
+  "typedoc"
 ]

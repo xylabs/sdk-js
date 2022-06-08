@@ -1,13 +1,13 @@
 import Rollbar from 'rollbar'
 
-interface LogConfig {
+export interface LogConfig {
   commitHash?: string
   devMode?: boolean
   rollbarToken?: string
   payload?: Record<string, unknown>
 }
 
-class Log {
+export class Log {
   private rollbar?: Rollbar
   private devMode?: boolean
 
@@ -76,5 +76,3 @@ class Log {
     }
   }
 }
-
-export { Log }

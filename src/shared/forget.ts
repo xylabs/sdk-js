@@ -12,6 +12,20 @@ export class ForgetPromise {
 
   static activeForgets = 0
 
+  static async awaitInactive(interval = 100, timeout?: number) {
+    let timeoutRemaining = timeout
+    while (this.active) {
+      await delay(interval)
+      if (timeoutRemaining !== undefined) {
+        timeoutRemaining -= interval
+        if (timeoutRemaining <= 0) {
+          return this.activeForgets
+        }
+      }
+    }
+    return 0
+  }
+
   //used to explicitly launch an async function (or Promise) with awaiting it
   static forget(promise: Promise<unknown>, timeout?: ForgetTimeoutConfig) {
     let completed = false

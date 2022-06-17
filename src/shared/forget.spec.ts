@@ -15,11 +15,23 @@ describe('forget', () => {
     await delay(300)
     expect(cancelled).toBeTruthy()
   })
-  test('forget count', async () => {
-    let cancelled = false
+  test('forget active', async () => {
     forget(delay(300))
     expect(ForgetPromise.active).toBeTruthy()
     await delay(600)
+    expect(ForgetPromise.active).toBeFalsy()
+  })
+  test('forget active async', async () => {
+    forget(delay(1000))
+    await ForgetPromise.awaitInactive()
+    expect(ForgetPromise.active).toBeFalsy()
+  })
+  test('forget active async w/timeout', async () => {
+    forget(delay(300))
+    const activeCount = await ForgetPromise.awaitInactive(100, 200)
+    expect(activeCount).toBe(1)
+    expect(ForgetPromise.active).toBeTruthy()
+    await ForgetPromise.awaitInactive()
     expect(ForgetPromise.active).toBeFalsy()
   })
 })

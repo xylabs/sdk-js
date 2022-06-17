@@ -5,41 +5,57 @@ export interface ForgetTimeoutConfig {
   cancel: () => void
 }
 
-//used to explicitly launch an async function (or Promise) with awaiting it
-export const forget = (promise: Promise<unknown>, timeout?: ForgetTimeoutConfig) => {
-  let completed = false
+export class ForgetPromise {
+  static get active() {
+    return this.activeForgets > 0
+  }
 
-  const promiseWrapper = async () => {
-    await promise
+  static activeForgets = 0
+
+  //used to explicitly launch an async function (or Promise) with awaiting it
+  static forget(promise: Promise<unknown>, timeout?: ForgetTimeoutConfig) {
+    let completed = false
+    this.activeForgets++
+
+    const promiseWrapper = async () => {
+      await promise
+        .then(() => {
+          this.activeForgets--
+          completed = true
+        })
+        .catch(() => {
+          this.activeForgets--
+          completed = true
+        })
+    }
+
+    const promises = [promiseWrapper()]
+
+    //if there is a timeout, add it to the race
+    if (timeout) {
+      const timeoutFunc = async () => {
+        await delay(timeout.delay)
+        if (!completed) {
+          console.log(`forget promise timeout out after ${timeout.delay}ms [Cancelling]`)
+          timeout.cancel?.()
+        }
+      }
+      promises.push(timeoutFunc())
+    }
+
+    const all = Promise.race(promises)
+
+    all
       .then(() => {
-        completed = true
+        return
       })
       .catch(() => {
-        completed = true
+        return
       })
   }
+}
 
-  const promises = [promiseWrapper()]
-
-  //if there is a timeout, add it to the race
-  if (timeout) {
-    const timeoutFunc = async () => {
-      await delay(timeout.delay)
-      if (!completed) {
-        console.log(`forget promise timeout out after ${timeout.delay}ms [Cancelling]`)
-        timeout.cancel?.()
-      }
-    }
-    promises.push(timeoutFunc())
-  }
-
-  const all = Promise.race(promises)
-
-  all
-    .then(() => {
-      return
-    })
-    .catch(() => {
-      return
-    })
+//used to explicitly launch an async function (or Promise) with awaiting it
+export const forget = (promise: Promise<unknown>, timeout?: ForgetTimeoutConfig) => {
+  ForgetPromise.forget(promise, timeout)
 }

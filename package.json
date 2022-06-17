@@ -41,23 +41,23 @@
     "esm"
   ],
   "dependencies": {
-    "@types/node": "^17.0.41",
+    "@types/node": "^18.0.0",
     "axios": "^0.27.2",
     "bn.js": "^5.2.1",
     "buffer": "^6.0.3",
     "rollbar": "^2.25.0"
   },
   "devDependencies": {
-    "@babel/core": "7.18.2",
+    "@babel/core": "7.18.5",
     "@types/bn.js": "^5.1.0",
-    "@types/jest": "^28.1.1",
+    "@types/jest": "^28.1.2",
     "@types/mocha": "^9.1.1",
     "@xylabs/eslint-config": "2.3.22",
     "@xylabs/ts-scripts": "^1.0.66",
     "@xylabs/tsconfig": "^1.0.13",
     "babel-jest": "^28.1.1",
     "jest": "^28.1.1",
-    "ts-jest": "^28.0.4",
+    "ts-jest": "^28.0.5",
     "ts-node": "^10.8.1",
     "typedoc": "^0.22.17",
     "typescript": "^4.7.3"
@@ -81,6 +81,6 @@
     "test": "jest"
   },
   "sideEffects": false,
-  "version": "2.5.7",
+  "version": "2.5.8",
   "packageManager": "yarn@3.1.1"
 }

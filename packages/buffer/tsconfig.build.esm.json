@@ -4,7 +4,7 @@
     "outDir": "./dist/esm",
     "target": "ES2021"
   },
-  "exclude": ["**/*.spec.ts"],
+  "exclude": ["src/**/*.spec.ts"],
   "extends": "./tsconfig.json",
   "include": ["src"]
 }

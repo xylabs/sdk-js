@@ -1,0 +1,3 @@
+releases:
+  "@xylabs/buffer": patch
+  "@xylabs/sdk-js": patch

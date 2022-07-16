@@ -104,6 +104,6 @@
     "test": "jest"
   },
   "sideEffects": false,
-  "version": "2.6.0",
+  "version": "2.6.1",
   "packageManager": "yarn@3.2.1"
 }

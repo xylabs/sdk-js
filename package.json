@@ -44,10 +44,8 @@
     "esm"
   ],
   "dependencies": {
-    "@types/node": "^18.0.5",
     "axios": "^0.27.2",
     "bn.js": "^5.2.1",
-    "buffer": "^6.0.3",
     "rollbar": "^2.25.0"
   },
   "devDependencies": {
@@ -99,7 +97,7 @@
     "fix:package": "yarn eslint $INIT_CWD/src --fix",
     "lint:package": "yarn eslint $INIT_CWD/src",
     "cycle:package": "yarn eslint --rule \"import/no-cycle:[1, { maxDepth: 10 }]\" $INIT_CWD/src",
-    "deps:package": "depcheck $INIT_CWD",
+    "deps:package": "cd $INIT_CWD && depcheck .",
     "updo3:package": "yarn update-interactive",
     "build:package:cjs": "tsc -p $INIT_CWD/tsconfig.build.cjs.json",
     "build:package:esm": "tsc -p $INIT_CWD/tsconfig.build.esm.json",

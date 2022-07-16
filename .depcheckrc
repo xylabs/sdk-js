@@ -5,7 +5,6 @@ ignores: [
   "@xylabs/ts-scripts",
   "@xylabs/tsconfig",
   "babel-jest",
-  "buffer",
   "ts-node",
   "ts-jest",
   "typedoc"

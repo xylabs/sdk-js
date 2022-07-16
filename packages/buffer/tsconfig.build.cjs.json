@@ -4,7 +4,7 @@
     "outDir": "./dist/cjs",
     "target": "ES6"
   },
-  "exclude": ["**/*.spec.ts"],
+  "exclude": ["src/**/*.spec.ts"],
   "extends": "./tsconfig.json",
   "include": ["src"]
 }

@@ -1,5 +1,5 @@
 {
   "exclude": ["dist/**/*"],
-  "extends": "@xylabs/tsconfig",
+  "extends": "@xylabs/tsconfig-dom",
   "include": ["**/*.spec.ts"]
 }

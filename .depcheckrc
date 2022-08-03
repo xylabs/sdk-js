@@ -3,7 +3,7 @@ ignores: [
   "@types/jest",
   "@types/mocha",
   "@xylabs/ts-scripts",
-  "@xylabs/tsconfig",
+  "@xylabs/tsconfig-dom",
   "babel-jest",
   "ts-node",
   "ts-jest",

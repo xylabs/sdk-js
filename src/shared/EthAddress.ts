@@ -1,4 +1,5 @@
-import { assertEx } from './assertEx'
+import { assertEx } from '@xylabs/assert'
+
 import { BigNumber } from './BigNumber'
 import { ellipsize } from './ellipsize'
 import { padHex } from './padHex'

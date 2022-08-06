@@ -11,7 +11,7 @@
     "url": "https://github.com/xylabs/sdk-js/issues"
   },
   "workspaces": [
-    "packages/*"
+    "packages/**/*"
   ],
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "browser": "dist/esm/index.js",
@@ -44,6 +44,7 @@
     "esm"
   ],
   "dependencies": {
+    "@xylabs/assert": "workspace:^",
     "axios": "^0.27.2",
     "bn.js": "^5.2.1",
     "rollbar": "^2.25.1"
@@ -54,14 +55,11 @@
     "@types/jest": "^28.1.6",
     "@types/mocha": "^9.1.1",
     "@xylabs/eslint-config": "2.5.13",
-    "@xylabs/ts-scripts": "^2.5.13",
-    "@xylabs/tsconfig-dom": "^2.5.13",
+    "@xylabs/ts-scripts-yarn3": "^2.5.13",
+    "@xylabs/tsconfig": "^2.5.13",
     "babel-jest": "^28.1.3",
     "jest": "^28.1.3",
-    "rimraf": "^3.0.2",
     "ts-jest": "^28.0.7",
-    "ts-node": "^10.9.1",
-    "typedoc": "^0.23.10",
     "typescript": "^4.7.4"
   },
   "publishConfig": {
@@ -73,36 +71,6 @@
   },
   "resolutions": {
     "uuid": "^8"
-  },
-  "scripts": {
-    "build": "yarn build:esm && yarn build:cjs && yarn gen:docs",
-    "build:cjs": "yarn workspaces foreach -pv run build:package:cjs",
-    "build:esm": "yarn workspaces foreach -pv run build:package:esm",
-    "gen:docs": "yarn workspaces foreach -pv run gen:docs:package",
-    "deploy3": "yarn deploy-patch",
-    "deploy-major": "yarn workspaces foreach --all version major --deferred && yarn deploy-common",
-    "deploy-minor": "yarn workspaces foreach --all version minor --deferred && yarn deploy-common",
-    "deploy-patch": "yarn workspaces foreach --all version patch --deferred && yarn deploy-common",
-    "deploy-common": "yarn build && yarn gen:docs && yarn version apply --all && yarn workspaces foreach -ptv npm publish",
-    "lint-pkg": "npmPkgJsonLint .",
-    "clean": "yarn workspaces foreach -pv run clean:package",
-    "deps": "yarn workspaces foreach -pv run deps:package",
-    "lint": "yarn workspaces foreach -pv run lint:package",
-    "cycle": "yarn workspaces foreach -pv run cycle:package",
-    "fix": "yarn workspaces foreach -pv run fix:package",
-    "outdated": "yarn workspaces foreach -pv outdated",
-    "up": "yarn workspaces foreach -pv up",
-    "updo": "yarn workspaces foreach -pv run updo3:package",
-    "gen:docs:package": "typedoc --excludeExternals --externalPattern \"packages/**/*\" $INIT_CWD/src/index.ts --json $INIT_CWD/dist/docs.json",
-    "clean:package": "rimraf -q $INIT_CWD/dist && rimraf -q $INIT_CWD/build",
-    "fix:package": "yarn eslint $INIT_CWD/src --fix",
-    "lint:package": "yarn eslint $INIT_CWD/src",
-    "cycle:package": "yarn eslint --rule \"import/no-cycle:[1, { maxDepth: 10 }]\" $INIT_CWD/src",
-    "deps:package": "cd $INIT_CWD && depcheck .",
-    "updo3:package": "yarn update-interactive",
-    "build:package:cjs": "tsc -p $INIT_CWD/tsconfig.build.cjs.json",
-    "build:package:esm": "tsc -p $INIT_CWD/tsconfig.build.esm.json",
-    "test": "jest"
   },
   "sideEffects": false,
   "version": "2.6.3",

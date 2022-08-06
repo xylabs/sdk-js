@@ -1,4 +1,5 @@
-import { delay } from './delay'
+import { delay } from '@xylabs/delay'
+
 import { forget, ForgetPromise } from './forget'
 
 describe('forget', () => {

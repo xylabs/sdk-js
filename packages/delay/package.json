@@ -1,6 +1,6 @@
 {
   "license": "LGPL-3.0",
-  "name": "@xylabs/buffer",
+  "name": "@xylabs/delay",
   "author": {
     "email": "support@xylabs.com",
     "name": "XY Labs Development Team",
@@ -11,7 +11,7 @@
     "url": "https://github.com/xylabs/sdk-js/issues"
   },
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
-  "browser": "dist/esm/browserIndex.js",
+  "browser": "dist/esm/index.js",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "docs": "dist/docs.json",
@@ -19,12 +19,12 @@
   "exports": {
     ".": {
       "node": {
-        "import": "./dist/esm/nodeIndex.js",
-        "require": "./dist/cjs/nodeIndex.js"
+        "import": "./dist/esm/index.js",
+        "require": "./dist/cjs/index.js"
       },
       "browser": {
-        "import": "./dist/esm/browserIndex.js",
-        "require": "./dist/cjs/browserIndex.js"
+        "import": "./dist/esm/index.js",
+        "require": "./dist/cjs/index.js"
       },
       "default": "./dist/esm/index.js"
     },
@@ -41,12 +41,11 @@
     "esm"
   ],
   "dependencies": {
-    "buffer": "^6.0.3",
     "tslib": "^2.4.0"
   },
   "devDependencies": {
     "@types/node": "^18.6.3",
-    "@xylabs/tsconfig-dom": "^2.5.13"
+    "@xylabs/tsconfig": "^2.5.13"
   },
   "publishConfig": {
     "access": "public"

@@ -41,11 +41,11 @@
     "esm"
   ],
   "dependencies": {
-    "buffer": "^6.0.3"
+    "tslib": "^2.4.0"
   },
   "devDependencies": {
     "@types/node": "^18.6.3",
-    "@xylabs/tsconfig-dom": "^2.5.13"
+    "@xylabs/tsconfig": "^2.5.13"
   },
   "publishConfig": {
     "access": "public"

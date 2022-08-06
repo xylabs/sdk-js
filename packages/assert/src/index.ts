@@ -18,3 +18,6 @@ const assertEx = <T>(expr?: T | null, message?: string): T => {
 }
 
 export { assertEx }
+
+// eslint-disable-next-line import/no-default-export
+export default assertEx

@@ -30,7 +30,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:7.18.10, @babel/core@npm:^7.11.6, @babel/core@npm:^7.12.3, @babel/core@npm:^7.18.10":
+"@babel/core@npm:^7.11.6, @babel/core@npm:^7.12.3, @babel/core@npm:^7.18.10":
   version: 7.18.10
   resolution: "@babel/core@npm:7.18.10"
   dependencies:
@@ -1544,8 +1544,8 @@ __metadata:
   resolution: "@xylabs/assert@workspace:packages/assert"
   dependencies:
     "@types/node": ^18.6.3
-    "@xylabs/tsconfig-dom": ^2.5.13
-    buffer: ^6.0.3
+    "@xylabs/tsconfig": ^2.5.13
+    tslib: ^2.4.0
   languageName: unknown
   linkType: soft
 
@@ -1556,6 +1556,17 @@ __metadata:
     "@types/node": ^18.6.3
     "@xylabs/tsconfig-dom": ^2.5.13
     buffer: ^6.0.3
+    tslib: ^2.4.0
+  languageName: unknown
+  linkType: soft
+
+"@xylabs/delay@workspace:^, @xylabs/delay@workspace:packages/delay":
+  version: 0.0.0-use.local
+  resolution: "@xylabs/delay@workspace:packages/delay"
+  dependencies:
+    "@types/node": ^18.6.3
+    "@xylabs/tsconfig": ^2.5.13
+    tslib: ^2.4.0
   languageName: unknown
   linkType: soft
 
@@ -1617,20 +1628,31 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@xylabs/forget@workspace:^, @xylabs/forget@workspace:packages/forget":
+  version: 0.0.0-use.local
+  resolution: "@xylabs/forget@workspace:packages/forget"
+  dependencies:
+    "@types/node": ^18.6.3
+    "@xylabs/delay": "workspace:^"
+    "@xylabs/tsconfig": ^2.5.13
+    tslib: ^2.4.0
+  languageName: unknown
+  linkType: soft
+
 "@xylabs/sdk-js@^2.6.3, @xylabs/sdk-js@workspace:.":
   version: 0.0.0-use.local
   resolution: "@xylabs/sdk-js@workspace:."
   dependencies:
-    "@babel/core": 7.18.10
     "@types/bn.js": ^5.1.0
     "@types/jest": ^28.1.6
     "@types/mocha": ^9.1.1
     "@xylabs/assert": "workspace:^"
+    "@xylabs/delay": "workspace:^"
     "@xylabs/eslint-config": 2.5.13
+    "@xylabs/forget": "workspace:^"
     "@xylabs/ts-scripts-yarn3": ^2.5.13
     "@xylabs/tsconfig": ^2.5.13
     axios: ^0.27.2
-    babel-jest: ^28.1.3
     bn.js: ^5.2.1
     jest: ^28.1.3
     rollbar: ^2.25.1
@@ -1725,12 +1747,12 @@ __metadata:
   linkType: hard
 
 "@xylabs/tsconfig-dom@npm:^2.5.13":
-  version: 2.5.13
-  resolution: "@xylabs/tsconfig-dom@npm:2.5.13"
+  version: 2.5.65
+  resolution: "@xylabs/tsconfig-dom@npm:2.5.65"
   dependencies:
-    "@xylabs/tsconfig": ^2.5.13
+    "@xylabs/tsconfig": ^2.5.65
     typescript: ^4.7.4
-  checksum: d8445ab31b27bb623d5aa8f14bf38d87cf4199b5ca8815c16e98e70a7dcb0c6dc683fbb3ece2a6e3477027034c6ecf2c140aa73ba251bb83130bb6b5a7b4d4c7
+  checksum: 24b053d334afd9202cd7e6a629b6a6f41d5c890f59a2f200eaeaa594eea6b86e4d30d4129c12a6c580cd18f0643c5021faccf358305d030da4e37133617b64c8
   languageName: node
   linkType: hard
 
@@ -1740,6 +1762,15 @@ __metadata:
   dependencies:
     typescript: ^4.7.4
   checksum: 96cdd500aa990089876b13f28cf5ea969949f61524c1020591e9d0a063d9852ea393ba66bc660519e044ab6a17ead2e09ee56c0e4da6112a12d5352a263c8838
+  languageName: node
+  linkType: hard
+
+"@xylabs/tsconfig@npm:^2.5.65":
+  version: 2.5.65
+  resolution: "@xylabs/tsconfig@npm:2.5.65"
+  dependencies:
+    typescript: ^4.7.4
+  checksum: 11e9a7c652ba6d58458e0ed5fa17a961e905c6bb07066ff99843020ac785f55ce3005d196901190108bb3ff6c6f1e8db33df7b7288fcdc24ba9217fdd53dba79
   languageName: node
   linkType: hard
 

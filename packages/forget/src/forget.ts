@@ -1,4 +1,4 @@
-import { delay } from './delay'
+import { delay } from '@xylabs/delay'
 
 export interface ForgetTimeoutConfig {
   delay: number

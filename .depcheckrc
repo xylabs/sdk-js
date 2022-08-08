@@ -2,10 +2,10 @@ ignores: [
   "@babel/core",
   "@types/jest",
   "@types/mocha",
-  "@xylabs/ts-scripts",
-  "@xylabs/tsconfig-dom",
-  "babel-jest",
+  "@xylabs/ts-scripts-yarn3",
+  "@xylabs/tsconfig",
+  "jest",
   "ts-node",
   "ts-jest",
-  "typedoc"
+  "typescript"
 ]

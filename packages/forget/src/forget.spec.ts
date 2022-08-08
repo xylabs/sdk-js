@@ -1,17 +1,17 @@
-import { delay } from './delay'
-import { forget, ForgetPromise } from './forget'
+import { delay } from '@xylabs/delay'
 
+import { forget, ForgetPromise } from './forget'
 
 describe('forget', () => {
   test('checking happy path', async () => {
     let cancelled = false
-    forget(delay(100), {delay: 200, cancel: () => cancelled = true })
+    forget(delay(100), { cancel: () => (cancelled = true), delay: 200 })
     await delay(300)
     expect(cancelled).toBeFalsy()
   })
   test('checking unhappy path', async () => {
     let cancelled = false
-    forget(delay(200), {delay: 100, cancel: () => cancelled = true })
+    forget(delay(200), { cancel: () => (cancelled = true), delay: 100 })
     await delay(300)
     expect(cancelled).toBeTruthy()
   })

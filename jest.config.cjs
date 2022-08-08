@@ -1,5 +1,4 @@
-const generateJestConfig = ({ esModules }) => {
-  const esModuleslist = Array.isArray(esModules) ? esModules.join('|') : esModules
+const generateJestConfig = () => {
   return {
     globals: {
       'ts-jest': {
@@ -11,12 +10,8 @@ const generateJestConfig = ({ esModules }) => {
     },
     preset: 'ts-jest/presets/default-esm',
     testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$',
-    transform: {
-      [`(${esModuleslist}).+\\.js$`]: 'babel-jest',
-      '^.+\\.tsx?$': 'ts-jest',
-    },
-    transformIgnorePatterns: [`./node_modules/(?!${esModuleslist})`],
   }
 }
 
-module.exports = generateJestConfig({ esModules: ['is-ip', 'ip-regex'] })
+// eslint-disable-next-line no-undef
+module.exports = generateJestConfig()

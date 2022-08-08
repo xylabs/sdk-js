@@ -1,3 +1,4 @@
 ignores: [
-  "buffer"
+  "buffer",
+  "@xylabs/tsconfig-dom"
 ]

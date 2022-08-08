@@ -45,8 +45,8 @@
     "tslib": "^2.4.0"
   },
   "devDependencies": {
-    "@types/node": "^18.6.3",
-    "@xylabs/tsconfig-dom": "^2.5.13"
+    "@types/node": "^18.6.5",
+    "@xylabs/tsconfig-dom": "^2.5.75"
   },
   "publishConfig": {
     "access": "public"

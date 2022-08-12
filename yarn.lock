@@ -2474,6 +2474,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@xylabs/decimal-precision@workspace:packages/decimal-precision":
+  version: 0.0.0-use.local
+  resolution: "@xylabs/decimal-precision@workspace:packages/decimal-precision"
+  dependencies:
+    "@types/node": ^18.6.5
+    "@xylabs/tsconfig": ^2.5.75
+    tslib: ^2.4.0
+  languageName: unknown
+  linkType: soft
+
 "@xylabs/delay@workspace:^, @xylabs/delay@workspace:packages/delay":
   version: 0.0.0-use.local
   resolution: "@xylabs/delay@workspace:packages/delay"

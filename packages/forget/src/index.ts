@@ -1,4 +1,4 @@
-import { forget, ForgetPromise} from './forget'
+import { forget, ForgetPromise } from './forget'
 
 export { forget, ForgetPromise }
 

@@ -40,12 +40,8 @@
     "typescript",
     "esm"
   ],
-  "dependencies": {
-    "tslib": "^2.4.0"
-  },
   "devDependencies": {
-    "@types/node": "^18.6.5",
-    "@xylabs/tsconfig": "^2.5.75"
+    "@xylabs/tsconfig": "^2.5.99"
   },
   "publishConfig": {
     "access": "public"

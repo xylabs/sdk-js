@@ -1,3 +1,3 @@
-import BigNumber from 'bn.js'
+import BN from 'bn.js'
 
-export { BigNumber }
+export { BN as BigNumber, BN }

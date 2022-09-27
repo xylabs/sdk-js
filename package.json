@@ -72,6 +72,6 @@
     "uuid": "^8"
   },
   "sideEffects": false,
-  "version": "2.6.7",
+  "version": "2.6.8",
   "packageManager": "yarn@3.2.1"
 }

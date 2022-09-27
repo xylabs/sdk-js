@@ -2634,6 +2634,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@xylabs/exists@workspace:^, @xylabs/exists@workspace:packages/exists":
+  version: 0.0.0-use.local
+  resolution: "@xylabs/exists@workspace:packages/exists"
+  languageName: unknown
+  linkType: soft
+
 "@xylabs/forget@workspace:^, @xylabs/forget@workspace:packages/forget":
   version: 0.0.0-use.local
   resolution: "@xylabs/forget@workspace:packages/forget"
@@ -2654,6 +2660,7 @@ __metadata:
     "@xylabs/bignumber": "workspace:^"
     "@xylabs/delay": "workspace:^"
     "@xylabs/eslint-config": 2.7.22
+    "@xylabs/exists": "workspace:^"
     "@xylabs/forget": "workspace:^"
     "@xylabs/ts-scripts-yarn3": ^2.7.22
     "@xylabs/tsconfig": ^2.7.22

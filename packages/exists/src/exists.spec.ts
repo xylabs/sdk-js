@@ -1,4 +1,4 @@
-import { exists } from './exists'
+import { exists } from './index'
 
 const filterableValues = [undefined, null]
 const nonfilterableValue = {}

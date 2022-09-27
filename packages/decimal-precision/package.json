@@ -40,9 +40,6 @@
     "typescript",
     "esm"
   ],
-  "devDependencies": {
-    "@xylabs/tsconfig": "^2.5.119"
-  },
   "publishConfig": {
     "access": "public"
   },

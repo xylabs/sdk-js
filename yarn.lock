@@ -2759,11 +2759,11 @@ __metadata:
   linkType: hard
 
 "@xylabs/tsconfig@npm:^2.7.22":
-  version: 2.7.22
-  resolution: "@xylabs/tsconfig@npm:2.7.22"
+  version: 2.7.23
+  resolution: "@xylabs/tsconfig@npm:2.7.23"
   dependencies:
-    typescript: ^4.8.2
-  checksum: 3f813bd1279f31f3d09b44c9dfdf7a504b1f03ee9adb4a55c170275ad828d8cc3dbbcea5a8de1327447769f8b7a88823b2541ed66910d1199a165725ce35c401
+    typescript: ^4.8.4
+  checksum: f9c46f7819d2256f1598b854b5a194e0ec2097a86d8885d9a47b46239c5c14fabbc1f190d13d505d77e28c289412ba870158cdd19df383863229e06bfe6cc9a4
   languageName: node
   linkType: hard
 
@@ -12753,6 +12753,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typescript@npm:^4.8.4":
+  version: 4.8.4
+  resolution: "typescript@npm:4.8.4"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 3e4f061658e0c8f36c820802fa809e0fd812b85687a9a2f5430bc3d0368e37d1c9605c3ce9b39df9a05af2ece67b1d844f9f6ea8ff42819f13bcb80f85629af0
+  languageName: node
+  linkType: hard
+
 "typescript@patch:typescript@^4.8.2#~builtin<compat/typescript>, typescript@patch:typescript@^4.8.3#~builtin<compat/typescript>":
   version: 4.8.3
   resolution: "typescript@patch:typescript@npm%3A4.8.3#~builtin<compat/typescript>::version=4.8.3&hash=7ad353"
@@ -12760,6 +12770,16 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 0404a09c625df01934ef774b45ce1ca57ccae41cd625fcdbb82056715320d9329e70d9d75c2c732ec6ef947444ca978c189a332b71fa21f5c1437d5a83e24906
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@^4.8.4#~builtin<compat/typescript>":
+  version: 4.8.4
+  resolution: "typescript@patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=7ad353"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 563a0ef47abae6df27a9a3ab38f75fc681f633ccf1a3502b1108e252e187787893de689220f4544aaf95a371a4eb3141e4a337deb9895de5ac3c1ca76430e5f0
   languageName: node
   linkType: hard
 

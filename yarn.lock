@@ -2218,10 +2218,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mocha@npm:^9.1.1":
-  version: 9.1.1
-  resolution: "@types/mocha@npm:9.1.1"
-  checksum: 516077c0acd9806dc78317f88aaac0df5aaf0bdc2f63dfdadeabdf0b0137953b6ca65472e6ff7c30bc93ce4e0ae76eae70e8d46764b9a8eae4877a928b6ef49a
+"@types/mocha@npm:^10.0.1":
+  version: 10.0.1
+  resolution: "@types/mocha@npm:10.0.1"
+  checksum: 224ea9fce7b1734ccdb9aa99a622d902a538ce1847bca7fd22c5fb38adcf3ed536f50f48f587085db988a4bb3c2eb68f4b98e1cd6a38bc5547bd3bbbedc54495
   languageName: node
   linkType: hard
 
@@ -2655,7 +2655,7 @@ __metadata:
   resolution: "@xylabs/sdk-js@workspace:."
   dependencies:
     "@types/jest": ^29.0.3
-    "@types/mocha": ^9.1.1
+    "@types/mocha": ^10.0.1
     "@xylabs/assert": "workspace:^"
     "@xylabs/bignumber": "workspace:^"
     "@xylabs/delay": "workspace:^"

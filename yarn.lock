@@ -11453,8 +11453,8 @@ __metadata:
   linkType: hard
 
 "rollbar@npm:^2.25.2":
-  version: 2.25.2
-  resolution: "rollbar@npm:2.25.2"
+  version: 2.26.0
+  resolution: "rollbar@npm:2.26.0"
   dependencies:
     async: ~3.2.3
     console-polyfill: 0.3.0
@@ -11467,7 +11467,7 @@ __metadata:
   dependenciesMeta:
     decache:
       optional: true
-  checksum: 34d1e097c97a07405f99da275134465a4e791003b2d005968c62bbb16498e4ab83da0fa54272f39afef3f38015ca2c3c4a4e003006d5b4e7b4c2a51abc4bca8f
+  checksum: 27f5ba99c6eedf3fb49f3b7bfab7fdc6d8418c7828947c2f2ba24b5163c835a01b6811677cded6a9ef974db6d44c1215f3fc2dff95f0c45e1c7e70ca26c9db39
   languageName: node
   linkType: hard
 

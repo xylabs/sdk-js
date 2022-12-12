@@ -49,7 +49,7 @@
     "@xylabs/delay": "workspace:^",
     "@xylabs/exists": "workspace:^",
     "@xylabs/forget": "workspace:^",
-    "axios": "^0.27.2",
+    "axios": "^1.2.1",
     "rollbar": "^2.25.2"
   },
   "devDependencies": {

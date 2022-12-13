@@ -42,11 +42,11 @@
   ],
   "dependencies": {
     "buffer": "^6.0.3",
-    "tslib": "^2.4.0"
+    "tslib": "^2.4.1"
   },
   "devDependencies": {
-    "@types/node": "^18.7.23",
-    "@xylabs/tsconfig-dom": "^2.7.22"
+    "@types/node": "^18.11.13",
+    "@xylabs/tsconfig-dom": "^2.7.27"
   },
   "publishConfig": {
     "access": "public"

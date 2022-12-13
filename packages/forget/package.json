@@ -42,10 +42,10 @@
   ],
   "dependencies": {
     "@xylabs/delay": "workspace:^",
-    "tslib": "^2.4.0"
+    "tslib": "^2.4.1"
   },
   "devDependencies": {
-    "@xylabs/tsconfig": "^2.7.22"
+    "@xylabs/tsconfig": "^2.7.27"
   },
   "publishConfig": {
     "access": "public"

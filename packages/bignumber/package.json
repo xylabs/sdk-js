@@ -18,7 +18,7 @@
   "types": "dist/esm/index.d.ts",
   "dependencies": {
     "bn.js": "^5.2.1",
-    "tslib": "^2.4.0"
+    "tslib": "^2.4.1"
   },
   "exports": {
     ".": {

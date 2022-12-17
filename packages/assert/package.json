@@ -47,9 +47,6 @@
     "type": "git",
     "url": "https://github.com/xylabs/sdk-js.git"
   },
-  "resolutions": {
-    "uuid": "^8"
-  },
   "sideEffects": false,
   "version": "2.6.10"
 }

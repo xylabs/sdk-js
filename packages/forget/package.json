@@ -45,7 +45,7 @@
     "tslib": "^2.4.1"
   },
   "devDependencies": {
-    "@xylabs/tsconfig": "^2.7.27"
+    "@xylabs/tsconfig": "^2.9.0"
   },
   "publishConfig": {
     "access": "public"
@@ -53,9 +53,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/xylabs/sdk-js.git"
-  },
-  "resolutions": {
-    "uuid": "^8"
   },
   "sideEffects": false,
   "version": "2.6.10"

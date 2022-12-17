@@ -4,6 +4,7 @@ ignores: [
   "@types/mocha",
   "@xylabs/ts-scripts-yarn3",
   "@xylabs/tsconfig",
+  "depcheck",
   "jest",
   "ts-node",
   "ts-jest",

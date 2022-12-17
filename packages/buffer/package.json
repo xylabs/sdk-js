@@ -46,6 +46,7 @@
   },
   "devDependencies": {
     "@types/node": "^18.11.16",
+    "@xylabs/ts-scripts-yarn3": "^2.9.0",
     "@xylabs/tsconfig-dom": "^2.9.0"
   },
   "publishConfig": {

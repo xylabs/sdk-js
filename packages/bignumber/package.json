@@ -45,7 +45,8 @@
     "esm"
   ],
   "devDependencies": {
-    "@types/bn.js": "^5.1.1"
+    "@types/bn.js": "^5.1.1",
+    "@xylabs/ts-scripts-yarn3": "^2.9.0"
   },
   "publishConfig": {
     "access": "public"

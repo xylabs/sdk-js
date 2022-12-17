@@ -1,0 +1,9 @@
+releases:
+  "@xylabs/assert": patch
+  "@xylabs/bignumber": patch
+  "@xylabs/buffer": patch
+  "@xylabs/decimal-precision": patch
+  "@xylabs/delay": patch
+  "@xylabs/exists": patch
+  "@xylabs/forget": patch
+  "@xylabs/sdk-js": patch

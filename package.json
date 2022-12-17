@@ -79,5 +79,5 @@
   },
   "sideEffects": false,
   "version": "2.6.10",
-  "packageManager": "yarn@3.2.1"
+  "packageManager": "yarn@3.3.0"
 }

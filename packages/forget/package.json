@@ -41,12 +41,11 @@
     "esm"
   ],
   "dependencies": {
-    "@xylabs/delay": "workspace:^",
-    "tslib": "^2.4.1"
+    "@xylabs/delay": "workspace:^"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^2.9.0",
-    "@xylabs/tsconfig": "^2.9.0"
+    "@xylabs/ts-scripts-yarn3": "^2.10.25",
+    "@xylabs/tsconfig": "^2.10.25"
   },
   "publishConfig": {
     "access": "public"
@@ -56,5 +55,5 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.6.11"
+  "version": "2.6.12"
 }

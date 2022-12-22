@@ -34,7 +34,7 @@
     "./package.json": "./package.json"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^2.9.0"
+    "@xylabs/ts-scripts-yarn3": "^2.10.25"
   },
   "homepage": "https://xylabs.com",
   "keywords": [
@@ -51,5 +51,5 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.6.11"
+  "version": "2.6.12"
 }

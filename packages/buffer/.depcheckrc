@@ -1,4 +1,5 @@
 ignores: [
   "buffer",
-  "@xylabs/tsconfig-dom"
+  "@xylabs/tsconfig-dom",
+  "@xylabs/ts-scripts-yarn3"
 ]

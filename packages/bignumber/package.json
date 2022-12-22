@@ -17,8 +17,7 @@
   "docs": "dist/docs.json",
   "types": "dist/esm/index.d.ts",
   "dependencies": {
-    "bn.js": "^5.2.1",
-    "tslib": "^2.4.1"
+    "bn.js": "^5.2.1"
   },
   "exports": {
     ".": {
@@ -45,7 +44,8 @@
     "esm"
   ],
   "devDependencies": {
-    "@types/bn.js": "^5.1.1"
+    "@types/bn.js": "^5.1.1",
+    "@xylabs/ts-scripts-yarn3": "^2.10.25"
   },
   "publishConfig": {
     "access": "public"
@@ -54,9 +54,6 @@
     "type": "git",
     "url": "https://github.com/xylabs/sdk-js.git"
   },
-  "resolutions": {
-    "uuid": "^8"
-  },
   "sideEffects": false,
-  "version": "2.6.9"
+  "version": "2.6.12"
 }

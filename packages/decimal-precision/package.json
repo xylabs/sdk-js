@@ -40,6 +40,9 @@
     "typescript",
     "esm"
   ],
+  "devDependencies": {
+    "@xylabs/ts-scripts-yarn3": "^2.10.25"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -47,9 +50,6 @@
     "type": "git",
     "url": "https://github.com/xylabs/sdk-js.git"
   },
-  "resolutions": {
-    "uuid": "^8"
-  },
   "sideEffects": false,
-  "version": "2.6.9"
+  "version": "2.6.12"
 }

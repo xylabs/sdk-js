@@ -2453,6 +2453,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@xylabs/api@workspace:^, @xylabs/api@workspace:packages/api":
+  version: 0.0.0-use.local
+  resolution: "@xylabs/api@workspace:packages/api"
+  dependencies:
+    "@xylabs/eslint-config": 2.11.16
+    "@xylabs/ts-scripts-yarn3": ^2.11.16
+    axios: ^1
+    eslint: ^8.30.0
+  languageName: unknown
+  linkType: soft
+
 "@xylabs/assert@workspace:^, @xylabs/assert@workspace:packages/assert":
   version: 0.0.0-use.local
   resolution: "@xylabs/assert@workspace:packages/assert"
@@ -2575,6 +2586,7 @@ __metadata:
   dependencies:
     "@types/jest": ^29.2.4
     "@types/mocha": ^10.0.1
+    "@xylabs/api": "workspace:^"
     "@xylabs/assert": "workspace:^"
     "@xylabs/bignumber": "workspace:^"
     "@xylabs/delay": "workspace:^"
@@ -2585,7 +2597,6 @@ __metadata:
     "@xylabs/log": "workspace:^"
     "@xylabs/ts-scripts-yarn3": ^2.11.16
     "@xylabs/tsconfig": ^2.11.16
-    axios: ^1
     depcheck: ^1.4.3
     eslint: ^8.30.0
     jest: ^29.3.1

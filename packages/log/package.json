@@ -1,6 +1,6 @@
 {
   "license": "LGPL-3.0",
-  "name": "@xylabs/sdk-js",
+  "name": "@xylabs/log",
   "author": {
     "email": "support@xylabs.com",
     "name": "XY Labs Development Team",
@@ -44,26 +44,12 @@
     "esm"
   ],
   "dependencies": {
-    "@xylabs/assert": "workspace:^",
-    "@xylabs/bignumber": "workspace:^",
-    "@xylabs/delay": "workspace:^",
-    "@xylabs/eth-address": "workspace:^",
-    "@xylabs/exists": "workspace:^",
-    "@xylabs/forget": "workspace:^",
-    "@xylabs/log": "workspace:^",
-    "axios": "^1"
+    "rollbar": "^2.26.0"
   },
   "devDependencies": {
-    "@types/jest": "^29.2.4",
-    "@types/mocha": "^10.0.1",
     "@xylabs/eslint-config": "2.11.16",
     "@xylabs/ts-scripts-yarn3": "^2.11.16",
-    "@xylabs/tsconfig": "^2.11.16",
-    "depcheck": "^1.4.3",
-    "eslint": "^8.30.0",
-    "jest": "^29.3.1",
-    "ts-jest": "^29.0.3",
-    "typescript": "^4.9.4"
+    "eslint": "^8.30.0"
   },
   "publishConfig": {
     "access": "public"
@@ -71,9 +57,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/xylabs/sdk-js.git"
-  },
-  "resolutions": {
-    "uuid": "^8"
   },
   "sideEffects": false,
   "version": "2.6.13",

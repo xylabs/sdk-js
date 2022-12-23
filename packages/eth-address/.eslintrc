@@ -1,0 +1,17 @@
+{
+  "root": true,
+  "ignorePatterns": ["**/dist", "**/node_modules"],
+  "extends": [
+    "@xylabs"
+  ],
+  "rules": {
+    "import/no-nodejs-modules": ["warn"],
+    "import/no-internal-modules": [
+      "warn", {
+        "allow": [
+
+        ]
+      }
+    ]
+  }
+}

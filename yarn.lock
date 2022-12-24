@@ -2580,6 +2580,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@xylabs/promise@workspace:packages/promise":
+  version: 0.0.0-use.local
+  resolution: "@xylabs/promise@workspace:packages/promise"
+  dependencies:
+    "@xylabs/ts-scripts-yarn3": ^2.11.16
+  languageName: unknown
+  linkType: soft
+
 "@xylabs/sdk-js@workspace:.":
   version: 0.0.0-use.local
   resolution: "@xylabs/sdk-js@workspace:."

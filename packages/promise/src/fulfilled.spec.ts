@@ -14,8 +14,7 @@ describe('fulfilled', () => {
     expect(results).toBeTruthy()
     expect(results.length).toBe(1)
     const filtered = results.filter(fulfilled)
-    expect(filtered).toBeTruthy()
-    expect(filtered.length).toBe(1)
+    expect(filtered).toBeArrayOfSize(1)
     const value = filtered[0]
     expect(value.value).toBeTruthy()
   })
@@ -24,7 +23,6 @@ describe('fulfilled', () => {
     expect(results).toBeTruthy()
     expect(results.length).toBe(1)
     const filtered = results.filter(fulfilled)
-    expect(filtered).toBeTruthy()
-    expect(filtered.length).toBe(0)
+    expect(filtered).toBeArrayOfSize(0)
   })
 })

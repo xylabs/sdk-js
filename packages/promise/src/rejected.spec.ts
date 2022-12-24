@@ -14,8 +14,7 @@ describe('rejected', () => {
     expect(results).toBeTruthy()
     expect(results.length).toBe(1)
     const filtered = results.filter(rejected)
-    expect(filtered).toBeTruthy()
-    expect(filtered.length).toBe(1)
+    expect(filtered).toBeArrayOfSize(1)
     const value = filtered[0]
     expect(value.reason).toBeTruthy()
   })
@@ -24,7 +23,6 @@ describe('rejected', () => {
     expect(results).toBeTruthy()
     expect(results.length).toBe(1)
     const filtered = results.filter(rejected)
-    expect(filtered).toBeTruthy()
-    expect(filtered.length).toBe(0)
+    expect(filtered).toBeArrayOfSize(0)
   })
 })

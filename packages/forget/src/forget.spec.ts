@@ -3,6 +3,11 @@ import { delay } from '@xylabs/delay'
 import { forget, ForgetPromise } from './forget'
 
 describe('forget', () => {
+  beforeAll(() => {
+    jest.spyOn(console, 'log').mockImplementation(() => {
+      // Stop expected logs from being logged
+    })
+  })
   test('checking happy path', async () => {
     let cancelled = false
     forget(delay(100), { cancel: () => (cancelled = true), delay: 200 })

@@ -1,12 +1,14 @@
-const esModulesList = []
-
-const generateJestConfig = () => {
+const generateJestConfig = ({ esModules }) => {
+  const esModulesList = Array.isArray(esModules) ? esModules.join('|') : esModules
   return {
+    coveragePathIgnorePatterns: ['<rootDir>/(.*)/dist'],
     moduleNameMapper: {
       '^(\\.{1,2}/.*)\\.js$': '$1',
     },
     preset: 'ts-jest/presets/default-esm',
+    setupFilesAfterEnv: ['jest-sorted', 'jest-extended/all'],
     testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$',
+    testTimeout: 20000,
     transform: {
       [`(${esModulesList}).+\\.js$`]: 'babel-jest',
       '^.+\\.tsx?$': [
@@ -16,8 +18,9 @@ const generateJestConfig = () => {
         },
       ],
     },
+    transformIgnorePatterns: [`./node_modules/(?!${esModulesList})`],
   }
 }
 
 // eslint-disable-next-line no-undef
-module.exports = generateJestConfig()
+module.exports = generateJestConfig({ esModules: ['is-ip', 'ip-regex', 'lodash-es', 'uuid'] })

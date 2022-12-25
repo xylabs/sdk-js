@@ -5,8 +5,11 @@ ignores: [
   "@xylabs/ts-scripts-yarn3",
   "@xylabs/tsconfig",
   "depcheck",
+  "jest-environment-jsdom",
+  "jest-extended",
+  "jest-sorted",
   "jest",
-  "ts-node",
   "ts-jest",
+  "ts-node",
   "typescript"
 ]

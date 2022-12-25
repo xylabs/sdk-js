@@ -2,8 +2,15 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "outDir": "dist",
-    "sourceMap": true
+    "sourceMap": true,
+    "types": [
+      "@types/jest",
+      "jest-extended",
+      "jest-sorted",
+      "jest",
+      "node"
+    ]
   },
   "exclude": [".yarn/**/*", "dist", "node_modules"],
-  "extends": "@xylabs/tsconfig"
+  "extends": "@xylabs/tsconfig-dom"
 }

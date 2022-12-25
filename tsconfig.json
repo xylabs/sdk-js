@@ -8,7 +8,7 @@
       "jest-extended",
       "jest-sorted",
       "jest",
-      "node",
+      "node"
     ]
   },
   "exclude": [".yarn/**/*", "dist", "node_modules"],

@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
-    "esModuleInterop": true,
-    "outDir": "dist",
-    "sourceMap": true
+    "baseUrl": ".",
+    "composite": true,
+    "declarationDir": "./dist/types",
+    "outDir": "./dist",
+    "rootDir": "./src"
   },
-  "exclude": [".yarn/**/*", "dist", "node_modules"],
-  "extends": "@xylabs/tsconfig-dom"
+  "extends": "../../tsconfig.json",
+  "include": ["src/**/*"]
 }

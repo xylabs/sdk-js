@@ -18,7 +18,7 @@
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "docs": "dist/docs.json",
-  "types": "dist/esm/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "exports": {
     ".": {
       "node": {
@@ -48,9 +48,9 @@
     "@xylabs/bignumber": "workspace:^"
   },
   "devDependencies": {
-    "@xylabs/eslint-config": "2.11.16",
-    "@xylabs/ts-scripts-yarn3": "^2.11.16",
-    "eslint": "^8.30.0"
+    "@xylabs/eslint-config": "2.12.23",
+    "@xylabs/ts-scripts-yarn3": "^2.12.23",
+    "eslint": "^8.32.0"
   },
   "publishConfig": {
     "access": "public"

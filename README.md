@@ -3,9 +3,7 @@
 # @xylabs/sdk-js
 
 [![main-build][]][main-build-link]
-[![beta-build][]][beta-build-link]
 [![npm-badge][]][npm-link]
-[![bch-badge][]][bch-link]
 [![codacy-badge][]][codacy-link]
 [![codeclimate-badge][]][codeclimate-link]
 [![snyk-badge][]][snyk-link]
@@ -55,14 +53,10 @@ See the [LICENSE](LICENSE) file for license details
 [Made with 🔥 and ❄️ by XY Labs](https://xylabs.com)
 
 [logo]: https://cdn.xy.company/img/brand/XYPersistentCompany_Logo_Icon_Colored.svg
-[main-build]: https://github.com/xylabs/sdk-js/actions/workflows/build-main.yml/badge.svg
-[main-build-link]: https://github.com/xylabs/sdk-js/actions/workflows/build-main.yml
-[beta-build]: https://github.com/xylabs/sdk-js/actions/workflows/build-beta.yml/badge.svg
-[beta-build-link]: https://github.com/xylabs/sdk-js/actions/workflows/build-beta.yml
+[main-build]: https://github.com/xylabs/sdk-js/actions/workflows/build.yml/badge.svg
+[main-build-link]: https://github.com/xylabs/sdk-js/actions/workflows/build.yml
 [npm-badge]: https://img.shields.io/npm/v/@xylabs/sdk-js.svg
 [npm-link]: https://www.npmjs.com/package/@xylabs/sdk-js
-[bch-badge]: https://bettercodehub.com/edge/badge/xylabs/sdk-js?branch=main
-[bch-link]: https://bettercodehub.com/results/xylabs/sdk-js
 [codacy-badge]: https://app.codacy.com/project/badge/Grade/c8e15e14f37741c18cfb47ac7245c698
 [codacy-link]: https://www.codacy.com/gh/xylabs/sdk-js/dashboard?utm_source=github.com&utm_medium=referral&utm_content=xylabs/sdk-js&utm_campaign=Badge_Grade
 [codeclimate-badge]: https://api.codeclimate.com/v1/badges/c5eb068f806f0b047ea7/maintainability

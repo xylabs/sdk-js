@@ -15,7 +15,7 @@
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "docs": "dist/docs.json",
-  "types": "dist/esm/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "exports": {
     ".": {
       "node": {
@@ -41,7 +41,7 @@
     "esm"
   ],
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^2.11.16"
+    "@xylabs/ts-scripts-yarn3": "^2.12.23"
   },
   "publishConfig": {
     "access": "public"

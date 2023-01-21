@@ -45,7 +45,7 @@
   ],
   "devDependencies": {
     "@types/bn.js": "^5.1.1",
-    "@xylabs/ts-scripts-yarn3": "^2.12.24"
+    "@xylabs/ts-scripts-yarn3": "^2.12.25"
   },
   "publishConfig": {
     "access": "public"

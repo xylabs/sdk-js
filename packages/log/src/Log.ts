@@ -3,13 +3,13 @@ import Rollbar from 'rollbar'
 export interface LogConfig {
   commitHash?: string
   devMode?: boolean
-  rollbarToken?: string
   payload?: Record<string, unknown>
+  rollbarToken?: string
 }
 
 export class Log {
-  private rollbar?: Rollbar
   private devMode?: boolean
+  private rollbar?: Rollbar
 
   constructor(config: LogConfig) {
     this.devMode = config.devMode ?? false
@@ -40,18 +40,17 @@ export class Log {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  public error(...params: any[]) {
-    console.error(params)
-    if (!this.devMode) {
-      this.rollbar?.error(params)
+  public debug(...params: any[]) {
+    if (this.devMode) {
+      console.debug(params)
     }
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  public warn(...params: any[]) {
-    console.warn(params)
+  public error(...params: any[]) {
+    console.error(params)
     if (!this.devMode) {
-      this.rollbar?.warn(params)
+      this.rollbar?.error(params)
     }
   }
 
@@ -63,16 +62,17 @@ export class Log {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  public debug(...params: any[]) {
+  public log(...params: any[]) {
     if (this.devMode) {
-      console.debug(params)
+      console.log(params)
     }
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  public log(...params: any[]) {
-    if (this.devMode) {
-      console.log(params)
+  public warn(...params: any[]) {
+    console.warn(params)
+    if (!this.devMode) {
+      this.rollbar?.warn(params)
     }
   }
 }

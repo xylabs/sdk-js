@@ -3,12 +3,17 @@ import axios from 'axios'
 import { ApiConfig } from './ApiConfig'
 
 class ApiEndpoint<T> {
+  private _value?: T
   private config: ApiConfig
   private path: string
 
   constructor(config: ApiConfig, path: string) {
     this.config = config
     this.path = path
+  }
+
+  public get value() {
+    return this._value
   }
 
   private get headers() {
@@ -19,16 +24,6 @@ class ApiEndpoint<T> {
     return `${this.config.apiDomain}/${this.path}`
   }
 
-  private _value?: T
-
-  public get value() {
-    return this._value
-  }
-
-  public async get() {
-    return this._value ?? (await this.fetch())
-  }
-
   public async fetch() {
     const response = await axios.get<T>(this.url, { headers: this.headers })
     if (response.status === 200) {
@@ -37,6 +32,10 @@ class ApiEndpoint<T> {
       throw Error('Unexpected Status Code')
     }
     return this._value
+  }
+
+  public async get() {
+    return this._value ?? (await this.fetch())
   }
 
   public async insert(value: T) {

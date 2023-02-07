@@ -1,16 +1,16 @@
 import { delay } from '@xylabs/delay'
 
 export interface ForgetTimeoutConfig {
-  delay: number
   cancel: () => void
+  delay: number
 }
 
 export class ForgetPromise {
+  static activeForgets = 0
+
   static get active() {
     return this.activeForgets > 0
   }
-
-  static activeForgets = 0
 
   static async awaitInactive(interval = 100, timeout?: number) {
     let timeoutRemaining = timeout

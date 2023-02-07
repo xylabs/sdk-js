@@ -41,7 +41,7 @@
     "esm"
   ],
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^2.13.7"
+    "@xylabs/ts-scripts-yarn3": "^2.13.11"
   },
   "publishConfig": {
     "access": "public"

@@ -48,8 +48,8 @@
     "@xylabs/bignumber": "workspace:^"
   },
   "devDependencies": {
-    "@xylabs/eslint-config": "2.13.7",
-    "@xylabs/ts-scripts-yarn3": "^2.13.7",
+    "@xylabs/eslint-config": "2.13.11",
+    "@xylabs/ts-scripts-yarn3": "^2.13.11",
     "eslint": "^8.33.0"
   },
   "publishConfig": {

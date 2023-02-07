@@ -1,11 +1,15 @@
 /**
  * For use with Promise.allSettled to reduce to only successful result values
- * @example
- * const settled = await Promise.allSettled([Promise.resolve('resolved'), Promise.reject('rejected')])
+ * @example <caption>Casting the initialValue provided to reduce</caption>
+ * const resolved = Promise.resolve('resolved')
+ * const rejected = Promise.reject('rejected')
+ * const settled = await Promise.allSettled([resolved, rejected])
  * const results = settled.reduce(fulfilledValues, [] as string[])
  * // results === [ 'resolved' ]
- * @example
- * const settled = await Promise.allSettled([Promise.resolve('resolved'), Promise.reject('rejected')])
+ * @example <caption>Providing type parameter to reduce and initialValue type can be inferred</caption>
+ * const resolved = Promise.resolve('resolved')
+ * const rejected = Promise.reject('rejected')
+ * const settled = await Promise.allSettled([resolved, rejected])
  * const results = settled.reduce<string[]>(fulfilledValues, [])
  * // results === [ 'resolved' ]
  * @param previousValue

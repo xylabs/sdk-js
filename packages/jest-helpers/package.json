@@ -40,11 +40,12 @@
     "typescript",
     "esm"
   ],
-  "dependencies": {
+  "devDependencies": {
+    "@xylabs/ts-scripts-yarn3": "^2.13.11",
     "jest": "^29.4.2"
   },
-  "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^2.13.11"
+  "peerDependencies": {
+    "jest": "*"
   },
   "publishConfig": {
     "access": "public"

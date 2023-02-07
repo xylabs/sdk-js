@@ -2574,6 +2574,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@xylabs/jest-helpers@workspace:packages/jest-helpers":
+  version: 0.0.0-use.local
+  resolution: "@xylabs/jest-helpers@workspace:packages/jest-helpers"
+  dependencies:
+    "@xylabs/ts-scripts-yarn3": ^2.13.7
+    jest: ^29.4.1
+  languageName: unknown
+  linkType: soft
+
 "@xylabs/log@workspace:^, @xylabs/log@workspace:packages/log":
   version: 0.0.0-use.local
   resolution: "@xylabs/log@workspace:packages/log"

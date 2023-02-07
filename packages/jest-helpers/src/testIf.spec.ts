@@ -1,6 +1,6 @@
 import { testIf } from './testIf'
 
-describe('itIf', () => {
+describe('testIf', () => {
   testIf(true)('should run', () => {
     expect(true).toBeTrue()
   })

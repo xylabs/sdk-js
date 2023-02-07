@@ -7,27 +7,14 @@ import { padHex } from './padHex'
 export const isEthAddress = (obj: { type: string }) => obj?.type === EthAddress.type
 
 export class EthAddress {
+  static type = 'EthAddress'
+
   public type = EthAddress.type
 
   private address: BigNumber
 
-  static type = 'EthAddress'
-
   private constructor(address: BigNumber) {
     this.address = address
-  }
-
-  public equals(address?: EthAddress | string | null): boolean {
-    if (address) {
-      let inAddress: EthAddress
-      if (typeof address === 'string') {
-        inAddress = assertEx(EthAddress.fromString(address), 'Bad Address')
-      } else {
-        inAddress = address
-      }
-      return this.address.eq(inAddress.address)
-    }
-    return false
   }
 
   static fromString(value?: string, base = 16) {
@@ -43,11 +30,28 @@ export class EthAddress {
     }
   }
 
+  public equals(address?: EthAddress | string | null): boolean {
+    if (address) {
+      let inAddress: EthAddress
+      if (typeof address === 'string') {
+        inAddress = assertEx(EthAddress.fromString(address), 'Bad Address')
+      } else {
+        inAddress = address
+      }
+      return this.address.eq(inAddress.address)
+    }
+    return false
+  }
+
   public toBigNumber() {
     return this.address
   }
 
-  public toString() {
+  public toHex() {
+    return padHex(this.address.toString(16), 20)
+  }
+
+  public toJSON(): string {
     return `0x${this.toHex()}`
   }
 
@@ -55,15 +59,11 @@ export class EthAddress {
     return this.toString().toLowerCase()
   }
 
-  public toJSON(): string {
-    return `0x${this.toHex()}`
-  }
-
-  public toHex() {
-    return padHex(this.address.toString(16), 20)
-  }
-
   public toShortString(length = 2) {
     return `0x${ellipsize(this.toHex(), length)}`
+  }
+
+  public toString() {
+    return `0x${this.toHex()}`
   }
 }

@@ -2580,6 +2580,8 @@ __metadata:
   dependencies:
     "@xylabs/ts-scripts-yarn3": ^2.13.11
     jest: ^29.4.2
+  peerDependencies:
+    jest: "*"
   languageName: unknown
   linkType: soft
 

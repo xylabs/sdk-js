@@ -9,6 +9,7 @@ ignores: [
   "jest-extended",
   "jest-sorted",
   "jest",
+  "reflect-metadata",
   "ts-jest",
   "ts-node",
   "typescript"

@@ -1,17 +1,15 @@
 {
   "compilerOptions": {
     "declarationDir": "./dist/types",
-    "esModuleInterop": true,
-    "outDir": "dist",
-    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "types": [
-      "@types/jest",
       "jest-extended",
       "jest-sorted",
       "jest",
-      "node"
+      "node",
+      "reflect-metadata"
     ]
   },
-  "exclude": [".yarn/**/*", "dist", "node_modules"],
-  "extends": "@xylabs/tsconfig-dom"
+  "extends": "@xylabs/tsconfig"
 }

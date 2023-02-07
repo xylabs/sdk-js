@@ -1,16 +1,7 @@
 {
   "files.eol": "\n",
   "files.exclude": {
-    "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/.DS_Store": true,
     "**/node_modules": true,
-    "**/build": true,
-    "**/dist": true,
-    "**/.webpack": true,
-    "**/.serverless": true,
-    "**/.rollup.cache": true,
     "**/.tsconfig*": true
   },
   "editor.formatOnSave": true,
@@ -24,7 +15,6 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": true
   },
-  "eslint.alwaysShowStatus": true,
   "eslint.format.enable": true,
   "eslint.lintTask.enable": true,
   "eslint.useESLintClass": true,

@@ -47,9 +47,9 @@
     "rollbar": "^2.26.1"
   },
   "devDependencies": {
-    "@xylabs/eslint-config": "2.12.25",
-    "@xylabs/ts-scripts-yarn3": "^2.12.25",
-    "eslint": "^8.32.0"
+    "@xylabs/eslint-config": "2.13.7",
+    "@xylabs/ts-scripts-yarn3": "^2.13.7",
+    "eslint": "^8.33.0"
   },
   "publishConfig": {
     "access": "public"

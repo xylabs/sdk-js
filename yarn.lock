@@ -2596,6 +2596,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@xylabs/nameof@workspace:packages/nameof":
+  version: 0.0.0-use.local
+  resolution: "@xylabs/nameof@workspace:packages/nameof"
+  dependencies:
+    "@xylabs/ts-scripts-yarn3": ^2.13.11
+    jest: ^29.4.2
+  peerDependencies:
+    jest: "*"
+  languageName: unknown
+  linkType: soft
+
 "@xylabs/promise@workspace:packages/promise":
   version: 0.0.0-use.local
   resolution: "@xylabs/promise@workspace:packages/promise"

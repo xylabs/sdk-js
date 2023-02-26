@@ -44,8 +44,8 @@
     "@xylabs/delay": "workspace:^"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^2.13.11",
-    "@xylabs/tsconfig": "^2.13.11"
+    "@xylabs/ts-scripts-yarn3": "^2.15.0",
+    "@xylabs/tsconfig": "^2.15.0"
   },
   "publishConfig": {
     "access": "public"

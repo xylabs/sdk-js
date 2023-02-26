@@ -41,8 +41,8 @@
     "esm"
   ],
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^2.13.11",
-    "jest": "^29.4.2"
+    "@xylabs/ts-scripts-yarn3": "^2.15.0",
+    "jest": "^29.4.3"
   },
   "peerDependencies": {
     "jest": "*"

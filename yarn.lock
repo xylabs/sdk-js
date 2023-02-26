@@ -2648,6 +2648,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@xylabs/static-implements@workspace:packages/static-implements":
+  version: 0.0.0-use.local
+  resolution: "@xylabs/static-implements@workspace:packages/static-implements"
+  dependencies:
+    "@xylabs/ts-scripts-yarn3": ^2.15.0
+    jest: ^29.4.3
+  peerDependencies:
+    jest: "*"
+  languageName: unknown
+  linkType: soft
+
 "@xylabs/ts-scripts-yarn3@npm:^2.15.0":
   version: 2.15.0
   resolution: "@xylabs/ts-scripts-yarn3@npm:2.15.0"

@@ -1,4 +1,4 @@
-import { EthAddress } from './EthAddress'
+import { EthAddress } from '../EthAddress'
 
 describe('EthAddress', () => {
   test('checking happy path', () => {

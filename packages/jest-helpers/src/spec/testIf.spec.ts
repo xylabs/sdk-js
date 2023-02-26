@@ -1,4 +1,4 @@
-import { testIf } from './testIf'
+import { testIf } from '../testIf'
 
 describe('testIf', () => {
   testIf(true)('should run', () => {

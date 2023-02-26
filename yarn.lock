@@ -2653,6 +2653,7 @@ __metadata:
   resolution: "@xylabs/static-implements@workspace:packages/static-implements"
   dependencies:
     "@xylabs/ts-scripts-yarn3": ^2.15.0
+    "@xylabs/tsconfig-jest": ^2.15.0
     jest: ^29.4.3
   peerDependencies:
     jest: "*"
@@ -2757,6 +2758,17 @@ __metadata:
   dependencies:
     "@xylabs/tsconfig": ^2.15.0
   checksum: 06cf3168defdfccd4a33b8ea47e679b865e0e1bc4d47152d73e7e1e39a3d394101900c7f7e1ac2cf9b160f920b83c524d96aec8312d76784d058ebe6e868a184
+  languageName: node
+  linkType: hard
+
+"@xylabs/tsconfig-jest@npm:^2.15.0":
+  version: 2.15.0
+  resolution: "@xylabs/tsconfig-jest@npm:2.15.0"
+  dependencies:
+    "@xylabs/tsconfig": ^2.15.0
+  peerDependencies:
+    typescript: ^4
+  checksum: 47644492194a760221d559479968cdd2beb565bfbff66cdf9e1bfea9121871e6bb5259ae05c32b6bf2f43fb05efd32ce6e21f109349597188e641bab0675d37f
   languageName: node
   linkType: hard
 

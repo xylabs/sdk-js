@@ -1,4 +1,4 @@
-import { itIf } from './itIf'
+import { itIf } from '../itIf'
 
 describe('itIf', () => {
   itIf(true)('should run', () => {

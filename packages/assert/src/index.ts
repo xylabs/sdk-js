@@ -1,9 +1,5 @@
-/**
- * Error object thrown by assertEx
- */
-class AssertExError extends Error {}
-
-export type AssertExMessageFunc = <T>(value: T) => string
+export type AssertExMessageFunc<T> = (value?: T | null) => string
+export type AssertExErrorFunc<T, R extends Error> = (value?: T | null) => R
 
 /**
  *
@@ -14,9 +10,17 @@ export type AssertExMessageFunc = <T>(value: T) => string
  * @throws AssertExError
  * @returns Value of expression
  */
-const assertEx = <T>(expr?: T | null, message?: string | AssertExMessageFunc): T => {
+function assertEx<T>(expr?: T | null, message?: string): T
+function assertEx<T>(expr?: T | null, messageFunc?: AssertExMessageFunc<T>): T
+function assertEx<T, R extends Error>(expr?: T | null, errorFunc?: AssertExErrorFunc<T, R>): T
+function assertEx<T, R extends Error, P extends string | AssertExMessageFunc<T> | AssertExErrorFunc<T, R>>(expr?: T | null, messageOrFunc?: P): T {
   if (expr) return expr
-  throw new AssertExError(typeof message === 'string' ? message : message?.(expr))
+  if (typeof messageOrFunc === 'function') {
+    const errorOrMessage = messageOrFunc(expr)
+    throw typeof errorOrMessage === 'string' ? Error(errorOrMessage) : errorOrMessage
+  }
+  // a string was sent
+  throw Error(messageOrFunc)
 }
 
 // eslint-disable-next-line import/no-default-export

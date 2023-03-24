@@ -44,9 +44,9 @@
     "buffer": "^6.0.3"
   },
   "devDependencies": {
-    "@types/node": "^18.14.2",
-    "@xylabs/ts-scripts-yarn3": "^2.15.0",
-    "@xylabs/tsconfig-dom": "^2.15.0"
+    "@types/node": "^18.15.7",
+    "@xylabs/ts-scripts-yarn3": "^2.16.1",
+    "@xylabs/tsconfig-dom": "^2.16.1"
   },
   "publishConfig": {
     "access": "public"

@@ -34,7 +34,7 @@
     "./package.json": "./package.json"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^2.16.1"
+    "@xylabs/ts-scripts-yarn3": "^2.17.3"
   },
   "homepage": "https://xylabs.com",
   "keywords": [

@@ -1,0 +1,55 @@
+{
+  "license": "LGPL-3.0",
+  "name": "@xylabs/array",
+  "author": {
+    "email": "support@xylabs.com",
+    "name": "XY Labs Development Team",
+    "url": "https://xylabs.com"
+  },
+  "bugs": {
+    "email": "support@xylabs.com",
+    "url": "https://github.com/xylabs/sdk-js/issues"
+  },
+  "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
+  "browser": "dist/esm/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "docs": "dist/docs.json",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "node": {
+        "import": "./dist/esm/index.js",
+        "require": "./dist/cjs/index.js"
+      },
+      "browser": {
+        "import": "./dist/esm/index.js",
+        "require": "./dist/cjs/index.js"
+      },
+      "default": "./dist/esm/index.js"
+    },
+    "./dist/docs.json": {
+      "default": "./dist/docs.json"
+    },
+    "./package.json": "./package.json"
+  },
+  "devDependencies": {
+    "@xylabs/ts-scripts-yarn3": "^2.17.6"
+  },
+  "homepage": "https://xylabs.com",
+  "keywords": [
+    "xylabs",
+    "utility",
+    "typescript",
+    "esm"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xylabs/sdk-js.git"
+  },
+  "sideEffects": false,
+  "version": "2.7.6"
+}

@@ -33,6 +33,9 @@
     },
     "./package.json": "./package.json"
   },
+  "dependencies": {
+    "@xylabs/exists": "workspace:^"
+  },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^2.17.13"
   },

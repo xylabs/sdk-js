@@ -85,6 +85,6 @@
     "uuid": "^8"
   },
   "sideEffects": false,
-  "version": "2.8.0",
+  "version": "2.8.1",
   "packageManager": "yarn@3.5.1"
 }

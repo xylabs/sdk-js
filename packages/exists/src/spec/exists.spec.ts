@@ -25,4 +25,14 @@ describe('exists', () => {
       expect(actual.length).toBe(input.length)
     })
   })
+  it('does not filter zero', () => {
+    const input = [0, 1]
+    const actual = input.filter(exists)
+    expect(actual).toEqual(input)
+  })
+  it('does not filter false', () => {
+    const input = [true, false]
+    const actual = input.filter(exists)
+    expect(actual).toEqual(input)
+  })
 })

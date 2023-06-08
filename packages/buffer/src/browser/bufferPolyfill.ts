@@ -1,11 +1,18 @@
 import { BrowserBuffer } from './Buffer'
 
+type WithOptionalBuffer = { Buffer?: typeof BrowserBuffer }
+
+const isBrowser = () => {
+  return typeof window !== 'undefined' && typeof window?.document !== 'undefined'
+}
+
+const isWebworker = () => {
+  return typeof self === 'object' && self.constructor?.name === 'DedicatedWorkerGlobalScope'
+}
+
 export const bufferPolyfillBrowser = () => {
-  if (window !== undefined) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const global = window as any
-    if (global.Buffer === undefined) {
-      global.Buffer = BrowserBuffer
-    }
+  const global = isBrowser() ? (window as unknown as WithOptionalBuffer) : isWebworker() ? (self as unknown as WithOptionalBuffer) : undefined
+  if (global && global.Buffer === undefined) {
+    global.Buffer = BrowserBuffer
   }
 }

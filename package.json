@@ -82,6 +82,7 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "resolutions": {
+    "typescript": "^4",
     "uuid": "^8"
   },
   "sideEffects": false,

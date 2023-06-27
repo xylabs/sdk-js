@@ -1,2 +1,2 @@
-export * from './node'
-export { NodeUrl as URL } from './node'
+import { NodeUrl } from './node'
+export const URL = NodeUrl

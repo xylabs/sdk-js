@@ -1,1 +1,2 @@
-export { BrowserUrl as URL } from './browser'
+import { BrowserUrl } from './browser'
+export const URL = BrowserUrl

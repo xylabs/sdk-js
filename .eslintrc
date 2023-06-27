@@ -1,6 +1,15 @@
 {
   "root": true,
-  "ignorePatterns": ["**/dist", "**/node_modules"],
+  "ignorePatterns": [
+    "**/dist",
+    "**/node_modules",
+    "**/docs",
+    "coverage",
+    "docker",
+    "**/testData.json",
+    "swagger.json",
+    ".yarn"
+  ],
   "extends": [
     "@xylabs"
   ],

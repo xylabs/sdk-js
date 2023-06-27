@@ -1,2 +1,2 @@
-export * from './Buffer'
-export * from './bufferPolyfill'
+export * from './Url'
+export * from './urlPolyfill'

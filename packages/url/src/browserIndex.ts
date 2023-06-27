@@ -1,2 +1,2 @@
 export * from './browser'
-export { BrowserBuffer as Buffer, bufferPolyfillBrowser as bufferPolyfill } from './browser'
+export { BrowserUrl as Url, urlPolyfillBrowser as urlPolyfill } from './browser'

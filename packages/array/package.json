@@ -37,7 +37,7 @@
     "@xylabs/exists": "workspace:^"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^2.17.13"
+    "@xylabs/ts-scripts-yarn3": "^2.17.17"
   },
   "homepage": "https://xylabs.com",
   "keywords": [

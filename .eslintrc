@@ -8,7 +8,9 @@
     "docker",
     "**/testData.json",
     "swagger.json",
-    ".yarn"
+    ".yarn",
+    "dist",
+    "docs"
   ],
   "extends": [
     "@xylabs"

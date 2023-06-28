@@ -44,7 +44,6 @@
     "buffer": "^6.0.3"
   },
   "devDependencies": {
-    "@types/node": "^20.3.2",
     "@xylabs/ts-scripts-yarn3": "^2.17.17",
     "@xylabs/tsconfig-dom": "^2.17.17"
   },

@@ -11,5 +11,6 @@
       "reflect-metadata"
     ]
   },
+  "exclude": ["dist", "docs"],
   "extends": "@xylabs/tsconfig"
 }

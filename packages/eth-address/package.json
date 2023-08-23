@@ -44,11 +44,11 @@
     "esm"
   ],
   "dependencies": {
-    "@xylabs/assert": "workspace:^",
-    "@xylabs/bignumber": "workspace:^"
+    "@xylabs/assert": "workspace:~",
+    "@xylabs/bignumber": "workspace:~"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^2.17.17"
+    "@xylabs/ts-scripts-yarn3": "^2.19.1"
   },
   "publishConfig": {
     "access": "public"

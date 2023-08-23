@@ -4,5 +4,6 @@
     "declarationDir": "./dist/types",
     "skipLibCheck": true
   },
+  "exclude": ["dist", "docs"],
   "extends": "@xylabs/tsconfig"
 }

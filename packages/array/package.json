@@ -34,10 +34,10 @@
     "./package.json": "./package.json"
   },
   "dependencies": {
-    "@xylabs/exists": "workspace:^"
+    "@xylabs/exists": "workspace:~"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^2.17.17"
+    "@xylabs/ts-scripts-yarn3": "^2.19.1"
   },
   "homepage": "https://xylabs.com",
   "keywords": [

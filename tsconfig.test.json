@@ -1,5 +1,9 @@
 {
-  "exclude": ["dist/**/*"],
-  "extends": "./tsconfig.json",
-  "include": ["**/*.spec.ts"]
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
+  },
+  "exclude": ["dist", "docs"],
+  "include": ["spec"],
+  "extends": "@xylabs/tsconfig-jest"
 }

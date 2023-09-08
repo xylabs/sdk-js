@@ -55,6 +55,7 @@
     "@xylabs/delay": "workspace:~"
   },
   "devDependencies": {
+    "@types/jest": "^29.5.4",
     "@xylabs/ts-scripts-yarn3": "^2.19.5",
     "@xylabs/tsconfig": "^2.19.5",
     "publint": "^0.2.2",

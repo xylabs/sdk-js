@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "composite": true,
+    "incremental": false,
     "declarationDir": "./dist/types"
   },
   "exclude": ["dist", "docs"],

@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
-    "composite": true,
     "declarationDir": "./dist/types",
-    "skipLibCheck": true
+    "incremental": false
   },
   "exclude": ["dist", "docs"],
   "extends": "@xylabs/tsconfig"

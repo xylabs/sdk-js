@@ -14,27 +14,38 @@
     "packages/**/*"
   ],
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
-  "browser": "dist/esm/index.js",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
   "docs": "dist/docs.json",
-  "types": "dist/types/index.d.ts",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "node": {
-        "import": "./dist/esm/index.js",
-        "require": "./dist/cjs/index.js"
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
       },
-      "browser": {
-        "import": "./dist/esm/index.js",
-        "require": "./dist/cjs/index.js"
-      },
-      "default": "./dist/esm/index.js"
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      }
     },
     "./dist/docs.json": {
       "default": "./dist/docs.json"
     },
+    "./cjs": {
+      "default": "./dist/index.js"
+    },
+    "./docs": {
+      "default": "./dist/docs.json"
+    },
+    "./esm": {
+      "default": "./dist/index.mjs"
+    },
     "./package.json": "./package.json"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "scripts": {
+    "package-compile": "tsup && publint",
+    "package-recompile": "tsup && publint"
   },
   "homepage": "https://xylabs.com",
   "keywords": [
@@ -44,10 +55,14 @@
     "esm"
   ],
   "dependencies": {
-    "rollbar": "^2.26.2"
+    "rollbar": "^2.26.2",
+    "tslib": "^2.6.2"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^2.19.1"
+    "@xylabs/ts-scripts-yarn3": "^2.19.5",
+    "@xylabs/tsconfig": "^2.19.5",
+    "publint": "^0.2.2",
+    "tsup": "^7.2.0"
   },
   "publishConfig": {
     "access": "public"

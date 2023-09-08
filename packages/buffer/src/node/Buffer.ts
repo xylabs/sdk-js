@@ -1,2 +1,2 @@
-import { Buffer } from 'buffer'
+import { Buffer } from 'node:buffer'
 export { Buffer as NodeBuffer }

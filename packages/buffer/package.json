@@ -12,7 +12,6 @@
   },
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "docs": "dist/docs.json",
-  "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "require": {
@@ -36,13 +35,23 @@
       "default": "./dist/docs.json"
     },
     "./cjs": {
+      "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     },
     "./docs": {
       "default": "./dist/docs.json"
     },
     "./esm": {
+      "types": "./dist/index.d.mts",
       "default": "./dist/index.mjs"
+    },
+    "./node/cjs": {
+      "types": "./dist/nodeIndex.d.ts",
+      "default": "./dist/nodeIndex.js"
+    },
+    "./node/esm": {
+      "types": "./dist/nodeIndex.d.mts",
+      "default": "./dist/nodeIndex.mjs"
     },
     "./package.json": "./package.json"
   },
@@ -63,6 +72,7 @@
     "buffer": "^6.0.3"
   },
   "devDependencies": {
+    "@types/node": "^20.5.9",
     "@xylabs/ts-scripts-yarn3": "^2.19.5",
     "@xylabs/tsconfig": "^2.19.5",
     "@xylabs/tsconfig-dom": "^2.19.5",

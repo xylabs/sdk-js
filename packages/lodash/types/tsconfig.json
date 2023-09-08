@@ -3,5 +3,5 @@
     "incremental": false
   },
   "extends": "@xylabs/tsconfig",
-  "include": ["*.d.*ts"],
+  "include": ["*.d.*ts"]
 }

@@ -2,6 +2,6 @@
   "compilerOptions": {
     "incremental": false
   },
+  "extends": "@xylabs/tsconfig",
   "include": ["*.d.*ts"],
-  "extends": "@xylabs/tsconfig-dom"
 }

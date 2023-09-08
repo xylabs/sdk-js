@@ -1,0 +1,69 @@
+{
+  "license": "LGPL-3.0",
+  "name": "@xylabs/lodash",
+  "author": {
+    "email": "support@xylabs.com",
+    "name": "XY Labs Development Team",
+    "url": "https://xylabs.com"
+  },
+  "bugs": {
+    "email": "support@xylabs.com",
+    "url": "https://github.com/xylabs/sdk-js/issues"
+  },
+  "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
+  "docs": "dist/docs.json",
+  "exports": {
+    ".": {
+      "require": {
+        "types": "./dist/cjsIndex.d.ts",
+        "default": "./dist/cjsIndex.js"
+      },
+      "import": {
+        "types": "./dist/esmIndex.d.mts",
+        "default": "./dist/esmIndex.mjs"
+      }
+    },
+    "./dist/docs.json": {
+      "default": "./dist/docs.json"
+    },
+    "./docs": {
+      "default": "./dist/docs.json"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "dist/cjsIndex.js",
+  "module": "dist/esmIndex.mjs",
+  "scripts": {
+    "package-compile": "tsup && publint",
+    "package-recompile": "tsup && publint"
+  },
+  "homepage": "https://xylabs.com",
+  "keywords": [
+    "xylabs",
+    "utility",
+    "typescript",
+    "esm"
+  ],
+  "optionalDependencies": {
+    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.198",
+    "@types/lodash-es": "^4.17.9",
+    "@xylabs/ts-scripts-yarn3": "^2.19.5",
+    "@xylabs/tsconfig": "^2.19.5",
+    "publint": "^0.2.2",
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xylabs/sdk-js.git"
+  },
+  "sideEffects": false,
+  "version": "2.10.2"
+}

@@ -1,3 +1,3 @@
 // eslint-disable-next-line no-restricted-imports
-import type lodash from 'lodash'
+import lodash from 'lodash'
 export = lodash

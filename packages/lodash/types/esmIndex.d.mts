@@ -1,2 +1,2 @@
-import type * as lodash from 'lodash-es'
+import * as lodash from 'lodash-es'
 export = lodash

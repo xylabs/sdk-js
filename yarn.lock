@@ -3123,7 +3123,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/lodash@workspace:^, @xylabs/lodash@workspace:packages/lodash":
+"@xylabs/lodash@workspace:packages/lodash":
   version: 0.0.0-use.local
   resolution: "@xylabs/lodash@workspace:packages/lodash"
   dependencies:
@@ -3148,7 +3148,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/log@workspace:packages/log"
   dependencies:
-    "@xylabs/lodash": "workspace:^"
     "@xylabs/ts-scripts-yarn3": ^2.19.5
     "@xylabs/tsconfig": ^2.19.5
     publint: ^0.2.2

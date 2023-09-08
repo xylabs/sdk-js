@@ -15,11 +15,11 @@
   "exports": {
     ".": {
       "require": {
-        "types": "./dist/cjsIndex.d.ts",
+        "types": "./types/cjsIndex.d.ts",
         "default": "./dist/cjsIndex.js"
       },
       "import": {
-        "types": "./dist/esmIndex.d.mts",
+        "types": "./types/esmIndex.d.mts",
         "default": "./dist/esmIndex.mjs"
       }
     },
@@ -44,6 +44,10 @@
     "typescript",
     "esm"
   ],
+  "dependencies": {
+    "@types/lodash": "^4.14.198",
+    "@types/lodash-es": "^4.17.9"
+  },
   "optionalDependencies": {
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21"
@@ -65,5 +69,6 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
+  "types": "./types/esmIndex.d.mts",
   "version": "2.10.3"
 }

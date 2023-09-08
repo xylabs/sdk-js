@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "declarationDir": "./dist/types",
     "experimentalDecorators": true,
     "incremental": false
   },

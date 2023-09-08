@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
-    "declarationDir": "./dist/types",
     "incremental": false
   },
   "exclude": ["dist", "docs"],
-  "extends": "@xylabs/tsconfig-dom"
+  "extends": "@xylabs/tsconfig"
 }

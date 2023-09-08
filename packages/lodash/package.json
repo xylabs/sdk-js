@@ -15,12 +15,12 @@
   "exports": {
     ".": {
       "require": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
+        "types": "./dist/cjsIndex.d.ts",
+        "default": "./dist/cjsIndex.js"
       },
       "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
+        "types": "./dist/esmIndex.d.mts",
+        "default": "./dist/esmIndex.mjs"
       }
     },
     "./dist/docs.json": {
@@ -31,8 +31,8 @@
     },
     "./package.json": "./package.json"
   },
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "main": "dist/cjsIndex.js",
+  "module": "dist/esmIndex.mjs",
   "scripts": {
     "package-compile": "tsup && publint",
     "package-recompile": "tsup && publint"
@@ -45,10 +45,15 @@
     "esm"
   ],
   "dependencies": {
-    "@types/lodash-es": "^4.17.9",
+    "@types/lodash": "^4.14.198",
+    "@types/lodash-es": "^4.17.9"
+  },
+  "optionalDependencies": {
+    "lodash": "^4.17.21",
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.198",
     "@types/lodash-es": "^4.17.9",
     "@xylabs/ts-scripts-yarn3": "^2.19.5",
     "@xylabs/tsconfig": "^2.19.5",
@@ -64,6 +69,6 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "types": "./dist/index.d.mts",
+  "types": "./dist/esmIndex.d.mts",
   "version": "2.10.6"
 }

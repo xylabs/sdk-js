@@ -54,9 +54,6 @@
     "typescript",
     "esm"
   ],
-  "dependencies": {
-    "@xylabs/lodash": "workspace:^"
-  },
   "optionalDependencies": {
     "rollbar": "^2.26.2"
   },

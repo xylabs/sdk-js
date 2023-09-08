@@ -5,7 +5,10 @@ export default defineConfig({
   bundle: true,
   cjsInterop: true,
   clean: true,
-  entry: ['src/cjsIndex.ts', 'src/esmIndex.ts'],
+  dts: {
+    entry: ['src/index.ts'],
+  },
+  entry: ['src/index.ts'],
   format: ['cjs', 'esm'],
   sourcemap: true,
   splitting: false,

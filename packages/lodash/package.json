@@ -65,5 +65,5 @@
   },
   "sideEffects": false,
   "types": "./dist/index.d.mts",
-  "version": "2.10.5"
+  "version": "2.10.6"
 }

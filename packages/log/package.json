@@ -54,14 +54,14 @@
     "typescript",
     "esm"
   ],
-  "dependencies": {
-    "rollbar": "^2.26.2",
-    "tslib": "^2.6.2"
+  "optionalDependencies": {
+    "rollbar": "^2.26.2"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^2.19.5",
     "@xylabs/tsconfig": "^2.19.5",
     "publint": "^0.2.2",
+    "rollbar": "^2.26.2",
     "tsup": "^7.2.0"
   },
   "publishConfig": {

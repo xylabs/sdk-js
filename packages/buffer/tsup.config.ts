@@ -5,10 +5,12 @@ export default defineConfig({
   bundle: true,
   cjsInterop: true,
   clean: true,
-  dts: true,
-  entry: ['src'],
+  dts: {
+    entry: ['src/index.ts', 'src/nodeIndex.ts'],
+  },
+  entry: ['src/index.ts', 'src/nodeIndex.ts'],
   format: ['cjs', 'esm'],
   sourcemap: true,
   splitting: false,
-  tsconfig: 'tsconfig.json',
+  tsconfig: 'tsconfig.build.json',
 })

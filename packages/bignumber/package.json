@@ -14,8 +14,7 @@
   "docs": "dist/docs.json",
   "types": "dist/index.d.ts",
   "dependencies": {
-    "bn.js": "^5.2.1",
-    "tslib": "^2.6.2"
+    "bn.js": "^5.2.1"
   },
   "exports": {
     ".": {

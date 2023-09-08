@@ -4,6 +4,6 @@
     "experimentalDecorators": true
   },
   "exclude": ["dist", "docs"],
-  "include": ["spec"],
-  "extends": "@xylabs/tsconfig-jest"
+  "extends": "@xylabs/tsconfig-jest",
+  "include": ["spec"]
 }

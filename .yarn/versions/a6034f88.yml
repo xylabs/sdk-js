@@ -1,0 +1,17 @@
+releases:
+  "@xylabs/api": patch
+  "@xylabs/array": patch
+  "@xylabs/assert": patch
+  "@xylabs/bignumber": patch
+  "@xylabs/buffer": patch
+  "@xylabs/decimal-precision": patch
+  "@xylabs/delay": patch
+  "@xylabs/eth-address": patch
+  "@xylabs/exists": patch
+  "@xylabs/forget": patch
+  "@xylabs/jest-helpers": patch
+  "@xylabs/log": patch
+  "@xylabs/promise": patch
+  "@xylabs/sdk-js": patch
+  "@xylabs/static-implements": patch
+  "@xylabs/url": patch

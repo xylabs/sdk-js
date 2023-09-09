@@ -70,5 +70,5 @@
   },
   "sideEffects": false,
   "types": "./dist/esmIndex.d.mts",
-  "version": "2.10.9"
+  "version": "2.10.10"
 }

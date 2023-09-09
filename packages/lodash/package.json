@@ -49,7 +49,7 @@
     "@types/lodash-es": "^4.17.9"
   },
   "optionalDependencies": {
-    "@xylabs/lodash": "^2.10.7",
+    "lodash": "^4.17.21",
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {
@@ -70,5 +70,5 @@
   },
   "sideEffects": false,
   "types": "./dist/esmIndex.d.mts",
-  "version": "2.10.7"
+  "version": "2.10.8"
 }

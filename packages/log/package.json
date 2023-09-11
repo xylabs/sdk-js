@@ -58,8 +58,8 @@
     "rollbar": "^2.26.2"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^2.19.11",
-    "@xylabs/tsconfig": "^2.19.11",
+    "@xylabs/ts-scripts-yarn3": "^2.19.12",
+    "@xylabs/tsconfig": "^2.19.12",
     "publint": "^0.2.2",
     "rollbar": "^2.26.2",
     "tsup": "^7.2.0"
@@ -72,6 +72,6 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.10.16",
+  "version": "2.10.17",
   "packageManager": "yarn@3.3.1"
 }

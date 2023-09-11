@@ -2959,8 +2959,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/api@workspace:packages/api"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": ^2.19.11
-    "@xylabs/tsconfig": ^2.19.11
+    "@xylabs/ts-scripts-yarn3": ^2.19.12
+    "@xylabs/tsconfig": ^2.19.12
     axios: ^1.5.0
     publint: ^0.2.2
     tsup: ^7.2.0
@@ -2972,8 +2972,8 @@ __metadata:
   resolution: "@xylabs/array@workspace:packages/array"
   dependencies:
     "@xylabs/exists": "workspace:~"
-    "@xylabs/ts-scripts-yarn3": ^2.19.11
-    "@xylabs/tsconfig": ^2.19.11
+    "@xylabs/ts-scripts-yarn3": ^2.19.12
+    "@xylabs/tsconfig": ^2.19.12
     publint: ^0.2.2
     tsup: ^7.2.0
   languageName: unknown
@@ -2983,8 +2983,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/assert@workspace:packages/assert"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": ^2.19.11
-    "@xylabs/tsconfig": ^2.19.11
+    "@xylabs/ts-scripts-yarn3": ^2.19.12
+    "@xylabs/tsconfig": ^2.19.12
     publint: ^0.2.2
     tsup: ^7.2.0
   languageName: unknown
@@ -2995,8 +2995,8 @@ __metadata:
   resolution: "@xylabs/bignumber@workspace:packages/bignumber"
   dependencies:
     "@types/bn.js": ^5.1.1
-    "@xylabs/ts-scripts-yarn3": ^2.19.11
-    "@xylabs/tsconfig": ^2.19.11
+    "@xylabs/ts-scripts-yarn3": ^2.19.12
+    "@xylabs/tsconfig": ^2.19.12
     bn.js: ^5.2.1
     publint: ^0.2.2
     tsup: ^7.2.0
@@ -3008,9 +3008,9 @@ __metadata:
   resolution: "@xylabs/buffer@workspace:packages/buffer"
   dependencies:
     "@types/node": ^20.6.0
-    "@xylabs/ts-scripts-yarn3": ^2.19.11
-    "@xylabs/tsconfig": ^2.19.11
-    "@xylabs/tsconfig-dom": ^2.19.11
+    "@xylabs/ts-scripts-yarn3": ^2.19.12
+    "@xylabs/tsconfig": ^2.19.12
+    "@xylabs/tsconfig-dom": ^2.19.12
     buffer: ^6.0.3
     publint: ^0.2.2
     tsup: ^7.2.0
@@ -3022,8 +3022,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/decimal-precision@workspace:packages/decimal-precision"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": ^2.19.11
-    "@xylabs/tsconfig": ^2.19.11
+    "@xylabs/ts-scripts-yarn3": ^2.19.12
+    "@xylabs/tsconfig": ^2.19.12
     publint: ^0.2.2
     tsup: ^7.2.0
   languageName: unknown
@@ -3033,18 +3033,18 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/delay@workspace:packages/delay"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": ^2.19.11
-    "@xylabs/tsconfig": ~2.19.11
-    "@xylabs/tsconfig-dom": ^2.19.11
+    "@xylabs/ts-scripts-yarn3": ^2.19.12
+    "@xylabs/tsconfig": ~2.19.12
+    "@xylabs/tsconfig-dom": ^2.19.12
     publint: ^0.2.2
     tsup: ^7.2.0
     typescript: ^5.2.2
   languageName: unknown
   linkType: soft
 
-"@xylabs/eslint-config@npm:^2.19.11":
-  version: 2.19.11
-  resolution: "@xylabs/eslint-config@npm:2.19.11"
+"@xylabs/eslint-config@npm:^2.19.12":
+  version: 2.19.12
+  resolution: "@xylabs/eslint-config@npm:2.19.12"
   dependencies:
     "@babel/core": ^7.22.17
     "@babel/eslint-parser": ^7.22.15
@@ -3068,7 +3068,7 @@ __metadata:
     typescript: ^5.2.2
   peerDependencies:
     eslint: ^8.23.0
-  checksum: 2bf59832ff4bde2812e5d7919f9bb4a73ea85f47d0164d83a703b10a5e0baf04644edad6f26eed50c85672d50d9d36002add8bee53f5f81bcbc34a9c2a9519f3
+  checksum: b4387e56a0646932a31000e625833c1d7bfef1a3e1b42d31211d15c06850e674aa8474fb2afa95dce330d5c83626e80491fd8c3dcab054bab278b276a29b3f2d
   languageName: node
   linkType: hard
 
@@ -3078,9 +3078,9 @@ __metadata:
   dependencies:
     "@xylabs/assert": "workspace:~"
     "@xylabs/bignumber": "workspace:~"
-    "@xylabs/ts-scripts-yarn3": ^2.19.11
-    "@xylabs/tsconfig": ^2.19.11
-    "@xylabs/tsconfig-jest": ^2.19.11
+    "@xylabs/ts-scripts-yarn3": ^2.19.12
+    "@xylabs/tsconfig": ^2.19.12
+    "@xylabs/tsconfig-jest": ^2.19.12
     publint: ^0.2.2
     tsup: ^7.2.0
   languageName: unknown
@@ -3090,8 +3090,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/exists@workspace:packages/exists"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": ^2.19.11
-    "@xylabs/tsconfig": ^2.19.11
+    "@xylabs/ts-scripts-yarn3": ^2.19.12
+    "@xylabs/tsconfig": ^2.19.12
     publint: ^0.2.2
     tsup: ^7.2.0
   languageName: unknown
@@ -3102,8 +3102,8 @@ __metadata:
   resolution: "@xylabs/forget@workspace:packages/forget"
   dependencies:
     "@xylabs/delay": "workspace:~"
-    "@xylabs/ts-scripts-yarn3": ^2.19.11
-    "@xylabs/tsconfig": ^2.19.11
+    "@xylabs/ts-scripts-yarn3": ^2.19.12
+    "@xylabs/tsconfig": ^2.19.12
     publint: ^0.2.2
     tsup: ^7.2.0
   languageName: unknown
@@ -3113,8 +3113,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/jest-helpers@workspace:packages/jest-helpers"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": ^2.19.11
-    "@xylabs/tsconfig": ^2.19.11
+    "@xylabs/ts-scripts-yarn3": ^2.19.12
+    "@xylabs/tsconfig": ^2.19.12
     jest: ^29.6.4
     publint: ^0.2.2
     tsup: ^7.2.0
@@ -3129,8 +3129,8 @@ __metadata:
   dependencies:
     "@types/lodash": ^4.14.198
     "@types/lodash-es": ^4.17.9
-    "@xylabs/ts-scripts-yarn3": ^2.19.11
-    "@xylabs/tsconfig": ^2.19.11
+    "@xylabs/ts-scripts-yarn3": ^2.19.12
+    "@xylabs/tsconfig": ^2.19.12
     lodash: ^4.17.21
     lodash-es: ^4.17.21
     publint: ^0.2.2
@@ -3148,8 +3148,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/log@workspace:packages/log"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": ^2.19.11
-    "@xylabs/tsconfig": ^2.19.11
+    "@xylabs/ts-scripts-yarn3": ^2.19.12
+    "@xylabs/tsconfig": ^2.19.12
     publint: ^0.2.2
     rollbar: ^2.26.2
     tsup: ^7.2.0
@@ -3163,8 +3163,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/promise@workspace:packages/promise"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": ^2.19.11
-    "@xylabs/tsconfig": ^2.19.11
+    "@xylabs/ts-scripts-yarn3": ^2.19.12
+    "@xylabs/tsconfig": ^2.19.12
     publint: ^0.2.2
     tsup: ^7.2.0
   languageName: unknown
@@ -3186,14 +3186,14 @@ __metadata:
     "@xylabs/assert": "workspace:~"
     "@xylabs/bignumber": "workspace:~"
     "@xylabs/delay": "workspace:~"
-    "@xylabs/eslint-config": ^2.19.11
+    "@xylabs/eslint-config": ^2.19.12
     "@xylabs/eth-address": "workspace:~"
     "@xylabs/exists": "workspace:~"
     "@xylabs/forget": "workspace:~"
     "@xylabs/log": "workspace:~"
-    "@xylabs/ts-scripts-yarn3": ^2.19.11
-    "@xylabs/tsconfig": ^2.19.11
-    "@xylabs/tsconfig-jest": ^2.19.11
+    "@xylabs/ts-scripts-yarn3": ^2.19.12
+    "@xylabs/tsconfig": ^2.19.12
+    "@xylabs/tsconfig-jest": ^2.19.12
     babel-jest: ^29.6.4
     depcheck: ^1.4.6
     eslint: ^8.49.0
@@ -3217,25 +3217,25 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/static-implements@workspace:packages/static-implements"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": ^2.19.11
-    "@xylabs/tsconfig": ^2.19.11
-    "@xylabs/tsconfig-jest": ~2.19.11
+    "@xylabs/ts-scripts-yarn3": ^2.19.12
+    "@xylabs/tsconfig": ^2.19.12
+    "@xylabs/tsconfig-jest": ~2.19.12
     publint: ^0.2.2
     tsup: ^7.2.0
     typescript: ^5.2.2
   languageName: unknown
   linkType: soft
 
-"@xylabs/ts-scripts-yarn3@npm:^2.19.11":
-  version: 2.19.11
-  resolution: "@xylabs/ts-scripts-yarn3@npm:2.19.11"
+"@xylabs/ts-scripts-yarn3@npm:^2.19.12":
+  version: 2.19.12
+  resolution: "@xylabs/ts-scripts-yarn3@npm:2.19.12"
   dependencies:
     "@babel/core": ^7.22.17
     "@babel/preset-env": ^7.22.15
     "@types/node": ^20.6.0
     "@typescript-eslint/eslint-plugin": ^6.7.0
     "@typescript-eslint/parser": ^6.7.0
-    "@xylabs/tsconfig": ~2.19.11
+    "@xylabs/tsconfig": ~2.19.12
     chalk: ^4.1.2
     cpy: ^8.1.2
     depcheck: ^1.4.6
@@ -3323,34 +3323,34 @@ __metadata:
     xy: dist/bin/xy.js
     xy-ts: src/bin/xy-ts.ts
     yarn3only: dist/bin/yarn3only.js
-  checksum: f09b81c5f5dc9b18270161b31080f03a97cda99f50bc440188b1b6fab18318457d1be26e958c7ed286e3c203bb2c2e2abfed21d0cde0d43d2706c8b174479734
+  checksum: 8bea9a33967470c2b7f89d98f4d00415cb1134906e6ad724980a33c0fbe195afb10331510dfadd0822b56126307de2671da04c8de364949dedbdd0209b7cec73
   languageName: node
   linkType: hard
 
-"@xylabs/tsconfig-dom@npm:^2.19.11":
-  version: 2.19.11
-  resolution: "@xylabs/tsconfig-dom@npm:2.19.11"
+"@xylabs/tsconfig-dom@npm:^2.19.12":
+  version: 2.19.12
+  resolution: "@xylabs/tsconfig-dom@npm:2.19.12"
   dependencies:
-    "@xylabs/tsconfig": ~2.19.11
-  checksum: 187e430757eab2663f8cb11c2cb9b1ca4ccbe81f3b09606d9c3714c89bfd7d2c2afe6723d5dce53cf05c60da7553531859676be5b4d87aff7638e74f06f3ad15
+    "@xylabs/tsconfig": ~2.19.12
+  checksum: 8d5ae1f8980b9c1d1fbf9bdbe3f70085224770c4bba884d4ed258ad9596f901b0bf9a48929ea14d03cbf4b49461d5dd878c5a5db6d401d0ed13f98fe20d56837
   languageName: node
   linkType: hard
 
-"@xylabs/tsconfig-jest@npm:^2.19.11, @xylabs/tsconfig-jest@npm:~2.19.11":
-  version: 2.19.11
-  resolution: "@xylabs/tsconfig-jest@npm:2.19.11"
+"@xylabs/tsconfig-jest@npm:^2.19.12, @xylabs/tsconfig-jest@npm:~2.19.12":
+  version: 2.19.12
+  resolution: "@xylabs/tsconfig-jest@npm:2.19.12"
   dependencies:
-    "@xylabs/tsconfig": ~2.19.11
+    "@xylabs/tsconfig": ~2.19.12
   peerDependencies:
     typescript: ^5
-  checksum: 1eebbb63878a05c6f9dc2f209f2136f1ae0f7f05515483a4ff539e267cb0a8529e66da8a54a834e386133ef795e518d1eaa8804de311253cf3c8b97b2552bfa5
+  checksum: eb41ec24620cc72a309826217d3d0155da77f5ca616a069687449af61d6a256a057196743d59bcdc6b40b749d4e1cfb7e557423ce836b1cd3e0bc9a36de38470
   languageName: node
   linkType: hard
 
-"@xylabs/tsconfig@npm:^2.19.11, @xylabs/tsconfig@npm:~2.19.11":
-  version: 2.19.11
-  resolution: "@xylabs/tsconfig@npm:2.19.11"
-  checksum: caefe9b4bad12c68f340507b0a5c8bf72a04f91741e15e55c7192ddf8fd86e1cefed64a1a786287fda55dd7d23a641537d64710797cdc978b2b856a762c2029b
+"@xylabs/tsconfig@npm:^2.19.12, @xylabs/tsconfig@npm:~2.19.12":
+  version: 2.19.12
+  resolution: "@xylabs/tsconfig@npm:2.19.12"
+  checksum: 5b127989c4f028c2ab3b1bce0290c47f4b7594163928c3a115a561ed176c360acac28dcc7cd0280feb7dedd88ea9be7aac1b92cfafbb0c82801467da3fcd752b
   languageName: node
   linkType: hard
 
@@ -3358,9 +3358,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/url@workspace:packages/url"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": ^2.19.11
-    "@xylabs/tsconfig": ^2.19.11
-    "@xylabs/tsconfig-dom": ^2.19.11
+    "@xylabs/ts-scripts-yarn3": ^2.19.12
+    "@xylabs/tsconfig": ^2.19.12
+    "@xylabs/tsconfig-dom": ^2.19.12
     buffer: ^6.0.3
     publint: ^0.2.2
     tsup: ^7.2.0

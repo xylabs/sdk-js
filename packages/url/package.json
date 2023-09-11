@@ -16,10 +16,26 @@
   "exports": {
     ".": {
       "require": {
+        "browser": {
+          "types": "./dist/browserIndex.d.ts",
+          "default": "./dist/browserIndex.js"
+        },
+        "node": {
+          "types": "./dist/nodeIndex.d.ts",
+          "default": "./dist/nodeIndex.js"
+        },
         "types": "./dist/index.d.ts",
         "default": "./dist/index.js"
       },
       "import": {
+        "browser": {
+          "types": "./dist/browserIndex.d.mts",
+          "default": "./dist/browserIndex.mjs"
+        },
+        "node": {
+          "types": "./dist/nodeIndex.d.mts",
+          "default": "./dist/nodeIndex.mjs"
+        },
         "types": "./dist/index.d.mts",
         "default": "./dist/index.mjs"
       }
@@ -27,14 +43,8 @@
     "./dist/docs.json": {
       "default": "./dist/docs.json"
     },
-    "./cjs": {
-      "default": "./dist/index.js"
-    },
     "./docs": {
       "default": "./dist/docs.json"
-    },
-    "./esm": {
-      "default": "./dist/index.mjs"
     },
     "./package.json": "./package.json"
   },

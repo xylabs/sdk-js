@@ -70,5 +70,5 @@
   },
   "sideEffects": false,
   "types": "./dist/cjsIndex.d.ts",
-  "version": "2.10.12"
+  "version": "2.10.13"
 }

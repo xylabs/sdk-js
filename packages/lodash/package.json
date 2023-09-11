@@ -15,7 +15,7 @@
   "exports": {
     ".": {
       "require": {
-        "types": "./dist/cjsIndex.d.ts",
+        "types": "./dist/esmIndex.d.ts",
         "default": "./dist/cjsIndex.js"
       },
       "import": {
@@ -69,6 +69,6 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "types": "./dist/cjsIndex.d.ts",
+  "types": "./dist/esmIndex.d.ts",
   "version": "2.10.13"
 }

@@ -69,6 +69,6 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "types": "./dist/esmIndex.d.mts",
+  "types": "./dist/cjsIndex.d.ts",
   "version": "2.10.11"
 }

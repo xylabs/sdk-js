@@ -73,9 +73,9 @@
   },
   "devDependencies": {
     "@types/node": "^20.6.0",
-    "@xylabs/ts-scripts-yarn3": "^2.19.5",
-    "@xylabs/tsconfig": "^2.19.5",
-    "@xylabs/tsconfig-dom": "^2.19.5",
+    "@xylabs/ts-scripts-yarn3": "^2.19.9",
+    "@xylabs/tsconfig": "^2.19.9",
+    "@xylabs/tsconfig-dom": "^2.19.9",
     "publint": "^0.2.2",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2"
@@ -88,5 +88,5 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.10.14"
+  "version": "2.10.15"
 }

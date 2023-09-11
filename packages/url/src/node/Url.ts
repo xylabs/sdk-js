@@ -1,2 +1,2 @@
-import { URL } from 'node:url'
+import { URL } from 'url'
 export { URL as NodeUrl }

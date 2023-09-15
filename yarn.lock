@@ -1577,9 +1577,9 @@ __metadata:
   linkType: hard
 
 "@eslint-community/regexpp@npm:^4.5.1, @eslint-community/regexpp@npm:^4.6.1":
-  version: 4.8.0
-  resolution: "@eslint-community/regexpp@npm:4.8.0"
-  checksum: 601e6d033d556e98e8c929905bef335f20d7389762812df4d0f709d9b4d2631610dda975fb272e23b5b68e24a163b3851b114c8080a0a19fb4c141a1eff6305b
+  version: 4.8.1
+  resolution: "@eslint-community/regexpp@npm:4.8.1"
+  checksum: 82d62c845ef42b810f268cfdc84d803a2da01735fb52e902fd34bdc09f92464a094fd8e4802839874b000b2f73f67c972859e813ba705233515d3e954f234bf2
   languageName: node
   linkType: hard
 
@@ -2238,90 +2238,90 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@swc/core-darwin-arm64@npm:1.3.84":
-  version: 1.3.84
-  resolution: "@swc/core-darwin-arm64@npm:1.3.84"
+"@swc/core-darwin-arm64@npm:1.3.85":
+  version: 1.3.85
+  resolution: "@swc/core-darwin-arm64@npm:1.3.85"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@swc/core-darwin-x64@npm:1.3.84":
-  version: 1.3.84
-  resolution: "@swc/core-darwin-x64@npm:1.3.84"
+"@swc/core-darwin-x64@npm:1.3.85":
+  version: 1.3.85
+  resolution: "@swc/core-darwin-x64@npm:1.3.85"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@swc/core-linux-arm-gnueabihf@npm:1.3.84":
-  version: 1.3.84
-  resolution: "@swc/core-linux-arm-gnueabihf@npm:1.3.84"
+"@swc/core-linux-arm-gnueabihf@npm:1.3.85":
+  version: 1.3.85
+  resolution: "@swc/core-linux-arm-gnueabihf@npm:1.3.85"
   conditions: os=linux & cpu=arm
   languageName: node
   linkType: hard
 
-"@swc/core-linux-arm64-gnu@npm:1.3.84":
-  version: 1.3.84
-  resolution: "@swc/core-linux-arm64-gnu@npm:1.3.84"
+"@swc/core-linux-arm64-gnu@npm:1.3.85":
+  version: 1.3.85
+  resolution: "@swc/core-linux-arm64-gnu@npm:1.3.85"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@swc/core-linux-arm64-musl@npm:1.3.84":
-  version: 1.3.84
-  resolution: "@swc/core-linux-arm64-musl@npm:1.3.84"
+"@swc/core-linux-arm64-musl@npm:1.3.85":
+  version: 1.3.85
+  resolution: "@swc/core-linux-arm64-musl@npm:1.3.85"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@swc/core-linux-x64-gnu@npm:1.3.84":
-  version: 1.3.84
-  resolution: "@swc/core-linux-x64-gnu@npm:1.3.84"
+"@swc/core-linux-x64-gnu@npm:1.3.85":
+  version: 1.3.85
+  resolution: "@swc/core-linux-x64-gnu@npm:1.3.85"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@swc/core-linux-x64-musl@npm:1.3.84":
-  version: 1.3.84
-  resolution: "@swc/core-linux-x64-musl@npm:1.3.84"
+"@swc/core-linux-x64-musl@npm:1.3.85":
+  version: 1.3.85
+  resolution: "@swc/core-linux-x64-musl@npm:1.3.85"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@swc/core-win32-arm64-msvc@npm:1.3.84":
-  version: 1.3.84
-  resolution: "@swc/core-win32-arm64-msvc@npm:1.3.84"
+"@swc/core-win32-arm64-msvc@npm:1.3.85":
+  version: 1.3.85
+  resolution: "@swc/core-win32-arm64-msvc@npm:1.3.85"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@swc/core-win32-ia32-msvc@npm:1.3.84":
-  version: 1.3.84
-  resolution: "@swc/core-win32-ia32-msvc@npm:1.3.84"
+"@swc/core-win32-ia32-msvc@npm:1.3.85":
+  version: 1.3.85
+  resolution: "@swc/core-win32-ia32-msvc@npm:1.3.85"
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
-"@swc/core-win32-x64-msvc@npm:1.3.84":
-  version: 1.3.84
-  resolution: "@swc/core-win32-x64-msvc@npm:1.3.84"
+"@swc/core-win32-x64-msvc@npm:1.3.85":
+  version: 1.3.85
+  resolution: "@swc/core-win32-x64-msvc@npm:1.3.85"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"@swc/core@npm:^1.3.84":
-  version: 1.3.84
-  resolution: "@swc/core@npm:1.3.84"
+"@swc/core@npm:^1.3.85":
+  version: 1.3.85
+  resolution: "@swc/core@npm:1.3.85"
   dependencies:
-    "@swc/core-darwin-arm64": 1.3.84
-    "@swc/core-darwin-x64": 1.3.84
-    "@swc/core-linux-arm-gnueabihf": 1.3.84
-    "@swc/core-linux-arm64-gnu": 1.3.84
-    "@swc/core-linux-arm64-musl": 1.3.84
-    "@swc/core-linux-x64-gnu": 1.3.84
-    "@swc/core-linux-x64-musl": 1.3.84
-    "@swc/core-win32-arm64-msvc": 1.3.84
-    "@swc/core-win32-ia32-msvc": 1.3.84
-    "@swc/core-win32-x64-msvc": 1.3.84
+    "@swc/core-darwin-arm64": 1.3.85
+    "@swc/core-darwin-x64": 1.3.85
+    "@swc/core-linux-arm-gnueabihf": 1.3.85
+    "@swc/core-linux-arm64-gnu": 1.3.85
+    "@swc/core-linux-arm64-musl": 1.3.85
+    "@swc/core-linux-x64-gnu": 1.3.85
+    "@swc/core-linux-x64-musl": 1.3.85
+    "@swc/core-win32-arm64-msvc": 1.3.85
+    "@swc/core-win32-ia32-msvc": 1.3.85
+    "@swc/core-win32-x64-msvc": 1.3.85
     "@swc/types": ^0.1.4
   peerDependencies:
     "@swc/helpers": ^0.5.0
@@ -2349,7 +2349,7 @@ __metadata:
   peerDependenciesMeta:
     "@swc/helpers":
       optional: true
-  checksum: dee45823923c29dde579ed1121c4392c937826d575c87f62399ba7a0b27cacfeb05da97b65cf49a721a50127bb1e22ca5c07defa784ec2a47fed33e3498ef1b9
+  checksum: af9ec7d88fd9ad3dd876c8fea812b20ba734c2ed917c9f8281fd57c68ab57d5931ccb841f4467332b84c0cd522682737a770dfc8c3f9e0cc88cdce713971978c
   languageName: node
   linkType: hard
 
@@ -2434,52 +2434,52 @@ __metadata:
   linkType: hard
 
 "@types/babel__core@npm:^7.1.14":
-  version: 7.20.1
-  resolution: "@types/babel__core@npm:7.20.1"
+  version: 7.20.2
+  resolution: "@types/babel__core@npm:7.20.2"
   dependencies:
     "@babel/parser": ^7.20.7
     "@babel/types": ^7.20.7
     "@types/babel__generator": "*"
     "@types/babel__template": "*"
     "@types/babel__traverse": "*"
-  checksum: 9fcd9691a33074802d9057ff70b0e3ff3778f52470475b68698a0f6714fbe2ccb36c16b43dc924eb978cd8a81c1f845e5ff4699e7a47606043b539eb8c6331a8
+  checksum: 564fbaa8ff1305d50807ada0ec227c3e7528bebb2f8fe6b2ed88db0735a31511a74ad18729679c43eeed8025ed29d408f53059289719e95ab1352ed559a100bd
   languageName: node
   linkType: hard
 
 "@types/babel__generator@npm:*":
-  version: 7.6.4
-  resolution: "@types/babel__generator@npm:7.6.4"
+  version: 7.6.5
+  resolution: "@types/babel__generator@npm:7.6.5"
   dependencies:
     "@babel/types": ^7.0.0
-  checksum: 20effbbb5f8a3a0211e95959d06ae70c097fb6191011b73b38fe86deebefad8e09ee014605e0fd3cdaedc73d158be555866810e9166e1f09e4cfd880b874dcb0
+  checksum: c7459f5025c4c800eaf58f4db3b24e9d736331fe7df40961d9bc49f31b46e2a3be83dc9276e8688f10a5ed752ae153ad5f1bdd45e2245bac95273730b9115ec2
   languageName: node
   linkType: hard
 
 "@types/babel__template@npm:*":
-  version: 7.4.1
-  resolution: "@types/babel__template@npm:7.4.1"
+  version: 7.4.2
+  resolution: "@types/babel__template@npm:7.4.2"
   dependencies:
     "@babel/parser": ^7.1.0
     "@babel/types": ^7.0.0
-  checksum: 649fe8b42c2876be1fd28c6ed9b276f78152d5904ec290b6c861d9ef324206e0a5c242e8305c421ac52ecf6358fa7e32ab7a692f55370484825c1df29b1596ee
+  checksum: 0fe977b45a3269336c77f3ae4641a6c48abf0fa35ab1a23fb571690786af02d6cec08255a43499b0b25c5633800f7ae882ace450cce905e3060fa9e6995047ae
   languageName: node
   linkType: hard
 
 "@types/babel__traverse@npm:*, @types/babel__traverse@npm:^7.0.6":
-  version: 7.20.1
-  resolution: "@types/babel__traverse@npm:7.20.1"
+  version: 7.20.2
+  resolution: "@types/babel__traverse@npm:7.20.2"
   dependencies:
     "@babel/types": ^7.20.7
-  checksum: 58341e23c649c0eba134a1682d4f20d027fad290d92e5740faa1279978f6ed476fc467ae51ce17a877e2566d805aeac64eae541168994367761ec883a4150221
+  checksum: 981340286479524436348d32373eaa3bf993c635cbf70307b4b69463eee83406a959ac4844f683911e0db8ab8d9f0025ab630dc7a8c170fee9ee74144c2a528f
   languageName: node
   linkType: hard
 
-"@types/bn.js@npm:^5.1.1":
-  version: 5.1.1
-  resolution: "@types/bn.js@npm:5.1.1"
+"@types/bn.js@npm:^5.1.2":
+  version: 5.1.2
+  resolution: "@types/bn.js@npm:5.1.2"
   dependencies:
     "@types/node": "*"
-  checksum: e50ed2dd3abe997e047caf90e0352c71e54fc388679735217978b4ceb7e336e51477791b715f49fd77195ac26dd296c7bad08a3be9750e235f9b2e1edb1b51c2
+  checksum: 8d9fdb43836646c2ecd445041de03e057f9b459885be57faee64104160487a63730b9f371e8ad7d33f360b3cc6dc0e323543962fc5fa296b92b322b946732be0
   languageName: node
   linkType: hard
 
@@ -2670,10 +2670,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^20.6.0":
-  version: 20.6.0
-  resolution: "@types/node@npm:20.6.0"
-  checksum: 52611801af5cf151c6fac1963aa4a8a8ca2e388a9e9ed82b01b70bca762088ded5b32cc789c5564220d5d7dccba2b8dd34446a3d4fc74736805e1f2cf262e29d
+"@types/node@npm:*, @types/node@npm:^20.6.0, @types/node@npm:^20.6.1":
+  version: 20.6.1
+  resolution: "@types/node@npm:20.6.1"
+  checksum: f9848617221b513d558071c804b006750d1ee1734c5ffea3ada9a0edd1642334ad0812222d6b99b7b8c0e1a5f1e557946ae99444c2705e9afc125abdf9fa36c2
   languageName: node
   linkType: hard
 
@@ -2725,9 +2725,9 @@ __metadata:
   linkType: hard
 
 "@types/tough-cookie@npm:*":
-  version: 4.0.2
-  resolution: "@types/tough-cookie@npm:4.0.2"
-  checksum: e055556ffdaa39ad85ede0af192c93f93f986f4bd9e9426efdc2948e3e2632db3a4a584d4937dbf6d7620527419bc99e6182d3daf2b08685e710f2eda5291905
+  version: 4.0.3
+  resolution: "@types/tough-cookie@npm:4.0.3"
+  checksum: f201be1bbca2f2d3572032513cdb9825845114d2604a7f4091af848eeee3228a573cdc5e8082b04468a2848bb1d058f1adbb97db822e22c975ebd6fcd851a453
   languageName: node
   linkType: hard
 
@@ -2745,7 +2745,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/yargs@npm:^17.0.8":
+"@types/yargs@npm:^17.0.24, @types/yargs@npm:^17.0.8":
   version: 17.0.24
   resolution: "@types/yargs@npm:17.0.24"
   dependencies:
@@ -3013,9 +3013,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/api@workspace:packages/api"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.16
-    "@xylabs/tsconfig": ^3.0.0-rc.16
+    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.27
+    "@xylabs/tsconfig": ^3.0.0-rc.27
     axios: ^1.5.0
+    typescript: ^5.2.2
   languageName: unknown
   linkType: soft
 
@@ -3024,8 +3025,9 @@ __metadata:
   resolution: "@xylabs/array@workspace:packages/array"
   dependencies:
     "@xylabs/exists": "workspace:~"
-    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.16
-    "@xylabs/tsconfig": ^3.0.0-rc.16
+    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.27
+    "@xylabs/tsconfig": ^3.0.0-rc.27
+    typescript: ^5.2.2
   languageName: unknown
   linkType: soft
 
@@ -3033,8 +3035,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/assert@workspace:packages/assert"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.16
-    "@xylabs/tsconfig": ^3.0.0-rc.16
+    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.27
+    "@xylabs/tsconfig": ^3.0.0-rc.27
+    typescript: ^5.2.2
   languageName: unknown
   linkType: soft
 
@@ -3042,10 +3045,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/bignumber@workspace:packages/bignumber"
   dependencies:
-    "@types/bn.js": ^5.1.1
-    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.16
-    "@xylabs/tsconfig": ^3.0.0-rc.16
+    "@types/bn.js": ^5.1.2
+    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.27
+    "@xylabs/tsconfig": ^3.0.0-rc.27
     bn.js: ^5.2.1
+    typescript: ^5.2.2
   languageName: unknown
   linkType: soft
 
@@ -3053,10 +3057,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/buffer@workspace:packages/buffer"
   dependencies:
-    "@types/node": ^20.6.0
-    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.16
-    "@xylabs/tsconfig": ^3.0.0-rc.16
-    "@xylabs/tsconfig-dom": ^3.0.0-rc.16
+    "@types/node": ^20.6.1
+    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.27
+    "@xylabs/tsconfig": ^3.0.0-rc.27
+    "@xylabs/tsconfig-dom": ^3.0.0-rc.27
     buffer: ^6.0.3
     typescript: ^5.2.2
   languageName: unknown
@@ -3066,8 +3070,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/decimal-precision@workspace:packages/decimal-precision"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.16
-    "@xylabs/tsconfig": ^3.0.0-rc.16
+    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.27
+    "@xylabs/tsconfig": ^3.0.0-rc.27
+    typescript: ^5.2.2
   languageName: unknown
   linkType: soft
 
@@ -3075,16 +3080,16 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/delay@workspace:packages/delay"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.16
-    "@xylabs/tsconfig": ^3.0.0-rc.16
-    "@xylabs/tsconfig-dom": ^3.0.0-rc.16
+    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.27
+    "@xylabs/tsconfig": ^3.0.0-rc.27
+    "@xylabs/tsconfig-dom": ^3.0.0-rc.27
     typescript: ^5.2.2
   languageName: unknown
   linkType: soft
 
-"@xylabs/eslint-config@npm:^3.0.0-rc.16":
-  version: 3.0.0-rc.16
-  resolution: "@xylabs/eslint-config@npm:3.0.0-rc.16"
+"@xylabs/eslint-config@npm:^3.0.0-rc.27":
+  version: 3.0.0-rc.27
+  resolution: "@xylabs/eslint-config@npm:3.0.0-rc.27"
   dependencies:
     "@babel/core": ^7.22.19
     "@babel/eslint-parser": ^7.22.15
@@ -3101,6 +3106,7 @@ __metadata:
     eslint-plugin-simple-import-sort: ^10.0.0
     eslint-plugin-sort-keys-fix: ^1.1.2
     eslint-plugin-workspaces: ^0.9.0
+    lodash: ^4.17.21
     markdown-eslint-parser: ^1.2.1
     prettier: ^3.0.3
     remark-lint-maximum-line-length: ^3.1.3
@@ -3108,7 +3114,7 @@ __metadata:
     typescript: ^5.2.2
   peerDependencies:
     eslint: ^8.23.0
-  checksum: fb20be179999bb5eb8bf5ce6fd9aa9809dea2ed6f107a10a97d3003bfcd5a2a32602282c00cf5030d83863e80b551ecfa1d713511f69fa35f0b1746340bc9e7c
+  checksum: 8117f1917886c7784069774d3b1d36a4a3245ba636df7445deb3f7c13f0d04a0260d3eb71205d8e140fa582d0ab08a75cb78239941f7ce547b2b1b63613767d9
   languageName: node
   linkType: hard
 
@@ -3118,9 +3124,10 @@ __metadata:
   dependencies:
     "@xylabs/assert": "workspace:~"
     "@xylabs/bignumber": "workspace:~"
-    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.16
-    "@xylabs/tsconfig": ^3.0.0-rc.16
-    "@xylabs/tsconfig-jest": ^3.0.0-rc.16
+    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.27
+    "@xylabs/tsconfig": ^3.0.0-rc.27
+    "@xylabs/tsconfig-jest": ^3.0.0-rc.27
+    typescript: ^5.2.2
   languageName: unknown
   linkType: soft
 
@@ -3128,8 +3135,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/exists@workspace:packages/exists"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.16
-    "@xylabs/tsconfig": ^3.0.0-rc.16
+    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.27
+    "@xylabs/tsconfig": ^3.0.0-rc.27
+    typescript: ^5.2.2
   languageName: unknown
   linkType: soft
 
@@ -3138,8 +3146,9 @@ __metadata:
   resolution: "@xylabs/forget@workspace:packages/forget"
   dependencies:
     "@xylabs/delay": "workspace:~"
-    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.16
-    "@xylabs/tsconfig": ^3.0.0-rc.16
+    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.27
+    "@xylabs/tsconfig": ^3.0.0-rc.27
+    typescript: ^5.2.2
   languageName: unknown
   linkType: soft
 
@@ -3147,9 +3156,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/jest-helpers@workspace:packages/jest-helpers"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.16
-    "@xylabs/tsconfig": ^3.0.0-rc.16
+    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.27
+    "@xylabs/tsconfig": ^3.0.0-rc.27
     jest: ^29.7.0
+    typescript: ^5.2.2
   peerDependencies:
     jest: "*"
   languageName: unknown
@@ -3161,8 +3171,8 @@ __metadata:
   dependencies:
     "@types/lodash": ^4.14.198
     "@types/lodash-es": ^4.17.9
-    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.16
-    "@xylabs/tsconfig": ^3.0.0-rc.16
+    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.27
+    "@xylabs/tsconfig": ^3.0.0-rc.27
     lodash: ^4.17.21
     lodash-es: ^4.17.21
     typescript: ^5.2.2
@@ -3178,9 +3188,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/log@workspace:packages/log"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.16
-    "@xylabs/tsconfig": ^3.0.0-rc.16
+    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.27
+    "@xylabs/tsconfig": ^3.0.0-rc.27
     rollbar: ^2.26.2
+    typescript: ^5.2.2
   dependenciesMeta:
     rollbar:
       optional: true
@@ -3191,8 +3202,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/promise@workspace:packages/promise"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.16
-    "@xylabs/tsconfig": ^3.0.0-rc.16
+    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.27
+    "@xylabs/tsconfig": ^3.0.0-rc.27
+    typescript: ^5.2.2
   languageName: unknown
   linkType: soft
 
@@ -3202,7 +3214,7 @@ __metadata:
   dependencies:
     "@babel/core": ^7.22.19
     "@babel/preset-env": ^7.22.15
-    "@swc/core": ^1.3.84
+    "@swc/core": ^1.3.85
     "@types/jest": ^29.5.4
     "@types/mocha": ^10.0.1
     "@types/supertest": ^2.0.12
@@ -3212,14 +3224,14 @@ __metadata:
     "@xylabs/assert": "workspace:~"
     "@xylabs/bignumber": "workspace:~"
     "@xylabs/delay": "workspace:~"
-    "@xylabs/eslint-config": ^3.0.0-rc.16
+    "@xylabs/eslint-config": ^3.0.0-rc.27
     "@xylabs/eth-address": "workspace:~"
     "@xylabs/exists": "workspace:~"
     "@xylabs/forget": "workspace:~"
     "@xylabs/log": "workspace:~"
-    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.16
-    "@xylabs/tsconfig": ^3.0.0-rc.16
-    "@xylabs/tsconfig-jest": ^3.0.0-rc.16
+    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.27
+    "@xylabs/tsconfig": ^3.0.0-rc.27
+    "@xylabs/tsconfig-jest": ^3.0.0-rc.27
     babel-jest: ^29.7.0
     depcheck: ^1.4.6
     eslint: ^8.49.0
@@ -3243,25 +3255,26 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/static-implements@workspace:packages/static-implements"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.16
-    "@xylabs/tsconfig": ^3.0.0-rc.16
+    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.27
+    "@xylabs/tsconfig": ^3.0.0-rc.27
     "@xylabs/tsconfig-jest": ~2.19.12
     typescript: ^5.2.2
   languageName: unknown
   linkType: soft
 
-"@xylabs/ts-scripts-yarn3@npm:^3.0.0-rc.16":
-  version: 3.0.0-rc.16
-  resolution: "@xylabs/ts-scripts-yarn3@npm:3.0.0-rc.16"
+"@xylabs/ts-scripts-yarn3@npm:^3.0.0-rc.27":
+  version: 3.0.0-rc.27
+  resolution: "@xylabs/ts-scripts-yarn3@npm:3.0.0-rc.27"
   dependencies:
     "@babel/core": ^7.22.19
     "@babel/preset-env": ^7.22.15
     "@rollup/plugin-commonjs": ^25.0.4
     "@rollup/plugin-typescript": ^11.1.3
     "@types/node": ^20.6.0
+    "@types/yargs": ^17.0.24
     "@typescript-eslint/eslint-plugin": ^6.7.0
     "@typescript-eslint/parser": ^6.7.0
-    "@xylabs/tsconfig": ~3.0.0-rc.16
+    "@xylabs/tsconfig": ~3.0.0-rc.27
     chalk: ^4.1.2
     cpy: ^8.1.2
     depcheck: ^1.4.6
@@ -3295,9 +3308,10 @@ __metadata:
     tslib: ^2.6.2
     tsup: ^7.2.0
     typedoc: ^0.24.8
+    types-package-json: ^2.0.39
     yargs: ^17.7.2
   peerDependencies:
-    typescript: ^4 || ^5
+    typescript: ^5
   bin:
     build: dist/bin/build.js
     clean: dist/bin/clean.js
@@ -3305,6 +3319,7 @@ __metadata:
     compile: dist/bin/compile.js
     compile-cjs: dist/bin/compile-cjs.js
     compile-esm: dist/bin/compile-esm.js
+    compile-only: dist/bin/compile-only.js
     cycle: dist/bin/cycle.js
     dead: dist/bin/dead.js
     deploy: dist/bin/deploy.js
@@ -3323,28 +3338,19 @@ __metadata:
     lint-profile: dist/bin/lint-profile.js
     package-clean: dist/bin/package/clean.js
     package-compile: dist/bin/package/compile.js
-    package-compile-cjs: dist/bin/package/compile-cjs.js
-    package-compile-esm: dist/bin/package/compile-esm.js
+    package-compile-only: dist/bin/package/compile-only.js
     package-copy-assets-cjs: dist/bin/package/copy-assets-cjs.js
     package-copy-assets-esm: dist/bin/package/copy-assets-esm.js
     package-deps: dist/bin/package/deps.js
     package-gen-docs: dist/bin/package/gen-docs.js
     package-publint: dist/bin/package/publint.js
     package-recompile: dist/bin/package/recompile.js
-    package-tsconfig-gen: dist/bin/package/tsconfig-gen.js
-    package-tsconfig-gen-cjs: dist/bin/package/tsconfig-gen-cjs.js
-    package-tsconfig-gen-esm: dist/bin/package/tsconfig-gen-esm.js
     rebuild: dist/bin/rebuild.js
     recompile: dist/bin/recompile.js
     reinstall: dist/bin/reinstall.js
     relint: dist/bin/relint.js
     sonar: dist/bin/sonar.js
     test: dist/bin/test.js
-    tsconfig-gen: dist/bin/tsconfig-gen.js
-    tsconfig-gen-cjs: dist/bin/tsconfig-gen-cjs.js
-    tsconfig-gen-clean: dist/bin/tsconfig-gen-clean.js
-    tsconfig-gen-esm: dist/bin/tsconfig-gen-esm.js
-    tsconfig-gen-test: dist/bin/tsconfig-gen-test.js
     up: dist/bin/up.js
     updo: dist/bin/updo.js
     upplug: dist/bin/upplug.js
@@ -3352,36 +3358,27 @@ __metadata:
     xy: dist/bin/xy.js
     xy-ts: src/bin/xy-ts.ts
     yarn3only: dist/bin/yarn3only.js
-  checksum: 3e995a4ab93f493edca9a140a54765a76f1b07b22088a4690994fd2b6e55d8b32f88bd21c0923e3a08479e7e33809537b8908d07b3852971b4f543fa98526fe2
+  checksum: 1f87fd12aee909f0a8af8381f257429f760c662b5d7115ae423c102ff0e4475c5a3e2bd7cee8e10362bc60f2c8f528efb9e57ad0a37e4b52fc3957ead49387dd
   languageName: node
   linkType: hard
 
-"@xylabs/tsconfig-dom@npm:^2.19.12":
-  version: 2.19.12
-  resolution: "@xylabs/tsconfig-dom@npm:2.19.12"
+"@xylabs/tsconfig-dom@npm:^3.0.0-rc.27":
+  version: 3.0.0-rc.27
+  resolution: "@xylabs/tsconfig-dom@npm:3.0.0-rc.27"
   dependencies:
-    "@xylabs/tsconfig": ~2.19.12
-  checksum: 8d5ae1f8980b9c1d1fbf9bdbe3f70085224770c4bba884d4ed258ad9596f901b0bf9a48929ea14d03cbf4b49461d5dd878c5a5db6d401d0ed13f98fe20d56837
+    "@xylabs/tsconfig": ~3.0.0-rc.27
+  checksum: 829860cffa9936ad9c6cae6f2f627e1c3441df488f216d4da17215e7fff959d96627655d69d9c3d4eec8f0ad391fea653b48a24a689ad2c6d3659ad4126ef064
   languageName: node
   linkType: hard
 
-"@xylabs/tsconfig-dom@npm:^3.0.0-rc.16":
-  version: 3.0.0-rc.16
-  resolution: "@xylabs/tsconfig-dom@npm:3.0.0-rc.16"
+"@xylabs/tsconfig-jest@npm:^3.0.0-rc.27":
+  version: 3.0.0-rc.27
+  resolution: "@xylabs/tsconfig-jest@npm:3.0.0-rc.27"
   dependencies:
-    "@xylabs/tsconfig": ~3.0.0-rc.16
-  checksum: c16e71fedb669b2c8e63217f59de8dd9089bf45e4b415c59f4d98182454e7c7bca4aa3e75c3dcb2684f9a62f88062f4c8d84573dbde642610042587036f533dc
-  languageName: node
-  linkType: hard
-
-"@xylabs/tsconfig-jest@npm:^3.0.0-rc.16":
-  version: 3.0.0-rc.16
-  resolution: "@xylabs/tsconfig-jest@npm:3.0.0-rc.16"
-  dependencies:
-    "@xylabs/tsconfig": ~3.0.0-rc.16
+    "@xylabs/tsconfig": ~3.0.0-rc.27
   peerDependencies:
     typescript: ^5
-  checksum: 31ac6bf224ceb7d110e6a4b366b1c6f5fa572c63d79905d684e6f34a08a30acdf95169dced9775fd47ebb1e59c44b95e49f119fdf4bc3a8c7950831cc796e7eb
+  checksum: 2b8367510eff8647609327f3e9658e7346d6e8ae710dff3faa1589efddf44cdbd59a796a78a6f87f0183fe7130f943b4e625a5b236a862a9c1ceed8e2a933506
   languageName: node
   linkType: hard
 
@@ -3396,10 +3393,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xylabs/tsconfig@npm:^3.0.0-rc.16, @xylabs/tsconfig@npm:~3.0.0-rc.16":
-  version: 3.0.0-rc.16
-  resolution: "@xylabs/tsconfig@npm:3.0.0-rc.16"
-  checksum: b9541a7938c7410ee5f5d6f0eff1cb2fbc121e320e6d9cf3836588d98ff6648bb1d3a5783347d2dd31bbc35030c747d1dade26b823351912a25255c3012d6bc2
+"@xylabs/tsconfig@npm:^3.0.0-rc.27, @xylabs/tsconfig@npm:~3.0.0-rc.27":
+  version: 3.0.0-rc.27
+  resolution: "@xylabs/tsconfig@npm:3.0.0-rc.27"
+  checksum: 2db6255a10a250c123b7b1f3c467a4797ae3b1eed9491f805bf7d0161a2b759cddbe6cc122f4bace0da94cceddce674e33877746b746e6e9e979258bc8fcb2c1
   languageName: node
   linkType: hard
 
@@ -3414,10 +3411,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/url@workspace:packages/url"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.16
-    "@xylabs/tsconfig": ^3.0.0-rc.16
-    "@xylabs/tsconfig-dom": ^2.19.12
+    "@xylabs/ts-scripts-yarn3": ^3.0.0-rc.27
+    "@xylabs/tsconfig": ^3.0.0-rc.27
+    "@xylabs/tsconfig-dom": ^3.0.0-rc.27
     buffer: ^6.0.3
+    typescript: ^5.2.2
   languageName: unknown
   linkType: soft
 
@@ -3788,7 +3786,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"arraybuffer.prototype.slice@npm:^1.0.1":
+"arraybuffer.prototype.slice@npm:^1.0.2":
   version: 1.0.2
   resolution: "arraybuffer.prototype.slice@npm:1.0.2"
   dependencies:
@@ -4334,9 +4332,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001517":
-  version: 1.0.30001532
-  resolution: "caniuse-lite@npm:1.0.30001532"
-  checksum: 613abeb15e03dde307d543195a7860f7ba7450c9c9262d45642b2c8fbe097914fa060d68c8647f9d443947b1f62b09d891858bde7d2cac94fae8133a0b518b28
+  version: 1.0.30001534
+  resolution: "caniuse-lite@npm:1.0.30001534"
+  checksum: 8e8b63c1ce0d5b944ee2d8223955b33f3d4f60c33fed394ff6353b5c7106b2dc55219fd07d80c79e66ed1f82ed9367cee17bda96789cbd2ab57c8d30b1b5c510
   languageName: node
   linkType: hard
 
@@ -4766,8 +4764,8 @@ __metadata:
   linkType: hard
 
 "cosmiconfig@npm:^8.2.0":
-  version: 8.3.5
-  resolution: "cosmiconfig@npm:8.3.5"
+  version: 8.3.6
+  resolution: "cosmiconfig@npm:8.3.6"
   dependencies:
     import-fresh: ^3.3.0
     js-yaml: ^4.1.0
@@ -4778,7 +4776,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: c6e44bb3cabf268b70049e7bd4ee8ecf00068854e53cbc32f9104794927ef406817f9e64e1c4949bd10776b604c01f7b50674336fcd2d5b9efc4cf8277fdf025
+  checksum: dc339ebea427898c9e03bf01b56ba7afbac07fc7d2a2d5a15d6e9c14de98275a9565da949375aee1809591c152c0a3877bb86dbeaf74d5bd5aaa79955ad9e7a0
   languageName: node
   linkType: hard
 
@@ -5059,6 +5057,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"define-data-property@npm:^1.0.1":
+  version: 1.1.0
+  resolution: "define-data-property@npm:1.1.0"
+  dependencies:
+    get-intrinsic: ^1.2.1
+    gopd: ^1.0.1
+    has-property-descriptors: ^1.0.0
+  checksum: 7ad4ee84cca8ad427a4831f5693526804b62ce9dfd4efac77214e95a4382aed930072251d4075dc8dc9fc949a353ed51f19f5285a84a788ba9216cc51472a093
+  languageName: node
+  linkType: hard
+
 "define-lazy-prop@npm:^3.0.0":
   version: 3.0.0
   resolution: "define-lazy-prop@npm:3.0.0"
@@ -5067,12 +5076,13 @@ __metadata:
   linkType: hard
 
 "define-properties@npm:^1.1.3, define-properties@npm:^1.1.4, define-properties@npm:^1.2.0":
-  version: 1.2.0
-  resolution: "define-properties@npm:1.2.0"
+  version: 1.2.1
+  resolution: "define-properties@npm:1.2.1"
   dependencies:
+    define-data-property: ^1.0.1
     has-property-descriptors: ^1.0.0
     object-keys: ^1.1.1
-  checksum: e60aee6a19b102df4e2b1f301816804e81ab48bb91f00d0d935f269bf4b3f79c88b39e4f89eaa132890d23267335fd1140dfcd8d5ccd61031a0a2c41a54e33a6
+  checksum: b4ccd00597dd46cb2d4a379398f5b19fca84a16f3374e2249201992f36b30f6835949a9429669ee6b41b6e837205a163eadd745e472069e70dfc10f03e5fcc12
   languageName: node
   linkType: hard
 
@@ -5272,9 +5282,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.477":
-  version: 1.4.514
-  resolution: "electron-to-chromium@npm:1.4.514"
-  checksum: 571a78404ee986e99eb0f53390dee9b231d317fb1857a2b0745e6d05f4038115b026012e356eb55fef1808160f8cacbc6796d0b731b2372c4fd9b133ccc30af5
+  version: 1.4.523
+  resolution: "electron-to-chromium@npm:1.4.523"
+  checksum: c090a958afe7849d9d1a0d3ed3a2300ded202374cd68013f9114fac33c506268b3e08a204c3f6e0ad4fe56a3ae75d23a8325cf9474e2954c6d0ddef6a018780c
   languageName: node
   linkType: hard
 
@@ -5365,16 +5375,16 @@ __metadata:
   linkType: hard
 
 "es-abstract@npm:^1.22.1":
-  version: 1.22.1
-  resolution: "es-abstract@npm:1.22.1"
+  version: 1.22.2
+  resolution: "es-abstract@npm:1.22.2"
   dependencies:
     array-buffer-byte-length: ^1.0.0
-    arraybuffer.prototype.slice: ^1.0.1
+    arraybuffer.prototype.slice: ^1.0.2
     available-typed-arrays: ^1.0.5
     call-bind: ^1.0.2
     es-set-tostringtag: ^2.0.1
     es-to-primitive: ^1.2.1
-    function.prototype.name: ^1.1.5
+    function.prototype.name: ^1.1.6
     get-intrinsic: ^1.2.1
     get-symbol-description: ^1.0.0
     globalthis: ^1.0.3
@@ -5390,24 +5400,24 @@ __metadata:
     is-regex: ^1.1.4
     is-shared-array-buffer: ^1.0.2
     is-string: ^1.0.7
-    is-typed-array: ^1.1.10
+    is-typed-array: ^1.1.12
     is-weakref: ^1.0.2
     object-inspect: ^1.12.3
     object-keys: ^1.1.1
     object.assign: ^4.1.4
-    regexp.prototype.flags: ^1.5.0
-    safe-array-concat: ^1.0.0
+    regexp.prototype.flags: ^1.5.1
+    safe-array-concat: ^1.0.1
     safe-regex-test: ^1.0.0
-    string.prototype.trim: ^1.2.7
-    string.prototype.trimend: ^1.0.6
-    string.prototype.trimstart: ^1.0.6
+    string.prototype.trim: ^1.2.8
+    string.prototype.trimend: ^1.0.7
+    string.prototype.trimstart: ^1.0.7
     typed-array-buffer: ^1.0.0
     typed-array-byte-length: ^1.0.0
     typed-array-byte-offset: ^1.0.0
     typed-array-length: ^1.0.4
     unbox-primitive: ^1.0.2
-    which-typed-array: ^1.1.10
-  checksum: 614e2c1c3717cb8d30b6128ef12ea110e06fd7d75ad77091ca1c5dbfb00da130e62e4bbbbbdda190eada098a22b27fe0f99ae5a1171dac2c8663b1e8be8a3a9b
+    which-typed-array: ^1.1.11
+  checksum: cc70e592d360d7d729859013dee7a610c6b27ed8630df0547c16b0d16d9fe6505a70ee14d1af08d970fdd132b3f88c9ca7815ce72c9011608abf8ab0e55fc515
   languageName: node
   linkType: hard
 
@@ -6505,7 +6515,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"function.prototype.name@npm:^1.1.5":
+"function.prototype.name@npm:^1.1.6":
   version: 1.1.6
   resolution: "function.prototype.name@npm:1.1.6"
   dependencies:
@@ -7782,7 +7792,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-typed-array@npm:^1.1.10, is-typed-array@npm:^1.1.9":
+"is-typed-array@npm:^1.1.10, is-typed-array@npm:^1.1.12, is-typed-array@npm:^1.1.9":
   version: 1.1.12
   resolution: "is-typed-array@npm:1.1.12"
   dependencies:
@@ -9997,8 +10007,8 @@ __metadata:
   linkType: hard
 
 "npm-check-updates@npm:^16.14.2":
-  version: 16.14.2
-  resolution: "npm-check-updates@npm:16.14.2"
+  version: 16.14.3
+  resolution: "npm-check-updates@npm:16.14.3"
   dependencies:
     chalk: ^5.3.0
     cli-table3: ^0.6.3
@@ -10035,7 +10045,7 @@ __metadata:
   bin:
     ncu: build/src/bin/cli.js
     npm-check-updates: build/src/bin/cli.js
-  checksum: d0bc2c7774598235686ddf9654739a0331f6788815e84b6e2eb0670913d52a286fd66889d8900f13e9e39a13413ef5992255248d30c3362b1c15e5fc1bbaa75e
+  checksum: bcb50ec13c100e53820f778d84b8c0d494604670f575137f01cba1da2c7df0b58df5091c2aff1007ed6077a4e5fbea25774b53c121b9b34816ee462db820e1f0
   languageName: node
   linkType: hard
 
@@ -11186,11 +11196,11 @@ __metadata:
   linkType: hard
 
 "regenerate-unicode-properties@npm:^10.1.0":
-  version: 10.1.0
-  resolution: "regenerate-unicode-properties@npm:10.1.0"
+  version: 10.1.1
+  resolution: "regenerate-unicode-properties@npm:10.1.1"
   dependencies:
     regenerate: ^1.4.2
-  checksum: b1a8929588433ab8b9dc1a34cf3665b3b472f79f2af6ceae00d905fc496b332b9af09c6718fb28c730918f19a00dc1d7310adbaa9b72a2ec7ad2f435da8ace17
+  checksum: b80958ef40f125275824c2c47d5081dfaefebd80bff26c76761e9236767c748a4a95a69c053fe29d2df881177f2ca85df4a71fe70a82360388b31159ef19adcf
   languageName: node
   linkType: hard
 
@@ -11227,14 +11237,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"regexp.prototype.flags@npm:^1.5.0":
-  version: 1.5.0
-  resolution: "regexp.prototype.flags@npm:1.5.0"
+"regexp.prototype.flags@npm:^1.5.1":
+  version: 1.5.1
+  resolution: "regexp.prototype.flags@npm:1.5.1"
   dependencies:
     call-bind: ^1.0.2
     define-properties: ^1.2.0
-    functions-have-names: ^1.2.3
-  checksum: c541687cdbdfff1b9a07f6e44879f82c66bbf07665f9a7544c5fd16acdb3ec8d1436caab01662d2fbcad403f3499d49ab0b77fbc7ef29ef961d98cc4bc9755b4
+    set-function-name: ^2.0.0
+  checksum: 869edff00288442f8d7fa4c9327f91d85f3b3acf8cbbef9ea7a220345cf23e9241b6def9263d2c1ebcf3a316b0aa52ad26a43a84aa02baca3381717b3e307f47
   languageName: node
   linkType: hard
 
@@ -12881,8 +12891,8 @@ __metadata:
   linkType: hard
 
 "rollup@npm:^3.2.5, rollup@npm:^3.29.1":
-  version: 3.29.1
-  resolution: "rollup@npm:3.29.1"
+  version: 3.29.2
+  resolution: "rollup@npm:3.29.2"
   dependencies:
     fsevents: ~2.3.2
   dependenciesMeta:
@@ -12890,7 +12900,7 @@ __metadata:
       optional: true
   bin:
     rollup: dist/bin/rollup
-  checksum: eb92dbb83842f46782257c93e864dd12e9eef72eb98485a70a08026e50f7b557cfff7da71f677a4bd62906e597cc99284bf152b876f814a95b61f5a618a0f43e
+  checksum: 2eacb5a2522cb41e46e0bd78cca2c2da29b09b1fbd5b7c6ebb0afb3864af125a06fba528dfd6699704e49384e106ff58b359ce4abef61d7db12a7840d3b56e54
   languageName: node
   linkType: hard
 
@@ -12937,7 +12947,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"safe-array-concat@npm:^1.0.0":
+"safe-array-concat@npm:^1.0.1":
   version: 1.0.1
   resolution: "safe-array-concat@npm:1.0.1"
   dependencies:
@@ -13048,6 +13058,17 @@ __metadata:
   version: 2.0.0
   resolution: "set-blocking@npm:2.0.0"
   checksum: 6e65a05f7cf7ebdf8b7c75b101e18c0b7e3dff4940d480efed8aad3a36a4005140b660fa1d804cb8bce911cac290441dc728084a30504d3516ac2ff7ad607b02
+  languageName: node
+  linkType: hard
+
+"set-function-name@npm:^2.0.0":
+  version: 2.0.1
+  resolution: "set-function-name@npm:2.0.1"
+  dependencies:
+    define-data-property: ^1.0.1
+    functions-have-names: ^1.2.3
+    has-property-descriptors: ^1.0.0
+  checksum: 4975d17d90c40168eee2c7c9c59d023429f0a1690a89d75656306481ece0c3c1fb1ebcc0150ea546d1913e35fbd037bace91372c69e543e51fc5d1f31a9fa126
   languageName: node
   linkType: hard
 
@@ -13500,7 +13521,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"string.prototype.trim@npm:^1.2.7":
+"string.prototype.trim@npm:^1.2.8":
   version: 1.2.8
   resolution: "string.prototype.trim@npm:1.2.8"
   dependencies:
@@ -13511,7 +13532,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"string.prototype.trimend@npm:^1.0.6":
+"string.prototype.trimend@npm:^1.0.7":
   version: 1.0.7
   resolution: "string.prototype.trimend@npm:1.0.7"
   dependencies:
@@ -13522,7 +13543,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"string.prototype.trimstart@npm:^1.0.6":
+"string.prototype.trimstart@npm:^1.0.7":
   version: 1.0.7
   resolution: "string.prototype.trimstart@npm:1.0.7"
   dependencies:
@@ -14337,6 +14358,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"types-package-json@npm:^2.0.39":
+  version: 2.0.39
+  resolution: "types-package-json@npm:2.0.39"
+  checksum: 5b575dbfad03a29e509cfdec0e8b32cceffd4a3416a47899541ae0658cb904a1c177930148899936f7e617ddf3cea757f09860b854dfa055a1185f15e1f43e48
+  languageName: node
+  linkType: hard
+
 "typescript@npm:^5.2.2":
   version: 5.2.2
   resolution: "typescript@npm:5.2.2"
@@ -14985,7 +15013,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"which-typed-array@npm:^1.1.10, which-typed-array@npm:^1.1.11":
+"which-typed-array@npm:^1.1.11":
   version: 1.1.11
   resolution: "which-typed-array@npm:1.1.11"
   dependencies:

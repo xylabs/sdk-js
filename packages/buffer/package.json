@@ -24,34 +24,15 @@
       },
       "import": {
         "node": {
-          "types": "./dist/nodeIndex.d.mts",
+          "types": "./dist/nodeIndex.d.ts",
           "default": "./dist/nodeIndex.mjs"
         },
         "types": "./dist/index.d.mts",
         "default": "./dist/index.mjs"
       }
     },
-    "./dist/docs.json": {
-      "default": "./dist/docs.json"
-    },
-    "./cjs": {
-      "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
-    },
     "./docs": {
       "default": "./dist/docs.json"
-    },
-    "./esm": {
-      "types": "./dist/index.d.mts",
-      "default": "./dist/index.mjs"
-    },
-    "./node/cjs": {
-      "types": "./dist/nodeIndex.d.ts",
-      "default": "./dist/nodeIndex.js"
-    },
-    "./node/esm": {
-      "types": "./dist/nodeIndex.d.mts",
-      "default": "./dist/nodeIndex.mjs"
     },
     "./package.json": "./package.json"
   },
@@ -68,10 +49,10 @@
     "buffer": "^6.0.3"
   },
   "devDependencies": {
-    "@types/node": "^20.6.0",
-    "@xylabs/ts-scripts-yarn3": "^3.0.0-rc.16",
-    "@xylabs/tsconfig": "^3.0.0-rc.16",
-    "@xylabs/tsconfig-dom": "^3.0.0-rc.16",
+    "@types/node": "^20.6.1",
+    "@xylabs/ts-scripts-yarn3": "^3.0.0-rc.27",
+    "@xylabs/tsconfig": "^3.0.0-rc.27",
+    "@xylabs/tsconfig-dom": "^3.0.0-rc.27",
     "typescript": "^5.2.2"
   },
   "publishConfig": {

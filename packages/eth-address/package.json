@@ -55,9 +55,10 @@
     "@xylabs/bignumber": "workspace:~"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.0.0-rc.16",
-    "@xylabs/tsconfig": "^3.0.0-rc.16",
-    "@xylabs/tsconfig-jest": "^3.0.0-rc.16"
+    "@xylabs/ts-scripts-yarn3": "^3.0.0-rc.27",
+    "@xylabs/tsconfig": "^3.0.0-rc.27",
+    "@xylabs/tsconfig-jest": "^3.0.0-rc.27",
+    "typescript": "^5.2.2"
   },
   "publishConfig": {
     "access": "public"

@@ -64,5 +64,5 @@
   },
   "sideEffects": false,
   "types": "./dist/esmIndex.d.ts",
-  "version": "2.11.2"
+  "version": "2.11.3"
 }

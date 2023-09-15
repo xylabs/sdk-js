@@ -55,9 +55,9 @@
     "@xylabs/bignumber": "workspace:~"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.0.0-rc.15",
-    "@xylabs/tsconfig": "^3.0.0-rc.15",
-    "@xylabs/tsconfig-jest": "^3.0.0-rc.15"
+    "@xylabs/ts-scripts-yarn3": "^3.0.0-rc.16",
+    "@xylabs/tsconfig": "^3.0.0-rc.16",
+    "@xylabs/tsconfig-jest": "^3.0.0-rc.16"
   },
   "publishConfig": {
     "access": "public"
@@ -67,6 +67,6 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.11.0",
+  "version": "2.11.1",
   "packageManager": "yarn@3.3.1"
 }

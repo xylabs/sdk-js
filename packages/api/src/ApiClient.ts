@@ -1,7 +1,7 @@
 import { ApiStage } from './ApiStage'
 
 abstract class ApiClient {
-  public constructor(
+  constructor(
     protected token?: string | null,
     protected stage?: ApiStage,
   ) {

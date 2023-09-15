@@ -1,26 +1,52 @@
 {
   "root": true,
+  "extends": [
+    "@xylabs"
+  ],
   "ignorePatterns": [
     "**/dist",
     "**/node_modules",
     "**/docs",
     "coverage",
     "docker",
+    "nftData",
     "**/testData.json",
     "swagger.json",
-    ".yarn",
-    "dist",
-    "docs"
-  ],
-  "extends": [
-    "@xylabs"
+    ".yarn"
   ],
   "rules": {
-    "import/no-nodejs-modules": ["warn"],
+    "@typescript-eslint/explicit-member-accessibility": ["warn", { "accessibility": "no-public" }],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "paths": [
+          "@xyo-network/modules",
+          "@xyo-network/node",
+          "@xyo-network/sdk",
+          "@xyo-network/plugins",
+          "@xyo-network/protocol",
+          "react-player",
+          "filepond",
+          "aos",
+          "react-icons",
+          ".",
+          "..",
+          "../..",
+          "../../..",
+          "../../../..",
+          "../../../../..",
+          "../../../../../..",
+          "../../../../../../..",
+        ]
+      }
+    ],
     "import/no-internal-modules": [
       "warn", {
         "allow": [
-
+          "source-map-support/*",
+          "lodash/*",
+          "aws-sdk/**/*",
+          "types/*"
         ]
       }
     ]

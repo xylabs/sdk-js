@@ -12,7 +12,7 @@ class ApiEndpoint<T> {
     this.path = path
   }
 
-  public get value() {
+  get value() {
     return this._value
   }
 
@@ -24,7 +24,7 @@ class ApiEndpoint<T> {
     return `${this.config.apiDomain}/${this.path}`
   }
 
-  public async fetch() {
+  async fetch() {
     const response = await axios.get<T>(this.url, { headers: this.headers })
     if (response.status === 200) {
       this._value = response.data
@@ -34,11 +34,11 @@ class ApiEndpoint<T> {
     return this._value
   }
 
-  public async get() {
+  async get() {
     return this._value ?? (await this.fetch())
   }
 
-  public async insert(value: T) {
+  async insert(value: T) {
     const response = await axios.post<T>(this.url, value, { headers: this.headers })
     if (response.status === 200) {
       this._value = response.data

@@ -9,7 +9,7 @@ export const isEthAddress = (obj: { type: string }) => obj?.type === EthAddress.
 export class EthAddress {
   static type = 'EthAddress'
 
-  public type = EthAddress.type
+  type = EthAddress.type
 
   private address: BigNumber
 
@@ -30,7 +30,7 @@ export class EthAddress {
     }
   }
 
-  public equals(address?: EthAddress | string | null): boolean {
+  equals(address?: EthAddress | string | null): boolean {
     if (address) {
       let inAddress: EthAddress
       if (typeof address === 'string') {
@@ -43,27 +43,27 @@ export class EthAddress {
     return false
   }
 
-  public toBigNumber() {
+  toBigNumber() {
     return this.address
   }
 
-  public toHex() {
+  toHex() {
     return padHex(this.address.toString(16), 20)
   }
 
-  public toJSON(): string {
+  toJSON(): string {
     return `0x${this.toHex()}`
   }
 
-  public toLowerCaseString() {
+  toLowerCaseString() {
     return this.toString().toLowerCase()
   }
 
-  public toShortString(length = 2) {
+  toShortString(length = 2) {
     return `0x${ellipsize(this.toHex(), length)}`
   }
 
-  public toString() {
+  toString() {
     return `0x${this.toHex()}`
   }
 }

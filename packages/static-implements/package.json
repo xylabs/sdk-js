@@ -48,11 +48,9 @@
     "esm"
   ],
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.0.0-rc.4",
-    "@xylabs/tsconfig": "^3.0.0-rc.4",
+    "@xylabs/ts-scripts-yarn3": "^3.0.0-rc.15",
+    "@xylabs/tsconfig": "^3.0.0-rc.15",
     "@xylabs/tsconfig-jest": "~2.19.12",
-    "publint": "^0.2.2",
-    "tsup": "^7.2.0",
     "typescript": "^5.2.2"
   },
   "publishConfig": {
@@ -63,5 +61,5 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.10.18"
+  "version": "2.11.0"
 }

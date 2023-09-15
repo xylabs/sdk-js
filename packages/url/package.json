@@ -61,8 +61,8 @@
     "buffer": "^6.0.3"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^2.19.12",
-    "@xylabs/tsconfig": "^2.19.12",
+    "@xylabs/ts-scripts-yarn3": "^3.0.0-rc.4",
+    "@xylabs/tsconfig": "^3.0.0-rc.4",
     "@xylabs/tsconfig-dom": "^2.19.12",
     "publint": "^0.2.2",
     "tsup": "^7.2.0"
@@ -73,10 +73,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/xylabs/sdk-js.git"
-  },
-  "scripts": {
-    "package-compile": "tsup && publint",
-    "package-recompile": "tsup && publint"
   },
   "sideEffects": false,
   "version": "2.10.18"

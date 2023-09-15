@@ -23,7 +23,4 @@ function assertEx<T, R extends Error, P extends string | AssertExMessageFunc<T> 
   throw Error(messageOrFunc)
 }
 
-// eslint-disable-next-line import/no-default-export
-export default assertEx
-
 export { assertEx }

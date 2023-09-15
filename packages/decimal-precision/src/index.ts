@@ -6,6 +6,3 @@ export const toDecimalPrecision = (value: number, digits: number) => {
   }
   return result.toFixed(fixed)
 }
-
-// eslint-disable-next-line import/no-default-export
-export default toDecimalPrecision

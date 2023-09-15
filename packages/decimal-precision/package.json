@@ -40,10 +40,6 @@
   },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
-  "scripts": {
-    "package-compile": "tsup && publint",
-    "package-recompile": "tsup && publint"
-  },
   "homepage": "https://xylabs.com",
   "keywords": [
     "xylabs",
@@ -52,8 +48,8 @@
     "esm"
   ],
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^2.19.12",
-    "@xylabs/tsconfig": "^2.19.12",
+    "@xylabs/ts-scripts-yarn3": "^3.0.0-rc.4",
+    "@xylabs/tsconfig": "^3.0.0-rc.4",
     "publint": "^0.2.2",
     "tsup": "^7.2.0"
   },

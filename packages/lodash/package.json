@@ -64,7 +64,7 @@
   },
   "sideEffects": false,
   "types": "./dist/esmIndex.d.ts",
-  "version": "2.11.3",
+  "version": "2.11.4",
   "xy": {
     "compile": {
       "depth": 1

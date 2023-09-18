@@ -51,8 +51,8 @@
   "devDependencies": {
     "@types/lodash": "^4.14.198",
     "@types/lodash-es": "^4.17.9",
-    "@xylabs/ts-scripts-yarn3": "^3.0.0",
-    "@xylabs/tsconfig": "^3.0.0",
+    "@xylabs/ts-scripts-yarn3": "^3.0.20",
+    "@xylabs/tsconfig": "^3.0.20",
     "typescript": "^5.2.2"
   },
   "publishConfig": {
@@ -64,5 +64,10 @@
   },
   "sideEffects": false,
   "types": "./dist/esmIndex.d.ts",
-  "version": "2.11.3"
+  "version": "2.11.3",
+  "xy": {
+    "compile": {
+      "depth": 1
+    }
+  }
 }

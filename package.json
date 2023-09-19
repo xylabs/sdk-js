@@ -101,6 +101,6 @@
     "uuid": "^8"
   },
   "sideEffects": false,
-  "version": "2.11.5",
+  "version": "2.11.6",
   "packageManager": "yarn@3.6.3"
 }

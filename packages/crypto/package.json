@@ -1,6 +1,6 @@
 {
   "license": "LGPL-3.0",
-  "name": "@xylabs/promise",
+  "name": "@xylabs/crypto",
   "author": {
     "email": "support@xylabs.com",
     "name": "XY Labs Development Team",
@@ -12,29 +12,27 @@
   },
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "docs": "dist/docs.json",
-  "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "require": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
+        "node": {
+          "types": "./dist/nodeIndex.d.ts",
+          "default": "./dist/nodeIndex.js"
+        },
+        "types": "./dist/browserIndex.d.ts",
+        "default": "./dist/browserIndex.js"
       },
       "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
+        "node": {
+          "types": "./dist/nodeIndex.d.ts",
+          "default": "./dist/nodeIndex.mjs"
+        },
+        "types": "./dist/browserIndex.d.mts",
+        "default": "./dist/browserIndex.mjs"
       }
-    },
-    "./dist/docs.json": {
-      "default": "./dist/docs.json"
-    },
-    "./cjs": {
-      "default": "./dist/index.js"
     },
     "./docs": {
       "default": "./dist/docs.json"
-    },
-    "./esm": {
-      "default": "./dist/index.mjs"
     },
     "./package.json": "./package.json"
   },
@@ -45,11 +43,18 @@
     "xylabs",
     "utility",
     "typescript",
-    "esm"
+    "esm",
+    "crypto"
   ],
+  "dependencies": {
+    "crypto-js": "^4.1.1"
+  },
   "devDependencies": {
+    "@types/crypto-js": "^4.1.2",
+    "@types/node": "^20.6.2",
     "@xylabs/ts-scripts-yarn3": "^3.0.28",
     "@xylabs/tsconfig": "^3.0.28",
+    "@xylabs/tsconfig-dom": "^3.0.28",
     "typescript": "^5.2.2"
   },
   "publishConfig": {
@@ -60,5 +65,10 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.11.5"
+  "version": "2.11.5",
+  "xy": {
+    "compile": {
+      "depth": 1
+    }
+  }
 }

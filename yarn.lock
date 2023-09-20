@@ -3286,6 +3286,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@xylabs/set@workspace:packages/set":
+  version: 0.0.0-use.local
+  resolution: "@xylabs/set@workspace:packages/set"
+  dependencies:
+    "@xylabs/ts-scripts-yarn3": ^3.0.28
+    "@xylabs/tsconfig": ^3.0.28
+    typescript: ^5.2.2
+  languageName: unknown
+  linkType: soft
+
 "@xylabs/static-implements@workspace:packages/static-implements":
   version: 0.0.0-use.local
   resolution: "@xylabs/static-implements@workspace:packages/static-implements"

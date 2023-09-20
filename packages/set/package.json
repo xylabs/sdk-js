@@ -1,0 +1,72 @@
+{
+  "license": "LGPL-3.0",
+  "name": "@xylabs/set",
+  "author": {
+    "email": "support@xylabs.com",
+    "name": "XY Labs Development Team",
+    "url": "https://xylabs.com"
+  },
+  "bugs": {
+    "email": "support@xylabs.com",
+    "url": "https://github.com/xylabs/sdk-js/issues"
+  },
+  "workspaces": [
+    "packages/**/*"
+  ],
+  "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
+  "docs": "dist/docs.json",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      }
+    },
+    "./dist/docs.json": {
+      "default": "./dist/docs.json"
+    },
+    "./cjs": {
+      "default": "./dist/index.js"
+    },
+    "./docs": {
+      "default": "./dist/docs.json"
+    },
+    "./esm": {
+      "default": "./dist/index.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "homepage": "https://xylabs.com",
+  "keywords": [
+    "xylabs",
+    "utility",
+    "typescript",
+    "esm"
+  ],
+  "optionalDependencies": {
+    "rollbar": "^2.26.2"
+  },
+  "devDependencies": {
+    "@xylabs/ts-scripts-yarn3": "^3.0.28",
+    "@xylabs/tsconfig": "^3.0.28",
+    "rollbar": "^2.26.2",
+    "typescript": "^5.2.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xylabs/sdk-js.git"
+  },
+  "sideEffects": false,
+  "version": "2.11.6",
+  "packageManager": "yarn@3.3.1"
+}

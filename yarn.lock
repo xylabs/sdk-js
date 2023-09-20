@@ -3292,11 +3292,7 @@ __metadata:
   dependencies:
     "@xylabs/ts-scripts-yarn3": ^3.0.28
     "@xylabs/tsconfig": ^3.0.28
-    rollbar: ^2.26.2
     typescript: ^5.2.2
-  dependenciesMeta:
-    rollbar:
-      optional: true
   languageName: unknown
   linkType: soft
 

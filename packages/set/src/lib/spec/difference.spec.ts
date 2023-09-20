@@ -9,7 +9,7 @@ const cases = [
 ]
 
 describe('difference', () => {
-  test.each(cases)('calculates the difference', (a, b, expected) => {
+  test.each(cases)('calculates the difference of the two sets', (a, b, expected) => {
     expect(difference(a, b)).toEqual(expected)
   })
 })

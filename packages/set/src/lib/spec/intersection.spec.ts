@@ -1,10 +1,10 @@
 import { intersection } from '../intersection'
 
 const cases = [
-  // Difference is commutative
+  // Intersection is commutative
   [new Set([1, 2, 3]), new Set([2, 3, 4]), new Set([2, 3])],
   [new Set([2, 3, 4]), new Set([1, 2, 3]), new Set([2, 3])],
-  // No difference yields empty set
+  // Intersection of identical sets yields same set
   [new Set([1, 2, 3]), new Set([1, 2, 3]), new Set([1, 2, 3])],
 ]
 

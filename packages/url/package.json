@@ -12,44 +12,41 @@
   },
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "docs": "dist/docs.json",
-  "types": "dist/index.d.ts",
+  "types": "dist/node/index.d.ts",
   "exports": {
     ".": {
       "require": {
         "browser": {
-          "types": "./dist/browserIndex.d.ts",
-          "default": "./dist/browserIndex.js"
+          "types": "./dist/browser/index.d.ts",
+          "default": "./dist/browser/index.js"
         },
         "node": {
-          "types": "./dist/nodeIndex.d.ts",
-          "default": "./dist/nodeIndex.js"
+          "types": "./dist/node/index.d.ts",
+          "default": "./dist/node/index.js"
         },
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
+        "types": "./dist/node/index.d.ts",
+        "default": "./dist/node/index.js"
       },
       "import": {
         "browser": {
-          "types": "./dist/browserIndex.d.mts",
-          "default": "./dist/browserIndex.mjs"
+          "types": "./dist/browser/index.d.mts",
+          "default": "./dist/browser/index.mjs"
         },
         "node": {
-          "types": "./dist/nodeIndex.d.mts",
-          "default": "./dist/nodeIndex.mjs"
+          "types": "./dist/node/index.d.mts",
+          "default": "./dist/node/index.mjs"
         },
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
+        "types": "./dist/node/index.d.mts",
+        "default": "./dist/node/index.mjs"
       }
-    },
-    "./dist/docs.json": {
-      "default": "./dist/docs.json"
     },
     "./docs": {
       "default": "./dist/docs.json"
     },
     "./package.json": "./package.json"
   },
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "main": "dist/node/index.js",
+  "module": "dist/node/index.mjs",
   "homepage": "https://xylabs.com",
   "keywords": [
     "xylabs",
@@ -61,9 +58,9 @@
     "buffer": "^6.0.3"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.0.28",
-    "@xylabs/tsconfig": "^3.0.28",
-    "@xylabs/tsconfig-dom": "^3.0.28",
+    "@xylabs/ts-scripts-yarn3": "^3.0.55",
+    "@xylabs/tsconfig": "^3.0.55",
+    "@xylabs/tsconfig-dom": "^3.0.55",
     "typescript": "^5.2.2"
   },
   "publishConfig": {

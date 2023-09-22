@@ -12,23 +12,32 @@
   },
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "docs": "dist/docs.json",
+  "types": "dist/node/index.d.ts",
   "exports": {
     ".": {
       "require": {
-        "node": {
-          "types": "./dist/nodeIndex.d.ts",
-          "default": "./dist/nodeIndex.js"
+        "browser": {
+          "types": "./dist/browser/index.d.ts",
+          "default": "./dist/browser/index.js"
         },
-        "types": "./dist/browserIndex.d.ts",
-        "default": "./dist/browserIndex.js"
+        "node": {
+          "types": "./dist/node/index.d.ts",
+          "default": "./dist/node/index.js"
+        },
+        "types": "./dist/node/index.d.ts",
+        "default": "./dist/node/index.js"
       },
       "import": {
-        "node": {
-          "types": "./dist/nodeIndex.d.ts",
-          "default": "./dist/nodeIndex.mjs"
+        "browser": {
+          "types": "./dist/browser/index.d.mts",
+          "default": "./dist/browser/index.mjs"
         },
-        "types": "./dist/browserIndex.d.mts",
-        "default": "./dist/browserIndex.mjs"
+        "node": {
+          "types": "./dist/node/index.d.mts",
+          "default": "./dist/node/index.mjs"
+        },
+        "types": "./dist/node/index.d.mts",
+        "default": "./dist/node/index.mjs"
       }
     },
     "./docs": {
@@ -36,8 +45,8 @@
     },
     "./package.json": "./package.json"
   },
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "main": "dist/node/index.js",
+  "module": "dist/node/index.mjs",
   "homepage": "https://xylabs.com",
   "keywords": [
     "xylabs",
@@ -52,9 +61,9 @@
   "devDependencies": {
     "@types/crypto-js": "^4.1.2",
     "@types/node": "^20.6.3",
-    "@xylabs/ts-scripts-yarn3": "^3.0.28",
-    "@xylabs/tsconfig": "^3.0.28",
-    "@xylabs/tsconfig-dom": "^3.0.28",
+    "@xylabs/ts-scripts-yarn3": "^3.0.55",
+    "@xylabs/tsconfig": "^3.0.55",
+    "@xylabs/tsconfig-dom": "^3.0.55",
     "typescript": "^5.2.2"
   },
   "publishConfig": {

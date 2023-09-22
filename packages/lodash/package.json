@@ -12,27 +12,25 @@
   },
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "docs": "dist/docs.json",
+  "types": "dist/node/index.d.ts",
   "exports": {
     ".": {
       "require": {
-        "types": "./dist/esmIndex.d.ts",
-        "default": "./dist/cjsIndex.js"
+        "types": "./dist/node/index.d.ts",
+        "default": "./dist/node/index.js"
       },
       "import": {
-        "types": "./dist/esmIndex.d.mts",
-        "default": "./dist/esmIndex.mjs"
+        "types": "./dist/node/index.d.mts",
+        "default": "./dist/node/index.mjs"
       }
-    },
-    "./dist/docs.json": {
-      "default": "./dist/docs.json"
     },
     "./docs": {
       "default": "./dist/docs.json"
     },
     "./package.json": "./package.json"
   },
-  "main": "dist/cjsIndex.js",
-  "module": "dist/esmIndex.mjs",
+  "main": "dist/node/index.js",
+  "module": "dist/node/index.mjs",
   "homepage": "https://xylabs.com",
   "keywords": [
     "xylabs",
@@ -51,8 +49,8 @@
   "devDependencies": {
     "@types/lodash": "^4.14.198",
     "@types/lodash-es": "^4.17.9",
-    "@xylabs/ts-scripts-yarn3": "^3.0.28",
-    "@xylabs/tsconfig": "^3.0.28",
+    "@xylabs/ts-scripts-yarn3": "^3.0.55",
+    "@xylabs/tsconfig": "^3.0.55",
     "typescript": "^5.2.2"
   },
   "publishConfig": {
@@ -63,7 +61,6 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "types": "./dist/esmIndex.d.ts",
   "version": "2.11.7",
   "xy": {
     "compile": {

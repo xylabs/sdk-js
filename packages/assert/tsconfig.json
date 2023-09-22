@@ -1,9 +1,7 @@
 {
   "compilerOptions": {
     "declaration": true,
-    "declarationDir": "dist",
     "declarationMap": true,
-    "incremental": false,
     "typeRoots": []
   },
   "exclude": ["dist", "docs", "packages", "node_modules"],

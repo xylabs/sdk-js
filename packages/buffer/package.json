@@ -12,32 +12,32 @@
   },
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "docs": "dist/docs.json",
-  "types": "dist/node/index.d.ts",
+  "types": "dist/node/nodeIndex.d.ts",
   "exports": {
     ".": {
       "require": {
         "browser": {
-          "types": "./dist/browser/index.d.ts",
-          "default": "./dist/browser/index.js"
+          "types": "./dist/browser/browserIndex.d.ts",
+          "default": "./dist/browser/browserIndex.js"
         },
         "node": {
-          "types": "./dist/node/index.d.ts",
-          "default": "./dist/node/index.js"
+          "types": "./dist/node/nodeIndex.d.ts",
+          "default": "./dist/node/nodeIndex.js"
         },
-        "types": "./dist/node/index.d.ts",
-        "default": "./dist/node/index.js"
+        "types": "./dist/node/nodeIndex.d.ts",
+        "default": "./dist/node/nodeIndex.js"
       },
       "import": {
         "browser": {
-          "types": "./dist/browser/index.d.mts",
-          "default": "./dist/browser/index.mjs"
+          "types": "./dist/browser/browserIndex.d.mts",
+          "default": "./dist/browser/browserIndex.mjs"
         },
         "node": {
-          "types": "./dist/node/index.d.mts",
-          "default": "./dist/node/index.mjs"
+          "types": "./dist/node/nodeIndex.d.mts",
+          "default": "./dist/node/nodeIndex.mjs"
         },
-        "types": "./dist/node/index.d.mts",
-        "default": "./dist/node/index.mjs"
+        "types": "./dist/node/nodeIndex.d.mts",
+        "default": "./dist/node/nodeIndex.mjs"
       }
     },
     "./docs": {
@@ -45,8 +45,8 @@
     },
     "./package.json": "./package.json"
   },
-  "main": "dist/node/index.js",
-  "module": "dist/node/index.mjs",
+  "main": "dist/node/nodeIndex.js",
+  "module": "dist/node/nodeIndex.mjs",
   "homepage": "https://xylabs.com",
   "keywords": [
     "xylabs",
@@ -72,7 +72,7 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.11.8",
+  "version": "2.11.9",
   "xy": {
     "compile": {
       "depth": 1

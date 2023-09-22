@@ -12,11 +12,11 @@
   },
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "docs": "dist/docs.json",
-  "types": "dist/node/cjsIndex.d.ts",
+  "types": "dist/node/esmIndex.d.ts",
   "exports": {
     ".": {
       "require": {
-        "types": "./dist/node/cjsIndex.d.ts",
+        "types": "./dist/node/esmIndex.d.ts",
         "default": "./dist/node/cjsIndex.js"
       },
       "import": {
@@ -61,7 +61,7 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.11.10",
+  "version": "2.11.11",
   "xy": {
     "compile": {
       "depth": 1

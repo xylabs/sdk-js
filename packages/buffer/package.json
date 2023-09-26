@@ -12,32 +12,32 @@
   },
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "docs": "dist/docs.json",
-  "types": "dist/node/nodeIndex.d.ts",
+  "types": "dist/node/node/nodeIndex.d.ts",
   "exports": {
     ".": {
       "require": {
         "browser": {
-          "types": "./dist/browser/browserIndex.d.ts",
-          "default": "./dist/browser/browserIndex.js"
+          "types": "./dist/browser/browser/browserIndex.d.ts",
+          "default": "./dist/browser/browser/browserIndex.js"
         },
         "node": {
-          "types": "./dist/node/nodeIndex.d.ts",
-          "default": "./dist/node/nodeIndex.js"
+          "types": "./dist/node/node/nodeIndex.d.ts",
+          "default": "./dist/node/node/nodeIndex.js"
         },
-        "types": "./dist/node/nodeIndex.d.ts",
-        "default": "./dist/node/nodeIndex.js"
+        "types": "./dist/node/node/nodeIndex.d.ts",
+        "default": "./dist/node/node/nodeIndex.js"
       },
       "import": {
         "browser": {
-          "types": "./dist/browser/browserIndex.d.mts",
-          "default": "./dist/browser/browserIndex.mjs"
+          "types": "./dist/browser/browser/browserIndex.d.mts",
+          "default": "./dist/browser/browser/browserIndex.mjs"
         },
         "node": {
-          "types": "./dist/node/nodeIndex.d.mts",
-          "default": "./dist/node/nodeIndex.mjs"
+          "types": "./dist/node/node/nodeIndex.d.mts",
+          "default": "./dist/node/node/nodeIndex.mjs"
         },
-        "types": "./dist/node/nodeIndex.d.mts",
-        "default": "./dist/node/nodeIndex.mjs"
+        "types": "./dist/node/node/nodeIndex.d.mts",
+        "default": "./dist/node/node/nodeIndex.mjs"
       }
     },
     "./docs": {
@@ -45,8 +45,8 @@
     },
     "./package.json": "./package.json"
   },
-  "main": "dist/node/nodeIndex.js",
-  "module": "dist/node/nodeIndex.mjs",
+  "main": "dist/node/node/nodeIndex.js",
+  "module": "dist/node/node/nodeIndex.mjs",
   "homepage": "https://xylabs.com",
   "keywords": [
     "xylabs",
@@ -72,7 +72,7 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.11.13",
+  "version": "2.11.14",
   "xy": {
     "compile": {
       "depth": 1

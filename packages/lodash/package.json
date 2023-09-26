@@ -49,8 +49,8 @@
   "devDependencies": {
     "@types/lodash": "^4.14.199",
     "@types/lodash-es": "^4.17.9",
-    "@xylabs/ts-scripts-yarn3": "^3.0.62",
-    "@xylabs/tsconfig": "^3.0.62",
+    "@xylabs/ts-scripts-yarn3": "^3.0.65",
+    "@xylabs/tsconfig": "^3.0.65",
     "typescript": "^5.2.2"
   },
   "publishConfig": {
@@ -61,7 +61,7 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.11.16",
+  "version": "2.11.17",
   "xy": {
     "compile": {
       "depth": 1

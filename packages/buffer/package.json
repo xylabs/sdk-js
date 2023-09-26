@@ -15,27 +15,15 @@
   "types": "dist/node/node/index.d.ts",
   "exports": {
     ".": {
+      "browser": {
+        "types": "./dist/browser/browser/index.d.ts",
+        "default": "./dist/browser/browser/index.js"
+      },
       "require": {
-        "browser": {
-          "types": "./dist/browser/browser/index.d.ts",
-          "default": "./dist/browser/browser/index.js"
-        },
-        "node": {
-          "types": "./dist/node/node/index.d.ts",
-          "default": "./dist/node/node/index.js"
-        },
         "types": "./dist/node/node/index.d.ts",
         "default": "./dist/node/node/index.js"
       },
       "import": {
-        "browser": {
-          "types": "./dist/browser/browser/index.d.mts",
-          "default": "./dist/browser/browser/index.mjs"
-        },
-        "node": {
-          "types": "./dist/node/node/index.d.mts",
-          "default": "./dist/node/node/index.mjs"
-        },
         "types": "./dist/node/node/index.d.mts",
         "default": "./dist/node/node/index.mjs"
       }
@@ -72,7 +60,7 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.11.15",
+  "version": "2.11.16",
   "xy": {
     "compile": {
       "depth": 1

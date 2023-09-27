@@ -15,7 +15,7 @@
   "exports": {
     ".": {
       "require": {
-        "types": "./dist/node/cjsIndex.d.ts",
+        "types": "./dist/node/esmIndex.d.ts",
         "default": "./dist/node/cjsIndex.cjs"
       },
       "import": {
@@ -29,7 +29,7 @@
     "./package.json": "./package.json"
   },
   "main": "./dist/node/cjsIndex.cjs",
-  "types": "./dist/node/cjsIndex.d.ts",
+  "types": "./dist/node/esmIndex.d.ts",
   "module": "./dist/node/esmIndex.js",
   "homepage": "https://xylabs.com",
   "keywords": [
@@ -61,7 +61,7 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.12.7",
+  "version": "2.12.8",
   "xy": {
     "compile": {
       "depth": 1

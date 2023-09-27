@@ -15,7 +15,7 @@
   "exports": {
     ".": {
       "require": {
-        "types": "./dist/node/esmIndex.d.ts",
+        "types": "./dist/node/esmIndex.d.cts",
         "default": "./dist/node/cjsIndex.cjs"
       },
       "import": {
@@ -49,8 +49,8 @@
   "devDependencies": {
     "@types/lodash": "^4.14.199",
     "@types/lodash-es": "^4.17.9",
-    "@xylabs/ts-scripts-yarn3": "^3.0.74",
-    "@xylabs/tsconfig": "^3.0.74",
+    "@xylabs/ts-scripts-yarn3": "^3.0.75",
+    "@xylabs/tsconfig": "^3.0.75",
     "typescript": "^5.2.2"
   },
   "publishConfig": {
@@ -61,7 +61,7 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.12.8",
+  "version": "2.12.9",
   "xy": {
     "compile": {
       "depth": 1

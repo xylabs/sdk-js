@@ -16,7 +16,7 @@
     ".": {
       "browser": {
         "require": {
-          "types": "./dist/browser/browser/index.d.ts",
+          "types": "./dist/browser/browser/index.d.cts",
           "default": "./dist/browser/index.cjs"
         },
         "import": {
@@ -25,7 +25,7 @@
         }
       },
       "require": {
-        "types": "./dist/node/node/index.d.ts",
+        "types": "./dist/node/node/index.d.cts",
         "default": "./dist/node/index.cjs"
       },
       "import": {
@@ -53,9 +53,9 @@
   },
   "devDependencies": {
     "@types/node": "^20.7.0",
-    "@xylabs/ts-scripts-yarn3": "^3.0.74",
-    "@xylabs/tsconfig": "^3.0.74",
-    "@xylabs/tsconfig-dom": "^3.0.74",
+    "@xylabs/ts-scripts-yarn3": "^3.0.75",
+    "@xylabs/tsconfig": "^3.0.75",
+    "@xylabs/tsconfig-dom": "^3.0.75",
     "typescript": "^5.2.2"
   },
   "publishConfig": {
@@ -66,7 +66,7 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.12.8",
+  "version": "2.12.9",
   "xy": {
     "compile": {
       "browser": {

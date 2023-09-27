@@ -15,7 +15,7 @@
   "exports": {
     ".": {
       "require": {
-        "types": "./dist/node/index.d.ts",
+        "types": "./dist/node/index.d.cts",
         "default": "./dist/node/index.cjs"
       },
       "import": {
@@ -42,8 +42,8 @@
     "@xylabs/delay": "workspace:~"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.0.74",
-    "@xylabs/tsconfig": "^3.0.74",
+    "@xylabs/ts-scripts-yarn3": "^3.0.75",
+    "@xylabs/tsconfig": "^3.0.75",
     "typescript": "^5.2.2"
   },
   "publishConfig": {
@@ -54,6 +54,6 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.12.8",
+  "version": "2.12.9",
   "type": "module"
 }

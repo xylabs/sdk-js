@@ -38,6 +38,9 @@
     },
     "./package.json": "./package.json"
   },
+  "main": "./dist/node/index.cjs",
+  "types": "./dist/node/index.d.ts",
+  "module": "./dist/node/index.js",
   "homepage": "https://xylabs.com",
   "keywords": [
     "xylabs",
@@ -63,7 +66,7 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.12.1",
+  "version": "2.12.2",
   "xy": {
     "compile": {
       "browser": {

@@ -12,16 +12,15 @@
   },
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "docs": "dist/docs.json",
-  "types": "dist/node/esmIndex.d.ts",
   "exports": {
     ".": {
       "require": {
         "types": "./dist/node/esmIndex.d.ts",
-        "default": "./dist/node/cjsIndex.js"
+        "default": "./dist/node/cjsIndex.cjs"
       },
       "import": {
         "types": "./dist/node/esmIndex.d.mts",
-        "default": "./dist/node/esmIndex.mjs"
+        "default": "./dist/node/esmIndex.js"
       }
     },
     "./docs": {
@@ -29,8 +28,6 @@
     },
     "./package.json": "./package.json"
   },
-  "main": "dist/node/cjsIndex.js",
-  "module": "dist/node/esmIndex.mjs",
   "homepage": "https://xylabs.com",
   "keywords": [
     "xylabs",
@@ -66,5 +63,6 @@
     "compile": {
       "depth": 1
     }
-  }
+  },
+  "type": "module"
 }

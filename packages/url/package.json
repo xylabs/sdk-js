@@ -12,7 +12,6 @@
   },
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "docs": "dist/docs.json",
-  "types": "dist/node/node/index.d.ts",
   "exports": {
     ".": {
       "browser": {
@@ -21,17 +20,17 @@
           "default": "./dist/browser/index.cjs"
         },
         "import": {
-          "types": "./dist/browser/browser/index.d.ts",
+          "types": "./dist/browser/browser/index.d.mts",
           "default": "./dist/browser/index.js"
         }
       },
       "require": {
         "types": "./dist/node/node/index.d.ts",
-        "default": "./dist/node/index.js"
+        "default": "./dist/node/index.cjs"
       },
       "import": {
         "types": "./dist/node/node/index.d.mts",
-        "default": "./dist/node/index.mjs"
+        "default": "./dist/node/index.js"
       }
     },
     "./docs": {
@@ -39,8 +38,6 @@
     },
     "./package.json": "./package.json"
   },
-  "main": "dist/node/index.js",
-  "module": "dist/node/index.mjs",
   "homepage": "https://xylabs.com",
   "keywords": [
     "xylabs",
@@ -75,5 +72,6 @@
         "src/node": true
       }
     }
-  }
+  },
+  "type": "module"
 }

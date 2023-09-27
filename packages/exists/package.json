@@ -12,16 +12,15 @@
   },
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "docs": "dist/docs.json",
-  "types": "dist/node/index.d.ts",
   "exports": {
     ".": {
       "require": {
         "types": "./dist/node/index.d.ts",
-        "default": "./dist/node/index.js"
+        "default": "./dist/node/index.cjs"
       },
       "import": {
         "types": "./dist/node/index.d.mts",
-        "default": "./dist/node/index.mjs"
+        "default": "./dist/node/index.js"
       }
     },
     "./docs": {
@@ -29,8 +28,6 @@
     },
     "./package.json": "./package.json"
   },
-  "main": "dist/node/index.js",
-  "module": "dist/node/index.mjs",
   "homepage": "https://xylabs.com",
   "keywords": [
     "xylabs",
@@ -51,5 +48,6 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.11.24"
+  "version": "2.11.24",
+  "type": "module"
 }

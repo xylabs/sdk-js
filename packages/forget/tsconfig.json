@@ -3,5 +3,6 @@
     "incremental": false
   },
   "exclude": ["dist", "docs", "packages", "node_modules"],
-  "extends": "@xylabs/tsconfig"
+  "extends": "@xylabs/tsconfig",
+  "type": "module"
 }

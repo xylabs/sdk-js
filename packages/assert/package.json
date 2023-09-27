@@ -28,6 +28,9 @@
     },
     "./package.json": "./package.json"
   },
+  "main": "./dist/node/index.cjs",
+  "types": "./dist/node/index.d.ts",
+  "module": "./dist/node/index.js",
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^3.0.74",
     "@xylabs/tsconfig": "^3.0.74",
@@ -48,6 +51,6 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.12.0",
+  "version": "2.12.1",
   "type": "module"
 }

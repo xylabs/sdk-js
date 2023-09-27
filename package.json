@@ -92,7 +92,7 @@
     "uuid": "^8"
   },
   "sideEffects": false,
-  "version": "2.12.2",
+  "version": "2.12.3",
   "packageManager": "yarn@3.6.3",
   "engines": {
     "node": ">=18.17.1"

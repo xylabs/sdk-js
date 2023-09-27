@@ -39,8 +39,8 @@
     "esm"
   ],
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.0.76",
-    "@xylabs/tsconfig": "^3.0.76",
+    "@xylabs/ts-scripts-yarn3": "^3.0.78",
+    "@xylabs/tsconfig": "^3.0.78",
     "jest": "^29.7.0",
     "typescript": "^5.2.2"
   },

@@ -32,8 +32,8 @@
   "types": "./dist/node/index.d.ts",
   "module": "./dist/node/index.js",
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.0.76",
-    "@xylabs/tsconfig": "^3.0.76",
+    "@xylabs/ts-scripts-yarn3": "^3.0.78",
+    "@xylabs/tsconfig": "^3.0.78",
     "typescript": "^5.2.2"
   },
   "homepage": "https://xylabs.com",

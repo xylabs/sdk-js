@@ -39,9 +39,9 @@
     "esm"
   ],
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.0.76",
-    "@xylabs/tsconfig": "^3.0.76",
-    "@xylabs/tsconfig-dom": "^3.0.76",
+    "@xylabs/ts-scripts-yarn3": "^3.0.78",
+    "@xylabs/tsconfig": "^3.0.78",
+    "@xylabs/tsconfig-dom": "^3.0.78",
     "typescript": "^5.2.2"
   },
   "publishConfig": {

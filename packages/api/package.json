@@ -45,8 +45,8 @@
     "axios": "^1.5.1"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.0.75",
-    "@xylabs/tsconfig": "^3.0.75",
+    "@xylabs/ts-scripts-yarn3": "^3.0.76",
+    "@xylabs/tsconfig": "^3.0.76",
     "typescript": "^5.2.2"
   },
   "publishConfig": {
@@ -57,7 +57,7 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.12.9",
+  "version": "2.12.10",
   "packageManager": "yarn@3.3.1",
   "type": "module"
 }

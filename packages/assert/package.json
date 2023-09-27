@@ -32,8 +32,8 @@
   "main": "dist/node/index.js",
   "module": "dist/node/index.mjs",
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.0.65",
-    "@xylabs/tsconfig": "^3.0.65",
+    "@xylabs/ts-scripts-yarn3": "^3.0.68",
+    "@xylabs/tsconfig": "^3.0.68",
     "typescript": "^5.2.2"
   },
   "homepage": "https://xylabs.com",
@@ -51,5 +51,5 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.11.19"
+  "version": "2.11.20"
 }

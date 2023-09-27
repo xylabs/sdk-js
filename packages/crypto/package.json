@@ -16,8 +16,14 @@
   "exports": {
     ".": {
       "browser": {
-        "types": "./dist/browser/browserIndex.d.ts",
-        "default": "./dist/browser/browserIndex.js"
+        "require": {
+          "types": "./dist/browser/browserIndex.d.ts",
+          "default": "./dist/browser/browserIndex.cjs"
+        },
+        "import": {
+          "types": "./dist/browser/browserIndex.d.ts",
+          "default": "./dist/browser/browserIndex.js"
+        }
       },
       "require": {
         "types": "./dist/node/nodeIndex.d.ts",
@@ -49,9 +55,9 @@
   "devDependencies": {
     "@types/crypto-js": "^4.1.2",
     "@types/node": "^20.7.0",
-    "@xylabs/ts-scripts-yarn3": "^3.0.65",
-    "@xylabs/tsconfig": "^3.0.65",
-    "@xylabs/tsconfig-dom": "^3.0.65",
+    "@xylabs/ts-scripts-yarn3": "^3.0.68",
+    "@xylabs/tsconfig": "^3.0.68",
+    "@xylabs/tsconfig-dom": "^3.0.68",
     "typescript": "^5.2.2"
   },
   "publishConfig": {
@@ -62,7 +68,7 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.11.19",
+  "version": "2.11.20",
   "xy": {
     "compile": {
       "depth": 1

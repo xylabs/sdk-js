@@ -12,26 +12,26 @@
   },
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "docs": "dist/docs.json",
-  "types": "dist/node/nodeIndex.d.ts",
+  "types": "dist/node/node/index.d.ts",
   "exports": {
     ".": {
       "browser": {
         "require": {
-          "types": "./dist/browser/browserIndex.d.ts",
-          "default": "./dist/browser/browserIndex.cjs"
+          "types": "./dist/browser/browser/index.d.ts",
+          "default": "./dist/browser/index.cjs"
         },
         "import": {
-          "types": "./dist/browser/browserIndex.d.ts",
-          "default": "./dist/browser/browserIndex.js"
+          "types": "./dist/browser/browser/index.d.ts",
+          "default": "./dist/browser/index.js"
         }
       },
       "require": {
-        "types": "./dist/node/nodeIndex.d.ts",
-        "default": "./dist/node/nodeIndex.js"
+        "types": "./dist/node/node/index.d.ts",
+        "default": "./dist/node/index.js"
       },
       "import": {
-        "types": "./dist/node/nodeIndex.d.mts",
-        "default": "./dist/node/nodeIndex.mjs"
+        "types": "./dist/node/node/index.d.mts",
+        "default": "./dist/node/index.mjs"
       }
     },
     "./docs": {
@@ -39,8 +39,8 @@
     },
     "./package.json": "./package.json"
   },
-  "main": "dist/node/nodeIndex.js",
-  "module": "dist/node/nodeIndex.mjs",
+  "main": "dist/node/index.js",
+  "module": "dist/node/index.mjs",
   "homepage": "https://xylabs.com",
   "keywords": [
     "xylabs",
@@ -55,9 +55,9 @@
   "devDependencies": {
     "@types/crypto-js": "^4.1.2",
     "@types/node": "^20.7.0",
-    "@xylabs/ts-scripts-yarn3": "^3.0.68",
-    "@xylabs/tsconfig": "^3.0.68",
-    "@xylabs/tsconfig-dom": "^3.0.68",
+    "@xylabs/ts-scripts-yarn3": "^3.0.70",
+    "@xylabs/tsconfig": "^3.0.70",
+    "@xylabs/tsconfig-dom": "^3.0.70",
     "typescript": "^5.2.2"
   },
   "publishConfig": {
@@ -68,10 +68,15 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.11.20",
+  "version": "2.11.21",
   "xy": {
     "compile": {
-      "depth": 1
+      "browser": {
+        "src/browser": true
+      },
+      "node": {
+        "src/node": true
+      }
     }
   }
 }

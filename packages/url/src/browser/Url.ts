@@ -1,2 +1,2 @@
 const BrowserUrl = URL
-export { BrowserUrl }
+export { BrowserUrl as URL }

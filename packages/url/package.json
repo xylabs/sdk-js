@@ -17,11 +17,11 @@
     ".": {
       "browser": {
         "require": {
-          "types": "./dist/browser/browser//index.d.ts",
+          "types": "./dist/browser/browser/index.d.ts",
           "default": "./dist/browser/index.cjs"
         },
         "import": {
-          "types": "./dist/browser/browser//index.d.ts",
+          "types": "./dist/browser/browser/index.d.ts",
           "default": "./dist/browser/index.js"
         }
       },
@@ -65,7 +65,7 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.11.21",
+  "version": "2.11.22",
   "xy": {
     "compile": {
       "browser": {

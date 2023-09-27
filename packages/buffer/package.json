@@ -53,9 +53,9 @@
   },
   "devDependencies": {
     "@types/node": "^20.7.0",
-    "@xylabs/ts-scripts-yarn3": "^3.0.70",
-    "@xylabs/tsconfig": "^3.0.70",
-    "@xylabs/tsconfig-dom": "^3.0.70",
+    "@xylabs/ts-scripts-yarn3": "^3.0.72",
+    "@xylabs/tsconfig": "^3.0.72",
+    "@xylabs/tsconfig-dom": "^3.0.72",
     "typescript": "^5.2.2"
   },
   "publishConfig": {

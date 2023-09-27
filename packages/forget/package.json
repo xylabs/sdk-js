@@ -42,8 +42,8 @@
     "@xylabs/delay": "workspace:~"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.0.72",
-    "@xylabs/tsconfig": "^3.0.72",
+    "@xylabs/ts-scripts-yarn3": "^3.0.74",
+    "@xylabs/tsconfig": "^3.0.74",
     "typescript": "^5.2.2"
   },
   "publishConfig": {
@@ -54,5 +54,5 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.11.23"
+  "version": "2.11.24"
 }

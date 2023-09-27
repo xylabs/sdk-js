@@ -55,9 +55,9 @@
   "devDependencies": {
     "@types/crypto-js": "^4.1.2",
     "@types/node": "^20.7.0",
-    "@xylabs/ts-scripts-yarn3": "^3.0.72",
-    "@xylabs/tsconfig": "^3.0.72",
-    "@xylabs/tsconfig-dom": "^3.0.72",
+    "@xylabs/ts-scripts-yarn3": "^3.0.74",
+    "@xylabs/tsconfig": "^3.0.74",
+    "@xylabs/tsconfig-dom": "^3.0.74",
     "typescript": "^5.2.2"
   },
   "publishConfig": {
@@ -68,7 +68,7 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.11.23",
+  "version": "2.11.24",
   "xy": {
     "compile": {
       "browser": {

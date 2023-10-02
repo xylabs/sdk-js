@@ -99,7 +99,7 @@
     "node": ">=18.17.1"
   },
   "scripts": {
-    "build-typedoc-site": "xy gen-docs @xyo-network/sdk-xyo-js"
+    "build-typedoc-site": "xy gen-docs @xylabs/sdk-js"
   },
   "engineStrict": true,
   "volta": {

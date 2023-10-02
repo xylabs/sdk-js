@@ -48,8 +48,8 @@
     "@xylabs/delay": "workspace:~",
     "@xylabs/eth-address": "workspace:~",
     "@xylabs/exists": "workspace:~",
-    "@xylabs/forget": "workspace:~",
-    "@xylabs/log": "workspace:~"
+    "@xylabs/forget": "2.6.4",
+    "@xylabs/log": "2.6.14"
   },
   "devDependencies": {
     "@babel/core": "^7.23.0",

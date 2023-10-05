@@ -43,8 +43,8 @@
   ],
   "devDependencies": {
     "@types/bn.js": "^5.1.2",
-    "@xylabs/ts-scripts-yarn3": "^3.0.82",
-    "@xylabs/tsconfig": "^3.0.82",
+    "@xylabs/ts-scripts-yarn3": "^3.0.88",
+    "@xylabs/tsconfig": "^3.0.88",
     "typescript": "^5.2.2"
   },
   "publishConfig": {

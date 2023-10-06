@@ -1,6 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const argv = require('minimist')(process.argv.slice(2))
 
+import { describeIf } from '../describeIf'
 import { matchFilter } from './filter'
 
 //Based on https://www.npmjs.com/package/jest-tags/v/1.0.1
@@ -14,6 +15,9 @@ export function tags(...tagLabels: string[]) {
 
   const filterMatch = filter(tagLabels)
 
+  chain.describeIf = describeIf
+  chain.describe = thisGlobal.describe
+  chain.it = thisGlobal.it
   chain.test = filterMatch ? thisGlobal.test : thisGlobal.xtest
   chain.test.only = thisGlobal.test.only
   chain.test.skip = thisGlobal.test.skip

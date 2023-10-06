@@ -68,7 +68,7 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.12.14",
+  "version": "2.12.16",
   "xy": {
     "compile": {
       "browser": {

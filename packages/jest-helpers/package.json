@@ -38,6 +38,9 @@
     "typescript",
     "esm"
   ],
+  "dependencies": {
+    "minimist": "^1.2.8"
+  },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^3.0.88",
     "@xylabs/tsconfig": "^3.0.88",
@@ -55,6 +58,6 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.12.14",
+  "version": "2.12.16",
   "type": "module"
 }

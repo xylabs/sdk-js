@@ -106,6 +106,8 @@
     "userid",
     "webp",
     "wordlist",
+    "xdescribe",
+    "xtest",
     "xylabs"
   ],
   "npm.packageManager": "yarn"

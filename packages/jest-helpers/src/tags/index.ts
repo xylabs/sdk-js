@@ -5,10 +5,8 @@ import { matchFilter } from './filter'
 
 //Based on https://www.npmjs.com/package/jest-tags/v/1.0.1
 
-export const args = argv(process.argv.slice(2))
-
 export function tags(...tagLabels: string[]) {
-  const filter = matchFilter(args.tags)
+  const filter = matchFilter(argv.tags)
   const thisGlobal = global
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

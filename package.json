@@ -86,7 +86,7 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.12.22",
+  "version": "2.12.23",
   "packageManager": "yarn@3.6.3",
   "engines": {
     "node": ">=18.17.1"

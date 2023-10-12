@@ -43,7 +43,8 @@
   ],
   "dependencies": {
     "@xylabs/assert": "workspace:~",
-    "@xylabs/bignumber": "workspace:~"
+    "@xylabs/bignumber": "workspace:~",
+    "keccak256": "^1.0.6"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^3.1.7",
@@ -59,6 +60,6 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.12.24",
+  "version": "2.12.25",
   "type": "module"
 }

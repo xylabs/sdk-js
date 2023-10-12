@@ -7,4 +7,8 @@ describe('EthAddress', () => {
     expect(address?.toString()).toBe(`0x${addressString}`)
     expect(address?.toShortString()).toBe('0x72...cb')
   })
+  test('checksum', () => {
+    const address = EthAddress.fromString('0x90f8bf6a479f320ead074411a4b0e7944ea8c9c1')
+    expect(address?.toString(true)).toBe('0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1')
+  })
 })

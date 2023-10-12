@@ -1,5 +1,6 @@
 import { assertEx } from '@xylabs/assert'
 import { BigNumber } from '@xylabs/bignumber'
+import keccak256 from 'keccak256'
 
 import { ellipsize } from './ellipsize'
 import { padHex } from './padHex'
@@ -28,6 +29,10 @@ export class EthAddress {
     if (typeof value === 'string') {
       return this.fromString(value, base)
     }
+  }
+
+  static validate(address: string) {
+    return /^(0x)?[0-9a-f]{40}$/i.test(address)
   }
 
   equals(address?: EthAddress | string | null): boolean {
@@ -63,7 +68,22 @@ export class EthAddress {
     return `0x${ellipsize(this.toHex(), length)}`
   }
 
-  toString() {
+  toString(checksum?: boolean, chainId?: string) {
+    if (checksum) {
+      const strippedAddress = this.toHex()
+      const keccakHash = keccak256(chainId !== undefined ? `${chainId}0x${strippedAddress}` : strippedAddress).toString('hex')
+      let checksumAddress = '0x'
+
+      for (let i = 0; i < strippedAddress.length; i++) {
+        checksumAddress += parseInt(keccakHash[i], 16) >= 8 ? strippedAddress[i].toUpperCase() : strippedAddress[i]
+      }
+
+      return checksumAddress
+    }
     return `0x${this.toHex()}`
+  }
+
+  validate() {
+    return EthAddress.validate(this.toString())
   }
 }

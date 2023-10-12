@@ -8,7 +8,7 @@ import { padHex } from './padHex'
 export const isEthAddress = (obj: { type: string }) => obj?.type === EthAddress.type
 
 export class EthAddress {
-  static type = 'EthAddress'
+  static readonly type = 'EthAddress'
 
   type = EthAddress.type
 

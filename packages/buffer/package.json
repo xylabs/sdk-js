@@ -46,7 +46,7 @@
     "esm"
   ],
   "dependencies": {
-    "@xylabs/platform": "workspace:^",
+    "@xylabs/platform": "workspace:~",
     "buffer": "^6.0.3"
   },
   "devDependencies": {
@@ -64,6 +64,6 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.12.25",
+  "version": "2.12.26",
   "type": "module"
 }

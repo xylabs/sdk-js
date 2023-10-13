@@ -1308,11 +1308,11 @@ __metadata:
   linkType: hard
 
 "@babel/runtime@npm:^7.8.4":
-  version: 7.23.1
-  resolution: "@babel/runtime@npm:7.23.1"
+  version: 7.23.2
+  resolution: "@babel/runtime@npm:7.23.2"
   dependencies:
     regenerator-runtime: ^0.14.0
-  checksum: 0cd0d43e6e7dc7f9152fda8c8312b08321cda2f56ef53d6c22ebdd773abdc6f5d0a69008de90aa41908d00e2c1facb24715ff121274e689305c858355ff02c70
+  checksum: 6c4df4839ec75ca10175f636d6362f91df8a3137f86b38f6cd3a4c90668a0fe8e9281d320958f4fbd43b394988958585a17c3aab2a4ea6bf7316b22916a371fb
   languageName: node
   linkType: hard
 
@@ -3003,7 +3003,7 @@ __metadata:
   resolution: "@xylabs/buffer@workspace:packages/buffer"
   dependencies:
     "@types/node": ^20.8.6
-    "@xylabs/platform": "workspace:^"
+    "@xylabs/platform": "workspace:~"
     "@xylabs/ts-scripts-yarn3": ^3.1.11
     "@xylabs/tsconfig": ^3.1.11
     "@xylabs/tsconfig-dom": ^3.1.11
@@ -3029,6 +3029,7 @@ __metadata:
   dependencies:
     "@types/crypto-js": ^4.1.2
     "@types/node": ^20.8.6
+    "@xylabs/platform": "workspace:~"
     "@xylabs/ts-scripts-yarn3": ^3.1.11
     "@xylabs/tsconfig": ^3.1.11
     "@xylabs/tsconfig-dom": ^3.1.11
@@ -3168,7 +3169,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/platform@workspace:^, @xylabs/platform@workspace:packages/platform":
+"@xylabs/platform@workspace:packages/platform, @xylabs/platform@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xylabs/platform@workspace:packages/platform"
   dependencies:
@@ -4318,9 +4319,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001541":
-  version: 1.0.30001546
-  resolution: "caniuse-lite@npm:1.0.30001546"
-  checksum: d3ef82f5ee94743002c5b2dd61c84342debcc94b2d5907b64ade3514ecfc4f20bbe86a6bc453fd6436d5fbcf6582e07405d7c2077565675a71c83adc238a11fa
+  version: 1.0.30001547
+  resolution: "caniuse-lite@npm:1.0.30001547"
+  checksum: ec0fc2b46721887f6f4aca1f3902f03d9a1a07416d16a86b7cd4bfba60e7b6b03ab3969659d3ea0158cc2f298972c80215c06c9457eb15c649d7780e8f5e91a7
   languageName: node
   linkType: hard
 
@@ -5057,13 +5058,13 @@ __metadata:
   linkType: hard
 
 "define-data-property@npm:^1.0.1":
-  version: 1.1.0
-  resolution: "define-data-property@npm:1.1.0"
+  version: 1.1.1
+  resolution: "define-data-property@npm:1.1.1"
   dependencies:
     get-intrinsic: ^1.2.1
     gopd: ^1.0.1
     has-property-descriptors: ^1.0.0
-  checksum: 7ad4ee84cca8ad427a4831f5693526804b62ce9dfd4efac77214e95a4382aed930072251d4075dc8dc9fc949a353ed51f19f5285a84a788ba9216cc51472a093
+  checksum: a29855ad3f0630ea82e3c5012c812efa6ca3078d5c2aa8df06b5f597c1cde6f7254692df41945851d903e05a1668607b6d34e778f402b9ff9ffb38111f1a3f0d
   languageName: node
   linkType: hard
 
@@ -5281,9 +5282,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.535":
-  version: 1.4.544
-  resolution: "electron-to-chromium@npm:1.4.544"
-  checksum: 78e88e4c56fc4faaa9a405de5e0b51305531e9cdf2c71bcc9296c2c59fb68001472e5b924f8701c873bc855ab5174cf0340642712d7af05c1d8e92356529397e
+  version: 1.4.554
+  resolution: "electron-to-chromium@npm:1.4.554"
+  checksum: cbac43c50b43777327f4a7bf149ee3088c1da8b91bbcd80f78d2cc77bc52763f6d0941574499239d9caefd3430d3093f865e5f1093371418f7d6b70301eeae9b
   languageName: node
   linkType: hard
 
@@ -5711,8 +5712,8 @@ __metadata:
   linkType: hard
 
 "eslint-plugin-prettier@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "eslint-plugin-prettier@npm:5.0.0"
+  version: 5.0.1
+  resolution: "eslint-plugin-prettier@npm:5.0.1"
   dependencies:
     prettier-linter-helpers: ^1.0.0
     synckit: ^0.8.5
@@ -5725,7 +5726,7 @@ __metadata:
       optional: true
     eslint-config-prettier:
       optional: true
-  checksum: 84e88744b9050f2d5ef31b94e85294dda16f3a53c2449f9d33eac8ae6264889b459bf35a68e438fb6b329c2a1d6491aac4bfa00d86317e7009de3dad0311bec6
+  checksum: c2261033b97bafe99ccb7cc47c2fac6fa85b8bbc8b128042e52631f906b69e12afed2cdd9d7e3021cc892ee8dd4204a3574e1f32a0b718b4bb3b440944b6983b
   languageName: node
   linkType: hard
 
@@ -6426,7 +6427,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fp-and-or@npm:^0.1.3":
+"fp-and-or@npm:^0.1.4":
   version: 0.1.4
   resolution: "fp-and-or@npm:0.1.4"
   checksum: 780969ef7e86e6822d7e5f27d9c3bcbb7fe1206dbdc8af76482a9213d9c812f8d9dfda8d8d3988f94f6cbc898e7a86ec5ab5700ef53b0760b3bf226a2a52e7e0
@@ -6487,9 +6488,9 @@ __metadata:
   linkType: hard
 
 "function-bind@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "function-bind@npm:1.1.1"
-  checksum: b32fbaebb3f8ec4969f033073b43f5c8befbb58f1a79e12f1d7490358150359ebd92f49e72ff0144f65f2c48ea2a605bff2d07965f548f6474fd8efd95bf361a
+  version: 1.1.2
+  resolution: "function-bind@npm:1.1.2"
+  checksum: 2b0ff4ce708d99715ad14a6d1f894e2a83242e4a52ccfcefaee5e40050562e5f6dafc1adbb4ce2d4ab47279a45dc736ab91ea5042d843c3c092820dfe032efb1
   languageName: node
   linkType: hard
 
@@ -8957,11 +8958,11 @@ __metadata:
   linkType: hard
 
 "magic-string@npm:^0.30.0":
-  version: 0.30.4
-  resolution: "magic-string@npm:0.30.4"
+  version: 0.30.5
+  resolution: "magic-string@npm:0.30.5"
   dependencies:
     "@jridgewell/sourcemap-codec": ^1.4.15
-  checksum: bef57c926d14e9926c142307c1494cc4bdea28a56601a7624f1a5bcd34a63800e2d8a363e826436ce86104460a63ee76c7c185a6ab1f8f7ee5af2de475b98947
+  checksum: da10fecff0c0a7d3faf756913ce62bd6d5e7b0402be48c3b27bfd651b90e29677e279069a63b764bcdc1b8ecdcdb898f29a5c5ec510f2323e8d62ee057a6eb18
   languageName: node
   linkType: hard
 
@@ -10035,15 +10036,15 @@ __metadata:
   linkType: hard
 
 "npm-check-updates@npm:^16.14.4":
-  version: 16.14.5
-  resolution: "npm-check-updates@npm:16.14.5"
+  version: 16.14.6
+  resolution: "npm-check-updates@npm:16.14.6"
   dependencies:
     chalk: ^5.3.0
     cli-table3: ^0.6.3
     commander: ^10.0.1
     fast-memoize: ^2.5.2
     find-up: 5.0.0
-    fp-and-or: ^0.1.3
+    fp-and-or: ^0.1.4
     get-stdin: ^8.0.0
     globby: ^11.0.4
     hosted-git-info: ^5.1.0
@@ -10061,11 +10062,11 @@ __metadata:
     prompts-ncu: ^3.0.0
     rc-config-loader: ^4.1.3
     remote-git-tags: ^3.0.0
-    rimraf: ^5.0.1
+    rimraf: ^5.0.5
     semver: ^7.5.4
     semver-utils: ^1.1.4
     source-map-support: ^0.5.21
-    spawn-please: ^2.0.1
+    spawn-please: ^2.0.2
     strip-ansi: ^7.1.0
     strip-json-comments: ^5.0.1
     untildify: ^4.0.0
@@ -10073,7 +10074,7 @@ __metadata:
   bin:
     ncu: build/src/bin/cli.js
     npm-check-updates: build/src/bin/cli.js
-  checksum: d15bd903349f782e3251d2fb823abc2532687794cd05e5337ea4721bf3327863b445db3b9f8797404a3ae84124759970e0cebe53e33f74392211770dc7984d4e
+  checksum: 40006cc306dac0c10067a88d3a80d943ed9eb81524eb34ce1210d3e042994ea1671fcb3cd5bc48bdde8cebf4296253491ba7177301c6a1a6cac674e86b40b09e
   languageName: node
   linkType: hard
 
@@ -12772,28 +12773,28 @@ __metadata:
   linkType: hard
 
 "resolve@npm:^1.10.0, resolve@npm:^1.14.2, resolve@npm:^1.18.1, resolve@npm:^1.20.0, resolve@npm:^1.22.1, resolve@npm:^1.22.4":
-  version: 1.22.6
-  resolution: "resolve@npm:1.22.6"
+  version: 1.22.8
+  resolution: "resolve@npm:1.22.8"
   dependencies:
     is-core-module: ^2.13.0
     path-parse: ^1.0.7
     supports-preserve-symlinks-flag: ^1.0.0
   bin:
     resolve: bin/resolve
-  checksum: d13bf66d4e2ee30d291491f16f2fa44edd4e0cefb85d53249dd6f93e70b2b8c20ec62f01b18662e3cd40e50a7528f18c4087a99490048992a3bb954cf3201a5b
+  checksum: f8a26958aa572c9b064562750b52131a37c29d072478ea32e129063e2da7f83e31f7f11e7087a18225a8561cfe8d2f0df9dbea7c9d331a897571c0a2527dbb4c
   languageName: node
   linkType: hard
 
 "resolve@patch:resolve@^1.10.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.14.2#~builtin<compat/resolve>, resolve@patch:resolve@^1.18.1#~builtin<compat/resolve>, resolve@patch:resolve@^1.20.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.1#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.4#~builtin<compat/resolve>":
-  version: 1.22.6
-  resolution: "resolve@patch:resolve@npm%3A1.22.6#~builtin<compat/resolve>::version=1.22.6&hash=c3c19d"
+  version: 1.22.8
+  resolution: "resolve@patch:resolve@npm%3A1.22.8#~builtin<compat/resolve>::version=1.22.8&hash=c3c19d"
   dependencies:
     is-core-module: ^2.13.0
     path-parse: ^1.0.7
     supports-preserve-symlinks-flag: ^1.0.0
   bin:
     resolve: bin/resolve
-  checksum: 9d3b3c67aefd12cecbe5f10ca4d1f51ea190891096497c43f301b086883b426466918c3a64f1bbf1788fabb52b579d58809614006c5d0b49186702b3b8fb746a
+  checksum: 5479b7d431cacd5185f8db64bfcb7286ae5e31eb299f4c4f404ad8aa6098b77599563ac4257cb2c37a42f59dfc06a1bec2bcf283bb448f319e37f0feb9a09847
   languageName: node
   linkType: hard
 
@@ -12870,7 +12871,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rimraf@npm:^5.0.1":
+"rimraf@npm:^5.0.5":
   version: 5.0.5
   resolution: "rimraf@npm:5.0.5"
   dependencies:
@@ -13145,14 +13146,14 @@ __metadata:
   linkType: hard
 
 "shiki@npm:^0.14.1":
-  version: 0.14.4
-  resolution: "shiki@npm:0.14.4"
+  version: 0.14.5
+  resolution: "shiki@npm:0.14.5"
   dependencies:
     ansi-sequence-parser: ^1.1.0
     jsonc-parser: ^3.2.0
     vscode-oniguruma: ^1.7.0
     vscode-textmate: ^8.0.0
-  checksum: 1173f6fa9531690a8cd4bf1d8e28c9eb9295af38a4c150cba6546e95f6e32bc96c7dd98826e39e688f1ca9d36b683a9a02ef77d51ce6495900b3a46ada64f828
+  checksum: 41d847817cfc9bb6d8bf190316896698d250303656546446659cc02caed8dcc171b10cd113bb5da82425b51d0032e87aafcdc36c3dd61dadc123170b438da736
   languageName: node
   linkType: hard
 
@@ -13376,7 +13377,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"spawn-please@npm:^2.0.1":
+"spawn-please@npm:^2.0.2":
   version: 2.0.2
   resolution: "spawn-please@npm:2.0.2"
   dependencies:

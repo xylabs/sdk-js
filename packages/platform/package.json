@@ -1,6 +1,6 @@
 {
   "license": "LGPL-3.0",
-  "name": "@xylabs/crypto",
+  "name": "@xylabs/platform",
   "author": {
     "email": "support@xylabs.com",
     "name": "XY Labs Development Team",
@@ -43,15 +43,9 @@
     "xylabs",
     "utility",
     "typescript",
-    "esm",
-    "crypto"
+    "esm"
   ],
-  "dependencies": {
-    "@xylabs/platform": "workspace:^",
-    "crypto-js": "^4.1.1"
-  },
   "devDependencies": {
-    "@types/crypto-js": "^4.1.2",
     "@types/node": "^20.8.6",
     "@xylabs/ts-scripts-yarn3": "^3.1.11",
     "@xylabs/tsconfig": "^3.1.11",

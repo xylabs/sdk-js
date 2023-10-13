@@ -46,6 +46,7 @@
     "esm"
   ],
   "dependencies": {
+    "@xylabs/platform": "workspace:^",
     "buffer": "^6.0.3"
   },
   "devDependencies": {

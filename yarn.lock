@@ -3003,6 +3003,7 @@ __metadata:
   resolution: "@xylabs/buffer@workspace:packages/buffer"
   dependencies:
     "@types/node": ^20.8.6
+    "@xylabs/platform": "workspace:^"
     "@xylabs/ts-scripts-yarn3": ^3.1.11
     "@xylabs/tsconfig": ^3.1.11
     "@xylabs/tsconfig-dom": ^3.1.11
@@ -3164,6 +3165,18 @@ __metadata:
   dependenciesMeta:
     rollbar:
       optional: true
+  languageName: unknown
+  linkType: soft
+
+"@xylabs/platform@workspace:^, @xylabs/platform@workspace:packages/platform":
+  version: 0.0.0-use.local
+  resolution: "@xylabs/platform@workspace:packages/platform"
+  dependencies:
+    "@types/node": ^20.8.6
+    "@xylabs/ts-scripts-yarn3": ^3.1.11
+    "@xylabs/tsconfig": ^3.1.11
+    "@xylabs/tsconfig-dom": ^3.1.11
+    typescript: ^5.2.2
   languageName: unknown
   linkType: soft
 

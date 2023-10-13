@@ -6,6 +6,7 @@
 [![npm-downloads-badge][]][npm-link]
 [![jsdelivr-badge][]][jsdelivr-link]
 [![npm-license-badge][]](LICENSE)
+[![socket-badge][]][socket-link]
 
 > XY Labs generalized Javascript library 
 
@@ -63,3 +64,6 @@ See the [LICENSE](LICENSE) file for license details
 
 [jsdelivr-badge]: https://data.jsdelivr.com/v1/package/npm/@xylabs/delay/badge
 [jsdelivr-link]: https://www.jsdelivr.com/package/npm/@xylabs/delay
+
+[socket-badge]: https://socket.dev/api/badge/npm/package/@xylabs/delay
+[socket-link]: https://socket.dev/npm/package/@xylabs/delay

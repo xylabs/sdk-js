@@ -10,6 +10,7 @@
 [![codacy-badge][]][codacy-link]
 [![codeclimate-badge][]][codeclimate-link]
 [![snyk-badge][]][snyk-link]
+[![socket-badge][]][socket-link]
 
 ## Table of Contents
 
@@ -75,3 +76,6 @@ See the [LICENSE](LICENSE) file for license details
 
 [jsdelivr-badge]: https://data.jsdelivr.com/v1/package/npm/@xylabs/sdk-js/badge
 [jsdelivr-link]: https://www.jsdelivr.com/package/npm/@xylabs/sdk-js
+
+[socket-badge]: https://socket.dev/api/badge/npm/package/@xylabs/sdk-js
+[socket-link]: https://socket.dev/npm/package/@xylabs/sdk-js

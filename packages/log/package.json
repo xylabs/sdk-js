@@ -26,9 +26,6 @@
         "default": "./dist/node/index.js"
       }
     },
-    "./docs": {
-      "default": "./dist/docs.json"
-    },
     "./package.json": "./package.json"
   },
   "main": "./dist/node/index.cjs",
@@ -45,8 +42,8 @@
     "rollbar": "^2.26.2"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.1.7",
-    "@xylabs/tsconfig": "^3.1.7",
+    "@xylabs/ts-scripts-yarn3": "^3.1.11",
+    "@xylabs/tsconfig": "^3.1.11",
     "rollbar": "^2.26.2",
     "typescript": "^5.2.2"
   },

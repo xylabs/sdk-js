@@ -26,9 +26,6 @@
         "default": "./dist/node/index.js"
       }
     },
-    "./docs": {
-      "default": "./dist/docs.json"
-    },
     "./package.json": "./package.json"
   },
   "main": "./dist/node/index.cjs",
@@ -47,9 +44,9 @@
     "keccak256": "^1.0.6"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.1.7",
-    "@xylabs/tsconfig": "^3.1.7",
-    "@xylabs/tsconfig-jest": "^3.1.7",
+    "@xylabs/ts-scripts-yarn3": "^3.1.11",
+    "@xylabs/tsconfig": "^3.1.11",
+    "@xylabs/tsconfig-jest": "^3.1.11",
     "typescript": "^5.2.2"
   },
   "publishConfig": {

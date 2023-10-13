@@ -4,6 +4,9 @@
 
 [![main-build][]][main-build-link]
 [![npm-badge][]][npm-link]
+[![npm-downloads-badge][]][npm-link]
+[![jsdelivr-badge][]][jsdelivr-link]
+[![npm-license-badge][]](LICENSE)
 [![codacy-badge][]][codacy-link]
 [![codeclimate-badge][]][codeclimate-link]
 [![snyk-badge][]][snyk-link]
@@ -42,7 +45,10 @@ for list of shared scripts.
 
 ## Maintainers
 
--   [Arie Trouw](https://github.com/arietrouw) (<https://arietrouw.com>)
+-   [Arie Trouw](https://github.com/arietrouw) ([arietrouw.com](https://arietrouw.com))
+-   [Matt Jones](https://github.com/jonesmac)
+-   [Joel Carter](https://github.com/JoelBCarter)
+-   [Jordan Trouw](https://github.com/jordantrouw)
 
 ## License
 
@@ -63,3 +69,9 @@ See the [LICENSE](LICENSE) file for license details
 [codeclimate-link]: https://codeclimate.com/github/xylabs/sdk-js/maintainability
 [snyk-badge]: https://snyk.io/test/github/xylabs/sdk-js/badge.svg?targetFile=package.json
 [snyk-link]: https://snyk.io/test/github/xylabs/sdk-js?targetFile=package.json
+
+[npm-downloads-badge]: https://img.shields.io/npm/dw/@xylabs/sdk-js
+[npm-license-badge]: https://img.shields.io/npm/l/@xylabs/sdk-js
+
+[jsdelivr-badge]: https://data.jsdelivr.com/v1/package/npm/@xylabs/sdk-js/badge
+[jsdelivr-link]: https://www.jsdelivr.com/package/npm/@xylabs/sdk-js

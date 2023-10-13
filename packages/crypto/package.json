@@ -33,9 +33,6 @@
         "default": "./dist/node/index.js"
       }
     },
-    "./docs": {
-      "default": "./dist/docs.json"
-    },
     "./package.json": "./package.json"
   },
   "main": "./dist/node/index.cjs",
@@ -54,10 +51,10 @@
   },
   "devDependencies": {
     "@types/crypto-js": "^4.1.2",
-    "@types/node": "^20.8.4",
-    "@xylabs/ts-scripts-yarn3": "^3.1.7",
-    "@xylabs/tsconfig": "^3.1.7",
-    "@xylabs/tsconfig-dom": "^3.1.7",
+    "@types/node": "^20.8.6",
+    "@xylabs/ts-scripts-yarn3": "^3.1.11",
+    "@xylabs/tsconfig": "^3.1.11",
+    "@xylabs/tsconfig-dom": "^3.1.11",
     "typescript": "^5.2.2"
   },
   "publishConfig": {

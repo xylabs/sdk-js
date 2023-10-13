@@ -2965,7 +2965,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/array@workspace:packages/array":
+"@xylabs/array@workspace:packages/array, @xylabs/array@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xylabs/array@workspace:packages/array"
   dependencies:
@@ -2998,7 +2998,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/buffer@workspace:packages/buffer":
+"@xylabs/buffer@workspace:packages/buffer, @xylabs/buffer@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xylabs/buffer@workspace:packages/buffer"
   dependencies:
@@ -3023,7 +3023,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xylabs/crypto@workspace:packages/crypto":
+"@xylabs/crypto@workspace:packages/crypto, @xylabs/crypto@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xylabs/crypto@workspace:packages/crypto"
   dependencies:
@@ -3038,7 +3038,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/decimal-precision@workspace:packages/decimal-precision":
+"@xylabs/decimal-precision@workspace:packages/decimal-precision, @xylabs/decimal-precision@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xylabs/decimal-precision@workspace:packages/decimal-precision"
   dependencies:
@@ -3180,7 +3180,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/promise@workspace:packages/promise":
+"@xylabs/promise@workspace:packages/promise, @xylabs/promise@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xylabs/promise@workspace:packages/promise"
   dependencies:
@@ -3203,18 +3203,27 @@ __metadata:
     "@typescript-eslint/eslint-plugin": ^6.7.5
     "@typescript-eslint/parser": ^6.7.5
     "@xylabs/api": "workspace:~"
+    "@xylabs/array": "workspace:~"
     "@xylabs/assert": "workspace:~"
     "@xylabs/bignumber": "workspace:~"
+    "@xylabs/buffer": "workspace:~"
     "@xylabs/config": ^3.1.11
+    "@xylabs/crypto": "workspace:~"
+    "@xylabs/decimal-precision": "workspace:~"
     "@xylabs/delay": "workspace:~"
     "@xylabs/eslint-config": ^3.1.11
     "@xylabs/eth-address": "workspace:~"
     "@xylabs/exists": "workspace:~"
     "@xylabs/forget": "workspace:~"
     "@xylabs/log": "workspace:~"
+    "@xylabs/platform": "workspace:~"
+    "@xylabs/promise": "workspace:~"
+    "@xylabs/set": "workspace:~"
+    "@xylabs/static-implements": "workspace:~"
     "@xylabs/ts-scripts-yarn3": ^3.1.11
     "@xylabs/tsconfig": ^3.1.11
     "@xylabs/tsconfig-jest": ^3.1.11
+    "@xylabs/url": "workspace:~"
     babel-jest: ^29.7.0
     depcheck: ^1.4.6
     eslint: ^8.51.0
@@ -3231,7 +3240,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/set@workspace:packages/set":
+"@xylabs/set@workspace:packages/set, @xylabs/set@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xylabs/set@workspace:packages/set"
   dependencies:
@@ -3241,7 +3250,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/static-implements@workspace:packages/static-implements":
+"@xylabs/static-implements@workspace:packages/static-implements, @xylabs/static-implements@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xylabs/static-implements@workspace:packages/static-implements"
   dependencies:
@@ -3384,7 +3393,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xylabs/url@workspace:packages/url":
+"@xylabs/url@workspace:packages/url, @xylabs/url@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xylabs/url@workspace:packages/url"
   dependencies:

@@ -29,8 +29,8 @@
   "types": "./dist/node/index.d.ts",
   "module": "./dist/node/index.js",
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.1.11",
-    "@xylabs/tsconfig": "^3.1.11",
+    "@xylabs/ts-scripts-yarn3": "^3.1.12",
+    "@xylabs/tsconfig": "^3.1.12",
     "typescript": "^5.2.2"
   },
   "homepage": "https://xylabs.com",
@@ -48,6 +48,6 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.12.28",
+  "version": "2.12.29",
   "type": "module"
 }

@@ -8,6 +8,20 @@ describe('forget', () => {
       // Stop expected logs from being logged
     })
   })
+  describe('with types', () => {
+    const cases = [
+      Promise.resolve(1),
+      Promise.resolve({ a: 1 }),
+      Promise.resolve('resolved'),
+      Promise.resolve([1, 2, 3, 4]),
+      Promise.resolve(undefined),
+      Promise.resolve(null),
+      Promise.resolve(),
+    ]
+    it.each(cases)('properly infers the type', (promise) => {
+      forget(promise)
+    })
+  })
   test('checking happy path', async () => {
     let cancelled = false
     forget(delay(100), { cancel: () => (cancelled = true), delay: 200 })

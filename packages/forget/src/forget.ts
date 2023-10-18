@@ -26,8 +26,12 @@ export class ForgetPromise {
     return 0
   }
 
-  //used to explicitly launch an async function (or Promise) with awaiting it
-  static forget(promise: Promise<unknown>, timeout?: ForgetTimeoutConfig) {
+  /**
+   * Used to explicitly launch an async function (or Promise) with awaiting it
+   * @param promise The promise to forget
+   * @param config Configuration of forget settings
+   */
+  static forget<T>(promise: Promise<T>, config?: ForgetTimeoutConfig) {
     let completed = false
     this.activeForgets++
 
@@ -46,12 +50,12 @@ export class ForgetPromise {
     const promises = [promiseWrapper()]
 
     //if there is a timeout, add it to the race
-    if (timeout) {
+    if (config) {
       const timeoutFunc = async () => {
-        await delay(timeout.delay)
+        await delay(config.delay)
         if (!completed) {
-          console.log(`forget promise timeout out after ${timeout.delay}ms [Cancelling]`)
-          timeout.cancel?.()
+          console.log(`forget promise timeout out after ${config.delay}ms [Cancelling]`)
+          config.cancel?.()
         }
       }
       promises.push(timeoutFunc())

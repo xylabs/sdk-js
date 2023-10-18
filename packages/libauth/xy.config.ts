@@ -4,7 +4,8 @@ const config: XyTsupConfig = {
     browser: {
       src: {
         esbuildOptions: (options) => {
-          options.minify = true
+          options.minifyWhitespace = true
+          options.keepNames = true
           options.sourcemap = false
           return options
         },
@@ -15,7 +16,8 @@ const config: XyTsupConfig = {
     node: {
       src: {
         esbuildOptions: (options) => {
-          options.minify = true
+          options.minifyWhitespace = true
+          options.keepNames = true
           options.sourcemap = false
           return options
         },

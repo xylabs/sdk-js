@@ -23,7 +23,8 @@
 
 ## Description
 
-SDK for base code for Typescript and Javascript Libraries. Common utility & helper code that is used throughout XYLabs/XYO Network TypeScript projects.
+SDK for base code for Typescript and Javascript Libraries. Common utility &
+helper code that is used throughout XYLabs/XYO Network TypeScript projects.
 
 Features:
 

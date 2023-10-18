@@ -23,7 +23,13 @@
 
 ## Description
 
-SDK for base code for Typescript and Javascript Libraries.
+SDK for base code for Typescript and Javascript Libraries. Common utility & helper code that is used throughout XYLabs/XYO Network TypeScript projects.
+
+Features:
+
+-   Mono-repo that publishes individual packages to npm
+-   Fully written in TypeScript
+-   Polyfills to ensure common operation across Node.js/Browser environments
 
 ## Install
 

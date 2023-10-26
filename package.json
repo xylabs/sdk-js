@@ -44,7 +44,7 @@
     "@xylabs/assert": "workspace:~",
     "@xylabs/bignumber": "workspace:~",
     "@xylabs/buffer": "workspace:~",
-    "@xylabs/crypto": "workspace:~",
+    "@xylabs/crypto": "2.11.6",
     "@xylabs/decimal-precision": "workspace:~",
     "@xylabs/delay": "workspace:~",
     "@xylabs/eth-address": "workspace:~",

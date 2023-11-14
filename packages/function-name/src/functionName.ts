@@ -1,6 +1,6 @@
-import { handleError } from './handleError'
+import { handleError } from '@xylabs/error'
 
-export const getFunctionName = (depth = 2) => {
+export const functionName = (depth = 2) => {
   try {
     throw Error()
   } catch (ex) {

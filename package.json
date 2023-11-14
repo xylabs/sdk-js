@@ -52,6 +52,7 @@
     "@xylabs/eth-address": "workspace:~",
     "@xylabs/exists": "workspace:~",
     "@xylabs/forget": "workspace:~",
+    "@xylabs/function-name": "workspace:~",
     "@xylabs/log": "workspace:~",
     "@xylabs/logger": "workspace:~",
     "@xylabs/platform": "workspace:~",
@@ -96,7 +97,7 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.13.5",
+  "version": "2.13.7",
   "packageManager": "yarn@3.6.3",
   "engines": {
     "node": ">=18.17.1"

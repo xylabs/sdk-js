@@ -1,9 +1,9 @@
-import { getFunctionName } from '../getFunctionName'
+import { functionName } from '../functionName'
 
 describe('Logger', () => {
   test('getFunctionName:function', () => {
     const test = () => {
-      return getFunctionName()
+      return functionName()
     }
     const funcName = test()
     expect(funcName).toBe('test')
@@ -12,7 +12,7 @@ describe('Logger', () => {
     class Foo {
       funcName: string
       constructor() {
-        this.funcName = getFunctionName()
+        this.funcName = functionName()
       }
     }
 
@@ -28,7 +28,7 @@ describe('Logger', () => {
       }
 
       test() {
-        return getFunctionName()
+        return functionName()
       }
     }
 
@@ -44,7 +44,7 @@ describe('Logger', () => {
       }
 
       static test() {
-        return getFunctionName()
+        return functionName()
       }
     }
 

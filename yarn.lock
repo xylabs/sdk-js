@@ -3154,6 +3154,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@xylabs/function-name@workspace:packages/function-name, @xylabs/function-name@workspace:~":
+  version: 0.0.0-use.local
+  resolution: "@xylabs/function-name@workspace:packages/function-name"
+  dependencies:
+    "@xylabs/error": "workspace:~"
+    "@xylabs/ts-scripts-yarn3": ^3.1.21
+    "@xylabs/tsconfig": ^3.1.21
+    typescript: ^5.2.2
+  languageName: unknown
+  linkType: soft
+
 "@xylabs/jest-helpers@workspace:packages/jest-helpers":
   version: 0.0.0-use.local
   resolution: "@xylabs/jest-helpers@workspace:packages/jest-helpers"
@@ -3270,6 +3281,7 @@ __metadata:
     "@xylabs/eth-address": "workspace:~"
     "@xylabs/exists": "workspace:~"
     "@xylabs/forget": "workspace:~"
+    "@xylabs/function-name": "workspace:~"
     "@xylabs/log": "workspace:~"
     "@xylabs/logger": "workspace:~"
     "@xylabs/platform": "workspace:~"

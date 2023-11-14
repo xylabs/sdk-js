@@ -1,5 +1,5 @@
 {
-  "name": "@xylabs/logger",
+  "name": "@xylabs/error",
   "author": {
     "email": "support@xyo.network",
     "name": "XYO Development Team",
@@ -10,14 +10,13 @@
     "url": "https://github.com/XYOracleNetwork/sdk-xyo-client-js/issues"
   },
   "description": "Primary SDK for using XYO Protocol 2.0",
-  "dependencies": {
-    "@xylabs/error": "workspace:~"
-  },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^3.1.21",
     "@xylabs/tsconfig": "^3.1.21",
+    "@xylabs/tsconfig-jest": "^3.1.21",
     "typescript": "^5.2.2"
   },
+  "docs": "dist/docs.json",
   "exports": {
     ".": {
       "browser": {
@@ -32,20 +31,19 @@
       },
       "node": {
         "require": {
-          "types": "./dist/node/index.d.cts",
-          "default": "./dist/node/index.cjs"
+          "types": "./dist/node/index.d.ts",
+          "default": "./dist/node/index.js"
         },
         "import": {
           "types": "./dist/node/index.d.mts",
-          "default": "./dist/node/index.js"
+          "default": "./dist/node/index.mjs"
         }
       }
     },
     "./package.json": "./package.json"
   },
-  "main": "dist/node/index.cjs",
-  "module": "dist/node/index.js",
-  "types": "dist/node/index.d.mts",
+  "main": "dist/node/index.js",
+  "module": "dist/node/index.mjs",
   "homepage": "https://xyo.network",
   "license": "LGPL-3.0-only",
   "publishConfig": {
@@ -56,6 +54,6 @@
     "url": "https://github.com/XYOracleNetwork/sdk-xyo-client-js.git"
   },
   "sideEffects": false,
-  "version": "2.13.5",
-  "type": "module"
+  "types": "dist/node/index.d.ts",
+  "version": "2.13.5"
 }

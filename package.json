@@ -42,15 +42,18 @@
     "@xylabs/api": "workspace:~",
     "@xylabs/array": "workspace:~",
     "@xylabs/assert": "workspace:~",
+    "@xylabs/axios": "workspace:~",
     "@xylabs/bignumber": "workspace:~",
     "@xylabs/buffer": "workspace:~",
     "@xylabs/crypto": "workspace:~",
     "@xylabs/decimal-precision": "workspace:~",
     "@xylabs/delay": "workspace:~",
+    "@xylabs/error": "workspace:~",
     "@xylabs/eth-address": "workspace:~",
     "@xylabs/exists": "workspace:~",
     "@xylabs/forget": "workspace:~",
     "@xylabs/log": "workspace:~",
+    "@xylabs/logger": "workspace:~",
     "@xylabs/platform": "workspace:~",
     "@xylabs/promise": "workspace:~",
     "@xylabs/set": "workspace:~",
@@ -93,7 +96,7 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.13.4",
+  "version": "2.13.5",
   "packageManager": "yarn@3.6.3",
   "engines": {
     "node": ">=18.17.1"

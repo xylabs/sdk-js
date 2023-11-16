@@ -3244,6 +3244,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@xylabs/profile@workspace:packages/profile":
+  version: 0.0.0-use.local
+  resolution: "@xylabs/profile@workspace:packages/profile"
+  dependencies:
+    "@xylabs/ts-scripts-yarn3": ^3.1.21
+    "@xylabs/tsconfig": ^3.1.21
+    typescript: ^5.2.2
+  languageName: unknown
+  linkType: soft
+
 "@xylabs/promise@workspace:packages/promise, @xylabs/promise@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xylabs/promise@workspace:packages/promise"

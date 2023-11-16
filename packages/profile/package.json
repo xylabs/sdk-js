@@ -1,6 +1,6 @@
 {
   "license": "LGPL-3.0-only",
-  "name": "@xylabs/bignumber",
+  "name": "@xylabs/profile",
   "author": {
     "email": "support@xylabs.com",
     "name": "XY Labs Development Team",
@@ -11,9 +11,6 @@
     "url": "https://github.com/xylabs/sdk-js/issues"
   },
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
-  "dependencies": {
-    "bn.js": "^5.2.1"
-  },
   "exports": {
     ".": {
       "require": {
@@ -38,7 +35,6 @@
     "esm"
   ],
   "devDependencies": {
-    "@types/bn.js": "^5.1.5",
     "@xylabs/ts-scripts-yarn3": "^3.1.21",
     "@xylabs/tsconfig": "^3.1.21",
     "typescript": "^5.2.2"

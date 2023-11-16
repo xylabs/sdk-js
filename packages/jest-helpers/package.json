@@ -11,7 +11,6 @@
     "url": "https://github.com/xylabs/sdk-js/issues"
   },
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
-  "docs": "dist/docs.json",
   "exports": {
     ".": {
       "require": {

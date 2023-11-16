@@ -16,7 +16,6 @@
     "@xylabs/tsconfig-jest": "^3.1.21",
     "typescript": "^5.2.2"
   },
-  "docs": "dist/docs.json",
   "exports": {
     ".": {
       "browser": {

@@ -1,0 +1,4 @@
+ignores: [
+  "@xylabs/tsconfig",
+  "@xylabs/ts-scripts-yarn3"
+]

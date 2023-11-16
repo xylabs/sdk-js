@@ -3244,7 +3244,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/profile@workspace:packages/profile":
+"@xylabs/profile@workspace:packages/profile, @xylabs/profile@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xylabs/profile@workspace:packages/profile"
   dependencies:
@@ -3295,6 +3295,7 @@ __metadata:
     "@xylabs/log": "workspace:~"
     "@xylabs/logger": "workspace:~"
     "@xylabs/platform": "workspace:~"
+    "@xylabs/profile": "workspace:~"
     "@xylabs/promise": "workspace:~"
     "@xylabs/set": "workspace:~"
     "@xylabs/static-implements": "workspace:~"

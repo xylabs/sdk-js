@@ -1,6 +1,6 @@
 [![logo][]](https://xylabs.com)
 
-# @xylabs/promise
+# @xylabs/profile
 
 [![npm-badge][]][npm-link]
 [![npm-downloads-badge][]][npm-link]
@@ -27,13 +27,13 @@ Common Javascript code that is used throughout XYO projects that use React.
 Using npm:
 
 ```sh
-npm i --save @xylabs/promise
+npm i --save @xylabs/profile
 ```
 
 Using yarn:
 
 ```sh
-yarn add @xylabs/promise
+yarn add @xylabs/profile
 ```
 
 ## Documentation
@@ -56,14 +56,14 @@ See the [LICENSE](LICENSE) file for license details
 
 [logo]: https://cdn.xy.company/img/brand/XYPersistentCompany_Logo_Icon_Colored.svg
 
-[npm-badge]: https://img.shields.io/npm/v/@xylabs/promise.svg
-[npm-link]: https://www.npmjs.com/package/@xylabs/promise
+[npm-badge]: https://img.shields.io/npm/v/@xylabs/profile.svg
+[npm-link]: https://www.npmjs.com/package/@xylabs/profile
 
-[npm-downloads-badge]: https://img.shields.io/npm/dw/@xylabs/promise
-[npm-license-badge]: https://img.shields.io/npm/l/@xylabs/promise
+[npm-downloads-badge]: https://img.shields.io/npm/dw/@xylabs/profile
+[npm-license-badge]: https://img.shields.io/npm/l/@xylabs/profile
 
-[jsdelivr-badge]: https://data.jsdelivr.com/v1/package/npm/@xylabs/promise/badge
-[jsdelivr-link]: https://www.jsdelivr.com/package/npm/@xylabs/promise
+[jsdelivr-badge]: https://data.jsdelivr.com/v1/package/npm/@xylabs/profile/badge
+[jsdelivr-link]: https://www.jsdelivr.com/package/npm/@xylabs/profile
 
-[socket-badge]: https://socket.dev/api/badge/npm/package/@xylabs/promise
-[socket-link]: https://socket.dev/npm/package/@xylabs/promise
+[socket-badge]: https://socket.dev/api/badge/npm/package/@xylabs/profile
+[socket-link]: https://socket.dev/npm/package/@xylabs/profile

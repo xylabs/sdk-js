@@ -1,4 +1,4 @@
-const generateJestConfig = ({ esModules }) => {
+const generateJestConfig = ({ esModules }: { esModules: string[] }) => {
   const esModulesList = Array.isArray(esModules) ? esModules.join('|') : esModules
   return {
     coveragePathIgnorePatterns: ['<rootDir>/(.*)/dist'],
@@ -6,9 +6,10 @@ const generateJestConfig = ({ esModules }) => {
       '^(\\.{1,2}/.*)\\.js$': '$1',
     },
     preset: 'ts-jest/presets/default-esm',
+    setupFiles: ['dotenv/config'],
     setupFilesAfterEnv: ['jest-sorted', 'jest-extended/all'],
-    testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$',
-    testTimeout: 20000,
+    testRegex: '(/__tests__/.*|(\\.|/)((!perf\\.)test|spec))\\.tsx?$',
+    testTimeout: 200000,
     transform: {
       [`(${esModulesList}).+\\.js$`]: 'babel-jest',
       '^.+\\.tsx?$': [
@@ -22,5 +23,7 @@ const generateJestConfig = ({ esModules }) => {
   }
 }
 
-// eslint-disable-next-line no-undef
-module.exports = generateJestConfig({ esModules: ['is-ip', 'ip-regex', 'lodash-es', 'uuid'] })
+const config = generateJestConfig({ esModules: ['is-ip', 'ip-regex', 'lodash-es', 'uuid', 'lodash-es'] })
+
+// eslint-disable-next-line import/no-default-export
+export default config

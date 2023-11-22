@@ -1,6 +1,5 @@
 node_modules
 dist
-docs
 bin
 .DS_Store
 *.log
@@ -18,4 +17,3 @@ bin
 
 .idea
 .eslintcache
-.env

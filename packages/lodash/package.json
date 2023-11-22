@@ -35,19 +35,19 @@
     "esm"
   ],
   "dependencies": {
-    "@types/lodash": "^4.14.201",
-    "@types/lodash-es": "^4.17.11"
+    "@types/lodash": "^4.14.202",
+    "@types/lodash-es": "^4.17.12"
   },
   "optionalDependencies": {
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.201",
-    "@types/lodash-es": "^4.17.11",
-    "@xylabs/ts-scripts-yarn3": "^3.1.21",
-    "@xylabs/tsconfig": "^3.1.21",
-    "typescript": "^5.2.2"
+    "@types/lodash": "^4.14.202",
+    "@types/lodash-es": "^4.17.12",
+    "@xylabs/ts-scripts-yarn3": "^3.2.8",
+    "@xylabs/tsconfig": "^3.2.8",
+    "typescript": "^5.3.2"
   },
   "publishConfig": {
     "access": "public"
@@ -57,6 +57,6 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.13.9",
+  "version": "2.13.10",
   "type": "module"
 }

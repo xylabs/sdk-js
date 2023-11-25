@@ -3139,7 +3139,7 @@ __metadata:
     "@scure/base": "npm:^1.1.3"
     "@xylabs/assert": "workspace:~"
     "@xylabs/exists": "workspace:~"
-    "@xylabs/lodash": "npm:^2.13.11"
+    "@xylabs/lodash": "npm:^2.13.12"
     "@xylabs/ts-scripts-yarn3": "npm:^3.2.10"
     "@xylabs/tsconfig": "npm:^3.2.10"
     "@xylabs/typeof": "workspace:~"
@@ -3365,7 +3365,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/lodash@npm:^2.13.11, @xylabs/lodash@workspace:packages/lodash":
+"@xylabs/lodash@npm:^2.13.12, @xylabs/lodash@workspace:packages/lodash":
   version: 0.0.0-use.local
   resolution: "@xylabs/lodash@workspace:packages/lodash"
   dependencies:

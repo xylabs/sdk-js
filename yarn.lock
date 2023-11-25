@@ -3137,6 +3137,7 @@ __metadata:
   resolution: "@xylabs/arraybuffer@workspace:packages/arraybuffer"
   dependencies:
     "@scure/base": "npm:^1.1.3"
+    "@xylabs/assert": "workspace:~"
     "@xylabs/exists": "workspace:~"
     "@xylabs/ts-scripts-yarn3": "npm:^3.2.10"
     "@xylabs/tsconfig": "npm:^3.2.10"

@@ -1,3 +1,5 @@
+import { isArrayBuffer } from '@xylabs/arraybuffer'
+
 import { AssertConfig, assertError } from './assert'
 
 export const hexRegex = /^[0-9a-f]+$/i
@@ -63,7 +65,7 @@ export function asHex(value: unknown, assertOrBitLength?: AssertConfig | number,
       stringValue = value.toString(16)
       break
     case 'object':
-      if (value instanceof ArrayBuffer) {
+      if (isArrayBuffer(value)) {
         stringValue = hexFrom(value)
       }
       break

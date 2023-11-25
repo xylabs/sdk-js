@@ -67,6 +67,8 @@ export function asHex(value: unknown, assertOrBitLength?: AssertConfig | number,
     case 'object':
       if (isArrayBuffer(value)) {
         stringValue = hexFrom(value)
+      } else {
+        return assertError(value, assert, 'Unsupported object')
       }
       break
     default:

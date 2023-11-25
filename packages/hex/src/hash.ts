@@ -20,10 +20,6 @@ export const isHash = (value: unknown, bitLength: HashBitLength = 256): value is
   return true
 }
 
-export const toHex = (buffer: ArrayBuffer) => {
-  return [...new Uint8Array(buffer)].map((x) => x.toString(16).padStart(2, '0')).join('')
-}
-
 export function asHash(value: unknown): Hash | undefined
 export function asHash(value: unknown, assert: AssertConfig): Hash
 export function asHash(value: unknown, bitLength?: HashBitLength): Hash | undefined

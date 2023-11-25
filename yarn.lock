@@ -2305,6 +2305,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@scure/base@npm:^1.1.3":
+  version: 1.1.3
+  resolution: "@scure/base@npm:1.1.3"
+  checksum: cb715fa8cdb043c4d96b6ba0666791d4eb4d033f7b5285a853aba25e0ba94914f05ff5d956029ad060005f9bdd02dab0caef9a0a63f07ed096a2c2a0c0cf9c36
+  languageName: node
+  linkType: hard
+
 "@sigstore/bundle@npm:^1.1.0":
   version: 1.1.0
   resolution: "@sigstore/bundle@npm:1.1.0"
@@ -3125,6 +3132,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@xylabs/arraybuffer@workspace:packages/arraybuffer":
+  version: 0.0.0-use.local
+  resolution: "@xylabs/arraybuffer@workspace:packages/arraybuffer"
+  dependencies:
+    "@scure/base": "npm:^1.1.3"
+    "@xylabs/exists": "workspace:~"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.2.10"
+    "@xylabs/tsconfig": "npm:^3.2.10"
+    "@xylabs/typeof": "workspace:~"
+    typescript: "npm:^5.3.2"
+  languageName: unknown
+  linkType: soft
+
 "@xylabs/assert@workspace:packages/assert, @xylabs/assert@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xylabs/assert@workspace:packages/assert"
@@ -3626,6 +3646,16 @@ __metadata:
   checksum: 17d3866c8220a2dbf3a29974934498992851165d2fa5192120cd106fdc76c2fbdd5988423ce98e87ae13f5c2e09a47cd457cbbb95b92aa344ab44dbc28624b5a
   languageName: node
   linkType: hard
+
+"@xylabs/typeof@workspace:packages/typeof, @xylabs/typeof@workspace:~":
+  version: 0.0.0-use.local
+  resolution: "@xylabs/typeof@workspace:packages/typeof"
+  dependencies:
+    "@xylabs/ts-scripts-yarn3": "npm:^3.2.10"
+    "@xylabs/tsconfig": "npm:^3.2.10"
+    typescript: "npm:^5.3.2"
+  languageName: unknown
+  linkType: soft
 
 "@xylabs/url@workspace:packages/url, @xylabs/url@workspace:~":
   version: 0.0.0-use.local

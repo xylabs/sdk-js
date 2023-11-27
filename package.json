@@ -69,8 +69,8 @@
     "@types/jest": "^29.5.10",
     "@types/mocha": "^10.0.6",
     "@types/supertest": "^2.0.16",
-    "@typescript-eslint/eslint-plugin": "^6.12.0",
-    "@typescript-eslint/parser": "^6.12.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
     "@xylabs/config": "^3.2.10",
     "@xylabs/eslint-config": "^3.2.10",
     "@xylabs/ts-scripts-yarn3": "^3.2.10",
@@ -102,7 +102,7 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.13.13",
+  "version": "2.13.14",
   "packageManager": "yarn@4.0.2",
   "engines": {
     "node": ">=18.17.1"

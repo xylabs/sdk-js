@@ -39,6 +39,10 @@ export const isHex = (value: unknown, bitLength?: number): value is Hex => {
   return hexRegex.test(value)
 }
 
+export const toHex = (buffer: ArrayBuffer) => {
+  return [...new Uint8Array(buffer)].map((x) => x.toString(16).padStart(2, '0')).join('')
+}
+
 export function asHex(value: unknown): Hex | undefined
 export function asHex(value: unknown, bitLength?: number): Hex | undefined
 export function asHex(value: unknown, assert: AssertConfig): Hex

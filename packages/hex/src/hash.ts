@@ -1,5 +1,5 @@
 import { AssertConfig, assertError } from './assert'
-import { asHex, Hex, isHex, octetsToBits } from './hex'
+import { asHex, Hex, isHex, nibblesToBits } from './hex'
 
 export type HashBitLength = 32 | 64 | 128 | 256 | 512 | 1024 | 2048 | 4096
 export const HashBitLength: HashBitLength[] = [32, 64, 128, 256, 512, 1024, 2048, 4096]
@@ -15,7 +15,7 @@ export const isHash = (value: unknown, bitLength: HashBitLength = 256): value is
   const hex = asHex(value, bitLength)
   if (!hex) return false
 
-  if (!isHashBitLength(octetsToBits(hex.length))) return false
+  if (!isHashBitLength(nibblesToBits(hex.length))) return false
 
   return true
 }

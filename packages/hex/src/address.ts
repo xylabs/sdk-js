@@ -1,5 +1,5 @@
 import { AssertConfig, assertError } from './assert'
-import { asHex, bitsToOctets, isHex } from './hex'
+import { asHex, bitsToNibbles, isHex } from './hex'
 
 export const addressRegex = /0x[0-9a-f]+/i
 
@@ -15,7 +15,7 @@ export const isAddress = (value: unknown, bitLength = 160): value is Address => 
   const valueHex = value.substring(2)
 
   //If a bitLength specified, does it conform?
-  if (bitLength !== undefined && valueHex.length !== bitsToOctets(bitLength)) return false
+  if (bitLength !== undefined && valueHex.length !== bitsToNibbles(bitLength)) return false
 
   return isHex(valueHex, bitLength)
 }

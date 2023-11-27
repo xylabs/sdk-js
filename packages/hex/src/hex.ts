@@ -11,20 +11,20 @@ export const hexFrom = (buffer: ArrayBuffer) => {
   return [...new Uint8Array(buffer)].map((x) => x.toString(16).padStart(2, '0')).join('')
 }
 
-//determine the number of octets for a given number of bits
-export const bitsToOctets = (value: number): number => {
-  const octets = value >> 2
-  if (value !== octets << 2) throw Error('Bits for octets must multiple of 8')
-  return octets
+//determine the number of nibbles for a given number of bits
+export const bitsToNibbles = (value: number): number => {
+  const nibbles = value >> 2
+  if (value !== nibbles << 2) throw Error('Bits for nibbles must multiple of 4')
+  return nibbles
 }
 
-//determine the number of octets for a given number of bits
-export const octetsToBits = (value: number): number => {
+//determine the number of nibbles for a given number of bits
+export const nibblesToBits = (value: number): number => {
   return value << 2
 }
 
-//are the number of bit a round octet (factor of 8)?
-export const isRoundOctet = (value: number) => {
+//are the number of bit a round nibble (factor of 4)?
+export const isRoundNibble = (value: number) => {
   return (value >> 2) << 2 === value
 }
 
@@ -33,7 +33,7 @@ export const isHex = (value: unknown, bitLength?: number): value is Hex => {
   if (typeof value !== 'string') return false
 
   //If a bitLength specified, does it conform?
-  if (bitLength !== undefined && value.length !== bitsToOctets(bitLength)) return false
+  if (bitLength !== undefined && value.length !== bitsToNibbles(bitLength)) return false
 
   //Does it only has hex values?
   return hexRegex.test(value)
@@ -81,7 +81,7 @@ export function asHex(value: unknown, assertOrBitLength?: AssertConfig | number,
 
   //make it conform to the bit length if shorter
   if (stringValue && bitLength) {
-    stringValue = stringValue.padStart(bitsToOctets(bitLength), '0')
+    stringValue = stringValue.padStart(bitsToNibbles(bitLength), '0')
   }
 
   return isHex(stringValue, bitLength) ? stringValue.toLowerCase() : assertError(value, assert, 'Unable to convert to Hash')

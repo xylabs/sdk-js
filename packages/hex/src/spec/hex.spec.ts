@@ -1,4 +1,4 @@
-import { asHex, isHex } from '../hex'
+import { hexFromArrayBuffer, hexFromNumber, isHex } from '../hex'
 
 describe('hex', () => {
   test('isHex', () => {
@@ -9,8 +9,8 @@ describe('hex', () => {
     expect(isHex('0xdeadbeef')).toBeFalse()
   })
   test('asHex', () => {
-    expect(asHex(new ArrayBuffer(2))).toBe('0000')
-    expect(asHex(10)).toBe('a')
-    expect(asHex(10, 256)).toBe('000000000000000000000000000000000000000000000000000000000000000a')
+    expect(hexFromArrayBuffer(new ArrayBuffer(2))).toBe('0000')
+    expect(hexFromNumber(10)).toBe('0a')
+    expect(hexFromNumber(10, { bitLength: 256 })).toBe('000000000000000000000000000000000000000000000000000000000000000a')
   })
 })

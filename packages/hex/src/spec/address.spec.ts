@@ -11,7 +11,7 @@ describe('address', () => {
     expect(isAddress('0xdeadbeefdeadbeefdeadxxxxdeadbeefdeadbeef')).toBeFalse()
   })
   test('asAddress', () => {
-    expect(asAddress(10)).toBe('0x000000000000000000000000000000000000000a')
-    expect(asAddress(10, 128)).toBe('0x0000000000000000000000000000000a')
+    expect(asAddress('0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef', true)).toBe('0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef')
+    expect(asAddress('000000000000000000000000000000000000000a', true)).toBe('0x000000000000000000000000000000000000000a')
   })
 })

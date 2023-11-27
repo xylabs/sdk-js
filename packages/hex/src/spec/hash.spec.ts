@@ -1,4 +1,5 @@
-import { asHash, isHash } from '../hash'
+import { isHash } from '../hash'
+import { hexFromNumber } from '../hex'
 
 describe('hash', () => {
   test('isHash', () => {
@@ -8,8 +9,9 @@ describe('hash', () => {
     expect(isHash('deadbeef')).toBeFalse()
     expect(isHash('0xdeadbeef')).toBeFalse()
   })
-  test('asHash', () => {
-    expect(asHash(10)).toBe('000000000000000000000000000000000000000000000000000000000000000a')
-    expect(asHash(10, 128)).toBe('0000000000000000000000000000000a')
+  test('hexFromNumber', () => {
+    expect(hexFromNumber(10)).toBe('0a')
+    expect(hexFromNumber(10, { bitLength: 256 })).toBe('000000000000000000000000000000000000000000000000000000000000000a')
+    expect(hexFromNumber(10, { bitLength: 128 })).toBe('0000000000000000000000000000000a')
   })
 })

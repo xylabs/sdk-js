@@ -1,5 +1,5 @@
 import { AssertConfig, assertError } from './assert'
-import { asHex, Hex, isHex, nibblesToBits } from './hex'
+import { Hex, hexFromHexString, isHex } from './hex'
 
 export type HashBitLength = 32 | 64 | 128 | 256 | 512 | 1024 | 2048 | 4096
 export const HashBitLength: HashBitLength[] = [32, 64, 128, 256, 512, 1024, 2048, 4096]
@@ -10,24 +10,20 @@ export const isHashBitLength = (value: unknown): value is HashBitLength => {
 
 export type Hash = Hex
 export const isHash = (value: unknown, bitLength: HashBitLength = 256): value is Hash => {
-  if (!isHex(value, bitLength)) return false
-
-  const hex = asHex(value, bitLength)
-  if (!hex) return false
-
-  if (!isHashBitLength(nibblesToBits(hex.length))) return false
-
-  return true
+  return isHex(value, bitLength)
 }
 
 export function asHash(value: unknown): Hash | undefined
 export function asHash(value: unknown, assert: AssertConfig): Hash
-export function asHash(value: unknown, bitLength?: HashBitLength): Hash | undefined
-export function asHash(value: unknown, bitLength: HashBitLength | undefined, assert: AssertConfig): Hash
-export function asHash(value: unknown, assertOrBitLength?: AssertConfig | HashBitLength, assertOnly?: AssertConfig): Hash | undefined {
-  const bitLength: HashBitLength = typeof assertOrBitLength === 'number' ? assertOrBitLength : 256
-  const assert = typeof assertOrBitLength !== 'number' ? assertOrBitLength : assertOnly
+export function asHash(value: unknown, assert?: AssertConfig): Hash | undefined {
+  let stringValue: string | undefined = undefined
 
-  const result = asHex(value, bitLength, assert)
-  return isHash(result, bitLength) ? result : assertError(value, assert, 'Resulting value is not a Hash')
+  switch (typeof value) {
+    case 'string':
+      stringValue = hexFromHexString(value)
+      break
+    default:
+      return assert ? assertError(value, assert, `Unsupported type [${typeof value}]`) : undefined
+  }
+  return isHash(stringValue) ? stringValue : assertError(value, assert, `Value is not a Hash [${value}]`)
 }

@@ -1,9 +1,14 @@
 import { AssertConfig, assertError } from './assert'
-import { asHex, bitsToNibbles, isHex } from './hex'
+import { bitsToNibbles, HexConfig, hexFrom, hexFromHexString, isHex } from './hex'
 
 export const addressRegex = /0x[0-9a-f]+/i
 
 export type Address = string
+
+export const toAddress = (value: unknown, config: HexConfig = {}) => {
+  const { bitLength = 160, prefix = true } = config
+  return hexFrom(value, { bitLength, prefix, ...config })
+}
 
 export const isAddress = (value: unknown, bitLength = 160): value is Address => {
   //Is it a string?
@@ -22,12 +27,15 @@ export const isAddress = (value: unknown, bitLength = 160): value is Address => 
 
 export function asAddress(value: unknown): Address | undefined
 export function asAddress(value: unknown, assert: AssertConfig): Address
-export function asAddress(value: unknown, bitLength: number): Address | undefined
-export function asAddress(value: unknown, bitLength: number, assert: AssertConfig): Address
-export function asAddress(value: unknown, assertOrBitLength?: AssertConfig | number, assertOnly?: AssertConfig): Address | undefined {
-  const bitLength = typeof assertOrBitLength === 'number' ? assertOrBitLength : 160
-  const assert = typeof assertOrBitLength !== 'number' ? assertOrBitLength : assertOnly
+export function asAddress(value: unknown, assert?: AssertConfig): Address | undefined {
+  let stringValue: string | undefined = undefined
 
-  const result = `0x${asHex(value, bitLength, assert)}`
-  return isAddress(result, bitLength) ? result : assertError(value, assert, 'Resulting value is not an Address')
+  switch (typeof value) {
+    case 'string':
+      stringValue = hexFromHexString(value, { prefix: true })
+      break
+    default:
+      return assert ? assertError(value, assert, `Unsupported type [${typeof value}]`) : undefined
+  }
+  return isAddress(stringValue) ? stringValue : assertError(value, assert, `Value is not an Address [${value}]`)
 }

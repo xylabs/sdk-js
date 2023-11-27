@@ -1,0 +1,52 @@
+import { isArrayBuffer } from '@xylabs/arraybuffer'
+
+import { isHex } from './is'
+import { HexConfig } from './model'
+import { bitsToNibbles } from './nibble'
+
+export const hexFromArrayBuffer = (buffer: ArrayBuffer, config?: HexConfig): string => {
+  const unPadded = [...new Uint8Array(buffer)].map((x) => x.toString(16).padStart(2, '0')).join('')
+  return hexFromHexString(unPadded, config)
+}
+
+export const hexFromBigInt = (value: bigint, config: HexConfig = {}): string => {
+  const { bitLength } = config
+  const unPadded = value.toString(16)
+  const padded = bitLength === undefined ? unPadded : unPadded.padStart(bitsToNibbles(bitLength), '0')
+  return hexFromHexString(padded, config)
+}
+
+export const hexFromNumber = (value: number, config?: HexConfig): string => {
+  return hexFromBigInt(BigInt(value), config)
+}
+
+export const hexFromHexString = (value: string, config: HexConfig = {}): string => {
+  const { prefix = false, byteSize = 8 } = config
+  const nibbleBoundary = bitsToNibbles(byteSize)
+  const unPadded = (value.startsWith('0x') ? value.substring(2) : value).toLowerCase()
+  if (isHex(unPadded)) {
+    const padded = unPadded.padStart(unPadded.length + (unPadded.length % nibbleBoundary), '0')
+    return prefix ? `0x${padded}` : padded
+  } else {
+    throw Error('Received string is not a value hex')
+  }
+}
+
+export const hexFrom = (value: unknown, config?: HexConfig): string => {
+  switch (typeof value) {
+    case 'string':
+      return hexFromHexString(value, config)
+    case 'bigint':
+      return hexFromBigInt(value, config)
+    case 'number':
+      return hexFromNumber(value, config)
+    case 'object':
+      if (isArrayBuffer(value)) {
+        return hexFromArrayBuffer(value, config)
+      } else {
+        throw Error('Invalid type: object !== ArrayBuffer')
+      }
+    default:
+      throw Error(`Invalid type: ${typeof value}`)
+  }
+}

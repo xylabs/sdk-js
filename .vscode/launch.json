@@ -16,7 +16,7 @@
         "--runInBand",
         "--testTimeout=120000",
         "-c=./jest.config.ts",
-        "packages/hex/src/spec/hex.spec.ts"
+        "packages/hex/src/spec/address.spec.ts"
       ],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",

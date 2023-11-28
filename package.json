@@ -41,7 +41,7 @@
     "@xylabs/api": "workspace:~",
     "@xylabs/array": "workspace:~",
     "@xylabs/assert": "workspace:~",
-    "@xylabs/axios": "workspace:~",
+    "@xylabs/axios": "2.13.4",
     "@xylabs/bignumber": "workspace:~",
     "@xylabs/buffer": "workspace:~",
     "@xylabs/crypto": "workspace:~",
@@ -50,7 +50,7 @@
     "@xylabs/error": "workspace:~",
     "@xylabs/eth-address": "workspace:~",
     "@xylabs/exists": "workspace:~",
-    "@xylabs/forget": "workspace:~",
+    "@xylabs/forget": "2.6.4",
     "@xylabs/function-name": "workspace:~",
     "@xylabs/log": "workspace:~",
     "@xylabs/logger": "workspace:~",
@@ -59,7 +59,7 @@
     "@xylabs/promise": "workspace:~",
     "@xylabs/set": "workspace:~",
     "@xylabs/static-implements": "workspace:~",
-    "@xylabs/url": "workspace:~"
+    "@xylabs/url": "2.9.2"
   },
   "devDependencies": {
     "@babel/core": "^7.23.3",

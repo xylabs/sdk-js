@@ -42,7 +42,6 @@
     "@xylabs/array": "workspace:~",
     "@xylabs/assert": "workspace:~",
     "@xylabs/axios": "workspace:~",
-    "@xylabs/bignumber": "workspace:~",
     "@xylabs/crypto": "workspace:~",
     "@xylabs/decimal-precision": "workspace:~",
     "@xylabs/delay": "workspace:~",
@@ -101,7 +100,7 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.13.18",
+  "version": "2.13.19",
   "packageManager": "yarn@4.0.2",
   "engines": {
     "node": ">=18.17.1"

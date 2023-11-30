@@ -1,6 +1,5 @@
 import { assertEx } from '@xylabs/assert'
-import { BigNumber } from '@xylabs/bignumber'
-import keccak256 from 'keccak256'
+import { getAddress } from 'ethers'
 
 import { ellipsize } from './ellipsize'
 import { padHex } from './padHex'
@@ -12,16 +11,16 @@ export class EthAddress {
 
   type = EthAddress.type
 
-  private address: BigNumber
+  private address: bigint
 
-  private constructor(address: BigNumber) {
+  private constructor(address: bigint) {
     this.address = address
   }
 
   static fromString(value?: string, base = 16) {
     if (value) {
-      const bn = new BigNumber(value.startsWith('0x') ? value.substring(2) : value, base)
-      return new EthAddress(bn)
+      const bi = base === 16 ? BigInt(value.startsWith('0x') ? value : `0x${value}`) : BigInt(value)
+      return new EthAddress(bi)
     }
   }
 
@@ -43,7 +42,7 @@ export class EthAddress {
       } else {
         inAddress = address
       }
-      return this.address.eq(inAddress.address)
+      return this.address === inAddress.address
     }
     return false
   }
@@ -71,14 +70,7 @@ export class EthAddress {
   toString(checksum?: boolean, chainId?: string) {
     if (checksum) {
       const strippedAddress = this.toHex()
-      const keccakHash = keccak256(chainId !== undefined ? `${chainId}0x${strippedAddress}` : strippedAddress).toString('hex')
-      let checksumAddress = '0x'
-
-      for (let i = 0; i < strippedAddress.length; i++) {
-        checksumAddress += parseInt(keccakHash[i], 16) >= 8 ? strippedAddress[i].toUpperCase() : strippedAddress[i]
-      }
-
-      return checksumAddress
+      return getAddress(chainId !== undefined ? `${chainId}0x${strippedAddress}` : `0x${strippedAddress}`)
     }
     return `0x${this.toHex()}`
   }

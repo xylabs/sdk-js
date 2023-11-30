@@ -1,8 +1,8 @@
 import { isArrayBuffer } from '@xylabs/arraybuffer'
 
-import { isHex } from './is'
-import { HexConfig } from './model'
-import { bitsToNibbles } from './nibble'
+import { HexConfig } from '../model'
+import { bitsToNibbles } from '../nibble'
+import { hexFromHexString } from './fromHexString'
 
 export const hexFromArrayBuffer = (buffer: ArrayBuffer, config?: HexConfig): string => {
   const unPadded = [...new Uint8Array(buffer)].map((x) => x.toString(16).padStart(2, '0')).join('')
@@ -18,18 +18,6 @@ export const hexFromBigInt = (value: bigint, config: HexConfig = {}): string => 
 
 export const hexFromNumber = (value: number, config?: HexConfig): string => {
   return hexFromBigInt(BigInt(value), config)
-}
-
-export const hexFromHexString = (value: string, config: HexConfig = {}): string => {
-  const { prefix = false, byteSize = 8 } = config
-  const nibbleBoundary = bitsToNibbles(byteSize)
-  const unPadded = (value.startsWith('0x') ? value.substring(2) : value).toLowerCase()
-  if (isHex(unPadded)) {
-    const padded = unPadded.padStart(unPadded.length + (unPadded.length % nibbleBoundary), '0')
-    return prefix ? `0x${padded}` : padded
-  } else {
-    throw Error('Received string is not a value hex')
-  }
 }
 
 export const hexFrom = (value: unknown, config?: HexConfig): string => {

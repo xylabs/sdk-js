@@ -1,11 +1,6 @@
-import { hexFromHexString } from './from'
 import { Hex } from './model'
 import { bitsToNibbles } from './nibble'
 import { hexRegex } from './regex'
-
-export const isHexZero = (value: string) => {
-  return BigInt(hexFromHexString(value, { prefix: true })) === 0n
-}
 
 export const isHex = (value: unknown, bitLength?: number): value is Hex => {
   //Is it a string?

@@ -5,6 +5,9 @@
     "incremental": false,
     "typeRoots": []
   },
-  "exclude": [".*", "dist", "node_modules", "build", "docs"],
-  "extends": "@xylabs/tsconfig"
+  "exclude": ["./node_modules", "./**/node_modules", "./dist", "./**/dist", "./**/docs", ".*"],
+  "extends": "@xylabs/tsconfig",
+  "include": [
+    "./src", "./**/src"
+  ]
 }

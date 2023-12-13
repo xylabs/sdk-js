@@ -11,9 +11,9 @@
   },
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.2.10",
-    "@xylabs/tsconfig": "^3.2.10",
-    "typescript": "^5.3.2"
+    "@xylabs/ts-scripts-yarn3": "^3.2.19",
+    "@xylabs/tsconfig": "^3.2.19",
+    "typescript": "^5.3.3"
   },
   "exports": {
     ".": {

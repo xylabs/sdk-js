@@ -1,19 +1,20 @@
-{
+const finalConfig = {
+  "extends": ["@xylabs"],
+  parser: '@typescript-eslint/parser',
+  parserOptions: { ecmaVersion: 'latest', project: null, tsconfigRootDir: __dirname, extraFileExtensions: ['json'] },
   "root": true,
-  "extends": [
-    "@xylabs"
-  ],
   "ignorePatterns": [
-    "**/dist",
-    "**/node_modules",
-    "**/docs",
+    "dist",
+    "node_modules",
+    "docs",
     "coverage",
     "docker",
     "nftData",
-    "**/testData.json",
+    "testData.json",
     "*.stories.*",
     "swagger.json",
-    ".yarn"
+    ".yarn",
+    ".*"
   ],
   "rules": {
     "@typescript-eslint/explicit-member-accessibility": ["warn", { "accessibility": "no-public" }],
@@ -21,11 +22,15 @@
       "warn",
       {
         "paths": [
+          "@xyo-network/bridge",
+          "@xyo-network/core",
+          "@xyo-network/module",
           "@xyo-network/modules",
           "@xyo-network/node",
           "@xyo-network/sdk",
           "@xyo-network/plugins",
           "@xyo-network/protocol",
+          "@xyo-network/witness",
           "react-player",
           "filepond",
           "aos",
@@ -37,7 +42,7 @@
           "../../../..",
           "../../../../..",
           "../../../../../..",
-          "../../../../../../..",
+          "../../../../../../.."
         ]
       }
     ],
@@ -53,3 +58,5 @@
     ]
   }
 }
+
+module.exports = finalConfig

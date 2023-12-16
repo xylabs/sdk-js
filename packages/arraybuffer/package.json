@@ -40,15 +40,18 @@
   "module": "dist/node/index.js",
   "types": "dist/node/index.d.mts",
   "dependencies": {
-    "@scure/base": "^1.1.4",
+    "@scure/base": "^1.1.5",
     "@xylabs/assert": "workspace:~",
     "@xylabs/lodash": "^2.13.20",
     "@xylabs/typeof": "workspace:~"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.2.19",
-    "@xylabs/tsconfig": "^3.2.19",
+    "@xylabs/ts-scripts-yarn3": "^3.2.24",
+    "@xylabs/tsconfig": "^3.2.24",
     "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "homepage": "https://xylabs.com",
   "keywords": [

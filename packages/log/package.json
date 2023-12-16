@@ -32,6 +32,9 @@
   "module": "./dist/node/index.js",
   "homepage": "https://xylabs.com",
   "keywords": [
+    "log",
+    "logger",
+    "logging",
     "xylabs",
     "utility",
     "typescript",
@@ -41,10 +44,13 @@
     "rollbar": "^2.26.2"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.2.19",
-    "@xylabs/tsconfig": "^3.2.19",
+    "@xylabs/ts-scripts-yarn3": "^3.2.24",
+    "@xylabs/tsconfig": "^3.2.24",
     "rollbar": "^2.26.2",
     "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "publishConfig": {
     "access": "public"
@@ -55,6 +61,5 @@
   },
   "sideEffects": false,
   "version": "2.13.20",
-  "packageManager": "yarn@3.3.1",
   "type": "module"
 }

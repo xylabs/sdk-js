@@ -29,6 +29,7 @@
   "module": "./dist/node/index.js",
   "homepage": "https://xylabs.com",
   "keywords": [
+    "forget",
     "xylabs",
     "utility",
     "typescript",
@@ -38,9 +39,12 @@
     "@xylabs/delay": "workspace:~"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.2.19",
-    "@xylabs/tsconfig": "^3.2.19",
+    "@xylabs/ts-scripts-yarn3": "^3.2.24",
+    "@xylabs/tsconfig": "^3.2.24",
     "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "publishConfig": {
     "access": "public"

@@ -1,9 +1,9 @@
 {
   "name": "@xylabs/error",
   "author": {
-    "email": "support@xyo.network",
-    "name": "XYO Development Team",
-    "url": "https://xyo.network"
+    "email": "support@xylabs.com",
+    "name": "XY Labs Development Team",
+    "url": "https://xylabs.com"
   },
   "bugs": {
     "email": "support@xyo.network",
@@ -11,10 +11,13 @@
   },
   "description": "Primary SDK for using XYO Protocol 2.0",
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.2.19",
-    "@xylabs/tsconfig": "^3.2.19",
-    "@xylabs/tsconfig-jest": "^3.2.19",
+    "@xylabs/ts-scripts-yarn3": "^3.2.24",
+    "@xylabs/tsconfig": "^3.2.24",
+    "@xylabs/tsconfig-jest": "^3.2.24",
     "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "exports": {
     ".": {
@@ -53,6 +56,13 @@
     "type": "git",
     "url": "https://github.com/XYOracleNetwork/sdk-xyo-client-js.git"
   },
+  "keywords": [
+    "error",
+    "xylabs",
+    "utility",
+    "typescript",
+    "esm"
+  ],
   "sideEffects": false,
   "version": "2.13.20",
   "type": "module"

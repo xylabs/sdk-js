@@ -29,16 +29,20 @@
   "module": "./dist/node/index.js",
   "homepage": "https://xylabs.com",
   "keywords": [
+    "delay",
     "xylabs",
     "utility",
     "typescript",
     "esm"
   ],
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.2.19",
-    "@xylabs/tsconfig": "^3.2.19",
-    "@xylabs/tsconfig-dom": "^3.2.19",
+    "@xylabs/ts-scripts-yarn3": "^3.2.24",
+    "@xylabs/tsconfig": "^3.2.24",
+    "@xylabs/tsconfig-dom": "^3.2.24",
     "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "publishConfig": {
     "access": "public"

@@ -29,6 +29,7 @@
   "module": "./dist/node/esmIndex.js",
   "homepage": "https://xylabs.com",
   "keywords": [
+    "lodash",
     "xylabs",
     "utility",
     "typescript",
@@ -45,9 +46,12 @@
   "devDependencies": {
     "@types/lodash": "^4.14.202",
     "@types/lodash-es": "^4.17.12",
-    "@xylabs/ts-scripts-yarn3": "^3.2.19",
-    "@xylabs/tsconfig": "^3.2.19",
+    "@xylabs/ts-scripts-yarn3": "^3.2.24",
+    "@xylabs/tsconfig": "^3.2.24",
     "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": "18>"
   },
   "publishConfig": {
     "access": "public"

@@ -6,7 +6,7 @@ import { matchFilter } from './filter'
 //Based on https://www.npmjs.com/package/jest-tags/v/1.0.1
 
 export function tags(...tagLabels: string[]) {
-  const tagsParam = process.argv.findIndex((item) => item === '--tags')
+  const tagsParam = process.argv.indexOf('--tags')
   const passedTags = tagsParam > 0 ? process.argv[tagsParam + 1] : undefined
   const filter = matchFilter(passedTags)
   const thisGlobal = global

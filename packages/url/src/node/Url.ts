@@ -1,2 +1,1 @@
-import { URL } from 'node:url'
-export { URL }
+export { URL } from 'node:url'

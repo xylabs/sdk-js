@@ -29,7 +29,7 @@ class ApiEndpoint<T> {
     if (response.status === 200) {
       this._value = response.data
     } else {
-      throw Error('Unexpected Status Code')
+      throw new Error('Unexpected Status Code')
     }
     return this._value
   }
@@ -43,7 +43,7 @@ class ApiEndpoint<T> {
     if (response.status === 200) {
       this._value = response.data
     } else {
-      throw Error('Unexpected Status Code')
+      throw new Error('Unexpected Status Code')
     }
     return this._value
   }

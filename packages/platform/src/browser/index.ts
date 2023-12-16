@@ -1,7 +1,7 @@
-import type { subtle as subtleType } from 'crypto'
+import type { subtle as subtleType } from 'node:crypto'
 
 export const isBrowser = () => {
-  return typeof window !== 'undefined' && typeof window?.document !== 'undefined'
+  return window?.document !== undefined
 }
 
 export const isWebworker = () => {

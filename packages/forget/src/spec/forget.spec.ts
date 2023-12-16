@@ -14,7 +14,6 @@ describe('forget', () => {
       Promise.resolve({ a: 1 }),
       Promise.resolve('resolved'),
       Promise.resolve([1, 2, 3, 4]),
-      Promise.resolve(undefined),
       Promise.resolve(null),
       Promise.resolve(),
     ]

@@ -1,7 +1,7 @@
-export { subtle } from 'crypto'
+export { subtle } from 'node:crypto'
 
 export const isBrowser = () => {
-  return typeof window !== 'undefined' && typeof window?.document !== 'undefined'
+  return window?.document !== undefined
 }
 
 export const isWebworker = () => {

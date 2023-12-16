@@ -1,7 +1,5 @@
-import { fulfilled } from './fulfilled'
-import { fulfilledValues } from './fulfilledValues'
-import { rejected } from './rejected'
-
-export { fulfilled, fulfilledValues, rejected }
+export { fulfilled } from './fulfilled'
+export { fulfilledValues } from './fulfilledValues'
 export * from './PromiseEx'
+export { rejected } from './rejected'
 export * from './types'

@@ -1,4 +1,2 @@
-import { bufferPolyfill } from './bufferPolyfill'
+export { bufferPolyfill } from './bufferPolyfill'
 export { Buffer } from 'buffer/'
-
-export { bufferPolyfill }

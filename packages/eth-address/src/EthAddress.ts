@@ -31,17 +31,12 @@ export class EthAddress {
   }
 
   static validate(address: string) {
-    return /^(0x)?[0-9a-f]{40}$/i.test(address)
+    return /^(0x)?[\da-f]{40}$/i.test(address)
   }
 
   equals(address?: EthAddress | string | null): boolean {
     if (address) {
-      let inAddress: EthAddress
-      if (typeof address === 'string') {
-        inAddress = assertEx(EthAddress.fromString(address), 'Bad Address')
-      } else {
-        inAddress = address
-      }
+      const inAddress = typeof address === 'string' ? assertEx(EthAddress.fromString(address), 'Bad Address') : address
       return this.address === inAddress.address
     }
     return false
@@ -70,7 +65,7 @@ export class EthAddress {
   toString(checksum?: boolean, chainId?: string) {
     if (checksum) {
       const strippedAddress = this.toHex()
-      return getAddress(chainId !== undefined ? `${chainId}0x${strippedAddress}` : `0x${strippedAddress}`)
+      return getAddress(chainId === undefined ? `0x${strippedAddress}` : `${chainId}0x${strippedAddress}`)
     }
     return `0x${this.toHex()}`
   }

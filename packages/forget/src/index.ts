@@ -1,3 +1,1 @@
-import { forget, ForgetPromise } from './forget'
-
-export { forget, ForgetPromise }
+export { forget, ForgetPromise } from './forget'

@@ -1,2 +1,2 @@
 export * from './bufferPolyfill'
-export { Buffer } from 'buffer'
+export { Buffer } from 'node:buffer'

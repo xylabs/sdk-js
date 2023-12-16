@@ -20,7 +20,7 @@ export const matchFilter =
       if (exclude.length === 0) {
         return include.length === 0 || include.some((s) => tags.includes(s))
       }
-      if (include.length === 0 && exclude.length !== 0) {
+      if (include.length === 0 && exclude.length > 0) {
         return exclude.some((s) => !tags.includes(s))
       }
       return include.length === 0 || include.some((s) => tags.includes(s)) || exclude.some((s) => !tags.includes(s))
@@ -29,7 +29,7 @@ export const matchFilter =
       const include = goodTags(str.split(AND_REGX))
       const exclude = badTags(str.split(AND_REGX))
 
-      return (include.length === 0 || include.every((s) => tags.includes(s))) && !exclude.some((s) => tags.includes(s))
+      return include.every((s) => tags.includes(s)) && !exclude.some((s) => tags.includes(s))
     }
     const include = goodTags(str.split(PLAIN_REGX))
     const exclude = badTags(str.split(PLAIN_REGX))

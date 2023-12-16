@@ -6,8 +6,9 @@ export const assertError = (value: unknown, assert: AssertConfig | undefined, de
   if (assert) {
     const assertString = typeof assert === 'string' ? assert : typeof assert === 'boolean' ? defaultMessage : assert(value, defaultMessage)
     if (assertString) {
-      throw Error(assertString === true ? defaultMessage : assertString)
+      throw new Error(assertString === true ? defaultMessage : assertString)
     }
   }
+  // eslint-disable-next-line unicorn/no-useless-undefined
   return undefined
 }

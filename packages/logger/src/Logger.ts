@@ -16,10 +16,10 @@ export interface Logger {
 
 export const getFunctionName = (depth = 2) => {
   try {
-    throw Error()
+    throw new Error('Getting function name')
   } catch (ex) {
     return handleError(ex, (error) => {
-      let newIndex: number | undefined = undefined
+      let newIndex: number | undefined
       const stackParts = error.stack?.split('\n')[depth].split(' ')
       const funcName =
         stackParts?.find((item, index) => {

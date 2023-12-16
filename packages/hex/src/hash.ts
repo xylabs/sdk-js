@@ -19,11 +19,13 @@ export function asHash(value: unknown, assert?: AssertConfig): Hash | undefined 
   let stringValue: string | undefined = undefined
 
   switch (typeof value) {
-    case 'string':
+    case 'string': {
       stringValue = hexFromHexString(value)
       break
-    default:
+    }
+    default: {
       return assert ? assertError(value, assert, `Unsupported type [${typeof value}]`) : undefined
+    }
   }
   return isHash(stringValue) ? stringValue : assertError(value, assert, `Value is not a Hash [${value}]`)
 }

@@ -7,10 +7,6 @@ type WithOptionalCrypto = { Crypto?: typeof Crypto }
 export const cryptoPolyfill = () => {
   const global = getGlobal<WithOptionalCrypto>()
   if (global) {
-    if (global.Crypto === undefined) {
-      global.Crypto = Crypto
-    } else {
-      global.Crypto = { ...Crypto, ...global.Crypto }
-    }
+    global.Crypto = global.Crypto === undefined ? Crypto : { ...Crypto, ...global.Crypto }
   }
 }

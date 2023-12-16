@@ -1,3 +1,1 @@
-import BN from 'bn.js'
-
-export { BN as BigNumber, BN }
+export { default as BigNumber, default as BN } from 'bn.js'

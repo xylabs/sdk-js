@@ -20,7 +20,7 @@ function assertEx<T, R extends Error, P extends string | AssertExMessageFunc<T> 
     throw typeof errorOrMessage === 'string' ? Error(errorOrMessage) : errorOrMessage
   }
   // a string was sent
-  throw Error(messageOrFunc)
+  throw new Error(messageOrFunc)
 }
 
 export { assertEx }

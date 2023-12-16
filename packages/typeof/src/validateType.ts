@@ -3,8 +3,9 @@ import { TypeOfTypes } from './TypeOfTypes'
 
 export const validateType = <T>(typeName: TypeOfTypes, value: T, optional = false): [T | undefined, Error[]] => {
   switch (typeOf(value)) {
-    case typeName:
+    case typeName: {
       return [value, []]
+    }
     default: {
       if (optional && typeOf(value) === 'undefined') {
         return [value, []]

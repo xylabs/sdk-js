@@ -13,6 +13,7 @@ export const profile = (profiler: Profiler, name: string) => {
 export const profileReport = (profiler: Profiler) => {
   let lowest = Date.now()
   let highest = 0
+  // eslint-disable-next-line unicorn/no-array-reduce
   const results = Object.entries(profiler).reduce<Record<string, number>>((prev, [name, readings]) => {
     const start = readings.at(0)
     if (start) {

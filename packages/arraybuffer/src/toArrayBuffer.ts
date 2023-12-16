@@ -4,12 +4,15 @@ import { ifTypeOf } from '@xylabs/typeof'
 
 const stringToArrayBuffer = (value: string, base = 16) => {
   switch (base) {
-    case 16:
+    case 16: {
       return base16.decode((value.startsWith('0x') ? value.slice(2) : value).toUpperCase())
-    case 58:
+    }
+    case 58: {
       return base58.decode(value)
-    default:
-      throw Error(`Unsupported base [${base}]`)
+    }
+    default: {
+      throw new Error(`Unsupported base [${base}]`)
+    }
   }
 }
 
@@ -23,7 +26,7 @@ export function toArrayBuffer(value?: ArrayBuffer | string, padLength?: number, 
     ifTypeOf<string, Uint8Array>('string', value as string, (value) => stringToArrayBuffer(value, base)) ?? (value as Uint8Array)
 
   if (result === undefined) {
-    throw Error(`toArrayBuffer - Unknown type: ${typeof value}`)
+    throw new Error(`toArrayBuffer - Unknown type: ${typeof value}`)
   }
 
   if (padLength && result.length < padLength) {

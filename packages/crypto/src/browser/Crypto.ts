@@ -1,3 +1,1 @@
-import Crypto from 'crypto-js'
-
-export { Crypto }
+export { default as Crypto } from 'crypto-js'

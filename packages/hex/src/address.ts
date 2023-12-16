@@ -1,7 +1,7 @@
 import { AssertConfig, assertError } from './assert'
 import { bitsToNibbles, HexConfig, hexFrom, hexFromHexString, isHex } from './hex'
 
-export const addressRegex = /0x[0-9a-f]+/i
+export const addressRegex = /0x[\da-f]+/i
 
 export type Address = string
 
@@ -17,7 +17,7 @@ export const isAddress = (value: unknown, bitLength = 160): value is Address => 
   //Does it only has hex values and leading 0x?
   if (!addressRegex.test(value)) return false
 
-  const valueHex = value.substring(2)
+  const valueHex = value.slice(2)
 
   //If a bitLength specified, does it conform?
   if (bitLength !== undefined && valueHex.length !== bitsToNibbles(bitLength)) return false
@@ -31,11 +31,13 @@ export function asAddress(value: unknown, assert?: AssertConfig): Address | unde
   let stringValue: string | undefined = undefined
 
   switch (typeof value) {
-    case 'string':
+    case 'string': {
       stringValue = hexFromHexString(value, { prefix: true })
       break
-    default:
+    }
+    default: {
       return assert ? assertError(value, assert, `Unsupported type [${typeof value}]`) : undefined
+    }
   }
   return isAddress(stringValue) ? stringValue : assertError(value, assert, `Value is not an Address [${value}]`)
 }

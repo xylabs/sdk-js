@@ -5,14 +5,14 @@ export interface ForgetTimeoutConfig {
   delay: number
 }
 
-export class ForgetPromise {
-  static activeForgets = 0
-
-  static get active() {
+export const ForgetPromise = {
+  get active() {
     return this.activeForgets > 0
-  }
+  },
 
-  static async awaitInactive(interval = 100, timeout?: number) {
+  activeForgets: 0,
+
+  async awaitInactive(interval = 100, timeout?: number) {
     let timeoutRemaining = timeout
     while (this.active) {
       await delay(interval)
@@ -24,14 +24,14 @@ export class ForgetPromise {
       }
     }
     return 0
-  }
+  },
 
   /**
    * Used to explicitly launch an async function (or Promise) with awaiting it
    * @param promise The promise to forget
    * @param config Configuration of forget settings
    */
-  static forget<T>(promise: Promise<T>, config?: ForgetTimeoutConfig) {
+  forget<T>(promise: Promise<T>, config?: ForgetTimeoutConfig) {
     let completed = false
     this.activeForgets++
 
@@ -70,7 +70,7 @@ export class ForgetPromise {
       .catch(() => {
         return
       })
-  }
+  },
 }
 
 //used to explicitly launch an async function (or Promise) with awaiting it

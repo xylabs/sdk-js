@@ -22,19 +22,24 @@ export const hexFromNumber = (value: number, config?: HexConfig): string => {
 
 export const hexFrom = (value: unknown, config?: HexConfig): string => {
   switch (typeof value) {
-    case 'string':
+    case 'string': {
       return hexFromHexString(value, config)
-    case 'bigint':
+    }
+    case 'bigint': {
       return hexFromBigInt(value, config)
-    case 'number':
+    }
+    case 'number': {
       return hexFromNumber(value, config)
-    case 'object':
+    }
+    case 'object': {
       if (isArrayBuffer(value)) {
         return hexFromArrayBuffer(value, config)
       } else {
-        throw Error('Invalid type: object !== ArrayBuffer')
+        throw new Error('Invalid type: object !== ArrayBuffer')
       }
-    default:
-      throw Error(`Invalid type: ${typeof value}`)
+    }
+    default: {
+      throw new Error(`Invalid type: ${typeof value}`)
+    }
   }
 }

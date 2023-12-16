@@ -9,11 +9,13 @@ export function asHex(value: unknown, assert?: AssertConfig): Hex | undefined {
   let stringValue: string | undefined = undefined
 
   switch (typeof value) {
-    case 'string':
+    case 'string': {
       stringValue = hexFromHexString(value)
       break
-    default:
+    }
+    default: {
       return assertError(value, assert, `Unsupported type [${typeof value}]`)
+    }
   }
 
   return isHex(stringValue) ? stringValue : assertError(value, assert, `Value is not Hex [${value}]`)

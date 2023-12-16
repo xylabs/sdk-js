@@ -3,10 +3,12 @@ import { typeOf } from './typeOf'
 export const ifDefined = <T>(value: T, func: (value: T) => void) => {
   switch (typeOf(value)) {
     case 'undefined':
-    case 'null':
+    case 'null': {
       break
-    default:
+    }
+    default: {
       func(value)
       return value
+    }
   }
 }

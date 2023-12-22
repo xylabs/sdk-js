@@ -1,7 +1,5 @@
 import { AssertConfig, assertError } from './assert'
-import { bitsToNibbles, HexConfig, hexFrom, hexFromHexString, isHex } from './hex'
-
-export const addressRegex = /0x[\da-f]+/i
+import { HexConfig, hexFrom, hexFromHexString, isHex } from './hex'
 
 export type Address = string
 
@@ -11,18 +9,7 @@ export const toAddress = (value: unknown, config: HexConfig = {}) => {
 }
 
 export const isAddress = (value: unknown, bitLength = 160): value is Address => {
-  //Is it a string?
-  if (typeof value !== 'string') return false
-
-  //Does it only has hex values and leading 0x?
-  if (!addressRegex.test(value)) return false
-
-  const valueHex = value.slice(2)
-
-  //If a bitLength specified, does it conform?
-  if (bitLength !== undefined && valueHex.length !== bitsToNibbles(bitLength)) return false
-
-  return isHex(valueHex, bitLength)
+  return isHex(value, { bitLength, prefix: true })
 }
 
 export function asAddress(value: unknown): Address | undefined

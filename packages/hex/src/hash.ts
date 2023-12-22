@@ -10,7 +10,7 @@ export const isHashBitLength = (value: unknown): value is HashBitLength => {
 
 export type Hash = Hex
 export const isHash = (value: unknown, bitLength: HashBitLength = 256): value is Hash => {
-  return isHex(value, bitLength)
+  return isHex(value, { bitLength })
 }
 
 export function asHash(value: unknown): Hash | undefined

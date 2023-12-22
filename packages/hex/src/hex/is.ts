@@ -1,14 +1,16 @@
-import { Hex } from './model'
+import { Hex, HexConfig } from './model'
 import { bitsToNibbles } from './nibble'
-import { hexRegex } from './regex'
+import { hexRegex, hexRegexWithPrefix } from './regex'
 
-export const isHex = (value: unknown, bitLength?: number): value is Hex => {
+export const isHex = (value: unknown, config?: HexConfig): value is Hex => {
   //Is it a string?
   if (typeof value !== 'string') return false
 
+  const valueCharLength = config?.prefix ? value.length - 2 : value.length
+
   //If a bitLength specified, does it conform?
-  if (bitLength !== undefined && value.length !== bitsToNibbles(bitLength)) return false
+  if (config?.bitLength !== undefined && valueCharLength !== bitsToNibbles(config?.bitLength)) return false
 
   //Does it only has hex values?
-  return hexRegex.test(value)
+  return config?.prefix ? hexRegexWithPrefix.test(value) : hexRegex.test(value)
 }

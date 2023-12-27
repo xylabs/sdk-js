@@ -41,7 +41,7 @@
     "@xylabs/api": "workspace:~",
     "@xylabs/array": "workspace:~",
     "@xylabs/assert": "workspace:~",
-    "@xylabs/axios": "workspace:~",
+    "@xylabs/axios": "2.13.4",
     "@xylabs/crypto": "workspace:~",
     "@xylabs/decimal-precision": "workspace:~",
     "@xylabs/delay": "workspace:~",

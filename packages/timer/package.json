@@ -1,6 +1,6 @@
 {
   "license": "LGPL-3.0-only",
-  "name": "@xylabs/bignumber",
+  "name": "@xylabs/timer",
   "author": {
     "email": "support@xylabs.com",
     "name": "XY Labs Development Team",
@@ -11,9 +11,6 @@
     "url": "https://github.com/xylabs/sdk-js/issues"
   },
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
-  "dependencies": {
-    "bn.js": "^5.2.1"
-  },
   "exports": {
     ".": {
       "require": {
@@ -30,16 +27,7 @@
   "main": "./dist/node/index.cjs",
   "types": "./dist/node/index.d.ts",
   "module": "./dist/node/index.js",
-  "homepage": "https://xylabs.com",
-  "keywords": [
-    "bignumber",
-    "xylabs",
-    "utility",
-    "typescript",
-    "esm"
-  ],
   "devDependencies": {
-    "@types/bn.js": "^5.1.5",
     "@xylabs/ts-scripts-yarn3": "^3.2.41",
     "@xylabs/tsconfig": "^3.2.41",
     "typescript": "^5.3.3"
@@ -47,6 +35,15 @@
   "engines": {
     "node": ">=18"
   },
+  "homepage": "https://xylabs.com",
+  "keywords": [
+    "xylabs",
+    "timer",
+    "setTimeout",
+    "utility",
+    "typescript",
+    "esm"
+  ],
   "publishConfig": {
     "access": "public"
   },

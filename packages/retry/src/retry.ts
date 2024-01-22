@@ -1,13 +1,13 @@
 import { delay } from '@xylabs/delay'
 import { Promisable } from '@xylabs/promise'
 
-export interface RetryConfig<T = unknown> {
+export interface RetryConfig {
   backoff?: number
   interval?: number
   retries?: number
 }
 
-export interface RetryConfigWithComplete<T = unknown> extends RetryConfig<T> {
+export interface RetryConfigWithComplete<T = unknown> extends RetryConfig {
   complete?: (result?: T) => boolean
 }
 

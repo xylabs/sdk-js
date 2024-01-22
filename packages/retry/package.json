@@ -1,0 +1,61 @@
+{
+  "license": "LGPL-3.0-only",
+  "name": "@xylabs/retry",
+  "author": {
+    "email": "support@xylabs.com",
+    "name": "XY Labs Development Team",
+    "url": "https://xylabs.com"
+  },
+  "bugs": {
+    "email": "support@xylabs.com",
+    "url": "https://github.com/xylabs/sdk-js/issues"
+  },
+  "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
+  "exports": {
+    ".": {
+      "require": {
+        "types": "./dist/node/index.d.cts",
+        "default": "./dist/node/index.cjs"
+      },
+      "import": {
+        "types": "./dist/node/index.d.mts",
+        "default": "./dist/node/index.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/node/index.cjs",
+  "types": "./dist/node/index.d.ts",
+  "module": "./dist/node/index.js",
+  "homepage": "https://xylabs.com",
+  "keywords": [
+    "delay",
+    "xylabs",
+    "utility",
+    "typescript",
+    "esm"
+  ],
+  "dependencies": {
+    "@xylabs/delay": "workspace:~",
+    "@xylabs/promise": "workspace:~"
+  },
+  "devDependencies": {
+    "@xylabs/ts-scripts-yarn3": "^3.2.42",
+    "@xylabs/tsconfig": "^3.2.42",
+    "@xylabs/tsconfig-dom": "^3.2.42",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xylabs/sdk-js.git"
+  },
+  "sideEffects": false,
+  "version": "2.13.26",
+  "type": "module"
+}

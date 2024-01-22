@@ -3205,7 +3205,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/assert@workspace:packages/assert, @xylabs/assert@workspace:~":
+"@xylabs/assert@npm:^2.13.25, @xylabs/assert@workspace:packages/assert, @xylabs/assert@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xylabs/assert@workspace:packages/assert"
   dependencies:
@@ -3458,11 +3458,24 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/logger@workspace:packages/logger, @xylabs/logger@workspace:~":
+"@xylabs/logger@npm:^2.13.25, @xylabs/logger@workspace:packages/logger, @xylabs/logger@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xylabs/logger@workspace:packages/logger"
   dependencies:
     "@xylabs/error": "workspace:~"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
+    "@xylabs/tsconfig": "npm:^3.2.42"
+    typescript: "npm:^5.3.3"
+  languageName: unknown
+  linkType: soft
+
+"@xylabs/object@workspace:packages/object, @xylabs/object@workspace:~":
+  version: 0.0.0-use.local
+  resolution: "@xylabs/object@workspace:packages/object"
+  dependencies:
+    "@xylabs/assert": "npm:^2.13.25"
+    "@xylabs/logger": "npm:^2.13.25"
+    "@xylabs/promise": "npm:^2.13.25"
     "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
     "@xylabs/tsconfig": "npm:^3.2.42"
     typescript: "npm:^5.3.3"
@@ -3490,12 +3503,25 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/promise@workspace:packages/promise, @xylabs/promise@workspace:~":
+"@xylabs/promise@npm:^2.13.25, @xylabs/promise@workspace:packages/promise, @xylabs/promise@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xylabs/promise@workspace:packages/promise"
   dependencies:
     "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
     "@xylabs/tsconfig": "npm:^3.2.42"
+    typescript: "npm:^5.3.3"
+  languageName: unknown
+  linkType: soft
+
+"@xylabs/retry@workspace:packages/retry, @xylabs/retry@workspace:~":
+  version: 0.0.0-use.local
+  resolution: "@xylabs/retry@workspace:packages/retry"
+  dependencies:
+    "@xylabs/delay": "workspace:~"
+    "@xylabs/promise": "workspace:~"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
+    "@xylabs/tsconfig": "npm:^3.2.42"
+    "@xylabs/tsconfig-dom": "npm:^3.2.42"
     typescript: "npm:^5.3.3"
   languageName: unknown
   linkType: soft
@@ -3529,9 +3555,11 @@ __metadata:
     "@xylabs/function-name": "workspace:~"
     "@xylabs/log": "workspace:~"
     "@xylabs/logger": "workspace:~"
+    "@xylabs/object": "workspace:~"
     "@xylabs/platform": "workspace:~"
     "@xylabs/profile": "workspace:~"
     "@xylabs/promise": "workspace:~"
+    "@xylabs/retry": "workspace:~"
     "@xylabs/set": "workspace:~"
     "@xylabs/static-implements": "workspace:~"
     "@xylabs/timer": "workspace:~"

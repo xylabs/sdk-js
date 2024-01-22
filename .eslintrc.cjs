@@ -17,6 +17,7 @@ const finalConfig = {
     ".*"
   ],
   "rules": {
+    "unicorn/no-array-reduce": ["warn", {allowSimpleOperations: true}],
     "unicorn/filename-case": ["off"],
     "unicorn/no-nested-ternary": ["off"],
     "unicorn/no-array-callback-reference": ["off"],
@@ -29,7 +30,7 @@ const finalConfig = {
     "unicorn/prefer-top-level-await": ["off"],
     "unicorn/consistent-function-scoping": ["off"],
     "unicorn/prefer-module": ["off"],
-    "@typescript-eslint/explicit-member-accessibility": ["warn", { "accessibility": "no-public" }],
+    "@typescript-eslint/explicit-member-accessibility": ["warn", { accessibility: "no-public" }],
     "no-restricted-imports": [
       "warn",
       {

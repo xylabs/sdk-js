@@ -48,7 +48,7 @@
     "@xylabs/error": "workspace:~",
     "@xylabs/eth-address": "workspace:~",
     "@xylabs/exists": "workspace:~",
-    "@xylabs/forget": "workspace:~",
+    "@xylabs/forget": "2.6.4",
     "@xylabs/function-name": "workspace:~",
     "@xylabs/log": "workspace:~",
     "@xylabs/logger": "workspace:~",

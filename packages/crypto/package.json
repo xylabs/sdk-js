@@ -51,7 +51,7 @@
   },
   "devDependencies": {
     "@types/crypto-js": "^4.2.2",
-    "@types/node": "^20.11.5",
+    "@types/node": "^20.11.17",
     "@xylabs/ts-scripts-yarn3": "^3.2.42",
     "@xylabs/tsconfig": "^3.2.42",
     "@xylabs/tsconfig-dom": "^3.2.42",

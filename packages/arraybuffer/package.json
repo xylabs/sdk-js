@@ -42,7 +42,7 @@
   "dependencies": {
     "@scure/base": "^1.1.5",
     "@xylabs/assert": "workspace:~",
-    "@xylabs/lodash": "^2.14.2",
+    "@xylabs/lodash": "^2.14.3",
     "@xylabs/typeof": "workspace:~"
   },
   "devDependencies": {
@@ -68,6 +68,6 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "2.14.2",
+  "version": "2.14.3",
   "type": "module"
 }

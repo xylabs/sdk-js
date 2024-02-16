@@ -2865,12 +2865,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^20.11.17, @types/node@npm:^20.11.5":
-  version: 20.11.17
-  resolution: "@types/node@npm:20.11.17"
+"@types/node@npm:*, @types/node@npm:^20.11.19, @types/node@npm:^20.11.5":
+  version: 20.11.19
+  resolution: "@types/node@npm:20.11.19"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 3342df87258d1c56154bcd4b85180f48675427b235971e6e6e2e037353f5a2ae9aaa05ba5df0fe1e2d2f1022c8d856fd39056b9d7f50ea30c0ca3214137cae1d
+  checksum: c7f4705d6c84aa21679ad180c33c13ca9567f650e66e14bcee77c7c43d14619c7cd3b4d7b2458947143030b7b1930180efa6d12d999b45366abff9fed7a17472
   languageName: node
   linkType: hard
 
@@ -3353,7 +3353,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/buffer@workspace:packages/buffer"
   dependencies:
-    "@types/node": "npm:^20.11.17"
+    "@types/node": "npm:^20.11.19"
     "@xylabs/platform": "workspace:~"
     "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
     "@xylabs/tsconfig": "npm:^3.2.42"
@@ -3379,7 +3379,7 @@ __metadata:
   resolution: "@xylabs/crypto@workspace:packages/crypto"
   dependencies:
     "@types/crypto-js": "npm:^4.2.2"
-    "@types/node": "npm:^20.11.17"
+    "@types/node": "npm:^20.11.19"
     "@xylabs/platform": "workspace:~"
     "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
     "@xylabs/tsconfig": "npm:^3.2.42"
@@ -3461,7 +3461,7 @@ __metadata:
     "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
     "@xylabs/tsconfig": "npm:^3.2.42"
     "@xylabs/tsconfig-jest": "npm:^3.2.42"
-    ethers: "npm:^6.11.1"
+    ethers: "npm:6.11.1"
     typescript: "npm:^5.3.3"
   languageName: unknown
   linkType: soft
@@ -3558,7 +3558,7 @@ __metadata:
   dependencies:
     "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
     "@xylabs/tsconfig": "npm:^3.2.42"
-    rollbar: "npm:^2.26.2"
+    rollbar: "npm:^2.26.3"
     typescript: "npm:^5.3.3"
   dependenciesMeta:
     rollbar:
@@ -6589,7 +6589,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ethers@npm:^6.11.1":
+"ethers@npm:6.11.1":
   version: 6.11.1
   resolution: "ethers@npm:6.11.1"
   dependencies:
@@ -13496,9 +13496,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollbar@npm:^2.26.2":
-  version: 2.26.2
-  resolution: "rollbar@npm:2.26.2"
+"rollbar@npm:^2.26.3":
+  version: 2.26.3
+  resolution: "rollbar@npm:2.26.3"
   dependencies:
     async: "npm:~3.2.3"
     console-polyfill: "npm:0.3.0"
@@ -13511,7 +13511,7 @@ __metadata:
   dependenciesMeta:
     decache:
       optional: true
-  checksum: 7d2b76d2e75f5a9e343487cb3c5ce50d68cf2dc5348d20237c838bdd46ae58c85b695973b6c2471372b6b5f5da89f144bea1bc126a7722d3d752cf89dcd90533
+  checksum: e003d6e1a0cb9fb52b8097d0e4fa854b0a75f874303f1e926a703aca5e4c7c6b6efff17883e7087615f553b40dd6ef8f6917ad78b85ed0d48b0d35f2da03c770
   languageName: node
   linkType: hard
 

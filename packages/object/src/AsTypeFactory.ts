@@ -43,8 +43,8 @@ export const AsTypeFactory = {
       const resolvedConfig = typeof assertOrConfig === 'object' ? assertOrConfig : config
       const result = typeCheck(value, resolvedConfig) ? value : undefined
 
-      return noUndefined(resolvedAssert)
-        ? (assertEx(result, typeof resolvedAssert === 'function' ? resolvedAssert() : resolvedAssert) as TType)
+      return noUndefined(resolvedAssert) ?
+          (assertEx(result, typeof resolvedAssert === 'function' ? resolvedAssert() : resolvedAssert) as TType)
         : (result as TType)
     }
     return func

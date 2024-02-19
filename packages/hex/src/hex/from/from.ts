@@ -1,26 +1,26 @@
 import { isArrayBuffer } from '@xylabs/arraybuffer'
 
-import { HexConfig } from '../model'
+import { Hex, HexConfig } from '../model'
 import { bitsToNibbles } from '../nibble'
 import { hexFromHexString } from './fromHexString'
 
-export const hexFromArrayBuffer = (buffer: ArrayBuffer, config?: HexConfig): string => {
+export const hexFromArrayBuffer = (buffer: ArrayBuffer, config?: HexConfig): Hex => {
   const unPadded = [...new Uint8Array(buffer)].map((x) => x.toString(16).padStart(2, '0')).join('')
   return hexFromHexString(unPadded, config)
 }
 
-export const hexFromBigInt = (value: bigint, config: HexConfig = {}): string => {
+export const hexFromBigInt = (value: bigint, config: HexConfig = {}): Hex => {
   const { bitLength } = config
   const unPadded = value.toString(16)
   const padded = bitLength === undefined ? unPadded : unPadded.padStart(bitsToNibbles(bitLength), '0')
   return hexFromHexString(padded, config)
 }
 
-export const hexFromNumber = (value: number, config?: HexConfig): string => {
+export const hexFromNumber = (value: number, config?: HexConfig): Hex => {
   return hexFromBigInt(BigInt(value), config)
 }
 
-export const hexFrom = (value: unknown, config?: HexConfig): string => {
+export const hexFrom = (value: unknown, config?: HexConfig): Hex => {
   switch (typeof value) {
     case 'string': {
       return hexFromHexString(value, config)

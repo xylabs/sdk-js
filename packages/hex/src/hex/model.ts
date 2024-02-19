@@ -1,4 +1,4 @@
-export type Hex = string
+export type Hex = Lowercase<string>
 
 export interface HexConfig {
   bitLength?: number

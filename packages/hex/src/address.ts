@@ -1,7 +1,7 @@
 import { AssertConfig, assertError } from './assert'
-import { HexConfig, hexFrom, hexFromHexString, isHex } from './hex'
+import { Hex, HexConfig, hexFrom, hexFromHexString, isHex } from './hex'
 
-export type Address = string
+export type Address = Hex
 
 export const toAddress = (value: unknown, config: HexConfig = {}) => {
   const { bitLength = 160, prefix = true } = config

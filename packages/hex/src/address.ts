@@ -1,7 +1,7 @@
 import { AssertConfig, assertError } from './assert'
 import { Hex, HexConfig, hexFrom, hexFromHexString, isHex } from './hex'
 
-export type Address = Hex
+export type Address = Exclude<Hex, 'reserved-address-value'>
 
 export const toAddress = (value: unknown, config: HexConfig = {}) => {
   const { bitLength = 160, prefix = true } = config

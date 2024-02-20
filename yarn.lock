@@ -3263,7 +3263,7 @@ __metadata:
   dependencies:
     "@scure/base": "npm:^1.1.5"
     "@xylabs/assert": "workspace:~"
-    "@xylabs/lodash": "npm:^3.0.0"
+    "@xylabs/lodash": "npm:^3.0.1"
     "@xylabs/ts-scripts-yarn3": "npm:^3.4.1"
     "@xylabs/tsconfig": "npm:^3.4.1"
     "@xylabs/typeof": "workspace:~"
@@ -3271,7 +3271,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/assert@npm:^3.0.0, @xylabs/assert@workspace:packages/assert, @xylabs/assert@workspace:~":
+"@xylabs/assert@npm:^3.0.1, @xylabs/assert@workspace:packages/assert, @xylabs/assert@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xylabs/assert@workspace:packages/assert"
   dependencies:
@@ -3492,7 +3492,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/lodash@npm:^3.0.0, @xylabs/lodash@workspace:packages/lodash":
+"@xylabs/lodash@npm:^3.0.1, @xylabs/lodash@workspace:packages/lodash":
   version: 0.0.0-use.local
   resolution: "@xylabs/lodash@workspace:packages/lodash"
   dependencies:
@@ -3525,7 +3525,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/logger@npm:^3.0.0, @xylabs/logger@workspace:packages/logger, @xylabs/logger@workspace:~":
+"@xylabs/logger@npm:^3.0.1, @xylabs/logger@workspace:packages/logger, @xylabs/logger@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xylabs/logger@workspace:packages/logger"
   dependencies:
@@ -3540,9 +3540,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/object@workspace:packages/object"
   dependencies:
-    "@xylabs/assert": "npm:^3.0.0"
-    "@xylabs/logger": "npm:^3.0.0"
-    "@xylabs/promise": "npm:^3.0.0"
+    "@xylabs/assert": "npm:^3.0.1"
+    "@xylabs/logger": "npm:^3.0.1"
+    "@xylabs/promise": "npm:^3.0.1"
     "@xylabs/ts-scripts-yarn3": "npm:^3.4.1"
     "@xylabs/tsconfig": "npm:^3.4.1"
     typescript: "npm:^5.3.3"
@@ -3570,7 +3570,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/promise@npm:^3.0.0, @xylabs/promise@workspace:packages/promise, @xylabs/promise@workspace:~":
+"@xylabs/promise@npm:^3.0.1, @xylabs/promise@workspace:packages/promise, @xylabs/promise@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xylabs/promise@workspace:packages/promise"
   dependencies:
@@ -3634,7 +3634,7 @@ __metadata:
     "@xylabs/url": "workspace:~"
     babel-jest: "npm:^29.7.0"
     depcheck: "npm:^1.4.7"
-    dotenv: "npm:^16.4.4"
+    dotenv: "npm:^16.4.5"
     eslint: "npm:^8.56.0"
     eslint-plugin-deprecation: "npm:^2.0.0"
     eslint-plugin-import: "npm:^2.29.1"
@@ -5785,10 +5785,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv@npm:^16.4.4":
-  version: 16.4.4
-  resolution: "dotenv@npm:16.4.4"
-  checksum: ddf43ede209d5f54c9da688e93326162eb0fc367ad1869909568cb15571ab8c87a0fab4e1d4af9860be0571c707a8b4aefa060a4f1b0bb14298a81e0ccf0017d
+"dotenv@npm:^16.4.5":
+  version: 16.4.5
+  resolution: "dotenv@npm:16.4.5"
+  checksum: 55a3134601115194ae0f924e54473459ed0d9fc340ae610b676e248cca45aa7c680d86365318ea964e6da4e2ea80c4514c1adab5adb43d6867fb57ff068f95c8
   languageName: node
   linkType: hard
 

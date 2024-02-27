@@ -12,8 +12,11 @@ interface WorkerGlobalScope {
 }
 
 declare const self: WorkerGlobalScope
-
-if (self === undefined) {
+try {
+  if (self === undefined) {
+    ;(global as any).self = global
+  }
+} catch {
   ;(global as any).self = global
 }
 

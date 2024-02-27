@@ -5,6 +5,7 @@ const finalConfig = {
   "root": true,
   "ignorePatterns": [
     "dist",
+    "dist-esm",
     "node_modules",
     "docs",
     "coverage",

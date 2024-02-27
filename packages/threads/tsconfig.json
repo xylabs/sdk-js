@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "declaration": true,
+    "esModuleInterop": true,
+    "target": "es2022",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "useUnknownInCatchVariables": false,
+    "lib": ["es2022"],
+    "outDir": "dist",
+    "strict": true,
+    "types": ["node"]
+  },
+  "include": [
+    "./src/index.ts",
+    "./src/observable.ts",
+    "./src/master/*",
+    "./src/worker/*",
+    "./types/tiny-worker.d.ts",
+    "./types/is-observable.d.ts"
+  ]
+}

@@ -8,8 +8,9 @@ export const toAddress = (value: unknown, config: HexConfig = {}) => {
   return hexFrom(value, { bitLength, prefix, ...config })
 }
 
-export const isAddress = (value: unknown, bitLength = 160): value is Address => {
-  return isHex(value, { bitLength, prefix: true })
+export const isAddress = (value: unknown, config: HexConfig = {}): value is Address => {
+  const { bitLength = 160, prefix = false } = config
+  return isHex(value, { bitLength, prefix })
 }
 
 export function asAddress(value: unknown): Address | undefined

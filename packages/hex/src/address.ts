@@ -4,7 +4,7 @@ import { Hex, HexConfig, hexFrom, hexFromHexString, isHex } from './hex'
 export type Address = Exclude<Hex, 'reserved-address-value'>
 
 export const toAddress = (value: unknown, config: HexConfig = {}) => {
-  const { bitLength = 160, prefix = true } = config
+  const { bitLength = 160, prefix = false } = config
   return hexFrom(value, { bitLength, prefix, ...config })
 }
 
@@ -19,7 +19,7 @@ export function asAddress(value: unknown, assert?: AssertConfig): Address | unde
 
   switch (typeof value) {
     case 'string': {
-      stringValue = hexFromHexString(value, { prefix: true })
+      stringValue = hexFromHexString(value, { prefix: false })
       break
     }
     default: {

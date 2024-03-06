@@ -66,6 +66,7 @@
     "worker_threads"
   ],
   "dependencies": {
+    "@babel/types": "^7.24.0",
     "callsites": "^3.1.0",
     "debug": "^4.2.0",
     "is-observable": "^2.1.0",
@@ -130,6 +131,9 @@
     "ts-node": false,
     "ts-node/register": false,
     "worker_threads": false
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "files": [
     "dist/**",

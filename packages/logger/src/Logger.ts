@@ -16,11 +16,11 @@ export enum LogLevel {
   error = 1,
   warn = 2,
   info = 3,
-  debug = 4,
-  log = 5,
+  log = 4,
+  debug = 5,
 }
 
-export const NoOpLogFunction = (_message?: unknown) => void {}
+export const NoOpLogFunction = (..._data: unknown[]) => void {}
 
 export class ConsoleLogger implements Logger {
   constructor(readonly level: LogLevel = LogLevel.warn) {}

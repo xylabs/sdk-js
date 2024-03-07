@@ -1,4 +1,5 @@
-import { getFunctionName, Logger } from './Logger'
+import { getFunctionName } from './getFunctionName'
+import { Logger } from './Logger'
 
 export class IdLogger implements Logger {
   private _id?: () => string
@@ -13,27 +14,23 @@ export class IdLogger implements Logger {
     this._id = () => id
   }
 
-  debug(message?: unknown) {
-    this._logger?.debug(this.generate(message, getFunctionName(3)))
+  debug(...data: unknown[]) {
+    this._logger?.debug(this.prefix(), ...data)
   }
-  error(message?: unknown) {
-    this._logger?.error(this.generate(message, getFunctionName(3)))
+  error(...data: unknown[]) {
+    this._logger?.error(this.prefix(), ...data)
   }
-  info(message?: unknown) {
-    this._logger?.info(this.generate(message, getFunctionName(3)))
+  info(...data: unknown[]) {
+    this._logger?.info(this.prefix(), ...data)
   }
-  log(message?: unknown) {
-    this._logger?.log(this.generate(message, getFunctionName(3)))
+  log(...data: unknown[]) {
+    this._logger?.log(this.prefix(), ...data)
   }
-  warn(message?: unknown) {
-    this._logger?.warn(this.generate(message, getFunctionName(3)))
+  warn(...data: unknown[]) {
+    this._logger?.warn(this.prefix(), ...data)
   }
 
-  private generate(message?: unknown, tag?: string) {
-    return `${tag} ${this._id ? `[${this._id}] ` : ''}${
-      typeof message === 'string' ? message
-      : typeof message === 'object' ? JSON.stringify(message, null, 2)
-      : `${message}`
-    }`
+  private prefix() {
+    return `[${this._id?.()}|${getFunctionName(4)}]`
   }
 }

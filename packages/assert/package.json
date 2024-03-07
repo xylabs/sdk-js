@@ -28,8 +28,8 @@
   "types": "./dist/node/index.d.ts",
   "module": "./dist/node/index.js",
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.4.1",
-    "@xylabs/tsconfig": "^3.4.1",
+    "@xylabs/ts-scripts-yarn3": "^3.5.0",
+    "@xylabs/tsconfig": "^3.5.0",
     "typescript": "^5.4.2"
   },
   "engines": {

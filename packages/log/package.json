@@ -44,8 +44,8 @@
     "rollbar": "^2.26.3"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.4.1",
-    "@xylabs/tsconfig": "^3.4.1",
+    "@xylabs/ts-scripts-yarn3": "^3.5.0",
+    "@xylabs/tsconfig": "^3.5.0",
     "rollbar": "^2.26.3",
     "typescript": "^5.4.2"
   },

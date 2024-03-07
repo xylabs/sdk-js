@@ -28,23 +28,23 @@ export class ConsoleLogger implements Logger {
   constructor(readonly level: LogLevel = LogLevel.warn) {}
 
   get debug() {
-    return this.level <= LogLevel.debug ? console.debug : NoOpLogFunction
+    return this.level >= LogLevel.debug ? console.debug : NoOpLogFunction
   }
 
   get error() {
-    return this.level <= LogLevel.error ? console.error : NoOpLogFunction
+    return this.level >= LogLevel.error ? console.error : NoOpLogFunction
   }
 
   get info() {
-    return this.level <= LogLevel.info ? console.info : NoOpLogFunction
+    return this.level >= LogLevel.info ? console.info : NoOpLogFunction
   }
 
   get log() {
-    return this.level <= LogLevel.log ? console.log : NoOpLogFunction
+    return this.level >= LogLevel.log ? console.log : NoOpLogFunction
   }
 
   get warn() {
-    return this.level <= LogLevel.warn ? console.warn : NoOpLogFunction
+    return this.level >= LogLevel.warn ? console.warn : NoOpLogFunction
   }
 }
 export const getFunctionName = (depth = 2) => {

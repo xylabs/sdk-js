@@ -42,8 +42,8 @@
     "@xylabs/arraybuffer": "workspace:~"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.5.0",
-    "@xylabs/tsconfig": "^3.5.0",
+    "@xylabs/ts-scripts-yarn3": "^3.5.2",
+    "@xylabs/tsconfig": "^3.5.2",
     "typescript": "^5.4.2"
   },
   "engines": {

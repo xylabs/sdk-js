@@ -8,7 +8,7 @@
 [![npm-license-badge][]](LICENSE)
 [![socket-badge][]][socket-link]
 
-> XY Labs generalized Javascript library 
+> XY Labs Hex Helpers
 
 ## Table of Contents
 
@@ -20,7 +20,11 @@
 
 ## Description
 
-Common Javascript code that is used throughout XYO projects that use React.
+Various Hex helper functions for conversion and formatting
+
+### Hex
+
+hexFrom - Convert unknown type to hex string 
 
 ## Install
 

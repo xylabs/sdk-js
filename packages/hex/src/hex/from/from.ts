@@ -1,26 +1,18 @@
 import { isArrayBuffer } from '@xylabs/arraybuffer'
 
 import { Hex, HexConfig } from '../model'
-import { bitsToNibbles } from '../nibble'
+import { hexFromArrayBuffer } from './fromArrayBuffer'
+import { hexFromBigInt } from './fromBigInt'
 import { hexFromHexString } from './fromHexString'
+import { hexFromNumber } from './fromNumber'
 
-export const hexFromArrayBuffer = (buffer: ArrayBuffer, config?: HexConfig): Hex => {
-  const unPadded = [...new Uint8Array(buffer)].map((x) => x.toString(16).padStart(2, '0')).join('')
-  return hexFromHexString(unPadded, config)
-}
-
-export const hexFromBigInt = (value: bigint, config: HexConfig = {}): Hex => {
-  const { bitLength } = config
-  const unPadded = value.toString(16)
-  const padded = bitLength === undefined ? unPadded : unPadded.padStart(bitsToNibbles(bitLength), '0')
-  return hexFromHexString(padded, config)
-}
-
-export const hexFromNumber = (value: number, config?: HexConfig): Hex => {
-  return hexFromBigInt(BigInt(value), config)
-}
-
-export const hexFrom = (value: unknown, config?: HexConfig): Hex => {
+/** Takes unknown value and tries our best to convert it to a hex string */
+export const hexFrom = (
+  /** Supported types are string, number, bigint, and ArrayBuffer */
+  value: unknown,
+  /** Configuration of output format and validation */
+  config?: HexConfig,
+): Hex => {
   switch (typeof value) {
     case 'string': {
       return hexFromHexString(value, config)

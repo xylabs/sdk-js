@@ -1,5 +1,6 @@
 import { assertEx } from '@xylabs/assert'
 import { Logger } from '@xylabs/logger'
+import { isPromise } from '@xylabs/promise'
 
 export interface TypeCheckConfig {
   log?: boolean | Logger
@@ -37,6 +38,10 @@ export const AsTypeFactory = {
 
       if (value === null) {
         return undefined
+      }
+
+      if (isPromise(value)) {
+        throw new TypeError('un-awaited promises may not be sent to "as" functions')
       }
 
       const resolvedAssert = typeof assertOrConfig === 'object' ? undefined : assertOrConfig

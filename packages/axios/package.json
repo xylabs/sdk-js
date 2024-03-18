@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@xylabs/logger": "workspace:~",
-    "axios": "^1.6.7",
+    "axios": "^1.6.8",
     "pako": "^2.1.0"
   },
   "description": "Primary SDK for using XYO Protocol 2.0",

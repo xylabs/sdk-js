@@ -1,5 +1,6 @@
 export { fulfilled } from './fulfilled'
 export { fulfilledValues } from './fulfilledValues'
+export * from './isPromise'
 export * from './PromiseEx'
 export { rejected } from './rejected'
 export * from './types'

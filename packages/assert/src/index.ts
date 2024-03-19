@@ -11,7 +11,7 @@ export type AssertExErrorFunc<T, R extends Error> = (value?: T | null) => R
  * @returns Value of expression
  */
 function assertEx<T>(expr: T | null | undefined): T
-/** deprecated - replace string with () => string */
+/** @deprecated - replace string with () => string */
 function assertEx<T>(expr: T | null | undefined, message?: string): T
 function assertEx<T>(expr: T | null | undefined, messageFunc?: AssertExMessageFunc<T>): T
 function assertEx<T, R extends Error>(expr: T | null | undefined, errorFunc?: AssertExErrorFunc<T, R>): T

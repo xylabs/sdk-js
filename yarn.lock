@@ -2684,10 +2684,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/chai@npm:^4.3.12":
-  version: 4.3.12
-  resolution: "@types/chai@npm:4.3.12"
-  checksum: 10/cf465151048f438b11e562ac431842f440b50817e74516f1fb349860a0db4fcdd665197f9fbee4387250d8d077496a1167fe2c75af88372bac6d8f093ee07b3a
+"@types/chai@npm:^4.3.13":
+  version: 4.3.13
+  resolution: "@types/chai@npm:4.3.13"
+  checksum: 10/5409f78322f99f4a121b909eae76adcd72dddb1fe59950f1a38e8fa4c726204bc1ed3d0d0be765155eecdedcf4205498a8a6114a2df5b0ba12d27f926a5ab047
   languageName: node
   linkType: hard
 
@@ -2917,12 +2917,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^20.11.25, @types/node@npm:^20.11.28":
-  version: 20.11.28
-  resolution: "@types/node@npm:20.11.28"
+"@types/node@npm:*, @types/node@npm:^20.11.25, @types/node@npm:^20.11.30":
+  version: 20.11.30
+  resolution: "@types/node@npm:20.11.30"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 10/b03f69213ac6e7cd5f7efa86139f24e23ff70a12fed04adeac5413b62d6982343ce94906f74c401c5afefda48d36ae0efd6a575240996b15a5cf80b456ab4221
+  checksum: 10/78515bc768d2b878e2e06a1c20eb4f5840072b79b8d28ff3dd0a7feaaf48fd3a2ac03cfa5bc7564da82db5906b43e9ba0e5df9f43d870b7aae2942306e208815
   languageName: node
   linkType: hard
 
@@ -3613,7 +3613,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/buffer@workspace:packages/buffer"
   dependencies:
-    "@types/node": "npm:^20.11.28"
+    "@types/node": "npm:^20.11.30"
     "@xylabs/platform": "workspace:~"
     "@xylabs/ts-scripts-yarn3": "npm:^3.5.2"
     "@xylabs/tsconfig": "npm:^3.5.2"
@@ -3639,7 +3639,7 @@ __metadata:
   resolution: "@xylabs/crypto@workspace:packages/crypto"
   dependencies:
     "@types/crypto-js": "npm:^4.2.2"
-    "@types/node": "npm:^20.11.28"
+    "@types/node": "npm:^20.11.30"
     "@xylabs/platform": "workspace:~"
     "@xylabs/ts-scripts-yarn3": "npm:^3.5.2"
     "@xylabs/tsconfig": "npm:^3.5.2"
@@ -3819,7 +3819,7 @@ __metadata:
   dependencies:
     "@xylabs/ts-scripts-yarn3": "npm:^3.5.2"
     "@xylabs/tsconfig": "npm:^3.5.2"
-    rollbar: "npm:^2.26.3"
+    rollbar: "npm:^2.26.4"
     typescript: "npm:^5.4.2"
   dependenciesMeta:
     rollbar:
@@ -3970,10 +3970,10 @@ __metadata:
     "@babel/types": "npm:^7.24.0"
     "@rollup/plugin-commonjs": "npm:^16.0.0"
     "@rollup/plugin-node-resolve": "npm:^10.0.0"
-    "@types/chai": "npm:^4.3.12"
+    "@types/chai": "npm:^4.3.13"
     "@types/debug": "npm:^4.1.12"
     "@types/execa": "npm:^2.0.0"
-    "@types/node": "npm:^20.11.28"
+    "@types/node": "npm:^20.11.30"
     "@types/webpack": "npm:^4.41.38"
     ava: "npm:^3.15.0"
     callsites: "npm:^3.1.0"
@@ -17013,9 +17013,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollbar@npm:^2.26.3":
-  version: 2.26.3
-  resolution: "rollbar@npm:2.26.3"
+"rollbar@npm:^2.26.4":
+  version: 2.26.4
+  resolution: "rollbar@npm:2.26.4"
   dependencies:
     async: "npm:~3.2.3"
     console-polyfill: "npm:0.3.0"
@@ -17028,7 +17028,7 @@ __metadata:
   dependenciesMeta:
     decache:
       optional: true
-  checksum: 10/e003d6e1a0cb9fb52b8097d0e4fa854b0a75f874303f1e926a703aca5e4c7c6b6efff17883e7087615f553b40dd6ef8f6917ad78b85ed0d48b0d35f2da03c770
+  checksum: 10/1f18204b3a0eadb0b4ba36bc05f7418f58c40787d2bfe4d5df86bae4627f68c17446a92a746d833a7f4ceba2e614e6825f3f63c0b023615f1420b138daba0530
   languageName: node
   linkType: hard
 

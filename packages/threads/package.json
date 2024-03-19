@@ -75,10 +75,10 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^16.0.0",
     "@rollup/plugin-node-resolve": "^10.0.0",
-    "@types/chai": "^4.3.12",
+    "@types/chai": "^4.3.13",
     "@types/debug": "^4.1.12",
     "@types/execa": "^2.0.0",
-    "@types/node": "^20.11.28",
+    "@types/node": "^20.11.30",
     "@types/webpack": "^4.41.38",
     "ava": "^3.15.0",
     "chai": "^4.4.1",

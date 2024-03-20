@@ -2,8 +2,8 @@ import { isType } from './isType'
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export type TypedValue = bigint | string | number | boolean | null | TypedObject | TypedArray | Function | symbol | undefined
-export type TypedKey = string | number | symbol
-export type TypedObject = { [key: TypedKey]: TypedValue }
+export type TypedKey<T extends string | void = void> = T extends string ? T : string | number | symbol
+export type TypedObject = { [key: TypedKey]: TypedValue } | object
 export type TypedArray = TypedValue[]
 
 export const isTypedKey = (value: unknown): value is TypedKey => {
@@ -49,3 +49,18 @@ export const isTypedObject = (value: unknown): value is TypedObject => {
     !Object.entries(value as object).some((item) => !isValidTypedFieldPair(item))
   )
 }
+
+//Object Type Test
+/*
+interface TestObject {
+  value: number
+}
+
+const x: TestObject = { value: 1 }
+
+const f = (p: TypedValue): void => {
+  console.log(p)
+}
+
+f(x)
+*/

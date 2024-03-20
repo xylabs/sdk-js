@@ -31,7 +31,7 @@ export function toArrayBuffer(value?: ArrayBuffer | string, padLength?: number, 
 
   if (padLength && result.length < padLength) {
     result = new Uint8Array([...new Uint8Array(padLength - result.length), ...result])
-    assertEx(result?.length <= padLength, 'Resulting length is greater than padLength')
+    assertEx(result?.length <= padLength, () => 'Resulting length is greater than padLength')
   }
 
   return result

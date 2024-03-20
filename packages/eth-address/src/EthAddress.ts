@@ -36,7 +36,7 @@ export class EthAddress {
 
   equals(address?: EthAddress | string | null): boolean {
     if (address) {
-      const inAddress = typeof address === 'string' ? assertEx(EthAddress.fromString(address), 'Bad Address') : address
+      const inAddress = typeof address === 'string' ? assertEx(EthAddress.fromString(address), () => 'Bad Address') : address
       return this.address === inAddress.address
     }
     return false

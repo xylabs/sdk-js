@@ -53,7 +53,7 @@ const timerFunc = () => {
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export const setTimeoutEx = (func: Function, delay: number) => {
-  assertEx(delay >= 0, 'delay must be >= 0')
+  assertEx(delay >= 0, () => 'delay must be >= 0')
   const id = `${Date.now()}|${Math.random() * 9_999_999_999}`
   timeouts.push({ delay, func, id })
   update()

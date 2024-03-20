@@ -14,3 +14,14 @@ export const isPromise = (value: unknown): value is Promise<unknown> => {
   }
   return false
 }
+
+// type test
+/*
+const x = Promise.resolve()
+
+const f = (x: AnyNonPromise) => {
+  return x
+}
+
+f(x)
+*/

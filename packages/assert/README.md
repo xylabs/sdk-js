@@ -36,11 +36,30 @@ Using yarn:
 yarn add @xylabs/assert
 ```
 
-## Documentation
-[Developer Reference](https://xylabs.github.io/sdk-js)
+## Usage
+
+The `assertEx` function is a utility function for simple null/undefined checks for variables. It evaluates an expression for truthiness and throws an error if the expression is false.
+
+Here are some examples of how to use `assertEx` in different scenarios:
+
+- Basic usage:
+
+  ```javascript
+  import { assertEx } from '@xylabs/assert';
+
+  const value = getValue(); // This is a function that may return null or undefined
+  assertEx(value); // Throws an AssertExError with a default message if value is null or undefined
+  ```
+
+- Using with a custom error message:
+
+  ```javascript
+  import { assertEx } from '@xylabs/assert';
+
+  const value = getValue(); // This function may return null or undefined
+  assertEx(value, () => 'Dynamic error message based on some conditions'); // Throws an AssertExError with a dynamic message if value is null or undefined
 
 ## Maintainers
-
 -   [Arie Trouw](https://github.com/arietrouw) ([arietrouw.com](https://arietrouw.com))
 -   [Joel Carter](https://github.com/JoelBCarter)
 -   [Matt Jones](https://github.com/jonesmac)

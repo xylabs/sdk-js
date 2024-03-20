@@ -1,6 +1,6 @@
 import { assertEx } from '@xylabs/assert'
 import { Logger } from '@xylabs/logger'
-import { isPromise } from '@xylabs/promise'
+import { AnyNonPromise, isPromise } from '@xylabs/promise'
 
 export interface TypeCheckConfig {
   log?: boolean | Logger
@@ -13,18 +13,18 @@ export const AsTypeFactory = {
   create: <T>(typeCheck: TypeCheck<T>) => {
     function func<TType extends T>(
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      value: unknown,
+      value: AnyNonPromise,
       config?: TypeCheckConfig,
     ): TType | undefined
     function func<TType extends T>(
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      value: unknown,
+      value: AnyNonPromise,
       assert: string | (() => string),
       config?: TypeCheckConfig,
     ): TType
     function func<TType extends T>(
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      value: unknown,
+      value: AnyNonPromise,
       assertOrConfig?: string | (() => string) | TypeCheckConfig,
       config?: TypeCheckConfig,
     ): TType | undefined {
@@ -48,7 +48,8 @@ export const AsTypeFactory = {
       const resolvedConfig = typeof assertOrConfig === 'object' ? assertOrConfig : config
       const result = typeCheck(value, resolvedConfig) ? value : undefined
 
-      return noUndefined(resolvedAssert) ?
+      return noUndefined(resolvedAssert) && typeof resolvedAssert !== 'object' ?
+          // eslint-disable-next-line deprecation/deprecation
           (assertEx(result, typeof resolvedAssert === 'function' ? resolvedAssert() : resolvedAssert) as TType)
         : (result as TType)
     }

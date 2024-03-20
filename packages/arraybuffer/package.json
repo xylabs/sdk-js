@@ -40,7 +40,7 @@
   "module": "dist/node/index.js",
   "types": "dist/node/index.d.mts",
   "dependencies": {
-    "@scure/base": "^1.1.5",
+    "@scure/base": "^1.1.6",
     "@xylabs/assert": "workspace:~",
     "@xylabs/lodash": "^3.0.15",
     "@xylabs/typeof": "workspace:~"

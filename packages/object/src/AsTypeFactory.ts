@@ -1,16 +1,18 @@
-import { assertEx } from '@xylabs/assert'
+import { assertEx, AssertExMessageFunc } from '@xylabs/assert'
 import { Logger } from '@xylabs/logger'
-import { AnyNonPromise, isPromise } from '@xylabs/promise'
+import { AnyNonPromise, isPromise, TypedValue } from '@xylabs/promise'
 
 export interface TypeCheckConfig {
   log?: boolean | Logger
 }
 
-export type TypeCheck<T> = (obj: unknown, config?: TypeCheckConfig) => obj is T
+export type StringOrAlertFunction<T extends AnyNonPromise> = string | AssertExMessageFunc<T>
+
+export type TypeCheck<T extends TypedValue> = (obj: AnyNonPromise, config?: TypeCheckConfig) => obj is T
 
 export const AsTypeFactory = {
   // eslint-disable-next-line @typescript-eslint/ban-types
-  create: <T>(typeCheck: TypeCheck<T>) => {
+  create: <T extends AnyNonPromise>(typeCheck: TypeCheck<T>) => {
     function func<TType extends T>(
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       value: AnyNonPromise,
@@ -19,19 +21,15 @@ export const AsTypeFactory = {
     function func<TType extends T>(
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       value: AnyNonPromise,
-      assert: string | (() => string),
+      assert: StringOrAlertFunction<T>,
       config?: TypeCheckConfig,
     ): TType
     function func<TType extends T>(
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       value: AnyNonPromise,
-      assertOrConfig?: string | (() => string) | TypeCheckConfig,
+      assertOrConfig?: StringOrAlertFunction<T> | TypeCheckConfig,
       config?: TypeCheckConfig,
     ): TType | undefined {
-      const noUndefined = (resolvedAssert: unknown): resolvedAssert is T => {
-        return resolvedAssert !== undefined
-      }
-
       if (value === undefined) {
         return undefined
       }
@@ -44,14 +42,18 @@ export const AsTypeFactory = {
         throw new TypeError('un-awaited promises may not be sent to "as" functions')
       }
 
-      const resolvedAssert = typeof assertOrConfig === 'object' ? undefined : assertOrConfig
+      const resolvedAssert = (typeof assertOrConfig === 'object' ? undefined : assertOrConfig) as StringOrAlertFunction<T> | undefined
       const resolvedConfig = typeof assertOrConfig === 'object' ? assertOrConfig : config
-      const result = typeCheck(value, resolvedConfig) ? value : undefined
+      const result = typeCheck(value, resolvedConfig) ? (value as TType) : undefined
 
-      return noUndefined(resolvedAssert) && typeof resolvedAssert !== 'object' ?
-          // eslint-disable-next-line deprecation/deprecation
-          (assertEx(result, typeof resolvedAssert === 'function' ? resolvedAssert() : resolvedAssert) as TType)
-        : (result as TType)
+      if (resolvedAssert) {
+        if (typeof resolvedAssert === 'function') {
+          assertEx<T>(result, resolvedAssert)
+        } else {
+          assertEx<T>(result, () => resolvedAssert)
+        }
+      }
+      return result
     }
     return func
   },

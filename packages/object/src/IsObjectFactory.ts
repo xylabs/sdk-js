@@ -1,12 +1,12 @@
-import { AnyObject } from './AnyObject'
+import { TypedObject } from '@xylabs/promise'
+
 import { TypeCheck, TypeCheckConfig } from './AsTypeFactory'
-import { EmptyObject } from './EmptyObject'
 import { isType, ObjectTypeShape } from './isType'
 
 export interface ObjectTypeConfig extends TypeCheckConfig {}
 
-export class IsObjectFactory<T extends EmptyObject> {
-  create(shape?: ObjectTypeShape, additionalChecks?: TypeCheck<AnyObject | EmptyObject>[]): TypeCheck<T> {
+export class IsObjectFactory<T extends TypedObject> {
+  create(shape?: ObjectTypeShape, additionalChecks?: TypeCheck<TypedObject>[]): TypeCheck<T> {
     return (obj, { log } = {}): obj is T => {
       if (!obj || typeof obj !== 'object') {
         return false

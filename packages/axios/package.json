@@ -19,7 +19,7 @@
     "@types/pako": "^2.0.3",
     "@xylabs/ts-scripts-yarn3": "^3.5.2",
     "@xylabs/tsconfig": "^3.5.2",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.3"
   },
   "engines": {
     "node": ">=18"
@@ -69,6 +69,6 @@
     "esm"
   ],
   "sideEffects": false,
-  "version": "3.0.22",
+  "version": "3.0.23",
   "type": "module"
 }

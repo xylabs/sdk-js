@@ -1,18 +1,22 @@
 import { JsonArray, JsonObject, JsonValue } from './JsonObject'
 
-const toJsonArray = (value: unknown[], cycleList?: unknown[]): JsonArray => {
-  return value.map((item) => toJsonValue(item, cycleList))
+const toJsonArray = (value: unknown[], cycleList?: unknown[], maxDepth = 3): JsonArray => {
+  return value.map((item) => toJsonValue(item, cycleList, maxDepth))
 }
 
-const toJsonObject = (value: object, cycleList?: unknown[]): JsonObject => {
+const toJsonObject = (value: object, cycleList?: unknown[], maxDepth = 3): JsonObject => {
   const result: JsonObject = {}
   for (const [key, entry] of Object.entries(value)) {
-    result[key] = value === undefined ? '[Undefined]' : toJsonValue(entry, cycleList)
+    result[key] = value === undefined ? '[Undefined]' : toJsonValue(entry, cycleList, maxDepth)
   }
   return result
 }
 
-const toJsonValue = (value: unknown, cycleList?: unknown[]): JsonValue => {
+const toJsonValue = (value: unknown, cycleList?: unknown[], maxDepth = 3): JsonValue => {
+  console.log(`toJsonValue: ${maxDepth}`)
+  if (maxDepth <= 0 && typeof value === 'object') {
+    return '[MaxDepth]'
+  }
   if (cycleList?.includes(value)) {
     return '[Circular]'
   }
@@ -28,7 +32,7 @@ const toJsonValue = (value: unknown, cycleList?: unknown[]): JsonValue => {
       }
       const newCycleList = cycleList ?? []
       newCycleList.push(value)
-      return Array.isArray(value) ? toJsonArray(value) : toJsonObject(value)
+      return Array.isArray(value) ? toJsonArray(value, newCycleList, maxDepth - 1) : toJsonObject(value, newCycleList, maxDepth - 1)
     }
     default: {
       return `[${typeof value}]`
@@ -36,6 +40,10 @@ const toJsonValue = (value: unknown, cycleList?: unknown[]): JsonValue => {
   }
 }
 
-export const toJson = (value: unknown): JsonValue => {
-  return toJsonValue(value)
+export const toJsonString = (value: unknown, maxDepth = 3) => {
+  return JSON.stringify(toJson(value, maxDepth), null, 2)
+}
+
+export const toJson = (value: unknown, maxDepth = 3): JsonValue => {
+  return toJsonValue(value, undefined, maxDepth)
 }

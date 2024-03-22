@@ -79,7 +79,7 @@
     "jest-sorted": "^1.0.15",
     "reflect-metadata": "^0.2.1",
     "ts-jest": "^29.1.2",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.3"
   },
   "publishConfig": {
     "access": "public"
@@ -101,6 +101,6 @@
     "node": "18.17.1",
     "yarn": "1.22.19"
   },
-  "version": "3.0.22",
+  "version": "3.0.23",
   "type": "module"
 }

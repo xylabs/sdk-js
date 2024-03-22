@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/threads",
-  "version": "3.0.22",
+  "version": "3.0.23",
   "description": "Web workers & worker threads as simple as a function call",
   "license": "MIT",
   "main": "dist/index.js",
@@ -75,7 +75,7 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^16.0.0",
     "@rollup/plugin-node-resolve": "^10.0.0",
-    "@types/chai": "^4.3.13",
+    "@types/chai": "^4.3.14",
     "@types/debug": "^4.1.12",
     "@types/execa": "^2.0.0",
     "@types/node": "^20.11.30",
@@ -94,7 +94,7 @@
     "tiny-worker": "^2.3.0",
     "ts-loader": "^8.4.0",
     "ts-node": "^9.1.1",
-    "typescript": "^5.4.2",
+    "typescript": "^5.4.3",
     "wavy": "^1.0.4",
     "webpack": "^4.47.0",
     "worker-plugin": "^5.0.1"

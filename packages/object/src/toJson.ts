@@ -13,7 +13,6 @@ const toJsonObject = (value: object, cycleList?: unknown[], maxDepth = 3): JsonO
 }
 
 const toJsonValue = (value: unknown, cycleList?: unknown[], maxDepth = 3): JsonValue => {
-  console.log(`toJsonValue: ${maxDepth}`)
   if (maxDepth <= 0 && typeof value === 'object') {
     return '[MaxDepth]'
   }

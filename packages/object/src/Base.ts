@@ -14,8 +14,8 @@ export abstract class Base<TParams extends BaseParams = BaseParams> {
   static defaultLogger?: Logger
   static readonly uniqueName = globallyUnique(this.name, this, 'xyo')
 
-  constructor(readonly params: TParams) {
-    params.logger?.debug(`Base constructed [${Object(this).name}]`)
+  constructor(readonly params?: TParams) {
+    params?.logger?.debug(`Base constructed [${Object(this).name}]`)
   }
 
   protected get logger() {

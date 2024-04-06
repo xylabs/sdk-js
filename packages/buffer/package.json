@@ -50,11 +50,11 @@
     "buffer": "^6.0.3"
   },
   "devDependencies": {
-    "@types/node": "^20.12.2",
-    "@xylabs/ts-scripts-yarn3": "^3.5.2",
-    "@xylabs/tsconfig": "^3.5.2",
-    "@xylabs/tsconfig-dom": "^3.5.2",
-    "typescript": "^5.4.3"
+    "@types/node": "^20.12.5",
+    "@xylabs/ts-scripts-yarn3": "^3.9.0",
+    "@xylabs/tsconfig": "^3.9.0",
+    "@xylabs/tsconfig-dom": "^3.9.0",
+    "typescript": "^5.4.4"
   },
   "engines": {
     "node": ">=18"

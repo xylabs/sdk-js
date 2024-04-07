@@ -21,11 +21,11 @@ export abstract class Base<TParams extends BaseParams = BaseParams> {
     params?.logger?.debug(`Base constructed [${Object(this).name}]`)
   }
 
-  protected get logger() {
-    return this.params?.logger ?? Base.defaultLogger
+  get params() {
+    return this._params
   }
 
-  protected get params() {
-    return this._params
+  protected get logger() {
+    return this.params?.logger ?? Base.defaultLogger
   }
 }

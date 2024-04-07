@@ -10,7 +10,7 @@ export type BaseParamsFields = {
 export type BaseParams<TAdditionalParams extends EmptyObject | void = void> =
   TAdditionalParams extends EmptyObject ? BaseParamsFields & TAdditionalParams : BaseParamsFields
 
-export abstract class Base<TParams extends BaseParams = BaseParams> {
+export abstract class Base<TParams extends BaseParams | undefined = BaseParams> {
   static defaultLogger?: Logger
   static readonly uniqueName = globallyUnique(this.name, this, 'xyo')
 

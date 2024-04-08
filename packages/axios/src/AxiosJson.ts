@@ -48,9 +48,9 @@ export class AxiosJson extends Axios {
 
   private static buildHeaders(headers: RawAxiosJsonRequestConfig['headers']) {
     const axiosHeaders = new AxiosHeaders()
-    for (const [key, value] of Object.entries(headers ?? {})) axiosHeaders.set(key, value)
     axiosHeaders.set('Accept', 'application/json, text/plain, *.*')
     axiosHeaders.set('Content-Type', 'application/json')
+    for (const [key, value] of Object.entries(headers ?? {})) axiosHeaders.set(key, value)
     return axiosHeaders
   }
 }

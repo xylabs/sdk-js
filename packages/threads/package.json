@@ -78,7 +78,7 @@
     "@types/chai": "^4.3.14",
     "@types/debug": "^4.1.12",
     "@types/execa": "^2.0.0",
-    "@types/node": "^20.12.5",
+    "@types/node": "^20.12.7",
     "@types/webpack": "^4.41.38",
     "ava": "^3.15.0",
     "chai": "^4.4.1",
@@ -94,7 +94,7 @@
     "tiny-worker": "^2.3.0",
     "ts-loader": "^8.4.0",
     "ts-node": "^9.1.1",
-    "typescript": "^5.4.4",
+    "typescript": "^5.4.5",
     "wavy": "^1.0.4",
     "webpack": "^4.47.0",
     "worker-plugin": "^5.0.1"

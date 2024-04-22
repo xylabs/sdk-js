@@ -19,9 +19,9 @@ export type BaseParamsFields = {
 export type BaseParams<TAdditionalParams extends EmptyObject | void = void> =
   TAdditionalParams extends EmptyObject ? BaseParamsFields & TAdditionalParams : BaseParamsFields
 
-export abstract class Base<TParams extends BaseParams | undefined = BaseParams> {
+export abstract class Base<TParams extends BaseParams | void = void> {
   static defaultLogger?: Logger
-  static readonly globalInstances: Record<BaseClassName, WeakRef<Base<BaseParams | undefined>>[]> = {}
+  static readonly globalInstances: Record<BaseClassName, WeakRef<Base>[]> = {}
   static readonly globalInstancesCountHistory: Record<BaseClassName, number[]> = {}
   static readonly uniqueName = globallyUnique(this.name, this, 'xyo')
   private static _historyInterval = DEFAULT_HISTORY_INTERVAL
@@ -29,10 +29,10 @@ export abstract class Base<TParams extends BaseParams | undefined = BaseParams> 
   private static _historyTimeout?: ReturnType<typeof setTimeout>
   private static _lastGC = 0
   private static _maxGcFrequency = MAX_GC_FREQUENCY
-  private _params: TParams
+  private _params: TParams extends BaseParams ? TParams : BaseParams
 
-  constructor(params: TParams) {
-    this._params = params
+  constructor(params?: TParams extends BaseParams ? TParams : BaseParams) {
+    this._params = params ?? ({} as TParams extends BaseParams ? TParams : BaseParams)
     params?.logger?.debug(`Base constructed [${Object(this).name}]`)
     this.recordInstance()
   }
@@ -71,7 +71,7 @@ export abstract class Base<TParams extends BaseParams | undefined = BaseParams> 
     return this.params?.logger ?? Base.defaultLogger
   }
 
-  get params() {
+  get params(): TParams extends BaseParams ? TParams : BaseParams {
     return this._params
   }
 

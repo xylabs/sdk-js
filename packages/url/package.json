@@ -66,6 +66,6 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "3.1.10",
+  "version": "3.1.11",
   "type": "module"
 }

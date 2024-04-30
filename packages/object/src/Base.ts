@@ -106,9 +106,7 @@ export abstract class Base<TParams extends BaseParams | undefined = BaseParams> 
     const timeoutHandler = () => {
       if (this._historyTimeout) {
         this.addToHistory()
-        this._historyTimeout = setTimeout(() => {
-          timeoutHandler
-        }, this.historyInterval)
+        this._historyTimeout = setTimeout(timeoutHandler, this.historyInterval)
       }
     }
 

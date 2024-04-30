@@ -110,9 +110,7 @@ export abstract class Base<TParams extends BaseParams | undefined = BaseParams> 
       }
     }
 
-    this._historyTimeout = setTimeout(() => {
-      timeoutHandler
-    }, this.historyInterval)
+    this._historyTimeout = setTimeout(timeoutHandler, this.historyInterval)
   }
 
   static stopHistory(): void {

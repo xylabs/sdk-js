@@ -11,8 +11,8 @@
   },
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.9.1",
-    "@xylabs/tsconfig": "^3.9.1",
+    "@xylabs/ts-scripts-yarn3": "^3.10.0",
+    "@xylabs/tsconfig": "^3.10.0",
     "typescript": "^5.4.5"
   },
   "engines": {
@@ -63,6 +63,6 @@
     "esm"
   ],
   "sideEffects": false,
-  "version": "3.1.13",
+  "version": "3.2.0",
   "type": "module"
 }

@@ -1,7 +1,7 @@
 /* eslint-disable require-await */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-var-requires */
-import * as path from 'node:path'
+import path from 'node:path'
 
 import test from 'ava'
 import Webpack from 'webpack'

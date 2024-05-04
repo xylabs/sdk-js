@@ -17,19 +17,19 @@
   "exports": {
     ".": {
       "require": {
-        "types": "./dist/node/index.d.cts",
-        "default": "./dist/node/index.cjs"
+        "types": "./dist/neutral/index.d.cts",
+        "default": "./dist/neutral/index.cjs"
       },
       "import": {
-        "types": "./dist/node/index.d.mts",
-        "default": "./dist/node/index.js"
+        "types": "./dist/neutral/index.d.mts",
+        "default": "./dist/neutral/index.js"
       }
     },
     "./package.json": "./package.json"
   },
-  "main": "./dist/node/index.cjs",
-  "types": "./dist/node/index.d.ts",
-  "module": "./dist/node/index.js",
+  "main": "./dist/neutral/index.cjs",
+  "types": "./dist/neutral/index.d.ts",
+  "module": "./dist/neutral/index.js",
   "homepage": "https://xylabs.com",
   "keywords": [
     "xylabs",
@@ -41,8 +41,8 @@
     "axios": "^1.6.8"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.9.1",
-    "@xylabs/tsconfig": "^3.9.1",
+    "@xylabs/ts-scripts-yarn3": "^3.10.0",
+    "@xylabs/tsconfig": "^3.10.0",
     "typescript": "^5.4.5"
   },
   "engines": {
@@ -56,6 +56,6 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "3.1.13",
+  "version": "3.2.0",
   "type": "module"
 }

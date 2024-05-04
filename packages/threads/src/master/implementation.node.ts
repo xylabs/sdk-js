@@ -10,7 +10,7 @@
 
 import { EventEmitter } from 'node:events'
 import { cpus } from 'node:os'
-import * as path from 'node:path'
+import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import getCallsites, { CallSite } from 'callsites'

@@ -5,8 +5,7 @@ export interface PromiseType {
   then: () => unknown
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type AnyNonPromise<T = unknown> = Exclude<TypedValue, Promise<T>>
+export type AnyNonPromise = Exclude<TypedValue, Promise<unknown>>
 
 export const isPromise = (value: unknown): value is Promise<unknown> => {
   if (typeof value === 'object' && !Array.isArray(value)) {

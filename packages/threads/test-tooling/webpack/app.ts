@@ -55,4 +55,6 @@ function test4() {
   }
 }
 
-export default () => Promise.all([test(), test2(), test3(), test4()])
+const testAll = () => Promise.all([test(), test2(), test3(), test4()])
+
+export default testAll

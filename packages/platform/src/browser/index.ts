@@ -1,7 +1,7 @@
 import type { subtle as subtleType } from 'node:crypto'
 
 export const isBrowser = () => {
-  return !isWebworker() && window && window.document !== undefined
+  return !isWebworker() && self.constructor?.name === 'Window'
 }
 
 export const isWebworker = () => {

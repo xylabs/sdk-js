@@ -2760,10 +2760,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/chai@npm:^4.3.15":
-  version: 4.3.15
-  resolution: "@types/chai@npm:4.3.15"
-  checksum: 10/9466d6620bf958a380c3250a40f955d3d0f986c5f601e65d0bf340e5d848653c209e22259d1250fbbdbc9c030e0b3a5f485ab878caffd0fe6a4d2f5a37892f5e
+"@types/chai@npm:^4.3.16":
+  version: 4.3.16
+  resolution: "@types/chai@npm:4.3.16"
+  checksum: 10/f84a9049a7f13284f7237236872ed4afce5045dd6ea3926c8b0ac995490f5a524b247b2e70fcd3ebc85832201349a8f026bd0c336b90b5baca9eed0c7a4dbd3f
   languageName: node
   linkType: hard
 
@@ -2935,10 +2935,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash@npm:*, @types/lodash@npm:^4.17.0":
-  version: 4.17.0
-  resolution: "@types/lodash@npm:4.17.0"
-  checksum: 10/2053203292b5af99352d108656ceb15d39da5922fc3fb8186e1552d65c82d6e545372cc97f36c95873aa7186404d59d9305e9d49254d4ae55e77df1e27ab7b5d
+"@types/lodash@npm:*, @types/lodash@npm:^4.17.1":
+  version: 4.17.1
+  resolution: "@types/lodash@npm:4.17.1"
+  checksum: 10/384bdd29348a000f8e815f94839a1a8c7f5a4ca856b016ade7f2abdc1df0b4e3e009c113b69db320a8fde51d1f38e60c19462b9bf3e82e0e2e32d3ac3e7ba2c4
   languageName: node
   linkType: hard
 
@@ -3648,7 +3648,7 @@ __metadata:
   dependencies:
     "@scure/base": "npm:^1.1.6"
     "@xylabs/assert": "workspace:~"
-    "@xylabs/lodash": "npm:^3.2.0"
+    "@xylabs/lodash": "npm:^3.3.0"
     "@xylabs/ts-scripts-yarn3": "npm:^3.10.0"
     "@xylabs/tsconfig": "npm:^3.10.0"
     "@xylabs/typeof": "workspace:~"
@@ -3656,7 +3656,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/assert@npm:^3.2.0, @xylabs/assert@workspace:packages/assert, @xylabs/assert@workspace:~":
+"@xylabs/assert@npm:^3.3.0, @xylabs/assert@workspace:packages/assert, @xylabs/assert@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xylabs/assert@workspace:packages/assert"
   dependencies:
@@ -3877,11 +3877,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/lodash@npm:^3.2.0, @xylabs/lodash@workspace:packages/lodash":
+"@xylabs/lodash@npm:^3.3.0, @xylabs/lodash@workspace:packages/lodash":
   version: 0.0.0-use.local
   resolution: "@xylabs/lodash@workspace:packages/lodash"
   dependencies:
-    "@types/lodash": "npm:^4.17.0"
+    "@types/lodash": "npm:^4.17.1"
     "@types/lodash-es": "npm:^4.17.12"
     "@xylabs/ts-scripts-yarn3": "npm:^3.10.0"
     "@xylabs/tsconfig": "npm:^3.10.0"
@@ -3910,7 +3910,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/logger@npm:^3.2.0, @xylabs/logger@workspace:packages/logger, @xylabs/logger@workspace:~":
+"@xylabs/logger@npm:^3.3.0, @xylabs/logger@workspace:packages/logger, @xylabs/logger@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xylabs/logger@workspace:packages/logger"
   dependencies:
@@ -3925,9 +3925,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/object@workspace:packages/object"
   dependencies:
-    "@xylabs/assert": "npm:^3.2.0"
-    "@xylabs/logger": "npm:^3.2.0"
-    "@xylabs/promise": "npm:^3.2.0"
+    "@xylabs/assert": "npm:^3.3.0"
+    "@xylabs/logger": "npm:^3.3.0"
+    "@xylabs/promise": "npm:^3.3.0"
     "@xylabs/ts-scripts-yarn3": "npm:^3.10.0"
     "@xylabs/tsconfig": "npm:^3.10.0"
     typescript: "npm:^5.4.5"
@@ -3955,7 +3955,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/promise@npm:^3.2.0, @xylabs/promise@workspace:packages/promise, @xylabs/promise@workspace:~":
+"@xylabs/promise@npm:^3.3.0, @xylabs/promise@workspace:packages/promise, @xylabs/promise@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xylabs/promise@workspace:packages/promise"
   dependencies:
@@ -4052,7 +4052,7 @@ __metadata:
     "@babel/types": "npm:^7.24.5"
     "@rollup/plugin-commonjs": "npm:^16.0.0"
     "@rollup/plugin-node-resolve": "npm:^10.0.0"
-    "@types/chai": "npm:^4.3.15"
+    "@types/chai": "npm:^4.3.16"
     "@types/debug": "npm:^4.1.12"
     "@types/execa": "npm:^2.0.0"
     "@types/node": "npm:^20.12.8"

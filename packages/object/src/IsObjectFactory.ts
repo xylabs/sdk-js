@@ -5,8 +5,8 @@ import { isType, ObjectTypeShape } from './isType'
 
 export interface ObjectTypeConfig extends TypeCheckConfig {}
 
-export class IsObjectFactory<T extends TypedObject> {
-  create(shape?: ObjectTypeShape, additionalChecks?: TypeCheck<TypedObject>[]): TypeCheck<T> {
+export class IsObjectFactory<T extends TypedObject, E = void> {
+  create(shape?: ObjectTypeShape, additionalChecks?: TypeCheck<TypedObject, E>[]): TypeCheck<T, E> {
     return (obj, { log } = {}): obj is T => {
       if (!obj || typeof obj !== 'object') {
         return false

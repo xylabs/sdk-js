@@ -45,9 +45,9 @@
     "ethers": "6.12.1"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.10.0",
-    "@xylabs/tsconfig": "^3.10.0",
-    "@xylabs/tsconfig-jest": "^3.10.0",
+    "@xylabs/ts-scripts-yarn3": "^3.10.4",
+    "@xylabs/tsconfig": "^3.10.4",
+    "@xylabs/tsconfig-jest": "^3.10.4",
     "typescript": "^5.4.5"
   },
   "engines": {

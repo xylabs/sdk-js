@@ -16,16 +16,21 @@ export const isAddress = (value: unknown, config: HexConfig = {}): value is Addr
 export function asAddress(value: unknown): Address | undefined
 export function asAddress(value: unknown, assert: AssertConfig): Address
 export function asAddress(value: unknown, assert?: AssertConfig): Address | undefined {
-  let stringValue: string | undefined = undefined
+  try {
+    let stringValue: string | undefined = undefined
 
-  switch (typeof value) {
-    case 'string': {
-      stringValue = hexFromHexString(value, { prefix: false })
-      break
+    switch (typeof value) {
+      case 'string': {
+        stringValue = hexFromHexString(value, { prefix: false })
+        break
+      }
+      default: {
+        return assert ? assertError(value, assert, `Unsupported type [${typeof value}]`) : undefined
+      }
     }
-    default: {
-      return assert ? assertError(value, assert, `Unsupported type [${typeof value}]`) : undefined
-    }
+    return isAddress(stringValue) ? stringValue : assertError(value, assert, `Value is not an Address [${value}]`)
+  } catch (ex) {
+    const error = ex as Error
+    return assertError(undefined, assert, error.message)
   }
-  return isAddress(stringValue) ? stringValue : assertError(value, assert, `Value is not an Address [${value}]`)
 }

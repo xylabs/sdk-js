@@ -11,6 +11,8 @@ describe('address', () => {
     expect(isAddress('0xdeadbeefdeadbeefdeadxxxxdeadbeefdeadbeef')).toBeFalse()
   })
   test('asAddress', () => {
+    expect(asAddress('0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef')).toBe('deadbeefdeadbeefdeadbeefdeadbeefdeadbeef')
+    expect(asAddress('deadbeefdeadbeefdeadbeefdeadbeefdeadbeef')).toBe('deadbeefdeadbeefdeadbeefdeadbeefdeadbeef')
     expect(asAddress('0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef', true)).toBe('deadbeefdeadbeefdeadbeefdeadbeefdeadbeef')
     expect(asAddress('000000000000000000000000000000000000000a', true)).toBe('000000000000000000000000000000000000000a')
   })

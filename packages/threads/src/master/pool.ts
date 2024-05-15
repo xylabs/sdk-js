@@ -232,7 +232,7 @@ class WorkerPool<ThreadType extends Thread> implements Pool<ThreadType> {
           reject(event.error)
         } else if (event.type === PoolEventType.terminated) {
           eventSubscription.unsubscribe()
-          reject(Error('Pool has been terminated before task was run.'))
+          reject(new Error('Pool has been terminated before task was run.'))
         }
       })
     })

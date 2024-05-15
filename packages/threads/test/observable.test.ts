@@ -72,7 +72,7 @@ test('Observable subject propagates errors', async (t) => {
     () => (completed3 = true),
   )
 
-  const testingError = Error('Test, test!')
+  const testingError = new Error('Test, test!')
 
   subscription1.unsubscribe()
   subject.error(testingError)

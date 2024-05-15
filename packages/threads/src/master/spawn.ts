@@ -47,7 +47,7 @@ async function withTimeout<T>(promise: Promise<T>, timeoutInMs: number, errorMes
   let timeoutHandle: any
 
   const timeout = new Promise<never>((resolve, reject) => {
-    timeoutHandle = setTimeout(() => reject(Error(errorMessage)), timeoutInMs)
+    timeoutHandle = setTimeout(() => reject(new Error(errorMessage)), timeoutInMs)
   })
   const result = await Promise.race([promise, timeout])
 
@@ -83,7 +83,7 @@ function createEventObservable(worker: WorkerType, workerTermination: Promise<an
     const rejectionHandler = ((errorEvent: PromiseRejectionEvent) => {
       debugThreadUtils('Unhandled promise rejection event in thread:', errorEvent)
       const workerEvent: WorkerInternalErrorEvent = {
-        error: Error(errorEvent.reason),
+        error: new Error(errorEvent.reason),
         type: WorkerEventType.internalError,
       }
       observer.next(workerEvent)

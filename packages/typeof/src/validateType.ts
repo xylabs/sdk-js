@@ -10,7 +10,7 @@ export const validateType = <T>(typeName: TypeOfTypes, value: T, optional = fals
       if (optional && typeOf(value) === 'undefined') {
         return [value, []]
       }
-      return [undefined, [Error(`value type is not '${typeName}:${typeof value}'`)]]
+      return [undefined, [new Error(`value type is not '${typeName}:${typeof value}'`)]]
     }
   }
 }

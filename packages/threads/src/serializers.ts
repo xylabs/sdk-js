@@ -39,7 +39,7 @@ export type JsonSerializable = JsonSerializablePrimitive | JsonSerializablePrimi
 
 const DefaultErrorSerializer: Serializer<SerializedError, Error> = {
   deserialize(message: SerializedError): Error {
-    return Object.assign(Error(message.message), {
+    return Object.assign(new Error(message.message), {
       name: message.name,
       stack: message.stack,
     })

@@ -6,7 +6,7 @@ export const AND_REGX = new RegExp(`\\s*${escape(AND_SYMBOL)}\\s*`)
 
 export const OR_REGX = new RegExp(`\\s*${escape(OR_SYMBOL)}\\s*`)
 
-export const PLAIN_REGX = new RegExp('\\s+')
+export const PLAIN_REGX = new RegExp(String.raw`\s+`)
 
 export const BAD_REGX = new RegExp(`^${escape(NOT_SYMBOL)}.*$`)
 

@@ -53,7 +53,7 @@ test('can proxy a promise rejection', async (t) => {
   let handlerCallCount = 0
 
   const async = new ObservablePromise((observer) => {
-    setTimeout(() => observer.error(Error('I am supposed to be rejected.')), 1)
+    setTimeout(() => observer.error(new Error('I am supposed to be rejected.')), 1)
   })
 
   const promise1 = async.then(
@@ -123,7 +123,7 @@ test('can subscribe to errors', async (t) => {
 
   const async = new ObservablePromise((observer) => {
     setTimeout(() => observer.next(1), 10)
-    setTimeout(() => observer.error(Error('Fails as expected.')), 20)
+    setTimeout(() => observer.error(new Error('Fails as expected.')), 20)
     setTimeout(() => observer.next(2), 30)
     setTimeout(() => observer.complete(), 40)
   })
@@ -152,7 +152,7 @@ test('from(Observable) works', async (t) => {
   const async = ObservablePromise.from(
     new Observable((observer) => {
       setTimeout(() => observer.next(1), 10)
-      setTimeout(() => observer.error(Error('Fails as expected.')), 20)
+      setTimeout(() => observer.error(new Error('Fails as expected.')), 20)
       setTimeout(() => observer.next(2), 30)
       setTimeout(() => observer.complete(), 40)
     }),
@@ -182,7 +182,7 @@ test('from(Promise) works', async (t) => {
   )
   t.is(await resolved, 'Works')
 
-  const rejected = ObservablePromise.from(Promise.reject(Error('Fails')))
+  const rejected = ObservablePromise.from(Promise.reject(new Error('Fails')))
   const error = await t.throwsAsync(rejected)
 
   t.is(error.message, 'Fails')

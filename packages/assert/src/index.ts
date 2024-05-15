@@ -22,7 +22,7 @@ function assertEx<T, R extends Error, P extends string | AssertExMessageFunc<T> 
   if (expr) return expr
   if (typeof messageOrFunc === 'function') {
     const errorOrMessage = messageOrFunc(expr)
-    throw typeof errorOrMessage === 'string' ? Error(errorOrMessage) : errorOrMessage
+    throw typeof errorOrMessage === 'string' ? new Error(errorOrMessage) : errorOrMessage
   }
   // a string was sent
   throw new Error(messageOrFunc)

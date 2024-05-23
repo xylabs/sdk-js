@@ -38,7 +38,7 @@
     "esm"
   ],
   "dependencies": {
-    "axios": "^1.6.8"
+    "axios": "^1.7.2"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^3.10.4",

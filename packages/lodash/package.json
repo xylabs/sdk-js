@@ -36,7 +36,7 @@
     "esm"
   ],
   "dependencies": {
-    "@types/lodash": "^4.17.1",
+    "@types/lodash": "^4.17.4",
     "@types/lodash-es": "^4.17.12"
   },
   "optionalDependencies": {
@@ -44,7 +44,7 @@
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {
-    "@types/lodash": "^4.17.1",
+    "@types/lodash": "^4.17.4",
     "@types/lodash-es": "^4.17.12",
     "@xylabs/ts-scripts-yarn3": "^3.10.4",
     "@xylabs/tsconfig": "^3.10.4",

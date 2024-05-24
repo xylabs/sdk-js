@@ -13,7 +13,7 @@ import { cpus } from 'node:os'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-import getCallsites, { CallSite } from 'callsites'
+import getCallsites, { CallSite } from 'callsites-3-1-0'
 
 import { ImplementationExport, ThreadsWorkerOptions, WorkerImplementation } from '../types/master'
 

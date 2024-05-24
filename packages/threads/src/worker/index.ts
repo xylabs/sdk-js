@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import isSomeObservable from 'is-observable'
+import isSomeObservable from 'is-observable-2-1-0'
 import { Observable, Subscription } from 'observable-fns'
 
 import { deserialize, serialize } from '../common'

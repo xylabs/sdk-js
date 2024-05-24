@@ -67,9 +67,9 @@
   ],
   "dependencies": {
     "@babel/types": "^7.24.6",
-    "callsites": "^3.1.0",
+    "callsites-3-1-0": "npm:callsites@3.1.0",
     "debug": "^4.3.4",
-    "is-observable": "^2.1.0",
+    "is-observable-2-1-0": "npm:is-observable@2.1.0",
     "observable-fns": "^0.6.1"
   },
   "devDependencies": {

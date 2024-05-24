@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/threads",
-  "version": "3.4.1",
+  "version": "3.5.0",
   "description": "Web workers & worker threads as simple as a function call",
   "license": "MIT",
   "main": "dist/index.js",
@@ -66,10 +66,10 @@
     "worker_threads"
   ],
   "dependencies": {
-    "@babel/types": "^7.24.5",
-    "callsites": "^4.1.0",
+    "@babel/types": "^7.24.6",
+    "callsites": "^3.1.0",
     "debug": "^4.3.4",
-    "is-observable": "^3.0.0",
+    "is-observable": "^2.1.0",
     "observable-fns": "^0.6.1"
   },
   "devDependencies": {

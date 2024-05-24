@@ -50,6 +50,7 @@
     "@xylabs/exists": "workspace:~",
     "@xylabs/forget": "workspace:~",
     "@xylabs/function-name": "workspace:~",
+    "@xylabs/hex": "workspace:~",
     "@xylabs/log": "workspace:~",
     "@xylabs/logger": "workspace:~",
     "@xylabs/object": "workspace:~",
@@ -100,6 +101,6 @@
     "node": "18.17.1",
     "yarn": "1.22.19"
   },
-  "version": "3.4.0",
+  "version": "3.4.1",
   "type": "module"
 }

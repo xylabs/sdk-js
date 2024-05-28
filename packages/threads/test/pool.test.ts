@@ -1,7 +1,6 @@
 /* eslint-disable require-await */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-floating-promises */
-/* eslint-disable import/no-internal-modules */
 import test from 'ava'
 
 import { Pool, spawn, Worker } from '../src/index'

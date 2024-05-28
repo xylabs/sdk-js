@@ -1,4 +1,3 @@
-/* eslint-disable import/no-internal-modules */
 import { expose, Transfer } from '../../src/worker'
 
 function xor(buffer: ArrayBuffer, value: number) {

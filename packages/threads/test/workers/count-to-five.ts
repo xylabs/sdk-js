@@ -1,4 +1,4 @@
-/* eslint-disable import/no-internal-modules */
+
 import { Observable } from 'observable-fns'
 
 import { expose } from '../../src/worker'

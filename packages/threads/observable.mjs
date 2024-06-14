@@ -1,4 +1,4 @@
-/* eslint-disable import/no-internal-modules */
+
 import * as Observables from './dist/observable.js'
 
 export const Observable = Observables.Observable

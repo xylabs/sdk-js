@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import DebugLogger from 'debug'
 import { Observable } from 'observable-fns'
 
@@ -124,7 +124,6 @@ function setPrivateThreadProps<T>(
     .filter((event) => event.type === WorkerEventType.internalError)
     .map((errorEvent) => (errorEvent as WorkerInternalErrorEvent).error)
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return Object.assign(raw as any, {
     [$errors]: workerErrors,
     [$events]: workerEvents,

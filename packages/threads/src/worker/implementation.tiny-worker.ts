@@ -1,4 +1,3 @@
-/* eslint-disable import/no-default-export */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /// <reference lib="dom" />
 // tslint:disable no-shadowed-variable

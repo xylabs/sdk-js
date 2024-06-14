@@ -1,6 +1,5 @@
 import test from 'ava'
 
-// eslint-disable-next-line import/no-internal-modules
 import { spawn, Thread, Worker } from '../src/index'
 
 test('can use worker returning an observable subject', async (t) => {

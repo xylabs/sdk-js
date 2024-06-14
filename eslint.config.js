@@ -1,14 +1,14 @@
 // eslint.config.js
 
-import { config as xylabsConfig } from '@xylabs/eslint-config-flat'
+import { config } from '@xylabs/eslint-config-flat'
 
 export default [
-  ...xylabsConfig,
+  ...config,
   {
     ignores: ['.yarn/**', 'jest.config.cjs', '**/dist/**', 'dist', 'build/**', 'node_modules/**'],
     rules: {
-      '@typescript-eslint/no-floating-promises': ['off'],
-      'unicorn/no-process-exit': ['off'],
+      'import/no-internal-modules': ['off'],
+      'import/no-deprecated': ['off'],
       'unicorn/no-static-only-class': ['off'],
       'no-restricted-imports': [
         'warn',

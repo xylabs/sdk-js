@@ -1,6 +1,5 @@
-/* eslint-disable import/no-default-export */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable import/no-internal-modules */
+
 import { isWorkerRuntime, Pool, spawn, Worker } from '../../src/index'
 
 type AdditionWorker = (a: number, b: number) => number

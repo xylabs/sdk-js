@@ -1,11 +1,12 @@
 /* eslint-disable unicorn/no-thenable */
-/* eslint-disable @typescript-eslint/no-floating-promises */
+
 /* eslint-disable require-await */
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable unicorn/no-array-reduce */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable import/export */
 /* eslint-disable @typescript-eslint/no-namespace */
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import DebugLogger from 'debug'
 import { multicast, Observable, Subject } from 'observable-fns'
 

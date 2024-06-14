@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable import/no-internal-modules */
+
 import { JsonSerializable, SerializerImplementation } from '../../src/index'
 
 export class Foo<T> {

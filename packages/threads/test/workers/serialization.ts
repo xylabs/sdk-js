@@ -1,5 +1,5 @@
 /* eslint-disable require-await */
-/* eslint-disable import/no-internal-modules */
+
 import { expose, registerSerializer } from '../../src/worker'
 import { Foo, fooSerializer } from '../lib/serialization'
 

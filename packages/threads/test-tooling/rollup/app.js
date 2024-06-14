@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 /* eslint-disable no-restricted-imports */
 import { spawn, Thread, Worker } from '../..'
 

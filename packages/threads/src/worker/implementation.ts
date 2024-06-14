@@ -1,4 +1,3 @@
-/* eslint-disable import/no-default-export */
 // tslint:disable no-var-requires
 /*
  * This file is only a stub to make './implementation' resolve to the right module.

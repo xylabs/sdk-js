@@ -1,4 +1,3 @@
-/* eslint-disable import/no-default-export */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // tslint:disable no-shadowed-variable
 import { MessagePort } from 'node:worker_threads'

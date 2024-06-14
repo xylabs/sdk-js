@@ -1,4 +1,3 @@
-/* eslint-disable import/no-internal-modules */
 import { Observable, Subject } from '../../src/observable'
 import { expose } from '../../src/worker'
 

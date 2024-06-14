@@ -1,4 +1,3 @@
-/* eslint-disable import/no-default-export */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Webpack hack
 // tslint:disable no-eval

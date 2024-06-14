@@ -1,5 +1,5 @@
 /* eslint-disable require-await */
-/* eslint-disable import/no-internal-modules */
+
 import test from 'ava'
 
 import { Observable, Subject } from '../src/observable'

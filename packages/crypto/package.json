@@ -51,10 +51,10 @@
   },
   "devDependencies": {
     "@types/crypto-js": "^4.2.2",
-    "@types/node": "^20.14.8",
-    "@xylabs/ts-scripts-yarn3": "^3.11.10",
-    "@xylabs/tsconfig": "^3.11.10",
-    "@xylabs/tsconfig-dom": "^3.11.10",
+    "@types/node": "^20.14.9",
+    "@xylabs/ts-scripts-yarn3": "^3.11.11",
+    "@xylabs/tsconfig": "^3.11.11",
+    "@xylabs/tsconfig-dom": "^3.11.11",
     "typescript": "^5.5.2"
   },
   "engines": {

@@ -50,18 +50,18 @@
     "@xylabs/exists": "workspace:~",
     "@xylabs/forget": "workspace:~",
     "@xylabs/function-name": "workspace:~",
-    "@xylabs/hex": "workspace:~",
+    "@xylabs/hex": "2.13.10",
     "@xylabs/log": "workspace:~",
     "@xylabs/logger": "workspace:~",
     "@xylabs/object": "workspace:~",
     "@xylabs/platform": "workspace:~",
     "@xylabs/profile": "workspace:~",
     "@xylabs/promise": "workspace:~",
-    "@xylabs/retry": "workspace:~",
+    "@xylabs/retry": "2.13.27",
     "@xylabs/set": "workspace:~",
     "@xylabs/static-implements": "workspace:~",
     "@xylabs/timer": "workspace:~",
-    "@xylabs/url": "workspace:~"
+    "@xylabs/url": "2.9.2"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",

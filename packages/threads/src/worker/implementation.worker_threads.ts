@@ -1,4 +1,3 @@
-/* eslint-disable import/no-default-export */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // tslint:disable no-shadowed-variable
 import { MessagePort } from 'node:worker_threads'
@@ -42,6 +41,7 @@ function testImplementation() {
   WorkerThreads()
 }
 
+// eslint-disable-next-line import/no-default-export
 export default {
   isWorkerRuntime,
   postMessageToMaster,

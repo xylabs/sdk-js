@@ -1,4 +1,3 @@
-/* eslint-disable import/no-internal-modules */
 import * as Threads from './dist/index.js'
 
 export const registerSerializer = Threads.registerSerializer

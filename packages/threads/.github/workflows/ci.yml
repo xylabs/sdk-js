@@ -36,7 +36,6 @@ jobs:
           path: |
             ./bundle
             ./dist
-            ./dist-esm
             ./test-tooling/webpack/dist
 
   # Testing the built files
@@ -66,7 +65,6 @@ jobs:
         shell: bash
         run: |
           mkdir dist && mv artifact/dist/* ./dist
-          mkdir dist-esm && mv artifact/dist-esm/* ./dist-esm
           mkdir bundle && mv artifact/bundle/* ./bundle
           mkdir -p test-tooling/webpack/dist/ && mv artifact/test-tooling/webpack/dist/* ./test-tooling/webpack/dist/
 

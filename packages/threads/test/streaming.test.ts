@@ -1,4 +1,3 @@
-/* eslint-disable import/no-internal-modules */
 import test from 'ava'
 
 import { spawn, Thread, Worker } from '../src/index'

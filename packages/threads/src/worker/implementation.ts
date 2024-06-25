@@ -1,4 +1,3 @@
-/* eslint-disable import/no-default-export */
 // tslint:disable no-var-requires
 /*
  * This file is only a stub to make './implementation' resolve to the right module.
@@ -20,4 +19,5 @@ function selectNodeImplementation(): AbstractedWorkerAPI {
   }
 }
 
+// eslint-disable-next-line import/no-default-export
 export default runningInNode ? selectNodeImplementation() : WebWorkerImplementation

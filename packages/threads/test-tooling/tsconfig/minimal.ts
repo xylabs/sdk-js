@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable no-restricted-imports */
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import { spawn, Thread, Worker } from '../..'
 
 async function main() {

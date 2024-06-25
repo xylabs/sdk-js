@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable import/no-internal-modules */
 import test from 'ava'
 import { Observable } from 'observable-fns'
 

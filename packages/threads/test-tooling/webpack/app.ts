@@ -1,6 +1,5 @@
-/* eslint-disable import/no-default-export */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable import/no-internal-modules */
+
 import { isWorkerRuntime, Pool, spawn, Worker } from '../../src/index'
 
 type AdditionWorker = (a: number, b: number) => number
@@ -57,4 +56,5 @@ function test4() {
 
 const testAll = () => Promise.all([test(), test2(), test3(), test4()])
 
+// eslint-disable-next-line import/no-default-export
 export default testAll

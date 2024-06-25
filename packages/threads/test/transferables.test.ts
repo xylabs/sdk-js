@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-constraint */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable import/no-internal-modules */
+
 import test from 'ava'
 
 import { spawn, Thread, Transfer, Worker } from '../src/index'

@@ -1,4 +1,3 @@
-/* eslint-disable import/no-internal-modules */
 import * as WorkerContext from './dist/worker/index.js'
 
 export const expose = WorkerContext.expose

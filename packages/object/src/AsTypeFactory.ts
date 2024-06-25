@@ -11,21 +11,10 @@ export type StringOrAlertFunction<T extends AnyNonPromise> = string | AssertExMe
 export type TypeCheck<T extends TypedValue> = (obj: AnyNonPromise, config?: TypeCheckConfig) => obj is T
 
 export const AsTypeFactory = {
-  // eslint-disable-next-line @typescript-eslint/ban-types
   create: <T extends AnyNonPromise>(typeCheck: TypeCheck<T>) => {
+    function func<TType extends T>(value: AnyNonPromise, config?: TypeCheckConfig): TType | undefined
+    function func<TType extends T>(value: AnyNonPromise, assert: StringOrAlertFunction<T>, config?: TypeCheckConfig): TType
     function func<TType extends T>(
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      value: AnyNonPromise,
-      config?: TypeCheckConfig,
-    ): TType | undefined
-    function func<TType extends T>(
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      value: AnyNonPromise,
-      assert: StringOrAlertFunction<T>,
-      config?: TypeCheckConfig,
-    ): TType
-    function func<TType extends T>(
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       value: AnyNonPromise,
       assertOrConfig?: StringOrAlertFunction<T> | TypeCheckConfig,
       config?: TypeCheckConfig,

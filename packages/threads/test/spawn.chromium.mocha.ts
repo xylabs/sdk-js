@@ -1,5 +1,4 @@
 /* eslint-disable no-restricted-imports */
-/* eslint-disable import/no-internal-modules */
 /*
  * This code here will be run in a headless Chromium browser using `puppet-run`.
  * Check the package.json scripts `test:puppeteer:*`.

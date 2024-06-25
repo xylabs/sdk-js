@@ -1,4 +1,3 @@
-
 import * as Threads from './dist/index.js'
 
 export const registerSerializer = Threads.registerSerializer

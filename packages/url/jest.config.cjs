@@ -10,7 +10,7 @@ const generateJestConfig = ({ esModules }) => {
       '^(\\.{1,2}/.*)\\.js$': '$1',
     },
     preset: 'ts-jest/presets/default-esm',
-    testRegex: String.raw('(/__tests__/.*|(\.|/)(test|spec))\.tsx?$'),
+    testRegex: String.raw('(/__tests__/.*|(.|/)(test|spec)).tsx?$'),
     transform: {
       [`(${esModuleslist}).+\\.js$`]: 'babel-jest',
       '^.+\\.tsx?$': 'ts-jest',

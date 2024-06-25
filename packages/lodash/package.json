@@ -36,7 +36,7 @@
     "esm"
   ],
   "dependencies": {
-    "@types/lodash": "^4.17.4",
+    "@types/lodash": "^4.17.5",
     "@types/lodash-es": "^4.17.12"
   },
   "optionalDependencies": {
@@ -44,11 +44,11 @@
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {
-    "@types/lodash": "^4.17.4",
+    "@types/lodash": "^4.17.5",
     "@types/lodash-es": "^4.17.12",
-    "@xylabs/ts-scripts-yarn3": "^3.11.2",
-    "@xylabs/tsconfig": "^3.11.2",
-    "typescript": "^5.4.5"
+    "@xylabs/ts-scripts-yarn3": "^3.11.10",
+    "@xylabs/tsconfig": "^3.11.10",
+    "typescript": "^5.5.2"
   },
   "engines": {
     "node": "18>"

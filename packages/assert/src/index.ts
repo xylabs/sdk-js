@@ -28,5 +28,4 @@ function assertEx<T, R extends Error, P extends string | AssertExMessageFunc<T> 
   throw new Error(messageOrFunc)
 }
 
-// eslint-disable-next-line deprecation/deprecation
 export { assertEx }

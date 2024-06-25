@@ -3,6 +3,7 @@
   "compilerOptions": {
     "declaration": false,
     "module": "esnext",
-    "outDir": "dist-esm"
+    "removeComments": true,
+    "outDir": "dist/esm"
   }
 }

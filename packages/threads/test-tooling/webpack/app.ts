@@ -56,4 +56,5 @@ function test4() {
 
 const testAll = () => Promise.all([test(), test2(), test3(), test4()])
 
+// eslint-disable-next-line import/no-default-export
 export default testAll

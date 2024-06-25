@@ -8,6 +8,7 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "useUnknownInCatchVariables": false,
+    "removeComments": true,
     "lib": ["es2022"],
     "outDir": "dist",
     "strict": true,

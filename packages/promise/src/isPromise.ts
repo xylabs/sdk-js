@@ -1,7 +1,6 @@
 import { TypedValue } from './Typed'
 
 export interface PromiseType {
-  // eslint-disable-next-line @typescript-eslint/ban-types
   then: () => unknown
 }
 

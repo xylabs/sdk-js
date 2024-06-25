@@ -40,15 +40,15 @@
   "module": "dist/node/index.js",
   "types": "dist/node/index.d.mts",
   "dependencies": {
-    "@scure/base": "^1.1.6",
+    "@scure/base": "^1.1.7",
     "@xylabs/assert": "workspace:~",
     "@xylabs/lodash": "^3.5.1",
     "@xylabs/typeof": "workspace:~"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.11.2",
-    "@xylabs/tsconfig": "^3.11.2",
-    "typescript": "^5.4.5"
+    "@xylabs/ts-scripts-yarn3": "^3.11.10",
+    "@xylabs/tsconfig": "^3.11.10",
+    "typescript": "^5.5.2"
   },
   "engines": {
     "node": ">=18"

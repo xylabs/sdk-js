@@ -25,4 +25,5 @@ async function test() {
   return 'test succeeded'
 }
 
+// eslint-disable-next-line import/no-default-export
 export default test

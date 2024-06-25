@@ -47,6 +47,7 @@ const subscribeToMasterMessages: AbstractedWorkerAPI['subscribeToMasterMessages'
   return unsubscribe
 }
 
+// eslint-disable-next-line import/no-default-export
 export default {
   isWorkerRuntime,
   postMessageToMaster,

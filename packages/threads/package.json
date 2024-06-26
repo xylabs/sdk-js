@@ -84,7 +84,7 @@
     "chai": "^5.1.1",
     "cross-env": "^7.0.3",
     "execa": "^9.3.0",
-    "mocha": "^10.5.1",
+    "mocha": "^10.5.2",
     "puppet-run": "^0.11.4",
     "puppet-run-plugin-mocha": "^0.1.1",
     "raw-loader": "^4.0.2",

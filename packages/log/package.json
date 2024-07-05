@@ -47,7 +47,7 @@
     "@xylabs/ts-scripts-yarn3": "^3.11.12",
     "@xylabs/tsconfig": "^3.11.12",
     "rollbar": "^2.26.4",
-    "typescript": "^5.5.2"
+    "typescript": "^5.5.3"
   },
   "engines": {
     "node": ">=18"

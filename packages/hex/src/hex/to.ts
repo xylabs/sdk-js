@@ -4,7 +4,7 @@ import { HexConfig } from './model'
 /** takes any value and tries our best to convert it to a hex string */
 export const toHex = (
   /** Supported types are string, number, bigint, and ArrayBuffer */
-  value: unknown,
+  value: string | number | bigint | ArrayBuffer,
   /** Configuration of output format and validation */
   config: HexConfig = {},
 ) => {

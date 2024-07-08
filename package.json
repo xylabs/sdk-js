@@ -66,7 +66,7 @@
   "devDependencies": {
     "@types/jest": "^29.5.12",
     "@types/supertest": "^6.0.2",
-    "@typescript-eslint/parser": "^7.15.0",
+    "@typescript-eslint/parser": "^7.16.0",
     "@xylabs/config": "^3.11.12",
     "@xylabs/eslint-config": "^3.11.12",
     "@xylabs/eslint-config-flat": "^3.11.12",
@@ -80,7 +80,7 @@
     "jest-extended": "^4.0.2",
     "jest-sorted": "^1.0.15",
     "reflect-metadata": "^0.2.2",
-    "ts-jest": "^29.1.5",
+    "ts-jest": "^29.2.0",
     "typescript": "^5.5.3"
   },
   "resolutions": {

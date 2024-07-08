@@ -3,7 +3,7 @@ import { Hex, HexConfig, hexFrom, hexFromHexString, isHex } from './hex'
 
 export type Address = Exclude<Hex, 'reserved-address-value'>
 
-export const toAddress = (value: unknown, config: HexConfig = {}) => {
+export const toAddress = (value: string | number | bigint | ArrayBuffer, config: HexConfig = {}) => {
   const { bitLength = 160, prefix = false } = config
   return hexFrom(value, { bitLength, prefix, ...config })
 }

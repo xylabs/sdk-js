@@ -2,7 +2,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "declaration": false,
-    "module": "esnext",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
     "removeComments": true,
     "outDir": "dist/esm"
   }

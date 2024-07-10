@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/threads",
-  "version": "3.5.7",
+  "version": "3.5.8",
   "description": "Web workers & worker threads as simple as a function call",
   "license": "MIT",
   "main": "dist/index.js",
@@ -28,17 +28,17 @@
       "default": "./index.mjs"
     },
     "./observable": {
-      "types": "./observable.d.ts",
+      "types": "./dist/types/master.d.ts",
       "require": "./observable.js",
       "default": "./observable.mjs"
     },
     "./register": {
-      "types": "./register.d.ts",
+      "types": "./dist/types/master.d.ts",
       "require": "./register.js",
       "default": "./register.mjs"
     },
     "./worker": {
-      "types": "./worker.d.ts",
+      "types": "./dist/types/worker.d.ts",
       "require": "./worker.js",
       "default": "./worker.mjs"
     }

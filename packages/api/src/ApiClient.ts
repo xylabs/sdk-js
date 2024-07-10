@@ -1,4 +1,4 @@
-import { ApiStage } from './ApiStage'
+import { ApiStage } from './ApiStage.js'
 
 abstract class ApiClient {
   constructor(

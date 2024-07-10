@@ -1,6 +1,6 @@
-import { Hex, HexConfig } from '../model'
-import { bitsToNibbles } from '../nibble'
-import { hexFromHexString } from './fromHexString'
+import { Hex, HexConfig } from '../model.js'
+import { bitsToNibbles } from '../nibble.js'
+import { hexFromHexString } from './fromHexString.js'
 
 /** Convert a bigint to a hex string */
 export const hexFromBigInt = (

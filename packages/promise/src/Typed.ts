@@ -1,4 +1,4 @@
-import { isType } from './isType'
+import { isType } from './isType.js'
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export type TypedValue = bigint | string | number | boolean | null | TypedObject | TypedArray | Function | symbol | undefined

@@ -1,5 +1,5 @@
-import { getFunctionName } from './getFunctionName'
-import { Logger } from './Logger'
+import { getFunctionName } from './getFunctionName.js'
+import { Logger } from './Logger.js'
 
 export class IdLogger implements Logger {
   private _id?: () => string

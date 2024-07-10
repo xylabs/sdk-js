@@ -1,6 +1,6 @@
-import { Hex, HexConfig } from './model'
-import { bitsToNibbles } from './nibble'
-import { hexRegex, hexRegexWithPrefix } from './regex'
+import { Hex, HexConfig } from './model.js'
+import { bitsToNibbles } from './nibble.js'
+import { hexRegex, hexRegexWithPrefix } from './regex.js'
 
 export const isHex = (value: unknown, config?: HexConfig): value is Hex => {
   //Is it a string?

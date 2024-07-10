@@ -1,4 +1,8 @@
 {
+  "compilerOptions": {
+    "moduleResolution": "nodenext",
+    "module": "nodenext"
+  },
   "exclude": ["dist", "docs", "packages", "node_modules"],
   "extends": "@xylabs/tsconfig-dom"
 }

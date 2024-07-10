@@ -1,4 +1,4 @@
-import { PromiseEx } from './PromiseEx'
+import { PromiseEx } from './PromiseEx.js'
 
 export type Promisable<T, V = never> = PromiseEx<T, V> | Promise<T> | T
 export type PromisableArray<T, V = never> = Promisable<T[], V>

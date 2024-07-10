@@ -1,5 +1,5 @@
-import { AND_SYMBOL, NOT_SYMBOL, OR_SYMBOL } from './config'
-import { AND_REGX, BAD_REGX, GOOD_REGX, OR_REGX, PLAIN_REGX } from './regexps'
+import { AND_SYMBOL, NOT_SYMBOL, OR_SYMBOL } from './config.js'
+import { AND_REGX, BAD_REGX, GOOD_REGX, OR_REGX, PLAIN_REGX } from './regexps.js'
 
 // f.e. tag1 !tag2
 // tag1 && tag2 && !tag3

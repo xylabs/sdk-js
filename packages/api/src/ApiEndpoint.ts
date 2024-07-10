@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { ApiConfig } from './ApiConfig'
+import { ApiConfig } from './ApiConfig.js'
 
 class ApiEndpoint<T> {
   private _value?: T

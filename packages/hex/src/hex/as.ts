@@ -1,7 +1,7 @@
-import { AssertConfig, assertError } from '../assert'
-import { hexFromHexString } from './from'
-import { isHex } from './is'
-import { Hex } from './model'
+import { AssertConfig, assertError } from '../assert.js'
+import { hexFromHexString } from './from/index.js'
+import { isHex } from './is.js'
+import { Hex } from './model.js'
 
 export function asHex(value: unknown): Hex | undefined
 export function asHex(value: unknown, assert: AssertConfig): Hex

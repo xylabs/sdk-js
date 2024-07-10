@@ -1,4 +1,4 @@
-import { isObject } from './isObject'
+import { isObject } from './isObject.js'
 
 export type JsonValue = string | number | boolean | null | JsonObject | JsonArray
 export type JsonObject = { [key: string]: JsonValue }

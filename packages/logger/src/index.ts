@@ -1,3 +1,3 @@
-export * from './getFunctionName'
-export * from './IdLogger'
-export * from './Logger'
+export * from './getFunctionName.js'
+export * from './IdLogger.js'
+export * from './Logger.js'

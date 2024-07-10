@@ -1,4 +1,4 @@
-import { AND_SYMBOL, NOT_SYMBOL, OR_SYMBOL } from './config'
+import { AND_SYMBOL, NOT_SYMBOL, OR_SYMBOL } from './config.js'
 
 export const escape = (str: string) => [...str].map((symbol) => `\\${symbol}`).join('')
 

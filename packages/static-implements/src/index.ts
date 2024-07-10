@@ -1,1 +1,1 @@
-export * from './staticImplements'
+export * from './staticImplements.js'

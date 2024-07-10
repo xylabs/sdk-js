@@ -1,7 +1,7 @@
-import { describeIf } from '../describeIf'
-import { itIf } from '../itIf'
-import { testIf } from '../testIf'
-import { matchFilter } from './filter'
+import { describeIf } from '../describeIf.js'
+import { itIf } from '../itIf.js'
+import { testIf } from '../testIf.js'
+import { matchFilter } from './filter.js'
 
 //Based on https://www.npmjs.com/package/jest-tags/v/1.0.1
 

@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "declaration": true,
-    "declarationMap": true,
+    "moduleResolution": "nodenext",
+    "module": "nodenext",
     "typeRoots": []
   },
   "exclude": ["dist", "docs", "packages", "node_modules"],

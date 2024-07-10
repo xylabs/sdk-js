@@ -1,4 +1,4 @@
-import { RESERVED_COMMANDS } from './config'
+import { RESERVED_COMMANDS } from './config.js'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getJestPassedParams = (argv: any) => {

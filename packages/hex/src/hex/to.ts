@@ -1,5 +1,5 @@
-import { hexFrom } from './from'
-import { HexConfig } from './model'
+import { hexFrom } from './from/index.js'
+import { HexConfig } from './model.js'
 
 /** takes any value and tries our best to convert it to a hex string */
 export const toHex = (

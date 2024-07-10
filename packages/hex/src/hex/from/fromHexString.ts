@@ -1,6 +1,6 @@
-import { isHex } from '../is'
-import { Hex, HexConfig } from '../model'
-import { bitsToNibbles } from '../nibble'
+import { isHex } from '../is.js'
+import { Hex, HexConfig } from '../model.js'
+import { bitsToNibbles } from '../nibble.js'
 
 export const hexFromHexString = (value: string, config: HexConfig = {}): Hex => {
   const { prefix = false, byteSize = 8 } = config

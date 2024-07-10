@@ -1,4 +1,4 @@
-import { ApiStage } from './ApiStage'
+import { ApiStage } from './ApiStage.js'
 
 const getApiStage = (hostname: string) => {
   if (hostname.startsWith('localhost')) {

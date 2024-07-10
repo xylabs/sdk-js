@@ -1,4 +1,4 @@
-export * from './equalArrayBuffers'
-export * from './toArrayBuffer'
-export * from './toUint8Array'
+export * from './equalArrayBuffers.js'
+export * from './toArrayBuffer.js'
+export * from './toUint8Array.js'
 export { isArrayBuffer } from '@xylabs/lodash'

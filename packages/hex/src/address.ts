@@ -1,5 +1,5 @@
-import { AssertConfig, assertError } from './assert'
-import { Hex, HexConfig, hexFrom, hexFromHexString, isHex } from './hex'
+import { AssertConfig, assertError } from './assert.js'
+import { Hex, HexConfig, hexFrom, hexFromHexString, isHex } from './hex/index.js'
 
 export type Address = Exclude<Hex, 'reserved-address-value'>
 

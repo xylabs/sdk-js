@@ -1,6 +1,8 @@
 export * from './AxiosJson.js'
 export { gzip } from 'pako'
 
-import * as axiosAll from 'axios'
+import * as axios from 'axios'
+export * as axios from 'axios'
+
 // eslint-disable-next-line import/no-default-export
-export { axiosAll as default }
+export { axios as default }

@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/threads",
-  "version": "3.5.9",
+  "version": "3.6.1",
   "description": "Web workers & worker threads as simple as a function call",
   "license": "MIT",
   "main": "dist/index.js",
@@ -28,13 +28,23 @@
       "import": "./dist/esm/index.js",
       "default": "./dist/esm/index.js"
     },
-    "./observable": {
+    "./master": {
       "types": "./dist/types/master.d.ts",
-      "require": "./observable.js",
-      "default": "./observable.mjs"
+      "require": "./dist/master.js",
+      "import": "./dist/esm/master.js",
+      "default": "./dist/esm/master.js"
+    },
+    "./messenger": {
+      "types": "./dist/types/messenger.d.ts"
+    },
+    "./observable": {
+      "types": "./dist/observable.d.ts",
+      "require": "./dist/observable.js",
+      "import": "./dist/esm.observable.js",
+      "default": "./dist/esm/observable.js"
     },
     "./register": {
-      "types": "./dist/types/master/register.d.ts",
+      "types": "./dist/master/register.d.ts",
       "require": "./dist/master/register/index.js",
       "import": "./dist/esm/master/register/index.js",
       "default": "./dist/esm/master/register/index.js"

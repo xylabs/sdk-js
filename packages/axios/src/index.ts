@@ -1,4 +1,5 @@
 export * from './AxiosJson.js'
-export * from 'axios'
-export { default as axios } from 'axios'
 export { gzip } from 'pako'
+
+import * as axiosAll from 'axios'
+export { axiosAll as default }

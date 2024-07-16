@@ -106,6 +106,6 @@
     "node": "18.17.1",
     "yarn": "1.22.19"
   },
-  "version": "3.6.2",
+  "version": "3.6.3",
   "type": "module"
 }

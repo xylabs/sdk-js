@@ -3622,7 +3622,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/arraybuffer@workspace:^, @xylabs/arraybuffer@workspace:packages/arraybuffer":
+"@xylabs/arraybuffer@workspace:packages/arraybuffer":
   version: 0.0.0-use.local
   resolution: "@xylabs/arraybuffer@workspace:packages/arraybuffer"
   dependencies:
@@ -3829,7 +3829,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/hex@workspace:packages/hex"
   dependencies:
-    "@xylabs/arraybuffer": "workspace:^"
     "@xylabs/ts-scripts-yarn3": "npm:^3.12.2"
     "@xylabs/tsconfig": "npm:^3.12.2"
     typescript: "npm:^5.5.3"
@@ -4010,6 +4009,7 @@ __metadata:
     jest-sorted: "npm:^1.0.15"
     prettier: "npm:^3.3.3"
     reflect-metadata: "npm:^0.2.2"
+    supertest: "npm:^7.0.0"
     ts-jest: "npm:^29.2.2"
     typescript: "npm:^5.5.3"
   languageName: unknown

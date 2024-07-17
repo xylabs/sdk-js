@@ -30,6 +30,18 @@ jobs:
         name: windows-defender
         run: powershell -Command Add-MpPreference -ExclusionPath "."
 
+      - name: Set PNPM Store Directory
+        shell: pwsh
+        run: |
+          $env:PNPM_HOME = "$($env:GITHUB_WORKSPACE)\.pnpm-store"
+          $env:PATH += ";$env:PNPM_HOME"
+          echo "PNPM_HOME=$env:PNPM_HOME" >> $env:GITHUB_ENV
+          echo "PATH=$env:PATH" >> $env:GITHUB_ENV
+
+      - name: Configure Yarn
+        run: |
+          echo "nodeLinker: pnpm" >> .yarnrc.yml
+
       - name: install
         run: yarn install --network-timeout 1000000
 

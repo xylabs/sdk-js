@@ -94,6 +94,7 @@
     "onvalue",
     "pako",
     "payloadset",
+    "preinstall",
     "Promisable",
     "Promisifying",
     "publint",

@@ -31,8 +31,9 @@ jobs:
         run: powershell -Command Add-MpPreference -ExclusionPath "."
 
       - if: runner.os == 'Windows'
-        name: Set NodeLinker for Windows
-        run: echo "NODE_LINKER=node-modules" >> $GITHUB_ENV
+        name: Config YAML for Windows
+        shell: pwsh
+        run: .\.windows.config.ps1
 
       - name: install
         run: yarn install --network-timeout 1000000

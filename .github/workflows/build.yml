@@ -30,6 +30,13 @@ jobs:
         name: windows-defender
         run: powershell -Command Add-MpPreference -ExclusionPath "."
 
+      - if: runner.os == 'Windows'
+        name: Enable Developer Mode
+        shell: pwsh
+        run: |
+          # Enable Developer Mode
+          reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" /t REG_DWORD /f /v "AllowDevelopmentWithoutDevLicense" /d "1"
+
       - name: install
         run: yarn install --network-timeout 1000000
 

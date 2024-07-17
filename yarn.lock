@@ -4011,6 +4011,7 @@ __metadata:
     reflect-metadata: "npm:^0.2.2"
     supertest: "npm:^7.0.0"
     ts-jest: "npm:^29.2.2"
+    typedoc: "npm:^0.26.4"
     typescript: "npm:^5.5.3"
   languageName: unknown
   linkType: soft

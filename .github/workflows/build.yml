@@ -32,10 +32,7 @@ jobs:
 
       - if: runner.os == 'Windows'
         name: Enable Developer Mode
-        shell: pwsh
-        run: |
-          # Enable Developer Mode
-          reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" /t REG_DWORD /f /v "AllowDevelopmentWithoutDevLicense" /d "1"
+        run: powershell -command "Set-ItemProperty -Path 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock' -Name 'AllowDevelopmentWithoutDevLicense' -Value 1"
 
       - name: install
         run: yarn install --network-timeout 1000000

@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 /// <reference types="./raw-loader" />
@@ -25,5 +24,4 @@ async function test() {
   return 'test succeeded'
 }
 
-// eslint-disable-next-line import/no-default-export
 export default test

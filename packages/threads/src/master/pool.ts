@@ -4,7 +4,6 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable unicorn/no-array-reduce */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable import/export */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import DebugLogger from 'debug'

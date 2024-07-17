@@ -3,7 +3,6 @@
 import { typescriptConfig, unicornConfig, prettierConfig, rulesConfig, workspacesConfig } from '@xylabs/eslint-config-flat'
 import tsParser from '@typescript-eslint/parser'
 
-// eslint-disable-next-line import/no-default-export
 export default [
   {
     ignores: ['.yarn', '.yarn/**', '**/dist/**', 'dist/**', 'build/**', 'node_modules/**'],

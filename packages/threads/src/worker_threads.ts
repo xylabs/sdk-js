@@ -19,7 +19,6 @@ function selectImplementation(): WorkerThreadsModule {
   return typeof __non_webpack_require__ === 'function' ? __non_webpack_require__('worker_threads') : eval('require')('worker_threads')
 }
 
-// eslint-disable-next-line import/no-default-export
 export default function getImplementation(): WorkerThreadsModule {
   if (!implementation) {
     implementation = selectImplementation()

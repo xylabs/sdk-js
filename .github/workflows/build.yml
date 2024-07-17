@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
-        node: [18]
+        node: [22]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
@@ -28,6 +28,14 @@ jobs:
       - if: runner.os == 'Windows'
         name: windows-defender
         run: powershell -Command Add-MpPreference -ExclusionPath "."
+
+      - if: runner.os == 'Windows'
+        name: pnpm-settings-store
+        run: powershell $env:PNPM_HOME = "$PWD\.pnpm-store"
+
+      - if: runner.os == 'Windows'
+        name: pnpm-settings-path
+        run: powershell $env:PATH += ";$env:PNPM_HOME"
 
       - name: install
         run: yarn install --network-timeout 1000000

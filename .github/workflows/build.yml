@@ -10,6 +10,7 @@ on:
 jobs:
   build:
     strategy:
+      fail-fast: false
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
         node: [22]
@@ -30,12 +31,13 @@ jobs:
         run: powershell -Command Add-MpPreference -ExclusionPath "."
 
       - if: runner.os == 'Windows'
-        name: pnpm-settings-store
-        run: powershell $env:PNPM_HOME = "$PWD\.pnpm-store"
-
-      - if: runner.os == 'Windows'
-        name: pnpm-settings-path
-        run: powershell $env:PATH += ";$env:PNPM_HOME"
+        name: Set PNPM Store Directory
+        shell: pwsh
+        run: |
+          $env:PNPM_HOME = "$($env:GITHUB_WORKSPACE)\.pnpm-store"
+          $env:PATH += ";$env:PNPM_HOME"
+          echo "PNPM_HOME=$env:PNPM_HOME" >> $env:GITHUB_ENV
+          echo "PATH=$env:PATH" >> $env:GITHUB_ENV
 
       - name: install
         run: yarn install --network-timeout 1000000

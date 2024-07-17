@@ -30,11 +30,6 @@ jobs:
         name: windows-defender
         run: powershell -Command Add-MpPreference -ExclusionPath "."
 
-      - if: runner.os == 'Windows'
-        name: Config YAML for Windows
-        shell: pwsh
-        run: .\.windows.config.ps1
-
       - name: install
         run: yarn install --network-timeout 1000000
 

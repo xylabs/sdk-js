@@ -1,16 +1,29 @@
 // eslint.config.mjs
 
-import { typescriptConfig, unicornConfig, prettierConfig, rulesConfig, workspacesConfig } from '@xylabs/eslint-config-flat'
 import tsParser from '@typescript-eslint/parser'
+import { importConfig, prettierConfig, rulesConfig, typescriptConfig, unicornConfig, workspacesConfig } from '@xylabs/eslint-config-flat'
+import simpleImportSort from 'eslint-plugin-simple-import-sort'
+import sonarjs from 'eslint-plugin-sonarjs'
 
 export default [
   {
-    ignores: ['.yarn', '.yarn/**', '**/dist/**', 'dist/**', 'build/**', 'node_modules/**'],
+    ignores: ['.yarn', '.yarn/**', '**/dist/**', 'dist/**', 'build/**', 'node_modules/**', 'packages/threads/**'],
   },
+  sonarjs.configs.recommended,
   prettierConfig,
   typescriptConfig,
   rulesConfig,
   workspacesConfig,
+  importConfig,
+  {
+    plugins: {
+      'simple-import-sort': simpleImportSort,
+    },
+    rules: {
+      'simple-import-sort/imports': 'error',
+      'simple-import-sort/exports': 'error',
+    },
+  },
   {
     files: ['**/*.ts', '**/*.js', '**/*.cjs', '**/*.mjs'],
     languageOptions: {
@@ -18,14 +31,14 @@ export default [
       parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
-        project: './tsconfig-eslint.json',
+        project: './tsconfig.json',
       },
     },
     plugins: { ...typescriptConfig.plugins, ...unicornConfig.plugins, ...prettierConfig.plugins },
     settings: {
       'import/resolver': {
         typescript: {
-          project: './tsconfig-eslint.json',
+          project: './tsconfig.json',
         },
       },
     },

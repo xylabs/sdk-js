@@ -1,4 +1,4 @@
-import { fulfilled } from '../fulfilled'
+import { fulfilled } from '../fulfilled.js'
 
 const getAllResolvedPromises = () => {
   return Promise.allSettled([Promise.resolve('yes')])
@@ -13,9 +13,9 @@ describe('fulfilled', () => {
     const promiseSettledResults = await getAllResolvedPromises()
     expect(promiseSettledResults).toBeTruthy()
     expect(promiseSettledResults.length).toBe(1)
-    const results = promiseSettledResults.filter(fulfilled)
+    const results: PromiseFulfilledResult<string>[] = promiseSettledResults.filter(fulfilled)
     expect(results).toBeArrayOfSize(1)
-    results.map((result) => expect(result.value).toBe('yes'))
+    for (const result of results) expect(result.value).toBe('yes')
   })
   it('returns false for rejected promises', async () => {
     const promiseSettledResults = await getAllRejectedPromises()

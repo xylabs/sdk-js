@@ -94,7 +94,7 @@ export abstract class Base<TParams extends BaseParams | undefined = BaseParams> 
   static instanceCounts(): Record<BaseClassName, number> {
     this.gc()
     const result: Record<BaseClassName, number> = {}
-    Object.entries(this.globalInstances).map(([className, instances]) => (result[className] = instances.length))
+    for (const [className, instances] of Object.entries(this.globalInstances)) result[className] = instances.length
     return result
   }
 

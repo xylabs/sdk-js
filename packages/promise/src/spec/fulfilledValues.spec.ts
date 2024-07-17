@@ -1,4 +1,4 @@
-import { fulfilledValues } from '../fulfilledValues'
+import { fulfilledValues } from '../fulfilledValues.js'
 
 const getAllResolvedPromises = () => {
   return Promise.allSettled([Promise.resolve('yes')])
@@ -16,7 +16,7 @@ describe('fulfilledValues', () => {
     // eslint-disable-next-line unicorn/no-array-reduce
     const results = promiseSettledResults.reduce(fulfilledValues, [] as string[])
     expect(results).toBeArrayOfSize(1)
-    results.map((result) => expect(result).toBe('yes'))
+    for (const result of results) expect(result).toBe('yes')
   })
   it('filters values from rejected promises', async () => {
     const promiseSettledResults = await getAllRejectedPromises()

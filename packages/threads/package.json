@@ -112,6 +112,7 @@
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.3",
+    "undici-types": "^6.19.2",
     "wavy": "^1.0.4",
     "webpack": "^5.93.0",
     "worker-plugin": "^5.0.1"

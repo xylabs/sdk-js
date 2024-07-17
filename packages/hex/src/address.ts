@@ -19,6 +19,7 @@ export function asAddress(value: unknown, assert?: AssertConfig): Address | unde
   try {
     let stringValue: string | undefined = undefined
 
+    // eslint-disable-next-line sonarjs/no-small-switch
     switch (typeof value) {
       case 'string': {
         stringValue = hexFromHexString(value, { prefix: false })

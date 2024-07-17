@@ -3997,11 +3997,14 @@ __metadata:
     "@xylabs/tsconfig": "npm:^3.12.2"
     "@xylabs/tsconfig-jest": "npm:^3.12.2"
     "@xylabs/url": "workspace:^"
+    babel-jest: "npm:^29.7.0"
     dotenv: "npm:^16.4.5"
     eslint: "npm:^9.7.0"
-    eslint-plugin-deprecation: "npm:^3.0.0"
+    eslint-import-resolver-typescript: "npm:^3.6.1"
     eslint-plugin-import: "npm:^2.29.1"
     eslint-plugin-prettier: "npm:^5.2.1"
+    eslint-plugin-simple-import-sort: "npm:^12.1.1"
+    eslint-plugin-sonarjs: "npm:^1.0.3"
     eslint-plugin-workspaces: "npm:^0.10.1"
     jest: "npm:^29.7.0"
     jest-environment-jsdom: "npm:^29.7.0"
@@ -4011,6 +4014,7 @@ __metadata:
     reflect-metadata: "npm:^0.2.2"
     supertest: "npm:^7.0.0"
     ts-jest: "npm:^29.2.2"
+    ts-node: "npm:^10.9.2"
     typedoc: "npm:^0.26.4"
     typescript: "npm:^5.5.3"
   languageName: unknown
@@ -4033,6 +4037,7 @@ __metadata:
     "@xylabs/ts-scripts-yarn3": "npm:^3.12.2"
     "@xylabs/tsconfig": "npm:^3.12.2"
     "@xylabs/tsconfig-jest": "npm:^3.12.2"
+    tslib: "npm:^2.6.3"
     typescript: "npm:^5.5.3"
   languageName: unknown
   linkType: soft
@@ -4068,6 +4073,7 @@ __metadata:
     ts-loader: "npm:^9.5.1"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.5.3"
+    undici-types: "npm:^6.19.2"
     wavy: "npm:^1.0.4"
     webpack: "npm:^5.93.0"
     worker-plugin: "npm:^5.0.1"
@@ -18696,6 +18702,13 @@ __metadata:
   bin:
     undeclared-identifiers: bin.js
   checksum: 10/e1f2a18d7bf735ec2b9ee464a621d8db72768e75e59334d34d1f7085e21558c621cc105dfd4cc7a0a219b91c43b71fbdea0508cdbe3b3396ed96902c6d5d590e
+  languageName: node
+  linkType: hard
+
+"undici-types@npm:^6.19.2":
+  version: 6.19.2
+  resolution: "undici-types@npm:6.19.2"
+  checksum: 10/7b6ab56ce35083c85a08ab508330587785185ad208c73012bc5de14ef2932507143cf491fd45b2496b3668b42b7f9b3be1c90dc01accbeec0ac111ef63163cb9
   languageName: node
   linkType: hard
 

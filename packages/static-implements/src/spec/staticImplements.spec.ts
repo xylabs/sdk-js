@@ -1,4 +1,4 @@
-import { staticImplements } from '../staticImplements'
+import { staticImplements } from '../staticImplements.js'
 
 interface StaticMethods {
   foo(): string

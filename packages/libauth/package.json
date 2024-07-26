@@ -39,12 +39,12 @@
     "esm"
   ],
   "dependencies": {
-    "@bitauth/libauth": "^1.19.1"
+    "@bitauth/libauth-1-19-1": "npm:@bitauth/libauth@1.19.1"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.12.2",
-    "@xylabs/tsconfig": "^3.12.2",
-    "typescript": "^5.5.3"
+    "@xylabs/ts-scripts-yarn3": "^3.12.4",
+    "@xylabs/tsconfig": "^3.12.4",
+    "typescript": "^5.5.4"
   },
   "engines": {
     "node": ">=18"

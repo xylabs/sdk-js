@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-all-duplicated-branches */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /*
  * This source file contains the code for proxying calls in the master thread to calls in the workers

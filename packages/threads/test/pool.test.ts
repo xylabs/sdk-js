@@ -8,6 +8,9 @@ import test from 'ava'
 import { Pool, spawn, Worker } from '../src/index'
 import { PoolEventType, QueuedTask } from '../src/master/pool'
 
+const workerPath = './workers/hello-world'
+const HELLO_WORLD = 'Hello World'
+
 test.serial('thread pool basics work and events are emitted', async (t) => {
   const events: Pool.Event[] = []
   let spawnCalled = 0
@@ -15,7 +18,7 @@ test.serial('thread pool basics work and events are emitted', async (t) => {
 
   const spawnHelloWorld = () => {
     spawnCalled++
-    return spawn<() => string>(new Worker('./workers/hello-world'))
+    return spawn<() => string>(new Worker(workerPath))
   }
   const pool = Pool(spawnHelloWorld, 3)
   pool.events().subscribe((event) => events.push(event))
@@ -32,7 +35,7 @@ test.serial('thread pool basics work and events are emitted', async (t) => {
   await pool.queue(async (helloWorld) => {
     taskFnCalled++
     const result = await helloWorld()
-    t.is(result, 'Hello World')
+    t.is(result, HELLO_WORLD)
     return result
   })
 
@@ -55,7 +58,7 @@ test.serial('thread pool basics work and events are emitted', async (t) => {
       workerID: 1,
     },
     {
-      returnValue: 'Hello World',
+      returnValue: HELLO_WORLD,
       taskID: 1,
       type: Pool.EventType.taskCompleted,
       workerID: 1,
@@ -73,7 +76,7 @@ test.serial('thread pool basics work and events are emitted', async (t) => {
 test.serial('pool.completed() works', async (t) => {
   const returned: any[] = []
 
-  const spawnHelloWorld = () => spawn(new Worker('./workers/hello-world'))
+  const spawnHelloWorld = () => spawn(new Worker(workerPath))
   const pool = Pool(spawnHelloWorld, 2)
 
   for (let i = 0; i < 3; i++) {
@@ -84,11 +87,11 @@ test.serial('pool.completed() works', async (t) => {
 
   await pool.completed()
 
-  t.deepEqual(returned, ['Hello World', 'Hello World', 'Hello World'])
+  t.deepEqual(returned, [HELLO_WORLD, HELLO_WORLD, HELLO_WORLD])
 })
 
 test.serial('pool.completed() proxies errors', async (t) => {
-  const spawnHelloWorld = () => spawn(new Worker('./workers/hello-world'))
+  const spawnHelloWorld = () => spawn(new Worker(workerPath))
   const pool = Pool(spawnHelloWorld, 2)
 
   pool.queue(async () => {
@@ -100,7 +103,7 @@ test.serial('pool.completed() proxies errors', async (t) => {
 })
 
 test.serial('pool.completed(true) works', async (t) => {
-  const spawnHelloWorld = () => spawn(new Worker('./workers/hello-world'))
+  const spawnHelloWorld = () => spawn(new Worker(workerPath))
   const pool = Pool(spawnHelloWorld, 2)
 
   await pool.completed(true)
@@ -108,9 +111,10 @@ test.serial('pool.completed(true) works', async (t) => {
 })
 
 test.serial('pool.settled() does not reject on task failure', async (t) => {
+  // eslint-disable-next-line sonarjs/no-unused-collection
   const returned: any[] = []
 
-  const spawnHelloWorld = () => spawn(new Worker('./workers/hello-world'))
+  const spawnHelloWorld = () => spawn(new Worker(workerPath))
   const pool = Pool(spawnHelloWorld, 2)
 
   pool.queue(async (helloWorld) => {
@@ -129,7 +133,7 @@ test.serial('pool.settled() does not reject on task failure', async (t) => {
 })
 
 test.serial('pool.settled(true) works', async (t) => {
-  const spawnHelloWorld = () => spawn(new Worker('./workers/hello-world'))
+  const spawnHelloWorld = () => spawn(new Worker(workerPath))
   const pool = Pool(spawnHelloWorld, 2)
 
   await pool.settled(true)
@@ -138,7 +142,7 @@ test.serial('pool.settled(true) works', async (t) => {
 
 test.serial('task.cancel() works', async (t) => {
   const events: Pool.Event[] = []
-  const spawnHelloWorld = () => spawn(new Worker('./workers/hello-world'))
+  const spawnHelloWorld = () => spawn(new Worker(workerPath))
   const pool = Pool(spawnHelloWorld, 1)
 
   pool.events().subscribe((event) => events.push(event))

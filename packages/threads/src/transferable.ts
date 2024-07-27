@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/prefer-single-boolean-return */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { $transferable } from './symbols'
 

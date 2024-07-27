@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-identical-functions */
 /* eslint-disable unicorn/prefer-logical-operator-over-ternary */
 /* eslint-disable unicorn/prefer-regexp-test */
 /* eslint-disable @typescript-eslint/no-var-requires */
@@ -5,7 +6,6 @@
 /* eslint-disable unicorn/prefer-event-target */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable unicorn/text-encoding-identifier-case */
-/* eslint-disable unicorn/no-process-exit */
 /// <reference lib="dom" />
 
 import { EventEmitter } from 'node:events'
@@ -56,11 +56,10 @@ function detectTsNode() {
 }
 
 function createTsNodeModule(scriptPath: string) {
-  const content = `
+  return `
     require("ts-node/register/transpile-only");
     require(${JSON.stringify(scriptPath)});
   `
-  return content
 }
 
 function rebaseScriptPath(scriptPath: string, ignoreRegex: RegExp) {
@@ -76,9 +75,7 @@ function rebaseScriptPath(scriptPath: string, ignoreRegex: RegExp) {
   if (callerPath && callerPath.startsWith('file:')) {
     callerPath = fileURLToPath(callerPath)
   }
-  const rebasedScriptPath = callerPath ? path.join(path.dirname(callerPath), scriptPath) : scriptPath
-
-  return rebasedScriptPath
+  return callerPath ? path.join(path.dirname(callerPath), scriptPath) : scriptPath
 }
 
 function resolveScriptPath(scriptPath: string, baseURL?: string | undefined) {
@@ -87,12 +84,9 @@ function resolveScriptPath(scriptPath: string, baseURL?: string | undefined) {
     return path.isAbsolute(filePath) ? filePath : path.join(baseURL || eval('__dirname'), filePath)
   }
 
-  const workerFilePath =
-    typeof __non_webpack_require__ === 'function' ?
+  return typeof __non_webpack_require__ === 'function' ?
       __non_webpack_require__.resolve(makeRelative(scriptPath))
     : eval('require').resolve(makeRelative(rebaseScriptPath(scriptPath, /[/\\]worker_threads[/\\]/)))
-
-  return workerFilePath
 }
 
 function initWorkerThreadsWorker(): ImplementationExport {

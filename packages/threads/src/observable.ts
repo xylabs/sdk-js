@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/prefer-immediate-return */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Observable, ObservableLike, SubscriptionObserver } from 'observable-fns'
 

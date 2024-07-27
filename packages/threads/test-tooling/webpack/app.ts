@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-use-of-empty-return-value */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { isWorkerRuntime, Pool, spawn, Worker } from '../../src/index'

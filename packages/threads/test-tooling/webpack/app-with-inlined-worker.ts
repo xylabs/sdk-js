@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 /// <reference types="./raw-loader" />

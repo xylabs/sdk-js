@@ -1,3 +1,4 @@
+/* eslint-disable import/export */
 /* eslint-disable unicorn/no-thenable */
 
 /* eslint-disable require-await */

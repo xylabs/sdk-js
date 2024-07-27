@@ -8,7 +8,6 @@ export function asHex(value: unknown, assert: AssertConfig): Hex
 export function asHex(value: unknown, assert?: AssertConfig): Hex | undefined {
   let stringValue: string | undefined = undefined
 
-  // eslint-disable-next-line sonarjs/no-small-switch
   switch (typeof value) {
     case 'string': {
       stringValue = hexFromHexString(value)

@@ -18,7 +18,6 @@ export function asHash(value: unknown, assert: AssertConfig): Hash
 export function asHash(value: unknown, assert?: AssertConfig): Hash | undefined {
   let stringValue: string | undefined = undefined
 
-  // eslint-disable-next-line sonarjs/no-small-switch
   switch (typeof value) {
     case 'string': {
       stringValue = hexFromHexString(value)

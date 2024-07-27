@@ -8,8 +8,6 @@ export default [
   },
   ...xylabsConfig,
   {
-    rules: {
-      'unicorn/no-process-exit': ['off'],
-    },
+    rules: {},
   },
 ]

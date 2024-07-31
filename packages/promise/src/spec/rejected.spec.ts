@@ -1,4 +1,4 @@
-import { rejected } from '../rejected.js'
+import { rejected } from '../rejected.ts'
 
 const getAllResolvedPromises = () => {
   return Promise.allSettled([Promise.resolve('yes')])

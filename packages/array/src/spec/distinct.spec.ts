@@ -1,4 +1,4 @@
-import { distinct } from '../distinct'
+import { distinct } from '../distinct.ts'
 
 describe('distinct', () => {
   const testCases: [unknown[], unknown[]][] = [

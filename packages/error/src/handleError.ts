@@ -1,4 +1,4 @@
-import { isError } from './isError.js'
+import { isError } from './isError.ts'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const handleError = <T>(error: any, handler: (error: Error) => T) => {

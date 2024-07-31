@@ -1,4 +1,4 @@
-import { flatten } from '../flatten'
+import { flatten } from '../flatten.ts'
 
 describe('flatten', () => {
   const testCases: [unknown | unknown[], unknown | unknown[], unknown | unknown[]][] = [

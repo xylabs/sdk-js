@@ -1,4 +1,4 @@
-import { intersection } from '../intersection'
+import { intersection } from '../intersection.ts'
 
 const cases = [
   // Intersection is commutative

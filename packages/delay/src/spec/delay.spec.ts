@@ -1,4 +1,4 @@
-import { delay } from '../delay'
+import { delay } from '../delay.ts'
 
 describe('delay', () => {
   test('checking happy path', async () => {

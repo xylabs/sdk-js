@@ -1,5 +1,5 @@
-import { isHash } from '../hash'
-import { hexFromNumber } from '../hex'
+import { isHash } from '../hash.ts'
+import { hexFromNumber } from '../hex/index.ts'
 
 describe('hash', () => {
   test('isHash', () => {

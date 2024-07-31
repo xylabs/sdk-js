@@ -1,2 +1,2 @@
-export * from './handleError.js'
-export * from './isError.js'
+export * from './handleError.ts'
+export * from './isError.ts'

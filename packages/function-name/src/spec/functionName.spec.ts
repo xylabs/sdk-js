@@ -1,4 +1,4 @@
-import { functionName } from '../functionName'
+import { functionName } from '../functionName.ts'
 
 describe('Logger', () => {
   test('getFunctionName:function', () => {

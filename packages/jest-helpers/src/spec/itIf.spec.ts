@@ -1,4 +1,4 @@
-import { itIf } from '../itIf'
+import { itIf } from '../itIf.ts'
 
 describe('itIf', () => {
   itIf(true)('should run', () => {

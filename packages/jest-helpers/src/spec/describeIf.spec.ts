@@ -1,4 +1,4 @@
-import { describeIf } from '../describeIf'
+import { describeIf } from '../describeIf.ts'
 
 describe('describeIf', () => {
   describeIf(true)('This block should run', () => {

@@ -1,6 +1,6 @@
 import { delay } from '@xylabs/delay'
 
-import { forget, ForgetPromise } from '../forget'
+import { forget, ForgetPromise } from '../forget.ts'
 
 describe('forget', () => {
   beforeAll(() => {

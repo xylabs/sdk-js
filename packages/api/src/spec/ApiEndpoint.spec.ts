@@ -1,4 +1,4 @@
-import { ApiEndpoint } from '../ApiEndpoint'
+import { ApiEndpoint } from '../ApiEndpoint.ts'
 
 describe('ApiEndpoint', () => {
   test('checking happy path', () => {

@@ -1,4 +1,4 @@
-import { fulfilledValues } from '../fulfilledValues.js'
+import { fulfilledValues } from '../fulfilledValues.ts'
 
 const getAllResolvedPromises = () => {
   return Promise.allSettled([Promise.resolve('yes')])

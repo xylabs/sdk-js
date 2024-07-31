@@ -1,4 +1,4 @@
-import { Log } from '../Log'
+import { Log } from '../Log.ts'
 
 describe('Log', () => {
   test('checking happy path', () => {

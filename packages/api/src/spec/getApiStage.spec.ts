@@ -1,4 +1,4 @@
-import { getApiStage } from '../getApiStage'
+import { getApiStage } from '../getApiStage.ts'
 
 describe('getApiStage', () => {
   test('checking happy path', () => {

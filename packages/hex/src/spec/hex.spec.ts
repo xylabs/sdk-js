@@ -1,4 +1,4 @@
-import { hexFromArrayBuffer, hexFromNumber, isHex } from '../hex'
+import { hexFromArrayBuffer, hexFromNumber, isHex } from '../hex/index.ts'
 
 describe('hex', () => {
   test('isHex', () => {

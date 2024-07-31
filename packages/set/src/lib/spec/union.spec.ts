@@ -1,4 +1,4 @@
-import { union } from '../union'
+import { union } from '../union.ts'
 
 const cases = [
   // Union is commutative

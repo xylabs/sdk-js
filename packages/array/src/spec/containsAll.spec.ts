@@ -1,4 +1,4 @@
-import { containsAll } from '../containsAll'
+import { containsAll } from '../containsAll.ts'
 
 describe('containsAll', () => {
   describe('when the source array contains all the target elements', () => {

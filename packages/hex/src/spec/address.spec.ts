@@ -1,4 +1,4 @@
-import { asAddress, isAddress } from '../address'
+import { asAddress, isAddress } from '../address.ts'
 
 describe('address', () => {
   test('isAddress', () => {

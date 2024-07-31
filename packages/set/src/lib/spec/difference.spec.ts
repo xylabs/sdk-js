@@ -1,4 +1,4 @@
-import { difference } from '../difference'
+import { difference } from '../difference.ts'
 
 const cases = [
   // Difference is non-commutative

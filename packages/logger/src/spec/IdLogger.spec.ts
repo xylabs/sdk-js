@@ -1,5 +1,5 @@
-import { IdLogger } from '../IdLogger'
-import { ConsoleLogger } from '../Logger'
+import { IdLogger } from '../IdLogger.ts'
+import { ConsoleLogger } from '../Logger.ts'
 
 describe('Logger', () => {
   test('checking happy path', () => {

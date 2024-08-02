@@ -1,3 +1,4 @@
+/* eslint-disable import/no-internal-modules */
 // tslint:disable max-classes-per-file
 
 import { ImplementationExport, ThreadsWorkerOptions } from '../types/master'

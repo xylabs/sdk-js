@@ -1,3 +1,4 @@
+/* eslint-disable import/no-internal-modules */
 import { Observable } from 'observable-fns'
 
 import { $errors, $events, $terminate } from '../symbols'

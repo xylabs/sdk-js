@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('node:path')
 const ThreadsPlugin = require('threads-plugin')
 

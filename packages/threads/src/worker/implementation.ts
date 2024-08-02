@@ -1,3 +1,4 @@
+/* eslint-disable import/no-internal-modules */
 // tslint:disable no-var-requires
 /*
  * This file is only a stub to make './implementation' resolve to the right module.

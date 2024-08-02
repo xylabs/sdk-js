@@ -1,3 +1,4 @@
+/* eslint-disable import/no-internal-modules */
 /* eslint-disable sonarjs/prefer-immediate-return */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /// <reference lib="dom" />

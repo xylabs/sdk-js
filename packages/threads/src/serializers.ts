@@ -1,3 +1,4 @@
+/* eslint-disable import/no-internal-modules */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { SerializedError } from './types/messages'
 

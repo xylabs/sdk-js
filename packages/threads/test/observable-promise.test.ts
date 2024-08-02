@@ -1,3 +1,4 @@
+/* eslint-disable import/no-internal-modules */
 /* eslint-disable sonarjs/no-duplicate-string */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import test from 'ava'

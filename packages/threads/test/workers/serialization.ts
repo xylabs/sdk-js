@@ -1,3 +1,4 @@
+/* eslint-disable import/no-internal-modules */
 /* eslint-disable require-await */
 
 import { expose, registerSerializer } from '../../src/worker'

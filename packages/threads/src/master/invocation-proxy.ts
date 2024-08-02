@@ -1,3 +1,4 @@
+/* eslint-disable import/no-internal-modules */
 /* eslint-disable sonarjs/no-all-duplicated-branches */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /*

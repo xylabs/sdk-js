@@ -1,3 +1,4 @@
+/* eslint-disable import/no-internal-modules */
 /* eslint-disable unicorn/no-process-exit */
 /* eslint-disable sonarjs/no-identical-functions */
 /* eslint-disable unicorn/prefer-logical-operator-over-ternary */

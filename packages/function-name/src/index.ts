@@ -1,1 +1,1 @@
-export * from './functionName.js'
+export * from './functionName.ts'

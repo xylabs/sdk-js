@@ -1,3 +1,3 @@
-export * from './containsAll.js'
-export * from './distinct.js'
-export * from './flatten.js'
+export * from './containsAll.ts'
+export * from './distinct.ts'
+export * from './flatten.ts'

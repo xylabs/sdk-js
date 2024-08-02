@@ -1,8 +1,8 @@
-import { Hex, HexConfig } from '../model.js'
-import { hexFromArrayBuffer } from './fromArrayBuffer.js'
-import { hexFromBigInt } from './fromBigInt.js'
-import { hexFromHexString } from './fromHexString.js'
-import { hexFromNumber } from './fromNumber.js'
+import { Hex, HexConfig } from '../model.ts'
+import { hexFromArrayBuffer } from './fromArrayBuffer.ts'
+import { hexFromBigInt } from './fromBigInt.ts'
+import { hexFromHexString } from './fromHexString.ts'
+import { hexFromNumber } from './fromNumber.ts'
 
 /** Takes unknown value and tries our best to convert it to a hex string */
 export const hexFrom = (

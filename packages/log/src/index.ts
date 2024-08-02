@@ -1,1 +1,1 @@
-export * from './Log.js'
+export * from './Log.ts'

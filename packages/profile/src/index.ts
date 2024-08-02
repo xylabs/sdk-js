@@ -1,1 +1,1 @@
-export * from './profiler.js'
+export * from './profiler.ts'

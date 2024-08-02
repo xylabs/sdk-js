@@ -1,3 +1,3 @@
-export * from './difference.js'
-export * from './intersection.js'
-export * from './union.js'
+export * from './difference.ts'
+export * from './intersection.ts'
+export * from './union.ts'

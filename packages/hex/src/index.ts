@@ -1,3 +1,3 @@
-export * from './address.js'
-export * from './hash.js'
-export * from './hex/index.js'
+export * from './address.ts'
+export * from './hash.ts'
+export * from './hex/index.ts'

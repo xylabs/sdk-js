@@ -1,5 +1,5 @@
-import { AnyObject } from './AnyObject.js'
-import { isType } from './isType.js'
+import { AnyObject } from './AnyObject.ts'
+import { isType } from './isType.ts'
 
 export const isObject = (value: unknown): value is AnyObject => {
   return isType(value, 'object')

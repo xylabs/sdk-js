@@ -1,8 +1,8 @@
 import { Promisable } from '@xylabs/promise'
 
-import { AnyObject } from './AnyObject.js'
-import { EmptyObject } from './EmptyObject.js'
-import { ObjectWrapper } from './ObjectWrapper.js'
+import { AnyObject } from './AnyObject.ts'
+import { EmptyObject } from './EmptyObject.ts'
+import { ObjectWrapper } from './ObjectWrapper.ts'
 
 export interface Validator<T extends EmptyObject = AnyObject> {
   validate(payload: T): Promisable<Error[]>

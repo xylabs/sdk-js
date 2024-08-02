@@ -1,6 +1,6 @@
 import { getGlobal } from '@xylabs/platform'
 
-import { Crypto } from './Crypto.js'
+import { Crypto } from './Crypto.ts'
 
 type WithOptionalCrypto = { Crypto?: typeof Crypto }
 

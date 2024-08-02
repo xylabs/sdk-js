@@ -1,5 +1,5 @@
-import { AssertConfig, assertError } from './assert.js'
-import { Hex, hexFromHexString, isHex } from './hex/index.js'
+import { AssertConfig, assertError } from './assert.ts'
+import { Hex, hexFromHexString, isHex } from './hex/index.ts'
 
 export type HashBitLength = 32 | 64 | 128 | 256 | 512 | 1024 | 2048 | 4096
 export const HashBitLength: HashBitLength[] = [32, 64, 128, 256, 512, 1024, 2048, 4096]

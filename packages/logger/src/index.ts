@@ -1,3 +1,3 @@
-export * from './getFunctionName.js'
-export * from './IdLogger.js'
-export * from './Logger.js'
+export * from './getFunctionName.ts'
+export * from './IdLogger.ts'
+export * from './Logger.ts'

@@ -1,4 +1,4 @@
-import { JsonArray, JsonObject, JsonValue } from './JsonObject.js'
+import { JsonArray, JsonObject, JsonValue } from './JsonObject.ts'
 
 const toJsonArray = (value: unknown[], cycleList?: unknown[], maxDepth = 3): JsonArray => {
   return value.map((item) => toJsonValue(item, cycleList, maxDepth))

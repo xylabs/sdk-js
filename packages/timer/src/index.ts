@@ -1,1 +1,1 @@
-export * from './setTimeoutEx.js'
+export * from './setTimeoutEx.ts'

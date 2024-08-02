@@ -1,1 +1,1 @@
-export { delay } from './delay.js'
+export { delay } from './delay.ts'

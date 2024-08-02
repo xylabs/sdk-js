@@ -1,4 +1,4 @@
-import { toArrayBuffer } from './toArrayBuffer.js'
+import { toArrayBuffer } from './toArrayBuffer.ts'
 
 export function toUint8Array(value: undefined, padLength?: number, base?: number): undefined
 export function toUint8Array(value: ArrayBuffer | string, padLength?: number, base?: number): Uint8Array

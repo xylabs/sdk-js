@@ -1,5 +1,5 @@
-import { Hex, HexConfig } from '../model.js'
-import { hexFromHexString } from './fromHexString.js'
+import { Hex, HexConfig } from '../model.ts'
+import { hexFromHexString } from './fromHexString.ts'
 
 /** Convert an ArrayBuffer to a hex string */
 export const hexFromArrayBuffer = (

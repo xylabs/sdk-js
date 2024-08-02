@@ -1,2 +1,2 @@
-export * from './Crypto.js'
-export * from './cryptoPolyfill.js'
+export * from './Crypto.ts'
+export * from './cryptoPolyfill.ts'

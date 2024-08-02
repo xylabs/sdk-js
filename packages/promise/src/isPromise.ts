@@ -1,4 +1,4 @@
-import { TypedValue } from './Typed.js'
+import { TypedValue } from './Typed.ts'
 
 export interface PromiseType {
   then: () => unknown

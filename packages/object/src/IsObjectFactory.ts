@@ -1,7 +1,7 @@
 import { TypedObject } from '@xylabs/promise'
 
-import { TypeCheck, TypeCheckConfig } from './AsTypeFactory.js'
-import { isType, ObjectTypeShape } from './isType.js'
+import { TypeCheck, TypeCheckConfig } from './AsTypeFactory.ts'
+import { isType, ObjectTypeShape } from './isType.ts'
 
 export interface ObjectTypeConfig extends TypeCheckConfig {}
 

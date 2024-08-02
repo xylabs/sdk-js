@@ -1,2 +1,2 @@
-export * from './bufferPolyfill.js'
+export * from './bufferPolyfill.ts'
 export { Buffer } from 'node:buffer'

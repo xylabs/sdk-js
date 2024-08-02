@@ -1,2 +1,2 @@
-export * as lodashCjs from './cjsIndex.js'
-export * from './esmIndex.js'
+export * as lodashCjs from './cjsIndex.ts'
+export * from './esmIndex.ts'

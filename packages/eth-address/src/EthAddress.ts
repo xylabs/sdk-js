@@ -1,8 +1,8 @@
 import { assertEx } from '@xylabs/assert'
 import { getAddress } from 'ethers'
 
-import { ellipsize } from './ellipsize.js'
-import { padHex } from './padHex.js'
+import { ellipsize } from './ellipsize.ts'
+import { padHex } from './padHex.ts'
 
 export const isEthAddress = (obj: { type: string }) => obj?.type === EthAddress.type
 

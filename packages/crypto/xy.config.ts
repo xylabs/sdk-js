@@ -5,7 +5,6 @@ const config: XyTsupConfig = {
     browser: {
       'src/browser': true,
     },
-    mode: 'tsup',
     neutral: {},
     node: {
       'src/node': true,

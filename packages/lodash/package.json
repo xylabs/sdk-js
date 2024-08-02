@@ -18,15 +18,15 @@
         "default": "./dist/node/cjsIndex.cjs"
       },
       "import": {
-        "types": "./dist/node/esmIndex.d.mts",
-        "default": "./dist/node/esmIndex.js"
+        "types": "./dist/node/esmIndex.d.ts",
+        "default": "./dist/node/esmIndex.mjs"
       }
     },
     "./package.json": "./package.json"
   },
   "main": "./dist/node/cjsIndex.cjs",
   "types": "./dist/node/esmIndex.d.ts",
-  "module": "./dist/node/esmIndex.js",
+  "module": "./dist/node/esmIndex.mjs",
   "homepage": "https://xylabs.com",
   "keywords": [
     "lodash",
@@ -46,8 +46,8 @@
   "devDependencies": {
     "@types/lodash": "^4.17.7",
     "@types/lodash-es": "^4.17.12",
-    "@xylabs/ts-scripts-yarn3": "^3.15.1",
-    "@xylabs/tsconfig": "^3.15.1",
+    "@xylabs/ts-scripts-yarn3": "^3.15.2",
+    "@xylabs/tsconfig": "^3.15.2",
     "typescript": "^5.5.4"
   },
   "engines": {

@@ -8,7 +8,7 @@ interface TimeoutInfo {
 }
 
 let timeouts: TimeoutInfo[] = []
-let currentTimeout: number | undefined
+let currentTimeout: NodeJS.Timeout | undefined
 let interval = -1
 
 const reset = () => {

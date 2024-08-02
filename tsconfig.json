@@ -1,10 +1,6 @@
 {
   "compilerOptions": {
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "incremental": false,
-    "moduleResolution": "nodenext",
-    "module": "nodenext",
+    "skipDefaultLibCheck": false,
     "typeRoots": []
   },
   "exclude": [".yarn", "./node_modules", "./**/node_modules", "./dist", "./**/dist", "./**/docs", ".*"],

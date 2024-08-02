@@ -7,10 +7,10 @@ export const functionName = (depth = 2) => {
     return handleError(ex, (error) => {
       let newIndex: number | undefined
       const stackParts = error.stack?.split('\n')[depth].split(' ')
-      const funcName =
-        stackParts?.find((item, index) => {
+      const funcName
+        = stackParts?.find((item, index) => {
           if (item.length > 0 && item !== 'at') {
-            //check if constructor
+            // check if constructor
             if (item === 'new') {
               newIndex = index
             }

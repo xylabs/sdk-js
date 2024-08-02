@@ -1,4 +1,3 @@
-/* eslint-disable sonarjs/prefer-immediate-return */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Observable, ObservableLike, SubscriptionObserver } from 'observable-fns'
 
@@ -20,7 +19,7 @@ export class Subject<T> extends Observable<T> implements ObservableLike<T> {
     super((observer) => {
       this[$observers] = [...(this[$observers] || []), observer]
       const unsubscribe = () => {
-        this[$observers] = this[$observers].filter((someObserver) => someObserver !== observer)
+        this[$observers] = this[$observers].filter(someObserver => someObserver !== observer)
       }
       return unsubscribe
     })

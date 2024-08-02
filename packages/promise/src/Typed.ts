@@ -1,6 +1,6 @@
 import { isType } from './isType.ts'
 
-// eslint-disable-next-line @typescript-eslint/ban-types
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 export type TypedValue = bigint | string | number | boolean | null | TypedObject | TypedArray | Function | symbol | undefined
 export type TypedKey<T extends string | void = void> = T extends string ? T : string | number | symbol
 export type TypedObject = { [key: TypedKey]: TypedValue } | object
@@ -34,7 +34,7 @@ export const isTypedValue = (value: unknown): value is TypedValue => {
 }
 
 export const isTypedArray = (value: unknown): value is TypedArray => {
-  return Array.isArray(value) && !value.some((item) => !isTypedValue(item))
+  return Array.isArray(value) && !value.some(item => !isTypedValue(item))
 }
 
 export const isValidTypedFieldPair = (pair: [key: unknown, value: unknown]): pair is [key: TypedKey, value: TypedValue] => {
@@ -44,13 +44,13 @@ export const isValidTypedFieldPair = (pair: [key: unknown, value: unknown]): pai
 
 export const isTypedObject = (value: unknown): value is TypedObject => {
   return (
-    isType(value, 'object') &&
-    //check if all keys are strings
-    !Object.entries(value as object).some((item) => !isValidTypedFieldPair(item))
+    isType(value, 'object')
+    // check if all keys are strings
+    && !Object.entries(value as object).some(item => !isValidTypedFieldPair(item))
   )
 }
 
-//Object Type Test
+// Object Type Test
 /*
 interface TestObject {
   value: number

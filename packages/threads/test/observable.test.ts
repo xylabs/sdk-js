@@ -17,17 +17,17 @@ test('Observable subject emits values and completion event', async (t) => {
   const observable = Observable.from(subject)
 
   const subscription1 = subject.subscribe(
-    (value) => values1.push(value),
+    value => values1.push(value),
     undefined,
     () => (completed1 = true),
   )
   subject.subscribe(
-    (value) => values2.push(value),
+    value => values2.push(value),
     undefined,
     () => (completed2 = true),
   )
   observable.subscribe(
-    (value) => values3.push(value),
+    value => values3.push(value),
     undefined,
     () => (completed3 = true),
   )
@@ -59,17 +59,17 @@ test('Observable subject propagates errors', async (t) => {
 
   const subscription1 = subject.subscribe(
     () => {},
-    (error) => (error1 = error),
+    error => (error1 = error),
     () => (completed1 = true),
   )
   subject.subscribe(
     () => {},
-    (error) => (error2 = error),
+    error => (error2 = error),
     () => (completed2 = true),
   )
   observable.subscribe(
     () => {},
-    (error) => (error3 = error),
+    error => (error3 = error),
     () => (completed3 = true),
   )
 

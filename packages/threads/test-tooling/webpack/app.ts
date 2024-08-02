@@ -1,4 +1,3 @@
-/* eslint-disable sonarjs/no-use-of-empty-return-value */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { isWorkerRuntime, Pool, spawn, Worker } from '../../src/index'
@@ -9,10 +8,10 @@ type HelloWorker = (text: string) => string
 async function test() {
   const pool = Pool(() => spawn<HelloWorker>(new Worker('./pool-worker')))
   const results = await Promise.all([
-    pool.queue((hello) => hello('World')),
-    pool.queue((hello) => hello('World')),
-    pool.queue((hello) => hello('World')),
-    pool.queue((hello) => hello('World')),
+    pool.queue(hello => hello('World')),
+    pool.queue(hello => hello('World')),
+    pool.queue(hello => hello('World')),
+    pool.queue(hello => hello('World')),
   ])
   await pool.terminate()
 

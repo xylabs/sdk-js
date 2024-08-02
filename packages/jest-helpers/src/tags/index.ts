@@ -3,7 +3,7 @@ import { itIf } from '../itIf.ts'
 import { testIf } from '../testIf.ts'
 import { matchFilter } from './filter.ts'
 
-//Based on https://www.npmjs.com/package/jest-tags/v/1.0.1
+// Based on https://www.npmjs.com/package/jest-tags/v/1.0.1
 
 export function tags(...tagLabels: string[]) {
   const tagsParam = process.argv.indexOf('--tags')

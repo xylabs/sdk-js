@@ -6,7 +6,7 @@ test('can use worker returning an observable subject', async (t) => {
   const captured: Array<{ max: number; min: number }> = []
 
   const minmax = await spawn(new Worker('./workers/minmax'))
-  minmax.values().subscribe((values) => captured.push(values))
+  minmax.values().subscribe(values => captured.push(values))
 
   await minmax.push(2)
   await minmax.push(3)

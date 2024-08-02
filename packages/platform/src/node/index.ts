@@ -9,6 +9,8 @@ export const isWebworker = () => {
 }
 
 export const getGlobal = <T extends object>() =>
-  isBrowser() ? (window as unknown as T)
-  : isWebworker() ? (self as unknown as T)
-  : globalThis
+  isBrowser()
+    ? (window as unknown as T)
+    : isWebworker()
+      ? (self as unknown as T)
+      : globalThis

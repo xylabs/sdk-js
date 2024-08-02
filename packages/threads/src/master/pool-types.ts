@@ -19,41 +19,41 @@ export type TaskRunFunction<ThreadType extends Thread, Return> = (worker: Thread
 /** Pool event. Subscribe to those events using `pool.events()`. Useful for debugging. */
 export type PoolEvent<ThreadType extends Thread> =
   | {
-      type: PoolEventType.initialized
-      size: number
-    }
+    type: PoolEventType.initialized
+    size: number
+  }
   | {
-      type: PoolEventType.taskQueued
-      taskID: number
-    }
+    type: PoolEventType.taskQueued
+    taskID: number
+  }
   | {
-      type: PoolEventType.taskQueueDrained
-    }
+    type: PoolEventType.taskQueueDrained
+  }
   | {
-      type: PoolEventType.taskStart
-      taskID: number
-      workerID: number
-    }
+    type: PoolEventType.taskStart
+    taskID: number
+    workerID: number
+  }
   | {
-      type: PoolEventType.taskCompleted
-      returnValue: any
-      taskID: number
-      workerID: number
-    }
+    type: PoolEventType.taskCompleted
+    returnValue: any
+    taskID: number
+    workerID: number
+  }
   | {
-      type: PoolEventType.taskFailed
-      error: Error
-      taskID: number
-      workerID: number
-    }
+    type: PoolEventType.taskFailed
+    error: Error
+    taskID: number
+    workerID: number
+  }
   | {
-      type: PoolEventType.taskCanceled
-      taskID: number
-    }
+    type: PoolEventType.taskCanceled
+    taskID: number
+  }
   | {
-      type: PoolEventType.terminated
-      remainingQueue: Array<QueuedTask<ThreadType, any>>
-    }
+    type: PoolEventType.terminated
+    remainingQueue: Array<QueuedTask<ThreadType, any>>
+  }
 
 export interface WorkerDescriptor<ThreadType extends Thread> {
   init: Promise<ThreadType>

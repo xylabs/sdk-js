@@ -1,12 +1,11 @@
 /* eslint-disable import/no-internal-modules */
-/* eslint-disable sonarjs/no-duplicate-string */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import test from 'ava'
 import { Observable } from 'observable-fns'
 
 import { ObservablePromise } from '../src/observable-promise'
 
-const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
 test('can create an observable promise', async (t) => {
   t.plan(1)
@@ -43,9 +42,9 @@ test('can proxy a promise fulfillment', async (t) => {
     }, 1)
   })
 
-  const promise1 = async.then((value) => t.is(value, 123), t.fail)
+  const promise1 = async.then(value => t.is(value, 123), t.fail)
   await delay(10)
-  const promise2 = async.then((value) => t.is(value, 123), t.fail)
+  const promise2 = async.then(value => t.is(value, 123), t.fail)
 
   await Promise.all([promise1, promise2])
 })
@@ -104,7 +103,7 @@ test('can subscribe to values and completion', async (t) => {
 
   for (let index = 0; index < 2; index++) {
     async.subscribe(
-      (value) => capturedValues.push(value),
+      value => capturedValues.push(value),
       () => {},
       () => capturedCompletions++,
     )
@@ -131,8 +130,8 @@ test('can subscribe to errors', async (t) => {
 
   for (let index = 0; index < 2; index++) {
     async.subscribe(
-      (value) => capturedValues.push(value),
-      (error) => capturedErrorMessages.push(error.message),
+      value => capturedValues.push(value),
+      error => capturedErrorMessages.push(error.message),
       () => capturedCompletions++,
     )
   }
@@ -161,8 +160,8 @@ test('from(Observable) works', async (t) => {
 
   for (let index = 0; index < 2; index++) {
     async.subscribe(
-      (value) => capturedValues.push(value),
-      (error) => capturedErrorMessages.push(error.message),
+      value => capturedValues.push(value),
+      error => capturedErrorMessages.push(error.message),
       () => capturedCompletions++,
     )
   }

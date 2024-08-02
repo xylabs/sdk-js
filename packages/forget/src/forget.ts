@@ -49,7 +49,7 @@ export const ForgetPromise = {
 
     const promises = [promiseWrapper()]
 
-    //if there is a timeout, add it to the race
+    // if there is a timeout, add it to the race
     if (config) {
       const timeoutFunc = async () => {
         await delay(config.delay)
@@ -73,7 +73,7 @@ export const ForgetPromise = {
   },
 }
 
-//used to explicitly launch an async function (or Promise) with awaiting it
+// used to explicitly launch an async function (or Promise) with awaiting it
 export const forget = (promise: Promise<unknown>, timeout?: ForgetTimeoutConfig) => {
   ForgetPromise.forget(promise, timeout)
 }

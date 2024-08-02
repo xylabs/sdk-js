@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-require-imports */
 // NOTE:
 // We are gonna test the bundles previously built by the AVA tests (see webpack.test.ts)
 

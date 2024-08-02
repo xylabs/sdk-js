@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
+/* eslint-disable @typescript-eslint/no-require-imports */
 /* eslint-disable require-await */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-var-requires */
+
 import path from 'node:path'
 
 import test from 'ava'
@@ -10,16 +12,20 @@ const browserConfig = require('./webpack.web.config')
 const serverConfig = require('./webpack.node.config')
 
 const stringifyWebpackError = (error: any) =>
-  error ?
-    typeof error.stack === 'string' ? error.stack
-    : typeof error.message === 'string' ? error.message
-    : error
-  : ''
+  error
+    ? typeof error.stack === 'string'
+      ? error.stack
+      : typeof error.message === 'string'
+        ? error.message
+        : error
+    : ''
 
 async function runWebpack(config: any) {
   return new Promise<Webpack.Stats>((resolve, reject) => {
     Webpack(config).run((error, stats) => {
-      error ? reject(error) : resolve(stats)
+      if (stats) {
+        error ? reject(error) : resolve(stats)
+      }
     })
   })
 }

@@ -37,10 +37,10 @@ function selectWorkerImplementation(): ImplementationExport {
         }
       }
       if (
-        typeof url === 'string' &&
-        isAbsoluteURL(url) && // Create source code blob loading JS file via `importScripts()`
+        typeof url === 'string'
+        && isAbsoluteURL(url) // Create source code blob loading JS file via `importScripts()`
         // to circumvent worker CORS restrictions
-        (options?.CORSWorkaround ?? true)
+        && (options?.CORSWorkaround ?? true)
       ) {
         url = createSourceBlobURL(`importScripts(${JSON.stringify(url)});`)
       }

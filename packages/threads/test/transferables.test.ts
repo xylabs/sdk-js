@@ -25,7 +25,7 @@ function replaceArrayBufferWithPlaceholder<In extends any>(
   if ((obj as any) === arrayBuffer) {
     return arrayBufferPlaceholder as any
   } else if (Array.isArray(obj)) {
-    return (obj as any[]).map((element) => replaceArrayBufferWithPlaceholder(element, arrayBuffer)) as any
+    return (obj as any[]).map(element => replaceArrayBufferWithPlaceholder(element, arrayBuffer)) as any
   } else if (obj && typeof obj === 'object') {
     const result: In = Object.create(Object.getPrototypeOf(obj))
 
@@ -44,7 +44,7 @@ test('can pass transferable objects on thread call', async (t) => {
   const worker = new Worker('./workers/arraybuffer-xor')
   const postMessageCalls: Array<any[]> = []
 
-  worker.postMessage = spyOn(worker.postMessage.bind(worker), (postMessage) => (...args) => {
+  worker.postMessage = spyOn(worker.postMessage.bind(worker), postMessage => (...args) => {
     postMessageCalls.push(replaceArrayBufferWithPlaceholder(args, testData))
     return postMessage(...args)
   })

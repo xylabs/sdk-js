@@ -1,9 +1,9 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 /* eslint-disable import/no-internal-modules */
 /* eslint-disable unicorn/no-process-exit */
-/* eslint-disable sonarjs/no-identical-functions */
 /* eslint-disable unicorn/prefer-logical-operator-over-ternary */
 /* eslint-disable unicorn/prefer-regexp-test */
-/* eslint-disable @typescript-eslint/no-var-requires */
+
 /* eslint-disable unicorn/prefer-add-event-listener */
 /* eslint-disable unicorn/prefer-event-target */
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -86,15 +86,15 @@ function resolveScriptPath(scriptPath: string, baseURL?: string | undefined) {
     return path.isAbsolute(filePath) ? filePath : path.join(baseURL || eval('__dirname'), filePath)
   }
 
-  return typeof __non_webpack_require__ === 'function' ?
-      __non_webpack_require__.resolve(makeRelative(scriptPath))
+  return typeof __non_webpack_require__ === 'function'
+    ? __non_webpack_require__.resolve(makeRelative(scriptPath))
     : eval('require').resolve(makeRelative(rebaseScriptPath(scriptPath, /[/\\]worker_threads[/\\]/)))
 }
 
 function initWorkerThreadsWorker(): ImplementationExport {
   // Webpack hack
-  const NativeWorker =
-    typeof __non_webpack_require__ === 'function' ? __non_webpack_require__('worker_threads').Worker : eval('require')('worker_threads').Worker
+  const NativeWorker
+    = typeof __non_webpack_require__ === 'function' ? __non_webpack_require__('worker_threads').Worker : eval('require')('worker_threads').Worker
 
   let allWorkers: Array<typeof NativeWorker> = []
 
@@ -137,7 +137,7 @@ function initWorkerThreadsWorker(): ImplementationExport {
 
   const terminateWorkersAndMaster = () => {
     // we should terminate all workers and then gracefully shutdown self process
-    Promise.all(allWorkers.map((worker) => worker.terminate())).then(
+    Promise.all(allWorkers.map(worker => worker.terminate())).then(
       () => process.exit(0),
       () => process.exit(1),
     )
@@ -175,10 +175,12 @@ function initTinyWorker(): ImplementationExport {
     constructor(scriptPath: string, options?: ThreadsWorkerOptions & { fromSource?: boolean }) {
       // Need to apply a work-around for Windows or it will choke upon the absolute path
       // (`Error [ERR_INVALID_PROTOCOL]: Protocol 'c:' not supported`)
-      const resolvedScriptPath =
-        options && options.fromSource ? null
-        : process.platform === 'win32' ? `file:///${resolveScriptPath(scriptPath).replaceAll('\\', '/')}`
-        : resolveScriptPath(scriptPath)
+      const resolvedScriptPath
+        = options && options.fromSource
+          ? null
+          : process.platform === 'win32'
+            ? `file:///${resolveScriptPath(scriptPath).replaceAll('\\', '/')}`
+            : resolveScriptPath(scriptPath)
 
       if (!resolvedScriptPath) {
         // `options.fromSource` is true
@@ -209,14 +211,14 @@ function initTinyWorker(): ImplementationExport {
     }
 
     terminate() {
-      allWorkers = allWorkers.filter((worker) => worker !== this)
+      allWorkers = allWorkers.filter(worker => worker !== this)
       return super.terminate()
     }
   }
 
   const terminateWorkersAndMaster = () => {
     // we should terminate all workers and then gracefully shutdown self process
-    Promise.all(allWorkers.map((worker) => worker.terminate())).then(
+    Promise.all(allWorkers.map(worker => worker.terminate())).then(
       () => process.exit(0),
       () => process.exit(1),
     )
@@ -271,10 +273,10 @@ export function isWorkerRuntime() {
     return self !== undefined && self['postMessage'] ? true : false
   } else {
     // Webpack hack
-    const isMainThread =
-      typeof __non_webpack_require__ === 'function' ?
-        __non_webpack_require__('worker_threads').isMainThread
-      : eval('require')('worker_threads').isMainThread
+    const isMainThread
+      = typeof __non_webpack_require__ === 'function'
+        ? __non_webpack_require__('worker_threads').isMainThread
+        : eval('require')('worker_threads').isMainThread
     return !isMainThread
   }
 }

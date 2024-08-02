@@ -18,7 +18,7 @@ export const isJsonValue = (value: unknown): value is JsonValue => {
 }
 
 export const isJsonArray = (value: unknown): value is JsonArray => {
-  return Array.isArray(value) && !value.some((item) => !isJsonValue(item))
+  return Array.isArray(value) && !value.some(item => !isJsonValue(item))
 }
 
 export const isValidJsonFieldPair = ([key, value]: [key: unknown, value: unknown]) => {
@@ -27,8 +27,8 @@ export const isValidJsonFieldPair = ([key, value]: [key: unknown, value: unknown
 
 export const isJsonObject = (value: unknown): value is JsonObject => {
   return (
-    isObject(value) &&
-    //check if all keys are strings
-    !Object.entries(value).some((item) => !isValidJsonFieldPair(item))
+    isObject(value)
+    // check if all keys are strings
+    && !Object.entries(value).some(item => !isValidJsonFieldPair(item))
   )
 }

@@ -28,8 +28,8 @@ export const fooSerializer: SerializerImplementation = {
   },
 
   serialize(data, fallback) {
-    return data instanceof Foo ?
-        {
+    return data instanceof Foo
+      ? {
           __type: '$$foo',
           val: data.getValue(),
         }

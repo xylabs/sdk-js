@@ -1,0 +1,28 @@
+releases:
+  "@xylabs/api": patch
+  "@xylabs/array": patch
+  "@xylabs/arraybuffer": patch
+  "@xylabs/assert": patch
+  "@xylabs/axios": patch
+  "@xylabs/bignumber": patch
+  "@xylabs/buffer": patch
+  "@xylabs/crypto": patch
+  "@xylabs/decimal-precision": patch
+  "@xylabs/delay": patch
+  "@xylabs/error": patch
+  "@xylabs/eth-address": patch
+  "@xylabs/sdk-js": patch
+
+undecided:
+  - "@xylabs/forget"
+  - "@xylabs/function-name"
+  - "@xylabs/hex"
+  - "@xylabs/jest-helpers"
+  - "@xylabs/logger"
+  - "@xylabs/object"
+  - "@xylabs/platform"
+  - "@xylabs/promise"
+  - "@xylabs/set"
+  - "@xylabs/static-implements"
+  - "@xylabs/threads"
+  - "@xylabs/timer"

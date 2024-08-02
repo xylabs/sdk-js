@@ -166,17 +166,17 @@ export class ObservablePromise<T> extends Observable<T> implements Promise<T> {
   }
 
   static from<T>(thing: Observable<T> | ObservableLike<T> | ArrayLike<T> | Thenable<T>): ObservablePromise<T> {
-    return isThenable(thing) ?
-        new ObservablePromise((observer) => {
-          const onFulfilled = (value: T) => {
-            observer.next(value)
-            observer.complete()
-          }
-          const onRejected = (error: any) => {
-            observer.error(error)
-          }
-          thing.then(onFulfilled, onRejected)
-        })
+    return isThenable(thing)
+      ? new ObservablePromise((observer) => {
+        const onFulfilled = (value: T) => {
+          observer.next(value)
+          observer.complete()
+        }
+        const onRejected = (error: any) => {
+          observer.error(error)
+        }
+        thing.then(onFulfilled, onRejected)
+      })
       : (super.from(thing) as ObservablePromise<T>)
   }
 }

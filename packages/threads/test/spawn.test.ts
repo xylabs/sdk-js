@@ -1,5 +1,5 @@
 /* eslint-disable import/no-internal-modules */
-/* eslint-disable @typescript-eslint/no-var-requires */
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import test from 'ava'
 import { Observable } from 'observable-fns'
@@ -28,7 +28,7 @@ test('can subscribe to an observable returned by a thread call', async (t) => {
   const encounteredValues: any[] = []
 
   const observable = countToFive()
-  observable.subscribe((value) => encounteredValues.push(value))
+  observable.subscribe(value => encounteredValues.push(value))
   await observable
 
   t.deepEqual(encounteredValues, [1, 2, 3, 4, 5])
@@ -52,6 +52,7 @@ test('thread job errors are handled', async (t) => {
 })
 
 test('thread transfer errors are handled', async (t) => {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
   const builtin = require('node:module').builtinModules
   if (builtin.includes('worker_threads')) {
     // test is actual for native worker_threads only

@@ -15,11 +15,11 @@ export const isType = (value: unknown, expectedType: FieldType) => {
       return value === undefined
     }
     case 'object': {
-      //nulls resolve to objects, so exclude them
+      // nulls resolve to objects, so exclude them
       if (value === null) {
         return false
       }
-      //arrays resolve to objects, so exclude them
+      // arrays resolve to objects, so exclude them
       return typeofValue === 'object' && !Array.isArray(value)
     }
     default: {

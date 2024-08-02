@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export type SettlementResult<T> =
   | {
-      status: 'fulfilled'
-      value: T
-    }
+    status: 'fulfilled'
+    value: T
+  }
   | {
-      reason: any
-      status: 'rejected'
-    }
+    reason: any
+    status: 'rejected'
+  }
 
 // Based on <https://github.com/es-shims/Promise.allSettled/blob/master/implementation.js>
 export function allSettled<T>(values: T[]): Promise<Array<SettlementResult<T>>> {

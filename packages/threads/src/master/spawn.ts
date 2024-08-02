@@ -28,9 +28,9 @@ type ArbitraryThreadType = FunctionThread<any, any> & ModuleThread<any>
 
 export type ExposedToThreadType<Exposed extends WorkerFunction | WorkerModule<any>> =
   Exposed extends ArbitraryWorkerInterface ? ArbitraryThreadType
-  : Exposed extends WorkerFunction ? FunctionThread<Parameters<Exposed>, StripAsync<ReturnType<Exposed>>>
-  : Exposed extends WorkerModule<any> ? ModuleThread<Exposed>
-  : never
+    : Exposed extends WorkerFunction ? FunctionThread<Parameters<Exposed>, StripAsync<ReturnType<Exposed>>>
+      : Exposed extends WorkerModule<any> ? ModuleThread<Exposed>
+        : never
 
 const debugMessages = DebugLogger('threads:master:messages')
 const debugSpawn = DebugLogger('threads:master:spawn')
@@ -39,10 +39,10 @@ const debugThreadUtils = DebugLogger('threads:master:thread-utils')
 const isInitMessage = (data: any): data is WorkerInitMessage => data && data.type === ('init' as const)
 const isUncaughtErrorMessage = (data: any): data is WorkerUncaughtErrorMessage => data && data.type === ('uncaughtError' as const)
 
-const initMessageTimeout =
-  typeof process !== 'undefined' && process.env !== undefined && process.env.THREADS_WORKER_INIT_TIMEOUT ?
-    Number.parseInt(process.env.THREADS_WORKER_INIT_TIMEOUT, 10)
-  : 10_000
+const initMessageTimeout
+  = typeof process !== 'undefined' && process.env !== undefined && process.env.THREADS_WORKER_INIT_TIMEOUT
+    ? Number.parseInt(process.env.THREADS_WORKER_INIT_TIMEOUT, 10)
+    : 10_000
 
 async function withTimeout<T>(promise: Promise<T>, timeoutInMs: number, errorMessage: string): Promise<T> {
   let timeoutHandle: any
@@ -122,8 +122,8 @@ function setPrivateThreadProps<T>(
   terminate: () => Promise<void>,
 ): T & PrivateThreadProps {
   const workerErrors = workerEvents
-    .filter((event) => event.type === WorkerEventType.internalError)
-    .map((errorEvent) => (errorEvent as WorkerInternalErrorEvent).error)
+    .filter(event => event.type === WorkerEventType.internalError)
+    .map(errorEvent => (errorEvent as WorkerInternalErrorEvent).error)
 
   return Object.assign(raw as any, {
     [$errors]: workerErrors,

@@ -131,7 +131,7 @@ async function runFunction(jobUID: number, fn: WorkerFunction, args: any[]) {
 
   if (isObservable(syncResult)) {
     const subscription = syncResult.subscribe(
-      (value) => postJobResultMessage(jobUID, false, serialize(value)),
+      value => postJobResultMessage(jobUID, false, serialize(value)),
       (error) => {
         postJobErrorMessage(jobUID, serialize(error) as any)
         activeSubscriptions.delete(jobUID)
@@ -182,7 +182,7 @@ export function expose(exposed: WorkerFunction | WorkerModule<any>) {
       }
     })
 
-    const methodNames = Object.keys(exposed).filter((key) => typeof exposed[key] === 'function')
+    const methodNames = Object.keys(exposed).filter(key => typeof exposed[key] === 'function')
     postModuleInitMessage(methodNames)
   } else {
     throw new Error(`Invalid argument passed to expose(). Expected a function or an object, got: ${exposed}`)

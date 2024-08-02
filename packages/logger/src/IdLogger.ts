@@ -17,15 +17,19 @@ export class IdLogger implements Logger {
   debug(...data: unknown[]) {
     this._logger?.debug(this.prefix(), ...data)
   }
+
   error(...data: unknown[]) {
     this._logger?.error(this.prefix(), ...data)
   }
+
   info(...data: unknown[]) {
     this._logger?.info(this.prefix(), ...data)
   }
+
   log(...data: unknown[]) {
     this._logger?.log(this.prefix(), ...data)
   }
+
   warn(...data: unknown[]) {
     this._logger?.warn(this.prefix(), ...data)
   }

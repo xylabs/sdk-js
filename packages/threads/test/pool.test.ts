@@ -1,5 +1,5 @@
 /* eslint-disable import/no-internal-modules */
-/* eslint-disable @typescript-eslint/no-floating-promises */
+
 /* eslint-disable require-await */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -22,14 +22,14 @@ test.serial('thread pool basics work and events are emitted', async (t) => {
     return spawn<() => string>(new Worker(workerPath))
   }
   const pool = Pool(spawnHelloWorld, 3)
-  pool.events().subscribe((event) => events.push(event))
+  pool.events().subscribe(event => events.push(event))
 
   // Just to make sure all worker threads are initialized before starting to queue
   // This is only necessary for testing to make sure that this is the first event recorded
   await new Promise((resolve, reject) => {
     pool
       .events()
-      .filter((event) => event.type === PoolEventType.initialized)
+      .filter(event => event.type === PoolEventType.initialized)
       .subscribe(resolve, reject)
   })
 
@@ -112,7 +112,6 @@ test.serial('pool.completed(true) works', async (t) => {
 })
 
 test.serial('pool.settled() does not reject on task failure', async (t) => {
-  // eslint-disable-next-line sonarjs/no-unused-collection
   const returned: any[] = []
 
   const spawnHelloWorld = () => spawn(new Worker(workerPath))
@@ -130,7 +129,7 @@ test.serial('pool.settled() does not reject on task failure', async (t) => {
 
   const errors = await pool.settled()
   t.is(errors.length, 2)
-  t.deepEqual(errors.map((error) => error.message).sort(), ['Test error one', 'Test error two'])
+  t.deepEqual(errors.map(error => error.message).sort(), ['Test error one', 'Test error two'])
 })
 
 test.serial('pool.settled(true) works', async (t) => {
@@ -146,7 +145,7 @@ test.serial('task.cancel() works', async (t) => {
   const spawnHelloWorld = () => spawn(new Worker(workerPath))
   const pool = Pool(spawnHelloWorld, 1)
 
-  pool.events().subscribe((event) => events.push(event))
+  pool.events().subscribe(event => events.push(event))
 
   let executionCount = 0
   const tasks: QueuedTask<any, any>[] = []
@@ -165,7 +164,7 @@ test.serial('task.cancel() works', async (t) => {
   await pool.completed()
   t.is(executionCount, 2)
 
-  const cancellationEvents = events.filter((event) => event.type === 'taskCanceled')
+  const cancellationEvents = events.filter(event => event.type === 'taskCanceled')
   t.deepEqual(cancellationEvents, [
     {
       taskID: 3,

@@ -14,10 +14,10 @@ export class AxiosJson extends Axios {
 
   static finalPath(response: AxiosResponse) {
     if (response.request.path) {
-      //nodejs
+      // nodejs
       return response.request.path.split('/').pop()
     } else if (response.request.responseURL) {
-      //browser
+      // browser
       return response.request.responseURL.split('/').pop()
     } else {
       this.defaultLogger?.warn('Failed to get final path from response')

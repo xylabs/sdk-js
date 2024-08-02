@@ -1,6 +1,6 @@
 import { AND_SYMBOL, NOT_SYMBOL, OR_SYMBOL } from './config.ts'
 
-export const escape = (str: string) => [...str].map((symbol) => `\\${symbol}`).join('')
+export const escape = (str: string) => [...str].map(symbol => `\\${symbol}`).join('')
 
 export const AND_REGX = new RegExp(`\\s*${escape(AND_SYMBOL)}\\s*`)
 

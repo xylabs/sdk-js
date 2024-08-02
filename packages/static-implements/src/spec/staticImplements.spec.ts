@@ -9,6 +9,7 @@ class Concrete {
   static foo() {
     return 'bar'
   }
+
   foo() {
     return 1
   }

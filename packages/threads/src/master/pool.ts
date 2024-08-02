@@ -31,7 +31,7 @@ function createArray(size: number): number[] {
 }
 
 function delay(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms))
+  return new Promise(resolve => setTimeout(resolve, ms))
 }
 
 function flatMap<In, Out>(array: In[], mapper: (element: In) => Out[]): Out[] {
@@ -133,7 +133,7 @@ class WorkerPool<ThreadType extends Thread> implements Pool<ThreadType> {
 
     this.eventObservable = multicast(Observable.from(this.eventSubject))
 
-    Promise.all(this.workers.map((worker) => worker.init)).then(
+    Promise.all(this.workers.map(worker => worker.init)).then(
       () =>
         this.eventSubject.next({
           size: this.workers.length,
@@ -149,7 +149,7 @@ class WorkerPool<ThreadType extends Thread> implements Pool<ThreadType> {
 
   private findIdlingWorker(): WorkerDescriptor<ThreadType> | undefined {
     const { concurrency = 1 } = this.options
-    return this.workers.find((worker) => worker.runningTasks.length < concurrency)
+    return this.workers.find(worker => worker.runningTasks.length < concurrency)
   }
 
   private async runPoolTask(worker: WorkerDescriptor<ThreadType>, task: QueuedTask<ThreadType, any>) {
@@ -186,7 +186,7 @@ class WorkerPool<ThreadType extends Thread> implements Pool<ThreadType> {
   private async run(worker: WorkerDescriptor<ThreadType>, task: QueuedTask<ThreadType, any>) {
     const runPromise = (async () => {
       const removeTaskFromWorkersRunningTasks = () => {
-        worker.runningTasks = worker.runningTasks.filter((someRunPromise) => someRunPromise !== runPromise)
+        worker.runningTasks = worker.runningTasks.filter(someRunPromise => someRunPromise !== runPromise)
       }
 
       // Defer task execution by one tick to give handlers time to subscribe
@@ -240,7 +240,7 @@ class WorkerPool<ThreadType extends Thread> implements Pool<ThreadType> {
   }
 
   async settled(allowResolvingImmediately: boolean = false): Promise<Error[]> {
-    const getCurrentlyRunningTasks = () => flatMap(this.workers, (worker) => worker.runningTasks)
+    const getCurrentlyRunningTasks = () => flatMap(this.workers, worker => worker.runningTasks)
 
     const taskFailures: Error[] = []
 
@@ -327,7 +327,7 @@ class WorkerPool<ThreadType extends Thread> implements Pool<ThreadType> {
     const task: QueuedTask<ThreadType, any> = {
       cancel: () => {
         if (!this.taskQueue.includes(task)) return
-        this.taskQueue = this.taskQueue.filter((someTask) => someTask !== task)
+        this.taskQueue = this.taskQueue.filter(someTask => someTask !== task)
         this.eventSubject.next({
           taskID: task.id,
           type: PoolEventType.taskCanceled,
@@ -340,9 +340,9 @@ class WorkerPool<ThreadType extends Thread> implements Pool<ThreadType> {
 
     if (this.taskQueue.length >= maxQueuedJobs) {
       throw new Error(
-        'Maximum number of pool tasks queued. Refusing to queue another one.\n' +
-          'This usually happens for one of two reasons: We are either at peak ' +
-          "workload right now or some tasks just won't finish, thus blocking the pool.",
+        'Maximum number of pool tasks queued. Refusing to queue another one.\n'
+        + 'This usually happens for one of two reasons: We are either at peak '
+        + "workload right now or some tasks just won't finish, thus blocking the pool.",
       )
     }
 
@@ -368,7 +368,7 @@ class WorkerPool<ThreadType extends Thread> implements Pool<ThreadType> {
       type: PoolEventType.terminated,
     })
     this.eventSubject.complete()
-    await Promise.all(this.workers.map(async (worker) => Thread.terminate(await worker.init)))
+    await Promise.all(this.workers.map(async worker => Thread.terminate(await worker.init)))
   }
 }
 

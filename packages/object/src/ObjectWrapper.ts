@@ -6,6 +6,7 @@ export abstract class ObjectWrapper<T extends EmptyObject = EmptyObject> {
   constructor(obj: T) {
     this.obj = obj
   }
+
   protected get stringKeyObj() {
     return this.obj as StringKeyObject
   }

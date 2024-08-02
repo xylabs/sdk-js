@@ -20,8 +20,8 @@ interface ObservableLike<T> {
 
 export type StripAsync<Type> =
   Type extends Promise<infer PromiseBaseType> ? PromiseBaseType
-  : Type extends ObservableLike<infer ObservableBaseType> ? ObservableBaseType
-  : Type
+    : Type extends ObservableLike<infer ObservableBaseType> ? ObservableBaseType
+      : Type
 
 export type StripTransfer<Type> = Type extends TransferDescriptor<infer BaseType> ? BaseType : Type
 
@@ -32,7 +32,7 @@ export type ProxyableArgs<Args extends any[]> =
 
 export type ProxyableFunction<Args extends any[], ReturnType> =
   Args extends [] ? () => ObservablePromise<StripTransfer<StripAsync<ReturnType>>>
-  : (...args: ProxyableArgs<Args>) => ObservablePromise<StripTransfer<StripAsync<ReturnType>>>
+    : (...args: ProxyableArgs<Args>) => ObservablePromise<StripTransfer<StripAsync<ReturnType>>>
 
 export type ModuleProxy<Methods extends ModuleMethods> = {
   [method in keyof Methods]: ProxyableFunction<Parameters<Methods[method]>, ReturnType<Methods[method]>>
@@ -55,6 +55,7 @@ interface AnyFunctionThread extends PrivateThreadProps {
 }
 
 // tslint:disable-next-line no-empty-interface
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface AnyModuleThread extends PrivateThreadProps {
   // Not specifying an index signature here as that would make `ModuleThread` incompatible
 }

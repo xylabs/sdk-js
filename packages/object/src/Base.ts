@@ -135,8 +135,8 @@ export abstract class Base<TParams extends BaseParams | undefined = BaseParams> 
   }
 
   private static gcClass(className: BaseClassName) {
-    //remove all the weak refs that are now empty
-    this.globalInstances[className] = this.globalInstances[className]?.filter((ref) => ref.deref() !== null) ?? []
+    // remove all the weak refs that are now empty
+    this.globalInstances[className] = this.globalInstances[className]?.filter(ref => ref.deref() !== null) ?? []
   }
 
   private recordInstance() {

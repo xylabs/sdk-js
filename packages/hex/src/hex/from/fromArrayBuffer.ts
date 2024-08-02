@@ -8,6 +8,6 @@ export const hexFromArrayBuffer = (
   /** Configuration of output format and validation */
   config?: HexConfig,
 ): Hex => {
-  const unPadded = [...new Uint8Array(buffer)].map((x) => x.toString(16).padStart(2, '0')).join('')
+  const unPadded = [...new Uint8Array(buffer)].map(x => x.toString(16).padStart(2, '0')).join('')
   return hexFromHexString(unPadded, config)
 }

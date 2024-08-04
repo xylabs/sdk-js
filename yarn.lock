@@ -2273,114 +2273,114 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/rollup-android-arm-eabi@npm:4.19.2":
-  version: 4.19.2
-  resolution: "@rollup/rollup-android-arm-eabi@npm:4.19.2"
+"@rollup/rollup-android-arm-eabi@npm:4.20.0":
+  version: 4.20.0
+  resolution: "@rollup/rollup-android-arm-eabi@npm:4.20.0"
   conditions: os=android & cpu=arm
   languageName: node
   linkType: hard
 
-"@rollup/rollup-android-arm64@npm:4.19.2":
-  version: 4.19.2
-  resolution: "@rollup/rollup-android-arm64@npm:4.19.2"
+"@rollup/rollup-android-arm64@npm:4.20.0":
+  version: 4.20.0
+  resolution: "@rollup/rollup-android-arm64@npm:4.20.0"
   conditions: os=android & cpu=arm64
   languageName: node
   linkType: hard
 
-"@rollup/rollup-darwin-arm64@npm:4.19.2":
-  version: 4.19.2
-  resolution: "@rollup/rollup-darwin-arm64@npm:4.19.2"
+"@rollup/rollup-darwin-arm64@npm:4.20.0":
+  version: 4.20.0
+  resolution: "@rollup/rollup-darwin-arm64@npm:4.20.0"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@rollup/rollup-darwin-x64@npm:4.19.2":
-  version: 4.19.2
-  resolution: "@rollup/rollup-darwin-x64@npm:4.19.2"
+"@rollup/rollup-darwin-x64@npm:4.20.0":
+  version: 4.20.0
+  resolution: "@rollup/rollup-darwin-x64@npm:4.20.0"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@rollup/rollup-linux-arm-gnueabihf@npm:4.19.2":
-  version: 4.19.2
-  resolution: "@rollup/rollup-linux-arm-gnueabihf@npm:4.19.2"
+"@rollup/rollup-linux-arm-gnueabihf@npm:4.20.0":
+  version: 4.20.0
+  resolution: "@rollup/rollup-linux-arm-gnueabihf@npm:4.20.0"
   conditions: os=linux & cpu=arm & libc=glibc
   languageName: node
   linkType: hard
 
-"@rollup/rollup-linux-arm-musleabihf@npm:4.19.2":
-  version: 4.19.2
-  resolution: "@rollup/rollup-linux-arm-musleabihf@npm:4.19.2"
+"@rollup/rollup-linux-arm-musleabihf@npm:4.20.0":
+  version: 4.20.0
+  resolution: "@rollup/rollup-linux-arm-musleabihf@npm:4.20.0"
   conditions: os=linux & cpu=arm & libc=musl
   languageName: node
   linkType: hard
 
-"@rollup/rollup-linux-arm64-gnu@npm:4.19.2":
-  version: 4.19.2
-  resolution: "@rollup/rollup-linux-arm64-gnu@npm:4.19.2"
+"@rollup/rollup-linux-arm64-gnu@npm:4.20.0":
+  version: 4.20.0
+  resolution: "@rollup/rollup-linux-arm64-gnu@npm:4.20.0"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@rollup/rollup-linux-arm64-musl@npm:4.19.2":
-  version: 4.19.2
-  resolution: "@rollup/rollup-linux-arm64-musl@npm:4.19.2"
+"@rollup/rollup-linux-arm64-musl@npm:4.20.0":
+  version: 4.20.0
+  resolution: "@rollup/rollup-linux-arm64-musl@npm:4.20.0"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@rollup/rollup-linux-powerpc64le-gnu@npm:4.19.2":
-  version: 4.19.2
-  resolution: "@rollup/rollup-linux-powerpc64le-gnu@npm:4.19.2"
+"@rollup/rollup-linux-powerpc64le-gnu@npm:4.20.0":
+  version: 4.20.0
+  resolution: "@rollup/rollup-linux-powerpc64le-gnu@npm:4.20.0"
   conditions: os=linux & cpu=ppc64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@rollup/rollup-linux-riscv64-gnu@npm:4.19.2":
-  version: 4.19.2
-  resolution: "@rollup/rollup-linux-riscv64-gnu@npm:4.19.2"
+"@rollup/rollup-linux-riscv64-gnu@npm:4.20.0":
+  version: 4.20.0
+  resolution: "@rollup/rollup-linux-riscv64-gnu@npm:4.20.0"
   conditions: os=linux & cpu=riscv64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@rollup/rollup-linux-s390x-gnu@npm:4.19.2":
-  version: 4.19.2
-  resolution: "@rollup/rollup-linux-s390x-gnu@npm:4.19.2"
+"@rollup/rollup-linux-s390x-gnu@npm:4.20.0":
+  version: 4.20.0
+  resolution: "@rollup/rollup-linux-s390x-gnu@npm:4.20.0"
   conditions: os=linux & cpu=s390x & libc=glibc
   languageName: node
   linkType: hard
 
-"@rollup/rollup-linux-x64-gnu@npm:4.19.2":
-  version: 4.19.2
-  resolution: "@rollup/rollup-linux-x64-gnu@npm:4.19.2"
+"@rollup/rollup-linux-x64-gnu@npm:4.20.0":
+  version: 4.20.0
+  resolution: "@rollup/rollup-linux-x64-gnu@npm:4.20.0"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@rollup/rollup-linux-x64-musl@npm:4.19.2":
-  version: 4.19.2
-  resolution: "@rollup/rollup-linux-x64-musl@npm:4.19.2"
+"@rollup/rollup-linux-x64-musl@npm:4.20.0":
+  version: 4.20.0
+  resolution: "@rollup/rollup-linux-x64-musl@npm:4.20.0"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@rollup/rollup-win32-arm64-msvc@npm:4.19.2":
-  version: 4.19.2
-  resolution: "@rollup/rollup-win32-arm64-msvc@npm:4.19.2"
+"@rollup/rollup-win32-arm64-msvc@npm:4.20.0":
+  version: 4.20.0
+  resolution: "@rollup/rollup-win32-arm64-msvc@npm:4.20.0"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@rollup/rollup-win32-ia32-msvc@npm:4.19.2":
-  version: 4.19.2
-  resolution: "@rollup/rollup-win32-ia32-msvc@npm:4.19.2"
+"@rollup/rollup-win32-ia32-msvc@npm:4.20.0":
+  version: 4.20.0
+  resolution: "@rollup/rollup-win32-ia32-msvc@npm:4.20.0"
   conditions: os=win32 & cpu=ia32
   languageName: node
   linkType: hard
 
-"@rollup/rollup-win32-x64-msvc@npm:4.19.2":
-  version: 4.19.2
-  resolution: "@rollup/rollup-win32-x64-msvc@npm:4.19.2"
+"@rollup/rollup-win32-x64-msvc@npm:4.20.0":
+  version: 4.20.0
+  resolution: "@rollup/rollup-win32-x64-msvc@npm:4.20.0"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -2784,17 +2784,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/eslint@npm:*":
-  version: 8.56.10
-  resolution: "@types/eslint@npm:8.56.10"
-  dependencies:
-    "@types/estree": "npm:*"
-    "@types/json-schema": "npm:*"
-  checksum: 10/0cdd914b944ebba51c35827d3ef95bc3e16eb82b4c2741f6437fa57cdb00a4407c77f89c220afe9e4c9566982ec8a0fb9b97c956ac3bd4623a3b6af32eed8424
-  languageName: node
-  linkType: hard
-
-"@types/eslint@npm:^9.6.0":
+"@types/eslint@npm:*, @types/eslint@npm:^9.6.0":
   version: 9.6.0
   resolution: "@types/eslint@npm:9.6.0"
   dependencies:
@@ -3426,8 +3416,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/api@workspace:packages/api"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
     axios: "npm:^1.7.3"
     tslib: "npm:^2.6.3"
     typescript: "npm:^5.5.4"
@@ -3439,8 +3429,8 @@ __metadata:
   resolution: "@xylabs/array@workspace:packages/array"
   dependencies:
     "@xylabs/exists": "workspace:^"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
     typescript: "npm:^5.5.4"
   languageName: unknown
   linkType: soft
@@ -3452,8 +3442,8 @@ __metadata:
     "@scure/base": "npm:^1.1.7"
     "@xylabs/assert": "workspace:^"
     "@xylabs/lodash": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
     "@xylabs/typeof": "workspace:^"
     typescript: "npm:^5.5.4"
   languageName: unknown
@@ -3463,8 +3453,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/assert@workspace:packages/assert"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
     typescript: "npm:^5.5.4"
   languageName: unknown
   linkType: soft
@@ -3475,8 +3465,8 @@ __metadata:
   dependencies:
     "@types/pako": "npm:^2.0.3"
     "@xylabs/logger": "workspace:^"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
     axios: "npm:^1.7.3"
     pako: "npm:^2.1.0"
     typescript: "npm:^5.5.4"
@@ -3488,8 +3478,8 @@ __metadata:
   resolution: "@xylabs/bignumber@workspace:packages/bignumber"
   dependencies:
     "@types/bn.js": "npm:^5.1.5"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
     bn.js: "npm:^5.2.1"
     typescript: "npm:^5.5.4"
   languageName: unknown
@@ -3501,22 +3491,22 @@ __metadata:
   dependencies:
     "@types/node": "npm:^22.1.0"
     "@xylabs/platform": "workspace:^"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
-    "@xylabs/tsconfig-dom": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/tsconfig-dom": "npm:^3.15.13"
     buffer: "npm:^6.0.3"
     typescript: "npm:^5.5.4"
   languageName: unknown
   linkType: soft
 
-"@xylabs/config@npm:^3.15.5":
-  version: 3.15.5
-  resolution: "@xylabs/config@npm:3.15.5"
+"@xylabs/config@npm:^3.15.13":
+  version: 3.15.13
+  resolution: "@xylabs/config@npm:3.15.13"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
   peerDependencies:
     typescript: ^5
-  checksum: 10/779f251e457cc5dfa1c87efb6722972b702c7edc7b41d12d63146d60e65d08f36500ee8f2f915f69b5bd4b6e3a326833cbb4fe4a4f34ffe8b2f49d4760cc93c9
+  checksum: 10/f9a0356c77bf5c28396045a52698445fe4ab461ba78bf973cc637014c68fb66e4ee161e9b5a96ca09d34a56c1424d5079c331ef49978331b504ee3639a8456ed
   languageName: node
   linkType: hard
 
@@ -3527,9 +3517,9 @@ __metadata:
     "@types/crypto-js": "npm:^4.2.2"
     "@types/node": "npm:^22.1.0"
     "@xylabs/platform": "workspace:^"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
-    "@xylabs/tsconfig-dom": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/tsconfig-dom": "npm:^3.15.13"
     crypto-js: "npm:^4.2.0"
     typescript: "npm:^5.5.4"
   languageName: unknown
@@ -3539,8 +3529,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/decimal-precision@workspace:packages/decimal-precision"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
     typescript: "npm:^5.5.4"
   languageName: unknown
   linkType: soft
@@ -3550,9 +3540,9 @@ __metadata:
   resolution: "@xylabs/delay@workspace:packages/delay"
   dependencies:
     "@xylabs/timer": "workspace:^"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
-    "@xylabs/tsconfig-dom": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/tsconfig-dom": "npm:^3.15.13"
     typescript: "npm:^5.5.4"
   languageName: unknown
   linkType: soft
@@ -3561,16 +3551,16 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/error@workspace:packages/error"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
-    "@xylabs/tsconfig-jest": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/tsconfig-jest": "npm:^3.15.13"
     typescript: "npm:^5.5.4"
   languageName: unknown
   linkType: soft
 
-"@xylabs/eslint-config-flat@npm:^3.15.5":
-  version: 3.15.5
-  resolution: "@xylabs/eslint-config-flat@npm:3.15.5"
+"@xylabs/eslint-config-flat@npm:^3.15.13":
+  version: 3.15.13
+  resolution: "@xylabs/eslint-config-flat@npm:3.15.13"
   dependencies:
     "@typescript-eslint/eslint-plugin": "npm:^8.0.0"
     "@typescript-eslint/parser": "npm:^8.0.0"
@@ -3587,7 +3577,7 @@ __metadata:
     prettier: "npm:^3.3.3"
   peerDependencies:
     eslint: ^9
-  checksum: 10/78073a80eed1fcc773cedc769ef720e8ec3919c8810a380909710b690aa0371a3287c4aa7d88dd31e751f1e0a47cd32b5f6d2d96ed9e4f2af6497b92b5efcf44
+  checksum: 10/932e9a8281fe6607ed7be7907b55c15de8a139c005f06cccd3986d9d0b0c10d7402891660bd07897fb15a534b68d646848280441888cf34b52ad02f54aa11a70
   languageName: node
   linkType: hard
 
@@ -3596,9 +3586,9 @@ __metadata:
   resolution: "@xylabs/eth-address@workspace:packages/eth-address"
   dependencies:
     "@xylabs/assert": "workspace:^"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
-    "@xylabs/tsconfig-jest": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/tsconfig-jest": "npm:^3.15.13"
     ethers: "npm:^6.13.2"
     typescript: "npm:^5.5.4"
   languageName: unknown
@@ -3608,8 +3598,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/exists@workspace:packages/exists"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
     typescript: "npm:^5.5.4"
   languageName: unknown
   linkType: soft
@@ -3619,8 +3609,8 @@ __metadata:
   resolution: "@xylabs/forget@workspace:packages/forget"
   dependencies:
     "@xylabs/delay": "workspace:^"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
     typescript: "npm:^5.5.4"
   languageName: unknown
   linkType: soft
@@ -3630,8 +3620,8 @@ __metadata:
   resolution: "@xylabs/function-name@workspace:packages/function-name"
   dependencies:
     "@xylabs/error": "workspace:^"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
     typescript: "npm:^5.5.4"
   languageName: unknown
   linkType: soft
@@ -3640,8 +3630,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/hex@workspace:packages/hex"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
     tslib: "npm:^2.6.3"
     typescript: "npm:^5.5.4"
   languageName: unknown
@@ -3651,8 +3641,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/jest-helpers@workspace:packages/jest-helpers"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
     jest: "npm:^29.7.0"
     typescript: "npm:^5.5.4"
   peerDependencies:
@@ -3665,8 +3655,8 @@ __metadata:
   resolution: "@xylabs/libauth@workspace:packages/libauth"
   dependencies:
     "@bitauth/libauth-1-19-1": "npm:@bitauth/libauth@1.19.1"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
     typescript: "npm:^5.5.4"
   languageName: unknown
   linkType: soft
@@ -3677,8 +3667,8 @@ __metadata:
   dependencies:
     "@types/lodash": "npm:^4.17.7"
     "@types/lodash-es": "npm:^4.17.12"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
     lodash: "npm:^4.17.21"
     lodash-es: "npm:^4.17.21"
     typescript: "npm:^5.5.4"
@@ -3694,8 +3684,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/log@workspace:packages/log"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
     rollbar: "npm:^2.26.4"
     tslib: "npm:^2.6.3"
     typescript: "npm:^5.5.4"
@@ -3710,8 +3700,8 @@ __metadata:
   resolution: "@xylabs/logger@workspace:packages/logger"
   dependencies:
     "@xylabs/error": "workspace:^"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
     typescript: "npm:^5.5.4"
   languageName: unknown
   linkType: soft
@@ -3723,8 +3713,8 @@ __metadata:
     "@xylabs/assert": "npm:^3.6.8"
     "@xylabs/logger": "npm:^3.6.8"
     "@xylabs/promise": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
     typescript: "npm:^5.5.4"
   languageName: unknown
   linkType: soft
@@ -3733,9 +3723,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/platform@workspace:packages/platform"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
-    "@xylabs/tsconfig-dom": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/tsconfig-dom": "npm:^3.15.13"
     typescript: "npm:^5.5.4"
   languageName: unknown
   linkType: soft
@@ -3744,8 +3734,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/profile@workspace:packages/profile"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
     typescript: "npm:^5.5.4"
   languageName: unknown
   linkType: soft
@@ -3754,9 +3744,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/promise@workspace:packages/promise"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
-    "@xylabs/tsconfig-jest": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/tsconfig-jest": "npm:^3.15.13"
     typescript: "npm:^5.5.4"
   languageName: unknown
   linkType: soft
@@ -3767,9 +3757,9 @@ __metadata:
   dependencies:
     "@xylabs/delay": "workspace:^"
     "@xylabs/promise": "workspace:^"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
-    "@xylabs/tsconfig-dom": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/tsconfig-dom": "npm:^3.15.13"
     typescript: "npm:^5.5.4"
   languageName: unknown
   linkType: soft
@@ -3787,12 +3777,12 @@ __metadata:
     "@xylabs/array": "workspace:^"
     "@xylabs/assert": "workspace:^"
     "@xylabs/axios": "workspace:^"
-    "@xylabs/config": "npm:^3.15.5"
+    "@xylabs/config": "npm:^3.15.13"
     "@xylabs/crypto": "workspace:^"
     "@xylabs/decimal-precision": "workspace:^"
     "@xylabs/delay": "workspace:^"
     "@xylabs/error": "workspace:^"
-    "@xylabs/eslint-config-flat": "npm:^3.15.5"
+    "@xylabs/eslint-config-flat": "npm:^3.15.13"
     "@xylabs/eth-address": "workspace:^"
     "@xylabs/exists": "workspace:^"
     "@xylabs/forget": "workspace:^"
@@ -3808,9 +3798,9 @@ __metadata:
     "@xylabs/set": "workspace:^"
     "@xylabs/static-implements": "workspace:^"
     "@xylabs/timer": "workspace:^"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
-    "@xylabs/tsconfig-jest": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/tsconfig-jest": "npm:^3.15.13"
     "@xylabs/url": "workspace:^"
     babel-jest: "npm:^29.7.0"
     dotenv: "npm:^16.4.5"
@@ -3839,8 +3829,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/set@workspace:packages/set"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
     typescript: "npm:^5.5.4"
   languageName: unknown
   linkType: soft
@@ -3849,9 +3839,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/static-implements@workspace:packages/static-implements"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
-    "@xylabs/tsconfig-jest": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/tsconfig-jest": "npm:^3.15.13"
     tslib: "npm:^2.6.3"
     typescript: "npm:^5.5.4"
   languageName: unknown
@@ -3882,7 +3872,7 @@ __metadata:
     puppet-run-plugin-mocha: "npm:^0.1.1"
     raw-loader: "npm:^4.0.2"
     rimraf: "npm:^5.0.10"
-    rollup: "npm:^4.19.2"
+    rollup: "npm:^4.20.0"
     threads-plugin: "npm:^1.4.0"
     tiny-worker: "npm:^2.3.0"
     ts-loader: "npm:^9.5.1"
@@ -3904,15 +3894,15 @@ __metadata:
   dependencies:
     "@types/node": "npm:^22.1.0"
     "@xylabs/assert": "workspace:^"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
     typescript: "npm:^5.5.4"
   languageName: unknown
   linkType: soft
 
-"@xylabs/ts-scripts-yarn3@npm:^3.15.5":
-  version: 3.15.5
-  resolution: "@xylabs/ts-scripts-yarn3@npm:3.15.5"
+"@xylabs/ts-scripts-yarn3@npm:^3.15.13":
+  version: 3.15.13
+  resolution: "@xylabs/ts-scripts-yarn3@npm:3.15.13"
   dependencies:
     "@rollup/plugin-commonjs": "npm:^26.0.1"
     "@rollup/plugin-json": "npm:^6.1.0"
@@ -3922,8 +3912,8 @@ __metadata:
     "@types/yargs": "npm:^17.0.32"
     "@typescript-eslint/eslint-plugin": "npm:^8.0.0"
     "@typescript-eslint/parser": "npm:^8.0.0"
-    "@xylabs/tsconfig": "npm:^3.15.5"
-    "@xylabs/tsconfig-dom": "npm:^3.15.5"
+    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/tsconfig-dom": "npm:^3.15.13"
     async-mutex: "npm:^0.5.0"
     chalk: "npm:^5.3.0"
     cosmiconfig: "npm:^9.0.0"
@@ -3941,7 +3931,7 @@ __metadata:
     jest-sorted: "npm:^1.0.15"
     jsonc-eslint-parser: "npm:^2.4.0"
     license-checker: "npm:^25.0.1"
-    lodash-es: "npm:^4.17.21"
+    lodash: "npm:^4.17.21"
     node-cmd: "npm:^5.0.0"
     npm-check-updates: "npm:^17.0.1"
     npm-package-json-lint: "npm:^8.0.0"
@@ -4012,36 +4002,36 @@ __metadata:
     xy: dist/bin/xy.mjs
     xy-ts: src/bin/xy-ts.ts
     yarn3only: dist/bin/yarn3only.mjs
-  checksum: 10/4f77f7d861aa6e0f567b8cf2a9322b90d568ff573a349e511cfe000b71d504fff344a7a96e563fe4009d5aec22a8a5bd298b801580edf2dc11f6912ed459bfc6
+  checksum: 10/817f1d0e7bdfed4fa6a6a16b6073afd594d312cefe951297a284211a0b0edfbd987fc7779f91dc649e7c3637fa97f2d3cae246679481418e514eb854254ce840
   languageName: node
   linkType: hard
 
-"@xylabs/tsconfig-dom@npm:^3.15.5":
-  version: 3.15.5
-  resolution: "@xylabs/tsconfig-dom@npm:3.15.5"
+"@xylabs/tsconfig-dom@npm:^3.15.13":
+  version: 3.15.13
+  resolution: "@xylabs/tsconfig-dom@npm:3.15.13"
   dependencies:
-    "@xylabs/tsconfig": "npm:^3.15.5"
-  checksum: 10/f894649e1103cfd1547c2cf0051451bd95f7a9f4cffe10c62013aafcf6bceb01a50ccb5c70947fa6c1468b4de245bd4a7abec1d322e8c7be3300dd52070fc00a
+    "@xylabs/tsconfig": "npm:^3.15.13"
+  checksum: 10/6349332c2983de8919b3d0f42f9599377b05bd5d3c6df93be2cb3ccd24c87867bdaa4a902f5672255c94b53e8baf236dc9e9912914d3c9e5860cc63888e47ff0
   languageName: node
   linkType: hard
 
-"@xylabs/tsconfig-jest@npm:^3.15.5":
-  version: 3.15.5
-  resolution: "@xylabs/tsconfig-jest@npm:3.15.5"
+"@xylabs/tsconfig-jest@npm:^3.15.13":
+  version: 3.15.13
+  resolution: "@xylabs/tsconfig-jest@npm:3.15.13"
   dependencies:
-    "@xylabs/tsconfig": "npm:^3.15.5"
+    "@xylabs/tsconfig": "npm:^3.15.13"
     jest-extended: "npm:^4.0.2"
     jest-sorted: "npm:^1.0.15"
   peerDependencies:
     typescript: ^5
-  checksum: 10/c6aed9f8b596dd49f8e7f7f3907f660a55a03f21fe27dd2b3af5eb4dfc70917638cca9e7eb151d8df1c96cf3fd710d337004ca5c67fd5cdcefa9a092c60be68c
+  checksum: 10/577a8f7f07392299adb84057e3eb8571d57eb2931fff5703d21ddb54deaa4f41b254842e3f37d441994a53fecacfd29bd8d8edddda17e454007d591818cf7de4
   languageName: node
   linkType: hard
 
-"@xylabs/tsconfig@npm:^3.15.5":
-  version: 3.15.5
-  resolution: "@xylabs/tsconfig@npm:3.15.5"
-  checksum: 10/c093bddf548a1dc18965cc727a13c68d48352ff4552af5e19b3f1ada6555d71c26ba6e44910e2e6f93bcb193da469238c37247b4aead9e23cde9c8ab8970e2b2
+"@xylabs/tsconfig@npm:^3.15.13":
+  version: 3.15.13
+  resolution: "@xylabs/tsconfig@npm:3.15.13"
+  checksum: 10/85fbbac7eec71be279041f64b4911d32068bedd2c9deabc9476f3e449233dbdc74c5ce9b8e43ba24638d5f731deb6d6f1455de1759e0ee991debb83583bc54ff
   languageName: node
   linkType: hard
 
@@ -4049,8 +4039,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/typeof@workspace:packages/typeof"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
     typescript: "npm:^5.5.4"
   languageName: unknown
   linkType: soft
@@ -4060,9 +4050,9 @@ __metadata:
   resolution: "@xylabs/url@workspace:packages/url"
   dependencies:
     "@types/node": "npm:^22.1.0"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.5"
-    "@xylabs/tsconfig": "npm:^3.15.5"
-    "@xylabs/tsconfig-dom": "npm:^3.15.5"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/tsconfig-dom": "npm:^3.15.13"
     typescript: "npm:^5.5.4"
   languageName: unknown
   linkType: soft
@@ -13660,26 +13650,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup@npm:^4.19.0, rollup@npm:^4.19.2":
-  version: 4.19.2
-  resolution: "rollup@npm:4.19.2"
+"rollup@npm:^4.19.0, rollup@npm:^4.19.2, rollup@npm:^4.20.0":
+  version: 4.20.0
+  resolution: "rollup@npm:4.20.0"
   dependencies:
-    "@rollup/rollup-android-arm-eabi": "npm:4.19.2"
-    "@rollup/rollup-android-arm64": "npm:4.19.2"
-    "@rollup/rollup-darwin-arm64": "npm:4.19.2"
-    "@rollup/rollup-darwin-x64": "npm:4.19.2"
-    "@rollup/rollup-linux-arm-gnueabihf": "npm:4.19.2"
-    "@rollup/rollup-linux-arm-musleabihf": "npm:4.19.2"
-    "@rollup/rollup-linux-arm64-gnu": "npm:4.19.2"
-    "@rollup/rollup-linux-arm64-musl": "npm:4.19.2"
-    "@rollup/rollup-linux-powerpc64le-gnu": "npm:4.19.2"
-    "@rollup/rollup-linux-riscv64-gnu": "npm:4.19.2"
-    "@rollup/rollup-linux-s390x-gnu": "npm:4.19.2"
-    "@rollup/rollup-linux-x64-gnu": "npm:4.19.2"
-    "@rollup/rollup-linux-x64-musl": "npm:4.19.2"
-    "@rollup/rollup-win32-arm64-msvc": "npm:4.19.2"
-    "@rollup/rollup-win32-ia32-msvc": "npm:4.19.2"
-    "@rollup/rollup-win32-x64-msvc": "npm:4.19.2"
+    "@rollup/rollup-android-arm-eabi": "npm:4.20.0"
+    "@rollup/rollup-android-arm64": "npm:4.20.0"
+    "@rollup/rollup-darwin-arm64": "npm:4.20.0"
+    "@rollup/rollup-darwin-x64": "npm:4.20.0"
+    "@rollup/rollup-linux-arm-gnueabihf": "npm:4.20.0"
+    "@rollup/rollup-linux-arm-musleabihf": "npm:4.20.0"
+    "@rollup/rollup-linux-arm64-gnu": "npm:4.20.0"
+    "@rollup/rollup-linux-arm64-musl": "npm:4.20.0"
+    "@rollup/rollup-linux-powerpc64le-gnu": "npm:4.20.0"
+    "@rollup/rollup-linux-riscv64-gnu": "npm:4.20.0"
+    "@rollup/rollup-linux-s390x-gnu": "npm:4.20.0"
+    "@rollup/rollup-linux-x64-gnu": "npm:4.20.0"
+    "@rollup/rollup-linux-x64-musl": "npm:4.20.0"
+    "@rollup/rollup-win32-arm64-msvc": "npm:4.20.0"
+    "@rollup/rollup-win32-ia32-msvc": "npm:4.20.0"
+    "@rollup/rollup-win32-x64-msvc": "npm:4.20.0"
     "@types/estree": "npm:1.0.5"
     fsevents: "npm:~2.3.2"
   dependenciesMeta:
@@ -13719,7 +13709,7 @@ __metadata:
       optional: true
   bin:
     rollup: dist/bin/rollup
-  checksum: 10/b843f145753de58948010692b23e80edc3f25a967b5f58914b20a440dd55c5251005a7161216aa2e74bae9bcd00ce6d268eed865edc44e0ef9991a52bbb70cc2
+  checksum: 10/448bd835715aa0f78c6888314e31fb92f1b83325ef0ff861a5a322c2bc87d200b2b6c4acb9223fb669c27ae0c4b071003b6877eec1d3411174615a4057db8946
   languageName: node
   linkType: hard
 

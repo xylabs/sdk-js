@@ -55,7 +55,6 @@ interface AnyFunctionThread extends PrivateThreadProps {
 }
 
 // tslint:disable-next-line no-empty-interface
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface AnyModuleThread extends PrivateThreadProps {
   // Not specifying an index signature here as that would make `ModuleThread` incompatible
 }

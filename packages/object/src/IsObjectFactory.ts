@@ -3,7 +3,6 @@ import { TypedObject } from '@xylabs/promise'
 import { TypeCheck, TypeCheckConfig } from './AsTypeFactory.ts'
 import { isType, ObjectTypeShape } from './isType.ts'
 
-// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export interface ObjectTypeConfig extends TypeCheckConfig {}
 
 export class IsObjectFactory<T extends TypedObject> {

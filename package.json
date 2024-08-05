@@ -69,11 +69,11 @@
     "@types/supertest": "^6.0.2",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
-    "@xylabs/config": "^3.15.13",
-    "@xylabs/eslint-config-flat": "^3.15.13",
-    "@xylabs/ts-scripts-yarn3": "^3.15.13",
-    "@xylabs/tsconfig": "^3.15.13",
-    "@xylabs/tsconfig-jest": "^3.15.13",
+    "@xylabs/config": "^3.15.14",
+    "@xylabs/eslint-config-flat": "^3.15.14",
+    "@xylabs/ts-scripts-yarn3": "^3.15.14",
+    "@xylabs/tsconfig": "^3.15.14",
+    "@xylabs/tsconfig-jest": "^3.15.14",
     "babel-jest": "^29.7.0",
     "dotenv": "^16.4.5",
     "eslint": "^9.8.0",
@@ -115,6 +115,6 @@
     "node": "22.3.0",
     "yarn": "1.22.19"
   },
-  "version": "3.6.8",
+  "version": "3.6.9",
   "type": "module"
 }

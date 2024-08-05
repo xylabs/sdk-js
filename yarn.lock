@@ -3500,7 +3500,7 @@ __metadata:
   dependencies:
     "@scure/base": "npm:^1.1.7"
     "@xylabs/assert": "workspace:^"
-    "@xylabs/lodash": "npm:^3.6.11"
+    "@xylabs/lodash": "npm:^3.6.12"
     "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
     "@xylabs/tsconfig": "npm:^3.15.14"
     "@xylabs/typeof": "workspace:^"
@@ -3508,7 +3508,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/assert@npm:^3.6.11, @xylabs/assert@workspace:^, @xylabs/assert@workspace:packages/assert":
+"@xylabs/assert@npm:^3.6.12, @xylabs/assert@workspace:^, @xylabs/assert@workspace:packages/assert":
   version: 0.0.0-use.local
   resolution: "@xylabs/assert@workspace:packages/assert"
   dependencies:
@@ -3719,7 +3719,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/lodash@npm:^3.6.11, @xylabs/lodash@workspace:packages/lodash":
+"@xylabs/lodash@npm:^3.6.12, @xylabs/lodash@workspace:packages/lodash":
   version: 0.0.0-use.local
   resolution: "@xylabs/lodash@workspace:packages/lodash"
   dependencies:
@@ -3757,7 +3757,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/logger@npm:^3.6.11, @xylabs/logger@workspace:^, @xylabs/logger@workspace:packages/logger":
+"@xylabs/logger@npm:^3.6.12, @xylabs/logger@workspace:^, @xylabs/logger@workspace:packages/logger":
   version: 0.0.0-use.local
   resolution: "@xylabs/logger@workspace:packages/logger"
   dependencies:
@@ -3772,9 +3772,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/object@workspace:packages/object"
   dependencies:
-    "@xylabs/assert": "npm:^3.6.11"
-    "@xylabs/logger": "npm:^3.6.11"
-    "@xylabs/promise": "npm:^3.6.11"
+    "@xylabs/assert": "npm:^3.6.12"
+    "@xylabs/logger": "npm:^3.6.12"
+    "@xylabs/promise": "npm:^3.6.12"
     "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
     "@xylabs/tsconfig": "npm:^3.15.14"
     typescript: "npm:^5.5.4"
@@ -3802,7 +3802,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/promise@npm:^3.6.11, @xylabs/promise@workspace:^, @xylabs/promise@workspace:packages/promise":
+"@xylabs/promise@npm:^3.6.12, @xylabs/promise@workspace:^, @xylabs/promise@workspace:packages/promise":
   version: 0.0.0-use.local
   resolution: "@xylabs/promise@workspace:packages/promise"
   dependencies:

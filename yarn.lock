@@ -3881,6 +3881,7 @@ __metadata:
     supertest: "npm:^7.0.0"
     ts-jest: "npm:^29.2.4"
     ts-node: "npm:^10.9.2"
+    tslib: "npm:^2.6.3"
     typedoc: "npm:^0.26.5"
     typescript: "npm:^5.5.4"
   languageName: unknown

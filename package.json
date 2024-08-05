@@ -87,7 +87,6 @@
     "jest-environment-jsdom": "^29.7.0",
     "jest-extended": "^4.0.2",
     "jest-sorted": "^1.0.15",
-    "prettier": "^3.3.3",
     "reflect-metadata": "^0.2.2",
     "supertest": "^7.0.0",
     "ts-jest": "^29.2.4",

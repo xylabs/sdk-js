@@ -16,18 +16,11 @@
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "exports": {
     ".": {
-      "require": {
-        "types": "./dist/neutral/index.d.cts",
-        "default": "./dist/neutral/index.cjs"
-      },
-      "import": {
-        "types": "./dist/neutral/index.d.ts",
-        "default": "./dist/neutral/index.mjs"
-      }
+      "types": "./dist/neutral/index.d.ts",
+      "default": "./dist/neutral/index.mjs"
     },
     "./package.json": "./package.json"
   },
-  "main": "./dist/neutral/index.cjs",
   "types": "./dist/neutral/index.d.ts",
   "module": "./dist/neutral/index.mjs",
   "homepage": "https://xylabs.com",
@@ -64,19 +57,19 @@
     "@xylabs/url": "workspace:^"
   },
   "devDependencies": {
-    "@stylistic/eslint-plugin": "^2.6.1",
+    "@stylistic/eslint-plugin": "^2.6.2",
     "@types/jest": "^29.5.12",
     "@types/supertest": "^6.0.2",
-    "@typescript-eslint/eslint-plugin": "^8.0.0",
-    "@typescript-eslint/parser": "^8.0.0",
-    "@xylabs/config": "^3.15.14",
-    "@xylabs/eslint-config-flat": "^3.15.14",
-    "@xylabs/ts-scripts-yarn3": "^3.15.14",
-    "@xylabs/tsconfig": "^3.15.14",
-    "@xylabs/tsconfig-jest": "^3.15.14",
+    "@typescript-eslint/eslint-plugin": "^8.1.0",
+    "@typescript-eslint/parser": "^8.1.0",
+    "@xylabs/config": "^4.0.0-rc.15",
+    "@xylabs/eslint-config-flat": "^4.0.0-rc.15",
+    "@xylabs/ts-scripts-yarn3": "^4.0.0-rc.15",
+    "@xylabs/tsconfig": "^4.0.0-rc.15",
+    "@xylabs/tsconfig-jest": "^4.0.0-rc.15",
     "babel-jest": "^29.7.0",
     "dotenv": "^16.4.5",
-    "eslint": "^9.8.0",
+    "eslint": "^9.9.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-prettier": "^5.2.1",
@@ -93,7 +86,8 @@
     "ts-node": "^10.9.2",
     "tslib": "^2.6.3",
     "typedoc": "^0.26.5",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
   },
   "publishConfig": {
     "access": "public"

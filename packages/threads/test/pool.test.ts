@@ -1,9 +1,9 @@
-/* eslint-disable import/no-internal-modules */
+/* eslint-disable import-x/no-internal-modules */
 
 /* eslint-disable require-await */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-// eslint-disable import/no-internal-modules
+// eslint-disable import-x/no-internal-modules
 import test from 'ava'
 
 import { Pool, spawn, Worker } from '../src/index'

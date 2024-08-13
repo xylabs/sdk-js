@@ -13,20 +13,13 @@
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "exports": {
     ".": {
-      "require": {
-        "types": "./dist/node/esmIndex.d.cts",
-        "default": "./dist/node/cjsIndex.cjs"
-      },
-      "import": {
-        "types": "./dist/node/esmIndex.d.ts",
-        "default": "./dist/node/esmIndex.mjs"
-      }
+      "types": "./dist/neutral/index.d.ts",
+      "default": "./dist/neutral/index.mjs"
     },
     "./package.json": "./package.json"
   },
-  "main": "./dist/node/cjsIndex.cjs",
-  "types": "./dist/node/esmIndex.d.ts",
-  "module": "./dist/node/esmIndex.mjs",
+  "types": "./dist/neutral/index.d.ts",
+  "module": "./dist/neutral/index.mjs",
   "homepage": "https://xylabs.com",
   "keywords": [
     "lodash",
@@ -36,28 +29,14 @@
     "esm"
   ],
   "dependencies": {
-    "@types/lodash": "^4.17.7",
-    "@types/lodash-es": "^4.17.12"
-  },
-  "peerDependencies": {
-    "lodash": "^4.17.21",
+    "@types/lodash-es": "^4.17.12",
     "lodash-es": "^4.17.21"
-  },
-  "peerDependenciesMeta": {
-    "lodash": {
-      "optional": true
-    },
-    "lodash-es": {
-      "optional": true
-    }
   },
   "devDependencies": {
     "@types/lodash": "^4.17.7",
     "@types/lodash-es": "^4.17.12",
-    "@xylabs/ts-scripts-yarn3": "^3.15.14",
-    "@xylabs/tsconfig": "^3.15.14",
-    "lodash": "^4.17.21",
-    "lodash-es": "^4.17.21",
+    "@xylabs/ts-scripts-yarn3": "^4.0.0-rc.15",
+    "@xylabs/tsconfig": "^4.0.0-rc.15",
     "typescript": "^5.5.4"
   },
   "engines": {

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-/* eslint-disable import/no-internal-modules */
+/* eslint-disable import-x/no-internal-modules */
 /* eslint-disable unicorn/no-process-exit */
 /* eslint-disable unicorn/prefer-logical-operator-over-ternary */
 /* eslint-disable unicorn/prefer-regexp-test */

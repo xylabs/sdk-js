@@ -1,4 +1,4 @@
-/* eslint-disable import/no-internal-modules */
+/* eslint-disable import-x/no-internal-modules */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /*
  * This source file contains the code for proxying calls in the master thread to calls in the workers

@@ -1,4 +1,4 @@
-/* eslint-disable import/no-internal-modules */
+// eslint-disable-next-line import-x/no-internal-modules
 import { Observable, Subject } from '../../src/observable'
 import { expose } from '../../src/worker'
 

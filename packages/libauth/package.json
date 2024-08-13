@@ -16,18 +16,11 @@
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "exports": {
     ".": {
-      "require": {
-        "types": "./dist/neutral/index.d.cts",
-        "default": "./dist/neutral/index.cjs"
-      },
-      "import": {
-        "types": "./dist/neutral/index.d.ts",
-        "default": "./dist/neutral/index.mjs"
-      }
+      "types": "./dist/neutral/index.d.ts",
+      "default": "./dist/neutral/index.mjs"
     },
     "./package.json": "./package.json"
   },
-  "main": "./dist/neutral/index.cjs",
   "types": "./dist/neutral/index.d.ts",
   "module": "./dist/neutral/index.mjs",
   "homepage": "https://xylabs.com",
@@ -42,8 +35,8 @@
     "@bitauth/libauth-1-19-1": "npm:@bitauth/libauth@1.19.1"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.15.14",
-    "@xylabs/tsconfig": "^3.15.14",
+    "@xylabs/ts-scripts-yarn3": "^4.0.0-rc.15",
+    "@xylabs/tsconfig": "^4.0.0-rc.15",
     "typescript": "^5.5.4"
   },
   "engines": {

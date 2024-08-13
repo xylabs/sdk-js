@@ -14,27 +14,14 @@
   "exports": {
     ".": {
       "browser": {
-        "require": {
-          "types": "./dist/browser/index.d.cts",
-          "default": "./dist/browser/index.cjs"
-        },
-        "import": {
-          "types": "./dist/browser/index.d.ts",
-          "default": "./dist/browser/index.mjs"
-        }
+        "types": "./dist/browser/index.d.ts",
+        "default": "./dist/browser/index.mjs"
       },
-      "require": {
-        "types": "./dist/node/index.d.cts",
-        "default": "./dist/node/index.cjs"
-      },
-      "import": {
-        "types": "./dist/node/index.d.ts",
-        "default": "./dist/node/index.mjs"
-      }
+      "types": "./dist/node/index.d.ts",
+      "default": "./dist/node/index.mjs"
     },
     "./package.json": "./package.json"
   },
-  "main": "./dist/node/index.cjs",
   "types": "./dist/node/index.d.ts",
   "module": "./dist/node/index.mjs",
   "homepage": "https://xylabs.com",
@@ -51,10 +38,10 @@
   },
   "devDependencies": {
     "@types/crypto-js": "^4.2.2",
-    "@types/node": "^22.1.0",
-    "@xylabs/ts-scripts-yarn3": "^3.15.14",
-    "@xylabs/tsconfig": "^3.15.14",
-    "@xylabs/tsconfig-dom": "^3.15.14",
+    "@types/node": "^22.2.0",
+    "@xylabs/ts-scripts-yarn3": "^4.0.0-rc.15",
+    "@xylabs/tsconfig": "^4.0.0-rc.15",
+    "@xylabs/tsconfig-dom": "^4.0.0-rc.15",
     "typescript": "^5.5.4"
   },
   "engines": {

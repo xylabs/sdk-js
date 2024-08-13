@@ -1,4 +1,4 @@
-/* eslint-disable import/no-internal-modules */
+/* eslint-disable import-x/no-internal-modules */
 /* eslint-disable no-restricted-imports */
 /*
  * This code here will be run in a headless Chromium browser using `puppet-run`.

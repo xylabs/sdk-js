@@ -1,4 +1,4 @@
-/* eslint-disable import/no-internal-modules */
+/* eslint-disable import-x/no-internal-modules */
 // tslint:disable no-duplicate-imports
 import type { BlobWorker as BlobWorkerClass } from '../types/master'
 import { Worker as WorkerType } from '../types/master'

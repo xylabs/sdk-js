@@ -24,7 +24,7 @@
     "@xylabs/assert": "workspace:^"
   },
   "devDependencies": {
-    "@types/node": "^22.2.0",
+    "@types/node": "^22.3.0",
     "@xylabs/ts-scripts-yarn3": "^4.0.0-rc.15",
     "@xylabs/tsconfig": "^4.0.0-rc.15",
     "typescript": "^5.5.4"
@@ -49,6 +49,6 @@
     "url": "https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "4.0.0",
+  "version": "4.0.1",
   "type": "module"
 }

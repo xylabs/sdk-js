@@ -3086,12 +3086,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^22.2.0":
-  version: 22.2.0
-  resolution: "@types/node@npm:22.2.0"
+"@types/node@npm:*, @types/node@npm:^22.2.0, @types/node@npm:^22.3.0":
+  version: 22.3.0
+  resolution: "@types/node@npm:22.3.0"
   dependencies:
-    undici-types: "npm:~6.13.0"
-  checksum: 10/2957c5c81f1a07a1210f28382adae65c11070c301e395fa819448516f1a2a710054b29e0ec7d8e28624afbcd90dae810403a497109545dea835b554fc76edf6c
+    undici-types: "npm:~6.18.2"
+  checksum: 10/c31a798ed722a7417727f018ea6d621db038a613c626da643174cc6f3dcf4ce2fc9933a010aec289103d9564da2c2f9b054c9aa398828f00e17269a78c64d4ec
   languageName: node
   linkType: hard
 
@@ -3695,7 +3695,7 @@ __metadata:
   dependencies:
     "@xylabs/ts-scripts-yarn3": "npm:^4.0.0-rc.15"
     "@xylabs/tsconfig": "npm:^4.0.0-rc.15"
-    axios: "npm:^1.7.3"
+    axios: "npm:^1.7.4"
     typescript: "npm:^5.5.4"
   languageName: unknown
   linkType: soft
@@ -3717,7 +3717,7 @@ __metadata:
   dependencies:
     "@scure/base": "npm:^1.1.7"
     "@xylabs/assert": "workspace:^"
-    "@xylabs/lodash": "npm:^4.0.0"
+    "@xylabs/lodash": "npm:^4.0.1"
     "@xylabs/ts-scripts-yarn3": "npm:^4.0.0-rc.15"
     "@xylabs/tsconfig": "npm:^4.0.0-rc.15"
     "@xylabs/typeof": "workspace:^"
@@ -3725,7 +3725,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/assert@npm:^4.0.0, @xylabs/assert@workspace:^, @xylabs/assert@workspace:packages/assert":
+"@xylabs/assert@npm:^4.0.1, @xylabs/assert@workspace:^, @xylabs/assert@workspace:packages/assert":
   version: 0.0.0-use.local
   resolution: "@xylabs/assert@workspace:packages/assert"
   dependencies:
@@ -3743,7 +3743,7 @@ __metadata:
     "@xylabs/logger": "workspace:^"
     "@xylabs/ts-scripts-yarn3": "npm:^4.0.0-rc.15"
     "@xylabs/tsconfig": "npm:^4.0.0-rc.15"
-    axios: "npm:^1.7.3"
+    axios: "npm:^1.7.4"
     pako: "npm:^2.1.0"
     typescript: "npm:^5.5.4"
   languageName: unknown
@@ -3765,7 +3765,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/buffer@workspace:packages/buffer"
   dependencies:
-    "@types/node": "npm:^22.2.0"
+    "@types/node": "npm:^22.3.0"
     "@xylabs/platform": "workspace:^"
     "@xylabs/ts-scripts-yarn3": "npm:^4.0.0-rc.15"
     "@xylabs/tsconfig": "npm:^4.0.0-rc.15"
@@ -3791,7 +3791,7 @@ __metadata:
   resolution: "@xylabs/crypto@workspace:packages/crypto"
   dependencies:
     "@types/crypto-js": "npm:^4.2.2"
-    "@types/node": "npm:^22.2.0"
+    "@types/node": "npm:^22.3.0"
     "@xylabs/platform": "workspace:^"
     "@xylabs/ts-scripts-yarn3": "npm:^4.0.0-rc.15"
     "@xylabs/tsconfig": "npm:^4.0.0-rc.15"
@@ -3938,7 +3938,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/lodash@npm:^4.0.0, @xylabs/lodash@workspace:packages/lodash":
+"@xylabs/lodash@npm:^4.0.1, @xylabs/lodash@workspace:packages/lodash":
   version: 0.0.0-use.local
   resolution: "@xylabs/lodash@workspace:packages/lodash"
   dependencies:
@@ -3967,7 +3967,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/logger@npm:^4.0.0, @xylabs/logger@workspace:^, @xylabs/logger@workspace:packages/logger":
+"@xylabs/logger@npm:^4.0.1, @xylabs/logger@workspace:^, @xylabs/logger@workspace:packages/logger":
   version: 0.0.0-use.local
   resolution: "@xylabs/logger@workspace:packages/logger"
   dependencies:
@@ -3982,9 +3982,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/object@workspace:packages/object"
   dependencies:
-    "@xylabs/assert": "npm:^4.0.0"
-    "@xylabs/logger": "npm:^4.0.0"
-    "@xylabs/promise": "npm:^4.0.0"
+    "@xylabs/assert": "npm:^4.0.1"
+    "@xylabs/logger": "npm:^4.0.1"
+    "@xylabs/promise": "npm:^4.0.1"
     "@xylabs/ts-scripts-yarn3": "npm:^4.0.0-rc.15"
     "@xylabs/tsconfig": "npm:^4.0.0-rc.15"
     typescript: "npm:^5.5.4"
@@ -4012,7 +4012,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/promise@npm:^4.0.0, @xylabs/promise@workspace:^, @xylabs/promise@workspace:packages/promise":
+"@xylabs/promise@npm:^4.0.1, @xylabs/promise@workspace:^, @xylabs/promise@workspace:packages/promise":
   version: 0.0.0-use.local
   resolution: "@xylabs/promise@workspace:packages/promise"
   dependencies:
@@ -4159,7 +4159,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/timer@workspace:packages/timer"
   dependencies:
-    "@types/node": "npm:^22.2.0"
+    "@types/node": "npm:^22.3.0"
     "@xylabs/assert": "workspace:^"
     "@xylabs/ts-scripts-yarn3": "npm:^4.0.0-rc.15"
     "@xylabs/tsconfig": "npm:^4.0.0-rc.15"
@@ -4309,7 +4309,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/url@workspace:packages/url"
   dependencies:
-    "@types/node": "npm:^22.2.0"
+    "@types/node": "npm:^22.3.0"
     "@xylabs/ts-scripts-yarn3": "npm:^4.0.0-rc.15"
     "@xylabs/tsconfig": "npm:^4.0.0-rc.15"
     "@xylabs/tsconfig-dom": "npm:^4.0.0-rc.15"
@@ -4824,14 +4824,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.7.3":
-  version: 1.7.3
-  resolution: "axios@npm:1.7.3"
+"axios@npm:^1.7.4":
+  version: 1.7.4
+  resolution: "axios@npm:1.7.4"
   dependencies:
     follow-redirects: "npm:^1.15.6"
     form-data: "npm:^4.0.0"
     proxy-from-env: "npm:^1.1.0"
-  checksum: 10/7f92af205705a8fb4a9d35666b663729507657f252a1d39d83582590119941872d49078017cf992e32f47aa3b7317f5439f77be772a173dac2ae0fedd38f43ae
+  checksum: 10/7a1429be1e3d0c2e1b96d4bba4d113efbfabc7c724bed107beb535c782c7bea447ff634886b0c7c43395a264d085450d009eb1154b5f38a8bae49d469fdcbc61
   languageName: node
   linkType: hard
 
@@ -12116,18 +12116,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.4.39":
-  version: 8.4.39
-  resolution: "postcss@npm:8.4.39"
-  dependencies:
-    nanoid: "npm:^3.3.7"
-    picocolors: "npm:^1.0.1"
-    source-map-js: "npm:^1.2.0"
-  checksum: 10/ad9c1add892c96433b9a5502878201ede4a20c4ce02d056251f61f8d9a3e5426dab3683fe5a086edfa78a1a19f2b4988c8cea02c5122136d29758cb5a17e2621
-  languageName: node
-  linkType: hard
-
-"postcss@npm:^8.4.40":
+"postcss@npm:^8.4.39, postcss@npm:^8.4.40":
   version: 8.4.41
   resolution: "postcss@npm:8.4.41"
   dependencies:
@@ -15297,10 +15286,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici-types@npm:~6.13.0":
-  version: 6.13.0
-  resolution: "undici-types@npm:6.13.0"
-  checksum: 10/da52e37cbc6da3a75da86fa08dd795ca8924430deb91005eb884b840e46e19013ccd4c1c289f70018e8cf0c338add24a500e7c3acfcd49b1ffb27ff9f91e38b9
+"undici-types@npm:~6.18.2":
+  version: 6.18.2
+  resolution: "undici-types@npm:6.18.2"
+  checksum: 10/5c863f3cc65d012498cf0f8562b9d81e785c2b8b8a8d66343b9f4351ff40a3a29b500fbaea10667626fd91a32433d4c876810aafa5ab561369de702b62d4b323
   languageName: node
   linkType: hard
 

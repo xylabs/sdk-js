@@ -12,7 +12,7 @@
   "dependencies": {
     "@types/pako": "^2.0.3",
     "@xylabs/logger": "workspace:^",
-    "axios": "^1.7.3",
+    "axios": "^1.7.4",
     "pako": "^2.1.0"
   },
   "description": "Primary SDK for using XYO Protocol 2.0",
@@ -50,6 +50,6 @@
     "esm"
   ],
   "sideEffects": false,
-  "version": "4.0.0",
+  "version": "4.0.1",
   "type": "module"
 }

@@ -5,6 +5,7 @@
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "package-compile": "yarn build",
     "clean": "rimraf ./dist ./dist-esm",

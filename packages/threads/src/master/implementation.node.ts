@@ -15,9 +15,10 @@ import { cpus } from 'node:os'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-import getCallsites, { CallSite } from 'callsites-3-1-0'
+import type { CallSite } from 'callsites-3-1-0'
+import getCallsites from 'callsites-3-1-0'
 
-import { ImplementationExport, ThreadsWorkerOptions, WorkerImplementation } from '../types/master'
+import type { ImplementationExport, ThreadsWorkerOptions, WorkerImplementation } from '../types/master'
 
 interface WorkerGlobalScope {
   addEventListener(eventName: string, listener: (event: Event) => void): void

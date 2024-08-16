@@ -4,7 +4,7 @@
  * This file is only a stub to make './implementation' resolve to the right module.
  */
 
-import { AbstractedWorkerAPI } from '../types/worker'
+import type { AbstractedWorkerAPI } from '../types/worker'
 import WebWorkerImplementation from './implementation.browser'
 import TinyWorkerImplementation from './implementation.tiny-worker'
 import WorkerThreadsImplementation from './implementation.worker_threads'

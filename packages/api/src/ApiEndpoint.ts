@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { ApiConfig } from './ApiConfig.ts'
+import type { ApiConfig } from './ApiConfig.ts'
 
 class ApiEndpoint<T> {
   private _value?: T

@@ -2,10 +2,10 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import test from 'ava'
-import { Observable } from 'observable-fns'
+import type { Observable } from 'observable-fns'
 
 import { spawn, Thread, Worker } from '../src/index'
-import { Counter } from './workers/counter'
+import type { Counter } from './workers/counter'
 
 test('can spawn and terminate a thread', async (t) => {
   // We also test here that running spawn() without type parameters works

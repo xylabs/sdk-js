@@ -3,7 +3,7 @@
 /// <reference lib="dom" />
 // tslint:disable no-shadowed-variable
 
-import { AbstractedWorkerAPI } from '../types/worker'
+import type { AbstractedWorkerAPI } from '../types/worker'
 
 interface WorkerGlobalScope {
   addEventListener(eventName: string, listener: (event: Event) => void): void

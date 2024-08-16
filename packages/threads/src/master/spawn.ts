@@ -7,20 +7,21 @@ import { Observable } from 'observable-fns'
 import { deserialize } from '../common'
 import { createPromiseWithResolver } from '../promise'
 import { $errors, $events, $terminate, $worker } from '../symbols'
-import {
+import type {
   FunctionThread,
   ModuleThread,
   PrivateThreadProps,
   StripAsync,
   Worker as WorkerType,
   WorkerEvent,
-  WorkerEventType,
   WorkerInternalErrorEvent,
   WorkerMessageEvent,
-  WorkerTerminationEvent,
+  WorkerTerminationEvent } from '../types/master'
+import {
+  WorkerEventType,
 } from '../types/master'
-import { WorkerInitMessage, WorkerUncaughtErrorMessage } from '../types/messages'
-import { WorkerFunction, WorkerModule } from '../types/worker'
+import type { WorkerInitMessage, WorkerUncaughtErrorMessage } from '../types/messages'
+import type { WorkerFunction, WorkerModule } from '../types/worker'
 import { createProxyFunction, createProxyModule } from './invocation-proxy'
 
 type ArbitraryWorkerInterface = WorkerFunction & WorkerModule<string> & { somekeythatisneverusedinproductioncode123: 'magicmarker123' }

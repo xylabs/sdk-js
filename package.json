@@ -8,7 +8,7 @@
   },
   "bugs": {
     "email": "support@xylabs.com",
-    "url": "https://github.com/xylabs/sdk-js/issues"
+    "url": "git+https://github.com/xylabs/sdk-js/issues"
   },
   "workspaces": [
     "packages/**/*"
@@ -57,7 +57,7 @@
     "@xylabs/url": "workspace:^"
   },
   "devDependencies": {
-    "@stylistic/eslint-plugin": "^2.6.2",
+    "@stylistic/eslint-plugin": "^2.6.4",
     "@types/jest": "^29.5.12",
     "@types/supertest": "^6.0.2",
     "@typescript-eslint/eslint-plugin": "^8.1.0",
@@ -84,12 +84,15 @@
     "typescript": "^5.5.4",
     "vitest": "^2.0.5"
   },
+  "resolutions": {
+    "rimraf": "^5"
+  },
   "publishConfig": {
     "access": "public"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/xylabs/sdk-js.git"
+    "url": "git+https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
   "packageManager": "yarn@4.4.0",
@@ -104,6 +107,6 @@
     "node": "22.3.0",
     "yarn": "1.22.19"
   },
-  "version": "4.0.1",
+  "version": "4.0.2",
   "type": "module"
 }

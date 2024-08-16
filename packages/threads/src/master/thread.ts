@@ -1,8 +1,8 @@
 /* eslint-disable import-x/no-internal-modules */
-import { Observable } from 'observable-fns'
+import type { Observable } from 'observable-fns'
 
 import { $errors, $events, $terminate } from '../symbols'
-import { Thread as ThreadType, WorkerEvent } from '../types/master'
+import type { Thread as ThreadType, WorkerEvent } from '../types/master'
 
 function fail(message: string): never {
   throw new Error(message)

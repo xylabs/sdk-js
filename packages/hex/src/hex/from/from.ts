@@ -1,4 +1,4 @@
-import { Hex, HexConfig } from '../model.ts'
+import type { Hex, HexConfig } from '../model.ts'
 import { hexFromArrayBuffer } from './fromArrayBuffer.ts'
 import { hexFromBigInt } from './fromBigInt.ts'
 import { hexFromHexString } from './fromHexString.ts'

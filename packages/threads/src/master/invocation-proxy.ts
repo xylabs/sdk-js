@@ -13,14 +13,15 @@ import { multicast, Observable } from 'observable-fns'
 import { deserialize, serialize } from '../common'
 import { ObservablePromise } from '../observable-promise'
 import { isTransferDescriptor } from '../transferable'
-import { ModuleMethods, ModuleProxy, ProxyableFunction, Worker as WorkerType } from '../types/master'
-import {
+import type { ModuleMethods, ModuleProxy, ProxyableFunction, Worker as WorkerType } from '../types/master'
+import type {
   MasterJobCancelMessage,
   MasterJobRunMessage,
-  MasterMessageType,
   WorkerJobErrorMessage,
   WorkerJobResultMessage,
-  WorkerJobStartMessage,
+  WorkerJobStartMessage } from '../types/messages'
+import {
+  MasterMessageType,
   WorkerMessageType,
 } from '../types/messages'
 

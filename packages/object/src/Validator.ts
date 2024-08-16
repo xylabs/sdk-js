@@ -1,7 +1,7 @@
-import { Promisable } from '@xylabs/promise'
+import type { Promisable } from '@xylabs/promise'
 
-import { AnyObject } from './AnyObject.ts'
-import { EmptyObject } from './EmptyObject.ts'
+import type { AnyObject } from './AnyObject.ts'
+import type { EmptyObject } from './EmptyObject.ts'
 import { ObjectWrapper } from './ObjectWrapper.ts'
 
 export interface Validator<T extends EmptyObject = AnyObject> {

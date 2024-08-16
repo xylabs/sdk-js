@@ -1,6 +1,7 @@
-import { TypedObject } from '@xylabs/promise'
+import type { TypedObject } from '@xylabs/promise'
 
-import { AsTypeFactory, TypeCheck } from './AsTypeFactory.ts'
+import type { TypeCheck } from './AsTypeFactory.ts'
+import { AsTypeFactory } from './AsTypeFactory.ts'
 
 export const AsObjectFactory = {
   create: <T extends TypedObject>(typeCheck: TypeCheck<T>) => {

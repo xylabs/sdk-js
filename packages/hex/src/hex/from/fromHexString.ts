@@ -1,5 +1,5 @@
 import { isHex } from '../is.ts'
-import { Hex, HexConfig } from '../model.ts'
+import type { Hex, HexConfig } from '../model.ts'
 import { bitsToNibbles } from '../nibble.ts'
 
 export const hexFromHexString = (value: string, config: HexConfig = {}): Hex => {

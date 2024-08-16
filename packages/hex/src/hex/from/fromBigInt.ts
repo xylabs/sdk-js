@@ -1,4 +1,4 @@
-import { Hex, HexConfig } from '../model.ts'
+import type { Hex, HexConfig } from '../model.ts'
 import { bitsToNibbles } from '../nibble.ts'
 import { hexFromHexString } from './fromHexString.ts'
 

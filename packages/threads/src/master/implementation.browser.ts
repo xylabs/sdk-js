@@ -1,7 +1,7 @@
 /* eslint-disable import-x/no-internal-modules */
 // tslint:disable max-classes-per-file
 
-import { ImplementationExport, ThreadsWorkerOptions } from '../types/master'
+import type { ImplementationExport, ThreadsWorkerOptions } from '../types/master'
 import { getBundleURL } from './get-bundle-url.browser'
 
 export const defaultPoolSize = typeof navigator !== 'undefined' && navigator.hardwareConcurrency ? navigator.hardwareConcurrency : 4

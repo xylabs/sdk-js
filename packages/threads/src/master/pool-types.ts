@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/member-ordering */
-import { Thread } from './thread'
+import type { Thread } from './thread'
 
 /** Pool event type. Specifies the type of each `PoolEvent`. */
 export enum PoolEventType {

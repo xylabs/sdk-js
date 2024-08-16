@@ -8,7 +8,7 @@
   },
   "bugs": {
     "email": "support@xylabs.com",
-    "url": "https://github.com/xylabs/sdk-js/issues"
+    "url": "git+https://github.com/xylabs/sdk-js/issues"
   },
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "exports": {
@@ -37,7 +37,7 @@
     "buffer": "^6.0.3"
   },
   "devDependencies": {
-    "@types/node": "^22.3.0",
+    "@types/node": "^22.4.0",
     "@xylabs/ts-scripts-yarn3": "^4.0.0-rc.15",
     "@xylabs/tsconfig": "^4.0.0-rc.15",
     "@xylabs/tsconfig-dom": "^4.0.0-rc.15",
@@ -51,9 +51,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/xylabs/sdk-js.git"
+    "url": "git+https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "4.0.1",
+  "version": "4.0.2",
   "type": "module"
 }

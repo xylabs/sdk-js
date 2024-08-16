@@ -1,5 +1,6 @@
-import { Logger } from '@xylabs/logger'
-import { Axios, AxiosHeaders, AxiosResponse, RawAxiosRequestConfig } from 'axios'
+import type { Logger } from '@xylabs/logger'
+import type { AxiosResponse, RawAxiosRequestConfig } from 'axios'
+import { Axios, AxiosHeaders } from 'axios'
 import { gzip } from 'pako'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

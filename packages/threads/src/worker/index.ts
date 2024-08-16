@@ -2,23 +2,25 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import isSomeObservable from 'is-observable-2-1-0'
-import { Observable, Subscription } from 'observable-fns'
+import type { Observable, Subscription } from 'observable-fns'
 
 import { deserialize, serialize } from '../common'
-import { isTransferDescriptor, TransferDescriptor } from '../transferable'
-import {
+import type { TransferDescriptor } from '../transferable'
+import { isTransferDescriptor } from '../transferable'
+import type {
   MasterJobCancelMessage,
   MasterJobRunMessage,
-  MasterMessageType,
   SerializedError,
   WorkerInitMessage,
   WorkerJobErrorMessage,
   WorkerJobResultMessage,
   WorkerJobStartMessage,
+  WorkerUncaughtErrorMessage } from '../types/messages'
+import {
+  MasterMessageType,
   WorkerMessageType,
-  WorkerUncaughtErrorMessage,
 } from '../types/messages'
-import { WorkerFunction, WorkerModule } from '../types/worker'
+import type { WorkerFunction, WorkerModule } from '../types/worker'
 import Implementation from './implementation'
 
 export { registerSerializer } from '../common'

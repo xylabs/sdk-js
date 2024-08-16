@@ -1,5 +1,5 @@
 import { delay } from '@xylabs/delay'
-import { Promisable } from '@xylabs/promise'
+import type { Promisable } from '@xylabs/promise'
 
 export interface RetryConfig {
   backoff?: number

@@ -1,4 +1,4 @@
-import { Hex, HexConfig } from '../model.ts'
+import type { Hex, HexConfig } from '../model.ts'
 import { hexFromHexString } from './fromHexString.ts'
 
 /** Convert an ArrayBuffer to a hex string */

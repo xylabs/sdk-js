@@ -1,4 +1,4 @@
-import { TypedKey } from '@xylabs/promise'
+import type { TypedKey } from '@xylabs/promise'
 
 /**
  * Any object, which means that it does not enforce the set of fields that it has.  Extending from AnyObject

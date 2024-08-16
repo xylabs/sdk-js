@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Observable, ObservableLike, SubscriptionObserver } from 'observable-fns'
+import type { ObservableLike, SubscriptionObserver } from 'observable-fns'
+import { Observable } from 'observable-fns'
 
 const $observers = Symbol('observers')
 

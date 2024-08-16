@@ -8,7 +8,7 @@
   },
   "bugs": {
     "email": "support@xylabs.com",
-    "url": "https://github.com/xylabs/sdk-js/issues"
+    "url": "git+https://github.com/xylabs/sdk-js/issues"
   },
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "exports": {
@@ -45,9 +45,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/xylabs/sdk-js.git"
+    "url": "git+https://github.com/xylabs/sdk-js.git"
   },
   "sideEffects": false,
-  "version": "4.0.1",
+  "version": "4.0.2",
   "type": "module"
 }

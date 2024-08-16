@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { JsonSerializable, SerializerImplementation } from '../../src/index'
+import type { JsonSerializable, SerializerImplementation } from '../../src/index'
 
 export class Foo<T> {
   private readonly value: T

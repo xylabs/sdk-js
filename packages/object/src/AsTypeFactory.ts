@@ -1,6 +1,8 @@
-import { assertEx, AssertExMessageFunc } from '@xylabs/assert'
-import { Logger } from '@xylabs/logger'
-import { AnyNonPromise, isPromise, TypedValue } from '@xylabs/promise'
+import type { AssertExMessageFunc } from '@xylabs/assert'
+import { assertEx } from '@xylabs/assert'
+import type { Logger } from '@xylabs/logger'
+import type { AnyNonPromise, TypedValue } from '@xylabs/promise'
+import { isPromise } from '@xylabs/promise'
 
 export interface TypeCheckConfig {
   log?: boolean | Logger

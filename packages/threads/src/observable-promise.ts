@@ -5,7 +5,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-this-alias */
 /* eslint-disable unicorn/no-this-assignment */
-import { Observable, ObservableLike, SubscriptionObserver } from 'observable-fns'
+import type { ObservableLike, SubscriptionObserver } from 'observable-fns'
+import { Observable } from 'observable-fns'
 
 type OnFulfilled<T, Result = void> = (value: T) => Result
 type OnRejected<Result = void> = (error: Error) => Result

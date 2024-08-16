@@ -4,11 +4,11 @@
 
 // Cannot use `compilerOptions.esModuleInterop` and default import syntax
 // See <https://github.com/microsoft/TypeScript/issues/28009>
-import { Observable } from 'observable-fns'
+import type { Observable } from 'observable-fns'
 
-import { ObservablePromise } from '../observable-promise'
-import { $errors, $events, $terminate, $worker } from '../symbols'
-import { TransferDescriptor } from '../transferable'
+import type { ObservablePromise } from '../observable-promise'
+import type { $errors, $events, $terminate, $worker } from '../symbols'
+import type { TransferDescriptor } from '../transferable'
 
 interface ObservableLikeSubscription {
   unsubscribe(): any

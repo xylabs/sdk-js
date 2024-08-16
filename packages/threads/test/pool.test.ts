@@ -7,7 +7,8 @@
 import test from 'ava'
 
 import { Pool, spawn, Worker } from '../src/index'
-import { PoolEventType, QueuedTask } from '../src/master/pool'
+import type { QueuedTask } from '../src/master/pool'
+import { PoolEventType } from '../src/master/pool'
 
 const workerPath = './workers/hello-world'
 const HELLO_WORLD = 'Hello World'

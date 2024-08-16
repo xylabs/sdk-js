@@ -12,7 +12,8 @@ import { multicast, Observable, Subject } from 'observable-fns'
 
 import { allSettled } from '../ponyfills'
 import { defaultPoolSize } from './implementation'
-import { PoolEvent, PoolEventType, QueuedTask, TaskRunFunction, WorkerDescriptor } from './pool-types'
+import type { PoolEvent, QueuedTask, TaskRunFunction, WorkerDescriptor } from './pool-types'
+import { PoolEventType } from './pool-types'
 import { Thread } from './thread'
 
 export declare namespace Pool {

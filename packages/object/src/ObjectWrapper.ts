@@ -1,5 +1,5 @@
-import { EmptyObject } from './EmptyObject.ts'
-import { StringKeyObject } from './StringKeyObject.ts'
+import type { EmptyObject } from './EmptyObject.ts'
+import type { StringKeyObject } from './StringKeyObject.ts'
 
 export abstract class ObjectWrapper<T extends EmptyObject = EmptyObject> {
   readonly obj: T

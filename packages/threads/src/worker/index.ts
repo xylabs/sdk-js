@@ -15,7 +15,8 @@ import type {
   WorkerJobErrorMessage,
   WorkerJobResultMessage,
   WorkerJobStartMessage,
-  WorkerUncaughtErrorMessage } from '../types/messages'
+  WorkerUncaughtErrorMessage,
+} from '../types/messages'
 import {
   MasterMessageType,
   WorkerMessageType,
@@ -52,9 +53,7 @@ function deconstructTransfer(thing: any) {
 
 function postFunctionInitMessage() {
   const initMessage: WorkerInitMessage = {
-    exposed: {
-      type: 'function',
-    },
+    exposed: { type: 'function' },
     type: WorkerMessageType.init,
   }
   Implementation.postMessageToMaster(initMessage)

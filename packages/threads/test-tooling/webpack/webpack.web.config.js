@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 const path = require('node:path')
 const ThreadsPlugin = require('threads-plugin')
 
@@ -10,11 +11,7 @@ module.exports = {
     rules: [
       {
         loader: 'ts-loader',
-        options: {
-          compilerOptions: {
-            module: 'esnext',
-          },
-        },
+        options: { compilerOptions: { module: 'esnext' } },
         test: /\.ts$/,
       },
     ],
@@ -26,8 +23,6 @@ module.exports = {
     path: path.resolve(__dirname, './dist/app.web'),
   },
   plugins: [new ThreadsPlugin()],
-  resolve: {
-    extensions: ['.js', '.ts'],
-  },
+  resolve: { extensions: ['.js', '.ts'] },
   target: 'web',
 }

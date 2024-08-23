@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { isWorkerRuntime, Pool, spawn, Worker } from '../../src/index'
+import {
+  isWorkerRuntime, Pool, spawn, Worker,
+} from '../../src/index'
 
 type AdditionWorker = (a: number, b: number) => number
 type HelloWorker = (text: string) => string

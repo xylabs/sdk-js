@@ -11,7 +11,9 @@ import '../src/master/register'
 
 import { expect } from 'chai'
 
-import { BlobWorker, spawn, Thread } from '..'
+import {
+  BlobWorker, spawn, Thread,
+} from '..'
 
 describe('threads in browser', function () {
   it('can spawn and terminate a thread', async function () {

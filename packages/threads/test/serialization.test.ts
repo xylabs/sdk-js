@@ -1,7 +1,9 @@
 /* eslint-disable import-x/no-internal-modules */
 import test from 'ava'
 
-import { registerSerializer, spawn, Thread, Worker } from '../src/index'
+import {
+  registerSerializer, spawn, Thread, Worker,
+} from '../src/index'
 import { Foo, fooSerializer } from './lib/serialization'
 
 registerSerializer(fooSerializer)

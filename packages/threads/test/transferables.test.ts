@@ -4,7 +4,9 @@
 
 import test from 'ava'
 
-import { spawn, Thread, Transfer, Worker } from '../src/index'
+import {
+  spawn, Thread, Transfer, Worker,
+} from '../src/index'
 import type { XorBuffer } from './workers/arraybuffer-xor'
 
 type SpyInit<Args extends any[], OriginalReturn, NewReturn> = (originalFn: (...args: Args) => OriginalReturn) => (...args: Args) => NewReturn

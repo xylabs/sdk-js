@@ -4,7 +4,9 @@
 import test from 'ava'
 import type { Observable } from 'observable-fns'
 
-import { spawn, Thread, Worker } from '../src/index'
+import {
+  spawn, Thread, Worker,
+} from '../src/index'
 import type { Counter } from './workers/counter'
 
 test('can spawn and terminate a thread', async (t) => {

@@ -6,7 +6,9 @@
 // eslint-disable import-x/no-internal-modules
 import test from 'ava'
 
-import { Pool, spawn, Worker } from '../src/index'
+import {
+  Pool, spawn, Worker,
+} from '../src/index'
 import type { QueuedTask } from '../src/master/pool'
 import { PoolEventType } from '../src/master/pool'
 
@@ -65,9 +67,7 @@ test.serial('thread pool basics work and events are emitted', async (t) => {
       type: Pool.EventType.taskCompleted,
       workerID: 1,
     },
-    {
-      type: Pool.EventType.taskQueueDrained,
-    },
+    { type: Pool.EventType.taskQueueDrained },
     {
       remainingQueue: [],
       type: Pool.EventType.terminated,

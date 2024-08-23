@@ -1,5 +1,7 @@
 /* eslint-disable no-restricted-imports */
-import { spawn, Thread, Worker } from '../..'
+import {
+  spawn, Thread, Worker,
+} from '../..'
 
 async function run() {
   const add = await spawn(new Worker('./worker.js'))

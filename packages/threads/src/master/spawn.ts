@@ -6,7 +6,9 @@ import { Observable } from 'observable-fns'
 
 import { deserialize } from '../common'
 import { createPromiseWithResolver } from '../promise'
-import { $errors, $events, $terminate, $worker } from '../symbols'
+import {
+  $errors, $events, $terminate, $worker,
+} from '../symbols'
 import type {
   FunctionThread,
   ModuleThread,
@@ -16,10 +18,9 @@ import type {
   WorkerEvent,
   WorkerInternalErrorEvent,
   WorkerMessageEvent,
-  WorkerTerminationEvent } from '../types/master'
-import {
-  WorkerEventType,
+  WorkerTerminationEvent,
 } from '../types/master'
+import { WorkerEventType } from '../types/master'
 import type { WorkerInitMessage, WorkerUncaughtErrorMessage } from '../types/messages'
 import type { WorkerFunction, WorkerModule } from '../types/worker'
 import { createProxyFunction, createProxyModule } from './invocation-proxy'
@@ -94,9 +95,7 @@ function createEventObservable(worker: WorkerType, workerTermination: Promise<an
     worker.addEventListener('unhandledrejection', rejectionHandler)
 
     workerTermination.then(() => {
-      const terminationEvent: WorkerTerminationEvent = {
-        type: WorkerEventType.termination,
-      }
+      const terminationEvent: WorkerTerminationEvent = { type: WorkerEventType.termination }
       worker.removeEventListener('message', messageHandler)
       worker.removeEventListener('unhandledrejection', rejectionHandler)
       observer.next(terminationEvent)

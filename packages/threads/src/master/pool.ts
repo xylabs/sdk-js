@@ -8,11 +8,15 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import DebugLogger from 'debug'
-import { multicast, Observable, Subject } from 'observable-fns'
+import {
+  multicast, Observable, Subject,
+} from 'observable-fns'
 
 import { allSettled } from '../ponyfills'
 import { defaultPoolSize } from './implementation'
-import type { PoolEvent, QueuedTask, TaskRunFunction, WorkerDescriptor } from './pool-types'
+import type {
+  PoolEvent, QueuedTask, TaskRunFunction, WorkerDescriptor,
+} from './pool-types'
 import { PoolEventType } from './pool-types'
 import { Thread } from './thread'
 
@@ -389,5 +393,7 @@ function PoolConstructor<ThreadType extends Thread>(spawnWorker: () => Promise<T
  */
 export const Pool = PoolConstructor as typeof PoolConstructor & { EventType: typeof PoolEventType }
 
-export { PoolEvent, PoolEventType, QueuedTask } from './pool-types'
+export {
+  PoolEvent, PoolEventType, QueuedTask,
+} from './pool-types'
 export { Thread } from './thread'

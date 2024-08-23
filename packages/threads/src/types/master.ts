@@ -7,7 +7,9 @@
 import type { Observable } from 'observable-fns'
 
 import type { ObservablePromise } from '../observable-promise'
-import type { $errors, $events, $terminate, $worker } from '../symbols'
+import type {
+  $errors, $events, $terminate, $worker,
+} from '../symbols'
 import type { TransferDescriptor } from '../transferable'
 
 interface ObservableLikeSubscription {

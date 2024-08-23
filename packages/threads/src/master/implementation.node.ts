@@ -18,7 +18,9 @@ import { fileURLToPath } from 'node:url'
 import type { CallSite } from 'callsites-3-1-0'
 import getCallsites from 'callsites-3-1-0'
 
-import type { ImplementationExport, ThreadsWorkerOptions, WorkerImplementation } from '../types/master'
+import type {
+  ImplementationExport, ThreadsWorkerOptions, WorkerImplementation,
+} from '../types/master'
 
 interface WorkerGlobalScope {
   addEventListener(eventName: string, listener: (event: Event) => void): void

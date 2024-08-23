@@ -1,6 +1,8 @@
 import test from 'ava'
 
-import { spawn, Thread, Worker } from '../src/index'
+import {
+  spawn, Thread, Worker,
+} from '../src/index'
 
 test('can use worker returning an observable subject', async (t) => {
   const captured: Array<{ max: number; min: number }> = []

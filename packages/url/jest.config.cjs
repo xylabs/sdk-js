@@ -1,14 +1,8 @@
 const generateJestConfig = ({ esModules }) => {
   const esModuleslist = Array.isArray(esModules) ? esModules.join('|') : esModules
   return {
-    globals: {
-      'ts-jest': {
-        tsconfig: 'tsconfig.test.json',
-      },
-    },
-    moduleNameMapper: {
-      '^(\\.{1,2}/.*)\\.js$': '$1',
-    },
+    globals: { 'ts-jest': { tsconfig: 'tsconfig.test.json' } },
+    moduleNameMapper: { '^(\\.{1,2}/.*)\\.js$': '$1' },
     preset: 'ts-jest/presets/default-esm',
     testRegex: String.raw('(/__tests__/.*|(.|/)(test|spec)).tsx?$'),
     transform: {

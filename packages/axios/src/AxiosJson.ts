@@ -25,7 +25,9 @@ export class AxiosJson extends Axios {
     }
   }
 
-  private static axiosConfig({ compressLength, headers, ...config }: RawAxiosJsonRequestConfig = {}): RawAxiosJsonRequestConfig {
+  private static axiosConfig({
+ compressLength, headers, ...config
+}: RawAxiosJsonRequestConfig = {}): RawAxiosJsonRequestConfig {
     return {
       headers: this.buildHeaders(headers),
       transformRequest: (data, headers) => {

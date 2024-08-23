@@ -12,7 +12,9 @@ export interface RetryConfigWithComplete<T = unknown> extends RetryConfig {
 }
 
 export const retry = async <T = unknown>(func: () => Promisable<T | undefined>, config?: RetryConfigWithComplete<T>): Promise<T | undefined> => {
-  const { complete = (value: T | undefined) => value !== undefined, retries = 0, interval = 100, backoff = 2 } = config ?? {}
+  const {
+    complete = (value: T | undefined) => value !== undefined, retries = 0, interval = 100, backoff = 2,
+  } = config ?? {}
   const result = await func()
   if (complete(result)) {
     return result
@@ -21,5 +23,7 @@ export const retry = async <T = unknown>(func: () => Promisable<T | undefined>, 
     return undefined
   }
   await delay(interval)
-  return retry(func, { backoff, complete, interval: interval * backoff, retries: retries - 1 })
+  return retry(func, {
+    backoff, complete, interval: interval * backoff, retries: retries - 1,
+  })
 }

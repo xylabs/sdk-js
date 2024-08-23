@@ -1,13 +1,17 @@
 import type { AssertConfig } from './assert.ts'
 import { assertError } from './assert.ts'
 import type { Hex, HexConfig } from './hex/index.ts'
-import { hexFrom, hexFromHexString, isHex } from './hex/index.ts'
+import {
+  hexFrom, hexFromHexString, isHex,
+} from './hex/index.ts'
 
 export type Address = Exclude<Hex, 'reserved-address-value'>
 
 export const toAddress = (value: string | number | bigint | ArrayBuffer, config: HexConfig = {}) => {
   const { bitLength = 160, prefix = false } = config
-  return hexFrom(value, { bitLength, prefix, ...config })
+  return hexFrom(value, {
+    bitLength, prefix, ...config,
+  })
 }
 
 export const isAddress = (value: unknown, config: HexConfig = {}): value is Address => {

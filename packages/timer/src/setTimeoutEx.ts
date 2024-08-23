@@ -30,7 +30,9 @@ const update = (newTimeouts = timeouts, delayPassed = 0) => {
       return
     } else {
       clearTimeout(currentTimeout)
-      timeouts = newTimeouts.map(timeout => ({ delay: timeout.delay - delayPassed, func: timeout.func, id: timeout.id }))
+      timeouts = newTimeouts.map(timeout => ({
+        delay: timeout.delay - delayPassed, func: timeout.func, id: timeout.id,
+      }))
       // restart timeout since it needs to be different
       interval = newInterval
       currentTimeout = setTimeout(timerFunc, interval)
@@ -55,7 +57,9 @@ const timerFunc = () => {
 export const setTimeoutEx = (func: Function, delay: number) => {
   assertEx(delay >= 0, () => 'delay must be >= 0')
   const id = `${Date.now()}|${Math.random() * 9_999_999_999}`
-  timeouts.push({ delay, func, id })
+  timeouts.push({
+    delay, func, id,
+  })
   update()
   return id
 }

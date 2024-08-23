@@ -1,26 +1,7 @@
 {
-  "license": "LGPL-3.0-only",
   "name": "@xylabs/delay",
-  "author": {
-    "email": "support@xylabs.com",
-    "name": "XY Labs Development Team",
-    "url": "https://xylabs.com"
-  },
-  "bugs": {
-    "email": "support@xylabs.com",
-    "url": "git+https://github.com/xylabs/sdk-js/issues"
-  },
+  "version": "4.0.2",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
-  "exports": {
-    ".": {
-      "types": "./dist/neutral/index.d.ts",
-      "default": "./dist/neutral/index.mjs"
-    },
-    "./package.json": "./package.json"
-  },
-  "types": "./dist/neutral/index.d.ts",
-  "module": "./dist/neutral/index.mjs",
-  "homepage": "https://xylabs.com",
   "keywords": [
     "delay",
     "xylabs",
@@ -28,13 +9,39 @@
     "typescript",
     "esm"
   ],
+  "homepage": "https://xylabs.com",
+  "bugs": {
+    "url": "git+https://github.com/xylabs/sdk-js/issues",
+    "email": "support@xylabs.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xylabs/sdk-js.git"
+  },
+  "license": "LGPL-3.0-only",
+  "author": {
+    "name": "XY Labs Development Team",
+    "email": "support@xylabs.com",
+    "url": "https://xylabs.com"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/neutral/index.d.ts",
+      "default": "./dist/neutral/index.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "module": "./dist/neutral/index.mjs",
+  "types": "./dist/neutral/index.d.ts",
   "dependencies": {
     "@xylabs/timer": "workspace:^"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^4.0.0-rc.15",
-    "@xylabs/tsconfig": "^4.0.0-rc.15",
-    "@xylabs/tsconfig-dom": "^4.0.0-rc.15",
+    "@xylabs/ts-scripts-yarn3": "^4.0.0",
+    "@xylabs/tsconfig": "^4.0.0",
+    "@xylabs/tsconfig-dom": "^4.0.0",
     "typescript": "^5.5.4"
   },
   "engines": {
@@ -42,12 +49,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/xylabs/sdk-js.git"
-  },
-  "sideEffects": false,
-  "version": "4.0.2",
-  "type": "module"
+  }
 }

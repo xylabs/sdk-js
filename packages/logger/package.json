@@ -1,44 +1,7 @@
 {
   "name": "@xylabs/logger",
-  "author": {
-    "email": "support@xylabs.com",
-    "name": "XY Labs Development Team",
-    "url": "https://xylabs.com"
-  },
-  "bugs": {
-    "email": "support@xyo.network",
-    "url": "git+https://github.com/XYOracleNetwork/sdk-xyo-client-js/issues"
-  },
+  "version": "4.0.2",
   "description": "Primary SDK for using XYO Protocol 2.0",
-  "dependencies": {
-    "@xylabs/error": "workspace:^"
-  },
-  "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^4.0.0-rc.15",
-    "@xylabs/tsconfig": "^4.0.0-rc.15",
-    "typescript": "^5.5.4"
-  },
-  "engines": {
-    "node": ">=18"
-  },
-  "exports": {
-    ".": {
-      "types": "./dist/neutral/index.d.ts",
-      "default": "./dist/neutral/index.mjs"
-    },
-    "./package.json": "./package.json"
-  },
-  "module": "dist/neutral/index.mjs",
-  "types": "dist/neutral/index.d.ts",
-  "homepage": "https://xyo.network",
-  "license": "LGPL-3.0-only",
-  "publishConfig": {
-    "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/XYOracleNetwork/sdk-xyo-client-js.git"
-  },
   "keywords": [
     "log",
     "logger",
@@ -48,7 +11,44 @@
     "typescript",
     "esm"
   ],
+  "homepage": "https://xyo.network",
+  "bugs": {
+    "url": "git+https://github.com/XYOracleNetwork/sdk-xyo-client-js/issues",
+    "email": "support@xyo.network"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XYOracleNetwork/sdk-xyo-client-js.git"
+  },
+  "license": "LGPL-3.0-only",
+  "author": {
+    "name": "XY Labs Development Team",
+    "email": "support@xylabs.com",
+    "url": "https://xylabs.com"
+  },
   "sideEffects": false,
-  "version": "4.0.2",
-  "type": "module"
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/neutral/index.d.ts",
+      "default": "./dist/neutral/index.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "module": "dist/neutral/index.mjs",
+  "types": "dist/neutral/index.d.ts",
+  "dependencies": {
+    "@xylabs/error": "workspace:^"
+  },
+  "devDependencies": {
+    "@xylabs/ts-scripts-yarn3": "^4.0.0",
+    "@xylabs/tsconfig": "^4.0.0",
+    "typescript": "^5.5.4"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

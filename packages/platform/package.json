@@ -1,16 +1,31 @@
 {
-  "license": "LGPL-3.0-only",
   "name": "@xylabs/platform",
+  "version": "4.0.2",
+  "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
+  "keywords": [
+    "platform",
+    "xylabs",
+    "utility",
+    "typescript",
+    "esm"
+  ],
+  "homepage": "https://xylabs.com",
+  "bugs": {
+    "url": "git+https://github.com/xylabs/sdk-js/issues",
+    "email": "support@xylabs.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xylabs/sdk-js.git"
+  },
+  "license": "LGPL-3.0-only",
   "author": {
-    "email": "support@xylabs.com",
     "name": "XY Labs Development Team",
+    "email": "support@xylabs.com",
     "url": "https://xylabs.com"
   },
-  "bugs": {
-    "email": "support@xylabs.com",
-    "url": "git+https://github.com/xylabs/sdk-js/issues"
-  },
-  "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
+  "sideEffects": false,
+  "type": "module",
   "exports": {
     ".": {
       "browser": {
@@ -28,20 +43,12 @@
     },
     "./package.json": "./package.json"
   },
-  "types": "./dist/browser/index.d.ts",
   "module": "./dist/browser/index.mjs",
-  "homepage": "https://xylabs.com",
-  "keywords": [
-    "platform",
-    "xylabs",
-    "utility",
-    "typescript",
-    "esm"
-  ],
+  "types": "./dist/browser/index.d.ts",
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^4.0.0-rc.15",
-    "@xylabs/tsconfig": "^4.0.0-rc.15",
-    "@xylabs/tsconfig-dom": "^4.0.0-rc.15",
+    "@xylabs/ts-scripts-yarn3": "^4.0.0",
+    "@xylabs/tsconfig": "^4.0.0",
+    "@xylabs/tsconfig-dom": "^4.0.0",
     "typescript": "^5.5.4"
   },
   "engines": {
@@ -49,12 +56,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/xylabs/sdk-js.git"
-  },
-  "sideEffects": false,
-  "version": "4.0.2",
-  "type": "module"
+  }
 }

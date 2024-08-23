@@ -1,19 +1,30 @@
 {
-  "license": "LGPL-3.0-only",
   "name": "@xylabs/sdk-js",
+  "version": "4.0.2",
+  "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
+  "keywords": [
+    "xylabs",
+    "utility",
+    "typescript",
+    "esm"
+  ],
+  "homepage": "https://xylabs.com",
+  "bugs": {
+    "url": "git+https://github.com/xylabs/sdk-js/issues",
+    "email": "support@xylabs.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xylabs/sdk-js.git"
+  },
+  "license": "LGPL-3.0-only",
   "author": {
-    "email": "support@xylabs.com",
     "name": "XY Labs Development Team",
+    "email": "support@xylabs.com",
     "url": "https://xylabs.com"
   },
-  "bugs": {
-    "email": "support@xylabs.com",
-    "url": "git+https://github.com/xylabs/sdk-js/issues"
-  },
-  "workspaces": [
-    "packages/**/*"
-  ],
-  "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
+  "sideEffects": false,
+  "type": "module",
   "exports": {
     ".": {
       "types": "./dist/neutral/index.d.ts",
@@ -21,15 +32,14 @@
     },
     "./package.json": "./package.json"
   },
-  "types": "./dist/neutral/index.d.ts",
   "module": "./dist/neutral/index.mjs",
-  "homepage": "https://xylabs.com",
-  "keywords": [
-    "xylabs",
-    "utility",
-    "typescript",
-    "esm"
+  "types": "./dist/neutral/index.d.ts",
+  "workspaces": [
+    "packages/**/*"
   ],
+  "scripts": {
+    "build-typedoc-site": "xy gen-docs @xylabs/sdk-js"
+  },
   "dependencies": {
     "@xylabs/api": "workspace:^",
     "@xylabs/array": "workspace:^",
@@ -60,53 +70,38 @@
     "@stylistic/eslint-plugin": "^2.6.4",
     "@types/jest": "^29.5.12",
     "@types/supertest": "^6.0.2",
-    "@typescript-eslint/eslint-plugin": "^8.1.0",
-    "@typescript-eslint/parser": "^8.1.0",
-    "@xylabs/config": "^4.0.0-rc.15",
-    "@xylabs/eslint-config-flat": "^4.0.0-rc.15",
-    "@xylabs/ts-scripts-yarn3": "^4.0.0-rc.15",
-    "@xylabs/tsconfig": "^4.0.0-rc.15",
-    "@xylabs/tsconfig-jest": "^4.0.0-rc.15",
-    "babel-jest": "^29.7.0",
+    "@typescript-eslint/eslint-plugin": "^8.2.0",
+    "@typescript-eslint/parser": "^8.2.0",
+    "@xylabs/config": "^4.0.0",
+    "@xylabs/eslint-config-flat": "^4.0.0",
+    "@xylabs/ts-scripts-yarn3": "^4.0.0",
+    "@xylabs/tsconfig": "^4.0.0",
+    "@xylabs/tsconfig-jest": "^4.0.0",
     "dotenv": "^16.4.5",
     "eslint": "^9.9.0",
     "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "jest-extended": "^4.0.2",
     "jest-sorted": "^1.0.15",
     "reflect-metadata": "^0.2.2",
     "supertest": "^7.0.0",
-    "ts-jest": "^29.2.4",
-    "ts-node": "^10.9.2",
     "tslib": "^2.6.3",
-    "typedoc": "^0.26.5",
+    "typedoc": "^0.26.6",
     "typescript": "^5.5.4",
     "vitest": "^2.0.5"
   },
-  "resolutions": {
-    "rimraf": "^5"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/xylabs/sdk-js.git"
-  },
-  "sideEffects": false,
   "packageManager": "yarn@4.4.0",
   "engines": {
     "node": ">=18.17.1"
-  },
-  "scripts": {
-    "build-typedoc-site": "xy gen-docs @xylabs/sdk-js"
   },
   "engineStrict": true,
   "volta": {
     "node": "22.3.0",
     "yarn": "1.22.19"
   },
-  "version": "4.0.2",
-  "type": "module"
+  "publishConfig": {
+    "access": "public"
+  }
 }

@@ -1,29 +1,31 @@
 {
   "name": "@xylabs/axios",
+  "version": "4.0.2",
+  "description": "Primary SDK for using XYO Protocol 2.0",
+  "keywords": [
+    "axios",
+    "xylabs",
+    "utility",
+    "typescript",
+    "esm"
+  ],
+  "homepage": "https://xyo.network",
+  "bugs": {
+    "url": "git+https://github.com/XYOracleNetwork/sdk-xyo-client-js/issues",
+    "email": "support@xyo.network"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XYOracleNetwork/sdk-xyo-client-js.git"
+  },
+  "license": "LGPL-3.0-only",
   "author": {
-    "email": "support@xylabs.com",
     "name": "XY Labs Development Team",
+    "email": "support@xylabs.com",
     "url": "https://xylabs.com"
   },
-  "bugs": {
-    "email": "support@xyo.network",
-    "url": "git+https://github.com/XYOracleNetwork/sdk-xyo-client-js/issues"
-  },
-  "dependencies": {
-    "@types/pako": "^2.0.3",
-    "@xylabs/logger": "workspace:^",
-    "axios": "^1.7.4",
-    "pako": "^2.1.0"
-  },
-  "description": "Primary SDK for using XYO Protocol 2.0",
-  "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^4.0.0-rc.15",
-    "@xylabs/tsconfig": "^4.0.0-rc.15",
-    "typescript": "^5.5.4"
-  },
-  "engines": {
-    "node": ">=18"
-  },
+  "sideEffects": false,
+  "type": "module",
   "exports": {
     ".": {
       "types": "./dist/neutral/index.d.ts",
@@ -33,23 +35,21 @@
   },
   "module": "dist/neutral/index.mjs",
   "types": "dist/neutral/index.d.ts",
-  "homepage": "https://xyo.network",
-  "license": "LGPL-3.0-only",
+  "dependencies": {
+    "@types/pako": "^2.0.3",
+    "@xylabs/logger": "workspace:^",
+    "axios": "^1.7.4",
+    "pako": "^2.1.0"
+  },
+  "devDependencies": {
+    "@xylabs/ts-scripts-yarn3": "^4.0.0",
+    "@xylabs/tsconfig": "^4.0.0",
+    "typescript": "^5.5.4"
+  },
+  "engines": {
+    "node": ">=18"
+  },
   "publishConfig": {
     "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/XYOracleNetwork/sdk-xyo-client-js.git"
-  },
-  "keywords": [
-    "axios",
-    "xylabs",
-    "utility",
-    "typescript",
-    "esm"
-  ],
-  "sideEffects": false,
-  "version": "4.0.2",
-  "type": "module"
+  }
 }

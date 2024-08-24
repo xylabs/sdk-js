@@ -34,8 +34,8 @@
     "@xylabs/promise": "^4.0.3"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^4.0.0",
-    "@xylabs/tsconfig": "^4.0.0",
+    "@xylabs/ts-scripts-yarn3": "^4.0.7",
+    "@xylabs/tsconfig": "^4.0.7",
     "typescript": "^5.5.4"
   },
   "publishConfig": {

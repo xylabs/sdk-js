@@ -31,19 +31,21 @@ export const ForgetPromise = {
    * @param promise The promise to forget
    * @param config Configuration of forget settings
    */
-  forget<T>(promise: Promise<T>, config?: ForgetTimeoutConfig) {
+  forget<T>(promise: Promise<T>, onComplete?: (result: [T | undefined, Error | undefined]) => void, config?: ForgetTimeoutConfig) {
     let completed = false
     this.activeForgets++
 
     const promiseWrapper = async () => {
       await promise
-        .then(() => {
+        .then((result: T) => {
           this.activeForgets--
           completed = true
+          onComplete?.([result, undefined])
         })
-        .catch(() => {
+        .catch((error) => {
           this.activeForgets--
           completed = true
+          onComplete?.([undefined, error])
         })
     }
 
@@ -74,6 +76,6 @@ export const ForgetPromise = {
 }
 
 // used to explicitly launch an async function (or Promise) with awaiting it
-export const forget = (promise: Promise<unknown>, timeout?: ForgetTimeoutConfig) => {
-  ForgetPromise.forget(promise, timeout)
+export const forget = <T>(promise: Promise<T>, onComplete?: (result: [T | undefined, Error | undefined]) => void, timeout?: ForgetTimeoutConfig) => {
+  ForgetPromise.forget<T>(promise, onComplete, timeout)
 }

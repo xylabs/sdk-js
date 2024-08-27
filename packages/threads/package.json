@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/threads",
-  "version": "4.0.6",
+  "version": "4.0.7",
   "description": "Web workers & worker threads as simple as a function call",
   "license": "MIT",
   "main": "dist/index.js",
@@ -107,7 +107,7 @@
     "puppet-run": "^0.11.4",
     "puppet-run-plugin-mocha": "^0.1.1",
     "raw-loader": "^4.0.2",
-    "rimraf": "^5",
+    "rimraf": "^5.0.10",
     "rollup": "^4.21.1",
     "threads-plugin": "^1.4.0",
     "tiny-worker": "^2.3.0",

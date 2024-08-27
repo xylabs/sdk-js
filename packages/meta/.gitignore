@@ -1,0 +1,16 @@
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+*.log
+*.tsconfig.*
+.DS_Store
+.eslintcache
+.pnp.*
+.rollup.cache
+.yarn/*
+bin
+dist
+docs
+node_modules

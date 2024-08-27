@@ -34,6 +34,6 @@ export class IdLogger implements Logger {
   }
 
   private prefix() {
-    return `[${this._id?.()}}]`
+    return `[${this._id?.()}]`
   }
 }

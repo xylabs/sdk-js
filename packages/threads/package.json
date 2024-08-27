@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/threads",
-  "version": "4.0.5",
+  "version": "4.0.6",
   "description": "Web workers & worker threads as simple as a function call",
   "license": "MIT",
   "main": "dist/index.js",
@@ -93,7 +93,7 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-node-resolve": "^15.2.3",
-    "@types/chai": "^4.3.18",
+    "@types/chai": "^4.3.19",
     "@types/debug": "^4.1.12",
     "@types/execa": "^2.0.0",
     "@types/node": "^22.5.0",
@@ -107,8 +107,8 @@
     "puppet-run": "^0.11.4",
     "puppet-run-plugin-mocha": "^0.1.1",
     "raw-loader": "^4.0.2",
-    "rimraf": "^5.0.10",
-    "rollup": "^4.21.0",
+    "rimraf": "^5",
+    "rollup": "^4.21.1",
     "threads-plugin": "^1.4.0",
     "tiny-worker": "^2.3.0",
     "ts-loader": "^9.5.1",

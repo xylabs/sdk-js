@@ -1,1 +1,2 @@
-export * from '@bitauth/libauth-1-19-1'
+/** @deprecated use actual libauth instead */
+export const libauth = 1

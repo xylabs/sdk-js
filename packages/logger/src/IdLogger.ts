@@ -1,4 +1,3 @@
-import { getFunctionName } from './getFunctionName.ts'
 import type { Logger } from './Logger.ts'
 
 export class IdLogger implements Logger {
@@ -35,6 +34,6 @@ export class IdLogger implements Logger {
   }
 
   private prefix() {
-    return `[${this._id?.()}|${getFunctionName(4)}]`
+    return `[${this._id?.()}}]`
   }
 }

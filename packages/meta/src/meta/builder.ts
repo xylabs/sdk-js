@@ -43,7 +43,7 @@ export const metaBuilder = (html: string, meta: Meta) => {
     addMetaToHead($, 'description', meta.description)
   }
   if (meta.title) {
-    $('head > title').text(meta.title)
+    $('title').text(meta.title)
   }
   return $.html()
 }

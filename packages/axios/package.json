@@ -38,7 +38,7 @@
   "dependencies": {
     "@types/pako": "^2.0.3",
     "@xylabs/logger": "workspace:^",
-    "axios": "^1.7.5",
+    "axios": "^1.7.7",
     "pako": "^2.1.0"
   },
   "devDependencies": {

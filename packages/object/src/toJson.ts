@@ -2,11 +2,11 @@ import type {
   JsonArray, JsonObject, JsonValue,
 } from './JsonObject.ts'
 
-const toJsonArray = (value: unknown[], cycleList?: unknown[], maxDepth = 3): JsonArray => {
+export const toJsonArray = (value: unknown[], cycleList?: unknown[], maxDepth = 3): JsonArray => {
   return value.map(item => toJsonValue(item, cycleList, maxDepth))
 }
 
-const toJsonObject = (value: object, cycleList?: unknown[], maxDepth = 3): JsonObject => {
+export const toJsonObject = (value: object, cycleList?: unknown[], maxDepth = 3): JsonObject => {
   const result: JsonObject = {}
   for (const [key, entry] of Object.entries(value)) {
     result[key] = value === undefined ? '[Undefined]' : toJsonValue(entry, cycleList, maxDepth)
@@ -14,7 +14,7 @@ const toJsonObject = (value: object, cycleList?: unknown[], maxDepth = 3): JsonO
   return result
 }
 
-const toJsonValue = (value: unknown, cycleList?: unknown[], maxDepth = 3): JsonValue => {
+export const toJsonValue = (value: unknown, cycleList?: unknown[], maxDepth = 3): JsonValue => {
   if (maxDepth <= 0 && typeof value === 'object') {
     return '[MaxDepth]'
   }

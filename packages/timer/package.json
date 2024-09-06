@@ -40,7 +40,7 @@
     "@xylabs/assert": "workspace:^"
   },
   "devDependencies": {
-    "@types/node": "^22.5.0",
+    "@types/node": "^22.5.4",
     "@xylabs/ts-scripts-yarn3": "^4.0.7",
     "@xylabs/tsconfig": "^4.0.7",
     "typescript": "^5.5.4"

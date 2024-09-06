@@ -35,7 +35,7 @@
   "module": "dist/neutral/index.mjs",
   "types": "dist/neutral/index.d.ts",
   "dependencies": {
-    "@scure/base": "^1.1.7",
+    "@scure/base": "^1.1.8",
     "@xylabs/assert": "workspace:^",
     "@xylabs/lodash": "^4.0.9",
     "@xylabs/typeof": "workspace:^"

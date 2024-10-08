@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/arraybuffer",
-  "version": "4.0.10",
+  "version": "4.1.0",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "xylabs",
@@ -37,7 +37,7 @@
   "dependencies": {
     "@scure/base": "^1.1.9",
     "@xylabs/assert": "workspace:^",
-    "@xylabs/lodash": "^4.0.10",
+    "@xylabs/lodash": "^4.1.0",
     "@xylabs/typeof": "workspace:^"
   },
   "devDependencies": {

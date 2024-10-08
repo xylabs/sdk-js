@@ -9,7 +9,7 @@ describe('forget', () => {
     })
   })
   describe('with types', () => {
-    const cases = [
+    const cases: Promise<unknown>[] = [
       Promise.resolve(1),
       Promise.resolve({ a: 1 }),
       Promise.resolve('resolved'),
@@ -23,13 +23,13 @@ describe('forget', () => {
   })
   test('checking happy path', async () => {
     let cancelled = false
-    forget(delay(100), { cancel: () => (cancelled = true), delay: 200 })
+    forget(delay(100), undefined, { cancel: () => (cancelled = true), delay: 200 })
     await delay(300)
     expect(cancelled).toBeFalsy()
   })
   test('checking unhappy path', async () => {
     let cancelled = false
-    forget(delay(200), { cancel: () => (cancelled = true), delay: 100 })
+    forget(delay(200), undefined, { cancel: () => (cancelled = true), delay: 100 })
     await delay(300)
     expect(cancelled).toBeTruthy()
   })

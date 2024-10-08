@@ -31,7 +31,7 @@ describe('threads in browser', function () {
   })
 
   it('can spawn and use a blob worker', async function () {
-    const baseUrl = new URL(window.location.href).origin
+    const baseUrl = new URL(globalThis.location.href).origin
     const workerSource = `
       // Makes expose() available on global scope
       importScripts(${JSON.stringify(baseUrl + '/worker.js')})

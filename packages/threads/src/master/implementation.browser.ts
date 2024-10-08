@@ -51,12 +51,12 @@ function selectWorkerImplementation(): ImplementationExport {
 
   class BlobWorker extends WebWorker {
     constructor(blob: Blob, options?: ThreadsWorkerOptions) {
-      const url = window.URL.createObjectURL(blob)
+      const url = globalThis.URL.createObjectURL(blob)
       super(url, options)
     }
 
     static fromText(source: string, options?: ThreadsWorkerOptions): WebWorker {
-      const blob = new window.Blob([source], { type: 'text/javascript' })
+      const blob = new globalThis.Blob([source], { type: 'text/javascript' })
       return new BlobWorker(blob, options)
     }
   }
@@ -77,6 +77,6 @@ export function getWorkerImplementation(): ImplementationExport {
 }
 
 export function isWorkerRuntime() {
-  const isWindowContext = typeof self !== 'undefined' && typeof Window !== 'undefined' && self instanceof Window
-  return typeof self !== 'undefined' && self['postMessage'] && !isWindowContext ? true : false
+  const isWindowContext = typeof globalThis !== 'undefined' && typeof Window !== 'undefined' && globalThis instanceof Window
+  return typeof globalThis !== 'undefined' && self['postMessage'] && !isWindowContext ? true : false
 }

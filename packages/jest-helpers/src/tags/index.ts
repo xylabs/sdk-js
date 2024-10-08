@@ -9,7 +9,6 @@ export function tags(...tagLabels: string[]) {
   const tagsParam = process.argv.indexOf('--tags')
   const passedTags = tagsParam > 0 ? process.argv[tagsParam + 1] : undefined
   const filter = matchFilter(passedTags)
-  const thisGlobal = global
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const chain: Record<string, any> = {}
@@ -22,13 +21,13 @@ export function tags(...tagLabels: string[]) {
   chain.itIf = filterMatch ? itIf : (_param: any) => it.skip
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   chain.testIf = filterMatch ? testIf : (_param: any) => test.skip
-  chain.describe = filterMatch ? thisGlobal.describe : thisGlobal.xdescribe
-  chain.it = filterMatch ? thisGlobal.it : thisGlobal.xit
-  chain.test = filterMatch ? thisGlobal.test : thisGlobal.xtest
-  chain.test.only = thisGlobal.test.only
-  chain.test.skip = thisGlobal.test.skip
-  chain.xtest = thisGlobal.xtest
-  chain.xit = thisGlobal.xit
+  chain.describe = filterMatch ? globalThis.describe : globalThis.xdescribe
+  chain.it = filterMatch ? globalThis.it : globalThis.xit
+  chain.test = filterMatch ? globalThis.test : globalThis.xtest
+  chain.test.only = globalThis.test.only
+  chain.test.skip = globalThis.test.skip
+  chain.xtest = globalThis.xtest
+  chain.xit = globalThis.xit
 
   return chain
 }

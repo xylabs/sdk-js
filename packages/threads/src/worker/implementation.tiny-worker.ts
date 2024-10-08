@@ -14,10 +14,10 @@ interface WorkerGlobalScope {
 declare const self: WorkerGlobalScope
 try {
   if (self === undefined) {
-    ;(global as any).self = global
+    ;(globalThis as any).self = globalThis
   }
 } catch {
-  ;(global as any).self = global
+  ;(globalThis as any).self = globalThis
 }
 
 const isWorkerRuntime: AbstractedWorkerAPI['isWorkerRuntime'] = function isWorkerRuntime() {

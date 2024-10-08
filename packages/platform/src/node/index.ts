@@ -7,10 +7,3 @@ export const isBrowser = () => {
 export const isWebworker = () => {
   return false
 }
-
-export const getGlobal = <T extends object>() =>
-  isBrowser()
-    ? (window as unknown as T)
-    : isWebworker()
-      ? (self as unknown as T)
-      : globalThis

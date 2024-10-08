@@ -40,16 +40,15 @@
   "module": "./dist/node/index.mjs",
   "types": "./dist/node/index.d.ts",
   "dependencies": {
-    "@xylabs/platform": "workspace:^",
     "crypto-js": "^4.2.0"
   },
   "devDependencies": {
     "@types/crypto-js": "^4.2.2",
-    "@types/node": "^22.5.4",
-    "@xylabs/ts-scripts-yarn3": "^4.0.7",
-    "@xylabs/tsconfig": "^4.0.7",
-    "@xylabs/tsconfig-dom": "^4.0.7",
-    "typescript": "^5.5.4"
+    "@types/node": "^22.7.5",
+    "@xylabs/ts-scripts-yarn3": "^4.1.0",
+    "@xylabs/tsconfig": "^4.1.0",
+    "@xylabs/tsconfig-dom": "^4.1.0",
+    "typescript": "^5.6.2"
   },
   "engines": {
     "node": ">=18"

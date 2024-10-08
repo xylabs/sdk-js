@@ -202,7 +202,7 @@ export function expose(exposed: WorkerFunction | WorkerModule<any>) {
   })
 }
 
-if (typeof self !== 'undefined' && typeof self.addEventListener === 'function' && Implementation.isWorkerRuntime()) {
+if (typeof globalThis !== 'undefined' && typeof self.addEventListener === 'function' && Implementation.isWorkerRuntime()) {
   self.addEventListener('error', (event) => {
     // Post with some delay, so the master had some time to subscribe to messages
     setTimeout(() => postUncaughtErrorMessage(event.error || event), 250)

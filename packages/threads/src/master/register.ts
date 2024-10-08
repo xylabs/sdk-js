@@ -3,8 +3,8 @@ import { Worker as WorkerImplementation } from './index'
 
 declare const window: any
 
-if (typeof global !== 'undefined') {
-  ;(global as any).Worker = WorkerImplementation
+if (typeof globalThis !== 'undefined') {
+  ;(globalThis as any).Worker = WorkerImplementation
 } else if (window !== undefined) {
   ;(window as any).Worker = WorkerImplementation
 }

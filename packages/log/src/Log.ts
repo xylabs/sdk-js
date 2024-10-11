@@ -1,10 +1,10 @@
-import Rollbar from 'rollbar'
+import type Rollbar from 'rollbar'
 
 export interface LogConfig {
   commitHash?: string
   devMode?: boolean
   payload?: Record<string, unknown>
-  rollbarToken?: string
+  rollbar?: Rollbar
 }
 
 export class Log {
@@ -13,30 +13,7 @@ export class Log {
 
   constructor(config: LogConfig) {
     this.devMode = config.devMode ?? false
-
-    if (config.rollbarToken) {
-      this.rollbar = new Rollbar({
-        accessToken: config.rollbarToken,
-        captureUncaught: true,
-        captureUnhandledRejections: true,
-        codeVersion: config.commitHash,
-        code_version: config.commitHash,
-        payload: {
-          client: {
-            javascript: {
-              code_version: config.commitHash,
-              guess_uncaught_frames: true,
-              source_map_enabled: true,
-            },
-          },
-          codeVersion: config.commitHash,
-          code_version: config.commitHash,
-          environment: this.devMode ? 'development' : 'production',
-          ...config.payload,
-        },
-        sendConfig: true,
-      })
-    }
+    this.rollbar = config.rollbar
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

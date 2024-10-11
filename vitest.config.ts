@@ -10,4 +10,5 @@ export default defineConfig({
     include: ['**/*.{spec,spec}.?(c|m)[jt]s?(x)'],
     setupFiles: ['./vitest.startup.ts'],
   },
+  resolve: { alias: { rollbar: 'rollbar/dist/rollbar.js' } },
 })

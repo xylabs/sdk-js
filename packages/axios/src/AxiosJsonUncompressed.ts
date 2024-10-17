@@ -1,16 +1,15 @@
 import type { Logger } from '@xylabs/logger'
 import type { AxiosResponse, RawAxiosRequestConfig } from 'axios'
 import { Axios, AxiosHeaders } from 'axios'
-import { gzip } from 'pako'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type RawAxiosJsonRequestConfig<D = any> = RawAxiosRequestConfig<D> & { compressLength?: number }
+export type RawAxiosJsonRequestUncompressedConfig<D = any> = RawAxiosRequestConfig<D>
 
-export class AxiosJson extends Axios {
+export class AxiosJsonUncompressed extends Axios {
   static defaultLogger?: Logger
 
-  constructor(config?: RawAxiosJsonRequestConfig) {
-    super(AxiosJson.axiosConfig(config))
+  constructor(config?: RawAxiosJsonRequestUncompressedConfig) {
+    super(AxiosJsonUncompressed.axiosConfig(config))
   }
 
   static finalPath(response: AxiosResponse) {
@@ -25,18 +24,12 @@ export class AxiosJson extends Axios {
     }
   }
 
-  private static axiosConfig({
- compressLength, headers, ...config
-}: RawAxiosJsonRequestConfig = {}): RawAxiosJsonRequestConfig {
+  private static axiosConfig({ headers, ...config }: RawAxiosJsonRequestUncompressedConfig = {}): RawAxiosJsonRequestUncompressedConfig {
     return {
       headers: this.buildHeaders(headers),
-      transformRequest: (data, headers) => {
+      transformRequest: (data) => {
         const json = JSON.stringify(data)
-        if (headers && data && json.length > (compressLength ?? 1024)) {
-          headers['Content-Encoding'] = 'gzip'
-          return gzip(json).buffer
-        }
-        return json
+        return JSON.stringify(json)
       },
       transformResponse: (data) => {
         try {
@@ -49,7 +42,7 @@ export class AxiosJson extends Axios {
     }
   }
 
-  private static buildHeaders(headers: RawAxiosJsonRequestConfig['headers']) {
+  private static buildHeaders(headers: RawAxiosJsonRequestUncompressedConfig['headers']) {
     const axiosHeaders = new AxiosHeaders()
     axiosHeaders.set('Accept', 'application/json, text/plain, *.*')
     axiosHeaders.set('Content-Type', 'application/json')

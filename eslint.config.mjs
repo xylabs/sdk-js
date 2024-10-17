@@ -20,5 +20,21 @@ export default [
       ...typescriptConfig.rules,
       '@typescript-eslint/consistent-type-imports': ['warn']
     },
-  }
+  },
+  {
+    rules: {
+      'no-restricted-imports': [
+        'warn',
+        {
+          paths: [
+            ...rulesConfig.rules['no-restricted-imports'][1].paths,
+            '@xyo-network/*',
+            'lodash',
+            'lodash-es',
+            '@xylabs/lodash',
+          ],
+        },
+      ],
+    },
+  },
 ]

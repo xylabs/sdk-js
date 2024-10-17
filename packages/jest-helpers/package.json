@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/jest-helpers",
-  "version": "4.2.0",
+  "version": "4.2.1",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "jest",
@@ -36,8 +36,8 @@
   "module": "./dist/neutral/index.mjs",
   "types": "./dist/neutral/index.d.ts",
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^4.2.0",
-    "@xylabs/tsconfig": "^4.2.0",
+    "@xylabs/ts-scripts-yarn3": "^4.2.1",
+    "@xylabs/tsconfig": "^4.2.1",
     "jest": "^29.7.0",
     "typescript": "^5.6.3"
   },

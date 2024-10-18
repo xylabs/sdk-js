@@ -47,7 +47,7 @@
     "@xylabs/axios": "workspace:^",
     "@xylabs/crypto": "workspace:^",
     "@xylabs/decimal-precision": "workspace:^",
-    "@xylabs/delay": "workspace:^",
+    "@xylabs/delay": "2.6.4",
     "@xylabs/error": "workspace:^",
     "@xylabs/eth-address": "workspace:^",
     "@xylabs/exists": "workspace:^",
@@ -60,11 +60,11 @@
     "@xylabs/platform": "workspace:^",
     "@xylabs/profile": "workspace:^",
     "@xylabs/promise": "workspace:^",
-    "@xylabs/retry": "workspace:^",
+    "@xylabs/retry": "2.13.27",
     "@xylabs/set": "workspace:^",
     "@xylabs/static-implements": "workspace:^",
     "@xylabs/timer": "workspace:^",
-    "@xylabs/url": "workspace:^"
+    "@xylabs/url": "2.9.2"
   },
   "devDependencies": {
     "@stylistic/eslint-plugin": "^2.9.0",

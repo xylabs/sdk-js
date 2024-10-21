@@ -18,7 +18,15 @@ import type {
   ImplementationExport, ThreadsWorkerOptions, WorkerImplementation,
 } from '../types/master'
 
+interface WorkerGlobalScope {
+  addEventListener(eventName: string, listener: (event: Event) => void): void
+  postMessage(message: any, transferables?: any[]): void
+  removeEventListener(eventName: string, listener: (event: Event) => void): void
+}
+
 declare const __non_webpack_require__: typeof require
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+declare const self: WorkerGlobalScope
 
 let tsNodeAvailable: boolean | undefined
 

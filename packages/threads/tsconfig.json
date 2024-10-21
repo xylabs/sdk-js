@@ -19,7 +19,6 @@
     "./src/observable.ts",
     "./src/master/*",
     "./src/worker/*",
-    "./types/tiny-worker.d.ts",
     "./types/is-observable.d.ts"
 , "src/types.d.ts"  ]
 }

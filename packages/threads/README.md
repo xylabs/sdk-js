@@ -11,7 +11,7 @@
 
 Offload CPU-intensive tasks to worker threads in node.js, web browsers and electron using one uniform API.
 
-Uses web workers in the browser, `worker_threads` in node 12+ and [`tiny-worker`](https://github.com/avoidwork/tiny-worker) in node 8 to 11.
+Uses web workers in the browser and `worker_threads` in node 12+
 
 ### Features
 
@@ -28,10 +28,8 @@ You can find the old version 0.12 of threads.js on the [`v0` branch](https://git
 ## Installation
 
 ```
-npm install threads tiny-worker
+npm install threads
 ```
-
-*You only need to install the `tiny-worker` package to support node.js < 12. It's an optional dependency and used as a fallback if `worker_threads` are not available.*
 
 ## Platform support
 
@@ -72,22 +70,6 @@ Then add it to your `webpack.config.js`:
     // ...
   }
 ```
-
-#### Node.js bundles
-
-If you are using webpack to create a bundle that will be run in node (webpack config `target: "node"`), you also need to specify that the `tiny-worker` package used for node < 12 should not be bundled:
-
-```diff
-  module.exports = {
-    // ...
-+   externals: {
-+     "tiny-worker": "tiny-worker"
-+   }
-    // ...
-}
-```
-
-Make sure that `tiny-worker` is listed in your `package.json` `dependencies` in that case.
 
 #### When using TypeScript
 

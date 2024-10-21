@@ -1,16 +1,12 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
 /* eslint-disable import-x/no-internal-modules */
 /* eslint-disable unicorn/no-process-exit */
 /* eslint-disable unicorn/prefer-logical-operator-over-ternary */
 /* eslint-disable unicorn/prefer-regexp-test */
 
-/* eslint-disable unicorn/prefer-add-event-listener */
-/* eslint-disable unicorn/prefer-event-target */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable unicorn/text-encoding-identifier-case */
 /// <reference lib="dom" />
 
-import { EventEmitter } from 'node:events'
 import { cpus } from 'node:os'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -22,16 +18,7 @@ import type {
   ImplementationExport, ThreadsWorkerOptions, WorkerImplementation,
 } from '../types/master'
 
-interface WorkerGlobalScope {
-  addEventListener(eventName: string, listener: (event: Event) => void): void
-  postMessage(message: any, transferables?: any[]): void
-  removeEventListener(eventName: string, listener: (event: Event) => void): void
-}
-
 declare const __non_webpack_require__: typeof require
-declare const self: WorkerGlobalScope
-
-type WorkerEventName = 'error' | 'message'
 
 let tsNodeAvailable: boolean | undefined
 
@@ -167,100 +154,14 @@ function initWorkerThreadsWorker(): ImplementationExport {
   }
 }
 
-function initTinyWorker(): ImplementationExport {
-  const TinyWorker = require('tiny-worker')
-
-  let allWorkers: Array<typeof TinyWorker> = []
-
-  class Worker extends TinyWorker {
-    private emitter: EventEmitter
-
-    constructor(scriptPath: string, options?: ThreadsWorkerOptions & { fromSource?: boolean }) {
-      // Need to apply a work-around for Windows or it will choke upon the absolute path
-      // (`Error [ERR_INVALID_PROTOCOL]: Protocol 'c:' not supported`)
-      const resolvedScriptPath
-        = options && options.fromSource
-          ? null
-          : process.platform === 'win32'
-            ? `file:///${resolveScriptPath(scriptPath).replaceAll('\\', '/')}`
-            : resolveScriptPath(scriptPath)
-
-      if (!resolvedScriptPath) {
-        // `options.fromSource` is true
-        const sourceCode = scriptPath
-        super(new Function(sourceCode), [], { esm: true })
-      } else if (/\.tsx?$/i.test(resolvedScriptPath) && detectTsNode()) {
-        super(new Function(createTsNodeModule(resolveScriptPath(scriptPath))), [], { esm: true })
-      } else if (/\.asar[/\\]/.test(resolvedScriptPath)) {
-        // See <https://github.com/andywer/threads-plugin/issues/17>
-        super(resolvedScriptPath.replace(/\.asar([/\\])/, '.asar.unpacked$1'), [], { esm: true })
-      } else {
-        super(resolvedScriptPath, [], { esm: true })
-      }
-
-      allWorkers.push(this)
-
-      this.emitter = new EventEmitter()
-      this.onerror = (error: Error) => this.emitter.emit('error', error)
-      this.onmessage = (message: MessageEvent) => this.emitter.emit('message', message)
-    }
-
-    addEventListener(eventName: WorkerEventName, listener: EventListener) {
-      this.emitter.addListener(eventName, listener)
-    }
-
-    removeEventListener(eventName: WorkerEventName, listener: EventListener) {
-      this.emitter.removeListener(eventName, listener)
-    }
-
-    terminate() {
-      allWorkers = allWorkers.filter(worker => worker !== this)
-      return super.terminate()
-    }
-  }
-
-  const terminateWorkersAndMaster = () => {
-    // we should terminate all workers and then gracefully shutdown self process
-    Promise.all(allWorkers.map(worker => worker.terminate())).then(
-      () => process.exit(0),
-      () => process.exit(1),
-    )
-    allWorkers = []
-  }
-
-  // Take care to not leave orphaned processes behind
-  // See <https://github.com/avoidwork/tiny-worker#faq>
-  process.on('SIGINT', () => terminateWorkersAndMaster())
-  process.on('SIGTERM', () => terminateWorkersAndMaster())
-
-  class BlobWorker extends Worker {
-    constructor(blob: Uint8Array, options?: ThreadsWorkerOptions) {
-      super(Buffer.from(blob).toString('utf-8'), { ...options, fromSource: true })
-    }
-
-    static fromText(source: string, options?: ThreadsWorkerOptions): WorkerImplementation {
-      return new Worker(source, { ...options, fromSource: true }) as any
-    }
-  }
-
-  return {
-    blob: BlobWorker as any,
-    default: Worker as any,
-  }
-}
-
 let implementation: ImplementationExport
-let isTinyWorker: boolean
 
 function selectWorkerImplementation(): ImplementationExport {
   try {
-    isTinyWorker = false
     return initWorkerThreadsWorker()
   } catch {
     // tslint:disable-next-line no-console
-    console.debug('Node worker_threads not available. Trying to fall back to tiny-worker polyfill...')
-    isTinyWorker = true
-    return initTinyWorker()
+    throw new Error('Node worker_threads not available...')
   }
 }
 
@@ -272,14 +173,10 @@ export function getWorkerImplementation(): ImplementationExport {
 }
 
 export function isWorkerRuntime() {
-  if (isTinyWorker) {
-    return self !== undefined && self['postMessage'] ? true : false
-  } else {
-    // Webpack hack
-    const isMainThread
-      = typeof __non_webpack_require__ === 'function'
-        ? __non_webpack_require__('worker_threads').isMainThread
-        : eval('require')('worker_threads').isMainThread
-    return !isMainThread
-  }
+  // Webpack hack
+  const isMainThread
+    = typeof __non_webpack_require__ === 'function'
+      ? __non_webpack_require__('worker_threads').isMainThread
+      : eval('require')('worker_threads').isMainThread
+  return !isMainThread
 }

@@ -6,7 +6,6 @@ module.exports = {
   context: __dirname,
   devtool: false,
   entry: require.resolve('./app.ts'),
-  externals: { 'tiny-worker': 'tiny-worker' },
   mode: 'development',
   module: {
     rules: [

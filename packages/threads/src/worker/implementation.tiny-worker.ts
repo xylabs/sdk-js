@@ -34,8 +34,6 @@ const messageHandlers = new Set<(data: any) => void>()
 
 const subscribeToMasterMessages: AbstractedWorkerAPI['subscribeToMasterMessages'] = function subscribeToMasterMessages(onMessage) {
   if (!muxingHandlerSetUp) {
-    // We have one multiplexing message handler as tiny-worker's
-    // addEventListener() only allows you to set a single message handler
     self.addEventListener('message', ((event: MessageEvent) => {
       for (const handler of messageHandlers) handler(event.data)
     }) as EventListener)

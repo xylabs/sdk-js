@@ -66,10 +66,10 @@ export type Thread = AnyFunctionThread | AnyModuleThread
 
 export type TransferList = Transferable[]
 
-/** Worker instance. Either a web worker or a node.js Worker provided by `worker_threads` or `tiny-worker`. */
+/** Worker instance. Either a web worker or a node.js Worker provided by `worker_threads`. */
 export interface Worker extends EventTarget {
   postMessage(value: any, transferList?: TransferList): void
-  /** In nodejs 10+ return type is Promise while with tiny-worker and in browser return type is void */
+  /** In nodejs 10+ return type is Promise while in browser return type is void */
   terminate(callback?: (error?: Error, exitCode?: number) => void): void | Promise<number>
 }
 export interface ThreadsWorkerOptions extends WorkerOptions {

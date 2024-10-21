@@ -6,7 +6,6 @@
 
 import type { AbstractedWorkerAPI } from '../types/worker'
 import WebWorkerImplementation from './implementation.browser'
-import TinyWorkerImplementation from './implementation.tiny-worker'
 import WorkerThreadsImplementation from './implementation.worker_threads'
 
 const runningInNode = typeof process !== 'undefined' && (process.arch as string) !== 'browser' && 'pid' in process
@@ -16,7 +15,7 @@ function selectNodeImplementation(): AbstractedWorkerAPI {
     WorkerThreadsImplementation.testImplementation()
     return WorkerThreadsImplementation
   } catch {
-    return TinyWorkerImplementation
+    throw new Error('No worker implementation available in this environment')
   }
 }
 

@@ -17,8 +17,8 @@
     "postbuild": "yarn bundle",
     "bundle": "rollup -c -f umd --file=bundle/worker.js --name=threads --silent -- dist/esm/worker/bundle-entry.js",
     "test": "yarn test:library && yarn test:tooling && yarn test:puppeteer:basic && yarn test:puppeteer:webpack",
-    "test:library": "cross-env TS_NODE_FILES=true ava ./test/**/*.test.ts",
-    "test:tooling": "cross-env TS_NODE_FILES=true ava ./test-tooling/**/*.test.ts",
+    "test:library": "cross-env TS_NODE_FILES=true vitest ./test/**/*.test.ts",
+    "test:tooling": "cross-env TS_NODE_FILES=true vitest ./test-tooling/**/*.test.ts",
     "test:puppeteer:basic": "puppet-run --plugin=mocha --bundle=./test/workers/:workers/ --serve=./bundle/worker.js:/worker.js ./test/*.chromium*.ts",
     "test:puppeteer:webpack": "puppet-run --serve ./test-tooling/webpack/dist/app.web/0.worker.js --serve ./test-tooling/webpack/dist/app.web/1.worker.js --plugin=mocha ./test-tooling/webpack/webpack.chromium.mocha.ts",
     "prepare": "yarn build-threads"

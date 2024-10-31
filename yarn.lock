@@ -3951,6 +3951,7 @@ __metadata:
     "@xylabs/tsconfig": "npm:^4.2.3"
     axios: "npm:^1.7.7"
     typescript: "npm:^5.6.3"
+    vitest: "npm:^2.1.4"
   languageName: unknown
   linkType: soft
 
@@ -3961,7 +3962,9 @@ __metadata:
     "@xylabs/exists": "workspace:^"
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.3"
     "@xylabs/tsconfig": "npm:^4.2.3"
+    "@xylabs/vitest-extended": "workspace:^"
     typescript: "npm:^5.6.3"
+    vitest: "npm:^2.1.4"
   languageName: unknown
   linkType: soft
 
@@ -4072,6 +4075,7 @@ __metadata:
     "@xylabs/tsconfig": "npm:^4.2.3"
     "@xylabs/tsconfig-dom": "npm:^4.2.3"
     typescript: "npm:^5.6.3"
+    vitest: "npm:^2.1.4"
   languageName: unknown
   linkType: soft
 
@@ -4113,9 +4117,9 @@ __metadata:
     "@xylabs/assert": "workspace:^"
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.3"
     "@xylabs/tsconfig": "npm:^4.2.3"
-    "@xylabs/tsconfig-jest": "npm:^4.1.0"
     ethers: "npm:^6.13.4"
     typescript: "npm:^5.6.3"
+    vitest: "npm:^2.1.4"
   languageName: unknown
   linkType: soft
 
@@ -4126,6 +4130,7 @@ __metadata:
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.3"
     "@xylabs/tsconfig": "npm:^4.2.3"
     typescript: "npm:^5.6.3"
+    vitest: "npm:^2.1.4"
   languageName: unknown
   linkType: soft
 
@@ -4149,6 +4154,7 @@ __metadata:
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.3"
     "@xylabs/tsconfig": "npm:^4.2.3"
     typescript: "npm:^5.6.3"
+    vitest: "npm:^2.1.4"
   languageName: unknown
   linkType: soft
 
@@ -4225,6 +4231,7 @@ __metadata:
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.3"
     "@xylabs/tsconfig": "npm:^4.2.3"
     typescript: "npm:^5.6.3"
+    vitest: "npm:^2.1.4"
   languageName: unknown
   linkType: soft
 
@@ -4268,6 +4275,7 @@ __metadata:
   dependencies:
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.3"
     "@xylabs/tsconfig": "npm:^4.2.3"
+    "@xylabs/vitest-extended": "workspace:^"
     typescript: "npm:^5.6.3"
     vitest: "npm:^2.1.4"
   languageName: unknown
@@ -4351,6 +4359,7 @@ __metadata:
     cheerio: "npm:^1.0.0"
     jest-serializer-html: "npm:^7.1.0"
     typescript: "npm:^5.6.3"
+    vitest: "npm:^2.1.4"
   languageName: unknown
   linkType: soft
 
@@ -4361,6 +4370,7 @@ __metadata:
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.3"
     "@xylabs/tsconfig": "npm:^4.2.3"
     typescript: "npm:^5.6.3"
+    vitest: "npm:^2.1.4"
   languageName: unknown
   linkType: soft
 
@@ -4370,6 +4380,7 @@ __metadata:
   dependencies:
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.3"
     "@xylabs/tsconfig": "npm:^4.2.3"
+    "@xylabs/vitest-extended": "workspace:^"
     typescript: "npm:^5.6.3"
     vitest: "npm:^2.1.4"
   languageName: unknown

@@ -1,3 +1,9 @@
+import '@xylabs/vitest-extended'
+
+import {
+  describe, expect, it,
+} from 'vitest'
+
 import { fulfilledValues } from '../fulfilledValues.ts'
 
 const getAllResolvedPromises = () => {

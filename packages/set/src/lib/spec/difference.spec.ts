@@ -1,3 +1,7 @@
+import {
+  describe, expect, test,
+} from 'vitest'
+
 import { difference } from '../difference.ts'
 
 const cases = [

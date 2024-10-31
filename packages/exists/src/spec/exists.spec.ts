@@ -1,3 +1,7 @@
+import {
+  describe, expect, it,
+} from 'vitest'
+
 import { exists } from '../index.ts'
 
 const filterableValues = [undefined, null]

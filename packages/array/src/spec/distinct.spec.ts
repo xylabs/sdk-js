@@ -1,3 +1,7 @@
+import {
+  describe, expect, it,
+} from 'vitest'
+
 import { distinct } from '../distinct.ts'
 
 describe('distinct', () => {

@@ -1,3 +1,7 @@
+import {
+  describe, expect, test,
+} from 'vitest'
+
 import { delay } from '../delay.ts'
 
 describe('delay', () => {

@@ -2,9 +2,9 @@ import { testIf } from '../testIf.ts'
 
 describe('testIf', () => {
   testIf(true)('should run', () => {
-    expect(true).toBeTrue()
+    expect(true).toBeTruthy()
   })
   testIf(false)('should not run', () => {
-    expect(true).toBeFalse()
+    expect(true).toBeFalsy()
   })
 })

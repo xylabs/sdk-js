@@ -21,4 +21,12 @@ declare module 'vitest' {
   interface Assertion<T = unknown> {
     toBeArrayOfSize(size: number): T
   }
+  interface expect {
+    toBeArrayOfSize(size: number): T
+    toBeFalse(): T
+    toBeFunction(): T
+    toBeNumber(): T
+    toBeString(): T
+    toBeTrue(): T
+  }
 }

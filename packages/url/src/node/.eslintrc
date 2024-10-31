@@ -1,5 +1,0 @@
-{
-  "rules": {
-    "import-x/no-nodejs-modules": ["off"]
-  }
-}

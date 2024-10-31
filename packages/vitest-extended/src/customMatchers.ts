@@ -13,7 +13,7 @@ function toBeType(received: unknown, expectedType: string) {
       }
 }
 
-const matchers = {
+export const matchers = {
   toBeArrayOfSize(received: unknown, expectedSize: number) {
     const pass = Array.isArray(received) && received.length === expectedSize
     return pass
@@ -57,5 +57,4 @@ const matchers = {
   },
 }
 
-// Extend Vitest's expect with jest-extended matchers
 expect.extend(matchers)

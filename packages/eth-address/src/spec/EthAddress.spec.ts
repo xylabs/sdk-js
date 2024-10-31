@@ -1,3 +1,7 @@
+import {
+  describe, expect, test,
+} from 'vitest'
+
 import { EthAddress } from '../EthAddress.ts'
 
 describe('EthAddress', () => {

@@ -1,3 +1,7 @@
+import {
+  describe, expect, test,
+} from 'vitest'
+
 import { intersection } from '../intersection.ts'
 
 const cases = [

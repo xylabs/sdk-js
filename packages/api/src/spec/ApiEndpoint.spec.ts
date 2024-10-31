@@ -1,3 +1,7 @@
+import {
+  describe, expect, test,
+} from 'vitest'
+
 import { ApiEndpoint } from '../ApiEndpoint.ts'
 
 describe('ApiEndpoint', () => {

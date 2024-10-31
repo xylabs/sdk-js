@@ -1,3 +1,7 @@
+import {
+  describe, expect, test,
+} from 'vitest'
+
 import { functionName } from '../functionName.ts'
 
 describe('Logger', () => {

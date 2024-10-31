@@ -1,3 +1,7 @@
+import {
+  describe, expect, test,
+} from 'vitest'
+
 import { IdLogger } from '../IdLogger.ts'
 import { ConsoleLogger } from '../Logger.ts'
 

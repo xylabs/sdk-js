@@ -1,3 +1,7 @@
+import {
+  describe, expect, test,
+} from 'vitest'
+
 import { Log } from '../Log.ts'
 
 describe('Log', () => {

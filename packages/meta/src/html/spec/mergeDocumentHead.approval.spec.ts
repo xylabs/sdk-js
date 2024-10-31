@@ -1,6 +1,11 @@
 import { readFile, writeFile } from 'node:fs/promises'
 import Path from 'node:path'
 
+import {
+  beforeAll,
+  describe, expect, it,
+} from 'vitest'
+
 import { mergeDocumentHead } from '../mergeDocumentHead.ts'
 
 const writeDebugFile = false

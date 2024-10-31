@@ -3,8 +3,4 @@ import { defineConfig } from 'vitest/config'
 
 dotenv.config()
 
-export default defineConfig({
-  test: {
-    globals: true, watch: false, setupFiles: './vitest.setup.ts',
-  },
-})
+export default defineConfig({ test: { globals: true, watch: false } })

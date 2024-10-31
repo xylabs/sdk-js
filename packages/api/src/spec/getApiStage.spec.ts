@@ -1,3 +1,7 @@
+import {
+  describe, expect, test,
+} from 'vitest'
+
 import { getApiStage } from '../getApiStage.ts'
 
 describe('getApiStage', () => {

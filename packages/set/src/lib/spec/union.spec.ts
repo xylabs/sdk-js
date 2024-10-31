@@ -1,5 +1,8 @@
-import { union } from '../union.ts'
+import {
+  describe, expect, test,
+} from 'vitest'
 
+import { union } from '../union.ts'
 const cases = [
   // Union is commutative
   [new Set([1, 2]), new Set([3, 4]), new Set([1, 2, 3, 4])],

@@ -1,3 +1,9 @@
+import '@xylabs/vitest-extended'
+
+import {
+  describe, expect, test,
+} from 'vitest'
+
 import { isHash } from '../hash.ts'
 import { hexFromNumber } from '../hex/index.ts'
 

@@ -1,3 +1,7 @@
+import {
+  describe, expect, it,
+} from 'vitest'
+
 import { staticImplements } from '../staticImplements.ts'
 
 interface StaticMethods {

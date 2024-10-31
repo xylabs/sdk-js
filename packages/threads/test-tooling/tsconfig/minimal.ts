@@ -5,7 +5,7 @@ import {
 } from '../..'
 
 async function main() {
-  const helloWorld = await spawn(new Worker('./workers/hello-world'))
+  const helloWorld = await spawn(new Worker('./workers/hello-world.ts'))
   await Thread.terminate(helloWorld)
 }
 

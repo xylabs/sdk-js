@@ -1,10 +1,15 @@
 import { delay } from '@xylabs/delay'
+import {
+  beforeAll,
+  describe, expect, it, test,
+  vi,
+} from 'vitest'
 
 import { forget, ForgetPromise } from '../forget.ts'
 
 describe('forget', () => {
   beforeAll(() => {
-    jest.spyOn(console, 'log').mockImplementation(() => {
+    vi.spyOn(console, 'log').mockImplementation(() => {
       // Stop expected logs from being logged
     })
   })

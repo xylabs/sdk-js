@@ -1,4 +1,7 @@
 {
+  "compilerOptions": {
+    "types": ["./vitest.customMatchers.d.ts"]
+  },
   "exclude": [".yarn", "./node_modules", "./**/node_modules", "./dist", "./**/dist", "./**/docs", ".*"],
-  "extends": "@xylabs/tsconfig",
+  "extends": "@xylabs/tsconfig"
 }

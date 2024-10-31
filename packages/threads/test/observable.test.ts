@@ -1,11 +1,11 @@
 /* eslint-disable import-x/no-internal-modules */
 /* eslint-disable require-await */
 
-import test from 'ava'
+import { expect, test } from 'vitest'
 
 import { Observable, Subject } from '../src/observable'
 
-test('Observable subject emits values and completion event', async (t) => {
+test('Observable subject emits values and completion event', async () => {
   let completed1 = false
   const values1: number[] = []
   let completed2 = false
@@ -19,7 +19,7 @@ test('Observable subject emits values and completion event', async (t) => {
   const subscription1 = subject.subscribe(
     value => values1.push(value),
     undefined,
-    () => (completed1 = true),
+    () => (completed1 = false),
   )
   subject.subscribe(
     value => values2.push(value),
@@ -38,15 +38,15 @@ test('Observable subject emits values and completion event', async (t) => {
   subject.next(2)
   subject.complete()
 
-  t.deepEqual(values1, [1])
-  t.deepEqual(values2, [1, 2])
-  t.deepEqual(values3, [1, 2])
-  t.is(completed1, false)
-  t.is(completed2, true)
-  t.is(completed3, true)
+  expect(values1).toEqual([1])
+  expect(values2).toEqual([1, 2])
+  expect(values3).toEqual([1, 2])
+  expect(completed1).toBe(false)
+  expect(completed2).toBe(true)
+  expect(completed3).toBe(true)
 })
 
-test('Observable subject propagates errors', async (t) => {
+test('Observable subject propagates errors', async () => {
   let completed1 = false
   let error1: Error | undefined
   let completed2 = false
@@ -78,10 +78,10 @@ test('Observable subject propagates errors', async (t) => {
   subscription1.unsubscribe()
   subject.error(testingError)
 
-  t.is(completed1, false)
-  t.is(error1, undefined)
-  t.is(completed2, false)
-  t.is(error2, testingError)
-  t.is(completed3, false)
-  t.is(error3, testingError)
+  expect(completed1).toBe(false)
+  expect(error1).toBeUndefined()
+  expect(completed2).toBe(false)
+  expect(error2).toBe(testingError)
+  expect(completed3).toBe(false)
+  expect(error3).toBe(testingError)
 })

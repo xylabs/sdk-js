@@ -9,7 +9,9 @@
 // the bundler would otherwise not recognize `new Worker()` as a web worker
 import '../src/master/register'
 
-import { expect } from 'chai'
+import {
+  describe, expect, it,
+} from 'vitest'
 
 import {
   BlobWorker, spawn, Thread,
@@ -17,13 +19,13 @@ import {
 
 describe('threads in browser', function () {
   it('can spawn and terminate a thread', async function () {
-    const helloWorld = await spawn<() => string>(new Worker('./workers/hello-world.js'))
+    const helloWorld = await spawn<() => string>(new Worker('./workers/hello-world.ts'))
     expect(await helloWorld()).to.equal('Hello World')
     await Thread.terminate(helloWorld)
   })
 
   it('can call a function thread more than once', async function () {
-    const increment = await spawn<() => number>(new Worker('./workers/increment.js'))
+    const increment = await spawn<() => number>(new Worker('./workers/increment.ts'))
     expect(await increment()).to.equal(1)
     expect(await increment()).to.equal(2)
     expect(await increment()).to.equal(3)

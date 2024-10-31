@@ -43,7 +43,7 @@
     "buffer": "^6.0.3"
   },
   "devDependencies": {
-    "@types/node": "^22.8.0",
+    "@types/node": "^22.8.4",
     "@xylabs/ts-scripts-yarn3": "^4.2.3",
     "@xylabs/tsconfig": "^4.2.3",
     "@xylabs/tsconfig-dom": "^4.2.3",

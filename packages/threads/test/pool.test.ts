@@ -4,18 +4,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 // eslint-disable import-x/no-internal-modules
-import test from 'ava'
+import { expect, test } from 'vitest'
 
+import type { FunctionThread } from '../src/index'
 import {
   Pool, spawn, Worker,
 } from '../src/index'
-import type { QueuedTask } from '../src/master/pool'
+import type { PoolEvent, QueuedTask } from '../src/master/pool'
 import { PoolEventType } from '../src/master/pool'
 
-const workerPath = './workers/hello-world'
+const workerPath = './workers/hello-world.ts'
 const HELLO_WORLD = 'Hello World'
 
-test.serial('thread pool basics work and events are emitted', async (t) => {
+test('thread pool basics work and events are emitted', async () => {
   const events: Pool.Event[] = []
   let spawnCalled = 0
   let taskFnCalled = 0
@@ -24,30 +25,31 @@ test.serial('thread pool basics work and events are emitted', async (t) => {
     spawnCalled++
     return spawn<() => string>(new Worker(workerPath))
   }
+
   const pool = Pool(spawnHelloWorld, 3)
   pool.events().subscribe(event => events.push(event))
 
-  // Just to make sure all worker threads are initialized before starting to queue
-  // This is only necessary for testing to make sure that this is the first event recorded
-  await new Promise((resolve, reject) => {
+  // Ensure all worker threads are initialized before starting to queue tasks
+  await new Promise<PoolEvent<FunctionThread<[], string>>>((resolve, reject) => {
     pool
       .events()
-      .filter(event => event.type === PoolEventType.initialized)
+      .filter(event => event.type === Pool.EventType.initialized)
       .subscribe(resolve, reject)
   })
 
   await pool.queue(async (helloWorld) => {
     taskFnCalled++
     const result = await helloWorld()
-    t.is(result, HELLO_WORLD)
+    expect(result).toBe(HELLO_WORLD)
     return result
   })
 
   await pool.terminate()
-  t.is(spawnCalled, 3)
-  t.is(taskFnCalled, 1)
 
-  t.deepEqual(events, [
+  expect(spawnCalled).toBe(3)
+  expect(taskFnCalled).toBe(1)
+
+  expect(events).toEqual([
     {
       size: 3,
       type: Pool.EventType.initialized,
@@ -75,7 +77,7 @@ test.serial('thread pool basics work and events are emitted', async (t) => {
   ])
 })
 
-test.serial('pool.completed() works', async (t) => {
+test('pool.completed() works', async () => {
   const returned: any[] = []
 
   const spawnHelloWorld = () => spawn(new Worker(workerPath))
@@ -89,10 +91,10 @@ test.serial('pool.completed() works', async (t) => {
 
   await pool.completed()
 
-  t.deepEqual(returned, [HELLO_WORLD, HELLO_WORLD, HELLO_WORLD])
+  expect(returned).toEqual([HELLO_WORLD, HELLO_WORLD, HELLO_WORLD])
 })
 
-test.serial('pool.completed() proxies errors', async (t) => {
+test('pool.completed() proxies errors', async () => {
   const spawnHelloWorld = () => spawn(new Worker(workerPath))
   const pool = Pool(spawnHelloWorld, 2)
 
@@ -100,19 +102,19 @@ test.serial('pool.completed() proxies errors', async (t) => {
     throw new Error('Ooopsie')
   })
 
-  const error = await t.throwsAsync(() => pool.completed())
-  t.is(error.message, 'Ooopsie')
+  await expect(pool.completed()).rejects.toThrow('Ooopsie')
 })
 
-test.serial('pool.completed(true) works', async (t) => {
+test('pool.completed(true) works', async () => {
   const spawnHelloWorld = () => spawn(new Worker(workerPath))
   const pool = Pool(spawnHelloWorld, 2)
 
   await pool.completed(true)
-  t.pass()
+
+  expect(true).toBe(true) // Equivalent to t.pass() in Vitest
 })
 
-test.serial('pool.settled() does not reject on task failure', async (t) => {
+test('pool.settled() does not reject on task failure', async () => {
   const returned: any[] = []
 
   const spawnHelloWorld = () => spawn(new Worker(workerPath))
@@ -129,19 +131,21 @@ test.serial('pool.settled() does not reject on task failure', async (t) => {
   })
 
   const errors = await pool.settled()
-  t.is(errors.length, 2)
-  t.deepEqual(errors.map(error => error.message).sort(), ['Test error one', 'Test error two'])
+
+  expect(errors.length).toBe(2)
+  expect(errors.map(error => error.message).sort()).toEqual(['Test error one', 'Test error two'])
 })
 
-test.serial('pool.settled(true) works', async (t) => {
+test('pool.settled(true) works', async () => {
   const spawnHelloWorld = () => spawn(new Worker(workerPath))
   const pool = Pool(spawnHelloWorld, 2)
 
   await pool.settled(true)
-  t.pass()
+
+  expect(true).toBe(true) // Equivalent to t.pass() in Vitest
 })
 
-test.serial('task.cancel() works', async (t) => {
+test('task.cancel() works', async () => {
   const events: Pool.Event[] = []
   const spawnHelloWorld = () => spawn(new Worker(workerPath))
   const pool = Pool(spawnHelloWorld, 1)
@@ -163,10 +167,10 @@ test.serial('task.cancel() works', async (t) => {
   tasks[3].cancel()
 
   await pool.completed()
-  t.is(executionCount, 2)
+  expect(executionCount).toBe(2)
 
-  const cancellationEvents = events.filter(event => event.type === 'taskCanceled')
-  t.deepEqual(cancellationEvents, [
+  const cancellationEvents = events.filter(event => event.type === PoolEventType.taskCanceled)
+  expect(cancellationEvents).toEqual([
     {
       taskID: 3,
       type: PoolEventType.taskCanceled,

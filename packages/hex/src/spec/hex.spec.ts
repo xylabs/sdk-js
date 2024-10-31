@@ -1,4 +1,8 @@
 import {
+  describe, expect, test,
+} from 'vitest'
+
+import {
   hexFromArrayBuffer, hexFromNumber, isHex,
 } from '../hex/index.ts'
 

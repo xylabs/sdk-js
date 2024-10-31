@@ -2,12 +2,12 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-constraint */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import test from 'ava'
+import { expect, test } from 'vitest'
 
 import {
   spawn, Thread, Transfer, Worker,
 } from '../src/index'
-import type { XorBuffer } from './workers/arraybuffer-xor'
+import type { XorBuffer } from './workers/arraybuffer-xor.ts'
 
 type SpyInit<Args extends any[], OriginalReturn, NewReturn> = (originalFn: (...args: Args) => OriginalReturn) => (...args: Args) => NewReturn
 
@@ -32,7 +32,7 @@ function replaceArrayBufferWithPlaceholder<In extends any>(
     const result: In = Object.create(Object.getPrototypeOf(obj))
 
     for (const key of Object.getOwnPropertyNames(obj)) {
-      ;(result as any)[key] = replaceArrayBufferWithPlaceholder((obj as any)[key], arrayBuffer)
+      (result as any)[key] = replaceArrayBufferWithPlaceholder((obj as any)[key], arrayBuffer)
     }
     return result as any
   } else {
@@ -40,10 +40,10 @@ function replaceArrayBufferWithPlaceholder<In extends any>(
   }
 }
 
-test('can pass transferable objects on thread call', async (t) => {
+test('can pass transferable objects on thread call', async () => {
   const testData = new ArrayBuffer(64)
 
-  const worker = new Worker('./workers/arraybuffer-xor')
+  const worker = new Worker('./workers/arraybuffer-xor.ts')
   const postMessageCalls: Array<any[]> = []
 
   worker.postMessage = spyOn(worker.postMessage.bind(worker), postMessage => (...args) => {
@@ -54,17 +54,16 @@ test('can pass transferable objects on thread call', async (t) => {
   const xorBuffer = await spawn<XorBuffer>(worker)
   const returnedBuffer = await xorBuffer(Transfer(testData), 15)
 
-  t.is(returnedBuffer.byteLength, 64)
-
-  t.is(postMessageCalls.length, 1)
-  t.is(postMessageCalls[0].length, 2)
-  t.deepEqual(postMessageCalls[0][0], {
+  expect(returnedBuffer.byteLength).toBe(64)
+  expect(postMessageCalls.length).toBe(1)
+  expect(postMessageCalls[0].length).toBe(2)
+  expect(postMessageCalls[0][0]).toEqual({
     args: [arrayBufferPlaceholder, 15],
     method: undefined,
     type: 'run',
     uid: postMessageCalls[0][0].uid,
   })
-  t.deepEqual(postMessageCalls[0][1], [arrayBufferPlaceholder])
+  expect(postMessageCalls[0][1]).toEqual([arrayBufferPlaceholder])
 
   await Thread.terminate(xorBuffer)
 })

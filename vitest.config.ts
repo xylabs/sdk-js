@@ -5,8 +5,6 @@ dotenv.config()
 
 export default defineConfig({
   test: {
-    globals: true,
-    include: ['**/*.{spec,spec}.?(c|m)[jt]s?(x)'],
-    setupFiles: ['./vitest.startup.ts'],
+    globals: true, watch: false, setupFiles: './vitest.setup.ts',
   },
 })

@@ -1,3 +1,7 @@
+import {
+  describe, expect, test,
+} from 'vitest'
+
 import { asAddress, isAddress } from '../address.ts'
 
 describe('address', () => {

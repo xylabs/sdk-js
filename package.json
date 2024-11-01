@@ -76,7 +76,6 @@
     "@xylabs/eslint-config-flat": "^4.2.3",
     "@xylabs/ts-scripts-yarn3": "^4.2.3",
     "@xylabs/tsconfig": "^4.2.3",
-    "@xylabs/tsconfig-jest": "^4.1.0",
     "@xylabs/vitest-extended": "workspace:^",
     "dotenv": "^16.4.5",
     "eslint": "^9.13.0",

@@ -27,8 +27,6 @@ export type MasterJobRunMessage = {
   args: any[]
 }
 
-export type MasterSentMessage = MasterJobCancelMessage | MasterJobRunMessage
-
 ////////////////////////////
 // Messages sent by worker:
 
@@ -72,10 +70,3 @@ export type WorkerJobStartMessage = {
   uid: number
   resultType: 'observable' | 'promise'
 }
-
-export type WorkerSentMessage =
-  | WorkerInitMessage
-  | WorkerJobErrorMessage
-  | WorkerJobResultMessage
-  | WorkerJobStartMessage
-  | WorkerUncaughtErrorMessage

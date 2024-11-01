@@ -1,6 +1,4 @@
-export type FieldType = 'string' | 'number' | 'object' | 'symbol' | 'symbol' | 'undefined' | 'null' | 'array' | 'function'
-
-export type ObjectTypeShape = Record<string | number | symbol, FieldType>
+import type { FieldType } from '@xylabs/typeof'
 
 export const isType = (value: unknown, expectedType: FieldType) => {
   const typeofValue = typeof value

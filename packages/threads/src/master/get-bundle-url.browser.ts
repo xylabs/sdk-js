@@ -28,4 +28,4 @@ function getBaseURL(url: string): string {
   return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/'
 }
 
-export { getBaseURL, getBundleURLCached as getBundleURL }
+export { getBundleURLCached as getBundleURL }

@@ -1,4 +1,4 @@
-export type AssertCallback = (value: unknown, message: string) => string | boolean
+type AssertCallback = (value: unknown, message: string) => string | boolean
 
 export type AssertConfig = string | AssertCallback | boolean
 

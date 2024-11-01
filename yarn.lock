@@ -4244,6 +4244,7 @@ __metadata:
     "@xylabs/promise": "npm:^4.3.4"
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.3"
     "@xylabs/tsconfig": "npm:^4.2.3"
+    "@xylabs/typeof": "workspace:^"
     typescript: "npm:^5.6.3"
   languageName: unknown
   linkType: soft
@@ -4275,6 +4276,7 @@ __metadata:
   dependencies:
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.3"
     "@xylabs/tsconfig": "npm:^4.2.3"
+    "@xylabs/typeof": "workspace:^"
     "@xylabs/vitest-extended": "workspace:^"
     typescript: "npm:^5.6.3"
     vitest: "npm:^2.1.4"

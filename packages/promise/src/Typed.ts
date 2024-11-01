@@ -1,4 +1,4 @@
-import { isType } from './isType.ts'
+import { isType } from '@xylabs/typeof'
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 export type TypedValue = bigint | string | number | boolean | null | TypedObject | TypedArray | Function | symbol | undefined

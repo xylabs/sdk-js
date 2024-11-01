@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type StringIndexable = { [key: string]: any }
 
-export const propertyDelimiter = ':'
+const propertyDelimiter = ':'
 
 export const getMetaAsDict = (obj: StringIndexable, parentKey = ''): Record<string, string> => {
   let flatRecord: StringIndexable = {}

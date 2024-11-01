@@ -99,7 +99,7 @@ export interface Pool<ThreadType extends Thread> {
   terminate(force?: boolean): Promise<void>
 }
 
-export interface PoolOptions {
+interface PoolOptions {
   /** Maximum no. of tasks to run on one worker thread at a time. Defaults to one. */
   concurrency?: number
 

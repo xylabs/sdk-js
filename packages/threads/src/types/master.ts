@@ -25,11 +25,11 @@ export type StripAsync<Type> =
     : Type extends ObservableLike<infer ObservableBaseType> ? ObservableBaseType
       : Type
 
-export type StripTransfer<Type> = Type extends TransferDescriptor<infer BaseType> ? BaseType : Type
+type StripTransfer<Type> = Type extends TransferDescriptor<infer BaseType> ? BaseType : Type
 
 export type ModuleMethods = { [methodName: string]: (...args: any) => any }
 
-export type ProxyableArgs<Args extends any[]> =
+type ProxyableArgs<Args extends any[]> =
   Args extends [arg0: infer Arg0, ...rest: infer RestArgs] ? [Arg0 extends Transferable ? Arg0 | TransferDescriptor<Arg0> : Arg0, ...RestArgs] : Args
 
 export type ProxyableFunction<Args extends any[], ReturnType> =

@@ -35,6 +35,9 @@
   },
   "module": "./dist/neutral/index.mjs",
   "types": "./dist/neutral/index.d.ts",
+  "dependencies": {
+    "@xylabs/typeof": "workspace:^"
+  },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^4.2.3",
     "@xylabs/tsconfig": "^4.2.3",

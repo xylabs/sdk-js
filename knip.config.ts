@@ -3,6 +3,7 @@ import type { KnipConfig } from 'knip'
 const config: KnipConfig = {
   ignoreDependencies: ['@xylabs/ts-scripts-yarn3'],
   ignore: ['xy.config.ts'],
+  entry: ['src/index.ts'],
   workspaces: {
     '.': {
       entry: ['src/index.ts'],

@@ -40,7 +40,6 @@
     "@types/node": "^22.8.6",
     "@xylabs/ts-scripts-yarn3": "^4.2.3",
     "@xylabs/tsconfig": "^4.2.3",
-    "jest": "^29.7.0",
     "typescript": "^5.6.3"
   },
   "peerDependencies": {

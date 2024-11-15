@@ -43,6 +43,18 @@ export const matchers = {
   toBeNumber: (received: unknown) => toBeType(received, 'number'),
   toBeFunction: (received: unknown) => toBeType(received, 'function'),
   toBeString: (received: unknown) => toBeType(received, 'string'),
+  toBeObject(received: unknown) {
+    const pass = typeof received === 'object' && !Array.isArray(received) && received !== null
+    return pass
+      ? {
+          message: () => `expected ${received} to be object`,
+          pass: true,
+        }
+      : {
+          message: () => `expected ${received} to be an object but was ${Array.isArray(received) ? 'array' : typeof received}`,
+          pass: false,
+        }
+  },
   toBeFalse(received: unknown) {
     const pass = received === false
     return pass

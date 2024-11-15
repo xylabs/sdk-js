@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/static-implements",
-  "version": "4.3.4",
+  "version": "4.3.5",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "static",
@@ -37,11 +37,11 @@
   "module": "./dist/neutral/index.mjs",
   "types": "./dist/neutral/index.d.ts",
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^4.2.3",
-    "@xylabs/tsconfig": "^4.2.3",
+    "@xylabs/ts-scripts-yarn3": "^4.2.4",
+    "@xylabs/tsconfig": "^4.2.4",
     "@xylabs/vitest-extended": "workspace:^",
     "typescript": "^5.6.3",
-    "vitest": "^2.1.4"
+    "vitest": "^2.1.5"
   },
   "engines": {
     "node": ">=18"

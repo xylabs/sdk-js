@@ -55,6 +55,30 @@ export const matchers = {
           pass: false,
         }
   },
+  toIncludeAllMembers(received: unknown[], expected: unknown[]) {
+    if (!Array.isArray(received) || !Array.isArray(expected)) {
+      return {
+        pass: false,
+        message: () => 'Expected both received and expected values to be arrays.',
+      }
+    }
+
+    const missingMembers = expected.filter(item => !received.includes(item))
+
+    return missingMembers.length === 0
+      ? {
+          pass: true,
+          message: () =>
+            `Expected array not to include all members of ${JSON.stringify(expected)}, but it does.`,
+        }
+      : {
+          pass: false,
+          message: () =>
+            `Expected array to include all members of ${JSON.stringify(expected)}. Missing members: ${JSON.stringify(
+              missingMembers,
+            )}.`,
+        }
+  },
 }
 
 expect.extend(matchers)

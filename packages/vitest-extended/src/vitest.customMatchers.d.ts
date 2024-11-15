@@ -26,8 +26,13 @@ declare module 'vitest' {
   }
 
   interface Assertion<T = unknown> {
+    toContainAllKeys(received: object, expectedKeys: string[]): T
+  }
+
+  interface Assertion<T = unknown> {
     toIncludeAllMembers(received: unknown[], expected: unknown[]): T
   }
+
   interface expect {
     toBeArray(): T
     toBeArrayOfSize(size: number): T
@@ -36,6 +41,7 @@ declare module 'vitest' {
     toBeNumber(): T
     toBeString(): T
     toBeTrue(): T
+    toContainAllKeys(received: object, expectedKeys: string[]): T
     toIncludeAllMembers(received: unknown[], expected: unknown[]): T
   }
 }

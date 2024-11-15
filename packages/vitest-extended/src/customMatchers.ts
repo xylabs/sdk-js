@@ -91,6 +91,37 @@ export const matchers = {
             )}.`,
         }
   },
+  toContainAllKeys(received: object, expectedKeys: string[]) {
+    if (typeof received !== 'object' || received === null) {
+      return {
+        pass: false,
+        message: () => `Expected ${JSON.stringify(received)} to be an object.`,
+      }
+    }
+
+    if (!Array.isArray(expectedKeys)) {
+      return {
+        pass: false,
+        message: () => `Expected keys to be an array, but received ${JSON.stringify(expectedKeys)}.`,
+      }
+    }
+
+    const missingKeys = expectedKeys.filter(key => !(key in received))
+
+    return missingKeys.length === 0
+      ? {
+          pass: true,
+          message: () =>
+            `Expected object not to contain all keys ${JSON.stringify(expectedKeys)}, but it does.`,
+        }
+      : {
+          pass: false,
+          message: () =>
+            `Expected object to contain all keys ${JSON.stringify(expectedKeys)}. Missing keys: ${JSON.stringify(
+              missingKeys,
+            )}.`,
+        }
+  },
 }
 
 expect.extend(matchers)

@@ -154,6 +154,35 @@ export const matchers = {
             )}.`,
         }
   },
+  toBeEmpty(received: unknown) {
+    let isEmpty = false
+
+    if (Array.isArray(received) || typeof received === 'string') {
+      isEmpty = received.length === 0
+    } else if (received && typeof received === 'object') {
+      isEmpty = Object.keys(received).length === 0
+    } else if (received instanceof Map || received instanceof Set) {
+      isEmpty = received.size === 0
+    } else {
+      return {
+        pass: false,
+        message: () =>
+          `Expected value to be an empty array, string, object, Map, or Set, but received ${typeof received}.`,
+      }
+    }
+
+    return isEmpty
+      ? {
+          pass: true,
+          message: () =>
+            'Expected value not to be empty, but it was.',
+        }
+      : {
+          pass: false,
+          message: () =>
+            'Expected value to be empty, but it was not.',
+        }
+  },
 }
 
 expect.extend(matchers)

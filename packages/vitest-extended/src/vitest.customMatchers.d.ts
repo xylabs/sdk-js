@@ -37,9 +37,14 @@ declare module 'vitest' {
     toContainValues(received: object, expectedValues: unknown[]): T
   }
 
+  interface Assertion<T = unknown> {
+    toBeEmpty(received: unknown): T
+  }
+
   interface expect {
     toBeArray(): T
     toBeArrayOfSize(size: number): T
+    toBeEmpty(received: unknown): T
     toBeFalse(): T
     toBeFunction(): T
     toBeNumber(): T

@@ -28,6 +28,18 @@ export const matchers = {
           pass: false,
         }
   },
+  toBeArray(received: unknown) {
+    const pass = Array.isArray(received)
+    return pass
+      ? {
+          message: () => 'expected array',
+          pass: true,
+        }
+      : {
+          message: () => `expected array, but received ${typeof received}`,
+          pass: false,
+        }
+  },
   toBeNumber: (received: unknown) => toBeType(received, 'number'),
   toBeFunction: (received: unknown) => toBeType(received, 'function'),
   toBeString: (received: unknown) => toBeType(received, 'string'),

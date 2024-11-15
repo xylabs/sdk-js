@@ -10,6 +10,9 @@ declare module 'vitest' {
     toBeFunction(): T
   }
   interface Assertion<T = unknown> {
+    toBeArray(): T
+  }
+  interface Assertion<T = unknown> {
     toBeString(): T
   }
   interface Assertion<T = unknown> {
@@ -26,6 +29,7 @@ declare module 'vitest' {
     toIncludeAllMembers(received: unknown[], expected: unknown[]): T
   }
   interface expect {
+    toBeArray(): T
     toBeArrayOfSize(size: number): T
     toBeFalse(): T
     toBeFunction(): T

@@ -26,32 +26,32 @@ declare module 'vitest' {
   }
 
   interface Assertion<T = unknown> {
-    toContainAllKeys(received: object, expectedKeys: string[]): T
+    toContainAllKeys(expectedKeys: string[]): T
   }
 
   interface Assertion<T = unknown> {
-    toIncludeAllMembers(received: unknown[], expected: unknown[]): T
+    toIncludeAllMembers(expected: unknown[]): T
   }
 
   interface Assertion<T = unknown> {
-    toContainValues(received: object, expectedValues: unknown[]): T
+    toContainValues(expectedValues: unknown[]): T
   }
 
   interface Assertion<T = unknown> {
-    toBeEmpty(received: unknown): T
+    toBeEmpty(): T
   }
 
   interface expect {
     toBeArray(): T
     toBeArrayOfSize(size: number): T
-    toBeEmpty(received: unknown): T
+    toBeEmpty(): T
     toBeFalse(): T
     toBeFunction(): T
     toBeNumber(): T
     toBeString(): T
     toBeTrue(): T
-    toContainAllKeys(received: object, expectedKeys: string[]): T
-    toContainValues(received: object, expectedValues: unknown[]): T
-    toIncludeAllMembers(received: unknown[], expected: unknown[]): T
+    toContainAllKeys(expectedKeys: string[]): T
+    toContainValues(expectedValues: unknown[]): T
+    toIncludeAllMembers(expected: unknown[]): T
   }
 }

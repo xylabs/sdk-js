@@ -122,6 +122,38 @@ export const matchers = {
             )}.`,
         }
   },
+  toContainValues(received: object, expectedValues: unknown[]) {
+    if (typeof received !== 'object' || received === null) {
+      return {
+        pass: false,
+        message: () => `Expected ${JSON.stringify(received)} to be an object.`,
+      }
+    }
+
+    if (!Array.isArray(expectedValues)) {
+      return {
+        pass: false,
+        message: () => `Expected values to be an array, but received ${JSON.stringify(expectedValues)}.`,
+      }
+    }
+
+    const objectValues = Object.values(received)
+    const missingValues = expectedValues.filter(value => !objectValues.includes(value))
+
+    return missingValues.length === 0
+      ? {
+          pass: true,
+          message: () =>
+            `Expected object not to contain all values ${JSON.stringify(expectedValues)}, but it does.`,
+        }
+      : {
+          pass: false,
+          message: () =>
+            `Expected object to contain all values ${JSON.stringify(expectedValues)}. Missing values: ${JSON.stringify(
+              missingValues,
+            )}.`,
+        }
+  },
 }
 
 expect.extend(matchers)

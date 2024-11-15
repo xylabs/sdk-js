@@ -150,7 +150,23 @@ export const matchers = {
     }
 
     const objectValues = Object.values(received)
-    const missingValues = expectedValues.filter(value => !objectValues.includes(value))
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const deepEqual = (a: any, b: any): boolean => {
+      if (a === b) return true
+      if (typeof a !== typeof b) return false
+      if (a && b && typeof a === 'object') {
+        const aKeys = Object.keys(a)
+        const bKeys = Object.keys(b)
+        if (aKeys.length !== bKeys.length) return false
+        return aKeys.every(key => deepEqual(a[key], b[key]))
+      }
+      return false
+    }
+
+    const missingValues = expectedValues.filter(
+      expectedValue => !objectValues.some(value => deepEqual(value, expectedValue)),
+    )
 
     return missingValues.length === 0
       ? {

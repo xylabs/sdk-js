@@ -4079,12 +4079,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^22.9.0":
-  version: 22.9.0
-  resolution: "@types/node@npm:22.9.0"
+"@types/node@npm:*, @types/node@npm:^22.9.0, @types/node@npm:^22.9.1":
+  version: 22.9.1
+  resolution: "@types/node@npm:22.9.1"
   dependencies:
     undici-types: "npm:~6.19.8"
-  checksum: 10/a7df3426891868b0f5fb03e46aeddd8446178233521c624a44531c92a040cf08a82d8235f7e1e02af731fd16984665d4d71f3418caf9c2788313b10f040d615d
+  checksum: 10/43fadcb3a914a1daff8e559839f235eec65fe80bfef5016b361dbc7952c9bc9d79456c78d89beab275a9e9e5accff37e838c019ab519f821f12c953cd6c24b50
   languageName: node
   linkType: hard
 
@@ -4781,7 +4781,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/assert@npm:^4.3.14, @xylabs/assert@workspace:^, @xylabs/assert@workspace:packages/assert":
+"@xylabs/assert@npm:^4.4.0, @xylabs/assert@workspace:^, @xylabs/assert@workspace:packages/assert":
   version: 0.0.0-use.local
   resolution: "@xylabs/assert@workspace:packages/assert"
   dependencies:
@@ -4821,7 +4821,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/buffer@workspace:packages/buffer"
   dependencies:
-    "@types/node": "npm:^22.9.0"
+    "@types/node": "npm:^22.9.1"
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.4"
     "@xylabs/tsconfig": "npm:^4.2.4"
     buffer: "npm:^6.0.3"
@@ -4846,7 +4846,7 @@ __metadata:
   resolution: "@xylabs/crypto@workspace:packages/crypto"
   dependencies:
     "@types/crypto-js": "npm:^4.2.2"
-    "@types/node": "npm:^22.9.0"
+    "@types/node": "npm:^22.9.1"
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.4"
     "@xylabs/tsconfig-dom": "npm:^4.2.4"
     crypto-js: "npm:^4.2.0"
@@ -4941,12 +4941,12 @@ __metadata:
     "@types/express": "npm:^4.17.21"
     "@types/express-mung": "npm:^0.5.5"
     "@types/express-serve-static-core": "npm:^4.19.6"
-    "@types/node": "npm:^22.9.0"
-    "@xylabs/assert": "npm:^4.3.14"
+    "@types/node": "npm:^22.9.1"
+    "@xylabs/assert": "npm:^4.4.0"
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.4"
     "@xylabs/tsconfig": "npm:^4.2.4"
     "@xylabs/tsconfig-jest": "npm:^4.1.0"
-    "@xylabs/vitest-extended": "npm:^4.3.14"
+    "@xylabs/vitest-extended": "npm:^4.4.0"
     body-parser: "npm:^1.20.3"
     connect: "npm:^3.7.0"
     express: "npm:^4.21.1"
@@ -5006,7 +5006,7 @@ __metadata:
   resolution: "@xylabs/jest-helpers@workspace:packages/jest-helpers"
   dependencies:
     "@types/jest": "npm:^29.5.14"
-    "@types/node": "npm:^22.9.0"
+    "@types/node": "npm:^22.9.1"
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.4"
     "@xylabs/tsconfig": "npm:^4.2.4"
     typescript: "npm:^5.6.3"
@@ -5054,11 +5054,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/logger@npm:^4.3.14, @xylabs/logger@workspace:^, @xylabs/logger@workspace:packages/logger":
+"@xylabs/logger@npm:^4.4.0, @xylabs/logger@workspace:^, @xylabs/logger@workspace:packages/logger":
   version: 0.0.0-use.local
   resolution: "@xylabs/logger@workspace:packages/logger"
   dependencies:
-    "@types/node": "npm:^22.9.0"
+    "@types/node": "npm:^22.9.1"
     "@xylabs/error": "workspace:^"
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.4"
     "@xylabs/tsconfig": "npm:^4.2.4"
@@ -5071,9 +5071,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/object@workspace:packages/object"
   dependencies:
-    "@xylabs/assert": "npm:^4.3.14"
-    "@xylabs/logger": "npm:^4.3.14"
-    "@xylabs/promise": "npm:^4.3.14"
+    "@xylabs/assert": "npm:^4.4.0"
+    "@xylabs/logger": "npm:^4.4.0"
+    "@xylabs/promise": "npm:^4.4.0"
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.4"
     "@xylabs/tsconfig": "npm:^4.2.4"
     "@xylabs/typeof": "workspace:^"
@@ -5085,7 +5085,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/platform@workspace:packages/platform"
   dependencies:
-    "@types/node": "npm:^22.9.0"
+    "@types/node": "npm:^22.9.1"
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.4"
     "@xylabs/tsconfig": "npm:^4.2.4"
     typescript: "npm:^5.6.3"
@@ -5102,7 +5102,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/promise@npm:^4.3.14, @xylabs/promise@workspace:^, @xylabs/promise@workspace:packages/promise":
+"@xylabs/promise@npm:^4.4.0, @xylabs/promise@workspace:^, @xylabs/promise@workspace:packages/promise":
   version: 0.0.0-use.local
   resolution: "@xylabs/promise@workspace:packages/promise"
   dependencies:
@@ -5131,7 +5131,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/sdk-js@workspace:."
   dependencies:
-    "@types/node": "npm:^22.9.0"
+    "@types/node": "npm:^22.9.1"
     "@typescript-eslint/eslint-plugin": "npm:^8.15.0"
     "@typescript-eslint/parser": "npm:^8.15.0"
     "@xylabs/api": "workspace:^"
@@ -5180,7 +5180,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/sdk-meta@workspace:packages/meta"
   dependencies:
-    "@types/node": "npm:^22.9.0"
+    "@types/node": "npm:^22.9.1"
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.4"
     "@xylabs/tsconfig": "npm:^4.2.4"
     cheerio: "npm:^1.0.0"
@@ -5220,7 +5220,7 @@ __metadata:
     "@rollup/plugin-commonjs": "npm:^28.0.1"
     "@rollup/plugin-node-resolve": "npm:^15.3.0"
     "@types/debug": "npm:^4.1.12"
-    "@types/node": "npm:^22.9.0"
+    "@types/node": "npm:^22.9.1"
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.4"
     callsites-3-1-0: "npm:callsites@3.1.0"
     cross-env: "npm:^7.0.3"
@@ -5247,7 +5247,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/timer@workspace:packages/timer"
   dependencies:
-    "@types/node": "npm:^22.9.0"
+    "@types/node": "npm:^22.9.1"
     "@xylabs/assert": "workspace:^"
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.4"
     "@xylabs/tsconfig": "npm:^4.2.4"
@@ -5397,7 +5397,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/url@workspace:packages/url"
   dependencies:
-    "@types/node": "npm:^22.9.0"
+    "@types/node": "npm:^22.9.1"
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.4"
     "@xylabs/tsconfig": "npm:^4.2.4"
     "@xylabs/tsconfig-dom": "npm:^4.2.4"
@@ -5405,7 +5405,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/vitest-extended@npm:^4.3.14, @xylabs/vitest-extended@workspace:^, @xylabs/vitest-extended@workspace:packages/vitest-extended":
+"@xylabs/vitest-extended@npm:^4.4.0, @xylabs/vitest-extended@workspace:^, @xylabs/vitest-extended@workspace:packages/vitest-extended":
   version: 0.0.0-use.local
   resolution: "@xylabs/vitest-extended@workspace:packages/vitest-extended"
   dependencies:

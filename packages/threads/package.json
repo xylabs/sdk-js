@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/threads",
-  "version": "4.3.14",
+  "version": "4.4.0",
   "description": "Web workers & worker threads as simple as a function call",
   "license": "MIT",
   "main": "dist/index.js",
@@ -95,7 +95,7 @@
     "@rollup/plugin-commonjs": "^28.0.1",
     "@rollup/plugin-node-resolve": "^15.3.0",
     "@types/debug": "^4.1.12",
-    "@types/node": "^22.9.0",
+    "@types/node": "^22.9.1",
     "@xylabs/ts-scripts-yarn3": "^4.2.4",
     "cross-env": "^7.0.3",
     "puppet-run": "^0.11.4",

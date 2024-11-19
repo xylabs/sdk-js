@@ -9,6 +9,9 @@ import type { AssertExErrorFunc, AssertExMessageFunc } from './types.ts'
  * @throws AssertExError
  * @returns Value of expression
  */
+/**
+ * @deprecated - passing a message will soon be required
+ */
 function assertEx<T>(expr: T | null | undefined): T
 /**
  * @deprecated - replace string with () => string

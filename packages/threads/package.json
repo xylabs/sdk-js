@@ -101,7 +101,7 @@
     "puppet-run": "^0.11.4",
     "raw-loader": "^4.0.2",
     "rimraf": "^6.0.1",
-    "rollup": "^4.27.2",
+    "rollup": "^4.27.3",
     "threads-plugin": "^1.4.0",
     "tiny-worker": "^2.3.0",
     "tslib": "^2.8.1",

@@ -37,10 +37,10 @@
   "types": "./dist/neutral/index.d.ts",
   "devDependencies": {
     "@types/jest": "^29.5.14",
-    "@types/node": "^22.9.1",
+    "@types/node": "^22.9.3",
     "@xylabs/ts-scripts-yarn3": "^4.2.4",
     "@xylabs/tsconfig": "^4.2.4",
-    "typescript": "^5.6.3"
+    "typescript": "^5.7.2"
   },
   "peerDependencies": {
     "jest": "*"

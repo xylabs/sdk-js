@@ -1,6 +1,6 @@
 import type { Logger as Winston } from 'winston'
 
-import type { LogFunction, Logger } from './Logger'
+import type { LogFunction, Logger } from './Logger.ts'
 
 /**
  * Wrap Winston logger methods to adapt to familiar

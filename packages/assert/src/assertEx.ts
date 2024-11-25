@@ -9,6 +9,9 @@ import type { AssertExErrorFunc, AssertExMessageFunc } from './types.ts'
  * @throws AssertExError
  * @returns Value of expression
  */
+
+function assertEx<T>(expr: T | null | undefined, messageFunc?: AssertExMessageFunc<T>): T
+function assertEx<T, R extends Error>(expr: T | null | undefined, errorFunc?: AssertExErrorFunc<T, R>): T
 /**
  * @deprecated - passing a message will soon be required
  */
@@ -17,8 +20,6 @@ function assertEx<T>(expr: T | null | undefined): T
  * @deprecated - replace string with () => string
  */
 function assertEx<T>(expr: T | null | undefined, message?: string): T
-function assertEx<T>(expr: T | null | undefined, messageFunc?: AssertExMessageFunc<T>): T
-function assertEx<T, R extends Error>(expr: T | null | undefined, errorFunc?: AssertExErrorFunc<T, R>): T
 function assertEx<T, R extends Error, P extends string | AssertExMessageFunc<T> | AssertExErrorFunc<T, R>>(
   expr: T | null | undefined,
   messageOrFunc?: P,

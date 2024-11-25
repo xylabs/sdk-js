@@ -4,7 +4,7 @@ import { hexFromHexString } from './fromHexString.ts'
 /** Convert an ArrayBuffer to a hex string */
 export const hexFromArrayBuffer = (
   /** The buffer to be converted */
-  buffer: ArrayBuffer,
+  buffer: ArrayBufferLike,
   /** Configuration of output format and validation */
   config?: HexConfig,
 ): Hex => {

@@ -1,7 +1,7 @@
 import { base16, base58 } from '@scure/base'
 import { assertEx } from '@xylabs/assert'
 
-const stringToArrayBuffer = (value: string, base = 16): Uint8Array => {
+const stringToUInt8Array = (value: string, base = 16): Uint8Array => {
   switch (base) {
     case 16: {
       return base16.decode((value.startsWith('0x') ? value.slice(2) : value).toUpperCase())
@@ -16,13 +16,13 @@ const stringToArrayBuffer = (value: string, base = 16): Uint8Array => {
 }
 
 export function toArrayBuffer(value: undefined, padLength?: number, base?: number): undefined
-export function toArrayBuffer(value: ArrayBuffer | string, padLength?: number, base?: number): ArrayBufferLike
-export function toArrayBuffer(value: ArrayBuffer | string | undefined, padLength?: number, base?: number): ArrayBufferLike | undefined
-export function toArrayBuffer(value?: ArrayBuffer | string, padLength?: number, base?: number): ArrayBufferLike | undefined {
+export function toArrayBuffer(value: ArrayBufferLike | string, padLength?: number, base?: number): ArrayBufferLike
+export function toArrayBuffer(value: ArrayBufferLike | string | undefined, padLength?: number, base?: number): ArrayBufferLike | undefined
+export function toArrayBuffer(value?: ArrayBufferLike | string, padLength?: number, base?: number): ArrayBufferLike | undefined {
   if (value === undefined) return undefined
 
   let result: Uint8Array | undefined
-    = typeof value === 'string' ? stringToArrayBuffer(value, base) : (new Uint8Array(value))
+    = typeof value === 'string' ? stringToUInt8Array(value, base) : (new Uint8Array(value))
 
   if (result === undefined) {
     throw new Error(`toArrayBuffer - Unknown type: ${typeof value}`)

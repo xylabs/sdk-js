@@ -22,8 +22,8 @@ function spyOn<Args extends any[], OriginalReturn, NewReturn>(
 
 function replaceArrayBufferWithPlaceholder<In extends any>(
   obj: In,
-  arrayBuffer: ArrayBuffer,
-): In extends ArrayBuffer ? In | typeof arrayBufferPlaceholder : In {
+  arrayBuffer: ArrayBufferLike,
+): In extends ArrayBufferLike ? In | typeof arrayBufferPlaceholder : In {
   if ((obj as any) === arrayBuffer) {
     return arrayBufferPlaceholder as any
   } else if (Array.isArray(obj)) {

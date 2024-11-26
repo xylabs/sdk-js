@@ -1,4 +1,4 @@
-export const equalArrayBuffers = (a1: ArrayBuffer, a2: ArrayBuffer) => {
+export const equalArrayBuffers = (a1: ArrayBufferLike, a2: ArrayBufferLike) => {
   const u1 = new Uint8Array(a1)
   const u2 = new Uint8Array(a2)
   if (u1.byteLength !== u2.byteLength) return false

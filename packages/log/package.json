@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/log",
-  "version": "4.4.9",
+  "version": "4.4.10",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "log",
@@ -45,7 +45,7 @@
     "@xylabs/tsconfig-dom": "^4.2.4",
     "rollbar": "^2.26.4",
     "typescript": "^5.7.2",
-    "vitest": "^2.1.5"
+    "vitest": "^2.1.6"
   },
   "peerDependencies": {
     "rollbar": "^2"

@@ -1,9 +1,11 @@
 {
-  "name": "@xylabs/bignumber",
+  "name": "@xylabs/vitest-matchers",
   "version": "4.4.9",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
-    "bignumber",
+    "log",
+    "logger",
+    "logging",
     "xylabs",
     "utility",
     "typescript",
@@ -35,11 +37,7 @@
   },
   "module": "./dist/neutral/index.mjs",
   "types": "./dist/neutral/index.d.ts",
-  "dependencies": {
-    "bn.js": "^5.2.1"
-  },
   "devDependencies": {
-    "@types/bn.js": "^5.1.6",
     "@xylabs/ts-scripts-yarn3": "^4.2.4",
     "@xylabs/tsconfig": "^4.2.4",
     "typescript": "^5.7.2"

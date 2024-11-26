@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/vitest-extended",
-  "version": "4.4.8",
+  "version": "4.4.9",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "log",
@@ -37,10 +37,8 @@
   },
   "module": "./dist/neutral/index.mjs",
   "types": "./types.d.ts",
-  "workspaces": [
-    "packages/**/*"
-  ],
   "dependencies": {
+    "@xylabs/vitest-matchers": "workspace:^",
     "vitest": "^2.1.5"
   },
   "devDependencies": {

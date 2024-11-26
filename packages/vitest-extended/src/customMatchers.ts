@@ -40,6 +40,56 @@ export const matchers = {
           pass: false,
         }
   },
+  toBeOneOf(received: unknown, expected: unknown[]) {
+    const pass = expected.includes(received)
+    return pass
+      ? {
+          pass: true,
+          message: () =>
+            `expected ${received} not to be one of ${JSON.stringify(expected)}`,
+        }
+      : {
+          pass: false,
+          message: () =>
+            `expected ${received} to be one of ${JSON.stringify(expected)}`,
+        }
+  },
+  toBeNegative(received: number) {
+    if (typeof received !== 'number') {
+      throw new TypeError(`Expected a number, but received ${typeof received}`)
+    }
+
+    const pass = received < 0
+    return pass
+      ? {
+          pass: true,
+          message: () =>
+            `expected ${received} not to be negative`,
+        }
+      : {
+          pass: false,
+          message: () =>
+            `expected ${received} to be negative`,
+        }
+  },
+  toBePositive(received: number) {
+    if (typeof received !== 'number') {
+      throw new TypeError(`Expected a number, but received ${typeof received}`)
+    }
+
+    const pass = received > 0
+    return pass
+      ? {
+          pass: true,
+          message: () =>
+            `expected ${received} not to be positive`,
+        }
+      : {
+          pass: false,
+          message: () =>
+            `expected ${received} to be positive`,
+        }
+  },
   toBeNumber: (received: unknown) => toBeType(received, 'number'),
   toBeFunction: (received: unknown) => toBeType(received, 'function'),
   toBeString: (received: unknown) => toBeType(received, 'string'),
@@ -53,6 +103,24 @@ export const matchers = {
       : {
           message: () => `expected ${received} to be an object but was ${Array.isArray(received) ? 'array' : typeof received}`,
           pass: false,
+        }
+  },
+  toBeInteger(received: number) {
+    if (typeof received !== 'number') {
+      throw new TypeError(`Expected a number, but received ${typeof received}`)
+    }
+
+    const pass = Number.isInteger(received)
+    return pass
+      ? {
+          pass: true,
+          message: () =>
+            `expected ${received} not to be an integer`,
+        }
+      : {
+          pass: false,
+          message: () =>
+            `expected ${received} to be an integer`,
         }
   },
   toBeFalse(received: unknown) {

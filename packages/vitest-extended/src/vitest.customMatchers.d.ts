@@ -26,6 +26,10 @@ declare module 'vitest' {
   }
 
   interface Assertion<T = unknown> {
+    toBeOneOf(expected: unknown[]): T
+  }
+
+  interface Assertion<T = unknown> {
     toContainAllKeys(expectedKeys: string[]): T
   }
 
@@ -45,14 +49,30 @@ declare module 'vitest' {
     toBeObject(): T
   }
 
+  interface Assertion<T = unknown> {
+    toBeNegative(): T
+  }
+
+  interface Assertion<T = unknown> {
+    toBePositive(): T
+  }
+
+  interface Assertion<T = unknown> {
+    toBeInteger(): T
+  }
+
   interface expect {
     toBeArray(): T
     toBeArrayOfSize(size: number): T
     toBeEmpty(): T
     toBeFalse(): T
     toBeFunction(): T
+    toBeInteger(): T
+    toBeNegative(): T
     toBeNumber(): T
     toBeObject(): T
+    toBeOneOf(expected: unknown[]): T
+    toBePositive(): T
     toBeString(): T
     toBeTrue(): T
     toContainAllKeys(expectedKeys: string[]): T

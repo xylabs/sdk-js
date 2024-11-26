@@ -14,6 +14,7 @@ declare global {
 }
 
 export const getDefaultLogger = (): Logger => {
-  if (xy.defaultLogger) return xy.defaultLogger
+  if (globalThis.xy === undefined) globalThis.xy = {}
+  if (globalThis.xy.defaultLogger) return globalThis.xy.defaultLogger
   return getLogger()
 }

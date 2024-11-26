@@ -1,6 +1,13 @@
 import { expect } from 'vitest'
 
-function toBeType(received: unknown, expectedType: string) {
+interface ExpectationResult {
+  actual?: unknown
+  expected?: unknown
+  message: () => string
+  pass: boolean
+}
+
+function toBeType(received: unknown, expectedType: string): ExpectationResult {
   const pass = typeof received === expectedType && !Number.isNaN(received)
   return pass
     ? {
@@ -14,7 +21,7 @@ function toBeType(received: unknown, expectedType: string) {
 }
 
 export const matchers = {
-  toBeArrayOfSize(received: unknown, expectedSize: number) {
+  toBeArrayOfSize(received: unknown, expectedSize: number): ExpectationResult {
     const pass = Array.isArray(received) && received.length === expectedSize
     return pass
       ? {
@@ -28,7 +35,7 @@ export const matchers = {
           pass: false,
         }
   },
-  toBeArray(received: unknown) {
+  toBeArray(received: unknown): ExpectationResult {
     const pass = Array.isArray(received)
     return pass
       ? {
@@ -40,7 +47,7 @@ export const matchers = {
           pass: false,
         }
   },
-  toBeOneOf(received: unknown, expected: unknown[]) {
+  toBeOneOf(received: unknown, expected: unknown[]): ExpectationResult {
     const pass = expected.includes(received)
     return pass
       ? {
@@ -54,7 +61,7 @@ export const matchers = {
             `expected ${received} to be one of ${JSON.stringify(expected)}`,
         }
   },
-  toBeNegative(received: number) {
+  toBeNegative(received: number): ExpectationResult {
     if (typeof received !== 'number') {
       throw new TypeError(`Expected a number, but received ${typeof received}`)
     }
@@ -72,7 +79,7 @@ export const matchers = {
             `expected ${received} to be negative`,
         }
   },
-  toBePositive(received: number) {
+  toBePositive(received: number): ExpectationResult {
     if (typeof received !== 'number') {
       throw new TypeError(`Expected a number, but received ${typeof received}`)
     }
@@ -93,7 +100,7 @@ export const matchers = {
   toBeNumber: (received: unknown) => toBeType(received, 'number'),
   toBeFunction: (received: unknown) => toBeType(received, 'function'),
   toBeString: (received: unknown) => toBeType(received, 'string'),
-  toBeObject(received: unknown) {
+  toBeObject(received: unknown): ExpectationResult {
     const pass = typeof received === 'object' && !Array.isArray(received) && received !== null
     return pass
       ? {
@@ -105,7 +112,7 @@ export const matchers = {
           pass: false,
         }
   },
-  toBeInteger(received: number) {
+  toBeInteger(received: number): ExpectationResult {
     if (typeof received !== 'number') {
       throw new TypeError(`Expected a number, but received ${typeof received}`)
     }
@@ -123,7 +130,7 @@ export const matchers = {
             `expected ${received} to be an integer`,
         }
   },
-  toBeFalse(received: unknown) {
+  toBeFalse(received: unknown): ExpectationResult {
     const pass = received === false
     return pass
       ? {
@@ -135,7 +142,7 @@ export const matchers = {
           pass: false,
         }
   },
-  toBeTrue(received: unknown) {
+  toBeTrue(received: unknown): ExpectationResult {
     const pass = received === true
     return pass
       ? {
@@ -147,7 +154,7 @@ export const matchers = {
           pass: false,
         }
   },
-  toIncludeAllMembers(received: unknown[], expected: unknown[]) {
+  toIncludeAllMembers(received: unknown[], expected: unknown[]): ExpectationResult {
     if (!Array.isArray(received) || !Array.isArray(expected)) {
       return {
         pass: false,
@@ -171,7 +178,7 @@ export const matchers = {
             )}.`,
         }
   },
-  toContainAllKeys(received: object, expectedKeys: string[]) {
+  toContainAllKeys(received: object, expectedKeys: string[]): ExpectationResult {
     if (typeof received !== 'object' || received === null) {
       return {
         pass: false,
@@ -202,7 +209,7 @@ export const matchers = {
             )}.`,
         }
   },
-  toContainValues(received: object, expectedValues: unknown[]) {
+  toContainValues(received: object, expectedValues: unknown[]): ExpectationResult {
     if (typeof received !== 'object' || received === null) {
       return {
         pass: false,
@@ -250,7 +257,7 @@ export const matchers = {
             )}.`,
         }
   },
-  toBeEmpty(received: unknown) {
+  toBeEmpty(received: unknown): ExpectationResult {
     let isEmpty = false
 
     if (Array.isArray(received) || typeof received === 'string') {

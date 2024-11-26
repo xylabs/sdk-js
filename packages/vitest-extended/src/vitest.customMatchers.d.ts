@@ -1,82 +1,27 @@
 // vitest.customMatchers.d.ts
 import 'vitest'
 
+interface CustomMatchers<T = unknown> {
+  toBeArray(): T
+  toBeArrayOfSize(size: number): T
+  toBeEmpty(): T
+  toBeFalse(): T
+  toBeFunction(): T
+  toBeInteger(): T
+  toBeNegative(): T
+  toBeNumber(): T
+  toBeObject(): T
+  toBeOneOf(expected: unknown[]): T
+  toBePositive(): T
+  toBeString(): T
+  toBeTrue(): T
+  toContainAllKeys(expectedKeys: string[]): T
+  toContainValues(expectedValues: unknown[]): T
+  toIncludeAllMembers(expected: unknown[]): T
+}
+
 // Extend the expect Matchers interface
 declare module 'vitest' {
-  interface Assertion<T = unknown> {
-    toBeNumber(): T
-  }
-  interface Assertion<T = unknown> {
-    toBeFunction(): T
-  }
-  interface Assertion<T = unknown> {
-    toBeArray(): T
-  }
-  interface Assertion<T = unknown> {
-    toBeString(): T
-  }
-  interface Assertion<T = unknown> {
-    toBeFalse(): T
-  }
-  interface Assertion<T = unknown> {
-    toBeTrue(): T
-  }
-  interface Assertion<T = unknown> {
-    toBeArrayOfSize(size: number): T
-  }
-
-  interface Assertion<T = unknown> {
-    toBeOneOf(expected: unknown[]): T
-  }
-
-  interface Assertion<T = unknown> {
-    toContainAllKeys(expectedKeys: string[]): T
-  }
-
-  interface Assertion<T = unknown> {
-    toIncludeAllMembers(expected: unknown[]): T
-  }
-
-  interface Assertion<T = unknown> {
-    toContainValues(expectedValues: unknown[]): T
-  }
-
-  interface Assertion<T = unknown> {
-    toBeEmpty(): T
-  }
-
-  interface Assertion<T = unknown> {
-    toBeObject(): T
-  }
-
-  interface Assertion<T = unknown> {
-    toBeNegative(): T
-  }
-
-  interface Assertion<T = unknown> {
-    toBePositive(): T
-  }
-
-  interface Assertion<T = unknown> {
-    toBeInteger(): T
-  }
-
-  interface expect {
-    toBeArray(): T
-    toBeArrayOfSize(size: number): T
-    toBeEmpty(): T
-    toBeFalse(): T
-    toBeFunction(): T
-    toBeInteger(): T
-    toBeNegative(): T
-    toBeNumber(): T
-    toBeObject(): T
-    toBeOneOf(expected: unknown[]): T
-    toBePositive(): T
-    toBeString(): T
-    toBeTrue(): T
-    toContainAllKeys(expectedKeys: string[]): T
-    toContainValues(expectedValues: unknown[]): T
-    toIncludeAllMembers(expected: unknown[]): T
-  }
+  interface Assertion<T = unknown> extends CustomMatchers<T> {}
+  interface AsymmetricMatchersContaining extends CustomMatchers {}
 }

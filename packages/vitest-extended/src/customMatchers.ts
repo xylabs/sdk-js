@@ -1,4 +1,4 @@
-import { expect } from 'vitest'
+import type { ExpectStatic } from 'vitest'
 
 interface ExpectationResult {
   actual?: unknown
@@ -288,4 +288,6 @@ export const matchers = {
   },
 }
 
-expect.extend(matchers)
+export const extend = (expect: ExpectStatic) => {
+  expect.extend(matchers)
+}

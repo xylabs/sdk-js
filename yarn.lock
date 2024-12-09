@@ -4818,7 +4818,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/assert@npm:^4.4.11, @xylabs/assert@workspace:^, @xylabs/assert@workspace:packages/assert":
+"@xylabs/assert@npm:^4.4.12, @xylabs/assert@workspace:^, @xylabs/assert@workspace:packages/assert":
   version: 0.0.0-use.local
   resolution: "@xylabs/assert@workspace:packages/assert"
   dependencies:
@@ -4979,11 +4979,11 @@ __metadata:
     "@types/express-mung": "npm:^0.5.5"
     "@types/express-serve-static-core": "npm:^4.19.6"
     "@types/node": "npm:^22.10.1"
-    "@xylabs/assert": "npm:^4.4.11"
+    "@xylabs/assert": "npm:^4.4.12"
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.4"
     "@xylabs/tsconfig": "npm:^4.2.4"
     "@xylabs/tsconfig-jest": "npm:^4.1.0"
-    "@xylabs/vitest-extended": "npm:^4.4.11"
+    "@xylabs/vitest-extended": "npm:^4.4.12"
     body-parser: "npm:^1.20.3"
     connect: "npm:^3.7.0"
     express: "npm:^4.21.2"
@@ -5091,7 +5091,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/logger@npm:^4.4.11, @xylabs/logger@workspace:^, @xylabs/logger@workspace:packages/logger":
+"@xylabs/logger@npm:^4.4.12, @xylabs/logger@workspace:^, @xylabs/logger@workspace:packages/logger":
   version: 0.0.0-use.local
   resolution: "@xylabs/logger@workspace:packages/logger"
   dependencies:
@@ -5108,9 +5108,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/object@workspace:packages/object"
   dependencies:
-    "@xylabs/assert": "npm:^4.4.11"
-    "@xylabs/logger": "npm:^4.4.11"
-    "@xylabs/promise": "npm:^4.4.11"
+    "@xylabs/assert": "npm:^4.4.12"
+    "@xylabs/logger": "npm:^4.4.12"
+    "@xylabs/promise": "npm:^4.4.12"
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.4"
     "@xylabs/tsconfig": "npm:^4.2.4"
     "@xylabs/typeof": "workspace:^"
@@ -5139,7 +5139,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/promise@npm:^4.4.11, @xylabs/promise@workspace:^, @xylabs/promise@workspace:packages/promise":
+"@xylabs/promise@npm:^4.4.12, @xylabs/promise@workspace:^, @xylabs/promise@workspace:packages/promise":
   version: 0.0.0-use.local
   resolution: "@xylabs/promise@workspace:packages/promise"
   dependencies:
@@ -5442,7 +5442,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/vitest-extended@npm:^4.4.11, @xylabs/vitest-extended@workspace:^, @xylabs/vitest-extended@workspace:packages/vitest-extended":
+"@xylabs/vitest-extended@npm:^4.4.12, @xylabs/vitest-extended@workspace:^, @xylabs/vitest-extended@workspace:packages/vitest-extended":
   version: 0.0.0-use.local
   resolution: "@xylabs/vitest-extended@workspace:packages/vitest-extended"
   dependencies:

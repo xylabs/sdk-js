@@ -3,15 +3,21 @@ import type { JsonObject } from './JsonObject.ts'
 
 export type OmitByPredicate<T extends EmptyObject = Record<string, unknown>> = (value: T[keyof T], key: keyof T) => boolean
 
-export const omitBy = <T extends EmptyObject>(
+const omitByArray = <T>(
+  obj: T[],
+  predicate: OmitByPredicate,
+  maxDepth: number,
+): T[] => {
+  return obj.map((value) => {
+    return (value !== null && typeof value === 'object') ? omitBy(value, predicate, maxDepth) : value
+  }) as T[]
+}
+
+const omitByObject = <T extends EmptyObject>(
   obj: T,
   predicate: OmitByPredicate,
-  maxDepth = 1,
+  maxDepth: number,
 ): Partial<T> => {
-  if (maxDepth <= 0) {
-    return obj
-  }
-
   const result: JsonObject = {}
 
   for (const key in obj) {
@@ -24,4 +30,16 @@ export const omitBy = <T extends EmptyObject>(
   }
 
   return result as T
+}
+
+export const omitBy = <T extends EmptyObject>(
+  obj: T,
+  predicate: OmitByPredicate,
+  maxDepth = 1,
+): Partial<T> => {
+  if (maxDepth <= 0) {
+    return obj
+  }
+
+  return Array.isArray(obj) ? omitByArray(obj, predicate, maxDepth - 1) as T : omitByObject(obj, predicate, maxDepth - 1) as T
 }

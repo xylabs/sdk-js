@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/buffer",
-  "version": "4.4.10",
+  "version": "4.4.11",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "buffer",
@@ -43,7 +43,7 @@
     "buffer": "^6.0.3"
   },
   "devDependencies": {
-    "@types/node": "^22.10.0",
+    "@types/node": "^22.10.1",
     "@xylabs/ts-scripts-yarn3": "^4.2.4",
     "@xylabs/tsconfig": "^4.2.4",
     "typescript": "^5.7.2"

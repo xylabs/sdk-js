@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/api",
-  "version": "4.4.10",
+  "version": "4.4.11",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "xylabs",
@@ -38,13 +38,13 @@
     "packages/**/*"
   ],
   "dependencies": {
-    "axios": "^1.7.8"
+    "axios": "^1.7.9"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^4.2.4",
     "@xylabs/tsconfig": "^4.2.4",
     "typescript": "^5.7.2",
-    "vitest": "^2.1.6"
+    "vitest": "^2.1.8"
   },
   "engines": {
     "node": ">=18"

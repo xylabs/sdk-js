@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/vitest-matchers",
-  "version": "4.4.12",
+  "version": "4.4.13",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "log",

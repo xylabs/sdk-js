@@ -70,9 +70,9 @@
     "@xylabs/url": "workspace:^"
   },
   "devDependencies": {
-    "@types/node": "^22.10.1",
-    "@typescript-eslint/eslint-plugin": "^8.17.0",
-    "@typescript-eslint/parser": "^8.17.0",
+    "@types/node": "^22.10.2",
+    "@typescript-eslint/eslint-plugin": "^8.18.0",
+    "@typescript-eslint/parser": "^8.18.0",
     "@xylabs/config": "^4.2.4",
     "@xylabs/eslint-config-flat": "^4.2.4",
     "@xylabs/ts-scripts-yarn3": "^4.2.4",
@@ -80,11 +80,11 @@
     "dotenv": "^16.4.7",
     "eslint": "^9.16.0",
     "eslint-import-resolver-typescript": "^3.7.0",
-    "knip": "^5.39.2",
+    "knip": "^5.39.4",
     "reflect-metadata": "^0.2.2",
     "ts-node": "^10.9.2",
     "tslib": "^2.8.1",
-    "typedoc": "^0.27.3",
+    "typedoc": "^0.27.4",
     "typescript": "^5.7.2",
     "vite": "^6.0.3",
     "vitest": "^2.1.8"

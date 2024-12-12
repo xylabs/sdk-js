@@ -46,7 +46,7 @@
   "module": "./dist/browser/index.mjs",
   "types": "./dist/browser/index.d.ts",
   "devDependencies": {
-    "@types/node": "^22.10.1",
+    "@types/node": "^22.10.2",
     "@xylabs/ts-scripts-yarn3": "^4.2.4",
     "@xylabs/tsconfig": "^4.2.4",
     "typescript": "^5.7.2"

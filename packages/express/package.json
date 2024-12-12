@@ -51,7 +51,7 @@
     "uuid": "^8"
   },
   "dependencies": {
-    "@aws-sdk/client-secrets-manager": "^3.699.0",
+    "@aws-sdk/client-secrets-manager": "^3.709.0",
     "@xylabs/assert": "^4.4.12",
     "body-parser": "^1.20.3",
     "connect": "^3.7.0",
@@ -68,7 +68,7 @@
     "@types/express": "^4.17.21",
     "@types/express-mung": "^0.5.5",
     "@types/express-serve-static-core": "^4.19.6",
-    "@types/node": "^22.10.1",
+    "@types/node": "^22.10.2",
     "@xylabs/ts-scripts-yarn3": "^4.2.4",
     "@xylabs/tsconfig": "^4.2.4",
     "@xylabs/tsconfig-jest": "^4.1.0",

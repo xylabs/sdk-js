@@ -51,7 +51,7 @@
     "uuid": "^8"
   },
   "dependencies": {
-    "@aws-sdk/client-secrets-manager": "^3.709.0",
+    "@aws-sdk/client-secrets-manager": "^3.712.0",
     "@xylabs/assert": "^4.4.13",
     "body-parser": "^1.20.3",
     "connect": "^3.7.0",

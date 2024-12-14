@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/express",
-  "version": "4.4.13",
+  "version": "4.4.14",
   "description": "SDK for base code for Api repos that use express and deploy on AWS ECS",
   "keywords": [
     "xylabs",
@@ -46,13 +46,9 @@
     "package-compile": "tsup && publint",
     "package-recompile": "tsup && publint"
   },
-  "resolutions": {
-    "eslint": "9.14.0",
-    "uuid": "^8"
-  },
   "dependencies": {
     "@aws-sdk/client-secrets-manager": "^3.712.0",
-    "@xylabs/assert": "^4.4.13",
+    "@xylabs/assert": "workspace:^",
     "body-parser": "^1.20.3",
     "connect": "^3.7.0",
     "express-mung": "^0.5.1",
@@ -72,7 +68,7 @@
     "@xylabs/ts-scripts-yarn3": "^4.2.4",
     "@xylabs/tsconfig": "^4.2.4",
     "@xylabs/tsconfig-jest": "^4.1.0",
-    "@xylabs/vitest-extended": "^4.4.13",
+    "@xylabs/vitest-extended": "workspace:^",
     "body-parser": "^1.20.3",
     "express": "^4.21.2",
     "express-mung": "^0.5.1",

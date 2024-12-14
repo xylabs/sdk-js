@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/sdk-js",
-  "version": "4.4.13",
+  "version": "4.4.14",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "xylabs",
@@ -39,6 +39,10 @@
   ],
   "scripts": {
     "build-typedoc-site": "xy gen-docs @xylabs/sdk-js"
+  },
+  "resolutions": {
+    "@types/express": "^4.17.21",
+    "uuid": "^11"
   },
   "dependencies": {
     "@xylabs/api": "workspace:^",

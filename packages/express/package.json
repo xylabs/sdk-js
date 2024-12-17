@@ -47,7 +47,7 @@
     "package-recompile": "tsup && publint"
   },
   "dependencies": {
-    "@aws-sdk/client-secrets-manager": "^3.712.0",
+    "@aws-sdk/client-secrets-manager": "^3.713.0",
     "@xylabs/assert": "workspace:^",
     "body-parser": "^1.20.3",
     "connect": "^3.7.0",

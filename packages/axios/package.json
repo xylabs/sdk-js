@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/axios",
-  "version": "4.4.15",
+  "version": "4.4.16",
   "description": "Primary SDK for using XYO Protocol 2.0",
   "keywords": [
     "axios",

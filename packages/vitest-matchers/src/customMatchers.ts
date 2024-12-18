@@ -152,6 +152,18 @@ export const matchers = {
           pass: false,
         }
   },
+  toContainKey(received: object, key: string) {
+    const pass = Object.prototype.hasOwnProperty.call(received, key)
+    return pass
+      ? {
+          pass: true,
+          message: () => `Expected object not to contain key "${key}", but it does.`,
+        }
+      : {
+          pass: false,
+          message: () => `Expected object to contain key "${key}", but it does not.`,
+        }
+  },
   toIncludeAllMembers(received: unknown[], expected: unknown[]): ExpectationResult {
     if (!Array.isArray(received) || !Array.isArray(expected)) {
       return {

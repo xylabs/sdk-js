@@ -6,6 +6,6 @@
  * @param x The object which is potentially undefined or null
  * @returns False if the object is null/undefined, true otherwise
  */
-export const exists = <T>(x?: T | null): x is T => {
+export const exists = <T>(x?: T | null): x is NonNullable<T> => {
   return x === undefined || x === null ? false : true
 }

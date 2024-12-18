@@ -152,6 +152,32 @@ export const matchers = {
           pass: false,
         }
   },
+  toContainAllValues(received: unknown, expectedValues: unknown[]) {
+    let receivedValues: unknown[]
+
+    // Check if received is an array or an object
+    if (Array.isArray(received)) {
+      receivedValues = received
+    } else if (typeof received === 'object' && received !== null) {
+      receivedValues = Object.values(received)
+    } else {
+      return {
+        pass: false,
+        message: () => `Expected an array or object, but received ${typeof received}.`,
+      }
+    }
+
+    // Check if all expected values are in the received values
+    const pass = expectedValues.every(value => receivedValues.includes(value))
+
+    return {
+      pass,
+      message: () =>
+        pass
+          ? `Expected ${JSON.stringify(received)} not to contain all values ${JSON.stringify(expectedValues)}, but it does.`
+          : `Expected ${JSON.stringify(received)} to contain all values ${JSON.stringify(expectedValues)}, but it does not.`,
+    }
+  },
   toContainKey(received: object, key: string) {
     const pass = Object.prototype.hasOwnProperty.call(received, key)
     return pass
@@ -163,6 +189,28 @@ export const matchers = {
           pass: false,
           message: () => `Expected object to contain key "${key}", but it does not.`,
         }
+  },
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  toInclude(received: unknown, value: any) {
+    let pass: boolean
+
+    if (Array.isArray(received)) {
+      pass = received.includes(value)
+    } else if (typeof received === 'string') {
+      pass = received.includes(value)
+    } else if (typeof received === 'object' && received !== null) {
+      pass = Object.values(received).includes(value)
+    } else {
+      pass = false
+    }
+
+    return {
+      pass,
+      message: () =>
+        pass
+          ? `Expected ${JSON.stringify(received)} not to include ${JSON.stringify(value)}, but it does.`
+          : `Expected ${JSON.stringify(received)} to include ${JSON.stringify(value)}, but it does not.`,
+    }
   },
   toIncludeAllMembers(received: unknown[], expected: unknown[]): ExpectationResult {
     if (!Array.isArray(received) || !Array.isArray(expected)) {

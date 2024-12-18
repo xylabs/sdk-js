@@ -16,8 +16,10 @@ interface CustomMatchers<T = unknown> {
   toBeString(): T
   toBeTrue(): T
   toContainAllKeys(expectedKeys: string[]): T
+  toContainAllValues(expectedValues: unknown[]): T
   toContainKey(key: string): T
   toContainValues(expectedValues: unknown[]): T
+  toInclude(expected: unknown): T
   toIncludeAllMembers(expected: unknown[]): T
 }
 

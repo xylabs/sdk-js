@@ -1,5 +1,8 @@
 ignores: [
-  "jest",
+  "@types/jest",
+  "@types/node",
   "@xylabs/tsconfig",
+  "@xylabs/tsconfig",
+  "jest",
   "@xylabs/ts-scripts-yarn3"
 ]

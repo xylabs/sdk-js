@@ -82,21 +82,3 @@ export type Enum<T extends Readonly<Record<string | number | symbol, unknown>>> 
 }
 
 export type EnumValue<T extends Record<string | number | symbol, unknown>, K = Enum<T>> = K[keyof K]
-
-// const DnsRecordType = Enum({
-//   A: 1,
-//   AAAA: 28,
-//   CAA: 257,
-//   CNAME: 5,
-//   DNAME: 39,
-//   MX: 15,
-//   NS: 2,
-//   PTR: 12,
-//   SOA: 6,
-//   SPF: 99,
-//   SRV: 33,
-//   TXT: 16,
-// })
-// type DnsRecordType = EnumValue<typeof DnsRecordType>
-// const foo: DnsRecordType = DnsRecordType.A
-// console.log(foo)

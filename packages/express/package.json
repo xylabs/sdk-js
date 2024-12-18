@@ -50,7 +50,6 @@
     "@aws-sdk/client-secrets-manager": "^3.713.0",
     "@xylabs/assert": "workspace:^",
     "body-parser": "^1.20.3",
-    "connect": "^3.7.0",
     "express-mung": "^0.5.1",
     "http-status-codes": "^2.3.0",
     "node-cache": "^5.1.2",

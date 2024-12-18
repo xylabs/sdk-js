@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/threads",
-  "version": "4.4.18",
+  "version": "4.4.19",
   "description": "Web workers & worker threads as simple as a function call",
   "license": "MIT",
   "main": "dist/index.js",

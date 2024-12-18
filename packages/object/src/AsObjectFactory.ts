@@ -1,4 +1,4 @@
-import type { TypedObject } from '@xylabs/promise'
+import type { TypedObject } from '@xylabs/typeof'
 
 import type { TypeCheck } from './AsTypeFactory.ts'
 import { AsTypeFactory } from './AsTypeFactory.ts'

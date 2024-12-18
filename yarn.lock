@@ -4766,7 +4766,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/assert@npm:^4.4.18, @xylabs/assert@workspace:^, @xylabs/assert@workspace:packages/assert":
+"@xylabs/assert@workspace:^, @xylabs/assert@workspace:packages/assert":
   version: 0.0.0-use.local
   resolution: "@xylabs/assert@workspace:packages/assert"
   dependencies:
@@ -5038,7 +5038,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/logger@npm:^4.4.18, @xylabs/logger@workspace:^, @xylabs/logger@workspace:packages/logger":
+"@xylabs/logger@workspace:^, @xylabs/logger@workspace:packages/logger":
   version: 0.0.0-use.local
   resolution: "@xylabs/logger@workspace:packages/logger"
   dependencies:
@@ -5055,9 +5055,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/object@workspace:packages/object"
   dependencies:
-    "@xylabs/assert": "npm:^4.4.18"
-    "@xylabs/logger": "npm:^4.4.18"
-    "@xylabs/promise": "npm:^4.4.18"
+    "@xylabs/assert": "workspace:^"
+    "@xylabs/logger": "workspace:^"
+    "@xylabs/promise": "workspace:^"
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.4"
     "@xylabs/tsconfig": "npm:^4.2.4"
     "@xylabs/typeof": "workspace:^"
@@ -5086,7 +5086,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/promise@npm:^4.4.18, @xylabs/promise@workspace:^, @xylabs/promise@workspace:packages/promise":
+"@xylabs/promise@workspace:^, @xylabs/promise@workspace:packages/promise":
   version: 0.0.0-use.local
   resolution: "@xylabs/promise@workspace:packages/promise"
   dependencies:

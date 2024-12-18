@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/decimal-precision",
-  "version": "4.4.18",
+  "version": "4.4.19",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "decimal",

@@ -1,4 +1,4 @@
-import type { TypedValue } from './Typed.ts'
+import type { TypedValue } from '@xylabs/typeof'
 
 export interface PromiseType {
   then: () => unknown

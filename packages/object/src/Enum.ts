@@ -1,30 +1,4 @@
 /**
- * A utility type that, given a `Record<string, unknown>`, returns a readonly version
- * of that record. This results in a type where all properties of `T` are readonly.
- *
- * @template T - The record type to make readonly.
- *
- * @example
- * ```typescript
- * // Given a record:
- * const MyRecord = {
- *   FOO: "foo",
- *   BAR: "bar"
- * } as const;
- *
- * // Applying Enum<T> results in:
- * type MyRecordEnum = Enum<typeof MyRecord>;
- * // {
- * //   readonly FOO: "foo";
- * //   readonly BAR: "bar";
- * // }
- * ```
- */
-export type Enum<T extends Record<string, unknown>> = {
-  readonly [K in keyof T]: T[K]
-}
-
-/**
  * Transforms a given record object into a readonly "enum-like" structure while preserving
  * the literal types of its values. This allows you to use the returned object both at runtime
  * (for lookups) and at compile time (for strongly typed values).
@@ -69,12 +43,60 @@ export type Enum<T extends Record<string, unknown>> = {
  * //   readonly SRV: 33;
  * //   readonly TXT: 16;
  * // }
- *
- * // You can then derive a type for the values:
- * type DnsRecordTypeValue = typeof DnsRecordType[keyof typeof DnsRecordType];
- * // DnsRecordTypeValue = 1 | 28 | 257 | 5 | 39 | 15 | 2 | 12 | 6 | 99 | 33 | 16
  * ```
  */
-export const Enum = <const T extends Record<string, unknown>>(obj: Readonly<T>): Enum<T> => {
+export const Enum = <const T extends Record<string | number | symbol, unknown>>(obj: Readonly<T>): Enum<T> => {
   return obj
 }
+
+/**
+ * A utility type that, given a `Record<string, unknown>`, returns a readonly version
+ * of that record. This results in a type where all properties of `T` are readonly.
+ *
+ * @template T - The record type to make readonly.
+ *
+ * @example
+ * ```typescript
+ * // Given a record:
+ * export const DnsRecordType = Enum({
+ *   A: 1,
+ *   AAAA: 28,
+ *   CAA: 257,
+ *   CNAME: 5,
+ *   DNAME: 39,
+ *   MX: 15,
+ *   NS: 2,
+ *   PTR: 12,
+ *   SOA: 6,
+ *   SPF: 99,
+ *   SRV: 33,
+ *   TXT: 16,
+ * })
+ *
+ * // Now the type inference will preserve the literal types:
+ * export type DnsRecordType = Enum<typeof DnsRecordType>
+ * ```
+ */
+export type Enum<T extends Readonly<Record<string | number | symbol, unknown>>> = {
+  readonly [K in keyof T]: T[K]
+}
+
+export type EnumValue<T extends Record<string | number | symbol, unknown>, K = Enum<T>> = K[keyof K]
+
+// const DnsRecordType = Enum({
+//   A: 1,
+//   AAAA: 28,
+//   CAA: 257,
+//   CNAME: 5,
+//   DNAME: 39,
+//   MX: 15,
+//   NS: 2,
+//   PTR: 12,
+//   SOA: 6,
+//   SPF: 99,
+//   SRV: 33,
+//   TXT: 16,
+// })
+// type DnsRecordType = EnumValue<typeof DnsRecordType>
+// const foo: DnsRecordType = DnsRecordType.A
+// console.log(foo)

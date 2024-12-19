@@ -4930,7 +4930,6 @@ __metadata:
     "@xylabs/assert": "workspace:^"
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.4"
     "@xylabs/tsconfig": "npm:^4.2.4"
-    "@xylabs/tsconfig-jest": "npm:^4.1.0"
     "@xylabs/vitest-extended": "workspace:^"
     body-parser: "npm:^1.20.3"
     express: "npm:^4.21.2"
@@ -5347,20 +5346,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xylabs/tsconfig-jest@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "@xylabs/tsconfig-jest@npm:4.1.0"
-  dependencies:
-    "@xylabs/tsconfig": "npm:^4.1.0"
-    jest-extended: "npm:^4.0.2"
-    jest-sorted: "npm:^1.0.15"
-  peerDependencies:
-    typescript: ^5
-  checksum: 10/75a301a8e6a6aa9a33edc501b8aa410b49eaaaa9e1d21d8bb00d004ab1dc6cdbeaffdac98e884ab22cad3466c9fe6f60cd10d0f571f5df2d5ed0a22e83ce04d4
-  languageName: node
-  linkType: hard
-
-"@xylabs/tsconfig@npm:^4.1.0, @xylabs/tsconfig@npm:^4.2.4":
+"@xylabs/tsconfig@npm:^4.2.4":
   version: 4.2.4
   resolution: "@xylabs/tsconfig@npm:4.2.4"
   checksum: 10/2840f6ce5ebee4a581fcea9e1fca633ac990595b7533500355f5614b9f7d469cabcb3d74b7e72027fec22b657d5df5d6cba1fe487bae7855c080ac7a72fdab61
@@ -10788,7 +10774,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-diff@npm:^29.0.0, jest-diff@npm:^29.7.0":
+"jest-diff@npm:^29.7.0":
   version: 29.7.0
   resolution: "jest-diff@npm:29.7.0"
   dependencies:
@@ -10800,22 +10786,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-extended@npm:^4.0.2":
-  version: 4.0.2
-  resolution: "jest-extended@npm:4.0.2"
-  dependencies:
-    jest-diff: "npm:^29.0.0"
-    jest-get-type: "npm:^29.0.0"
-  peerDependencies:
-    jest: ">=27.2.5"
-  peerDependenciesMeta:
-    jest:
-      optional: true
-  checksum: 10/6633c425636751462b0f2106915c6ed91ab07a0e55d28477ae2405361e0a05f617f4dae60b0d4332096e2757644a2a6c5d40e618be6a6c0d47a0325f7e696ce6
-  languageName: node
-  linkType: hard
-
-"jest-get-type@npm:^29.0.0, jest-get-type@npm:^29.6.3":
+"jest-get-type@npm:^29.6.3":
   version: 29.6.3
   resolution: "jest-get-type@npm:29.6.3"
   checksum: 10/88ac9102d4679d768accae29f1e75f592b760b44277df288ad76ce5bf038c3f5ce3719dea8aa0f035dac30e9eb034b848ce716b9183ad7cc222d029f03e92205
@@ -10848,13 +10819,6 @@ __metadata:
     slash: "npm:^3.0.0"
     stack-utils: "npm:^2.0.3"
   checksum: 10/31d53c6ed22095d86bab9d14c0fa70c4a92c749ea6ceece82cf30c22c9c0e26407acdfbdb0231435dc85a98d6d65ca0d9cbcd25cd1abb377fe945e843fb770b9
-  languageName: node
-  linkType: hard
-
-"jest-sorted@npm:^1.0.15":
-  version: 1.0.15
-  resolution: "jest-sorted@npm:1.0.15"
-  checksum: 10/16a94da6e1c0ae28dfa9da1790fc6afdcc62430fadbfcd7845efe4b41c9e41f3629e4fb514c1e5290a2727380aa3aeaa6a52eab09b250d97dad91c9cc99737eb
   languageName: node
   linkType: hard
 

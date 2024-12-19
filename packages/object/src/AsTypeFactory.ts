@@ -22,14 +22,7 @@ export const AsTypeFactory = {
       assertOrConfig?: StringOrAlertFunction<T> | TypeCheckConfig,
       config?: TypeCheckConfig,
     ): TType | undefined {
-      if (value === undefined) {
-        return undefined
-      }
-
-      if (value === null) {
-        return undefined
-      }
-
+      if (value === undefined || value === null) return undefined
       if (isPromise(value)) {
         throw new TypeError('un-awaited promises may not be sent to "as" functions')
       }
@@ -51,8 +44,7 @@ export const AsTypeFactory = {
   },
   createOptional: <T extends AnyNonPromise>(typeCheck: TypeCheck<T>) => {
     function func<TType extends T>(value: AnyNonPromise): TType | undefined {
-      if (value === undefined) return undefined
-      if (value === null) return undefined
+      if (value === undefined || value === null) return undefined
       if (isPromise(value)) {
         throw new TypeError('un-awaited promises may not be sent to "as" functions')
       }

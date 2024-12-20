@@ -1,5 +1,4 @@
 ignores: [
-  "jest",
   "@xylabs/tsconfig",
   "@xylabs/ts-scripts-yarn3"
 ]

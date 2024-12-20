@@ -42,7 +42,7 @@
   "module": "dist/node/index.mjs",
   "types": "dist/node/index.d.ts",
   "scripts": {
-    "coverage": "jest --coverage",
+    "coverage": "vitest --coverage",
     "package-compile": "tsup && publint",
     "package-recompile": "tsup && publint"
   },

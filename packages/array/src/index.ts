@@ -1,5 +1,6 @@
 export * from './containsAll.ts'
 export * from './distinct.ts'
 export * from './filterAs.ts'
+export * from './findAs.ts'
 export * from './flatten.ts'
 export * from './uniq.ts'

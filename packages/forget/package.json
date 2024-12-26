@@ -39,8 +39,8 @@
     "@xylabs/delay": "workspace:^"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^4.2.4",
-    "@xylabs/tsconfig-dom": "^4.2.4",
+    "@xylabs/ts-scripts-yarn3": "^4.2.6",
+    "@xylabs/tsconfig-dom": "^4.2.6",
     "typescript": "^5.7.2",
     "vitest": "^2.1.8"
   },

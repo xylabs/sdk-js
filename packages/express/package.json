@@ -47,7 +47,7 @@
     "package-recompile": "tsup && publint"
   },
   "dependencies": {
-    "@aws-sdk/client-secrets-manager": "^3.713.0",
+    "@aws-sdk/client-secrets-manager": "^3.716.0",
     "@xylabs/assert": "workspace:^",
     "body-parser": "^1.20.3",
     "express-mung": "^0.5.1",
@@ -64,8 +64,8 @@
     "@types/express-mung": "^0.5.5",
     "@types/express-serve-static-core": "^5.0.2",
     "@types/node": "^22.10.2",
-    "@xylabs/ts-scripts-yarn3": "^4.2.4",
-    "@xylabs/tsconfig": "^4.2.4",
+    "@xylabs/ts-scripts-yarn3": "^4.2.6",
+    "@xylabs/tsconfig": "^4.2.6",
     "@xylabs/vitest-extended": "workspace:^",
     "body-parser": "^1.20.3",
     "express": "^4.21.2",

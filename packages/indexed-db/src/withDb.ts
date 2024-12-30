@@ -1,14 +1,12 @@
 import type { EmptyObject } from '@xylabs/object'
-import type { IDBPDatabase } from 'idb'
+import type { DBSchema, IDBPDatabase } from 'idb'
 import { openDB } from 'idb'
 
-import type { ObjectStore } from './ObjectStore.ts'
-
-export async function withDb<T extends EmptyObject = EmptyObject, R = T>(
+export async function withDb<T extends DBSchema = DBSchema, R = EmptyObject>(
   dbName: string,
-  callback: (db: IDBPDatabase<ObjectStore<T>>) => Promise<R> | R,
+  callback: (db: IDBPDatabase<T>) => Promise<R> | R,
 ): Promise<R> {
-  const db = await openDB<ObjectStore<T>>(dbName)
+  const db = await openDB<T>(dbName)
   try {
     return await callback(db)
   } finally {

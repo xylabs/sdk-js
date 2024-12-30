@@ -4527,8 +4527,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/indexed-db@workspace:packages/indexed-db"
   dependencies:
-    "@xylabs/logger": "npm:^4.4.28"
-    "@xylabs/object": "npm:^4.4.28"
+    "@xylabs/logger": "npm:^4.4.29"
+    "@xylabs/object": "npm:^4.4.29"
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.6"
     "@xylabs/tsconfig": "npm:^4.2.6"
     "@xylabs/vitest-extended": "workspace:^"
@@ -4591,7 +4591,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/logger@npm:^4.4.28, @xylabs/logger@workspace:^, @xylabs/logger@workspace:packages/logger":
+"@xylabs/logger@npm:^4.4.29, @xylabs/logger@workspace:^, @xylabs/logger@workspace:packages/logger":
   version: 0.0.0-use.local
   resolution: "@xylabs/logger@workspace:packages/logger"
   dependencies:
@@ -4604,7 +4604,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/object@npm:^4.4.28, @xylabs/object@workspace:^, @xylabs/object@workspace:packages/object":
+"@xylabs/object@npm:^4.4.29, @xylabs/object@workspace:^, @xylabs/object@workspace:packages/object":
   version: 0.0.0-use.local
   resolution: "@xylabs/object@workspace:packages/object"
   dependencies:

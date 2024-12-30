@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/indexed-db",
-  "version": "4.4.27",
+  "version": "4.4.28",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "hex",
@@ -39,8 +39,8 @@
     "packages/**/*"
   ],
   "dependencies": {
-    "@xylabs/object": "^4.4.27",
-    "@xylabs/logger": "^4.4.27",
+    "@xylabs/logger": "^4.4.28",
+    "@xylabs/object": "^4.4.28",
     "idb": "^8.0.1"
   },
   "devDependencies": {

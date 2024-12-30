@@ -4527,8 +4527,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/indexed-db@workspace:packages/indexed-db"
   dependencies:
-    "@xylabs/logger": "npm:^4.4.29"
-    "@xylabs/object": "npm:^4.4.29"
+    "@xylabs/logger": "workspace:^"
+    "@xylabs/object": "workspace:^"
+    "@xylabs/storage": "workspace:^"
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.6"
     "@xylabs/tsconfig": "npm:^4.2.6"
     "@xylabs/vitest-extended": "workspace:^"
@@ -4591,7 +4592,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/logger@npm:^4.4.29, @xylabs/logger@workspace:^, @xylabs/logger@workspace:packages/logger":
+"@xylabs/logger@workspace:^, @xylabs/logger@workspace:packages/logger":
   version: 0.0.0-use.local
   resolution: "@xylabs/logger@workspace:packages/logger"
   dependencies:
@@ -4604,7 +4605,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/object@npm:^4.4.29, @xylabs/object@workspace:^, @xylabs/object@workspace:packages/object":
+"@xylabs/object@workspace:^, @xylabs/object@workspace:packages/object":
   version: 0.0.0-use.local
   resolution: "@xylabs/object@workspace:packages/object"
   dependencies:
@@ -4741,6 +4742,19 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/static-implements@workspace:packages/static-implements"
   dependencies:
+    "@xylabs/ts-scripts-yarn3": "npm:^4.2.6"
+    "@xylabs/tsconfig": "npm:^4.2.6"
+    "@xylabs/vitest-extended": "workspace:^"
+    typescript: "npm:^5.7.2"
+    vitest: "npm:^2.1.8"
+  languageName: unknown
+  linkType: soft
+
+"@xylabs/storage@workspace:^, @xylabs/storage@workspace:packages/storage":
+  version: 0.0.0-use.local
+  resolution: "@xylabs/storage@workspace:packages/storage"
+  dependencies:
+    "@xylabs/promise": "workspace:^"
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.6"
     "@xylabs/tsconfig": "npm:^4.2.6"
     "@xylabs/vitest-extended": "workspace:^"

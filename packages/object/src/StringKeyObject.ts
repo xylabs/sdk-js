@@ -1,1 +1,1 @@
-export type StringKeyObject = { [key: string]: unknown }
+export type StringKeyObject<T = unknown> = { [key: string]: T }

@@ -4523,6 +4523,20 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@xylabs/indexed-db@workspace:packages/indexed-db":
+  version: 0.0.0-use.local
+  resolution: "@xylabs/indexed-db@workspace:packages/indexed-db"
+  dependencies:
+    "@xylabs/object": "npm:^4.4.27"
+    "@xylabs/ts-scripts-yarn3": "npm:^4.2.6"
+    "@xylabs/tsconfig": "npm:^4.2.6"
+    "@xylabs/vitest-extended": "workspace:^"
+    idb: "npm:^8.0.1"
+    typescript: "npm:^5.7.2"
+    vitest: "npm:^2.1.8"
+  languageName: unknown
+  linkType: soft
+
 "@xylabs/jest-helpers@workspace:packages/jest-helpers":
   version: 0.0.0-use.local
   resolution: "@xylabs/jest-helpers@workspace:packages/jest-helpers"
@@ -4589,7 +4603,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/object@workspace:^, @xylabs/object@workspace:packages/object":
+"@xylabs/object@npm:^4.4.27, @xylabs/object@workspace:^, @xylabs/object@workspace:packages/object":
   version: 0.0.0-use.local
   resolution: "@xylabs/object@workspace:packages/object"
   dependencies:
@@ -9230,6 +9244,13 @@ __metadata:
   dependencies:
     safer-buffer: "npm:>= 2.1.2 < 3.0.0"
   checksum: 10/24e3292dd3dadaa81d065c6f8c41b274a47098150d444b96e5f53b4638a9a71482921ea6a91a1f59bb71d9796de25e04afd05919fa64c360347ba65d3766f10f
+  languageName: node
+  linkType: hard
+
+"idb@npm:^8.0.1":
+  version: 8.0.1
+  resolution: "idb@npm:8.0.1"
+  checksum: 10/98415c4f7b633ff34d69230e3849a3dbe065c7aac6c8474ab4f728862725b3e65affd2aae8a8fc03ef070b4e1cab16f6782133e166b1c81579b7e40691ddff3c
   languageName: node
   linkType: hard
 

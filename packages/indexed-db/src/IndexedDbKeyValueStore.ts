@@ -1,33 +1,17 @@
+import type { EmptyObject } from '@xylabs/object'
 import type { KeyValueStore } from '@xylabs/storage'
-import type { DBSchema, IDBPDatabase } from 'idb'
+import type {
+  IDBPDatabase, StoreNames, StoreValue,
+} from 'idb'
 
 import type { ObjectStore } from './ObjectStore.ts'
 import { withDb } from './withDb.ts'
 
 /**
- * The schema for the IndexedDB key/value store.
- */
-export interface IndexedDbKeyValueStoreSchemaV1<T> extends DBSchema {
-  bios: {
-    key: string
-    value: T
-  }
-}
-
-/**
  * An IndexedDB key/value store.
  */
-export class IndexedDbKeyValueStore<T> implements KeyValueStore<T, string> {
-  static readonly CurrentSchemaVersion = 1
-
-  constructor(readonly dbName: string) {}
-
-  /**
-   * The name of the store.
-   */
-  get storeName() {
-    return 'bios' as const
-  }
+export class IndexedDbKeyValueStore<T extends EmptyObject> implements KeyValueStore<T, string> {
+  constructor(readonly dbName: string, readonly storeName: StoreNames<ObjectStore<T>>) {}
 
   async clear?(): Promise<void> {
     return await this.withDb((db) => {
@@ -53,17 +37,17 @@ export class IndexedDbKeyValueStore<T> implements KeyValueStore<T, string> {
     })
   }
 
-  async set(key: string, value: T): Promise<void> {
+  async set(key: string, value: StoreValue<ObjectStore<T>, StoreNames<ObjectStore<T>>>): Promise<void> {
     return await this.withDb((db) => {
       return db.put(this.storeName, value, key)
     })
   }
 
-  async withDb<R = IndexedDbKeyValueStoreSchemaV1<T>>(
-    callback: (db: IDBPDatabase<ObjectStore<IndexedDbKeyValueStoreSchemaV1<T>>>) =>
+  async withDb<R = T>(
+    callback: (db: IDBPDatabase<ObjectStore<T>>) =>
       Promise<R> | R,
   ) {
-    return await withDb<IndexedDbKeyValueStoreSchemaV1<T>, R>(this.dbName, (db) => {
+    return await withDb<T, R>(this.dbName, (db) => {
       return callback(db)
     })
   }

@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/forget",
-  "version": "4.4.32",
+  "version": "4.4.33",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "forget",

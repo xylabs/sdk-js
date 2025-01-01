@@ -1,7 +1,10 @@
-enum ApiStage {
-  Beta = 'beta',
-  Local = 'local',
-  Prod = 'prod',
-}
+import type { EnumValue } from '@xylabs/object'
+import { Enum } from '@xylabs/object'
 
-export { ApiStage }
+export const ApiStage = Enum({
+  Beta: 'beta',
+  Local: 'local',
+  Prod: 'prod',
+})
+
+export type ApiStage = EnumValue<typeof ApiStage>

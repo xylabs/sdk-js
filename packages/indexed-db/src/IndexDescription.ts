@@ -16,10 +16,6 @@ export type IndexDescription = {
    */
   multiEntry?: boolean
   /**
-   * The name of the index
-   */
-  name?: string
-  /**
    * If true, the index must enforce uniqueness on the key
    */
   unique?: boolean

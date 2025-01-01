@@ -38,6 +38,7 @@
     "packages/**/*"
   ],
   "dependencies": {
+    "@xylabs/object": "^4.4.33",
     "axios": "^1.7.9"
   },
   "devDependencies": {

@@ -3,7 +3,7 @@ import type { Promisable } from '@xylabs/promise'
 /**
  * A readonly storage device.
  */
-export interface ReadonlyKeyValueStore<TValue, TKey extends string = string> {
+export interface ReadonlyKeyValueStore<TValue, TKey = string> {
   /**
    * Returns a promise that resolves to the value for the given key.
    * @param key The key to get the value for.
@@ -18,8 +18,8 @@ export interface ReadonlyKeyValueStore<TValue, TKey extends string = string> {
 /**
  * A read/write storage device.
  */
-export interface KeyValueStore<TValue, TKey extends string = string> extends ReadonlyKeyValueStore<TValue, TKey> {
+export interface KeyValueStore<TValue, TKey = string> extends ReadonlyKeyValueStore<TValue, TKey> {
   clear?(): Promisable<void>
   delete(key: TKey): Promisable<void>
-  set(key: TKey, value: TValue): Promisable<void>
+  set(key: TKey, value: TValue): Promisable<TKey>
 }

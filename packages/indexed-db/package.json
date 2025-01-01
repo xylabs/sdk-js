@@ -28,17 +28,28 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/neutral/index.d.ts",
-      "default": "./dist/neutral/index.mjs"
+      "node": {
+        "types": "./dist/node/index.d.ts",
+        "default": "./dist/node/index.mjs"
+      },
+      "browser": {
+        "types": "./dist/browser/index.d.ts",
+        "default": "./dist/browser/index.mjs"
+      },
+      "neutral": {
+        "types": "./dist/neutral/index.d.ts",
+        "default": "./dist/neutral/index.mjs"
+      }
     },
     "./package.json": "./package.json"
   },
-  "module": "./dist/neutral/index.mjs",
-  "types": "./dist/neutral/index.d.ts",
+  "module": "./dist/browser/index.mjs",
+  "types": "./dist/browser/index.d.ts",
   "workspaces": [
     "packages/**/*"
   ],
   "dependencies": {
+    "@xylabs/exists": "workspace:^",
     "@xylabs/logger": "workspace:^",
     "@xylabs/object": "workspace:^",
     "@xylabs/storage": "workspace:^",
@@ -47,7 +58,10 @@
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^4.2.6",
     "@xylabs/tsconfig": "^4.2.6",
+    "@xylabs/tsconfig-dom": "^4.2.6",
     "@xylabs/vitest-extended": "workspace:^",
+    "fake-indexeddb": "^6.0.0",
+    "jsdom": "^25.0.1",
     "typescript": "^5.7.2",
     "vitest": "^2.1.8"
   },

@@ -18,13 +18,13 @@ export class IndexedDbKeyValueStore<T extends DBSchema, S extends StoreNames<T>>
     })
   }
 
-  async delete(key: string): Promise<void> {
+  async delete(key: StoreKey<T, S>): Promise<void> {
     return await this.withDb((db) => {
       return db.delete(this.storeName, key)
     })
   }
 
-  async get(key: string) {
+  async get(key: StoreKey<T, S>) {
     return await this.withDb((db) => {
       return db.get(this.storeName, key) ?? undefined
     })
@@ -36,7 +36,7 @@ export class IndexedDbKeyValueStore<T extends DBSchema, S extends StoreNames<T>>
     })
   }
 
-  async set(key: string, value: StoreValue<T, S>): Promise<void> {
+  async set(key: StoreKey<T, S>, value: StoreValue<T, S>): Promise<StoreKey<T, S>> {
     return await this.withDb((db) => {
       return db.put(this.storeName, value, key)
     })

@@ -23,7 +23,10 @@ export function createStoreDuringUpgrade<DBTypes extends DBSchema | unknown = un
     // If it isn't explicitly set, create a value by auto incrementing.
       autoIncrement: true,
     })
-  } catch {}
+  } catch {
+    logger?.warn(`Failed to create store: ${storeName} already exists`)
+    return
+  }
   logger?.log(`Creating store: created ${storeName}`)
   // Name the store
   store.name = storeName

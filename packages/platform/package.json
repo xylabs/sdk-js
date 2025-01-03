@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/platform",
-  "version": "4.4.34",
+  "version": "4.4.35",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "platform",
@@ -46,7 +46,7 @@
   "module": "./dist/browser/index.mjs",
   "types": "./dist/browser/index.d.ts",
   "devDependencies": {
-    "@types/node": "^22.10.2",
+    "@types/node": "^22.10.4",
     "@xylabs/ts-scripts-yarn3": "^4.2.6",
     "@xylabs/tsconfig": "^4.2.6",
     "typescript": "^5.7.2"

@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/crypto",
-  "version": "4.4.34",
+  "version": "4.4.35",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "crypto",
@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@types/crypto-js": "^4.2.2",
-    "@types/node": "^22.10.2",
+    "@types/node": "^22.10.4",
     "@xylabs/ts-scripts-yarn3": "^4.2.6",
     "@xylabs/tsconfig-dom": "^4.2.6",
     "typescript": "^5.7.2"

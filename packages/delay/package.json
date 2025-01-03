@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/delay",
-  "version": "4.4.34",
+  "version": "4.4.35",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "delay",

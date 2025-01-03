@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "NodeNext",
+    "module": "NodeNext",
+    "typeRoots": []
+  },
+  "exclude": ["**/spec/**/*"],
+  "extends": "@xylabs/tsconfig"
+}
+

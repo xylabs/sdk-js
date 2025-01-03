@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/sdk-js",
-  "version": "4.4.34",
+  "version": "4.4.35",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "xylabs",
@@ -71,7 +71,7 @@
     "@xylabs/url": "workspace:^"
   },
   "devDependencies": {
-    "@types/node": "^22.10.2",
+    "@types/node": "^22.10.4",
     "@typescript-eslint/eslint-plugin": "^8.19.0",
     "@typescript-eslint/parser": "^8.19.0",
     "@xylabs/config": "^4.2.6",
@@ -89,10 +89,10 @@
     "tslib": "^2.8.1",
     "typedoc": "^0.27.6",
     "typescript": "^5.7.2",
-    "vite": "^6.0.6",
+    "vite": "^6.0.7",
     "vitest": "^2.1.8"
   },
-  "packageManager": "yarn@4.5.3",
+  "packageManager": "yarn@4.6.0",
   "engines": {
     "node": ">=18.17.1"
   },

@@ -21,5 +21,5 @@ export interface ReadonlyKeyValueStore<TValue, TKey = string> {
 export interface KeyValueStore<TValue, TKey = string> extends ReadonlyKeyValueStore<TValue, TKey> {
   clear?(): Promisable<void>
   delete(key: TKey): Promisable<void>
-  set(key: TKey, value: TValue): Promisable<TValue | void>
+  set(key: TKey, value: TValue): Promisable<void>
 }

@@ -36,9 +36,9 @@ export class IndexedDbKeyValueStore<T extends DBSchema, S extends StoreNames<T>>
     })
   }
 
-  async set(key: StoreKey<T, S>, value: StoreValue<T, S>): Promise<StoreKey<T, S>> {
+  async set(key: StoreKey<T, S>, value: StoreValue<T, S>): Promise<void> {
     return await this.withDb((db) => {
-      return db.put(this.storeName, value, key)
+      db.put(this.storeName, value, key)
     })
   }
 

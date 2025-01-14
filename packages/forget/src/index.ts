@@ -1,1 +1,1 @@
-export { forget, ForgetPromise } from './forget.ts'
+export * from './forget.ts'

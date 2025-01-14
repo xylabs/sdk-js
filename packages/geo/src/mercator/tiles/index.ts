@@ -1,3 +1,5 @@
-export { tilesEqual } from './equal.ts'
+export * from './equal.ts'
 export * from './from/index.ts'
-export { tilesHasTile } from './hasTile.ts'
+export * from './hasSiblings.ts'
+export * from './hasTile.ts'
+export * from './hasTile.ts'

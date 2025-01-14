@@ -38,7 +38,8 @@
     "packages/**/*"
   ],
   "dependencies": {
-    "@xylabs/object": "^4.4.36",
+    "@xylabs/enum": "workspace:^",
+    "@xylabs/object": "workspace:^",
     "axios": "^1.7.9"
   },
   "devDependencies": {

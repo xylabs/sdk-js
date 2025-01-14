@@ -4371,7 +4371,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/api@workspace:packages/api"
   dependencies:
-    "@xylabs/object": "npm:^4.4.36"
+    "@xylabs/enum": "workspace:^"
+    "@xylabs/object": "workspace:^"
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.6"
     "@xylabs/tsconfig": "npm:^4.2.6"
     axios: "npm:^1.7.9"
@@ -4498,6 +4499,16 @@ __metadata:
     "@xylabs/tsconfig": "npm:^4.2.6"
     typescript: "npm:^5.7.2"
     vitest: "npm:^2.1.8"
+  languageName: unknown
+  linkType: soft
+
+"@xylabs/enum@workspace:^, @xylabs/enum@workspace:packages/enum":
+  version: 0.0.0-use.local
+  resolution: "@xylabs/enum@workspace:packages/enum"
+  dependencies:
+    "@xylabs/ts-scripts-yarn3": "npm:^4.2.6"
+    "@xylabs/tsconfig": "npm:^4.2.6"
+    typescript: "npm:^5.7.2"
   languageName: unknown
   linkType: soft
 
@@ -4648,9 +4659,7 @@ __metadata:
     "@xylabs/object": "workspace:^"
     "@xylabs/storage": "workspace:^"
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.6"
-    "@xylabs/tsconfig": "npm:^4.2.6"
     "@xylabs/tsconfig-dom": "npm:^4.2.6"
-    "@xylabs/vitest-extended": "workspace:^"
     fake-indexeddb: "npm:^6.0.0"
     idb: "npm:^8.0.1"
     jsdom: "npm:^25.0.1"
@@ -4725,7 +4734,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/object@npm:^4.4.36, @xylabs/object@workspace:^, @xylabs/object@workspace:packages/object":
+"@xylabs/object@workspace:^, @xylabs/object@workspace:packages/object":
   version: 0.0.0-use.local
   resolution: "@xylabs/object@workspace:packages/object"
   dependencies:
@@ -4828,7 +4837,6 @@ __metadata:
     knip: "npm:^5.41.1"
     reflect-metadata: "npm:^0.2.2"
     ts-node: "npm:^10.9.2"
-    tslib: "npm:^2.8.1"
     typedoc: "npm:^0.27.6"
     typescript: "npm:^5.7.2"
     vite: "npm:^6.0.7"
@@ -4879,7 +4887,6 @@ __metadata:
     "@xylabs/promise": "workspace:^"
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.6"
     "@xylabs/tsconfig": "npm:^4.2.6"
-    "@xylabs/vitest-extended": "workspace:^"
     typescript: "npm:^5.7.2"
     vitest: "npm:^2.1.8"
   languageName: unknown

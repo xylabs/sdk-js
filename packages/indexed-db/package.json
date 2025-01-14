@@ -57,9 +57,7 @@
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^4.2.6",
-    "@xylabs/tsconfig": "^4.2.6",
     "@xylabs/tsconfig-dom": "^4.2.6",
-    "@xylabs/vitest-extended": "workspace:^",
     "fake-indexeddb": "^6.0.0",
     "jsdom": "^25.0.1",
     "typescript": "^5.7.2",

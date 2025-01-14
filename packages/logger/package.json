@@ -38,6 +38,7 @@
   "module": "dist/neutral/index.mjs",
   "types": "dist/neutral/index.d.ts",
   "dependencies": {
+    "@xylabs/enum": "workspace:^",
     "@xylabs/error": "workspace:^"
   },
   "devDependencies": {

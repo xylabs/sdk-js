@@ -1,3 +1,5 @@
+import type { EnumValue } from '@xylabs/enum'
+import { Enum } from '@xylabs/enum'
 export type LogFunction = (...data: unknown[]) => void
 
 /**
@@ -12,13 +14,15 @@ export interface Logger {
   warn: LogFunction
 }
 
-export enum LogLevel {
-  error = 1,
-  warn = 2,
-  info = 3,
-  log = 4,
-  debug = 5,
-}
+export const LogLevel = Enum({
+  error: 1,
+  warn: 2,
+  info: 3,
+  log: 4,
+  debug: 5,
+})
+
+export type LogLevel = EnumValue<typeof LogLevel>
 
 export const NoOpLogFunction = (..._data: unknown[]) => void {}
 

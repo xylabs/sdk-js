@@ -1,57 +1,61 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/member-ordering */
+import type { EnumValue } from '../enum'
+import { Enum } from '../enum'
 import type { Thread } from './thread'
 
 /** Pool event type. Specifies the type of each `PoolEvent`. */
-export enum PoolEventType {
-  initialized = 'initialized',
-  taskCanceled = 'taskCanceled',
-  taskCompleted = 'taskCompleted',
-  taskFailed = 'taskFailed',
-  taskQueued = 'taskQueued',
-  taskQueueDrained = 'taskQueueDrained',
-  taskStart = 'taskStart',
-  terminated = 'terminated',
-}
+export const PoolEventType = Enum({
+  initialized: 'initialized',
+  taskCanceled: 'taskCanceled',
+  taskCompleted: 'taskCompleted',
+  taskFailed: 'taskFailed',
+  taskQueued: 'taskQueued',
+  taskQueueDrained: 'taskQueueDrained',
+  taskStart: 'taskStart',
+  terminated: 'terminated',
+})
+
+export type PoolEventType = EnumValue<typeof PoolEventType>
 
 export type TaskRunFunction<ThreadType extends Thread, Return> = (worker: ThreadType) => Promise<Return>
 
 /** Pool event. Subscribe to those events using `pool.events()`. Useful for debugging. */
 export type PoolEvent<ThreadType extends Thread> =
   | {
-    type: PoolEventType.initialized
+    type: 'initialized'
     size: number
   }
   | {
-    type: PoolEventType.taskQueued
+    type: 'taskQueued'
     taskID: number
   }
   | {
-    type: PoolEventType.taskQueueDrained
+    type: 'taskQueueDrained'
   }
   | {
-    type: PoolEventType.taskStart
+    type: 'taskStart'
     taskID: number
     workerID: number
   }
   | {
-    type: PoolEventType.taskCompleted
+    type: 'taskCompleted'
     returnValue: any
     taskID: number
     workerID: number
   }
   | {
-    type: PoolEventType.taskFailed
+    type: 'taskFailed'
     error: Error
     taskID: number
     workerID: number
   }
   | {
-    type: PoolEventType.taskCanceled
+    type: 'taskCanceled'
     taskID: number
   }
   | {
-    type: PoolEventType.terminated
+    type: 'terminated'
     remainingQueue: Array<QueuedTask<ThreadType, any>>
   }
 

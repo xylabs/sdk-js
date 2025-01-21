@@ -6,13 +6,12 @@
 /* eslint-disable unicorn/no-array-reduce */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-namespace */
-/* eslint-disable @typescript-eslint/no-floating-promises */
+
 import DebugLogger from 'debug'
 import {
   multicast, Observable, Subject,
 } from 'observable-fns'
 
-import { allSettled } from '../ponyfills'
 import { defaultPoolSize } from './implementation'
 import type {
   PoolEvent, QueuedTask, TaskRunFunction, WorkerDescriptor,
@@ -224,7 +223,10 @@ class WorkerPool<ThreadType extends Thread> implements Pool<ThreadType> {
       return
     }
 
-    this.run(availableWorker, nextTask)
+    this.run(availableWorker, nextTask).catch((error) => {
+      this.debug('Error while running task:', error)
+      this.eventSubject.error(error)
+    })
   }
 
   private taskCompletion(taskID: number) {
@@ -259,7 +261,7 @@ class WorkerPool<ThreadType extends Thread> implements Pool<ThreadType> {
       throw this.initErrors[0]
     }
     if (allowResolvingImmediately && this.taskQueue.length === 0) {
-      await allSettled(getCurrentlyRunningTasks())
+      await Promise.allSettled(getCurrentlyRunningTasks())
       return taskFailures
     }
 
@@ -275,7 +277,7 @@ class WorkerPool<ThreadType extends Thread> implements Pool<ThreadType> {
       })
     })
 
-    await allSettled(getCurrentlyRunningTasks())
+    await Promise.allSettled(getCurrentlyRunningTasks())
     failureSubscription.unsubscribe()
 
     return taskFailures

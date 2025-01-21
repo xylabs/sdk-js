@@ -6,6 +6,8 @@
 // See <https://github.com/microsoft/TypeScript/issues/28009>
 import type { Observable } from 'observable-fns'
 
+import type { EnumValue } from '../enum'
+import { Enum } from '../enum'
 import type { ObservablePromise } from '../observable-promise'
 import type {
   $errors, $events, $terminate, $worker,
@@ -64,11 +66,9 @@ interface AnyModuleThread extends PrivateThreadProps {
 /** Worker thread. Either a `FunctionThread` or a `ModuleThread`. */
 export type Thread = AnyFunctionThread | AnyModuleThread
 
-export type TransferList = Transferable[]
-
 /** Worker instance. Either a web worker or a node.js Worker provided by `worker_threads` or `tiny-worker`. */
 export interface Worker extends EventTarget {
-  postMessage(value: any, transferList?: TransferList): void
+  postMessage(value: any, transferList?: Transferable[]): void
   /** In nodejs 10+ return type is Promise while with tiny-worker and in browser return type is void */
   terminate(callback?: (error?: Error, exitCode?: number) => void): void | Promise<number>
 }
@@ -93,7 +93,7 @@ export interface ThreadsWorkerOptions extends WorkerOptions {
 /** Worker implementation. Either web worker or a node.js Worker class. */
 export declare class WorkerImplementation extends EventTarget implements Worker {
   constructor(path: string, options?: ThreadsWorkerOptions)
-  postMessage(value: any, transferList?: TransferList): void
+  postMessage(value: any, transferList?: Transferable[]): void
   terminate(): void | Promise<number>
 }
 
@@ -109,24 +109,26 @@ export interface ImplementationExport {
 }
 
 /** Event as emitted by worker thread. Subscribe to using `Thread.events(thread)`. */
-export enum WorkerEventType {
-  internalError = 'internalError',
-  message = 'message',
-  termination = 'termination',
-}
+export const WorkerEventType = Enum({
+  internalError: 'internalError',
+  message: 'message',
+  termination: 'termination',
+})
+
+export type WorkerEventType = EnumValue<typeof WorkerEventType>
 
 export interface WorkerInternalErrorEvent {
   error: Error
-  type: WorkerEventType.internalError
+  type: 'internalError'
 }
 
 export interface WorkerMessageEvent<Data> {
   data: Data
-  type: WorkerEventType.message
+  type: 'message'
 }
 
 export interface WorkerTerminationEvent {
-  type: WorkerEventType.termination
+  type: 'termination'
 }
 
 export type WorkerEvent = WorkerInternalErrorEvent | WorkerMessageEvent<any> | WorkerTerminationEvent

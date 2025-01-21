@@ -1,4 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
+import type { EnumValue } from '../enum'
+import { Enum } from '../enum'
+
 /* eslint-disable @typescript-eslint/member-ordering */
 export interface SerializedError {
   __error_marker: '$$error'
@@ -10,18 +14,20 @@ export interface SerializedError {
 /////////////////////////////
 // Messages sent by master:
 
-export enum MasterMessageType {
-  cancel = 'cancel',
-  run = 'run',
-}
+export const MasterMessageType = Enum({
+  cancel: 'cancel',
+  run: 'run',
+})
+
+export type MasterMessageType = EnumValue<typeof MasterMessageType>
 
 export type MasterJobCancelMessage = {
-  type: MasterMessageType.cancel
+  type: 'cancel'
   uid: number
 }
 
 export type MasterJobRunMessage = {
-  type: MasterMessageType.run
+  type: 'run'
   uid: number
   method?: string
   args: any[]
@@ -30,16 +36,18 @@ export type MasterJobRunMessage = {
 ////////////////////////////
 // Messages sent by worker:
 
-export enum WorkerMessageType {
-  error = 'error',
-  init = 'init',
-  result = 'result',
-  running = 'running',
-  uncaughtError = 'uncaughtError',
-}
+export const WorkerMessageType = Enum({
+  error: 'error',
+  init: 'init',
+  result: 'result',
+  running: 'running',
+  uncaughtError: 'uncaughtError',
+})
+
+export type WorkerMessageType = EnumValue<typeof WorkerMessageType>
 
 export type WorkerUncaughtErrorMessage = {
-  type: WorkerMessageType.uncaughtError
+  type: 'uncaughtError'
   error: {
     message: string
     name: string
@@ -48,25 +56,25 @@ export type WorkerUncaughtErrorMessage = {
 }
 
 export type WorkerInitMessage = {
-  type: WorkerMessageType.init
+  type: 'init'
   exposed: { type: 'function' } | { type: 'module'; methods: string[] }
 }
 
 export type WorkerJobErrorMessage = {
-  type: WorkerMessageType.error
+  type: 'error'
   uid: number
   error: SerializedError
 }
 
 export type WorkerJobResultMessage = {
-  type: WorkerMessageType.result
+  type: 'result'
   uid: number
   complete?: true
   payload?: any
 }
 
 export type WorkerJobStartMessage = {
-  type: WorkerMessageType.running
+  type: 'running'
   uid: number
   resultType: 'observable' | 'promise'
 }

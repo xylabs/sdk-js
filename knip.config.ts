@@ -8,12 +8,22 @@ const config: KnipConfig = {
     '.': {
       entry: ['src/index.ts'],
       ignore: ['xy.config.ts'],
+      ignoreDependencies: [
+        'eslint',
+        '@typescript-eslint/eslint-plugin',
+        'eslint-import-resolver-typescript',
+        'reflect-metadata',
+        '@xylabs/tsconfig-dom',
+        '@typescript-eslint/parser',
+        '@xylabs/config',
+      ],
     },
     'packages/buffer': {
       ignoreDependencies: ['buffer'],
       ignore: ['xy.config.ts'],
       entry: ['src/index.ts', 'src/node/index.ts', 'src/browser/index.ts'],
     },
+    'packages/log': { ignoreDependencies: ['rollbar'], ignore: ['xy.config.ts'] },
     'packages/*': {
       entry: ['src/index.ts', 'src/node/index.ts', 'src/browser/index.ts', 'src/neutral/index.ts'],
       ignore: ['xy.config.ts'],

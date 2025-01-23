@@ -35,13 +35,13 @@
   "module": "dist/neutral/index.mjs",
   "types": "dist/neutral/index.d.ts",
   "dependencies": {
-    "@scure/base": "^1.2.1",
-    "@xylabs/assert": "workspace:^"
+    "@xylabs/assert": "workspace:^",
+    "@xylabs/hex": "workspace:^"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^4.2.6",
     "@xylabs/tsconfig": "^4.2.6",
-    "typescript": "^5.7.2",
+    "typescript": "^5.7.3",
     "vitest": "^2.1.8"
   },
   "engines": {

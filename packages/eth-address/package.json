@@ -42,12 +42,12 @@
   ],
   "dependencies": {
     "@xylabs/assert": "workspace:^",
-    "ethers": "^6.13.4"
+    "ethers": "^6.13.5"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^4.2.6",
     "@xylabs/tsconfig": "^4.2.6",
-    "typescript": "^5.7.2",
+    "typescript": "^5.7.3",
     "vitest": "^2.1.8"
   },
   "engines": {

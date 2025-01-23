@@ -1,13 +1,27 @@
-import { base16, base58 } from '@scure/base'
 import { assertEx } from '@xylabs/assert'
+import type { Hex } from '@xylabs/hex'
+import { toHex } from '@xylabs/hex'
 
-const stringToUInt8Array = (value: string, base = 16): Uint8Array => {
+function hexToArrayBuffer(value: Hex): Uint8Array {
+  if (value.length % 2 !== 0) {
+    throw new Error('Invalid hex value')
+  }
+
+  const length = value.length / 2
+  const result = new Uint8Array(new ArrayBuffer(length))
+
+  for (let i = 0; i < length; i++) {
+    const byte = value.slice(i * 2, i * 2 + 2)
+    result[i] = Number.parseInt(byte, 16)
+  }
+
+  return result
+}
+
+function stringToArrayBuffer(value: string, base = 16): Uint8Array {
   switch (base) {
     case 16: {
-      return base16.decode((value.startsWith('0x') ? value.slice(2) : value).toUpperCase())
-    }
-    case 58: {
-      return base58.decode(value)
+      return hexToArrayBuffer(toHex((value.startsWith('0x') ? value.slice(2) : value).toUpperCase()))
     }
     default: {
       throw new Error(`Unsupported base [${base}]`)
@@ -27,8 +41,8 @@ export function toArrayBuffer(value?: ArrayBufferLike | bigint | string, padLeng
 
   let result: Uint8Array | undefined
     = typeof value === 'string'
-      ? stringToUInt8Array(value, base)
-      : typeof value === 'bigint' ? stringToUInt8Array(value.toString(16)) : (new Uint8Array(value))
+      ? stringToArrayBuffer(value, base)
+      : typeof value === 'bigint' ? stringToArrayBuffer(value.toString(16)) : (new Uint8Array(value))
 
   if (result === undefined) {
     throw new Error(`toArrayBuffer - Unknown type: ${typeof value}`)

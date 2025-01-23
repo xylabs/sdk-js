@@ -75,7 +75,7 @@
     "publint": "^0.3.2",
     "rollbar": "^2.26.4",
     "typescript": "^5.7.3",
-    "vitest": "^2.1.8",
+    "vitest": "^3.0.4",
     "vitest-mock-extended": "^2.0.2",
     "winston": "^3.17.0",
     "winston-transport": "^4.9.0"

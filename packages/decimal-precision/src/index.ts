@@ -8,7 +8,7 @@ export const toDecimalPrecision = (value: number, digits: number) => {
 }
 
 export const toFixedPoint = (value: bigint | string, places = 18): bigint => {
-  if (Number.isInteger(places)) throw new Error(`places (${places}) must be an Integer`)
+  if (!Number.isInteger(places)) throw new Error(`places (${places}) must be an Integer`)
   if (typeof value === 'string') {
     const parts = value.split('.')
     if (parts.length > 2) {
@@ -25,6 +25,6 @@ export const toFixedPoint = (value: bigint | string, places = 18): bigint => {
 }
 
 export const fromFixedPoint = (value: bigint, places = 18): bigint => {
-  if (Number.isInteger(places)) throw new Error(`places (${places}) must be an Integer`)
+  if (!Number.isInteger(places)) throw new Error(`places (${places}) must be an Integer`)
   return value / (10n ** BigInt(places))
 }

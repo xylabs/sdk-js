@@ -17,7 +17,8 @@ export const toFixedPoint = (value: bigint | string, places = 18n): bigint => {
       return BigInt(value) * (10n ** places)
     }
     const [whole, fraction] = parts
-    return BigInt(whole + fraction.padEnd(Number(places), '0'))
+    const trimmed = fraction.slice(0, 18)
+    return BigInt(whole + trimmed.padEnd(Number(places), '0'))
   }
   return value * (10n ** places)
 }

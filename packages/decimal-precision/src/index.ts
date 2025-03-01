@@ -6,3 +6,19 @@ export const toDecimalPrecision = (value: number, digits: number) => {
   }
   return result.toFixed(fixed)
 }
+
+export const toFixedPoint = (value: bigint | string, places = 18n): bigint => {
+  if (typeof value === 'string') {
+    const parts = value.split('.')
+    if (parts.length > 2) {
+      throw new Error('Too many decimals in value')
+    }
+    if (parts.length === 1) {
+      return BigInt(value) * (10n ** places)
+    }
+    const [whole, fraction] = parts
+    return BigInt(whole + fraction.padEnd(Number(places), '0'))
+  }
+  return value * (10n ** places)
+}
+export const fromFixedPoint = (value: bigint, places = 18n): bigint => value / (10n ** places)

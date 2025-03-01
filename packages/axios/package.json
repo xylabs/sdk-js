@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/axios",
-  "version": "4.5.1",
+  "version": "4.5.2",
   "description": "Primary SDK for using XYO Protocol 2.0",
   "keywords": [
     "axios",
@@ -38,13 +38,13 @@
   "dependencies": {
     "@types/pako": "^2.0.3",
     "@xylabs/logger": "workspace:^",
-    "axios": "^1.7.9",
+    "axios": "^1.8.1",
     "pako": "^2.1.0"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^4.2.6",
-    "@xylabs/tsconfig": "^4.2.6",
-    "typescript": "^5.7.3"
+    "@xylabs/ts-scripts-yarn3": "^5.0.39",
+    "@xylabs/tsconfig": "^5.0.39",
+    "typescript": "^5.8.2"
   },
   "engines": {
     "node": ">=18"

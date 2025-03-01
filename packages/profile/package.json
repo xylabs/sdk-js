@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/profile",
-  "version": "4.5.1",
+  "version": "4.5.2",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "profile",
@@ -37,9 +37,9 @@
   "module": "./dist/neutral/index.mjs",
   "types": "./dist/neutral/index.d.ts",
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^4.2.6",
-    "@xylabs/tsconfig": "^4.2.6",
-    "typescript": "^5.7.3"
+    "@xylabs/ts-scripts-yarn3": "^5.0.39",
+    "@xylabs/tsconfig": "^5.0.39",
+    "typescript": "^5.8.2"
   },
   "engines": {
     "node": ">=18"

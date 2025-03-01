@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/threads",
-  "version": "4.5.1",
+  "version": "4.5.2",
   "description": "Web workers & worker threads as simple as a function call",
   "license": "MIT",
   "main": "dist/index.js",
@@ -91,23 +91,23 @@
     "observable-fns": "^0.6.1"
   },
   "devDependencies": {
-    "@babel/types": "^7.26.5",
+    "@babel/types": "^7.26.9",
     "@rollup/plugin-commonjs": "^28.0.2",
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@types/debug": "^4.1.12",
-    "@types/node": "^22.10.10",
-    "@xylabs/ts-scripts-yarn3": "^4.2.6",
+    "@types/node": "^22.13.7",
+    "@xylabs/ts-scripts-yarn3": "^5.0.39",
     "cross-env": "^7.0.3",
     "puppet-run": "^0.11.4",
     "raw-loader": "^4.0.2",
     "rimraf": "^6.0.1",
-    "rollup": "^4.31.0",
+    "rollup": "^4.34.8",
     "threads-plugin": "^1.4.0",
     "tiny-worker": "^2.3.0",
     "tslib": "^2.8.1",
-    "typescript": "^5.7.3",
-    "vitest": "^3.0.4",
-    "webpack": "^5.97.1"
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.7",
+    "webpack": "^5.98.0"
   },
   "optionalDependencies": {
     "tiny-worker": "^2.3.0"

@@ -27,7 +27,7 @@ export async function withDb<DBTypes extends DBSchema | unknown = unknown, R = E
       logger?.log('IndexedDb: Terminated')
     },
     upgrade(db, oldVersion, newVersion, transaction) {
-      if (oldVersion !== newVersion) {
+      /* if (oldVersion !== newVersion) {
         logger?.log(`IndexedDb: Upgrading from ${oldVersion} to ${newVersion}`)
         const objectStores = transaction.objectStoreNames
         for (const name of objectStores) {
@@ -37,7 +37,7 @@ export async function withDb<DBTypes extends DBSchema | unknown = unknown, R = E
             console.log(`IndexedDb: Failed to delete existing object store ${name}`)
           }
         }
-      }
+      } */
       if (expectedIndexes) {
         for (const [storeName, indexes] of Object.entries(expectedIndexes)) {
           if (db.objectStoreNames.contains(storeName as StoreNames<DBTypes>)) {

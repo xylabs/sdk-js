@@ -71,7 +71,7 @@
     "@xylabs/url": "workspace:^"
   },
   "devDependencies": {
-    "@types/node": "^22.13.7",
+    "@types/node": "^22.13.8",
     "@typescript-eslint/eslint-plugin": "^8.25.0",
     "@typescript-eslint/parser": "^8.25.0",
     "@xylabs/config": "^5.0.39",

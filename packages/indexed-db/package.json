@@ -53,6 +53,7 @@
     "@xylabs/logger": "workspace:^",
     "@xylabs/object": "workspace:^",
     "@xylabs/storage": "workspace:^",
+    "async-mutex": "^0.5.0",
     "idb": "^8.0.2"
   },
   "devDependencies": {

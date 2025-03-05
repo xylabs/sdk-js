@@ -21,8 +21,7 @@ export async function withDb<DBTypes extends DBSchema | unknown = unknown, R = E
   lock = true,
 ): Promise<R> {
   dbMutexes[dbName] = dbMutexes[dbName] ?? new Mutex()
-  const nolockRun = <T>(callback: MutexInterface.Worker<T>) => callback()
-  const db = await (lock ? dbMutexes[dbName].runExclusive : nolockRun) (async () => {
+  const handler = async () => {
     const versionToOpen = expectedIndexes === undefined ? undefined : await checkDbNeedsUpgrade(dbName, expectedIndexes, logger)
     const db = await openDB<DBTypes>(dbName, versionToOpen, {
       blocked(currentVersion, blockedVersion, event) {
@@ -62,7 +61,8 @@ export async function withDb<DBTypes extends DBSchema | unknown = unknown, R = E
       },
     })
     return db
-  })
+  }
+  const db = lock ? await dbMutexes[dbName].runExclusive(handler) : await handler()
   try {
     return await callback(db)
   } finally {

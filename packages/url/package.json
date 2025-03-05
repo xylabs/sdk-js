@@ -46,7 +46,7 @@
   "module": "./dist/neutral/index.mjs",
   "types": "./dist/neutral/index.d.ts",
   "devDependencies": {
-    "@types/node": "^22.13.8",
+    "@types/node": "^22.13.9",
     "@xylabs/ts-scripts-yarn3": "^5.0.39",
     "@xylabs/tsconfig": "^5.0.39",
     "@xylabs/tsconfig-dom": "^5.0.39",

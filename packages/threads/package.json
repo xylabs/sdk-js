@@ -95,7 +95,7 @@
     "@rollup/plugin-commonjs": "^28.0.2",
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@types/debug": "^4.1.12",
-    "@types/node": "^22.13.8",
+    "@types/node": "^22.13.9",
     "@xylabs/ts-scripts-yarn3": "^5.0.39",
     "cross-env": "^7.0.3",
     "puppet-run": "^0.11.4",

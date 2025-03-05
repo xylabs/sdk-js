@@ -61,7 +61,7 @@
     "@types/express": "^4.17.21",
     "@types/express-mung": "^0.5.5",
     "@types/express-serve-static-core": "^5.0.6",
-    "@types/node": "^22.13.8",
+    "@types/node": "^22.13.9",
     "@xylabs/ts-scripts-yarn3": "^5.0.39",
     "@xylabs/tsconfig": "^5.0.39",
     "@xylabs/vitest-extended": "workspace:^",

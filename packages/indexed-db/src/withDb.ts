@@ -1,5 +1,6 @@
 import type { Logger } from '@xylabs/logger'
 import type { EmptyObject } from '@xylabs/object'
+import type { MutexInterface } from 'async-mutex'
 import { Mutex } from 'async-mutex'
 import type {
   DBSchema, IDBPDatabase, StoreNames,
@@ -17,9 +18,11 @@ export async function withDb<DBTypes extends DBSchema | unknown = unknown, R = E
   callback: (db: IDBPDatabase<DBTypes>) => Promise<R> | R,
   expectedIndexes?: Record<string, IndexDescription[]>,
   logger?: Logger,
+  lock = true,
 ): Promise<R> {
   dbMutexes[dbName] = dbMutexes[dbName] ?? new Mutex()
-  const db = await dbMutexes[dbName].runExclusive(async () => {
+  const nolockRun = <T>(callback: MutexInterface.Worker<T>) => callback()
+  const db = await (lock ? dbMutexes[dbName].runExclusive : nolockRun) (async () => {
     const versionToOpen = expectedIndexes === undefined ? undefined : await checkDbNeedsUpgrade(dbName, expectedIndexes, logger)
     const db = await openDB<DBTypes>(dbName, versionToOpen, {
       blocked(currentVersion, blockedVersion, event) {

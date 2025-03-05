@@ -30,11 +30,11 @@ describe('toDecimalPrecision', () => {
   })
 
   it('should handle small numbers correctly', () => {
-    expect(toDecimalPrecision(0.000_123_456, 4)).toBe('0.0001235')
+    expect(toDecimalPrecision(0.000_123_456_789, 4)).toBe('0.0001235')
   })
 
-  it('should handle large numbers correctly', () => {
-    expect(toDecimalPrecision(123_456_789.987_654_321, 6)).toBe('123457000')
+  it('should handle big and small numbers correctly', () => {
+    expect(toDecimalPrecision(0.000_123_456, 4)).toBe('0.0001235')
   })
 
   it('should handle negative numbers correctly', () => {

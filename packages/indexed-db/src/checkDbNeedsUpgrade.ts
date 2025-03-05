@@ -33,5 +33,5 @@ export async function checkDbNeedsUpgrade(dbName: string, stores: Record<string,
       }
     }
     return db.version
-  }, {}, logger, false)
+  }, undefined, logger, false)
 }

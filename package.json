@@ -38,7 +38,8 @@
     "packages/**/*"
   ],
   "scripts": {
-    "build-typedoc-site": "xy gen-docs @xylabs/sdk-js"
+    "build-typedoc-site": "xy gen-docs @xylabs/sdk-js",
+    "test": "vitest run"
   },
   "resolutions": {
     "@types/express": "^4.17.21",

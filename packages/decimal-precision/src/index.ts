@@ -1,11 +1,4 @@
-export const toDecimalPrecision = (value: number, digits: number) => {
-  let fixed = 0
-  const result = Number.parseFloat(value.toPrecision(digits))
-  while (Number.parseFloat(result.toFixed(fixed)) !== result && fixed < 20) {
-    fixed++
-  }
-  return result.toFixed(fixed)
-}
+export * from './toDecimalPrecision.ts'
 
 export const toFixedPoint = (value: bigint | string, places = 18): bigint => {
   if (!Number.isInteger(places)) throw new Error(`places (${places}) must be an Integer`)

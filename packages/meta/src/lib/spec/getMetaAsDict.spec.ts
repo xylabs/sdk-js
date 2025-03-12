@@ -13,8 +13,8 @@ describe('getMetaAsDict', () => {
   it.each(cases)('Generates head meta', (meta: Meta) => {
     const output = getMetaAsDict(meta)
     expect(output).toBeDefined()
-    Object.entries(output).map(([key, value]) => {
+    for (const [key, value] of Object.entries(output)) {
       expect(key).toEqual(value)
-    })
+    }
   })
 })

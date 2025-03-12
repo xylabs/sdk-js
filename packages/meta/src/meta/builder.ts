@@ -16,15 +16,15 @@ const addMetaToHead = ($: CheerioAPI, name: string, value: string | object) => {
       $('head').append(newMeta)
     }
   } else if (Array.isArray(value)) {
-    value.map(item => addMetaToHead($, `${name}`, item))
+    for (const item of value) addMetaToHead($, `${name}`, item)
   } else if (typeof value === 'object') {
-    Object.entries(value).map(([key, value]) => {
+    for (let [key, v] of Object.entries(value)) {
       if (key === 'url') {
-        addMetaToHead($, name, value)
+        addMetaToHead($, name, v)
       } else {
-        addMetaToHead($, `${name}:${key}`, value)
+        addMetaToHead($, `${name}:${key}`, v)
       }
-    })
+    }
   } else {
     throw new TypeError(`Invalid item type [${name}, ${typeof value}]`)
   }

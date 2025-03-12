@@ -42,9 +42,9 @@ export const matchFilter
     }
 
 const goodTags = (arr: string[]) => {
-  return arr.filter(s => s.match(GOOD_REGX))
+  return arr.filter(s => RegExp(GOOD_REGX).exec(s))
 }
 
 const badTags = (arr: string[]) => {
-  return arr.filter(s => s.match(BAD_REGX)).map(s => s.replace(NOT_SYMBOL, ''))
+  return arr.filter(s => RegExp(BAD_REGX).exec(s)).map(s => s.replace(NOT_SYMBOL, ''))
 }

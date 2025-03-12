@@ -9,7 +9,6 @@ export const tryParse = <T = number>(func: ParseFunc<T>, value?: string) => {
   } catch {
     return
   }
-  return
 }
 
 export const tryParseFloat = (value?: string) => {

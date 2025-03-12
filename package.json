@@ -27,13 +27,13 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/neutral/index.d.ts",
+      "types": "./dist/types/index.d.ts",
       "default": "./dist/neutral/index.mjs"
     },
     "./package.json": "./package.json"
   },
   "module": "./dist/neutral/index.mjs",
-  "types": "./dist/neutral/index.d.ts",
+  "types": "./dist/types/index.d.ts",
   "workspaces": [
     "packages/**/*"
   ],
@@ -72,25 +72,25 @@
     "@xylabs/url": "workspace:^"
   },
   "devDependencies": {
-    "@types/node": "^22.13.9",
-    "@typescript-eslint/eslint-plugin": "^8.26.0",
-    "@typescript-eslint/parser": "^8.26.0",
-    "@xylabs/config": "^5.0.39",
-    "@xylabs/eslint-config-flat": "^5.0.39",
-    "@xylabs/ts-scripts-yarn3": "^5.0.39",
-    "@xylabs/tsconfig": "^5.0.39",
-    "@xylabs/tsconfig-dom": "^5.0.39",
+    "@types/node": "^22.13.10",
+    "@typescript-eslint/eslint-plugin": "^8.26.1",
+    "@typescript-eslint/parser": "^8.26.1",
+    "@xylabs/config": "^6.0.5",
+    "@xylabs/eslint-config-flat": "^6.0.5",
+    "@xylabs/ts-scripts-yarn3": "^6.0.5",
+    "@xylabs/tsconfig": "^6.0.5",
+    "@xylabs/tsconfig-dom": "^6.0.5",
     "dotenv": "^16.4.7",
-    "eslint": "^9.21.0",
-    "eslint-import-resolver-typescript": "^3.8.3",
+    "eslint": "^9.22.0",
+    "eslint-import-resolver-typescript": "^3.8.5",
     "jsdom": "^26.0.0",
     "knip": "^5.45.0",
     "reflect-metadata": "^0.2.2",
     "ts-node": "^10.9.2",
     "typedoc": "^0.27.9",
     "typescript": "^5.8.2",
-    "vite": "^6.2.0",
-    "vitest": "^3.0.7"
+    "vite": "^6.2.1",
+    "vitest": "^3.0.8"
   },
   "packageManager": "yarn@4.6.0",
   "engines": {

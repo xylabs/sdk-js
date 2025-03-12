@@ -1,12 +1,13 @@
-interface XylabsGlobalThis {
-  xylabs: {
+declare global {
+  var xylabs: {
     unique: Record<string, unknown>
     uniqueDisabled?: boolean
   }
 }
 
 const xyoGlobal = () => {
-  return ((globalThis as unknown as XylabsGlobalThis).xylabs = (globalThis as unknown as XylabsGlobalThis).xylabs ?? {})
+  globalThis.xylabs = globalThis.xylabs ?? {}
+  return globalThis.xylabs
 }
 
 export const disableGloballyUnique = () => {
@@ -16,8 +17,8 @@ export const disableGloballyUnique = () => {
 export const globallyUnique = (name: string, value: unknown, domain = 'global') => {
   const uniqueName = [domain, name].join(':')
   if (!xyoGlobal().uniqueDisabled) {
-    const xyo = ((globalThis as unknown as XylabsGlobalThis).xylabs = (globalThis as unknown as XylabsGlobalThis).xylabs ?? {})
-    const unique = (xyo.unique = xyo.unique ?? {})
+    const xylabs = globalThis.xylabs = globalThis.xylabs ?? {}
+    const unique = (xylabs.unique = xylabs.unique ?? {})
     if (unique[uniqueName] === undefined) {
       unique[uniqueName] = value
     } else {

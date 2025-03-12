@@ -1,6 +1,5 @@
 import type { Logger } from '@xylabs/logger'
 import type { EmptyObject } from '@xylabs/object'
-import type { MutexInterface } from 'async-mutex'
 import { Mutex } from 'async-mutex'
 import type {
   DBSchema, IDBPDatabase, StoreNames,
@@ -33,7 +32,7 @@ export async function withDb<DBTypes extends DBSchema | unknown = unknown, R = E
       terminated() {
         logger?.log('IndexedDb: Terminated')
       },
-      upgrade(db, oldVersion, newVersion, transaction) {
+      upgrade(db, _oldVersion, _newVersion, _transaction) {
       /* if (oldVersion !== newVersion) {
         logger?.log(`IndexedDb: Upgrading from ${oldVersion} to ${newVersion}`)
         const objectStores = transaction.objectStoreNames

@@ -3,23 +3,21 @@ import {
   unicornConfig,
   workspacesConfig,
   rulesConfig,
-  sonarConfig,
   importConfig,
 } from '@xylabs/eslint-config-flat'
 
 export default [
-  { ignores: ['.yarn', 'dist', '**/dist/**', 'build', '**/build/**', 'node_modules/**', 'public', 'storybook-static', 'eslint.config.mjs'] },
+  { ignores: ['.yarn', 'dist', '**/dist/**',
+    'build', '**/build/**', 'node_modules/**', 'public', 'storybook-static', 'eslint.config.mjs',
+    'rollup.config.js', 'test-tooling', 'test', 'types', 'worker.*', '*.mjs', '*.d.ts', '*.js'] },
   unicornConfig,
   workspacesConfig,
   rulesConfig,
   typescriptConfig,
   importConfig,
-  sonarConfig,
   {
     rules: {
-      'sonarjs/public-static-readonly': ['off'],
-      'sonarjs/prefer-single-boolean-return': ['off'],
-      'import-x/no-unresolved': ['off'],
+      'no-restricted-syntax': ['off'],
       'no-restricted-imports': [
         'warn',
         {

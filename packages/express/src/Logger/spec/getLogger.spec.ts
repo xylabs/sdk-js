@@ -19,7 +19,7 @@ describe('getLogger', () => {
       const logger = getLogger('all')
       const logMethod = (logger as any)[verbosity]
       expect(logMethod).toBeFunction()
-      logMethod(`${new String(verbosity)} log from unit test`)
+      logMethod(`${String(verbosity)} log from unit test`)
     })
   })
 })

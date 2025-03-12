@@ -27,22 +27,22 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/neutral/index.d.ts",
+      "types": "./dist/types/index.d.ts",
       "import": "./dist/neutral/index.mjs"
     },
     "./package.json": "./package.json"
   },
   "module": "dist/neutral/index.mjs",
-  "types": "dist/neutral/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "dependencies": {
     "cheerio": "^1.0.0"
   },
   "devDependencies": {
-    "@types/node": "^22.13.9",
-    "@xylabs/ts-scripts-yarn3": "^5.0.39",
-    "@xylabs/tsconfig": "^5.0.39",
+    "@types/node": "^22.13.10",
+    "@xylabs/ts-scripts-yarn3": "^6.0.5",
+    "@xylabs/tsconfig": "^6.0.5",
     "typescript": "^5.8.2",
-    "vitest": "^3.0.7"
+    "vitest": "^3.0.8"
   },
   "packageManager": "yarn@3.2.0",
   "publishConfig": {

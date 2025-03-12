@@ -29,22 +29,22 @@
   "exports": {
     ".": {
       "node": {
-        "types": "./dist/node/index.d.ts",
+        "types": "./dist/types/index.d.ts",
         "default": "./dist/node/index.mjs"
       },
       "browser": {
-        "types": "./dist/browser/index.d.ts",
+        "types": "./dist/types/index.d.ts",
         "default": "./dist/browser/index.mjs"
       },
       "neutral": {
-        "types": "./dist/neutral/index.d.ts",
+        "types": "./dist/types/index.d.ts",
         "default": "./dist/neutral/index.mjs"
       }
     },
     "./package.json": "./package.json"
   },
   "module": "./dist/browser/index.mjs",
-  "types": "./dist/browser/index.d.ts",
+  "types": "./dist/types/index.d.ts",
   "workspaces": [
     "packages/**/*"
   ],
@@ -57,12 +57,12 @@
     "idb": "^8.0.2"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^5.0.39",
-    "@xylabs/tsconfig-dom": "^5.0.39",
+    "@xylabs/ts-scripts-yarn3": "^6.0.5",
+    "@xylabs/tsconfig-dom": "^6.0.5",
     "fake-indexeddb": "^6.0.0",
     "jsdom": "^26.0.0",
     "typescript": "^5.8.2",
-    "vitest": "^3.0.7"
+    "vitest": "^3.0.8"
   },
   "engines": {
     "node": ">=18"

@@ -41,8 +41,8 @@
   },
   "devDependencies": {
     "@types/lodash-es": "^4.17.12",
-    "@xylabs/ts-scripts-yarn3": "^6.0.5",
-    "@xylabs/tsconfig": "^6.0.5",
+    "@xylabs/ts-scripts-yarn3": "^6.0.8",
+    "@xylabs/tsconfig": "^6.0.8",
     "typescript": "^5.8.2"
   },
   "engines": {

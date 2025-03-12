@@ -38,12 +38,12 @@
   "dependencies": {
     "@types/pako": "^2.0.3",
     "@xylabs/logger": "workspace:^",
-    "axios": "^1.8.2",
+    "axios": "^1.8.3",
     "pako": "^2.1.0"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^6.0.5",
-    "@xylabs/tsconfig": "^6.0.5",
+    "@xylabs/ts-scripts-yarn3": "^6.0.8",
+    "@xylabs/tsconfig": "^6.0.8",
     "typescript": "^5.8.2"
   },
   "engines": {

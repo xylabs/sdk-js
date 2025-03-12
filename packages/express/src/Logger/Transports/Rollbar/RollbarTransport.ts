@@ -2,7 +2,7 @@ import type Rollbar from 'rollbar'
 import type { TransportStreamOptions } from 'winston-transport'
 import Transport from 'winston-transport'
 
-import { logFormatRollbar } from '../../LogFormats'
+import { logFormatRollbar } from '../../LogFormats/index.ts'
 
 export class RollbarTransport extends Transport {
   constructor(

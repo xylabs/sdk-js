@@ -20,7 +20,7 @@ import getCallsites from 'callsites-3-1-0'
 
 import type {
   ImplementationExport, ThreadsWorkerOptions, WorkerImplementation,
-} from '../types/master'
+} from '../types/master.ts'
 
 interface WorkerGlobalScope {
   addEventListener(eventName: string, listener: (event: Event) => void): void
@@ -49,7 +49,8 @@ function detectTsNode() {
   try {
     eval('require').resolve('ts-node')
     tsNodeAvailable = true
-  } catch (error) {
+  } catch (ex) {
+    const error = ex as Error & { code: string }
     if (error && error.code === 'MODULE_NOT_FOUND') {
       tsNodeAvailable = false
     } else {

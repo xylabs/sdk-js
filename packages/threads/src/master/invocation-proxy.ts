@@ -10,23 +10,23 @@
 import DebugLogger from 'debug'
 import { multicast, Observable } from 'observable-fns'
 
-import { deserialize, serialize } from '../common'
-import { ObservablePromise } from '../observable-promise'
-import { isTransferDescriptor } from '../transferable'
+import { deserialize, serialize } from '../common.ts'
+import { ObservablePromise } from '../observable-promise.ts'
+import { isTransferDescriptor } from '../transferable.ts'
 import type {
   ModuleMethods, ModuleProxy, ProxyableFunction, Worker as WorkerType,
-} from '../types/master'
+} from '../types/master.ts'
 import type {
   MasterJobCancelMessage,
   MasterJobRunMessage,
   WorkerJobErrorMessage,
   WorkerJobResultMessage,
   WorkerJobStartMessage,
-} from '../types/messages'
+} from '../types/messages.ts'
 import {
   MasterMessageType,
   WorkerMessageType,
-} from '../types/messages'
+} from '../types/messages.ts'
 
 const debugMessages = DebugLogger('threads:master:messages')
 

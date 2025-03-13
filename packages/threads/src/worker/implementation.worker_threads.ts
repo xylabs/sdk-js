@@ -3,8 +3,8 @@
 // tslint:disable no-shadowed-variable
 import type { MessagePort } from 'node:worker_threads'
 
-import type { AbstractedWorkerAPI } from '../types/worker'
-import WorkerThreads from '../worker_threads'
+import type { AbstractedWorkerAPI } from '../types/worker.ts'
+import WorkerThreads from '../worker_threads.ts'
 
 function assertMessagePort(port: MessagePort | null | undefined): MessagePort {
   if (!port) {

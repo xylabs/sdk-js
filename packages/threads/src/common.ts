@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type {
   JsonSerializable, Serializer, SerializerImplementation,
-} from './serializers'
-import { DefaultSerializer, extendSerializer } from './serializers'
+} from './serializers.ts'
+import { DefaultSerializer, extendSerializer } from './serializers.ts'
 
 let registeredSerializer: Serializer<JsonSerializable> = DefaultSerializer
 

@@ -4,9 +4,9 @@
 import isSomeObservable from 'is-observable-2-1-0'
 import type { Observable, Subscription } from 'observable-fns'
 
-import { deserialize, serialize } from '../common'
-import type { TransferDescriptor } from '../transferable'
-import { isTransferDescriptor } from '../transferable'
+import { deserialize, serialize } from '../common.ts'
+import type { TransferDescriptor } from '../transferable.ts'
+import { isTransferDescriptor } from '../transferable.ts'
 import type {
   MasterJobCancelMessage,
   MasterJobRunMessage,
@@ -16,16 +16,16 @@ import type {
   WorkerJobResultMessage,
   WorkerJobStartMessage,
   WorkerUncaughtErrorMessage,
-} from '../types/messages'
+} from '../types/messages.ts'
 import {
   MasterMessageType,
   WorkerMessageType,
-} from '../types/messages'
-import type { WorkerFunction, WorkerModule } from '../types/worker'
-import Implementation from './implementation'
+} from '../types/messages.ts'
+import type { WorkerFunction, WorkerModule } from '../types/worker.ts'
+import Implementation from './implementation.ts'
 
-export { registerSerializer } from '../common'
-export { Transfer } from '../transferable'
+export { registerSerializer } from '../common.ts'
+export { Transfer } from '../transferable.ts'
 
 /** Returns `true` if this code is currently running in a worker. */
 export const isWorkerRuntime = Implementation.isWorkerRuntime
@@ -123,7 +123,8 @@ async function runFunction(jobUID: number, fn: WorkerFunction, args: any[]) {
 
   try {
     syncResult = fn(...args)
-  } catch (error) {
+  } catch (ex) {
+    const error = ex as Error
     return postJobErrorMessage(jobUID, error)
   }
 

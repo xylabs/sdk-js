@@ -36,7 +36,8 @@
   "module": "./dist/neutral/index.mjs",
   "types": "./dist/types/index.d.ts",
   "dependencies": {
-    "@xylabs/delay": "workspace:^"
+    "@xylabs/delay": "workspace:^",
+    "@xylabs/promise": "workspace:^"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^6.1.3",

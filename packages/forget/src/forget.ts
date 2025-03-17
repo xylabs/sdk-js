@@ -1,4 +1,5 @@
 import { delay } from '@xylabs/delay'
+import { isPromise, type Promisable } from '@xylabs/promise'
 
 export interface ForgetTimeoutConfig {
   cancel: () => void
@@ -31,47 +32,51 @@ export const ForgetPromise = {
    * @param promise The promise to forget
    * @param config Configuration of forget settings
    */
-  forget<T>(promise: Promise<T>, onComplete?: (result: [T | undefined, Error | undefined]) => void, config?: ForgetTimeoutConfig) {
-    let completed = false
-    this.activeForgets++
+  forget<T>(promise: Promisable<T>, onComplete?: (result: [T | undefined, Error | undefined]) => void, config?: ForgetTimeoutConfig) {
+    if (isPromise(promise)) {
+      let completed = false
+      this.activeForgets++
 
-    const promiseWrapper = async () => {
-      await promise
-        .then((result: T) => {
-          this.activeForgets--
-          completed = true
-          onComplete?.([result, undefined])
-        })
-        .catch((error) => {
-          this.activeForgets--
-          completed = true
-          onComplete?.([undefined, error])
-        })
-    }
-
-    const promises = [promiseWrapper()]
-
-    // if there is a timeout, add it to the race
-    if (config) {
-      const timeoutFunc = async () => {
-        await delay(config.delay)
-        if (!completed) {
-          console.log(`forget promise timeout out after ${config.delay}ms [Cancelling]`)
-          config.cancel?.()
-        }
+      const promiseWrapper = async () => {
+        await promise
+          .then((result: T) => {
+            this.activeForgets--
+            completed = true
+            onComplete?.([result, undefined])
+          })
+          .catch((error) => {
+            this.activeForgets--
+            completed = true
+            onComplete?.([undefined, error])
+          })
       }
-      promises.push(timeoutFunc())
+
+      const promises = [promiseWrapper()]
+
+      // if there is a timeout, add it to the race
+      if (config) {
+        const timeoutFunc = async () => {
+          await delay(config.delay)
+          if (!completed) {
+            console.log(`forget promise timeout out after ${config.delay}ms [Cancelling]`)
+            config.cancel?.()
+          }
+        }
+        promises.push(timeoutFunc())
+      }
+
+      const all = Promise.race(promises)
+
+      all
+        .then(() => {
+          return
+        })
+        .catch(() => {
+          return
+        })
+    } else {
+      return (promise as () => void)()
     }
-
-    const all = Promise.race(promises)
-
-    all
-      .then(() => {
-        return
-      })
-      .catch(() => {
-        return
-      })
   },
 }
 

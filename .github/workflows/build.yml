@@ -35,6 +35,3 @@ jobs:
 
       - name: build
         run: yarn xy build
-
-      - name: cycle
-        run: yarn cycle

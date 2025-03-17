@@ -81,6 +81,6 @@ export const ForgetPromise = {
 }
 
 // used to explicitly launch an async function (or Promise) with awaiting it
-export const forget = <T>(promise: Promise<T>, onComplete?: (result: [T | undefined, Error | undefined]) => void, timeout?: ForgetTimeoutConfig) => {
+export const forget = <T>(promise: Promisable<T>, onComplete?: (result: [T | undefined, Error | undefined]) => void, timeout?: ForgetTimeoutConfig) => {
   ForgetPromise.forget<T>(promise, onComplete, timeout)
 }

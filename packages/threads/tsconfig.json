@@ -1,25 +1,4 @@
 {
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "baseUrl": ".",
-    "declaration": true,
-    "esModuleInterop": true,
-    "target": "es2022",
-    "useUnknownInCatchVariables": false,
-    "moduleResolution": "NodeNext",
-    "module": "NodeNext",
-    "removeComments": true,
-    "lib": ["es2022"],
-    "outDir": "dist",
-    "strict": true,
-    "types": ["node"]
-  },
-  "include": [
-    "./src/index.ts",
-    "./src/observable.ts",
-    "./src/master/*",
-    "./src/worker/*",
-    "./types/tiny-worker.d.ts",
-    "./types/is-observable.d.ts",
-  "src/types.d.ts"  ]
+  "exclude": ["dist", "docs", "packages", "node_modules"],
+  "extends": "@xylabs/tsconfig"
 }

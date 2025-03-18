@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { $transferable } from './symbols'
+import { $transferable } from './symbols.ts'
 
 export interface TransferDescriptor<T = any> {
   [$transferable]: true

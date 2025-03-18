@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Worker as WorkerImplementation } from './index'
+// eslint-disable-next-line no-restricted-imports
+import { Worker as WorkerImplementation } from './index.ts'
 
 declare const window: any
 

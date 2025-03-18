@@ -1,10 +1,12 @@
 /* eslint-disable import-x/no-internal-modules */
-export { registerSerializer } from './common'
-export * from './master/index'
-export { QueuedTask } from './master/pool'
-export { ExposedToThreadType as ExposedAs } from './master/spawn'
-export {
-  DefaultSerializer, JsonSerializable, Serializer, SerializerImplementation,
-} from './serializers'
-export { Transfer, TransferDescriptor } from './transferable'
-export { expose } from './worker/index'
+export { registerSerializer } from './common.ts'
+export * from './master/index.ts'
+export type { QueuedTask } from './master/pool.ts'
+export type { ExposedToThreadType as ExposedAs } from './master/spawn.ts'
+export type {
+  JsonSerializable, Serializer, SerializerImplementation,
+} from './serializers.ts'
+export { DefaultSerializer } from './serializers.ts'
+export type { TransferDescriptor } from './transferable.ts'
+export { Transfer } from './transferable.ts'
+export { expose } from './worker/index.ts'

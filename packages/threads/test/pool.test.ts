@@ -6,12 +6,12 @@
 // eslint-disable import-x/no-internal-modules
 import { expect, test } from 'vitest'
 
-import type { FunctionThread } from '../src/index'
+import type { FunctionThread } from '../src/index.ts'
 import {
   Pool, spawn, Worker,
-} from '../src/index'
-import type { PoolEvent, QueuedTask } from '../src/master/pool'
-import { PoolEventType } from '../src/master/pool'
+} from '../src/index.ts'
+import type { PoolEvent, QueuedTask } from '../src/master/pool.ts'
+import { PoolEventType } from '../src/master/pool.ts'
 
 const workerPath = './workers/hello-world.ts'
 const HELLO_WORLD = 'Hello World'

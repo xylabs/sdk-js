@@ -6,7 +6,7 @@ import { expect, test } from 'vitest'
 
 import {
   spawn, Thread, Transfer, Worker,
-} from '../src/index'
+} from '../src/index.ts'
 import type { XorBuffer } from './workers/arraybuffer-xor.ts'
 
 type SpyInit<Args extends any[], OriginalReturn, NewReturn> = (originalFn: (...args: Args) => OriginalReturn) => (...args: Args) => NewReturn

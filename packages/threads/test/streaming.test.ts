@@ -2,7 +2,7 @@ import { expect, test } from 'vitest'
 
 import {
   spawn, Thread, Worker,
-} from '../src/index'
+} from '../src/index.ts'
 
 test('can use worker returning an observable subject', async () => {
   const captured: Array<{ max: number; min: number }> = []

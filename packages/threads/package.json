@@ -32,54 +32,52 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/esm/index.js",
-      "default": "./dist/esm/index.js"
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/neutral/index.mjs",
+      "default": "./dist/neutral/index.mjs"
     },
     "./implementation": {
       "browser": {
-        "types": "./dist/types/master.d.ts",
-        "import": "./dist/esm/master/implementation.browser.js",
-        "default": "./dist/esm/master/implementation.browser.js"
+        "types": "./dist/types/master/implementation.browser.d.ts",
+        "import": "./dist/browser/implementation.browser.mjs",
+        "default": "./dist/browser/implementation.browser.mjs"
       },
       "node": {
-        "types": "./dist/types/master.d.ts",
-        "import": "./dist/esm/master/implementation.node.js",
-        "default": "./dist/esm/master/implementation.node.js"
+        "types": "./dist/types/master/implementation.node.d.ts",
+        "import": "./dist/node/implementation.node.mjs",
+        "default": "./dist/node/implementation.node.mjs"
       },
-      "types": "./dist/types/master.d.ts",
-      "import": "./dist/esm/master/implementation.js",
-      "default": "./dist/esm/master/implementation.js"
+      "types": "./dist/types/master/implementation.d.ts",
+      "import": "./dist/neutral/master/implementation.mjs",
+      "default": "./dist/neutral/master/implementation.mjs"
     },
     "./master": {
-      "types": "./dist/types/master.d.ts",
-      "import": "./dist/esm/master/index.js",
-      "default": "./dist/esm/master/index.js"
+      "types": "./dist/types/types/master.d.ts",
+      "import": "./dist/neutral/index.mjs",
+      "default": "./dist/neutral/index.mjs"
     },
     "./messenger": {
-      "types": "./dist/types/messages.d.ts"
+      "types": "./dist/types/types/messages.d.ts"
     },
     "./observable": {
-      "types": "./dist/observable.d.ts",
-      "require": "./dist/observable.js",
-      "import": "./dist/esm/observable.js",
-      "default": "./dist/esm/observable.js"
+      "types": "./dist/types/observable.d.ts",
+      "import": "./dist/neutral/observable.mjs",
+      "default": "./dist/neutral/observable.mjs"
     },
     "./register": {
-      "types": "./dist/master/register.d.ts",
-      "import": "./dist/esm/master/register.js",
-      "default": "./dist/esm/master/register.js"
+      "types": "./dist/types/master/register.d.ts",
+      "import": "./dist/neutral/master/register.mjs",
+      "default": "./dist/neutral/master/register.mjs"
     },
     "./worker": {
-      "types": "./dist/types/worker.d.ts",
-      "require": "./dist/worker/index.js",
-      "import": "./dist/esm/worker/index.js",
-      "default": "./dist/esm/worker/index.js"
+      "types": "./dist/types/worker/index.d.ts",
+      "import": "./dist/neutral/worker/index.mjs",
+      "default": "./dist/neutral/worker/index.mjs"
     }
   },
-  "main": "dist/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/neutral/index.mjs",
+  "module": "dist/neutral/index.mjs",
+  "types": "dist/types/index.d.ts",
   "files": [
     "dist/**",
     "*.js",

@@ -397,6 +397,6 @@ function PoolConstructor<ThreadType extends Thread>(spawnWorker: () => Promise<T
  */
 export const Pool = PoolConstructor as typeof PoolConstructor & { EventType: typeof PoolEventType }
 
-export type { PoolEventType } from './pool-types.ts'
 export type { PoolEvent, QueuedTask } from './pool-types.ts'
+export { PoolEventType } from './pool-types.ts'
 export { Thread } from './thread.ts'

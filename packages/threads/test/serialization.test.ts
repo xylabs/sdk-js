@@ -3,8 +3,8 @@ import { expect, test } from 'vitest'
 
 import {
   registerSerializer, spawn, Thread, Worker,
-} from '../src/index'
-import { Foo, fooSerializer } from './lib/serialization'
+} from '../src/index.ts'
+import { Foo, fooSerializer } from './lib/serialization.ts'
 
 registerSerializer(fooSerializer)
 

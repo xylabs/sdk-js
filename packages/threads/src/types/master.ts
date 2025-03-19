@@ -6,11 +6,11 @@
 // See <https://github.com/microsoft/TypeScript/issues/28009>
 import type { Observable } from 'observable-fns'
 
-import type { ObservablePromise } from '../observable-promise'
+import type { ObservablePromise } from '../observable-promise.ts'
 import type {
   $errors, $events, $terminate, $worker,
-} from '../symbols'
-import type { TransferDescriptor } from '../transferable'
+} from '../symbols.ts'
+import type { TransferDescriptor } from '../transferable.ts'
 
 interface ObservableLikeSubscription {
   unsubscribe(): any

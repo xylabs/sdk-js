@@ -1,6 +1,6 @@
 /* eslint-disable import-x/no-internal-modules */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { SerializedError } from './types/messages'
+import type { SerializedError } from './types/messages.ts'
 
 export interface Serializer<Msg = JsonSerializable, Input = any> {
   deserialize(message: Msg): Input

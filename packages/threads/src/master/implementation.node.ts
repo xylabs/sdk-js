@@ -1,123 +1,50 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-/* eslint-disable import-x/no-internal-modules */
-/* eslint-disable unicorn/no-process-exit */
-/* eslint-disable unicorn/prefer-logical-operator-over-ternary */
-/* eslint-disable unicorn/prefer-regexp-test */
 
 /* eslint-disable unicorn/prefer-add-event-listener */
 /* eslint-disable unicorn/prefer-event-target */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable unicorn/text-encoding-identifier-case */
-/// <reference lib="dom" />
 
 import { EventEmitter } from 'node:events'
 import { cpus } from 'node:os'
 import path from 'node:path'
-import { fileURLToPath } from 'node:url'
-
-import type { CallSite } from 'callsites-3-1-0'
-import getCallsites from 'callsites-3-1-0'
+import { cwd } from 'node:process'
+import { Worker as NativeWorker } from 'node:worker_threads'
 
 import type {
   ImplementationExport, ThreadsWorkerOptions, WorkerImplementation,
-} from '../types/master'
-
-interface WorkerGlobalScope {
-  addEventListener(eventName: string, listener: (event: Event) => void): void
-  postMessage(message: any, transferables?: any[]): void
-  removeEventListener(eventName: string, listener: (event: Event) => void): void
-}
+// eslint-disable-next-line import-x/no-internal-modules
+} from '../types/master.ts'
 
 declare const __non_webpack_require__: typeof require
-declare const self: WorkerGlobalScope
 
 type WorkerEventName = 'error' | 'message'
 
-let tsNodeAvailable: boolean | undefined
-
 export const defaultPoolSize = cpus().length
 
-function detectTsNode() {
-  if (typeof __non_webpack_require__ === 'function') {
-    // Webpack build: => No ts-node required or possible
-    return false
-  }
-  if (tsNodeAvailable) {
-    return tsNodeAvailable
-  }
-
-  try {
-    eval('require').resolve('ts-node')
-    tsNodeAvailable = true
-  } catch (error) {
-    if (error && error.code === 'MODULE_NOT_FOUND') {
-      tsNodeAvailable = false
-    } else {
-      // Re-throw
-      throw error
-    }
-  }
-  return tsNodeAvailable
-}
-
-function createTsNodeModule(scriptPath: string) {
-  return `
-    require("ts-node/register/transpile-only");
-    require(${JSON.stringify(scriptPath)});
-  `
-}
-
-function rebaseScriptPath(scriptPath: string, ignoreRegex: RegExp) {
-  const parentCallSite = getCallsites().find((callsite: CallSite) => {
-    const filename = callsite.getFileName()
-    return Boolean(
-      filename && !filename.match(ignoreRegex) && !/[/\\]master[/\\]implementation/.test(filename) && !/^internal\/process/.test(filename),
-    )
-  })
-
-  const rawCallerPath = parentCallSite ? parentCallSite.getFileName() : null
-  let callerPath = rawCallerPath ? rawCallerPath : null
-  if (callerPath && callerPath.startsWith('file:')) {
-    callerPath = fileURLToPath(callerPath)
-  }
-  return callerPath ? path.join(path.dirname(callerPath), scriptPath) : scriptPath
-}
-
 function resolveScriptPath(scriptPath: string, baseURL?: string | undefined) {
-  const makeRelative = (filePath: string) => {
-    // eval() hack is also webpack-related
-    return path.isAbsolute(filePath) ? filePath : path.join(baseURL || eval('__dirname'), filePath)
+  const makeAbsolute = (filePath: string) => {
+    return path.isAbsolute(filePath) ? filePath : path.join(baseURL ?? cwd(), filePath)
   }
 
-  return typeof __non_webpack_require__ === 'function'
-    ? __non_webpack_require__.resolve(makeRelative(scriptPath))
-    : eval('require').resolve(makeRelative(rebaseScriptPath(scriptPath, /[/\\]worker_threads[/\\]/)))
+  const absolutePath = makeAbsolute(scriptPath)
+  return absolutePath
 }
 
 function initWorkerThreadsWorker(): ImplementationExport {
-  // Webpack hack
-  const NativeWorker
-    = typeof __non_webpack_require__ === 'function' ? __non_webpack_require__('worker_threads').Worker : eval('require')('worker_threads').Worker
-
-  let allWorkers: Array<typeof NativeWorker> = []
+  let allWorkers: Array<NativeWorker> = []
 
   class Worker extends NativeWorker {
     private mappedEventListeners: WeakMap<EventListener, EventListener>
 
     constructor(scriptPath: string, options?: ThreadsWorkerOptions & { fromSource: boolean }) {
-      const resolvedScriptPath = options && options.fromSource ? null : resolveScriptPath(scriptPath, (options || {})._baseURL)
-
-      if (!resolvedScriptPath) {
+      const resolvedScriptPath = options && options.fromSource ? null : resolveScriptPath(scriptPath, (options ?? {})._baseURL)
+      if (resolvedScriptPath) {
+        super(resolvedScriptPath, options)
+      } else {
         // `options.fromSource` is true
         const sourceCode = scriptPath
         super(sourceCode, { ...options, eval: true })
-      } else if (/\.tsx?$/i.test(resolvedScriptPath) && detectTsNode()) {
-        super(createTsNodeModule(resolvedScriptPath), { ...options, eval: true })
-      } else if (/\.asar[/\\]/.test(resolvedScriptPath)) {
-        // See <https://github.com/andywer/threads-plugin/issues/17>
-        super(resolvedScriptPath.replace(/\.asar([/\\])/, '.asar.unpacked$1'), options)
-      } else {
-        super(resolvedScriptPath, options)
       }
 
       this.mappedEventListeners = new WeakMap()
@@ -185,17 +112,12 @@ function initTinyWorker(): ImplementationExport {
             ? `file:///${resolveScriptPath(scriptPath).replaceAll('\\', '/')}`
             : resolveScriptPath(scriptPath)
 
-      if (!resolvedScriptPath) {
+      if (resolvedScriptPath) {
+        super(resolvedScriptPath, [], { esm: true })
+      } else {
         // `options.fromSource` is true
         const sourceCode = scriptPath
         super(new Function(sourceCode), [], { esm: true })
-      } else if (/\.tsx?$/i.test(resolvedScriptPath) && detectTsNode()) {
-        super(new Function(createTsNodeModule(resolveScriptPath(scriptPath))), [], { esm: true })
-      } else if (/\.asar[/\\]/.test(resolvedScriptPath)) {
-        // See <https://github.com/andywer/threads-plugin/issues/17>
-        super(resolvedScriptPath.replace(/\.asar([/\\])/, '.asar.unpacked$1'), [], { esm: true })
-      } else {
-        super(resolvedScriptPath, [], { esm: true })
       }
 
       allWorkers.push(this)
@@ -256,7 +178,8 @@ function selectWorkerImplementation(): ImplementationExport {
   try {
     isTinyWorker = false
     return initWorkerThreadsWorker()
-  } catch {
+  } catch (ex) {
+    console.error(ex)
     // tslint:disable-next-line no-console
     console.debug('Node worker_threads not available. Trying to fall back to tiny-worker polyfill...')
     isTinyWorker = true
@@ -273,7 +196,7 @@ export function getWorkerImplementation(): ImplementationExport {
 
 export function isWorkerRuntime() {
   if (isTinyWorker) {
-    return self !== undefined && self['postMessage'] ? true : false
+    return globalThis !== undefined && self['postMessage'] ? true : false
   } else {
     // Webpack hack
     const isMainThread

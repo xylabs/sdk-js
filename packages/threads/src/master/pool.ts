@@ -1,24 +1,25 @@
 /* eslint-disable import-x/export */
 /* eslint-disable unicorn/no-thenable */
 
-/* eslint-disable require-await */
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable unicorn/no-array-reduce */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-namespace */
-/* eslint-disable @typescript-eslint/no-floating-promises */
+
+/// <reference lib="esnext" />
+
 import DebugLogger from 'debug'
 import {
   multicast, Observable, Subject,
 } from 'observable-fns'
 
-import { allSettled } from '../ponyfills'
-import { defaultPoolSize } from './implementation'
+import { allSettled } from '../ponyfills.ts'
+import { defaultPoolSize } from './implementation.ts'
 import type {
   PoolEvent, QueuedTask, TaskRunFunction, WorkerDescriptor,
-} from './pool-types'
-import { PoolEventType } from './pool-types'
-import { Thread } from './thread'
+} from './pool-types.ts'
+import { PoolEventType } from './pool-types.ts'
+import { Thread } from './thread.ts'
 
 export declare namespace Pool {
   type Event<ThreadType extends Thread = any> = PoolEvent<ThreadType>
@@ -177,7 +178,8 @@ class WorkerPool<ThreadType extends Thread> implements Pool<ThreadType> {
         type: PoolEventType.taskCompleted,
         workerID,
       })
-    } catch (error) {
+    } catch (ex) {
+      const error = ex as Error
       this.debug(`Task #${task.id} failed`)
       this.eventSubject.next({
         error,
@@ -188,7 +190,7 @@ class WorkerPool<ThreadType extends Thread> implements Pool<ThreadType> {
     }
   }
 
-  private async run(worker: WorkerDescriptor<ThreadType>, task: QueuedTask<ThreadType, any>) {
+  private run(worker: WorkerDescriptor<ThreadType>, task: QueuedTask<ThreadType, any>) {
     const runPromise = (async () => {
       const removeTaskFromWorkersRunningTasks = () => {
         worker.runningTasks = worker.runningTasks.filter(someRunPromise => someRunPromise !== runPromise)
@@ -393,7 +395,6 @@ function PoolConstructor<ThreadType extends Thread>(spawnWorker: () => Promise<T
  */
 export const Pool = PoolConstructor as typeof PoolConstructor & { EventType: typeof PoolEventType }
 
-export {
-  PoolEvent, PoolEventType, QueuedTask,
-} from './pool-types'
-export { Thread } from './thread'
+export type { PoolEvent, QueuedTask } from './pool-types.ts'
+export { PoolEventType } from './pool-types.ts'
+export { Thread } from './thread.ts'

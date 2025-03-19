@@ -32,7 +32,6 @@ const subscribeToMasterMessages: AbstractedWorkerAPI['subscribeToMasterMessages'
     throw new Error('Invariant violation: MessagePort to parent is not available.')
   }
   const messageHandler = (message: any) => {
-    console.log('messageHandler', message)
     onMessage(message)
   }
   const unsubscribe = () => {

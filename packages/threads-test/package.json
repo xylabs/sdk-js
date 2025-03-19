@@ -1,6 +1,7 @@
 {
   "name": "@xylabs/threads-test",
-  "version": "4.6.4",
+  "version": "4.8.0-rc.2",
+  "stableVersion": "4.7.1",
   "private": true,
   "description": "Web workers & worker threads as simple as a function call",
   "keywords": [

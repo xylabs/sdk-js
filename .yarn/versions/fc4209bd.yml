@@ -37,3 +37,8 @@ releases:
   "@xylabs/storage": minor
   "@xylabs/threads": minor
   "@xylabs/threads-test": minor
+  "@xylabs/timer": minor
+  "@xylabs/typeof": minor
+  "@xylabs/url": minor
+  "@xylabs/vitest-extended": minor
+  "@xylabs/vitest-matchers": minor

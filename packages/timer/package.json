@@ -1,6 +1,7 @@
 {
   "name": "@xylabs/timer",
-  "version": "4.6.4",
+  "version": "4.8.0-rc.2",
+  "stableVersion": "4.7.1",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "xylabs",

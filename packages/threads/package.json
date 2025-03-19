@@ -1,6 +1,7 @@
 {
   "name": "@xylabs/threads",
-  "version": "4.6.4",
+  "version": "4.8.0-rc.2",
+  "stableVersion": "4.7.1",
   "description": "Web workers & worker threads as simple as a function call",
   "keywords": [
     "thread",
@@ -33,99 +34,70 @@
   "exports": {
     ".": {
       "types": "./dist/types/index.d.ts",
-      "import": "./dist/neutral/index.mjs",
-      "default": "./dist/neutral/index.mjs"
+      "import": "./dist/neutral/index.mjs"
     },
     "./implementation": {
       "browser": {
         "types": "./dist/types/master/implementation.browser.d.ts",
-        "import": "./dist/browser/master/implementation.browser.mjs",
-        "default": "./dist/browser/master/implementation.browser.mjs"
+        "import": "./dist/browser/master/implementation.browser.mjs"
       },
       "node": {
         "types": "./dist/types/master/implementation.node.d.ts",
-        "import": "./dist/node/master/implementation.node.mjs",
-        "default": "./dist/node/master/implementation.node.mjs"
+        "import": "./dist/node/master/implementation.node.mjs"
       },
       "types": "./dist/types/master/implementation.d.ts",
-      "import": "./dist/neutral/master/implementation.mjs",
-      "default": "./dist/neutral/master/implementation.mjs"
+      "import": "./dist/neutral/master/implementation.mjs"
     },
     "./master": {
       "types": "./dist/types/master/index.d.ts",
-      "import": "./dist/neutral/master/index.mjs",
-      "default": "./dist/neutral/master/index.mjs"
+      "import": "./dist/neutral/master/index.mjs"
     },
     "./spawn": {
       "types": "./dist/types/master/spawn.d.ts",
-      "import": "./dist/neutral/master/spawn.mjs",
-      "default": "./dist/neutral/master/spawn.mjs"
+      "import": "./dist/neutral/master/spawn.mjs"
     },
     "./thread": {
       "types": "./dist/types/master/thread.d.ts",
-      "import": "./dist/neutral/master/thread.mjs",
-      "default": "./dist/neutral/master/thread.mjs"
+      "import": "./dist/neutral/master/thread.mjs"
     },
     "./messenger": {
       "types": "./dist/types/types/messages.d.ts"
     },
     "./observable": {
       "types": "./dist/types/observable.d.ts",
-      "import": "./dist/neutral/observable.mjs",
-      "default": "./dist/neutral/observable.mjs"
+      "import": "./dist/neutral/observable.mjs"
     },
     "./pool": {
       "types": "./dist/types/master/pool.d.ts",
-      "import": "./dist/neutral/master/pool.mjs",
-      "default": "./dist/neutral/master/pool.mjs"
+      "import": "./dist/neutral/master/pool.mjs"
     },
     "./observable-promise": {
       "types": "./dist/types/observable-promise.d.ts",
-      "import": "./dist/neutral/observable-promise.mjs",
-      "default": "./dist/neutral/observable-promise.mjs"
+      "import": "./dist/neutral/observable-promise.mjs"
     },
     "./register": {
       "types": "./dist/types/master/register.d.ts",
-      "import": "./dist/neutral/master/register.mjs",
-      "default": "./dist/neutral/master/register.mjs"
+      "import": "./dist/neutral/master/register.mjs"
     },
     "./worker": {
       "browser": {
         "types": "./dist/types/worker/worker.browser.d.ts",
-        "import": "./dist/browser/worker/worker.browser.mjs",
-        "default": "./dist/browser/worker/worker.browser.mjs"
+        "import": "./dist/browser/worker/worker.browser.mjs"
       },
       "node": {
         "types": "./dist/types/worker/worker.node.d.ts",
-        "import": "./dist/node/worker/worker.node.mjs",
-        "default": "./dist/node/worker/worker.node.mjs"
+        "import": "./dist/node/worker/worker.node.mjs"
       }
     }
   },
-  "main": "dist/neutral/index.mjs",
   "module": "dist/neutral/index.mjs",
   "types": "dist/types/index.d.ts",
   "files": [
-    "dist/**",
-    "*.js",
-    "*.mjs",
-    "*.ts"
+    "dist"
   ],
-  "ava": {
-    "extensions": [
-      "ts"
-    ],
-    "files": [
-      "./test/**/*.test.ts",
-      "./test-tooling/**/*.test.ts"
-    ],
-    "require": [
-      "ts-node/register"
-    ],
-    "serial": true
-  },
   "dependencies": {
     "debug": "^4.4.0",
+    "is-observable-2-1-0": "npm:is-observable@2.1.0",
     "observable-fns": "^0.6.1"
   },
   "devDependencies": {

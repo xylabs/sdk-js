@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/libauth",
-  "version": "4.6.4",
+  "version": "4.7.0",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "libauth",
@@ -39,8 +39,8 @@
     "packages/**/*"
   ],
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^6.1.3",
-    "@xylabs/tsconfig": "^6.1.3",
+    "@xylabs/ts-scripts-yarn3": "^6.1.4",
+    "@xylabs/tsconfig": "^6.1.4",
     "typescript": "^5.8.2"
   },
   "engines": {

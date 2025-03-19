@@ -39,22 +39,32 @@
     "./implementation": {
       "browser": {
         "types": "./dist/types/master/implementation.browser.d.ts",
-        "import": "./dist/browser/implementation.browser.mjs",
-        "default": "./dist/browser/implementation.browser.mjs"
+        "import": "./dist/browser/master/implementation.browser.mjs",
+        "default": "./dist/browser/master/implementation.browser.mjs"
       },
       "node": {
         "types": "./dist/types/master/implementation.node.d.ts",
-        "import": "./dist/node/implementation.node.mjs",
-        "default": "./dist/node/implementation.node.mjs"
+        "import": "./dist/node/master/implementation.node.mjs",
+        "default": "./dist/node/master/implementation.node.mjs"
       },
       "types": "./dist/types/master/implementation.d.ts",
       "import": "./dist/neutral/master/implementation.mjs",
       "default": "./dist/neutral/master/implementation.mjs"
     },
     "./master": {
-      "types": "./dist/types/types/master.d.ts",
-      "import": "./dist/neutral/index.mjs",
-      "default": "./dist/neutral/index.mjs"
+      "types": "./dist/types/master/index.d.ts",
+      "import": "./dist/neutral/master/index.mjs",
+      "default": "./dist/neutral/master/index.mjs"
+    },
+    "./spawn": {
+      "types": "./dist/types/master/spawn.d.ts",
+      "import": "./dist/neutral/master/spawn.mjs",
+      "default": "./dist/neutral/master/spawn.mjs"
+    },
+    "./thread": {
+      "types": "./dist/types/master/thread.d.ts",
+      "import": "./dist/neutral/master/thread.mjs",
+      "default": "./dist/neutral/master/thread.mjs"
     },
     "./messenger": {
       "types": "./dist/types/types/messages.d.ts"
@@ -64,15 +74,32 @@
       "import": "./dist/neutral/observable.mjs",
       "default": "./dist/neutral/observable.mjs"
     },
+    "./pool": {
+      "types": "./dist/types/master/pool.d.ts",
+      "import": "./dist/neutral/master/pool.mjs",
+      "default": "./dist/neutral/master/pool.mjs"
+    },
+    "./observable-promise": {
+      "types": "./dist/types/observable-promise.d.ts",
+      "import": "./dist/neutral/observable-promise.mjs",
+      "default": "./dist/neutral/observable-promise.mjs"
+    },
     "./register": {
       "types": "./dist/types/master/register.d.ts",
       "import": "./dist/neutral/master/register.mjs",
       "default": "./dist/neutral/master/register.mjs"
     },
     "./worker": {
-      "types": "./dist/types/worker/index.d.ts",
-      "import": "./dist/neutral/worker/index.mjs",
-      "default": "./dist/neutral/worker/index.mjs"
+      "browser": {
+        "types": "./dist/types/worker/worker.browser.d.ts",
+        "import": "./dist/browser/worker/worker.browser.mjs",
+        "default": "./dist/browser/worker/worker.browser.mjs"
+      },
+      "node": {
+        "types": "./dist/types/worker/worker.node.d.ts",
+        "import": "./dist/node/worker/worker.node.mjs",
+        "default": "./dist/node/worker/worker.node.mjs"
+      }
     }
   },
   "main": "dist/neutral/index.mjs",

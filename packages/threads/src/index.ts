@@ -9,4 +9,3 @@ export type {
 export { DefaultSerializer } from './serializers.ts'
 export type { TransferDescriptor } from './transferable.ts'
 export { Transfer } from './transferable.ts'
-export { expose } from './worker/index.ts'

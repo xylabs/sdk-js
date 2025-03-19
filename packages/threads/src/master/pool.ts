@@ -1,12 +1,10 @@
 /* eslint-disable import-x/export */
 /* eslint-disable unicorn/no-thenable */
 
-/* eslint-disable require-await */
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable unicorn/no-array-reduce */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-namespace */
-/* eslint-disable @typescript-eslint/no-floating-promises */
 
 /// <reference lib="esnext" />
 
@@ -192,7 +190,7 @@ class WorkerPool<ThreadType extends Thread> implements Pool<ThreadType> {
     }
   }
 
-  private async run(worker: WorkerDescriptor<ThreadType>, task: QueuedTask<ThreadType, any>) {
+  private run(worker: WorkerDescriptor<ThreadType>, task: QueuedTask<ThreadType, any>) {
     const runPromise = (async () => {
       const removeTaskFromWorkersRunningTasks = () => {
         worker.runningTasks = worker.runningTasks.filter(someRunPromise => someRunPromise !== runPromise)

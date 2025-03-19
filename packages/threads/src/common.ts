@@ -4,16 +4,20 @@ import type {
 } from './serializers.ts'
 import { DefaultSerializer, extendSerializer } from './serializers.ts'
 
-let registeredSerializer: Serializer<JsonSerializable> = DefaultSerializer
+declare global {
+  var registeredSerializer: Serializer<JsonSerializable>
+}
+
+globalThis.registeredSerializer = globalThis.registeredSerializer ?? DefaultSerializer
 
 export function registerSerializer(serializer: SerializerImplementation<JsonSerializable>) {
-  registeredSerializer = extendSerializer(registeredSerializer, serializer)
+  globalThis.registeredSerializer = extendSerializer(globalThis.registeredSerializer, serializer)
 }
 
 export function deserialize(message: JsonSerializable): any {
-  return registeredSerializer.deserialize(message)
+  return globalThis.registeredSerializer.deserialize(message)
 }
 
 export function serialize(input: any): JsonSerializable {
-  return registeredSerializer.serialize(input)
+  return globalThis.registeredSerializer.serialize(input)
 }

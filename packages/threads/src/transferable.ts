@@ -55,6 +55,7 @@ export function Transfer(transferable: Transferable): TransferDescriptor
 export function Transfer<T>(payload: T, transferables: Transferable[]): TransferDescriptor
 
 export function Transfer<T>(payload: T, transferables?: Transferable[]): TransferDescriptor {
+  console.log('Transfer')
   if (!transferables) {
     if (!isTransferable(payload)) throw new Error('Not transferable')
     transferables = [payload]

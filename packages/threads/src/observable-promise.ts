@@ -132,7 +132,8 @@ export class ObservablePromise<T> extends Observable<T> implements Promise<T> {
       const fulfillmentCallback = (value: T) => {
         try {
           resolve(onFulfilled(value))
-        } catch (error) {
+        } catch (ex) {
+          const error = ex as Error
           rejectionCallback(error)
         }
       }
@@ -166,7 +167,7 @@ export class ObservablePromise<T> extends Observable<T> implements Promise<T> {
     ) as Promise<T>
   }
 
-  static from<T>(thing: Observable<T> | ObservableLike<T> | ArrayLike<T> | Thenable<T>): ObservablePromise<T> {
+  static override from<T>(thing: Observable<T> | ObservableLike<T> | ArrayLike<T> | Thenable<T>): ObservablePromise<T> {
     return isThenable(thing)
       ? new ObservablePromise((observer) => {
         const onFulfilled = (value: T) => {

@@ -29,85 +29,88 @@
     "./register.*js",
     "./worker.*js"
   ],
+  "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/index.js",
-      "import": "./dist/esm/index.js",
-      "default": "./dist/esm/index.js"
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/neutral/index.mjs",
+      "default": "./dist/neutral/index.mjs"
+    },
+    "./implementation": {
+      "browser": {
+        "types": "./dist/types/master/implementation.browser.d.ts",
+        "import": "./dist/browser/master/implementation.browser.mjs",
+        "default": "./dist/browser/master/implementation.browser.mjs"
+      },
+      "node": {
+        "types": "./dist/types/master/implementation.node.d.ts",
+        "import": "./dist/node/master/implementation.node.mjs",
+        "default": "./dist/node/master/implementation.node.mjs"
+      },
+      "types": "./dist/types/master/implementation.d.ts",
+      "import": "./dist/neutral/master/implementation.mjs",
+      "default": "./dist/neutral/master/implementation.mjs"
     },
     "./master": {
-      "types": "./dist/types/master.d.ts",
-      "require": "./dist/master.js",
-      "import": "./dist/esm/master.js",
-      "default": "./dist/esm/master.js"
+      "types": "./dist/types/master/index.d.ts",
+      "import": "./dist/neutral/master/index.mjs",
+      "default": "./dist/neutral/master/index.mjs"
+    },
+    "./spawn": {
+      "types": "./dist/types/master/spawn.d.ts",
+      "import": "./dist/neutral/master/spawn.mjs",
+      "default": "./dist/neutral/master/spawn.mjs"
+    },
+    "./thread": {
+      "types": "./dist/types/master/thread.d.ts",
+      "import": "./dist/neutral/master/thread.mjs",
+      "default": "./dist/neutral/master/thread.mjs"
     },
     "./messenger": {
-      "types": "./dist/types/messenger.d.ts"
+      "types": "./dist/types/types/messages.d.ts"
     },
     "./observable": {
-      "types": "./dist/observable.d.ts",
-      "require": "./dist/observable.js",
-      "import": "./dist/esm/observable.js",
-      "default": "./dist/esm/observable.js"
+      "types": "./dist/types/observable.d.ts",
+      "import": "./dist/neutral/observable.mjs",
+      "default": "./dist/neutral/observable.mjs"
+    },
+    "./pool": {
+      "types": "./dist/types/master/pool.d.ts",
+      "import": "./dist/neutral/master/pool.mjs",
+      "default": "./dist/neutral/master/pool.mjs"
+    },
+    "./observable-promise": {
+      "types": "./dist/types/observable-promise.d.ts",
+      "import": "./dist/neutral/observable-promise.mjs",
+      "default": "./dist/neutral/observable-promise.mjs"
     },
     "./register": {
-      "types": "./dist/master/register.d.ts",
-      "require": "./dist/master/register/index.js",
-      "import": "./dist/esm/master/register/index.js",
-      "default": "./dist/esm/master/register/index.js"
+      "types": "./dist/types/master/register.d.ts",
+      "import": "./dist/neutral/master/register.mjs",
+      "default": "./dist/neutral/master/register.mjs"
     },
     "./worker": {
-      "types": "./dist/types/worker.d.ts",
-      "require": "./dist/worker/index.js",
-      "import": "./dist/esm/worker/index.js",
-      "default": "./dist/esm/worker/index.js"
+      "browser": {
+        "types": "./dist/types/worker/worker.browser.d.ts",
+        "import": "./dist/browser/worker/worker.browser.mjs",
+        "default": "./dist/browser/worker/worker.browser.mjs"
+      },
+      "node": {
+        "types": "./dist/types/worker/worker.node.d.ts",
+        "import": "./dist/node/worker/worker.node.mjs",
+        "default": "./dist/node/worker/worker.node.mjs"
+      }
     }
   },
-  "main": "dist/index.js",
-  "module": "dist/esm/index.js",
-  "browser": {
-    "./dist/esm/master/implementation.js": "./dist/esm/master/implementation.browser.js",
-    "./dist/esm/master/implementation.node.js": false,
-    "./dist/esm/worker/implementation.js": "./dist/esm/worker/implementation.browser.js",
-    "./dist/esm/worker/implementation.tiny-worker.js": false,
-    "./dist/esm/worker/implementation.worker_threads.js": false,
-    "./dist/master/implementation.js": "./dist/master/implementation.browser.js",
-    "./dist/master/implementation.node.js": false,
-    "./dist/worker/implementation.js": "./dist/worker/implementation.browser.js",
-    "./dist/worker/implementation.tiny-worker.js": false,
-    "./dist/worker/implementation.worker_threads.js": false,
-    "callsites": false,
-    "tiny-worker": false,
-    "ts-node": false,
-    "ts-node/register": false,
-    "worker_threads": false
-  },
-  "types": "dist/index.d.ts",
+  "main": "dist/neutral/index.mjs",
+  "module": "dist/neutral/index.mjs",
+  "types": "dist/types/index.d.ts",
   "files": [
     "dist/**",
     "*.js",
     "*.mjs",
     "*.ts"
   ],
-  "scripts": {
-    "build-threads": "yarn clean && yarn build:cjs && yarn build:es",
-    "build:cjs": "tsc -p tsconfig.json",
-    "build:es": "tsc -p tsconfig-esm.json",
-    "bundle": "rollup -c -f umd --file=bundle/worker.js --name=threads --silent -- dist/esm/worker/bundle-entry.js",
-    "clean": "rimraf ./dist ./dist-esm",
-    "dev": "yarn clean && tsc -p tsconfig.json --watch",
-    "package-build": "echo BUILD && yarn build-threads && echo BUILD_DONE",
-    "package-compile": "echo COMPILE && yarn build-threads && echo COMPILE_DONE",
-    "package-publint": "echo Skipping Publint - @xylabs/threads",
-    "postbuild": "yarn bundle",
-    "prepare": "yarn build-threads",
-    "test": "yarn test:library && yarn test:tooling && yarn test:puppeteer:basic && yarn test:puppeteer:webpack",
-    "test:library": "cross-env TS_NODE_FILES=true vitest ./test/**/*.test.ts",
-    "test:puppeteer:basic": "puppet-run --plugin=mocha --bundle=./test/workers/:workers/ --serve=./bundle/worker.js:/worker.js ./test/*.chromium*.ts",
-    "test:puppeteer:webpack": "puppet-run --serve ./test-tooling/webpack/dist/app.web/0.worker.js --serve ./test-tooling/webpack/dist/app.web/1.worker.js --plugin=mocha ./test-tooling/webpack/webpack.chromium.mocha.ts",
-    "test:tooling": "cross-env TS_NODE_FILES=true vitest ./test-tooling/**/*.test.ts"
-  },
   "ava": {
     "extensions": [
       "ts"
@@ -122,30 +125,15 @@
     "serial": true
   },
   "dependencies": {
-    "callsites-3-1-0": "npm:callsites@3.1.0",
     "debug": "^4.4.0",
-    "is-observable-2-1-0": "npm:is-observable@2.1.0",
     "observable-fns": "^0.6.1"
   },
   "devDependencies": {
-    "@babel/types": "^7.26.10",
-    "@rollup/plugin-commonjs": "^28.0.3",
-    "@rollup/plugin-node-resolve": "^16.0.1",
     "@types/debug": "^4.1.12",
     "@types/node": "^22.13.10",
     "@xylabs/eslint-config-flat": "^6.1.3",
     "@xylabs/ts-scripts-yarn3": "^6.1.3",
-    "cross-env": "^7.0.3",
-    "puppet-run": "^0.11.4",
-    "raw-loader": "^4.0.2",
-    "rimraf": "^6.0.1",
-    "rollup": "^4.36.0",
-    "threads-plugin": "^1.4.0",
-    "tiny-worker": "^2.3.0",
-    "tslib": "^2.8.1",
-    "typescript": "^5.8.2",
-    "vitest": "^3.0.9",
-    "webpack": "^5.98.0"
+    "typescript": "^5.8.2"
   },
   "optionalDependencies": {
     "tiny-worker": "^2.3.0"

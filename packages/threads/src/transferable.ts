@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { $transferable } from './symbols'
+import { $transferable } from './symbols.ts'
 
 export interface TransferDescriptor<T = any> {
   [$transferable]: true
@@ -55,6 +55,7 @@ export function Transfer(transferable: Transferable): TransferDescriptor
 export function Transfer<T>(payload: T, transferables: Transferable[]): TransferDescriptor
 
 export function Transfer<T>(payload: T, transferables?: Transferable[]): TransferDescriptor {
+  console.log('Transfer')
   if (!transferables) {
     if (!isTransferable(payload)) throw new Error('Not transferable')
     transferables = [payload]

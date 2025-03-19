@@ -4,11 +4,11 @@
 import DebugLogger from 'debug'
 import { Observable } from 'observable-fns'
 
-import { deserialize } from '../common'
-import { createPromiseWithResolver } from '../promise'
+import { deserialize } from '../common.ts'
+import { createPromiseWithResolver } from '../promise.ts'
 import {
   $errors, $events, $terminate, $worker,
-} from '../symbols'
+} from '../symbols.ts'
 import type {
   FunctionThread,
   ModuleThread,
@@ -19,11 +19,11 @@ import type {
   WorkerInternalErrorEvent,
   WorkerMessageEvent,
   WorkerTerminationEvent,
-} from '../types/master'
-import { WorkerEventType } from '../types/master'
-import type { WorkerInitMessage, WorkerUncaughtErrorMessage } from '../types/messages'
-import type { WorkerFunction, WorkerModule } from '../types/worker'
-import { createProxyFunction, createProxyModule } from './invocation-proxy'
+} from '../types/master.ts'
+import { WorkerEventType } from '../types/master.ts'
+import type { WorkerInitMessage, WorkerUncaughtErrorMessage } from '../types/messages.ts'
+import type { WorkerFunction, WorkerModule } from '../types/worker.ts'
+import { createProxyFunction, createProxyModule } from './invocation-proxy.ts'
 
 type ArbitraryWorkerInterface = WorkerFunction & WorkerModule<string> & { somekeythatisneverusedinproductioncode123: 'magicmarker123' }
 type ArbitraryThreadType = FunctionThread<any, any> & ModuleThread<any>

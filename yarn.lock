@@ -2977,7 +2977,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/assert@npm:^4.7.4, @xylabs/assert@workspace:^, @xylabs/assert@workspace:packages/assert":
+"@xylabs/assert@npm:^4.7.5, @xylabs/assert@workspace:^, @xylabs/assert@workspace:packages/assert":
   version: 0.0.0-use.local
   resolution: "@xylabs/assert@workspace:packages/assert"
   dependencies:
@@ -3305,7 +3305,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/object@npm:^4.7.4, @xylabs/object@workspace:^, @xylabs/object@workspace:packages/object":
+"@xylabs/object@npm:^4.7.5, @xylabs/object@workspace:^, @xylabs/object@workspace:packages/object":
   version: 0.0.0-use.local
   resolution: "@xylabs/object@workspace:packages/object"
   dependencies:
@@ -3326,8 +3326,8 @@ __metadata:
     "@types/js-cookie": "npm:^3.0.6"
     "@types/node": "npm:^22.13.10"
     "@types/spark-md5": "npm:^3.0.5"
-    "@xylabs/assert": "npm:^4.7.4"
-    "@xylabs/object": "npm:^4.7.4"
+    "@xylabs/assert": "npm:^4.7.5"
+    "@xylabs/object": "npm:^4.7.5"
     "@xylabs/ts-scripts-yarn3": "npm:^6.1.4"
     "@xylabs/tsconfig-dom": "npm:^6.1.4"
     async-mutex: "npm:^0.5.0"

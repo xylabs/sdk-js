@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/threads",
-  "version": "4.7.4",
+  "version": "4.7.5",
   "description": "Web workers & worker threads as simple as a function call",
   "keywords": [
     "thread",
@@ -32,8 +32,14 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
-      "import": "./dist/neutral/index.mjs"
+      "browser": {
+        "types": "./dist/types/index-browser.d.ts",
+        "import": "./dist/browser/index-browser.mjs"
+      },
+      "node": {
+        "types": "./dist/types/index-node.d.ts",
+        "import": "./dist/node/index-node.mjs"
+      }
     },
     "./implementation": {
       "browser": {
@@ -93,8 +99,8 @@
       }
     }
   },
-  "module": "dist/neutral/index.mjs",
-  "types": "dist/types/index.d.ts",
+  "module": "dist/browser/index-browser.mjs",
+  "types": "dist/types/index-browser.d.ts",
   "files": [
     "dist"
   ],

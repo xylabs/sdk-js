@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import type { JsonSerializable, SerializerImplementation } from '@xylabs/threads'
+import type { JsonSerializable, SerializerImplementation } from '../../../threads/dist/types/index-browser.ts'
 
 export class Foo<T> {
   private readonly value: T

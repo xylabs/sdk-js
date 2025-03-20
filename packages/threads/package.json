@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/threads",
-  "version": "4.7.5",
+  "version": "4.7.6",
   "description": "Web workers & worker threads as simple as a function call",
   "keywords": [
     "thread",
@@ -77,8 +77,14 @@
       "import": "./dist/neutral/observable.mjs"
     },
     "./pool": {
-      "types": "./dist/types/master/pool.d.ts",
-      "import": "./dist/neutral/master/pool.mjs"
+      "browser": {
+        "types": "./dist/types/master/pool-browser.d.ts",
+        "import": "./dist/browser/master/pool-browser.mjs"
+      },
+      "node": {
+        "types": "./dist/types/master/pool-node.d.ts",
+        "import": "./dist/node/master/pool-node.mjs"
+      }
     },
     "./observable-promise": {
       "types": "./dist/types/observable-promise.d.ts",

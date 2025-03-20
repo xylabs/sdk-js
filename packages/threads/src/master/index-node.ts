@@ -3,7 +3,7 @@ import type { BlobWorker as BlobWorkerClass, Worker as WorkerType } from '../typ
 import * as NodeImplementation from './implementation.node.ts'
 
 export type { FunctionThread, ModuleThread } from '../types/master.ts'
-export { Pool } from './pool.ts'
+export { Pool } from './pool-browser.ts'
 export { spawn } from './spawn.ts'
 export { Thread } from './thread.ts'
 
@@ -16,4 +16,4 @@ export const BlobWorker = NodeImplementation.getWorkerImplementation().blob
 /** Worker implementation. Either web worker or a node.js Worker class. */
 export const Worker = NodeImplementation.getWorkerImplementation().default
 
-export { isWorkerRuntime } from './implementation.ts'
+export { isWorkerRuntime } from './implementation.node.ts'

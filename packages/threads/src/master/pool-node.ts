@@ -14,7 +14,7 @@ import {
 } from 'observable-fns'
 
 import { allSettled } from '../ponyfills.ts'
-import { defaultPoolSize } from './implementation.ts'
+import { defaultPoolSize } from './implementation.node.ts'
 import type {
   PoolEvent, QueuedTask, TaskRunFunction, WorkerDescriptor,
 } from './pool-types.ts'

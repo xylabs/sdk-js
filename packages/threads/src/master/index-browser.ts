@@ -3,7 +3,7 @@ import type { BlobWorker as BlobWorkerClass, Worker as WorkerType } from '../typ
 import * as BrowserImplementation from './implementation.browser.ts'
 
 export type { FunctionThread, ModuleThread } from '../types/master.ts'
-export { Pool } from './pool-node.ts'
+export { Pool } from './pool-browser.ts'
 export { spawn } from './spawn.ts'
 export { Thread } from './thread.ts'
 

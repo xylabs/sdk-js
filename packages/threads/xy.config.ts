@@ -1,12 +1,11 @@
 import type { XyTsupConfig } from '@xylabs/ts-scripts-yarn3'
 const config: XyTsupConfig = {
   compile: {
-    browser: { src: { entry: ['./src/master/implementation.browser.ts', './src/worker/worker.browser.ts'] } },
+    browser: { src: { entry: ['./src/master/implementation.browser.ts', './src/worker/worker.browser.ts', './src/master/index-browser.ts'] } },
     neutral: {
       src: {
         entry: [
           './src/index.ts',
-          './src/master/index.ts',
           './src/master/pool.ts',
           './src/observable.ts',
           './src/observable-promise.ts',
@@ -17,7 +16,7 @@ const config: XyTsupConfig = {
         ],
       },
     },
-    node: { src: { entry: ['./src/master/implementation.node.ts', './src/worker/worker.node.ts'] } },
+    node: { src: { entry: ['./src/master/implementation.node.ts', './src/worker/worker.node.ts', './src/master/index-node.ts'] } },
   },
 }
 

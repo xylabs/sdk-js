@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/threads",
-  "version": "4.7.2",
+  "version": "4.7.3",
   "description": "Web workers & worker threads as simple as a function call",
   "keywords": [
     "thread",
@@ -43,13 +43,17 @@
       "node": {
         "types": "./dist/types/master/implementation.node.d.ts",
         "import": "./dist/node/master/implementation.node.mjs"
-      },
-      "types": "./dist/types/master/implementation.d.ts",
-      "import": "./dist/neutral/master/implementation.mjs"
+      }
     },
     "./master": {
-      "types": "./dist/types/master/index.d.ts",
-      "import": "./dist/neutral/master/index.mjs"
+      "browser": {
+        "types": "./dist/types/master/index-browser.d.ts",
+        "import": "./dist/browser/master/index-browser.mjs"
+      },
+      "node": {
+        "types": "./dist/types/master/index-node.d.ts",
+        "import": "./dist/node/master/index-node.mjs"
+      }
     },
     "./spawn": {
       "types": "./dist/types/master/spawn.d.ts",

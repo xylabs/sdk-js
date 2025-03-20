@@ -6,10 +6,10 @@
 // eslint-disable import-x/no-internal-modules
 import { expect, test } from 'vitest'
 
-import type { FunctionThread } from '@xylabs/threads'
+import type { FunctionThread } from '@xylabs/threads/master'
 import {
   Pool, spawn, Worker,
-} from '@xylabs/threads'
+} from '@xylabs/threads/master'
 import type { PoolEvent, QueuedTask } from '@xylabs/threads/pool'
 import { PoolEventType } from '@xylabs/threads/pool'
 

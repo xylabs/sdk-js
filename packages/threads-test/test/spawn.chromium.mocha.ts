@@ -18,7 +18,7 @@ import {
 import {
   BlobWorker, spawn, Thread,
 } from '@xylabs/threads/master'
-import { Worker } from '@xylabs/threads'
+import { Worker } from '@xylabs/threads/master'
 
 describe('threads in browser', function () {
   it('can spawn and terminate a thread', async function () {

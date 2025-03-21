@@ -1,5 +1,0 @@
-ignores: [
-  "rimraf",
-  "tiny-worker",
-  "tslib"
-]

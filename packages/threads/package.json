@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/threads",
-  "version": "4.7.7",
+  "version": "4.7.8",
   "description": "Web workers & worker threads as simple as a function call",
   "keywords": [
     "thread",
@@ -23,12 +23,7 @@
   "funding": "https://github.com/andywer/threads.js?sponsor=1",
   "license": "MIT",
   "author": "Andy Wermke (https://github.com/andywer)",
-  "sideEffects": [
-    "./dist*/master/register.js",
-    "./dist*/worker/index.js",
-    "./register.*js",
-    "./worker.*js"
-  ],
+  "sideEffects": false,
   "type": "module",
   "exports": {
     ".": {
@@ -108,7 +103,10 @@
   "module": "dist/browser/index-browser.mjs",
   "types": "dist/types/index-browser.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
   ],
   "dependencies": {
     "debug": "^4.4.0",

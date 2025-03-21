@@ -29,9 +29,9 @@ const subscribeToMasterMessages: AbstractedWorkerAPI['subscribeToMasterMessages'
   return unsubscribe
 }
 
-const addEventListener = self.addEventListener
-const postMessage = self.postMessage
-const removeEventListener = self.removeEventListener
+const addEventListener = self.addEventListener.bind(self)
+const postMessage = self.postMessage.bind(self)
+const removeEventListener = self.removeEventListener.bind(self)
 
 export {
   addEventListener,

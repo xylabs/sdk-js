@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/logger",
-  "version": "4.7.10",
+  "version": "4.7.11",
   "description": "Primary SDK for using XYO Protocol 2.0",
   "keywords": [
     "log",

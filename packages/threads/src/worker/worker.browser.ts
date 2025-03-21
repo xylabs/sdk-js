@@ -29,19 +29,9 @@ const subscribeToMasterMessages: AbstractedWorkerAPI['subscribeToMasterMessages'
   return unsubscribe
 }
 
-// Wrapper functions to allow calling these functions in the correct context
-
-function addEventListener(eventName: string, listener: (event: Event) => void) {
-  return self.addEventListener(eventName, listener)
-}
-
-function postMessage(message: unknown, transferList?: Readonly<Transferable[]>) {
-  return self.postMessage(message, transferList)
-}
-
-function removeEventListener(eventName: string, listener: (event: Event) => void) {
-  return self.removeEventListener(eventName, listener)
-}
+const addEventListener = self.addEventListener.bind(this)
+const postMessage = self.postMessage.bind(this)
+const removeEventListener = self.removeEventListener.bind(this)
 
 export {
   addEventListener,

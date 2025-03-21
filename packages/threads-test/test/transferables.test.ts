@@ -8,7 +8,7 @@ import { toJsonString } from '@xylabs/object'
 import {
   spawn, Thread, Worker,
 } from '@xylabs/threads/master'
-import { Transfer } from '../../threads/dist/types/index-browser.ts'
+import { Transfer } from '@xylabs/threads'
 
 const arrayBufferPlaceholder = Symbol('ArrayBufferPlaceholder')
 

@@ -10,8 +10,8 @@ import type { FunctionThread } from '@xylabs/threads/master'
 import {
   Pool, spawn, Worker,
 } from '@xylabs/threads/master'
-import type { PoolEvent, QueuedTask } from '../../threads/dist/types/master/pool-node.ts'
-import { PoolEventType } from '../../threads/dist/types/master/pool-node.ts'
+import type { PoolEvent, QueuedTask } from '@xylabs/threads/pool'
+import { PoolEventType } from '@xylabs/threads/pool'
 
 const workerPath = './workers/hello-world.mjs'
 const HELLO_WORLD = 'Hello World'

@@ -4,7 +4,7 @@ import {
   spawn, Thread, Worker,
 } from '@xylabs/threads/master'
 import { Foo, fooSerializer } from './lib/serialization.ts'
-import { registerSerializer } from '../../threads/dist/types/index-browser.ts'
+import { registerSerializer } from '@xylabs/threads'
 
 registerSerializer(fooSerializer)
 

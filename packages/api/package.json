@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/api",
-  "version": "4.7.9",
+  "version": "4.7.10",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "xylabs",

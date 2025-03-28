@@ -1,7 +1,7 @@
 import type {
   Request, RequestHandler, Response,
 } from 'express'
-import { json } from 'express-mung'
+import mung from 'express-mung'
 
 import { getResponseMetadata } from './getResponseMetadata.js'
 
@@ -58,4 +58,4 @@ const transformResponse = (body: unknown, _req: Request, res: Response<unknown, 
  * the standard response format (compatible with JSON API)
  */
 
-export const standardResponses: RequestHandler = json(transformResponse, { mungError: true })
+export const standardResponses: RequestHandler = mung.json(transformResponse, { mungError: true })

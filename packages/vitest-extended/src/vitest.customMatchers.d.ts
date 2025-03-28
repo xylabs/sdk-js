@@ -15,6 +15,7 @@ interface CustomMatchers<T = unknown> {
   toBePositive(): T
   toBeString(): T
   toBeTrue(): T
+  toBeValidDate(expected: unknown[]): T
   toContainAllKeys(expectedKeys: string[]): T
   toContainAllValues(expectedValues: unknown[]): T
   toContainKey(key: string): T

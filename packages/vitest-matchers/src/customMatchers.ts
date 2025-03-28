@@ -344,4 +344,18 @@ export const matchers = {
             'Expected value to be empty, but it was not.',
         }
   },
+  toBeValidDate(
+    received: unknown,
+  ) {
+    const isValid
+      = received instanceof Date && !Number.isNaN(received.getTime())
+
+    return {
+      pass: isValid,
+      message: () =>
+        isValid
+          ? `expected ${received} not to be a valid Date`
+          : `expected ${received} to be a valid Date`,
+    }
+  },
 }

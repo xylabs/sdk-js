@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/sdk-js",
-  "version": "4.7.11",
+  "version": "4.7.12",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "xylabs",
@@ -72,17 +72,17 @@
     "@xylabs/url": "workspace:^"
   },
   "devDependencies": {
-    "@types/node": "^22.13.13",
+    "@types/node": "^22.13.14",
     "@typescript-eslint/eslint-plugin": "^8.28.0",
     "@typescript-eslint/parser": "^8.28.0",
-    "@xylabs/config": "^6.1.11",
-    "@xylabs/eslint-config-flat": "^6.1.11",
-    "@xylabs/ts-scripts-yarn3": "^6.1.11",
-    "@xylabs/tsconfig": "^6.1.11",
-    "@xylabs/tsconfig-dom": "^6.1.11",
+    "@xylabs/config": "^6.1.12",
+    "@xylabs/eslint-config-flat": "^6.1.12",
+    "@xylabs/ts-scripts-yarn3": "^6.1.12",
+    "@xylabs/tsconfig": "^6.1.12",
+    "@xylabs/tsconfig-dom": "^6.1.12",
     "dotenv": "^16.4.7",
     "eslint": "^9.23.0",
-    "eslint-import-resolver-typescript": "^4.2.5",
+    "eslint-import-resolver-typescript": "^4.2.7",
     "jsdom": "^26.0.0",
     "knip": "^5.46.2",
     "reflect-metadata": "^0.2.2",
@@ -92,7 +92,7 @@
     "vite": "^6.2.3",
     "vitest": "^3.0.9"
   },
-  "packageManager": "yarn@4.7.0",
+  "packageManager": "yarn@4.8.0",
   "engines": {
     "node": ">=18.17.1"
   },

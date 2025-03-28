@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/pixel",
-  "version": "4.7.11",
+  "version": "4.7.12",
   "description": "Event Client for xylabs ESB",
   "homepage": "https://xylabs.com",
   "bugs": {
@@ -29,8 +29,8 @@
   "module": "dist/browser/index.mjs",
   "types": "dist/types/index.d.ts",
   "dependencies": {
-    "@xylabs/assert": "^4.7.11",
-    "@xylabs/object": "^4.7.11",
+    "@xylabs/assert": "^4.7.12",
+    "@xylabs/object": "^4.7.12",
     "async-mutex": "^0.5.0",
     "axios": "^1.8.4",
     "bowser": "^2.11.0",
@@ -40,10 +40,10 @@
   },
   "devDependencies": {
     "@types/js-cookie": "^3.0.6",
-    "@types/node": "^22.13.13",
+    "@types/node": "^22.13.14",
     "@types/spark-md5": "^3.0.5",
-    "@xylabs/ts-scripts-yarn3": "^6.1.11",
-    "@xylabs/tsconfig-dom": "^6.1.11",
+    "@xylabs/ts-scripts-yarn3": "^6.1.12",
+    "@xylabs/tsconfig-dom": "^6.1.12",
     "axios": "^1.8.4",
     "typescript": "^5.8.2"
   },

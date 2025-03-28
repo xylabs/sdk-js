@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/log",
-  "version": "4.7.11",
+  "version": "4.7.12",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "log",
@@ -41,8 +41,8 @@
     "packages/**/*"
   ],
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^6.1.11",
-    "@xylabs/tsconfig-dom": "^6.1.11",
+    "@xylabs/ts-scripts-yarn3": "^6.1.12",
+    "@xylabs/tsconfig-dom": "^6.1.12",
     "rollbar": "^2.26.4",
     "typescript": "^5.8.2",
     "vitest": "^3.0.9"

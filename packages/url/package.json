@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/url",
-  "version": "4.7.11",
+  "version": "4.7.12",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "url",
@@ -46,10 +46,10 @@
   "module": "./dist/neutral/index.mjs",
   "types": "./dist/types/neutral/index.d.ts",
   "devDependencies": {
-    "@types/node": "^22.13.13",
-    "@xylabs/ts-scripts-yarn3": "^6.1.11",
-    "@xylabs/tsconfig": "^6.1.11",
-    "@xylabs/tsconfig-dom": "^6.1.11",
+    "@types/node": "^22.13.14",
+    "@xylabs/ts-scripts-yarn3": "^6.1.12",
+    "@xylabs/tsconfig": "^6.1.12",
+    "@xylabs/tsconfig-dom": "^6.1.12",
     "typescript": "^5.8.2"
   },
   "engines": {

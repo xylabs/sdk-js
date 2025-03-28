@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/array",
-  "version": "4.7.11",
+  "version": "4.7.12",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "xylabs",
@@ -38,8 +38,8 @@
     "@xylabs/exists": "workspace:^"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^6.1.11",
-    "@xylabs/tsconfig": "^6.1.11",
+    "@xylabs/ts-scripts-yarn3": "^6.1.12",
+    "@xylabs/tsconfig": "^6.1.12",
     "@xylabs/vitest-extended": "workspace:^",
     "typescript": "^5.8.2",
     "vitest": "^3.0.9"

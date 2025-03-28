@@ -1,6 +1,6 @@
 [![logo][]](https://xylabs.com)
 
-# @xylabs/sdk-api-express-ecs-js
+# @xylabs/express
 
 [![main-build][]][main-build-link]
 [![npm-badge][]][npm-link]
@@ -25,13 +25,13 @@ SDK for base code for Api repos that use express and deploy on AWS ECS
 Using npm:
 
 ```sh
-npm i --save @xylabs/sdk-api-express-ecs
+npm i --save @xylabs/express
 ```
 
 Using yarn:
 
 ```sh
-yarn add @xylabs/sdk-api-express-ecs
+yarn add @xylabs/express
 ```
 
 ## Scripts
@@ -52,11 +52,11 @@ See the [LICENSE](LICENSE) file for license details
 [Made with 🔥 and ❄️ by XY Labs](https://xylabs.com)
 
 [logo]: https://cdn.xy.company/img/brand/XYPersistentCompany_Logo_Icon_Colored.svg
-[main-build]: https://github.com/xylabs/sdk-api-express-ecs-js/actions/workflows/build.yml/badge.svg
-[main-build-link]: https://github.com/xylabs/sdk-api-express-ecs-js/actions/workflows/build.yml
-[npm-badge]: https://img.shields.io/npm/v/@xylabs/sdk-api-express-ecs.svg
-[npm-link]: https://www.npmjs.com/package/@xylabs/sdk-api-express-ecs
+[main-build]: https://github.com/xylabs/express/actions/workflows/build.yml/badge.svg
+[main-build-link]: https://github.com/xylabs/express/actions/workflows/build.yml
+[npm-badge]: https://img.shields.io/npm/v/@xylabs/express.svg
+[npm-link]: https://www.npmjs.com/package/@xylabs/express
 [codacy-badge]: https://app.codacy.com/project/badge/Grade/84270ff9f2aa4a669269191b715aa8d7
-[codacy-link]: https://www.codacy.com/gh/xylabs/sdk-api-express-ecs-js/dashboard?utm_source=github.com&utm_medium=referral&utm_content=xylabs/sdk-api-express-ecs-js&utm_campaign=Badge_Grade
+[codacy-link]: https://www.codacy.com/gh/xylabs/express/dashboard?utm_source=github.com&utm_medium=referral&utm_content=xylabs/express&utm_campaign=Badge_Grade
 [codeclimate-badge]: https://api.codeclimate.com/v1/badges/1c8255608f551b2119d6/maintainability
-[codeclimate-link]: https://codeclimate.com/github/xylabs/sdk-api-express-ecs-js/maintainability
+[codeclimate-link]: https://codeclimate.com/github/xylabs/express/maintainability

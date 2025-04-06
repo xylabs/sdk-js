@@ -61,15 +61,15 @@
     "@xylabs/hex": "workspace:^",
     "@xylabs/log": "workspace:^",
     "@xylabs/logger": "workspace:^",
-    "@xylabs/object": "workspace:^",
+    "@xylabs/object": "2.88.3",
     "@xylabs/platform": "workspace:^",
     "@xylabs/profile": "workspace:^",
     "@xylabs/promise": "workspace:^",
-    "@xylabs/retry": "workspace:^",
+    "@xylabs/retry": "2.13.27",
     "@xylabs/set": "workspace:^",
     "@xylabs/static-implements": "workspace:^",
     "@xylabs/timer": "workspace:^",
-    "@xylabs/url": "workspace:^"
+    "@xylabs/url": "2.9.2"
   },
   "devDependencies": {
     "@types/node": "^22.13.14",

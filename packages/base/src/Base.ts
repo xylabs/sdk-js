@@ -1,7 +1,7 @@
 import { assertEx } from '@xylabs/assert'
 import type { Logger } from '@xylabs/logger'
+import type { EmptyObject } from '@xylabs/object'
 
-import type { EmptyObject } from './EmptyObject.ts'
 import { globallyUnique } from './globallyUnique.ts'
 
 const DEFAULT_HISTORY_INTERVAL = 1000 * 5

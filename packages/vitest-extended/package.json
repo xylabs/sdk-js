@@ -39,12 +39,12 @@
   "types": "./types.d.ts",
   "dependencies": {
     "@xylabs/vitest-matchers": "workspace:^",
-    "vitest": "^3.0.9"
+    "vitest": "^3.1.1"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^6.1.12",
-    "@xylabs/tsconfig": "^6.1.12",
-    "typescript": "^5.8.2"
+    "@xylabs/ts-scripts-yarn3": "^6.2.1",
+    "@xylabs/tsconfig": "^6.2.1",
+    "typescript": "^5.8.3"
   },
   "engines": {
     "node": ">=18"

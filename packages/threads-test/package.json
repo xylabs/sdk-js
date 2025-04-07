@@ -66,11 +66,11 @@
   },
   "devDependencies": {
     "@types/debug": "^4.1.12",
-    "@types/node": "^22.13.14",
-    "@xylabs/eslint-config-flat": "^6.1.12",
-    "@xylabs/ts-scripts-yarn3": "^6.1.12",
-    "typescript": "^5.8.2",
-    "vitest": "^3.0.9"
+    "@types/node": "^22.14.0",
+    "@xylabs/eslint-config-flat": "^6.2.1",
+    "@xylabs/ts-scripts-yarn3": "^6.2.1",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.1"
   },
   "optionalDependencies": {
     "tiny-worker": "^2.3.0"

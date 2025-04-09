@@ -2,23 +2,23 @@ import type { KnipConfig } from 'knip'
 
 const config: KnipConfig = {
   ignoreDependencies: ['@xylabs/ts-scripts-yarn3'],
-  ignore: ['xy.config.ts'],
-  entry: ['src/index.ts'],
+  entry: ['src/index.ts', 'xy.config.ts'],
   workspaces: {
     '.': {
-      entry: ['src/index.ts'],
-      ignore: ['xy.config.ts'],
+      entry: ['src/index.ts', 'eslint.config.mjs', 'xy.config.ts'],
+      ignoreDependencies: [
+        'eslint',
+        '@typescript-eslint/eslint-plugin',
+        'eslint-import-resolver-typescript',
+      ],
     },
     'packages/buffer': {
       ignoreDependencies: ['buffer'],
-      ignore: ['xy.config.ts'],
       entry: ['src/index.ts', 'src/node/index.ts', 'src/browser/index.ts'],
     },
-    'packages/*': {
-      entry: ['src/index.ts', 'src/node/index.ts', 'src/browser/index.ts', 'src/neutral/index.ts'],
-      ignore: ['xy.config.ts'],
-    },
+    'packages/*': { entry: ['src/index.ts', 'src/node/index.ts', 'src/browser/index.ts', 'src/neutral/index.ts'] },
     'packages/threads': {
+      ignoreDependencies: ['is-observable-2-1-0'],
       entry: [
         'src/index.ts',
         'src/master/implementation.browser.ts',
@@ -32,14 +32,8 @@ const config: KnipConfig = {
         'test-tooling/**/*.{ts,js}',
         'test/**/*.{ts,js}',
       ],
-      ignore: ['xy.config.ts'],
     },
-  },
-  typescript: {
-    config: [
-      'tsconfig.json',
-      'packages/**/*/tsconfig.json',
-    ],
+    'packages/static-implements': { ignoreDependencies: ['tslib'] },
   },
 }
 

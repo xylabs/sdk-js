@@ -30,7 +30,7 @@ const addMetaToHead = ($: CheerioAPI, name: string, value: string | object) => {
   }
 }
 
-export const metaBuilder = (html: string, meta: Meta) => {
+export const metaBuilder = (html: string, meta: Meta, handler?: string) => {
   const $ = load(html)
   // NOTE: This assumes unique meta properties (no duplicates)
   // which is generally the case, but not always (you can have
@@ -44,6 +44,9 @@ export const metaBuilder = (html: string, meta: Meta) => {
   }
   if (meta.title) {
     $('title').text(meta.title)
+  }
+  if (handler) {
+    addMetaToHead($, 'meta-handler', handler)
   }
   return $.html()
 }

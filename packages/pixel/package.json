@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/pixel",
-  "version": "4.8.1",
+  "version": "4.8.4",
   "description": "Event Client for xylabs ESB",
   "homepage": "https://xylabs.com",
   "bugs": {
@@ -29,8 +29,8 @@
   "module": "dist/browser/index.mjs",
   "types": "dist/types/index.d.ts",
   "dependencies": {
-    "@xylabs/assert": "^4.8.1",
-    "@xylabs/object": "^4.8.1",
+    "@xylabs/assert": "^4.8.4",
+    "@xylabs/object": "^4.8.4",
     "async-mutex": "^0.5.0",
     "axios": "^1.8.4",
     "bowser": "^2.11.0",

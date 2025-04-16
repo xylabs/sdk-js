@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/hex",
-  "version": "4.8.5",
+  "version": "4.8.6",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "hex",

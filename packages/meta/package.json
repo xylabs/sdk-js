@@ -3,26 +3,22 @@
   "version": "4.8.5",
   "description": "Base functionality used throughout XYO TypeScript/JavaScript libraries",
   "keywords": [
-    "xyo",
+    "meta",
+    "xylabs",
     "utility",
     "typescript",
     "esm"
   ],
-  "homepage": "https://xyo.network",
+  "homepage": "https://xylabs.com",
   "bugs": {
-    "url": "git+https://github.com/XYOracleNetwork/sdk-xyo-js/issues",
-    "email": "support@xyo.network"
+    "url": "git+https://github.com/xylabs/sdk-js/issues",
+    "email": "support@xylabs.com"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/XYOracleNetwork/sdk-xyo-js.git"
+    "url": "git+https://github.com/xylabs/sdk-js.git"
   },
   "license": "LGPL-3.0-only",
-  "author": {
-    "name": "XYO Development Team",
-    "email": "support@xyo.network",
-    "url": "https://xyo.network"
-  },
   "sideEffects": false,
   "type": "module",
   "exports": {

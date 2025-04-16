@@ -8,7 +8,7 @@
 [![npm-license-badge][]](LICENSE)
 [![socket-badge][]][socket-link]
 
-> XY Labs generalized Javascript library 
+> XY Labs Logger Helpers
 
 ## Table of Contents
 
@@ -20,7 +20,7 @@
 
 ## Description
 
-Common Javascript code that is used throughout XYO projects that use React.
+Various Logger helper functions
 
 ## Install
 

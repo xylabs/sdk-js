@@ -1,6 +1,6 @@
 [![logo][]](https://xylabs.com)
 
-# @xylabs/meta
+# @xylabs/mongo
 
 [![npm-badge][]][npm-link]
 [![npm-downloads-badge][]][npm-link]
@@ -20,20 +20,20 @@
 
 ## Description
 
-Various Meta helper functions
+Various Mongo helper functions
 
 ## Install
 
 Using npm:
 
 ```sh
-npm i --save @xylabs/meta
+npm i --save @xylabs/mongo
 ```
 
 Using yarn:
 
 ```sh
-yarn add @xylabs/meta
+yarn add @xylabs/mongo
 ```
 
 ## Documentation
@@ -56,14 +56,14 @@ See the [LICENSE](LICENSE) file for license details
 
 [logo]: https://cdn.xy.company/img/brand/XYPersistentCompany_Logo_Icon_Colored.svg
 
-[npm-badge]: https://img.shields.io/npm/v/@xylabs/meta.svg
-[npm-link]: https://www.npmjs.com/package/@xylabs/meta
+[npm-badge]: https://img.shields.io/npm/v/@xylabs/mongo.svg
+[npm-link]: https://www.npmjs.com/package/@xylabs/mongo
 
-[npm-downloads-badge]: https://img.shields.io/npm/dw/@xylabs/meta
-[npm-license-badge]: https://img.shields.io/npm/l/@xylabs/meta
+[npm-downloads-badge]: https://img.shields.io/npm/dw/@xylabs/mongo
+[npm-license-badge]: https://img.shields.io/npm/l/@xylabs/mongo
 
-[jsdelivr-badge]: https://data.jsdelivr.com/v1/package/npm/@xylabs/meta/badge
-[jsdelivr-link]: https://www.jsdelivr.com/package/npm/@xylabs/meta
+[jsdelivr-badge]: https://data.jsdelivr.com/v1/package/npm/@xylabs/mongo/badge
+[jsdelivr-link]: https://www.jsdelivr.com/package/npm/@xylabs/mongo
 
-[socket-badge]: https://socket.dev/api/badge/npm/package/@xylabs/meta
-[socket-link]: https://socket.dev/npm/package/@xylabs/meta
+[socket-badge]: https://socket.dev/api/badge/npm/package/@xylabs/mongo
+[socket-link]: https://socket.dev/npm/package/@xylabs/mongo

@@ -1,9 +1,10 @@
 {
-  "name": "@xylabs/logger",
+  "name": "@xylabs/mongo",
   "version": "4.8.4",
-  "description": "XYLabs Logger Library",
+  "description": "Base functionality used throughout XYO TypeScript/JavaScript libraries that access Mongo DB",
   "keywords": [
-    "logger",
+    "mongo",
+    "mongodb",
     "xylabs",
     "utility",
     "typescript",
@@ -19,35 +20,37 @@
     "url": "git+https://github.com/xylabs/sdk-js.git"
   },
   "license": "LGPL-3.0-only",
-  "author": {
-    "name": "XY Labs Development Team",
-    "email": "support@xylabs.com",
-    "url": "https://xylabs.com"
-  },
   "sideEffects": false,
   "type": "module",
   "exports": {
     ".": {
+      "browser": {
+        "types": "./dist/types/index.d.ts",
+        "default": "./dist/browser/index.mjs"
+      },
+      "node": {
+        "types": "./dist/types/index.d.ts",
+        "default": "./dist/node/index.mjs"
+      },
       "types": "./dist/types/index.d.ts",
-      "default": "./dist/neutral/index.mjs"
+      "default": "./dist/node/index.mjs"
     },
     "./package.json": "./package.json"
   },
-  "module": "dist/neutral/index.mjs",
+  "module": "dist/node/index.mjs",
   "types": "dist/types/index.d.ts",
   "dependencies": {
-    "@xylabs/enum": "workspace:^",
-    "@xylabs/error": "workspace:^"
+    "@xylabs/assert": "^4.8.0",
+    "@xylabs/delay": "^4.8.0",
+    "@xylabs/forget": "^4.8.0",
+    "async-mutex": "^0.5.0",
+    "mongodb": "~6.13.1"
   },
   "devDependencies": {
-    "@types/node": "^22.14.0",
     "@xylabs/ts-scripts-yarn3": "^6.2.1",
     "@xylabs/tsconfig": "^6.2.1",
     "typescript": "^5.8.3",
     "vitest": "^3.1.1"
-  },
-  "engines": {
-    "node": ">=18"
   },
   "publishConfig": {
     "access": "public"

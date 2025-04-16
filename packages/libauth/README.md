@@ -1,6 +1,6 @@
 [![logo][]](https://xylabs.com)
 
-# @xylabs/log
+# @xylabs/libauth
 
 [![npm-badge][]][npm-link]
 [![npm-downloads-badge][]][npm-link]

@@ -7,7 +7,7 @@ import {
   type IndexDirection,
 } from './IndexDescription.ts'
 import type { ObjectStore } from './ObjectStore.ts'
-import { withDb } from './withDb.ts'
+import { withDbByVersion } from './withDbByVersion.ts'
 import { withReadOnlyStore } from './withReadOnlyStore.ts'
 
 async function getExistingIndexesInternal<T extends EmptyObject = EmptyObject>(
@@ -46,7 +46,7 @@ export async function getExistingIndexes<T extends EmptyObject = EmptyObject>(
 ): Promise<IndexDescription[] | null> {
   logger?.log('getExistingIndexes', storeName)
   if (typeof db === 'string') {
-    return await withDb<ObjectStore<T>, IndexDescription[] | null>(db, async (db) => {
+    return await withDbByVersion<ObjectStore<T>, IndexDescription[] | null>(db, async (db) => {
       return await getExistingIndexesInternal(db, storeName, logger)
     })
   }

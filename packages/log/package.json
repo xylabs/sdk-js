@@ -41,8 +41,8 @@
     "packages/**/*"
   ],
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^6.2.1",
-    "@xylabs/tsconfig-dom": "^6.2.1",
+    "@xylabs/ts-scripts-yarn3": "^6.3.1",
+    "@xylabs/tsconfig-dom": "^6.3.1",
     "rollbar": "^2.26.4",
     "typescript": "^5.8.3",
     "vitest": "^3.1.1"

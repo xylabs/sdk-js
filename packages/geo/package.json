@@ -35,15 +35,14 @@
   "module": "dist/neutral/index.mjs",
   "types": "dist/types/index.d.ts",
   "dependencies": {
-    "geojson": "^0.5.0",
-    "mapbox-gl": "^3.11.0"
+    "mapbox-gl": "^3.11.1"
   },
   "devDependencies": {
     "@types/geojson": "^7946.0.16",
-    "@xylabs/ts-scripts-yarn3": "^6.3.1",
-    "@xylabs/tsconfig": "^6.3.1",
+    "@xylabs/ts-scripts-yarn3": "^6.4.5",
+    "@xylabs/tsconfig": "^6.4.5",
     "typescript": "^5.8.3",
-    "vitest": "^3.1.1"
+    "vitest": "^3.1.2"
   },
   "packageManager": "yarn@3.2.0",
   "publishConfig": {

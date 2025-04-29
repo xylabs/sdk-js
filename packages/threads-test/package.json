@@ -60,17 +60,15 @@
     ],
     "serial": true
   },
-  "dependencies": {
-    "@xylabs/threads": "workspace:^",
-    "observable-fns": "^0.6.1"
-  },
   "devDependencies": {
     "@types/debug": "^4.1.12",
-    "@types/node": "^22.14.1",
-    "@xylabs/eslint-config-flat": "^6.3.1",
-    "@xylabs/ts-scripts-yarn3": "^6.3.1",
+    "@types/node": "^22.15.3",
+    "@xylabs/eslint-config-flat": "^6.4.5",
+    "@xylabs/threads": "workspace:^",
+    "@xylabs/ts-scripts-yarn3": "^6.4.5",
+    "observable-fns": "^0.6.1",
     "typescript": "^5.8.3",
-    "vitest": "^3.1.1"
+    "vitest": "^3.1.2"
   },
   "optionalDependencies": {
     "tiny-worker": "^2.3.0"

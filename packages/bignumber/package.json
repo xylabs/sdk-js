@@ -36,12 +36,12 @@
   "module": "./dist/neutral/index.mjs",
   "types": "./dist/types/index.d.ts",
   "dependencies": {
-    "bn.js": "^5.2.1"
+    "bn.js": "^5.2.2"
   },
   "devDependencies": {
     "@types/bn.js": "^5.1.6",
-    "@xylabs/ts-scripts-yarn3": "^6.3.1",
-    "@xylabs/tsconfig": "^6.3.1",
+    "@xylabs/ts-scripts-yarn3": "^6.4.5",
+    "@xylabs/tsconfig": "^6.4.5",
     "typescript": "^5.8.3"
   },
   "engines": {

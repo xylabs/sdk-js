@@ -39,13 +39,13 @@
   ],
   "dependencies": {
     "@xylabs/enum": "workspace:^",
-    "axios": "^1.8.4"
+    "axios": "^1.9.0"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^6.3.1",
-    "@xylabs/tsconfig": "^6.3.1",
+    "@xylabs/ts-scripts-yarn3": "^6.4.5",
+    "@xylabs/tsconfig": "^6.4.5",
     "typescript": "^5.8.3",
-    "vitest": "^3.1.1"
+    "vitest": "^3.1.2"
   },
   "engines": {
     "node": ">=18"

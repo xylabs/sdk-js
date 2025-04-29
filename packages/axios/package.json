@@ -36,14 +36,14 @@
   "module": "dist/neutral/index.mjs",
   "types": "dist/types/index.d.ts",
   "dependencies": {
-    "@types/pako": "^2.0.3",
-    "@xylabs/logger": "workspace:^",
-    "axios": "^1.8.4",
+    "axios": "^1.9.0",
     "pako": "^2.1.0"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^6.3.1",
-    "@xylabs/tsconfig": "^6.3.1",
+    "@types/pako": "^2.0.3",
+    "@xylabs/logger": "workspace:^",
+    "@xylabs/ts-scripts-yarn3": "^6.4.5",
+    "@xylabs/tsconfig": "^6.4.5",
     "typescript": "^5.8.3"
   },
   "engines": {

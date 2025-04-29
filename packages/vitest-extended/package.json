@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/vitest-extended",
-  "version": "4.8.7",
+  "version": "4.8.8",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "log",

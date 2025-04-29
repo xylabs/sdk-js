@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/object",
-  "version": "4.8.8",
+  "version": "4.8.9",
   "description": "Primary SDK for using XYO Protocol 2.0",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -30,13 +30,13 @@
   "types": "dist/types/index.d.ts",
   "dependencies": {
     "@xylabs/assert": "workspace:^",
-    "@xylabs/promise": "workspace:^"
+    "@xylabs/logger": "workspace:^",
+    "@xylabs/promise": "workspace:^",
+    "@xylabs/typeof": "workspace:^"
   },
   "devDependencies": {
-    "@xylabs/logger": "workspace:^",
     "@xylabs/ts-scripts-yarn3": "^6.4.5",
     "@xylabs/tsconfig": "^6.4.5",
-    "@xylabs/typeof": "workspace:^",
     "typescript": "^5.8.3"
   },
   "publishConfig": {

@@ -1,5 +1,5 @@
 export function isUndefined(value: unknown): value is undefined {
-  return value !== undefined
+  return value === undefined
 }
 
 export function isNull(value: unknown): value is null {
@@ -8,13 +8,6 @@ export function isNull(value: unknown): value is null {
 
 export function isUndefinedOrNull(value: unknown): value is undefined | null {
   return isUndefined(value) || isNull(value)
-}
-
-export function isDefined(value: unknown): value is unknown
-export function isDefined<T>(value: unknown): value is T
-export function isDefined<T>(value: T): value is T
-export function isDefined(value: unknown): value is unknown {
-  return value !== null && value !== undefined
 }
 
 export function isBigInt(value: unknown): value is bigint {
@@ -74,7 +67,7 @@ export function isPopulatedArray(value: unknown): value is [] {
 }
 
 export function isEmpty(value: unknown): value is (undefined | null | '' | [] | {}) {
-  return isUndefinedOrNull(value) || isEmptyString(value) || isEmptyArray(value) || isEmptyObject(value)
+  return isEmptyString(value) || isEmptyArray(value) || isEmptyObject(value)
 }
 
 export function isFalsy(value: unknown): value is false {

@@ -10,6 +10,13 @@ export function isUndefinedOrNull(value: unknown): value is undefined | null {
   return isUndefined(value) || isNull(value)
 }
 
+export function isDefined(value: unknown): value is unknown
+export function isDefined<T>(value: unknown): value is T
+export function isDefined<T>(value: T): value is T
+export function isDefined(value: unknown): value is unknown {
+  return value !== null && value !== undefined
+}
+
 export function isBigInt(value: unknown): value is bigint {
   return typeof value === 'bigint'
 }

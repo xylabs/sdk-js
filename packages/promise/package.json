@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/promise",
-  "version": "4.9.2",
+  "version": "4.9.3",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "promise",
@@ -35,6 +35,9 @@
   },
   "module": "./dist/neutral/index.mjs",
   "types": "./dist/types/index.d.ts",
+  "dependencies": {
+    "@xylabs/typeof": "workspace:^"
+  },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^6.5.5",
     "@xylabs/tsconfig": "^6.5.5",

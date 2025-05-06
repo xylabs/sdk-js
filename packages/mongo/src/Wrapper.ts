@@ -58,7 +58,7 @@ export class MongoClientWrapper {
 
   async initiateClose() {
     const alreadyStarted = await this.delayedCloseMutex.runExclusive(() => {
-      const alreadyStarted = !!this.delayCount
+      const alreadyStarted = this.delayCount > 0
       this.delayCount = Math.floor(this.closeDelay / this.checkFrequency)
       return alreadyStarted
     })

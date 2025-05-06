@@ -1,3 +1,4 @@
+import { isUndefined } from '@xylabs/typeof'
 import axios from 'axios'
 
 import type { UserEvent } from './UserEvent.ts'
@@ -13,7 +14,7 @@ export class PixelApi {
 
   /* baseUri can either be a preset (prod, beta, local), or a specific uri */
   constructor(baseUri = 'prod') {
-    this.endPoint = apiBaseUri[baseUri] ? `${apiBaseUri[baseUri]}/t/event/queue` : baseUri
+    this.endPoint = isUndefined(apiBaseUri[baseUri]) ? baseUri : `${apiBaseUri[baseUri]}/t/event/queue`
   }
 
   async trackEvents(events: UserEvent[]) {

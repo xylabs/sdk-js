@@ -1,3 +1,4 @@
+import { isUndefined } from '@xylabs/typeof'
 import axios from 'axios'
 
 import type { ApiConfig } from './ApiConfig.ts'
@@ -17,7 +18,7 @@ class ApiEndpoint<T> {
   }
 
   private get headers() {
-    return this.config.jwtToken ? { Authorization: this.config.jwtToken } : undefined
+    return isUndefined(this.config.jwtToken) ? undefined : { Authorization: this.config.jwtToken }
   }
 
   private get url() {

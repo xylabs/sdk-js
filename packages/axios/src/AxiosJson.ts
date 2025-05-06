@@ -32,7 +32,7 @@ export class AxiosJson extends Axios {
       headers: this.buildHeaders(headers),
       transformRequest: (data, headers) => {
         const json = JSON.stringify(data)
-        if (headers && data && json.length > (compressLength ?? 1024)) {
+        if (headers !== undefined && data && json.length > (compressLength ?? 1024)) {
           headers['Content-Encoding'] = 'gzip'
           return gzip(json).buffer
         }

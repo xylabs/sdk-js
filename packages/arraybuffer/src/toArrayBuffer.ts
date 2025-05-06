@@ -1,6 +1,7 @@
 import { assertEx } from '@xylabs/assert'
 import type { Hex } from '@xylabs/hex'
 import { toHex } from '@xylabs/hex'
+import { isUndefined } from '@xylabs/typeof'
 
 function hexToArrayBuffer(value: Hex): Uint8Array {
   if (value.length % 2 !== 0) {
@@ -32,8 +33,8 @@ function stringToArrayBuffer(value: string, base = 16): Uint8Array {
 export function toArrayBuffer(value: undefined, padLength?: number, base?: number): undefined
 export function toArrayBuffer(value: ArrayBufferLike | bigint | string, padLength?: number, base?: number): ArrayBufferLike
 export function toArrayBuffer(value: ArrayBufferLike | bigint | string | undefined, padLength?: number, base?: number): ArrayBufferLike | undefined
-export function toArrayBuffer(value?: ArrayBufferLike | bigint | string, padLength?: number, base?: number): ArrayBufferLike | undefined {
-  if (value === undefined) return undefined
+export function toArrayBuffer(value?: ArrayBufferLike | bigint | string, padLength = 0, base?: number): ArrayBufferLike | undefined {
+  if (isUndefined(value)) return undefined
 
   if (typeof value === 'bigint' && value < 0) {
     throw new Error(`negative bigint values are not supported: ${typeof value}`)
@@ -48,7 +49,7 @@ export function toArrayBuffer(value?: ArrayBufferLike | bigint | string, padLeng
     throw new Error(`toArrayBuffer - Unknown type: ${typeof value}`)
   }
 
-  if (padLength && result.length < padLength) {
+  if (result.length < padLength) {
     result = new Uint8Array([...new Uint8Array(padLength - result.length), ...result])
     assertEx(result?.length <= padLength, () => 'Resulting length is greater than padLength')
   }

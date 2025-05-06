@@ -32,6 +32,7 @@
     "@xylabs/assert": "workspace:^",
     "@xylabs/object": "workspace:^",
     "@xylabs/promise": "workspace:^",
+    "@xylabs/typeof": "workspace:^",
     "async-mutex": "^0.5.0",
     "axios": "^1.9.0",
     "bowser": "^2.11.0",
@@ -41,10 +42,10 @@
   },
   "devDependencies": {
     "@types/js-cookie": "^3.0.6",
-    "@types/node": "^22.15.3",
+    "@types/node": "^22.15.8",
     "@types/spark-md5": "^3.0.5",
-    "@xylabs/ts-scripts-yarn3": "^6.4.5",
-    "@xylabs/tsconfig-dom": "^6.4.5",
+    "@xylabs/ts-scripts-yarn3": "^6.5.5",
+    "@xylabs/tsconfig-dom": "^6.5.5",
     "axios": "^1.9.0",
     "typescript": "^5.8.3"
   },

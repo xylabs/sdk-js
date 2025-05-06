@@ -1,4 +1,4 @@
-import { isObject } from './isObject.ts'
+import { isObject } from '@xylabs/typeof'
 
 export type JsonValue = string | number | boolean | null | JsonObject | JsonArray
 export type JsonObject = { [key: string]: JsonValue }

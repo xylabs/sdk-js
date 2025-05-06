@@ -57,8 +57,8 @@ export class XyPixel {
 
   identify(email?: string) {
     this.email = email
-    this.email_hash = email ? md5.hash(email, true) : undefined
-    if (this.email_hash) {
+    this.email_hash = (email !== undefined && email.length > 0) ? md5.hash(email, true) : undefined
+    if (this.email_hash !== undefined) {
       localStorage.setItem(emailHashLocalStorageName, this.email_hash)
     }
   }
@@ -89,13 +89,13 @@ export class XyPixel {
     await this.queueMutex.runExclusive(async () => {
       if (this.queue.length === 0) return
       const api = XyPixel.api
-      if (api) {
+      if (api !== undefined) {
         const events = this.queue
         this.queue = []
         try {
           await api.trackEvents(events)
         } catch (ex) {
-          if (events) {
+          if (events !== undefined) {
             // put it back since it failed
             this.queue = [...this.queue, ...events]
           }

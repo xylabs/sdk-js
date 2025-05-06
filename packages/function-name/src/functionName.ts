@@ -1,4 +1,5 @@
 import { handleError } from '@xylabs/error'
+import { isNumber } from '@xylabs/typeof'
 
 export const functionName = (depth = 2) => {
   try {
@@ -14,10 +15,10 @@ export const functionName = (depth = 2) => {
             if (item === 'new') {
               newIndex = index
             }
-            return item
+            return true
           }
         }) ?? '<unknown>'
-      return newIndex ? `${funcName} ${stackParts?.[newIndex + 1]}` : funcName
+      return isNumber(newIndex) ? `${funcName} ${stackParts?.[newIndex + 1]}` : funcName
     })
   }
 }

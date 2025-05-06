@@ -18,7 +18,7 @@ export class EthAddress {
   }
 
   static fromString(value?: string, base = 16) {
-    if (value) {
+    if (value !== undefined) {
       const bi = base === 16 ? BigInt(value.startsWith('0x') ? value : `0x${value}`) : BigInt(value)
       return new EthAddress(bi)
     }
@@ -35,7 +35,7 @@ export class EthAddress {
   }
 
   equals(address?: EthAddress | string | null): boolean {
-    if (address) {
+    if (address !== null && address !== undefined) {
       const inAddress = typeof address === 'string' ? assertEx(EthAddress.fromString(address), () => 'Bad Address') : address
       return this.address === inAddress.address
     }

@@ -1,3 +1,5 @@
+import { isUndefined } from '@xylabs/typeof'
+
 import type { AssertConfig } from './assert.ts'
 import { assertError } from './assert.ts'
 import type { Hex } from './hex/index.ts'
@@ -26,7 +28,7 @@ export function asHash(value: unknown, assert?: AssertConfig): Hash | undefined 
       break
     }
     default: {
-      return assert ? assertError(value, assert, `Unsupported type [${typeof value}]`) : undefined
+      return isUndefined(assert) ? undefined : assertError(value, assert, `Unsupported type [${typeof value}]`)
     }
   }
   return isHash(stringValue) ? stringValue : assertError(value, assert, `Value is not a Hash [${value}]`)

@@ -18,7 +18,7 @@ describe('RollbarTransport', () => {
   let rollbar: MockProxy<Rollbar> | Rollbar
   let sut: RollbarTransport
   beforeEach(() => {
-    rollbar = accessToken ? new Rollbar({ accessToken, environment: 'development' }) : mock<Rollbar>()
+    rollbar = accessToken === undefined ? mock<Rollbar>() : new Rollbar({ accessToken, environment: 'development' })
     sut = new RollbarTransport({}, rollbar)
   })
   it('logs', () => {

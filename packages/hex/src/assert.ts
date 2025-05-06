@@ -1,16 +1,18 @@
+import { isString, isUndefined } from '@xylabs/typeof'
+
 type AssertCallback = (value: unknown, message: string) => string | boolean
 
 export type AssertConfig = string | AssertCallback | boolean
 
 export const assertError = (value: unknown, assert: AssertConfig | undefined, defaultMessage: string) => {
-  if (assert) {
+  if (!isUndefined(assert)) {
     const assertString
       = typeof assert === 'string'
         ? assert
         : typeof assert === 'boolean'
           ? defaultMessage
           : assert(value, defaultMessage)
-    if (assertString) {
+    if (isString(assertString) || assertString === true) {
       throw new Error(assertString === true ? defaultMessage : assertString)
     }
   }

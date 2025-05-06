@@ -1,5 +1,6 @@
 export * from './ifDefined.ts'
 export * from './ifTypeOf.ts'
+export * from './is.ts'
 export * from './isType.ts'
 export * from './ObjectTypeShape.ts'
 export * from './Typed.ts'

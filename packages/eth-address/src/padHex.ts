@@ -1,13 +1,13 @@
-const padHex = (hex: string, byteCount?: number) => {
+const padHex = (hex: string, byteCount = 0) => {
   let result = hex
   if (hex.length % 2 !== 0) {
     result = `0${hex}`
   }
-  if (byteCount) {
-    while (result.length / 2 < byteCount) {
-      result = `00${result}`
-    }
+
+  while (result.length / 2 < byteCount) {
+    result = `00${result}`
   }
+
   return result
 }
 

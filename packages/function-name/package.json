@@ -37,13 +37,14 @@
   "module": "dist/neutral/index.mjs",
   "types": "dist/types/index.d.ts",
   "dependencies": {
-    "@xylabs/error": "workspace:^"
+    "@xylabs/error": "workspace:^",
+    "@xylabs/typeof": "workspace:^"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^6.4.5",
-    "@xylabs/tsconfig": "^6.4.5",
+    "@xylabs/ts-scripts-yarn3": "^6.5.5",
+    "@xylabs/tsconfig": "^6.5.5",
     "typescript": "^5.8.3",
-    "vitest": "^3.1.2"
+    "vitest": "^3.1.3"
   },
   "engines": {
     "node": ">=18"

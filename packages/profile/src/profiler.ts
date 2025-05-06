@@ -16,7 +16,7 @@ export const profileReport = (profiler: Profiler) => {
   // eslint-disable-next-line unicorn/no-array-reduce
   const results = Object.entries(profiler).reduce<Record<string, number>>((prev, [name, readings]) => {
     const start = readings.at(0)
-    if (start) {
+    if (start !== undefined) {
       if (start < lowest) {
         lowest = start
       }
@@ -28,7 +28,7 @@ export const profileReport = (profiler: Profiler) => {
     }
     return prev
   }, {})
-  if (highest) {
+  if (highest > 0) {
     results['-all-'] = highest - lowest
   }
   return results

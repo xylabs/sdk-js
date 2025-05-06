@@ -32,6 +32,16 @@ export default [
           ],
         },
       ],
+      '@typescript-eslint/strict-boolean-expressions': ['warn', {
+        allowAny: true,
+        allowNullableBoolean: true,
+        allowNullableEnum: false,
+        allowNullableNumber: false,
+        allowNullableObject: true,
+        allowNullableString: false,
+        allowNumber: false,
+        allowString: false,
+      }],
     },
   },
 ]

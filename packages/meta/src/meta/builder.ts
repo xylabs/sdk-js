@@ -10,7 +10,7 @@ const addMetaToHead = ($: CheerioAPI, name: string, value: string | object) => {
   if (typeof value === 'string') {
     const newMeta = `<meta property="${name}" content="${value}" />`
     const existingMeta = $(`head meta[property="${name}"]`)
-    if (existingMeta?.length) {
+    if ((existingMeta?.length ?? 0) > 0) {
       existingMeta.replaceWith(newMeta)
     } else {
       $('head').append(newMeta)

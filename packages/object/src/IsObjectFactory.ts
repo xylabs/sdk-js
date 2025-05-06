@@ -1,4 +1,6 @@
-import type { ObjectTypeShape, TypedObject } from '@xylabs/typeof'
+import {
+  isObject, type ObjectTypeShape, type TypedObject,
+} from '@xylabs/typeof'
 
 import type { TypeCheck, TypeCheckConfig } from './AsTypeFactory.ts'
 import { isType } from './isType.ts'
@@ -8,7 +10,7 @@ export interface ObjectTypeConfig extends TypeCheckConfig {}
 export class IsObjectFactory<T extends TypedObject> {
   create(shape?: ObjectTypeShape, additionalChecks?: TypeCheck<TypedObject>[]): TypeCheck<T> {
     return (obj, { log } = {}): obj is T => {
-      if (!obj || typeof obj !== 'object') {
+      if (!isObject(obj)) {
         return false
       }
       return (

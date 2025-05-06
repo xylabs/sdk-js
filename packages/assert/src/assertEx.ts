@@ -24,6 +24,7 @@ function assertEx<T, R extends Error, P extends string | AssertExMessageFunc<T> 
   expr: T | null | undefined,
   messageOrFunc?: P,
 ): T {
+  // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
   if (expr) return expr
   if (typeof messageOrFunc === 'function') {
     const errorOrMessage = messageOrFunc(expr)

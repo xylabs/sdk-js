@@ -72,7 +72,7 @@
     "@xylabs/url": "workspace:^"
   },
   "devDependencies": {
-    "@types/node": "^22.15.8",
+    "@types/node": "^22.15.12",
     "@typescript-eslint/eslint-plugin": "^8.32.0",
     "@xylabs/eslint-config-flat": "^6.5.5",
     "@xylabs/ts-scripts-yarn3": "^6.5.5",

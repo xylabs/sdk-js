@@ -2120,12 +2120,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^22.15.8":
-  version: 22.15.8
-  resolution: "@types/node@npm:22.15.8"
+"@types/node@npm:*, @types/node@npm:^22.15.12":
+  version: 22.15.12
+  resolution: "@types/node@npm:22.15.12"
   dependencies:
     undici-types: "npm:~6.21.0"
-  checksum: 10/59415322a5e38e2d01d489b0cbf1d88817ba80b51fbb0c8b37f06167a67fc5e0b2201e82d818fa927f884f44fe0419a97a15655e065eb4949b423c1b4b0288d4
+  checksum: 10/5283535d6305b3cc842fc45f15e7299bb3763e7e1969567f6140814346f975dc9f9237af7a61b3b6c69797cf58bb267edd94e9228353058a7b02aa482195d1c3
   languageName: node
   linkType: hard
 
@@ -2678,7 +2678,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/buffer@workspace:packages/buffer"
   dependencies:
-    "@types/node": "npm:^22.15.8"
+    "@types/node": "npm:^22.15.12"
     "@xylabs/ts-scripts-yarn3": "npm:^6.5.5"
     "@xylabs/tsconfig": "npm:^6.5.5"
     buffer: "npm:^6.0.3"
@@ -2691,7 +2691,7 @@ __metadata:
   resolution: "@xylabs/crypto@workspace:packages/crypto"
   dependencies:
     "@types/crypto-js": "npm:^4.2.2"
-    "@types/node": "npm:^22.15.8"
+    "@types/node": "npm:^22.15.12"
     "@xylabs/ts-scripts-yarn3": "npm:^6.5.5"
     "@xylabs/tsconfig-dom": "npm:^6.5.5"
     crypto-js: "npm:^4.2.0"
@@ -2794,7 +2794,7 @@ __metadata:
     "@types/express": "npm:^4.17.21"
     "@types/express-mung": "npm:^0.5.5"
     "@types/express-serve-static-core": "npm:^5.0.6"
-    "@types/node": "npm:^22.15.8"
+    "@types/node": "npm:^22.15.12"
     "@xylabs/assert": "workspace:^"
     "@xylabs/ts-scripts-yarn3": "npm:^6.5.5"
     "@xylabs/tsconfig": "npm:^6.5.5"
@@ -2892,7 +2892,7 @@ __metadata:
   resolution: "@xylabs/jest-helpers@workspace:packages/jest-helpers"
   dependencies:
     "@types/jest": "npm:^29.5.14"
-    "@types/node": "npm:^22.15.8"
+    "@types/node": "npm:^22.15.12"
     "@xylabs/ts-scripts-yarn3": "npm:^6.5.5"
     "@xylabs/tsconfig": "npm:^6.5.5"
     typescript: "npm:^5.8.3"
@@ -2942,7 +2942,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/logger@workspace:packages/logger"
   dependencies:
-    "@types/node": "npm:^22.15.8"
+    "@types/node": "npm:^22.15.12"
     "@xylabs/enum": "workspace:^"
     "@xylabs/error": "workspace:^"
     "@xylabs/ts-scripts-yarn3": "npm:^6.5.5"
@@ -2988,7 +2988,7 @@ __metadata:
   resolution: "@xylabs/pixel@workspace:packages/pixel"
   dependencies:
     "@types/js-cookie": "npm:^3.0.6"
-    "@types/node": "npm:^22.15.8"
+    "@types/node": "npm:^22.15.12"
     "@types/spark-md5": "npm:^3.0.5"
     "@xylabs/assert": "workspace:^"
     "@xylabs/object": "workspace:^"
@@ -3010,7 +3010,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/platform@workspace:packages/platform"
   dependencies:
-    "@types/node": "npm:^22.15.8"
+    "@types/node": "npm:^22.15.12"
     "@xylabs/ts-scripts-yarn3": "npm:^6.5.5"
     "@xylabs/tsconfig": "npm:^6.5.5"
     typescript: "npm:^5.8.3"
@@ -3056,7 +3056,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/sdk-js@workspace:."
   dependencies:
-    "@types/node": "npm:^22.15.8"
+    "@types/node": "npm:^22.15.12"
     "@typescript-eslint/eslint-plugin": "npm:^8.32.0"
     "@xylabs/api": "workspace:^"
     "@xylabs/array": "workspace:^"
@@ -3101,7 +3101,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/sdk-meta@workspace:packages/meta"
   dependencies:
-    "@types/node": "npm:^22.15.8"
+    "@types/node": "npm:^22.15.12"
     "@xylabs/ts-scripts-yarn3": "npm:^6.5.5"
     "@xylabs/tsconfig": "npm:^6.5.5"
     cheerio: "npm:^1.0.0"
@@ -3150,7 +3150,7 @@ __metadata:
   resolution: "@xylabs/threads-test@workspace:packages/threads-test"
   dependencies:
     "@types/debug": "npm:^4.1.12"
-    "@types/node": "npm:^22.15.8"
+    "@types/node": "npm:^22.15.12"
     "@xylabs/eslint-config-flat": "npm:^6.5.5"
     "@xylabs/threads": "workspace:^"
     "@xylabs/ts-scripts-yarn3": "npm:^6.5.5"
@@ -3169,7 +3169,7 @@ __metadata:
   resolution: "@xylabs/threads@workspace:packages/threads"
   dependencies:
     "@types/debug": "npm:^4.1.12"
-    "@types/node": "npm:^22.15.8"
+    "@types/node": "npm:^22.15.12"
     "@xylabs/assert": "workspace:^"
     "@xylabs/eslint-config-flat": "npm:^6.5.5"
     "@xylabs/ts-scripts-yarn3": "npm:^6.5.5"
@@ -3184,7 +3184,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/timer@workspace:packages/timer"
   dependencies:
-    "@types/node": "npm:^22.15.8"
+    "@types/node": "npm:^22.15.12"
     "@xylabs/assert": "workspace:^"
     "@xylabs/ts-scripts-yarn3": "npm:^6.5.5"
     "@xylabs/tsconfig": "npm:^6.5.5"
@@ -3268,7 +3268,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/url@workspace:packages/url"
   dependencies:
-    "@types/node": "npm:^22.15.8"
+    "@types/node": "npm:^22.15.12"
     "@xylabs/ts-scripts-yarn3": "npm:^6.5.5"
     "@xylabs/tsconfig": "npm:^6.5.5"
     "@xylabs/tsconfig-dom": "npm:^6.5.5"

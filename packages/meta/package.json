@@ -34,7 +34,7 @@
     "cheerio": "^1.0.0"
   },
   "devDependencies": {
-    "@types/node": "^22.15.8",
+    "@types/node": "^22.15.12",
     "@xylabs/ts-scripts-yarn3": "^6.5.5",
     "@xylabs/tsconfig": "^6.5.5",
     "typescript": "^5.8.3",

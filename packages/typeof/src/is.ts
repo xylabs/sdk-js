@@ -122,7 +122,7 @@ export function isPlainObject<T>(value: T): value is Extract<T, object> {
   return isObject(value) && value.constructor === Object
 }
 
-export function isTypedArray<T>(value: T): value is Extract<T, ArrayBufferView> {
+export function isArrayBufferView<T>(value: T): value is Extract<T, ArrayBufferView> {
   return ArrayBuffer.isView(value)
 }
 

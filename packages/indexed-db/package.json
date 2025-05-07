@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/indexed-db",
-  "version": "4.9.3",
+  "version": "4.9.4",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "hex",
@@ -54,7 +54,7 @@
     "@xylabs/object": "workspace:^",
     "@xylabs/storage": "workspace:^",
     "async-mutex": "^0.5.0",
-    "idb": "^8.0.2"
+    "idb": "^8.0.3"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^6.5.5",

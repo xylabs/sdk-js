@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/threads-test",
-  "version": "4.9.3",
+  "version": "4.9.4",
   "private": true,
   "description": "Web workers & worker threads as simple as a function call",
   "keywords": [
@@ -62,7 +62,7 @@
   },
   "devDependencies": {
     "@types/debug": "^4.1.12",
-    "@types/node": "^22.15.12",
+    "@types/node": "^22.15.15",
     "@xylabs/eslint-config-flat": "^6.5.5",
     "@xylabs/threads": "workspace:^",
     "@xylabs/ts-scripts-yarn3": "^6.5.5",

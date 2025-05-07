@@ -35,6 +35,12 @@ const config: KnipConfig = {
     },
     'packages/static-implements': { ignoreDependencies: ['tslib'] },
   },
+  typescript: {
+    config: [
+      'tsconfig.json',
+      'packages/**/*/tsconfig.json',
+    ],
+  },
 }
 
 export default config

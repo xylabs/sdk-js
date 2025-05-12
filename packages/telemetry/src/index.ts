@@ -1,1 +1,1 @@
-export * from './XyConsoleSpanExporter.ts'
+export * from './span.ts'

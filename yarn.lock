@@ -3200,13 +3200,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/telemetry-model@workspace:packages/telemetry-model":
+"@xylabs/telemetry-exporter@workspace:packages/telemetry-exporter":
   version: 0.0.0-use.local
-  resolution: "@xylabs/telemetry-model@workspace:packages/telemetry-model"
+  resolution: "@xylabs/telemetry-exporter@workspace:packages/telemetry-exporter"
   dependencies:
     "@opentelemetry/api": "npm:^1.9.0"
+    "@opentelemetry/sdk-trace-base": "npm:^2.0.0"
     "@xylabs/ts-scripts-yarn3": "npm:^6.5.5"
     "@xylabs/tsconfig": "npm:^6.5.5"
+    chalk: "npm:^5.4.1"
     typescript: "npm:^5.8.3"
   languageName: unknown
   linkType: soft
@@ -3216,10 +3218,8 @@ __metadata:
   resolution: "@xylabs/telemetry@workspace:packages/telemetry"
   dependencies:
     "@opentelemetry/api": "npm:^1.9.0"
-    "@opentelemetry/sdk-trace-base": "npm:^2.0.0"
     "@xylabs/ts-scripts-yarn3": "npm:^6.5.5"
     "@xylabs/tsconfig": "npm:^6.5.5"
-    chalk: "npm:^5.4.1"
     typescript: "npm:^5.8.3"
   languageName: unknown
   linkType: soft

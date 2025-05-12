@@ -1,7 +1,8 @@
-import {
-  context,
-  trace, type Tracer,
+import type {
+  Context,
+  Tracer,
 } from '@opentelemetry/api'
+import { context, trace } from '@opentelemetry/api'
 
 export function span<T>(name: string, fn: () => T, tracer?: Tracer): T {
   if (tracer) {
@@ -18,13 +19,17 @@ export function span<T>(name: string, fn: () => T, tracer?: Tracer): T {
   }
 }
 
+function clearContext(context: Context): Context {
+  return trace.getSpan(context) ? clearContext(trace.deleteSpan(context)) : context
+}
+
 export function spanRoot<T>(name: string, fn: () => T, tracer?: Tracer): T {
   if (tracer) {
     // Get current active context for configuration
     const activeContext = context.active()
 
     // Create a new context with no active span
-    const noSpanContext = trace.deleteSpan(activeContext)
+    const noSpanContext = clearContext(activeContext)
 
     // Create a new span in the context without an active span
     const span = tracer.startSpan(name, {}, noSpanContext)
@@ -71,7 +76,7 @@ export async function spanRootAsync<T>(
     const activeContext = context.active()
 
     // Create a new context with no active span
-    const noSpanContext = trace.deleteSpan(activeContext)
+    const noSpanContext = clearContext(activeContext)
 
     // Create a new span in the context without an active span
     const span = tracer.startSpan(name, {}, noSpanContext)

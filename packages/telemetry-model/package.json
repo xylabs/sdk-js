@@ -1,9 +1,9 @@
 {
-  "name": "@xylabs/crypto",
+  "name": "@xylabs/telemetry-model",
   "version": "4.9.4",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
-    "crypto",
+    "hex",
     "xylabs",
     "utility",
     "typescript",
@@ -28,25 +28,22 @@
   "type": "module",
   "exports": {
     ".": {
-      "browser": {
-        "types": "./dist/types/browser/index.d.ts",
-        "default": "./dist/browser/index.mjs"
-      },
-      "types": "./dist/types/node/index.d.ts",
-      "default": "./dist/node/index.mjs"
+      "types": "./dist/types/index.d.ts",
+      "default": "./dist/neutral/index.mjs"
     },
     "./package.json": "./package.json"
   },
-  "module": "./dist/node/index.mjs",
-  "types": "./dist/types/node/index.d.ts",
+  "module": "./dist/neutral/index.mjs",
+  "types": "./dist/types/index.d.ts",
+  "workspaces": [
+    "packages/**/*"
+  ],
   "dependencies": {
-    "crypto-js": "^4.2.0"
+    "@opentelemetry/api": "^1.9.0"
   },
   "devDependencies": {
-    "@types/crypto-js": "^4.2.2",
-    "@types/node": "^22.15.17",
     "@xylabs/ts-scripts-yarn3": "^6.5.5",
-    "@xylabs/tsconfig-dom": "^6.5.5",
+    "@xylabs/tsconfig": "^6.5.5",
     "typescript": "^5.8.3"
   },
   "engines": {

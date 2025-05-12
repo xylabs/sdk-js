@@ -17,6 +17,19 @@ export function span<T>(name: string, fn: () => T, tracer?: Tracer): T {
   }
 }
 
+export function spanRoot<T>(name: string, fn: () => T, tracer?: Tracer): T {
+  if (tracer) {
+    const span = tracer.startSpan(name)
+    try {
+      return fn()
+    } finally {
+      span.end()
+    }
+  } else {
+    return fn()
+  }
+}
+
 export async function spanAsync<T>(
   name: string,
   fn: () => Promise<T>,
@@ -31,6 +44,23 @@ export async function spanAsync<T>(
         span.end()
       }
     })
+  } else {
+    return await fn()
+  }
+}
+
+export async function spanRootAsync<T>(
+  name: string,
+  fn: () => Promise<T>,
+  tracer?: Tracer,
+): Promise<T> {
+  if (tracer) {
+    const span = tracer.startSpan(name)
+    try {
+      return await fn()
+    } finally {
+      span.end()
+    }
   } else {
     return await fn()
   }

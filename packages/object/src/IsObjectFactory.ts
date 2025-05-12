@@ -1,5 +1,6 @@
 import {
-  isObject, type ObjectTypeShape, type TypedObject,
+  isObject, isTruthy,
+  type ObjectTypeShape, type TypedObject,
 } from '@xylabs/typeof'
 
 import type { TypeCheck, TypeCheckConfig } from './AsTypeFactory.ts'
@@ -18,7 +19,7 @@ export class IsObjectFactory<T extends TypedObject> {
         Object.entries(shape ?? {}).filter(([key, type]) => {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const result = isType((obj as any)[key], type)
-          if (!result && log) {
+          if (!result && isTruthy(log)) {
             const logger = typeof log === 'object' ? log : console
             logger.warn(`isType Failed: ${key}: ${type}`)
           }

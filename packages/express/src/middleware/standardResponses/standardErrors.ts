@@ -1,3 +1,4 @@
+import { isError } from '@xylabs/typeof'
 import type {
   NextFunction, Request, Response,
 } from 'express'
@@ -5,13 +6,13 @@ import type {
 import type { ExpressError } from '../../Model/index.ts'
 import type { ApiError } from './jsonApi/index.ts'
 
-export const standardErrors = (err: ExpressError, req: Request, res: Response, next: NextFunction) => {
-  if (!err) {
+export const standardErrors = (err: ExpressError | undefined, req: Request, res: Response, next: NextFunction) => {
+  if (!isError(err)) {
     next(err)
     return
   }
   console.error(err.message)
-  if (!err.statusCode) err.statusCode = 500
+  err.statusCode = err.statusCode ?? 500
 
   const error: ApiError = {
     detail: err.message,

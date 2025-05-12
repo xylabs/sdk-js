@@ -1,3 +1,5 @@
+import { isObject } from '@xylabs/typeof'
+
 import type { AssertConfig } from './assert.ts'
 import { assertError } from './assert.ts'
 import type { Hex, HexConfig } from './hex/index.ts'
@@ -31,7 +33,7 @@ export function asAddress(value: unknown, assert?: AssertConfig): Address | unde
         break
       }
       default: {
-        return assert ? assertError(value, assert, `Unsupported type [${typeof value}]`) : undefined
+        return isObject(assert) ? assertError(value, assert, `Unsupported type [${typeof value}]`) : undefined
       }
     }
     return isAddress(stringValue) ? stringValue : assertError(value, assert, `Value is not an Address [${value}]`)

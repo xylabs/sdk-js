@@ -31,6 +31,7 @@
   "module": "dist/neutral/index.mjs",
   "types": "dist/types/index.d.ts",
   "dependencies": {
+    "@xylabs/typeof": "workspace:^",
     "cheerio": "^1.0.0"
   },
   "devDependencies": {

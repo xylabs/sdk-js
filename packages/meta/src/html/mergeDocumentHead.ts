@@ -1,3 +1,4 @@
+import { isString } from '@xylabs/typeof'
 import { load } from 'cheerio'
 
 const opts = {}
@@ -16,7 +17,7 @@ export const mergeDocumentHead = (destination: string, source: string) => {
       // Special case for meta tags: We want to match them by the name attribute
       if (el[0].tagName === 'meta') {
         const property = el.attr('property')
-        if (property) {
+        if (isString(property)) {
           const match = $destination(`head meta[property="${property}"]`)
 
           // If it exists, replace it, otherwise append it

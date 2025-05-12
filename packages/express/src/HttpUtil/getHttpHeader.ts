@@ -1,3 +1,4 @@
+import { isDefined } from '@xylabs/typeof'
 import type { Request } from 'express-serve-static-core'
 
 /**
@@ -13,7 +14,7 @@ export const getHttpHeader = (header: string, req: Request): string | undefined 
   const headerValue = req.headers[header]
   const value
     // If the header exists
-    = headerValue
+    = isDefined(headerValue)
       // If there's multiple of the same header
       ? Array.isArray(headerValue)
         // Grab the first one

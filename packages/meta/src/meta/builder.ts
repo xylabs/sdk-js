@@ -1,3 +1,4 @@
+import { isString } from '@xylabs/typeof'
 import type { CheerioAPI } from 'cheerio'
 import { load } from 'cheerio'
 
@@ -37,15 +38,15 @@ export const metaBuilder = (html: string, meta: Meta, handler?: string) => {
   // multiple og:video:tag tags, for example)
   const metaProperties = getMetaAsDict(meta)
   for (const [key, value] of Object.entries(metaProperties)) {
-    if (value) addMetaToHead($, key, value)
+    addMetaToHead($, key, value)
   }
-  if (meta.description) {
+  if (isString(meta.description)) {
     addMetaToHead($, 'description', meta.description)
   }
-  if (meta.title) {
+  if (isString(meta.title)) {
     $('title').text(meta.title)
   }
-  if (handler) {
+  if (isString(handler)) {
     addMetaToHead($, 'meta-handler', handler)
   }
   return $.html()

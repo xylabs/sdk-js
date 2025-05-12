@@ -18,7 +18,7 @@ export function span<T>(name: string, fn: () => T, tracer?: Tracer): T {
 }
 
 export function spanRoot<T>(name: string, fn: () => T, tracer?: Tracer): T {
-  return tracer ? tracer.startActiveSpan(name, fn) : fn()
+  return tracer ? tracer.startActiveSpan(name, { root: true }, fn) : fn()
 }
 
 export async function spanAsync<T>(
@@ -41,5 +41,5 @@ export async function spanAsync<T>(
 }
 
 export async function spanRootAsync<T>(name: string, fn: () => Promise<T>, tracer?: Tracer): Promise<T> {
-  return tracer ? await tracer.startActiveSpan(name, fn) : await fn()
+  return tracer ? await tracer.startActiveSpan(name, { root: true }, fn) : await fn()
 }

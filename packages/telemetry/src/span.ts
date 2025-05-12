@@ -1,5 +1,6 @@
 import {
-  context, trace, type Tracer,
+  context, ROOT_CONTEXT,
+  trace, type Tracer,
 } from '@opentelemetry/api'
 
 export function span<T>(name: string, fn: () => T, tracer?: Tracer): T {
@@ -18,7 +19,18 @@ export function span<T>(name: string, fn: () => T, tracer?: Tracer): T {
 }
 
 export function spanRoot<T>(name: string, fn: () => T, tracer?: Tracer): T {
-  return tracer ? tracer.startActiveSpan(name, { root: true }, fn) : fn()
+  if (tracer) {
+    const span = tracer.startSpan(name)
+    return context.with(trace.setSpan(ROOT_CONTEXT, span), () => {
+      try {
+        return fn()
+      } finally {
+        span.end()
+      }
+    })
+  } else {
+    return fn()
+  }
 }
 
 export async function spanAsync<T>(
@@ -41,5 +53,16 @@ export async function spanAsync<T>(
 }
 
 export async function spanRootAsync<T>(name: string, fn: () => Promise<T>, tracer?: Tracer): Promise<T> {
-  return tracer ? await tracer.startActiveSpan(name, { root: true }, fn) : await fn()
+  if (tracer) {
+    const span = tracer.startSpan(name)
+    return await context.with(trace.setSpan(ROOT_CONTEXT, span), async () => {
+      try {
+        return await fn()
+      } finally {
+        span.end()
+      }
+    })
+  } else {
+    return await fn()
+  }
 }

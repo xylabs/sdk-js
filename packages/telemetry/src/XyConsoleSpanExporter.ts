@@ -6,7 +6,7 @@ export function spanDurationInMillis(span: ReadableSpan) {
   return span.duration[0] * 1000 + span.duration[1] / 1e6
 }
 
-export class XyoConsoleSpanExporter extends ConsoleSpanExporter {
+export class XyConsoleSpanExporter extends ConsoleSpanExporter {
   static readonly durationToLogLevel = [
     0,
     1,
@@ -50,14 +50,14 @@ export class XyoConsoleSpanExporter extends ConsoleSpanExporter {
   }
 
   logColor(level: number) {
-    return XyoConsoleSpanExporter.logLevelToChalkColor[level] ?? chalk.magenta
+    return XyConsoleSpanExporter.logLevelToChalkColor[level] ?? chalk.magenta
   }
 
   spanLevel(span: ReadableSpan) {
     let logLevel = 0
     const duration = spanDurationInMillis(span)
-    for (let x = XyoConsoleSpanExporter.durationToLogLevel.length - 1; x >= 0; x--) {
-      if (duration > XyoConsoleSpanExporter.durationToLogLevel[x]) {
+    for (let x = XyConsoleSpanExporter.durationToLogLevel.length - 1; x >= 0; x--) {
+      if (duration > XyConsoleSpanExporter.durationToLogLevel[x]) {
         logLevel = x
         break
       }

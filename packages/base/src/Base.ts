@@ -1,3 +1,7 @@
+import type {
+  Meter,
+  MeterProvider, Tracer, TracerProvider,
+} from '@opentelemetry/api'
 import { assertEx } from '@xylabs/assert'
 import type { Logger } from '@xylabs/logger'
 import type { EmptyObject } from '@xylabs/object'
@@ -14,6 +18,8 @@ export type BaseClassName = Exclude<string, 'base-class-name-reserved-3254623948
 
 export type BaseParamsFields = {
   logger?: Logger
+  meterProvider?: MeterProvider
+  traceProvider?: TracerProvider
 }
 
 export type BaseParams<TAdditionalParams extends EmptyObject | void = void> =
@@ -71,8 +77,16 @@ export abstract class Base<TParams extends BaseParams | undefined = BaseParams> 
     return this.params?.logger ?? Base.defaultLogger
   }
 
+  get meter(): Meter | undefined {
+    return this.params?.meterProvider?.getMeter(this.constructor.name)
+  }
+
   get params() {
     return this._params
+  }
+
+  get tracer(): Tracer | undefined {
+    return this.params?.traceProvider?.getTracer(this.constructor.name)
   }
 
   static gc(force?: boolean): void

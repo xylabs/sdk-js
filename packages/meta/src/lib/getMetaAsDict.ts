@@ -9,7 +9,7 @@ export const getMetaAsDict = (obj: StringIndexable, parentKey?: string): Record<
   for (const key in obj) {
     if (typeof obj[key] === 'object' && obj[key] !== null) {
       // If the value is another object, we want to iterate through its keys as well.
-      const childRecord = getMetaAsDict(obj[key] as StringIndexable, `${parentKey}${key}${propertyDelimiter}`)
+      const childRecord = getMetaAsDict(obj[key] as StringIndexable, `${isString(parentKey) ? parentKey : ''}${key}${propertyDelimiter}`)
       flatRecord = { ...flatRecord, ...childRecord }
     } else {
       // Concatenate the key with its parent key.

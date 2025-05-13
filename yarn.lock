@@ -2700,7 +2700,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/base@workspace:packages/base":
+"@xylabs/base@workspace:^, @xylabs/base@workspace:packages/base":
   version: 0.0.0-use.local
   resolution: "@xylabs/base@workspace:packages/base"
   dependencies:
@@ -2820,6 +2820,25 @@ __metadata:
     "@xylabs/ts-scripts-yarn3": "npm:^6.5.5"
     "@xylabs/tsconfig": "npm:^6.5.5"
     ethers: "npm:^6.14.0"
+    typescript: "npm:^5.8.3"
+    vitest: "npm:^3.1.3"
+  languageName: unknown
+  linkType: soft
+
+"@xylabs/events@workspace:packages/events":
+  version: 0.0.0-use.local
+  resolution: "@xylabs/events@workspace:packages/events"
+  dependencies:
+    "@xylabs/assert": "workspace:^"
+    "@xylabs/base": "workspace:^"
+    "@xylabs/delay": "workspace:^"
+    "@xylabs/error": "workspace:^"
+    "@xylabs/forget": "workspace:^"
+    "@xylabs/promise": "workspace:^"
+    "@xylabs/ts-scripts-yarn3": "npm:^6.5.5"
+    "@xylabs/tsconfig": "npm:^6.5.5"
+    "@xylabs/typeof": "workspace:^"
+    "@xylabs/vitest-extended": "workspace:^"
     typescript: "npm:^5.8.3"
     vitest: "npm:^3.1.3"
   languageName: unknown

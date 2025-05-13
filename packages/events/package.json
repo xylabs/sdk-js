@@ -1,0 +1,50 @@
+{
+  "name": "@xylabs/events",
+  "version": "3.15.6",
+  "description": "Primary SDK for using XYO Protocol 2.0",
+  "homepage": "https://xyo.network",
+  "bugs": {
+    "url": "git+https://github.com/XYOracleNetwork/sdk-xyo-client-js/issues",
+    "email": "support@xyo.network"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XYOracleNetwork/sdk-xyo-client-js.git"
+  },
+  "license": "LGPL-3.0-only",
+  "author": {
+    "name": "XYO Development Team",
+    "email": "support@xyo.network",
+    "url": "https://xyo.network"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "default": "./dist/neutral/index.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "module": "dist/neutral/index.mjs",
+  "types": "dist/types/index.d.ts",
+  "dependencies": {
+    "@xylabs/assert": "workspace:^",
+    "@xylabs/base": "workspace:^",
+    "@xylabs/error": "workspace:^",
+    "@xylabs/forget": "workspace:^",
+    "@xylabs/promise": "workspace:^",
+    "@xylabs/typeof": "workspace:^"
+  },
+  "devDependencies": {
+    "@xylabs/delay": "workspace:^",
+    "@xylabs/ts-scripts-yarn3": "^6.5.5",
+    "@xylabs/tsconfig": "^6.5.5",
+    "@xylabs/vitest-extended": "workspace:^",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

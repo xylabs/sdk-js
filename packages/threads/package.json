@@ -110,15 +110,15 @@
   ],
   "dependencies": {
     "@xylabs/assert": "workspace:^",
-    "debug": "^4.4.0",
+    "debug": "^4.4.1",
     "is-observable-2-1-0": "npm:is-observable@2.1.0",
     "observable-fns": "^0.6.1"
   },
   "devDependencies": {
     "@types/debug": "^4.1.12",
-    "@types/node": "^22.15.17",
-    "@xylabs/eslint-config-flat": "^6.5.5",
-    "@xylabs/ts-scripts-yarn3": "^6.5.5",
+    "@types/node": "^22.15.21",
+    "@xylabs/eslint-config-flat": "^6.5.7",
+    "@xylabs/ts-scripts-yarn3": "^6.5.7",
     "typescript": "^5.8.3"
   },
   "publishConfig": {

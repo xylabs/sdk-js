@@ -2994,6 +2994,7 @@ __metadata:
     "@xylabs/promise": "workspace:^"
     "@xylabs/ts-scripts-yarn3": "npm:^6.5.7"
     "@xylabs/tsconfig-dom": "npm:^6.5.7"
+    "@xylabs/typeof": "workspace:^"
     typescript: "npm:^5.8.3"
     vitest: "npm:^3.1.4"
   languageName: unknown

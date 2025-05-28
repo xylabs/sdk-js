@@ -28,6 +28,10 @@
   "type": "module",
   "exports": {
     ".": {
+      "node": {
+        "types": "./dist/types/index-node.d.ts",
+        "default": "./dist/node/index-node.mjs"
+      },
       "types": "./dist/types/index.d.ts",
       "default": "./dist/neutral/index.mjs"
     },
@@ -37,7 +41,8 @@
   "types": "./dist/types/index.d.ts",
   "dependencies": {
     "@xylabs/delay": "workspace:^",
-    "@xylabs/promise": "workspace:^"
+    "@xylabs/promise": "workspace:^",
+    "@xylabs/typeof": "workspace:^"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^6.5.7",

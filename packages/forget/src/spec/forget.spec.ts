@@ -5,7 +5,8 @@ import {
   vi,
 } from 'vitest'
 
-import { forget, ForgetPromise } from '../forget.ts'
+import { forget } from '../forget.ts'
+import { ForgetPromise } from '../ForgetPromise.ts'
 
 describe('forget', () => {
   beforeAll(() => {
@@ -28,13 +29,13 @@ describe('forget', () => {
   })
   test('checking happy path', async () => {
     let cancelled = false
-    forget(delay(100), undefined, { cancel: () => (cancelled = true), delay: 200 })
+    forget(delay(100), { onCancel: () => (cancelled = true), timeout: 200 })
     await delay(300)
     expect(cancelled).toBeFalsy()
   })
   test('checking unhappy path', async () => {
     let cancelled = false
-    forget(delay(200), undefined, { cancel: () => (cancelled = true), delay: 100 })
+    forget(delay(200), { onCancel: () => (cancelled = true), timeout: 100 })
     await delay(300)
     expect(cancelled).toBeTruthy()
   })

@@ -2982,7 +2982,7 @@ __metadata:
     winston: "npm:^3.17.0"
     winston-transport: "npm:^4.9.0"
   peerDependencies:
-    express: ^4
+    express: ^5
   languageName: unknown
   linkType: soft
 

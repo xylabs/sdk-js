@@ -79,7 +79,7 @@
     "winston-transport": "^4.9.0"
   },
   "peerDependencies": {
-    "express": "^4"
+    "express": "^5"
   },
   "packageManager": "yarn@4.5.1",
   "volta": {

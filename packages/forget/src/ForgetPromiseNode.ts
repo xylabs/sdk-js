@@ -5,34 +5,41 @@ import type { Promisable } from '@xylabs/promise'
 import { defaultForgetNodeConfig, type ForgetNodeConfig } from './ForgetNodeConfig.ts'
 import { ForgetPromise } from './ForgetPromise.ts'
 
-export const ForgetPromiseNode = {
-  ...ForgetPromise,
-  exceptionHandler: (error: Error, config: ForgetNodeConfig) => {
-    // default | global | provided priorities for config (not deep merge)
-    ForgetPromise.exceptionHandler(error, config)
+export const getStackTrace = () => {
+  try {
+    throw new Error('Getting stack trace')
+  } catch (ex) {
+    const error = ex as Error
+    return error.stack
+  }
+}
 
+export class ForgetPromiseNode extends ForgetPromise {
+  static override exceptionHandler(error: Error, config: ForgetNodeConfig) {
+    // default | global | provided priorities for config (not deep merge)
+    super.exceptionHandler(error, config)
+    console.warn(getStackTrace())
     if (config?.terminateOnException === true) {
+      console.log('Attempting to terminate process...')
       // eslint-disable-next-line unicorn/no-process-exit
       process.exit(1)
     }
-  },
-  timeoutHandler: (time: number, config: ForgetNodeConfig) => {
-    ForgetPromise.timeoutHandler(time, config)
-    if (config?.terminateOnTimeout === true) {
-      // eslint-disable-next-line unicorn/no-process-exit
-      process.exit(2)
-    }
-  },
+  }
 
-  /**
-     * Used to explicitly launch an async function (or Promise) with awaiting it
-     * @param promise The promise to forget
-     * @param config Configuration of forget settings
-     */
-  forget<T>(promise: Promisable<T>, config?: ForgetNodeConfig<T>) {
+  static override forget<T>(promise: Promisable<T>, config?: ForgetNodeConfig<T>) {
     const resolvedConfig = {
       ...defaultForgetNodeConfig, ...globalThis.xy?.forget?.config, ...config,
     }
-    ForgetPromise.forget<T>(promise, resolvedConfig)
-  },
+    super.forget(promise, resolvedConfig)
+  }
+
+  static override timeoutHandler(time: number, config: ForgetNodeConfig) {
+    super.timeoutHandler(time, config)
+    console.warn(getStackTrace())
+    if (config?.terminateOnTimeout === true) {
+      console.log('Attempting to terminate process...')
+      // eslint-disable-next-line unicorn/no-process-exit
+      process.exit(2)
+    }
+  }
 }

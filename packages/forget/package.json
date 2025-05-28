@@ -33,11 +33,11 @@
         "default": "./dist/node/index-node.mjs"
       },
       "types": "./dist/types/index.d.ts",
-      "default": "./dist/neutral/index.mjs"
+      "default": "./dist/node/index-node.mjs"
     },
     "./package.json": "./package.json"
   },
-  "module": "./dist/neutral/index.mjs",
+  "module": "./dist/node/index-node.mjs",
   "types": "./dist/types/index.d.ts",
   "dependencies": {
     "@xylabs/delay": "workspace:^",

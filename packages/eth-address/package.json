@@ -42,7 +42,7 @@
   ],
   "dependencies": {
     "@xylabs/assert": "workspace:^",
-    "ethers": "^6.14.1"
+    "ethers": "^6.14.3"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^6.5.7",

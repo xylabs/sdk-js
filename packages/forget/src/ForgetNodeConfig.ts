@@ -8,6 +8,6 @@ export interface ForgetNodeConfig<T = any> extends ForgetConfig<T> {
 
 export const defaultForgetNodeConfig: ForgetNodeConfig<unknown> = {
   ...defaultForgetConfig,
-  terminateOnTimeout: true,
-  terminateOnException: true,
+  terminateOnTimeout: false,
+  terminateOnException: false,
 }

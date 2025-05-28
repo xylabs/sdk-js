@@ -4,23 +4,16 @@ import { isNumber } from '@xylabs/typeof'
 
 import { defaultForgetConfig, type ForgetConfig } from './ForgetConfig.ts'
 
-export const ForgetPromise = {
-  get active() {
+// eslint-disable-next-line unicorn/no-static-only-class
+export class ForgetPromise {
+  static activeForgets = 0
+  static exceptedForgets = 0
+
+  static get active() {
     return this.activeForgets > 0
-  },
+  }
 
-  activeForgets: 0,
-  exceptedForgets: 0,
-
-  exceptionHandler: (error: Error, _config: ForgetConfig) => {
-    console.error(`forget promise handler excepted: ${error.message}`, error)
-  },
-
-  timeoutHandler: (time: number, _config: ForgetConfig) => {
-    console.error(`forget promise timeout out after ${time}ms [Cancelling]`)
-  },
-
-  async awaitInactive(interval = 100, timeout?: number) {
+  static async awaitInactive(interval = 100, timeout?: number) {
     let timeoutRemaining = timeout
     while (this.active) {
       await delay(interval)
@@ -32,14 +25,18 @@ export const ForgetPromise = {
       }
     }
     return 0
-  },
+  }
+
+  static exceptionHandler(error: Error, _config: ForgetConfig) {
+    console.error(`forget promise handler excepted: ${error.message}`, error)
+  }
 
   /**
    * Used to explicitly launch an async function (or Promise) with awaiting it
    * @param promise The promise to forget
    * @param config Configuration of forget settings
    */
-  forget<T>(promise: Promisable<T>, config?: ForgetConfig<T>) {
+  static forget<T>(promise: Promisable<T>, config?: ForgetConfig<T>) {
     // default | global | provided priorities for config (not deep merge)
     const resolvedConfig = {
       ...defaultForgetConfig, ...globalThis.xy?.forget?.config, ...config,
@@ -95,5 +92,9 @@ export const ForgetPromise = {
     } else {
       return (promise as () => void)()
     }
-  },
+  }
+
+  static timeoutHandler(time: number, _config: ForgetConfig) {
+    console.error(`forget promise timeout out after ${time}ms [Cancelling]`)
+  }
 }

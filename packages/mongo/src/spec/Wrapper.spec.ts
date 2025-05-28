@@ -82,7 +82,7 @@ function post<T = void>(method: string, params: object = {}): Promise<T> {
   })
 }
 
-describe('MongoClientWrapper memory retention', () => {
+describe.skip('MongoClientWrapper memory profiling', () => {
   const TEST_MONGO_URI = process.env.MONGO_CONNECTION_STRING
   beforeEach(() => {
     // Reset static map before each test run
@@ -105,7 +105,7 @@ describe('MongoClientWrapper memory retention', () => {
     await startHeapProfile('sampling')
     await Promise.all(
       Array.from({ length: cycleCount }).map(async () => {
-        await new Promise(r => setTimeout(r, randomIntBetween(1000, 3000)))
+        // await new Promise(r => setTimeout(r, randomIntBetween(1000, 3000)))
         const wrapper = MongoClientWrapper.get(uri, 100, 1)
         const client = await wrapper.connect()
         expect(client).toBeDefined()

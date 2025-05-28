@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/libauth",
-  "version": "4.10.1",
+  "version": "4.11.0",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "libauth",

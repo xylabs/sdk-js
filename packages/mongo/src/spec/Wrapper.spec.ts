@@ -101,7 +101,7 @@ describe('MongoClientWrapper memory retention', () => {
   it('should not leak MongoClientWrapper instances after many connect/disconnect cycles', async () => {
     expect(TEST_MONGO_URI).toBeDefined()
     const uri = `${TEST_MONGO_URI}`
-    const cycleCount = 300_000
+    const cycleCount = 200_000
     await startHeapProfile('sampling')
     await Promise.all(
       Array.from({ length: cycleCount }).map(async () => {

@@ -2857,7 +2857,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/delay@npm:^4.11.1, @xylabs/delay@workspace:^, @xylabs/delay@workspace:packages/delay":
+"@xylabs/delay@workspace:^, @xylabs/delay@workspace:packages/delay":
   version: 0.0.0-use.local
   resolution: "@xylabs/delay@workspace:packages/delay"
   dependencies:
@@ -2986,7 +2986,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/forget@npm:^4.11.1, @xylabs/forget@workspace:^, @xylabs/forget@workspace:packages/forget":
+"@xylabs/forget@workspace:^, @xylabs/forget@workspace:packages/forget":
   version: 0.0.0-use.local
   resolution: "@xylabs/forget@workspace:packages/forget"
   dependencies:
@@ -3129,11 +3129,8 @@ __metadata:
   resolution: "@xylabs/mongo@workspace:packages/mongo"
   dependencies:
     "@xylabs/assert": "npm:^4.11.1"
-    "@xylabs/delay": "npm:^4.11.1"
-    "@xylabs/forget": "npm:^4.11.1"
     "@xylabs/ts-scripts-yarn3": "npm:^6.5.7"
     "@xylabs/tsconfig": "npm:^6.5.7"
-    async-mutex: "npm:^0.5.0"
     mongodb: "npm:~6.16.0"
     typescript: "npm:^5.8.3"
     vitest: "npm:^3.1.4"

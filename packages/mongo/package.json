@@ -41,9 +41,6 @@
   "types": "dist/types/index.d.ts",
   "dependencies": {
     "@xylabs/assert": "^4.11.1",
-    "@xylabs/delay": "^4.11.1",
-    "@xylabs/forget": "^4.11.1",
-    "async-mutex": "^0.5.0",
     "mongodb": "~6.16.0"
   },
   "devDependencies": {

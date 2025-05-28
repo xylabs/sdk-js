@@ -29,6 +29,38 @@
         "NODE_ENV": "test"
       },
       "envFile": "${workspaceRoot}/.env",
+    },
+    {
+      "name": "Vitest Memory Test",
+      "request": "launch",
+      "type": "node",
+      "program": "${workspaceFolder}/node_modules/vitest/vitest.mjs",
+      "args": [
+        "--run",
+        "--no-file-parallelism",
+        "--testTimeout=120000",
+        "packages/mongo/src/spec/Wrapper.spec.ts"
+      ],
+      "runtimeArgs": [
+        "--expose-gc",
+        "--inspect-brk"
+      ],
+      "sourceMaps": true,
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        "**/node_modules/**"
+      ],
+      "outFiles": [
+        "${workspaceFolder}/dist/**/*.*",
+        "${workspaceFolder}/node_modules/**/*.*"
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "cwd": "${workspaceRoot}",
+      "env": {
+        "NODE_ENV": "test"
+      },
+      "envFile": "${workspaceRoot}/.env"
     }
   ]
 }

@@ -1,5 +1,19 @@
 type AnyObject = Record<string | number | symbol, unknown>
 
+type MergeTwo<A, B> = {
+  [K in keyof A | keyof B]:
+  K extends keyof B
+    ? B[K]
+    : K extends keyof A
+      ? A[K]
+      : never;
+}
+
+type MergeAll<T extends object[], R = {}> =
+  T extends [infer First extends object, ...infer Rest extends object[]]
+    ? MergeAll<Rest, MergeTwo<R, First>>
+    : R
+
 function merge<T extends AnyObject>(target: AnyObject, source?: AnyObject): T {
   if (!source || typeof source !== 'object') return target as T
 
@@ -23,8 +37,8 @@ function merge<T extends AnyObject>(target: AnyObject, source?: AnyObject): T {
   return target as T
 }
 
-export function deepMerge<T extends AnyObject[]>(...objects: T): T[number] {
-  const result = {} as T[number]
+export function deepMerge<T extends AnyObject[]>(...objects: T): MergeAll<T> {
+  const result = {} as MergeAll<T>
   for (const obj of objects) {
     merge(result, obj)
   }

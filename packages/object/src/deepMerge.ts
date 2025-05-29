@@ -1,6 +1,6 @@
 type AnyObject = Record<string | number | symbol, unknown>
 
-type MergeTwo<A, B> = {
+type MergeTypes<A, B> = {
   [K in keyof A | keyof B]:
   K extends keyof B
     ? B[K]
@@ -11,7 +11,7 @@ type MergeTwo<A, B> = {
 
 type MergeAll<T extends object[], R = {}> =
   T extends [infer First extends object, ...infer Rest extends object[]]
-    ? MergeAll<Rest, MergeTwo<R, First>>
+    ? MergeAll<Rest, MergeTypes<R, First>>
     : R
 
 function merge<T extends AnyObject>(target: AnyObject, source?: AnyObject): T {

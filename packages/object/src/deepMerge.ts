@@ -17,7 +17,8 @@ type MergeAll<T extends object[], R = {}> =
 function merge<T extends AnyObject>(target: AnyObject, source?: AnyObject): T {
   if (!source || typeof source !== 'object') return target as T
 
-  for (const [key, value] of Object.entries(source)) {
+  for (const key of Reflect.ownKeys(source)) {
+    const value = source[key]
     if (
       value !== null
       && typeof value === 'object'

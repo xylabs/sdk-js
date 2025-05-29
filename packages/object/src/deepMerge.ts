@@ -98,7 +98,7 @@ export function createDeepMerge(options: MergeOptions) {
  * If a property is an object, it will be merged recursively.
  * If a property is an array, it will be overwritten by the last object's value.
  * If a property is a primitive value, it will be overwritten by the last object's value.
- * If a property is undefined or null in the source, it will be skipped.
+ * If a property is undefined in the source, it will be skipped.
  * If a property is a symbol, it will be merged as well.
  * @returns A new object with the merged properties.
  */

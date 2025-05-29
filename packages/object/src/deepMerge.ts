@@ -1,4 +1,4 @@
-type AnyObject = Record<string | number | symbol, unknown>
+import type { AnyObject } from './AnyObject.ts'
 
 /**
  * Deeply merges two types into a new type.

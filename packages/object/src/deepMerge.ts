@@ -44,15 +44,13 @@ type MergeOptions = {
   mutate?: boolean
 }
 
-const isUnsafeKey = (key: string | symbol): boolean =>
-  key === '__proto__' || key === 'constructor' || key === 'prototype'
-
 function merge<T extends AnyObject>(target: AnyObject, source?: AnyObject, options?: MergeOptions): T {
   if (!source || typeof source !== 'object') return target as T
 
   for (const key of Reflect.ownKeys(source)) {
     // Skip unsafe keys to prevent prototype pollution
-    if (typeof key === 'string' && isUnsafeKey(key)) continue
+    if (key === '__proto__' || key === 'constructor' || key === 'prototype') continue
+
     const value = source[key]
     if (Array.isArray(value)) {
       target[key]

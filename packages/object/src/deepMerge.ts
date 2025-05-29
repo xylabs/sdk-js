@@ -30,7 +30,18 @@ type MergeAll<T extends object[], R = {}> =
  * Options for merging objects in the deep merge function.
  */
 type MergeOptions = {
+  /**
+   * Strategy for merging arrays.
+   * - 'overwrite': Overwrites the array with the last object's value.
+   * - 'concat': Concatenates arrays from all objects.
+   * @default 'overwrite'
+   */
   arrayStrategy?: 'overwrite' | 'concat'
+  /**
+   * Mutate the first object in the list instead of creating a new one.
+   * @default false
+   */
+  mutate?: boolean
 }
 
 function merge<T extends AnyObject>(target: AnyObject, source?: AnyObject, options?: MergeOptions): T {
@@ -49,7 +60,7 @@ function merge<T extends AnyObject>(target: AnyObject, source?: AnyObject, optio
       if (!target[key] || typeof target[key] !== 'object') {
         target[key] = {}
       }
-      merge(target[key] as AnyObject, value as AnyObject)
+      merge(target[key] as AnyObject, value as AnyObject, options)
     } else {
       // Overwrite with non-object values
       target[key] = value
@@ -57,6 +68,21 @@ function merge<T extends AnyObject>(target: AnyObject, source?: AnyObject, optio
   }
 
   return target as T
+}
+
+/**
+ * Creates a deep merge function with the specified options.
+ * @param options Options for merging.
+ * @returns A deep merge function configured for the specified options.
+ */
+export function createDeepMerge(options: MergeOptions) {
+  return function deepMerge<T extends AnyObject[]>(...objects: T): MergeAll<T> {
+    const result = (options.mutate ? objects[0] ?? {} : {}) as MergeAll<T>
+    for (const obj of objects) {
+      merge(result, obj, options)
+    }
+    return result
+  }
 }
 
 /**
@@ -71,25 +97,4 @@ function merge<T extends AnyObject>(target: AnyObject, source?: AnyObject, optio
  * If a property is a symbol, it will be merged as well.
  * @returns A new object with the merged properties.
  */
-export function deepMerge<T extends AnyObject[]>(...objects: T): MergeAll<T> {
-  const result = {} as MergeAll<T>
-  for (const obj of objects) {
-    merge(result, obj)
-  }
-  return result
-}
-
-/**
- * Creates a deep merge function with the specified options.
- * @param options Options for merging.
- * @returns A deep merge function configured for the specified options.
- */
-export function createDeepMerge(options: MergeOptions) {
-  return function deepMerge<T extends AnyObject[]>(...objects: T): MergeAll<T> {
-    const result = {} as MergeAll<T>
-    for (const obj of objects) {
-      merge(result, obj, options)
-    }
-    return result
-  }
-}
+export const deepMerge = createDeepMerge({ arrayStrategy: 'overwrite', mutate: false })

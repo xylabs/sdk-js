@@ -44,9 +44,7 @@ function merge<T extends AnyObject>(target: AnyObject, source?: AnyObject, optio
         = options?.arrayStrategy === 'concat' && Array.isArray(target[key])
           ? [...target[key], ...value]
           : value
-      continue
-    }
-    if (value !== null && typeof value === 'object') {
+    } else if (value !== null && typeof value === 'object') {
       // Recursively merge nested objects
       if (!target[key] || typeof target[key] !== 'object') {
         target[key] = {}

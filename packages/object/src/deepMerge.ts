@@ -1,31 +1,30 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type AnyObject = Record<any, any>
+type AnyObject = Record<string | number | symbol, unknown>
 
 function merge<T extends AnyObject>(target: AnyObject, source?: AnyObject): T {
-  if (!source || typeof source !== 'object') return target
+  if (!source || typeof source !== 'object') return target as T
 
-  for (const key of Object.keys(source)) {
+  for (const [key, value] of Object.entries(source)) {
     if (
-      typeof source[key] === 'object'
-      && source[key] !== null
-      && !Array.isArray(source[key])
+      value !== null
+      && typeof value === 'object'
+      && !Array.isArray(value)
     ) {
       // Recursively merge nested objects
       if (!target[key] || typeof target[key] !== 'object') {
-        target[key] = {} as T[typeof key]
+        target[key] = {}
       }
-      merge(target[key], source[key])
+      merge(target[key] as AnyObject, value as AnyObject)
     } else {
       // Overwrite with non-object values
-      target[key] = source[key]
+      target[key] = value
     }
   }
 
-  return target
+  return target as T
 }
 
-export function deepMerge<T extends AnyObject>(...objects: T[]): T {
-  const result = {} as T
+export function deepMerge<T extends AnyObject[]>(...objects: T): T[number] {
+  const result = {} as T[number]
   for (const obj of objects) {
     merge(result, obj)
   }

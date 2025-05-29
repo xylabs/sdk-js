@@ -40,7 +40,7 @@ describe('deepMerge', () => {
     expect(result).toEqual({ list: [3] })
   })
 
-  it('skips undefined or null values in source', () => {
+  it('skips undefined or null values in source array', () => {
     const a = { a: 1 }
     const b = null
     const c = undefined
@@ -69,5 +69,12 @@ describe('deepMerge', () => {
   it('returns an empty object if no args passed', () => {
     const result = deepMerge()
     expect(result).toEqual({})
+  })
+
+  it('handles property values which are null', () => {
+    const a = { x: 1 }
+    const b = { x: null }
+    const result = deepMerge(a, b)
+    expect(result).toEqual({ x: null })
   })
 })

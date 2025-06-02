@@ -90,7 +90,8 @@ export class ForgetPromise {
         this.exceptionHandler(ex as Error, resolvedConfig)
       }
     } else {
-      return (promise as () => void)()
+      // returning the value ince if this is a sync function from a Promisable, the caller should have called it
+      return promise
     }
   }
 

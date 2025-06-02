@@ -1,6 +1,5 @@
+import type { LogFunction, Logger } from '@xylabs/logger'
 import type { Logger as Winston } from 'winston'
-
-import type { LogFunction, Logger } from './Logger.ts'
 
 /**
  * Wrap Winston logger methods to adapt to familiar

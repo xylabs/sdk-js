@@ -1,5 +1,6 @@
+import type { Logger } from '@xylabs/logger'
+
 import { getLogger } from './getLogger.ts'
-import type { Logger } from './Logger.ts'
 import type { WrappedWinstonLogger } from './WrappedWinstonLogger.ts'
 
 /**

@@ -49,6 +49,7 @@
     "@types/connect": "^3.4.38",
     "@types/express-serve-static-core": "^5.0.6",
     "@xylabs/assert": "workspace:^",
+    "@xylabs/logger": "workspace:^",
     "@xylabs/typeof": "workspace:^",
     "body-parser": "^2.2.0",
     "express-mung": "^0.5.1",

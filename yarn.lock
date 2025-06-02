@@ -3008,6 +3008,7 @@ __metadata:
     "@types/express-serve-static-core": "npm:^5.0.6"
     "@types/node": "npm:^22.15.29"
     "@xylabs/assert": "workspace:^"
+    "@xylabs/logger": "workspace:^"
     "@xylabs/ts-scripts-yarn3": "npm:^6.5.7"
     "@xylabs/tsconfig": "npm:^6.5.7"
     "@xylabs/typeof": "workspace:^"

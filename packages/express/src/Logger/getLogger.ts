@@ -1,8 +1,8 @@
+import type { Logger } from '@xylabs/logger'
 import { createLogger, transports as winstonTransports } from 'winston'
 import type TransportStream from 'winston-transport'
 
 import { logFormatLocalDev, logFormatStructured } from './LogFormats/index.ts'
-import type { Logger } from './Logger.ts'
 import type { LoggerVerbosity } from './LoggerVerbosity.ts'
 import { toWinstonVerbosity } from './toWinstonVerbosity.ts'
 import { canGetDefaultRollbarTransport, getDefaultRollbarTransport } from './Transports/index.ts'

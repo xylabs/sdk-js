@@ -45,7 +45,7 @@
     "@xylabs/tsconfig-dom": "^6.5.7",
     "rollbar": "^2.26.4",
     "typescript": "^5.8.3",
-    "vitest": "^3.1.4"
+    "vitest": "^3.2.0"
   },
   "peerDependencies": {
     "rollbar": "^2"

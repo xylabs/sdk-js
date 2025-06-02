@@ -45,7 +45,7 @@
     "coverage": "vitest --coverage"
   },
   "dependencies": {
-    "@aws-sdk/client-secrets-manager": "^3.817.0",
+    "@aws-sdk/client-secrets-manager": "^3.821.0",
     "@types/connect": "^3.4.38",
     "@types/express-serve-static-core": "^5.0.6",
     "@xylabs/assert": "workspace:^",
@@ -62,7 +62,7 @@
     "@types/body-parser": "^1.19.5",
     "@types/express": "^5.0.2",
     "@types/express-mung": "^0.5.5",
-    "@types/node": "^22.15.24",
+    "@types/node": "^22.15.29",
     "@xylabs/ts-scripts-yarn3": "^6.5.7",
     "@xylabs/tsconfig": "^6.5.7",
     "@xylabs/vitest-extended": "workspace:^",
@@ -73,7 +73,7 @@
     "node-cache": "^5.1.2",
     "rollbar": "^2.26.4",
     "typescript": "^5.8.3",
-    "vitest": "^3.1.4",
+    "vitest": "^3.2.0",
     "vitest-mock-extended": "^3.1.0",
     "winston": "^3.17.0",
     "winston-transport": "^4.9.0"

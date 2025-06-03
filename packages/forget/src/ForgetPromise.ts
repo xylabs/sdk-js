@@ -1,8 +1,11 @@
 import { delay } from '@xylabs/delay'
-import { isPromise, type Promisable } from '@xylabs/promise'
+import type { Promisable, PromiseEx } from '@xylabs/promise'
+import { isPromise } from '@xylabs/promise'
 import { isNumber } from '@xylabs/typeof'
 
 import { defaultForgetConfig, type ForgetConfig } from './ForgetConfig.ts'
+
+type PromisableFunction<T> = () => Promisable<T>
 
 // eslint-disable-next-line unicorn/no-static-only-class
 export class ForgetPromise {
@@ -36,18 +39,19 @@ export class ForgetPromise {
    * @param promise The promise to forget
    * @param config Configuration of forget settings
    */
-  static forget<T>(promise: Promisable<T>, config?: ForgetConfig<T>) {
+  static forget<T>(promise: Promise<T> | PromiseEx<T> | PromisableFunction<T> | T, config?: ForgetConfig<T>) {
     // default | global | provided priorities for config (not deep merge)
     const resolvedConfig = {
       ...defaultForgetConfig, ...globalThis.xy?.forget?.config, ...config,
     }
-    if (isPromise(promise)) {
+    const resolvedPromise = typeof promise === 'function' ? (promise as PromisableFunction<T>)() : promise
+    if (isPromise(resolvedPromise)) {
       try {
         let completed = false
         this.activeForgets++
 
         const promiseWrapper = async () => {
-          await promise
+          await resolvedPromise
             .then((result: T) => {
               this.activeForgets--
               completed = true

@@ -1,4 +1,5 @@
 import { delay } from '@xylabs/delay'
+import type { Logger } from '@xylabs/logger'
 import type { Promisable, PromiseEx } from '@xylabs/promise'
 import { isPromise } from '@xylabs/promise'
 import { isNumber } from '@xylabs/typeof'
@@ -11,6 +12,7 @@ type PromisableFunction<T> = () => Promisable<T>
 export class ForgetPromise {
   static activeForgets = 0
   static exceptedForgets = 0
+  static logger: Logger = console
 
   static get active() {
     return this.activeForgets > 0
@@ -30,8 +32,11 @@ export class ForgetPromise {
     return 0
   }
 
-  static exceptionHandler(error: Error, _config: ForgetConfig) {
-    console.error(`forget promise handler excepted: ${error.message}`, error)
+  static exceptionHandler(error: Error, _config: ForgetConfig, externalStackTrace?: string) {
+    this.logger.error(`forget promise handler excepted: ${error.message}`, error)
+    if (externalStackTrace !== undefined) {
+      this.logger.warn('External Stack trace:', externalStackTrace)
+    }
   }
 
   /**
@@ -40,6 +45,8 @@ export class ForgetPromise {
    * @param config Configuration of forget settings
    */
   static forget<T>(promise: Promise<T> | PromiseEx<T> | PromisableFunction<T> | T, config?: ForgetConfig<T>) {
+    const externalStackTrace = (new Error('Stack')).stack
+
     // default | global | provided priorities for config (not deep merge)
     const resolvedConfig = {
       ...defaultForgetConfig, ...globalThis.xy?.forget?.config, ...config,
@@ -60,6 +67,7 @@ export class ForgetPromise {
             .catch((error) => {
               this.activeForgets--
               completed = true
+              this.logger.error(`forgotten promise excepted: ${error.message}`, error)
               resolvedConfig?.onComplete?.([undefined, error])
             })
         }
@@ -91,7 +99,7 @@ export class ForgetPromise {
       } catch (ex) {
         this.exceptedForgets += 1
         resolvedConfig?.onException?.(ex as Error)
-        this.exceptionHandler(ex as Error, resolvedConfig)
+        this.exceptionHandler(ex as Error, resolvedConfig, externalStackTrace)
       }
     } else {
       // we do nothing here since if it was a non-promise, it already got invoked.
@@ -100,6 +108,6 @@ export class ForgetPromise {
   }
 
   static timeoutHandler(time: number, _config: ForgetConfig) {
-    console.error(`forget promise timeout out after ${time}ms [Cancelling]`)
+    this.logger.error(`forget promise timeout out after ${time}ms [Cancelling]`)
   }
 }

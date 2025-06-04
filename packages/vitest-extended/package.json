@@ -39,11 +39,11 @@
   "types": "./types.d.ts",
   "dependencies": {
     "@xylabs/vitest-matchers": "workspace:^",
-    "vitest": "^3.2.0"
+    "vitest": "^3.2.1"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^6.5.7",
-    "@xylabs/tsconfig": "^6.5.7",
+    "@xylabs/ts-scripts-yarn3": "^6.5.8",
+    "@xylabs/tsconfig": "^6.5.8",
     "typescript": "^5.8.3"
   },
   "engines": {

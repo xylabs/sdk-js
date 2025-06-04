@@ -63,12 +63,12 @@
   "devDependencies": {
     "@types/debug": "^4.1.12",
     "@types/node": "^22.15.29",
-    "@xylabs/eslint-config-flat": "^6.5.7",
+    "@xylabs/eslint-config-flat": "^6.5.8",
     "@xylabs/threads": "workspace:^",
-    "@xylabs/ts-scripts-yarn3": "^6.5.7",
+    "@xylabs/ts-scripts-yarn3": "^6.5.8",
     "observable-fns": "^0.6.1",
     "typescript": "^5.8.3",
-    "vitest": "^3.2.0"
+    "vitest": "^3.2.1"
   },
   "optionalDependencies": {
     "tiny-worker": "^2.3.0"

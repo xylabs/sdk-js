@@ -81,7 +81,7 @@ export class ForgetPromise {
             await delay(timeout)
             if (!completed) {
               resolvedConfig.onCancel?.()
-              this.timeoutHandler(timeout, resolvedConfig)
+              this.timeoutHandler(timeout, resolvedConfig, externalStackTrace)
             }
           }
           promises.push(timeoutFunc())
@@ -107,7 +107,10 @@ export class ForgetPromise {
     }
   }
 
-  static timeoutHandler(time: number, _config: ForgetConfig) {
+  static timeoutHandler(time: number, _config: ForgetConfig, externalStackTrace?: string) {
     this.logger.error(`forget promise timeout out after ${time}ms [Cancelling]`)
+    if (externalStackTrace !== undefined) {
+      this.logger.warn('External Stack trace:', externalStackTrace)
+    }
   }
 }

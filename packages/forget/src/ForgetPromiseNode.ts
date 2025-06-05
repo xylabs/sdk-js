@@ -10,7 +10,7 @@ export class ForgetPromiseNode extends ForgetPromise {
     // default | global | provided priorities for config (not deep merge)
     super.exceptionHandler(error, config, externalStackTrace)
     if (config?.terminateOnException === true) {
-      this.logger.log('Attempting to terminate process...')
+      this.logger.error(`Attempting to terminate process [${config?.name ?? 'unknown'}]...`)
       // eslint-disable-next-line unicorn/no-process-exit
       process.exit(1)
     }
@@ -26,7 +26,7 @@ export class ForgetPromiseNode extends ForgetPromise {
   static override timeoutHandler(time: number, config: ForgetNodeConfig, externalStackTrace?: string) {
     super.timeoutHandler(time, config, externalStackTrace)
     if (config?.terminateOnTimeout === true) {
-      this.logger.log('Attempting to terminate process...')
+      this.logger.error(`Attempting to terminate process [${config?.name ?? 'unknown'}]...`)
       // eslint-disable-next-line unicorn/no-process-exit
       process.exit(2)
     }

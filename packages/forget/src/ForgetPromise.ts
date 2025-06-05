@@ -32,10 +32,10 @@ export class ForgetPromise {
     return 0
   }
 
-  static exceptionHandler(error: Error, _config: ForgetConfig, externalStackTrace?: string) {
-    this.logger.error(`forget promise handler excepted: ${error.message}`, error)
+  static exceptionHandler(error: Error, { name }: ForgetConfig, externalStackTrace?: string) {
+    this.logger.error(`forget promise handler excepted [${name}]: ${error.message}`, error)
     if (externalStackTrace !== undefined) {
-      this.logger.warn('External Stack trace:', externalStackTrace)
+      this.logger.warn(`External Stack trace [${name}]:`, externalStackTrace)
     }
   }
 
@@ -67,7 +67,7 @@ export class ForgetPromise {
             .catch((error) => {
               this.activeForgets--
               completed = true
-              this.logger.error(`forgotten promise excepted: ${error.message}`, error)
+              this.logger.error(`forgotten promise excepted [${config?.name ?? 'unknown'}]: ${error.message}`, error)
               resolvedConfig?.onComplete?.([undefined, error])
             })
         }
@@ -107,10 +107,10 @@ export class ForgetPromise {
     }
   }
 
-  static timeoutHandler(time: number, _config: ForgetConfig, externalStackTrace?: string) {
-    this.logger.error(`forget promise timeout out after ${time}ms [Cancelling]`)
+  static timeoutHandler(time: number, { name = 'unknown' }: ForgetConfig, externalStackTrace?: string) {
+    this.logger.error(`forget promise timeout out after ${time}ms [Cancelling] [${name}]`)
     if (externalStackTrace !== undefined) {
-      this.logger.warn('External Stack trace:', externalStackTrace)
+      this.logger.warn(`External Stack trace [${name}]:`, externalStackTrace)
     }
   }
 }

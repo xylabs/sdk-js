@@ -74,7 +74,7 @@
     "node-cache": "^5.1.2",
     "rollbar": "^2.26.4",
     "typescript": "^5.8.3",
-    "vitest": "^3.2.1",
+    "vitest": "^3.2.2",
     "vitest-mock-extended": "^3.1.0",
     "winston": "^3.17.0",
     "winston-transport": "^4.9.0"

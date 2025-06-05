@@ -68,7 +68,7 @@
     "@xylabs/ts-scripts-yarn3": "^6.5.8",
     "observable-fns": "^0.6.1",
     "typescript": "^5.8.3",
-    "vitest": "^3.2.1"
+    "vitest": "^3.2.2"
   },
   "optionalDependencies": {
     "tiny-worker": "^2.3.0"

@@ -13,15 +13,24 @@ export type StringOrAlertFunction<T extends AnyNonPromise> = string | AssertExMe
 
 export type TypeCheck<T extends TypedValue> = (obj: AnyNonPromise, config?: TypeCheckConfig) => obj is T
 
+export type AsOptionalTypeFunction<T extends AnyNonPromise = AnyNonPromise> = {
+  <TType extends T>(value: AnyNonPromise): TType | undefined
+}
+
+export type AsTypeFunction<T extends AnyNonPromise = AnyNonPromise> = {
+  <TType extends T>(value: AnyNonPromise): TType | undefined
+  <TType extends T>(value: AnyNonPromise, config: TypeCheckConfig): TType | undefined
+  <TType extends T>(value: AnyNonPromise, assert: StringOrAlertFunction<TType>): TType
+  <TType extends T>(value: AnyNonPromise, assert: StringOrAlertFunction<TType>, config: TypeCheckConfig): TType
+}
+
 export const AsTypeFactory = {
-  create: <T extends AnyNonPromise>(typeCheck: TypeCheck<T>) => {
-    function func<TType extends T>(value: AnyNonPromise, config?: TypeCheckConfig): TType | undefined
-    function func<TType extends T>(value: AnyNonPromise, assert: StringOrAlertFunction<T>, config?: TypeCheckConfig): TType
-    function func<TType extends T>(
+  create: <T extends AnyNonPromise>(typeCheck: TypeCheck<T>): AsTypeFunction<T> => {
+    const func = (
       value: AnyNonPromise,
       assertOrConfig?: StringOrAlertFunction<T> | TypeCheckConfig,
       config?: TypeCheckConfig,
-    ): TType | undefined {
+    ): T | undefined => {
       if (value === undefined || value === null) return undefined
       if (isPromise(value)) {
         throw new TypeError('un-awaited promises may not be sent to "as" functions')
@@ -29,7 +38,7 @@ export const AsTypeFactory = {
 
       const resolvedAssert = (typeof assertOrConfig === 'object' ? undefined : assertOrConfig) as StringOrAlertFunction<T> | undefined
       const resolvedConfig = typeof assertOrConfig === 'object' ? assertOrConfig : config
-      const result = typeCheck(value, resolvedConfig) ? (value as TType) : undefined
+      const result = typeCheck(value, resolvedConfig) ? (value as T) : undefined
 
       if (resolvedAssert !== undefined) {
         if (typeof resolvedAssert === 'function') {
@@ -43,12 +52,12 @@ export const AsTypeFactory = {
     return func
   },
   createOptional: <T extends AnyNonPromise>(typeCheck: TypeCheck<T>) => {
-    function func<TType extends T>(value: AnyNonPromise): TType | undefined {
+    const func = (value: AnyNonPromise): T | undefined => {
       if (value === undefined || value === null) return undefined
       if (isPromise(value)) {
         throw new TypeError('un-awaited promises may not be sent to "as" functions')
       }
-      return typeCheck(value) ? (value as TType) : undefined
+      return typeCheck(value) ? (value as T) : undefined
     }
     return func
   },

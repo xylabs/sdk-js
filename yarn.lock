@@ -2827,7 +2827,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/assert@npm:^4.11.14, @xylabs/assert@workspace:^, @xylabs/assert@workspace:packages/assert":
+"@xylabs/assert@npm:^4.11.15, @xylabs/assert@workspace:^, @xylabs/assert@workspace:packages/assert":
   version: 0.0.0-use.local
   resolution: "@xylabs/assert@workspace:packages/assert"
   dependencies:
@@ -3186,7 +3186,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/mongo@workspace:packages/mongo"
   dependencies:
-    "@xylabs/assert": "npm:^4.11.14"
+    "@xylabs/assert": "npm:^4.11.15"
     "@xylabs/ts-scripts-yarn3": "npm:^6.5.8"
     "@xylabs/tsconfig": "npm:^6.5.8"
     mongodb: "npm:~6.17.0"

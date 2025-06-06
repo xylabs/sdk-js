@@ -36,16 +36,16 @@ export const AsTypeFactory = {
         throw new TypeError('un-awaited promises may not be sent to "as" functions')
       }
 
-      const resolvedAssert = (typeof assertOrConfig === 'object' ? undefined : assertOrConfig) as StringOrAlertFunction<T> | undefined
-      const resolvedConfig = typeof assertOrConfig === 'object' ? assertOrConfig : config
+      // when used as a predicate, it seems that the index is passed as the second parameter (filter,map)
+      const isPredicate = typeof assertOrConfig === 'number'
+      const resolvedAssert = isPredicate
+        ? undefined
+        : (typeof assertOrConfig === 'object' ? undefined : assertOrConfig) as (StringOrAlertFunction<T> | undefined)
+      const resolvedConfig = isPredicate ? undefined : typeof assertOrConfig === 'object' ? assertOrConfig : config
       const result = typeCheck(value, resolvedConfig) ? (value as T) : undefined
 
       if (resolvedAssert !== undefined) {
-        if (typeof resolvedAssert === 'function') {
-          assertEx<T>(result, resolvedAssert)
-        } else {
-          assertEx<T>(result, () => resolvedAssert)
-        }
+        return typeof resolvedAssert === 'function' ? assertEx<T>(result, resolvedAssert) : assertEx<T>(result, () => resolvedAssert)
       }
       return result
     }

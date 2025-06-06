@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/indexed-db",
-  "version": "4.11.15",
+  "version": "4.11.16",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "hex",

@@ -4,7 +4,7 @@ export interface PromiseType {
   then: () => unknown
 }
 
-export type AnyNonPromise = Exclude<TypedValue, Promise<unknown>>
+export type AnyNonPromise = Exclude<TypedValue, PromiseType>
 
 export const isPromise = (value: unknown): value is Promise<unknown> => {
   if (typeof value === 'object' && !Array.isArray(value)) {

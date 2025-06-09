@@ -32,14 +32,14 @@
   "types": "dist/types/index.d.ts",
   "dependencies": {
     "@xylabs/typeof": "workspace:^",
-    "cheerio": "^1.0.0"
+    "cheerio": "^1.1.0"
   },
   "devDependencies": {
-    "@types/node": "^22.15.29",
+    "@types/node": "^22.15.30",
     "@xylabs/ts-scripts-yarn3": "^6.5.8",
     "@xylabs/tsconfig": "^6.5.8",
     "typescript": "^5.8.3",
-    "vitest": "^3.2.2"
+    "vitest": "^3.2.3"
   },
   "packageManager": "yarn@3.2.0",
   "publishConfig": {

@@ -39,7 +39,7 @@
   "types": "./types.d.ts",
   "dependencies": {
     "@xylabs/vitest-matchers": "workspace:^",
-    "vitest": "^3.2.2"
+    "vitest": "^3.2.3"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^6.5.8",

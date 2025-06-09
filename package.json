@@ -72,21 +72,21 @@
     "@xylabs/url": "workspace:^"
   },
   "devDependencies": {
-    "@types/node": "^22.15.29",
-    "@typescript-eslint/eslint-plugin": "^8.33.1",
-    "@typescript-eslint/parser": "^8.33.1",
+    "@types/node": "^22.15.30",
+    "@typescript-eslint/eslint-plugin": "^8.34.0",
+    "@typescript-eslint/parser": "^8.34.0",
     "@xylabs/eslint-config-flat": "^6.5.8",
     "@xylabs/ts-scripts-yarn3": "^6.5.8",
     "@xylabs/tsconfig": "^6.5.8",
     "@xylabs/tsconfig-dom": "^6.5.8",
     "dotenv": "^16.5.0",
     "eslint": "^9.28.0",
-    "eslint-import-resolver-typescript": "^4.4.2",
+    "eslint-import-resolver-typescript": "^4.4.3",
     "jsdom": "^26.1.0",
     "knip": "^5.60.2",
     "typedoc": "^0.28.5",
     "typescript": "^5.8.3",
-    "vitest": "^3.2.2"
+    "vitest": "^3.2.3"
   },
   "packageManager": "yarn@4.9.1",
   "engines": {

@@ -31,7 +31,6 @@ export const AsTypeFactory = {
       assertOrConfig?: StringOrAlertFunction<T> | TypeCheckConfig,
       config?: TypeCheckConfig,
     ): T | undefined => {
-      if (value === undefined || value === null) return undefined
       if (isPromise(value)) {
         throw new TypeError('un-awaited promises may not be sent to "as" functions')
       }

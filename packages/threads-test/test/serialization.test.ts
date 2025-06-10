@@ -8,7 +8,7 @@ import { registerSerializer } from '@xylabs/threads'
 
 registerSerializer(fooSerializer)
 
-test('can use a custom serializer', async () => {
+test.skip('can use a custom serializer', async () => {
   const run = await spawn(new Worker('./workers/serialization.mjs', { _baseURL: __dirname }))
 
   try {

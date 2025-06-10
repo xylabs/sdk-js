@@ -31,6 +31,10 @@ export const AsTypeFactory = {
       assertOrConfig?: StringOrAlertFunction<T> | TypeCheckConfig,
       config?: TypeCheckConfig,
     ): T | undefined => {
+      if (value === undefined || value === null) {
+        return undefined
+      }
+
       if (isPromise(value)) {
         throw new TypeError('un-awaited promises may not be sent to "as" functions')
       }
@@ -41,13 +45,6 @@ export const AsTypeFactory = {
         ? undefined
         : (typeof assertOrConfig === 'object' ? undefined : assertOrConfig) as (StringOrAlertFunction<T> | undefined)
       const resolvedConfig = isPredicate ? undefined : typeof assertOrConfig === 'object' ? assertOrConfig : config
-
-      if (value === undefined || value === null) {
-        if (resolvedAssert !== undefined) {
-          return typeof resolvedAssert === 'function' ? assertEx<T>(value, resolvedAssert) : assertEx<T>(value, () => resolvedAssert)
-        }
-        return undefined
-      }
 
       const result = typeCheck(value, resolvedConfig) ? (value as T) : undefined
 

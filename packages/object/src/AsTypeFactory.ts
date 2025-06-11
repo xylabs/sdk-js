@@ -1,5 +1,5 @@
 import type { AssertExMessageFunc } from '@xylabs/assert'
-import { assertEx } from '@xylabs/assert'
+import { assertDefinedEx } from '@xylabs/assert'
 import type { Logger } from '@xylabs/logger'
 import type { AnyNonPromise } from '@xylabs/promise'
 import { isPromise } from '@xylabs/promise'
@@ -49,7 +49,7 @@ export const AsTypeFactory = {
       const result = typeCheck(value, resolvedConfig) ? (value as T) : undefined
 
       if (resolvedAssert !== undefined) {
-        return typeof resolvedAssert === 'function' ? assertEx<T>(result, resolvedAssert) : assertEx<T>(result, () => resolvedAssert)
+        return typeof resolvedAssert === 'function' ? assertDefinedEx<T>(result, resolvedAssert) : assertDefinedEx<T>(result, () => resolvedAssert)
       }
       return result
     }

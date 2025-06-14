@@ -9,6 +9,8 @@ import {
 
 export type Address = Exclude<Hex, 'reserved-address-value'>
 
+export const ZERO_ADDRESS: Address = '0000000000000000000000000000000000000000' as const
+
 export const toAddress = (value: string | number | bigint | ArrayBufferLike, config: HexConfig = {}) => {
   const { bitLength = 160, prefix = false } = config
   return hexFrom(value, {

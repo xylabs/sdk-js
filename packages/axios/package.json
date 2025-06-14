@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/axios",
-  "version": "4.11.20",
+  "version": "4.11.21",
   "description": "Primary SDK for using XYO Protocol 2.0",
   "keywords": [
     "axios",
@@ -37,7 +37,7 @@
   "types": "dist/types/index.d.ts",
   "dependencies": {
     "@xylabs/logger": "workspace:^",
-    "axios": "^1.9.0",
+    "axios": "^1.10.0",
     "pako": "^2.1.0"
   },
   "devDependencies": {

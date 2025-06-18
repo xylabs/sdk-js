@@ -109,6 +109,7 @@
     "LICENSE"
   ],
   "dependencies": {
+    "@xylabs/assert": "workspace:^",
     "debug": "^4.4.1",
     "is-observable-2-1-0": "npm:is-observable@2.1.0",
     "observable-fns": "^0.6.1"

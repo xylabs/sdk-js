@@ -3069,6 +3069,7 @@ __metadata:
     body-parser: "npm:^2.2.0"
     express: "npm:^5.1.0"
     express-mung: "npm:^0.5.1"
+    express-serve-static-core: "npm:^0.1.1"
     http-status-codes: "npm:^2.3.0"
     node-cache: "npm:^5.1.2"
     rollbar: "npm:^3.0.0-alpha.1"
@@ -3464,6 +3465,7 @@ __metadata:
   dependencies:
     "@types/debug": "npm:^4.1.12"
     "@types/node": "npm:^24.0.1"
+    "@xylabs/assert": "workspace:^"
     "@xylabs/eslint-config-flat": "npm:^6.5.8"
     "@xylabs/ts-scripts-yarn3": "npm:^6.5.8"
     debug: "npm:^4.4.1"
@@ -5501,6 +5503,13 @@ __metadata:
   version: 0.5.1
   resolution: "express-mung@npm:0.5.1"
   checksum: 10/f789aff37802f49ced33764ef888d2aaf00d52930d5cdbdfea75e3751e4284926e9f351ee506254c930abc9e6761746a621fbfc4b1779da040e6f5977654517c
+  languageName: node
+  linkType: hard
+
+"express-serve-static-core@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "express-serve-static-core@npm:0.1.1"
+  checksum: 10/ed291b5091c8830ec99631be2c83bf442c402bcc47eba34748ce86296b74570e06177e75ea72e89f95790c2bec55d26ae8d0c9254e30cbe3648267538797e505
   languageName: node
   linkType: hard
 

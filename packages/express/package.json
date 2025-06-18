@@ -53,6 +53,7 @@
     "@xylabs/typeof": "workspace:^",
     "body-parser": "^2.2.0",
     "express-mung": "^0.5.1",
+    "express-serve-static-core": "^0.1.1",
     "http-status-codes": "^2.3.0",
     "node-cache": "^5.1.2",
     "rollbar": "^3.0.0-alpha.1",

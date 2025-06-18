@@ -20,8 +20,8 @@ export type AsOptionalTypeFunction<T extends AnyNonPromise = AnyNonPromise> = {
 export type AsTypeFunction<T extends AnyNonPromise = AnyNonPromise> = {
   <TType extends T>(value: AnyNonPromise): TType | undefined
   <TType extends T>(value: AnyNonPromise, config: TypeCheckConfig): TType | undefined
-  <TType extends T>(value: AnyNonPromise, assert: StringOrAlertFunction<TType>): TType
-  <TType extends T>(value: AnyNonPromise, assert: StringOrAlertFunction<TType>, config: TypeCheckConfig): TType
+  <TType extends T>(value: AnyNonPromise, assert: StringOrAlertFunction<TType>): TType | undefined
+  <TType extends T>(value: AnyNonPromise, assert: StringOrAlertFunction<TType>, config: TypeCheckConfig): TType | undefined
 }
 
 export const AsTypeFactory = {

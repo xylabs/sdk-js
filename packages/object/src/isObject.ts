@@ -1,6 +1,5 @@
-import type { AnyObject } from './AnyObject.ts'
 import { isType } from './isType.ts'
 
-export const isObject = (value: unknown): value is AnyObject => {
+export const isObject = <T>(value: T): value is T & object => {
   return isType(value, 'object')
 }

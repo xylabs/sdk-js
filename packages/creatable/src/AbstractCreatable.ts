@@ -1,6 +1,7 @@
 import type { MeterProvider, TracerProvider } from '@opentelemetry/api'
 import { assertEx } from '@xylabs/assert'
 import type { BaseClassName, BaseParams } from '@xylabs/base'
+import type { EventData } from '@xylabs/events'
 import { BaseEmitter } from '@xylabs/events'
 import { type Logger } from '@xylabs/logger'
 import type { EmptyObject } from '@xylabs/object'
@@ -29,7 +30,8 @@ export type CreatableParamsFields = {
 export type CreatableParams<TAdditionalParams extends EmptyObject | void = void> =
   BaseParams<TAdditionalParams extends EmptyObject ? CreatableParamsFields & TAdditionalParams : CreatableParamsFields>
 
-export abstract class AbstractCreatable<TParams extends EmptyObject | void = void> extends BaseEmitter<Partial<CreatableParams<TParams>>> {
+export abstract class AbstractCreatable<TParams extends EmptyObject | void = void,
+  TEventData extends EventData = EventData> extends BaseEmitter<Partial<CreatableParams<TParams>>, TEventData> {
   defaultLogger?: Logger
   name: CreatableName
 

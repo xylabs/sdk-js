@@ -2900,6 +2900,8 @@ __metadata:
     "@xylabs/object": "workspace:^"
     "@xylabs/ts-scripts-yarn3": "npm:^6.5.8"
     "@xylabs/tsconfig": "npm:^6.5.8"
+    "@xylabs/typeof": "workspace:^"
+    tslib: "npm:^2.8.1"
     typescript: "npm:^5.8.3"
   languageName: unknown
   linkType: soft

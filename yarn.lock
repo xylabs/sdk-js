@@ -2900,6 +2900,8 @@ __metadata:
     "@xylabs/object": "workspace:^"
     "@xylabs/ts-scripts-yarn3": "npm:^6.5.8"
     "@xylabs/tsconfig": "npm:^6.5.8"
+    "@xylabs/typeof": "workspace:^"
+    tslib: "npm:^2.8.1"
     typescript: "npm:^5.8.3"
   languageName: unknown
   linkType: soft
@@ -2924,6 +2926,24 @@ __metadata:
     "@xylabs/ts-scripts-yarn3": "npm:^6.5.8"
     "@xylabs/tsconfig": "npm:^6.5.8"
     buffer: "npm:^6.0.3"
+    typescript: "npm:^5.8.3"
+  languageName: unknown
+  linkType: soft
+
+"@xylabs/creatable@workspace:packages/creatable":
+  version: 0.0.0-use.local
+  resolution: "@xylabs/creatable@workspace:packages/creatable"
+  dependencies:
+    "@opentelemetry/api": "npm:^1.9.0"
+    "@xylabs/assert": "workspace:^"
+    "@xylabs/base": "workspace:^"
+    "@xylabs/events": "workspace:^"
+    "@xylabs/logger": "workspace:^"
+    "@xylabs/object": "workspace:^"
+    "@xylabs/ts-scripts-yarn3": "npm:^6.5.8"
+    "@xylabs/tsconfig": "npm:^6.5.8"
+    "@xylabs/typeof": "workspace:^"
+    tslib: "npm:^2.8.1"
     typescript: "npm:^5.8.3"
   languageName: unknown
   linkType: soft
@@ -3019,7 +3039,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/events@workspace:packages/events":
+"@xylabs/events@workspace:^, @xylabs/events@workspace:packages/events":
   version: 0.0.0-use.local
   resolution: "@xylabs/events@workspace:packages/events"
   dependencies:

@@ -32,8 +32,10 @@ export function isNumber<T>(value: unknown): value is Extract<T, number> {
   return typeof value === 'number'
 }
 
-export function isObject<T>(value: T): value is Extract<T, object> {
-  return typeof value === 'object' && value !== null && !Array.isArray(value)
+export function isObject(value: unknown): value is object
+export function isObject<T extends object>(value: T): value is Extract<T, object>
+export function isObject(value: unknown): value is object {
+  return (typeof value === 'object') && (value !== null) && !Array.isArray(value)
 }
 
 export function isArray<T>(value: T): value is Extract<T, Array<unknown>> {

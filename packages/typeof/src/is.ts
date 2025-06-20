@@ -100,25 +100,25 @@ export function isEmpty<T>(value: unknown): value is T {
   return isEmptyString(value) || isEmptyArray(value) || isEmptyObject(value)
 }
 
-export function isFalsy(value: unknown): value is false
+export function isFalsy<T>(value: T): value is Extract<T, 0 | null | undefined | false | '' | 0n>
 export function isFalsy<T extends boolean>(value: T): value is Extract<T, false>
 export function isFalsy<T extends number>(value: T): value is Extract<T, 0>
 export function isFalsy<T extends bigint>(value: T): value is Extract<T, 0n>
 export function isFalsy<T extends null>(value: T): value is Extract<T, null>
 export function isFalsy<T extends undefined>(value: T): value is Extract<T, undefined>
 export function isFalsy<T extends string>(value: T): value is Extract<T, ''>
-export function isFalsy(value: unknown): value is false {
+export function isFalsy<T>(value: T): value is T {
   return !value
 }
 
-export function isTruthy(value: unknown): value is true
+export function isTruthy<T>(value: T): value is Exclude<T, 0 | null | undefined | false | '' | 0n>
 export function isTruthy<T extends boolean>(value: T): value is Extract<T, true>
 export function isTruthy<T extends number>(value: T): value is Extract<T, number>
 export function isTruthy<T extends bigint>(value: T): value is Extract<T, bigint>
 export function isTruthy<T extends null>(value: T): value is Extract<T, null>
 export function isTruthy<T extends undefined>(value: T): value is Extract<T, undefined>
 export function isTruthy<T extends string>(value: T): value is Extract<T, string>
-export function isTruthy(value: unknown): value is true {
+export function isTruthy<T>(value: T): value is T {
   return !!value
 }
 

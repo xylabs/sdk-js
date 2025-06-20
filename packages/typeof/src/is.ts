@@ -119,7 +119,7 @@ export function isTruthy<T extends null>(value: T): value is Extract<T, null>
 export function isTruthy<T extends undefined>(value: T): value is Extract<T, undefined>
 export function isTruthy<T extends string>(value: T): value is Extract<T, string>
 export function isTruthy(value: unknown): value is true {
-  return !value
+  return !!value
 }
 
 export function isBoolean(value: unknown): value is boolean

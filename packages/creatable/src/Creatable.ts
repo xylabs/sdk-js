@@ -2,8 +2,7 @@ import type { Logger } from '@xylabs/logger'
 import type { EmptyObject } from '@xylabs/object'
 
 import type { AbstractCreatable } from './AbstractCreatable.ts'
-import type { CreatableInstance } from './CreatableInstance.ts'
-import type { CreatableParams } from './CreatableParams.ts'
+import type { CreatableInstance, CreatableParams } from './model/index.ts'
 
 /*
 export interface CreatableFactory<T extends EmptyObject | void = void,
@@ -16,7 +15,7 @@ export interface Creatable<T extends EmptyObject | void = void, TParams extends 
 
   defaultLogger?: Logger
 
-  new (params: Partial<CreatableParams<TParams>>): CreatableInstance<T> & AbstractCreatable<TParams>
+  new (params: Partial<CreatableParams<TParams>>): CreatableInstance<T, TParams> & AbstractCreatable<TParams>
 
   create<T extends EmptyObject | void = void, TParams extends EmptyObject | void = void>(
     this: Creatable<T, TParams>,

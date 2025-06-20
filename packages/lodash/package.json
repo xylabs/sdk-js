@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/lodash",
-  "version": "4.12.7",
+  "version": "4.12.8",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "lodash",

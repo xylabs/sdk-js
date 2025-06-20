@@ -280,19 +280,17 @@ describe('is.ts type guards', () => {
 
   describe('isTruthy', () => {
     it('correctly identifies truthy values', () => {
-      // NOTE: Your isTruthy function seems to have a bug - it returns !value which is the opposite of truthy
-      // Assuming the implementation is fixed, these are the expected results:
-      expect(isTruthy(true)).toBe(false) // Should be true if implementation is fixed
-      expect(isTruthy(1)).toBe(false) // Should be true if implementation is fixed
-      expect(isTruthy('hello')).toBe(false) // Should be true if implementation is fixed
-      expect(isTruthy({})).toBe(false) // Should be true if implementation is fixed
-      expect(isTruthy([])).toBe(false) // Should be true if implementation is fixed
+      expect(isTruthy(true)).toBe(true)
+      expect(isTruthy(1)).toBe(true)
+      expect(isTruthy('hello')).toBe(true)
+      expect(isTruthy({})).toBe(true)
+      expect(isTruthy([])).toBe(true)
 
-      expect(isTruthy(false)).toBe(true) // Should be false if implementation is fixed
-      expect(isTruthy(0)).toBe(true) // Should be false if implementation is fixed
-      expect(isTruthy('')).toBe(true) // Should be false if implementation is fixed
-      expect(isTruthy(null)).toBe(true) // Should be false if implementation is fixed
-      expect(isTruthy(Undefined)).toBe(true) // Should be false if implementation is fixed
+      expect(isTruthy(false)).toBe(false)
+      expect(isTruthy(0)).toBe(false)
+      expect(isTruthy('')).toBe(false)
+      expect(isTruthy(null)).toBe(false)
+      expect(isTruthy(Undefined)).toBe(false)
     })
   })
 

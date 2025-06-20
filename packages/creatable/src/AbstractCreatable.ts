@@ -1,34 +1,15 @@
-import type { MeterProvider, TracerProvider } from '@opentelemetry/api'
 import { assertEx } from '@xylabs/assert'
-import type { BaseClassName, BaseParams } from '@xylabs/base'
 import type { EventData } from '@xylabs/events'
 import { BaseEmitter } from '@xylabs/events'
 import { type Logger } from '@xylabs/logger'
 import type { EmptyObject } from '@xylabs/object'
 import type { Promisable } from '@xylabs/promise'
 
-import type {
-  Creatable, CreatableInstance,
-  CreatableName,
-} from './Creatable.ts'
+import type { Creatable } from './Creatable.ts'
+import type { CreatableInstance } from './CreatableInstance.ts'
+import type { CreatableName, CreatableParams } from './CreatableParams.ts'
 import { getFunctionName } from './getFunctionName.ts'
 import { getRootFunction } from './getRootFunction.ts'
-
-export type CreatableStatus = 'creating' | 'created' | 'starting' | 'started' | 'stopping' | 'stopped'
-
-export interface StatusReporter {
-  report: (name: BaseClassName, status: CreatableStatus, progress?: number) => void
-}
-
-export type CreatableParamsFields = {
-  logger?: Logger
-  meterProvider?: MeterProvider
-  name?: BaseClassName
-  traceProvider?: TracerProvider
-}
-
-export type CreatableParams<TAdditionalParams extends EmptyObject | void = void> =
-  BaseParams<TAdditionalParams extends EmptyObject ? CreatableParamsFields & TAdditionalParams : CreatableParamsFields>
 
 export abstract class AbstractCreatable<TParams extends EmptyObject | void = void,
   TEventData extends EventData = EventData> extends BaseEmitter<Partial<CreatableParams<TParams>>, TEventData> {

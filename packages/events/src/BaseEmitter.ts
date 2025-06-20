@@ -1,11 +1,17 @@
 import type { BaseParams } from '@xylabs/base'
 import { Base } from '@xylabs/base'
+import type { EmptyObject } from '@xylabs/object'
 
 import { Events } from './Events/index.ts'
 import type {
   EventAnyListener, EventData, EventFunctions,
   EventListener,
 } from './model/index.ts'
+
+export interface BaseEmitterParamsFields {}
+
+// eslint-disable-next-line sonarjs/no-useless-intersection
+export type BaseEmitterParams<T extends EmptyObject | void = void> = BaseParams<T extends void ? BaseEmitterParamsFields : BaseEmitterParamsFields & T>
 
 export class BaseEmitter<TParams extends BaseParams = BaseParams, TEventData extends EventData = EventData>
   extends Base<TParams>

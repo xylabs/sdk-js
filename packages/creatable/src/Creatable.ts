@@ -1,18 +1,9 @@
-import type { BaseClassName } from '@xylabs/base'
 import type { Logger } from '@xylabs/logger'
 import type { EmptyObject } from '@xylabs/object'
 
-import type { AbstractCreatable, CreatableParams } from './AbstractCreatable.ts'
-
-export type CreatableName = Exclude<string, 'creatable-name-reserved-32546239486'> & BaseClassName
-
-export interface CreatableInstanceFields<TParams extends EmptyObject | void = void> {
-  name: CreatableName
-  params: CreatableParams<TParams>
-}
-
-export type CreatableInstance<T extends EmptyObject | void = void, TParams extends EmptyObject | void = void>
-  = T extends EmptyObject ? T & CreatableInstanceFields<TParams> : CreatableInstanceFields<TParams>
+import type { AbstractCreatable } from './AbstractCreatable.ts'
+import type { CreatableInstance } from './CreatableInstance.ts'
+import type { CreatableParams } from './CreatableParams.ts'
 
 /*
 export interface CreatableFactory<T extends EmptyObject | void = void,

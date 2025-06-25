@@ -45,7 +45,6 @@
     "coverage": "vitest --coverage"
   },
   "dependencies": {
-    "@aws-sdk/client-secrets-manager": "^3.828.0",
     "@types/connect": "^3.4.38",
     "@types/express-serve-static-core": "^5.0.6",
     "@xylabs/assert": "workspace:^",

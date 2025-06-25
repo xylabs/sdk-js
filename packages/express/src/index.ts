@@ -1,4 +1,3 @@
-export * from './AWS/index.ts'
 export * from './Handler/index.ts'
 export * from './HttpUtil/index.ts'
 export * from './Logger/index.ts'

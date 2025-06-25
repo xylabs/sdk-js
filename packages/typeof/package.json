@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/typeof",
-  "version": "4.12.10",
+  "version": "4.12.11",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "typeof",
@@ -38,7 +38,8 @@
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^6.5.8",
     "@xylabs/tsconfig": "^6.5.8",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
   },
   "engines": {
     "node": ">=18"

@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/events",
-  "version": "4.12.10",
+  "version": "4.12.11",
   "description": "Primary SDK for using XYO Protocol 2.0",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -34,6 +34,7 @@
     "@xylabs/base": "workspace:^",
     "@xylabs/error": "workspace:^",
     "@xylabs/forget": "workspace:^",
+    "@xylabs/object": "workspace:^",
     "@xylabs/promise": "workspace:^",
     "@xylabs/typeof": "workspace:^"
   },

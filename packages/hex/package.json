@@ -42,11 +42,11 @@
     "@xylabs/typeof": "workspace:^"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^6.5.8",
-    "@xylabs/tsconfig": "^6.5.8",
+    "@xylabs/ts-scripts-yarn3": "^6.5.9",
+    "@xylabs/tsconfig": "^6.5.9",
     "@xylabs/vitest-extended": "workspace:^",
     "typescript": "^5.8.3",
-    "vitest": "^3.2.3"
+    "vitest": "^3.2.4"
   },
   "engines": {
     "node": ">=18"

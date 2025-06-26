@@ -3,11 +3,11 @@ import type { EmptyObject } from '@xylabs/object'
 
 import type { CreatableName, CreatableParams } from './CreatableParams.ts'
 
-export interface CreatableInstanceFields<TParams extends EmptyObject | void = void, TEventData extends EventData = EventData> {
+export interface CreatableInstanceFields<TParams extends CreatableParams = CreatableParams, TEventData extends EventData = EventData> {
   eventData: TEventData
   name: CreatableName
   params: CreatableParams<TParams>
 }
 
-export type CreatableInstance<T extends EmptyObject | void = void, TParams extends EmptyObject | void = void, TEventData extends EventData = EventData>
-  = T extends EmptyObject ? T & CreatableInstanceFields<TParams, TEventData> : CreatableInstanceFields<TParams, TEventData>
+export type CreatableInstance<T extends EmptyObject | void = void, TParams extends CreatableParams = CreatableParams, TEventData extends EventData = EventData>
+  = T extends void ? CreatableInstanceFields<TParams, TEventData> : (T & CreatableInstanceFields<TParams, TEventData>)

@@ -6,10 +6,10 @@ import type { CreatableStatusReporter } from './CreatableStatusReporter.ts'
 
 export type CreatableName = Exclude<string, 'creatable-name-reserved-32546239486'> & BaseClassName
 
-export type CreatableParamsFields = {
+export interface CreatableParamsFields {
   name: CreatableName
   statusReporter?: CreatableStatusReporter
 }
 
-export type CreatableParams<TAdditionalParams extends EmptyObject | void = void>
-  = BaseEmitterParams<TAdditionalParams extends void ? CreatableParamsFields : (TAdditionalParams & CreatableParamsFields)>
+export type CreatableParams<TAdditionalParams extends EmptyObject = EmptyObject>
+  = BaseEmitterParams<TAdditionalParams & CreatableParamsFields>

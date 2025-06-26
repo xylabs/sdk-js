@@ -11,13 +11,13 @@ export interface CreatableFactory<T extends EmptyObject | void = void,
 }
 */
 
-export interface Creatable<T extends EmptyObject | void = void, TParams extends EmptyObject | void = void> {
+export interface Creatable<T extends EmptyObject | void = void, TParams extends CreatableParams = CreatableParams> {
 
   defaultLogger?: Logger
 
-  new (params: Partial<CreatableParams<TParams>>): CreatableInstance<T, TParams> & AbstractCreatable<TParams>
+  new (params: Partial<TParams>): CreatableInstance<T, TParams> & AbstractCreatable<TParams>
 
-  create<T extends EmptyObject | void = void, TParams extends EmptyObject | void = void>(
+  create<T extends EmptyObject | void = void, TParams extends CreatableParams = CreatableParams>(
     this: Creatable<T, TParams>,
     params: Partial<CreatableParams<TParams>>): Promise<CreatableInstance<T>>
 
@@ -33,7 +33,7 @@ export interface Creatable<T extends EmptyObject | void = void, TParams extends 
  * @returns The decorated Module requiring it implement the members
  * of the CreatableModule as statics properties/methods
  */
-export function creatable<TInstance extends EmptyObject | void = void, TParams extends EmptyObject | void = void>() {
+export function creatable<TInstance extends EmptyObject | void = void, TParams extends CreatableParams = CreatableParams>() {
   return <U extends Creatable<TInstance, TParams>>(constructor: U) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     constructor

@@ -22,12 +22,11 @@ export type BaseParamsFields = {
   traceProvider?: TracerProvider
 }
 
-export type BaseParams<TAdditionalParams extends EmptyObject | void = void>
-  = TAdditionalParams extends EmptyObject ? BaseParamsFields & TAdditionalParams : BaseParamsFields
+export type BaseParams<TAdditionalParams extends EmptyObject = EmptyObject> = TAdditionalParams & BaseParamsFields
 
-export abstract class Base<TParams extends BaseParams | undefined = BaseParams> {
+export abstract class Base<TParams extends BaseParams = BaseParams> {
   static defaultLogger?: Logger
-  static readonly globalInstances: Record<BaseClassName, WeakRef<Base<BaseParams | undefined>>[]> = {}
+  static readonly globalInstances: Record<BaseClassName, WeakRef<Base>[]> = {}
   static readonly globalInstancesCountHistory: Record<BaseClassName, number[]> = {}
   static readonly uniqueName = globallyUnique(this.name, this, 'xyo')
   private static _historyInterval = DEFAULT_HISTORY_INTERVAL
@@ -35,9 +34,9 @@ export abstract class Base<TParams extends BaseParams | undefined = BaseParams> 
   private static _historyTimeout?: ReturnType<typeof setTimeout>
   private static _lastGC = 0
   private static _maxGcFrequency = MAX_GC_FREQUENCY
-  private _params: TParams
+  private _params: BaseParams<TParams>
 
-  constructor(params: TParams) {
+  constructor(params: BaseParams<TParams>) {
     this._params = params
     params?.logger?.debug(`Base constructed [${Object(this).name}]`)
     this.recordInstance()

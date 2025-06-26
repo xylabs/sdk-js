@@ -11,7 +11,7 @@ import type {
 export interface BaseEmitterParamsFields {}
 
 // eslint-disable-next-line sonarjs/no-useless-intersection
-export type BaseEmitterParams<T extends EmptyObject | void = void> = BaseParams<T extends void ? BaseEmitterParamsFields : BaseEmitterParamsFields & T>
+export type BaseEmitterParams<T extends EmptyObject = EmptyObject> = BaseParams<BaseEmitterParamsFields & T>
 
 export class BaseEmitter<TParams extends BaseParams = BaseParams, TEventData extends EventData = EventData>
   extends Base<TParams>
@@ -21,7 +21,7 @@ export class BaseEmitter<TParams extends BaseParams = BaseParams, TEventData ext
 
   private events: Events<TEventData>
 
-  constructor(params: TParams) {
+  constructor(params: BaseParams<TParams>) {
     super(params)
     this.events = new Events<TEventData>()
   }

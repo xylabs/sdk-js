@@ -12,14 +12,14 @@ import type {
   CreatableInstance, CreatableName, CreatableParams,
 } from './model/index.ts'
 
-export abstract class AbstractCreatable<TParams extends EmptyObject | void = void,
-  TEventData extends EventData = EventData> extends BaseEmitter<Partial<CreatableParams<TParams>>, TEventData> {
+export abstract class AbstractCreatable<TParams extends CreatableParams = CreatableParams,
+  TEventData extends EventData = EventData> extends BaseEmitter<Partial<TParams>, TEventData> {
   defaultLogger?: Logger
   name: CreatableName
 
-  private _populatedParams: CreatableParams<TParams> | undefined
+  private _populatedParams: TParams | undefined
 
-  constructor(params: Partial<CreatableParams<TParams>>) {
+  constructor(params: Partial<TParams>) {
     super(params)
     this.name = params.name ?? this.constructor.name as CreatableName
   }
@@ -34,7 +34,7 @@ export abstract class AbstractCreatable<TParams extends EmptyObject | void = voi
     return this.params.statusReporter
   }
 
-  static async create<T extends EmptyObject | void = void, TParams extends EmptyObject | void = void>(
+  static async create<T extends EmptyObject | void = void, TParams extends CreatableParams = CreatableParams>(
     this: Creatable<T, TParams>,
     params: Partial<CreatableParams<TParams>>,
   ): Promise<CreatableInstance<T>> {

@@ -42,18 +42,25 @@ export abstract class AbstractCreatable<TParams extends CreatableParams = Creata
     params.statusReporter?.report(name, 'creating')
     try {
       const instance = new this(params)
+      const initializedInstance = await this.createHandler(instance)
       await instance.createHandler()
       params.statusReporter?.report(name, 'created')
-      return instance
+      return initializedInstance
     } catch (ex) {
       params.statusReporter?.report(name, 'error', isError(ex) ? ex : new Error(`Error creating: ${name}`))
       throw new Error(`Error creating: ${name}`)
     }
   }
 
-  createHandler(): Promisable<boolean> {
-    return true
+  /* override this for initialization of instance */
+  static createHandler<T extends EmptyObject | void = void, TParams extends CreatableParams = CreatableParams>(
+    this: Creatable<T, TParams>,
+    instance: CreatableInstance<T>,
+  ): Promisable<CreatableInstance<T>> {
+    return instance
   }
+
+  createHandler(): Promisable<void> {}
 
   async start(): Promise<boolean> {
     this._noOverride('start')

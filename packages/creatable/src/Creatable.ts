@@ -21,6 +21,11 @@ export interface Creatable<T extends EmptyObject | void = void, TParams extends 
     this: Creatable<T, TParams>,
     params: Partial<CreatableParams<TParams>>): Promise<CreatableInstance<T>>
 
+  createHandler<T extends EmptyObject | void = void, TParams extends CreatableParams = CreatableParams>(
+    this: Creatable<T, TParams>,
+    instance: CreatableInstance<T>
+  ): Promise<CreatableInstance<T>>
+
   /*
   factory<T extends EmptyObject | void = void,
     TParams extends EmptyObject | void = void> (this: Creatable<T, TParams>, params: Partial<CreatableParams<TParams>>): CreatableFactory<T, TParams>

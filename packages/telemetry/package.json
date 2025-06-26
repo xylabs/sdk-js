@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/telemetry",
-  "version": "4.12.14",
+  "version": "4.12.16",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "hex",

@@ -21,8 +21,8 @@ type DeepMerge<A, B> = {
 /**
  * Merges multiple types into a new type.
  */
-type MergeAll<T extends object[], R = {}> =
-  T extends [infer First extends object, ...infer Rest extends object[]]
+type MergeAll<T extends object[], R = {}>
+  = T extends [infer First extends object, ...infer Rest extends object[]]
     ? MergeAll<Rest, DeepMerge<R, First>>
     : R
 

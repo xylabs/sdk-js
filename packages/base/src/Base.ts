@@ -22,8 +22,8 @@ export type BaseParamsFields = {
   traceProvider?: TracerProvider
 }
 
-export type BaseParams<TAdditionalParams extends EmptyObject | void = void> =
-  TAdditionalParams extends EmptyObject ? BaseParamsFields & TAdditionalParams : BaseParamsFields
+export type BaseParams<TAdditionalParams extends EmptyObject | void = void>
+  = TAdditionalParams extends EmptyObject ? BaseParamsFields & TAdditionalParams : BaseParamsFields
 
 export abstract class Base<TParams extends BaseParams | undefined = BaseParams> {
   static defaultLogger?: Logger

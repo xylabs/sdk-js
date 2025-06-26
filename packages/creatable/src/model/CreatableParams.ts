@@ -11,5 +11,5 @@ export type CreatableParamsFields = {
   statusReporter?: CreatableStatusReporter
 }
 
-export type CreatableParams<TAdditionalParams extends EmptyObject | void = void> =
-  BaseEmitterParams<TAdditionalParams extends EmptyObject ? CreatableParamsFields & TAdditionalParams : CreatableParamsFields>
+export type CreatableParams<TAdditionalParams extends EmptyObject | void = void>
+  = BaseEmitterParams<TAdditionalParams extends EmptyObject ? CreatableParamsFields & TAdditionalParams : CreatableParamsFields>

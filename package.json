@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/sdk-js",
-  "version": "4.12.11",
+  "version": "4.12.12",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "xylabs",
@@ -84,6 +84,7 @@
     "eslint-import-resolver-typescript": "^4.4.4",
     "jsdom": "^26.1.0",
     "knip": "^5.61.2",
+    "lodash.merge": "^4.6.2",
     "typedoc": "^0.28.5",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"

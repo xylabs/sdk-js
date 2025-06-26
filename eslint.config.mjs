@@ -19,6 +19,7 @@ export default [
     rules: {
       'sonarjs/public-static-readonly': ['off'],
       'sonarjs/prefer-single-boolean-return': ['off'],
+      'sonarjs/no-hardcoded-passwords': ['off'],
       'import-x/no-unresolved': ['off'],
       'no-restricted-imports': [
         'warn',

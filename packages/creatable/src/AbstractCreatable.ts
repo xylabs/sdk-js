@@ -35,9 +35,9 @@ export abstract class AbstractCreatable<TParams extends CreatableParams = Creata
   }
 
   static async create<T extends EmptyObject | void = void, TParams extends CreatableParams = CreatableParams>(
-    this: Creatable<T, TParams>,
+    this: Creatable<CreatableInstance<T, TParams>>,
     params: Partial<CreatableParams<TParams>>,
-  ): Promise<CreatableInstance<T>> {
+  ): Promise<CreatableInstance<T, TParams>> {
     const name: CreatableName = params.name ?? this.name
     params.statusReporter?.report(name, 'creating')
     try {
@@ -54,9 +54,9 @@ export abstract class AbstractCreatable<TParams extends CreatableParams = Creata
 
   /* override this for initialization of instance */
   static createHandler<T extends EmptyObject | void = void, TParams extends CreatableParams = CreatableParams>(
-    this: Creatable<T, TParams>,
-    instance: CreatableInstance<T>,
-  ): Promisable<CreatableInstance<T>> {
+    this: Creatable<CreatableInstance<T, TParams>>,
+    instance: CreatableInstance<T, TParams>,
+  ): Promisable<CreatableInstance<T, TParams>> {
     return instance
   }
 

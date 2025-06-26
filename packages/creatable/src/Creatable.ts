@@ -1,5 +1,6 @@
 import type { Logger } from '@xylabs/logger'
 import type { EmptyObject } from '@xylabs/object'
+import type { Promisable } from '@xylabs/promise'
 
 import type { AbstractCreatable } from './AbstractCreatable.ts'
 import type { CreatableInstance, CreatableParams } from './model/index.ts'
@@ -24,7 +25,7 @@ export interface Creatable<T extends CreatableInstance = CreatableInstance> {
   createHandler<T extends CreatableInstance>(
     this: Creatable<T>,
     instance: T
-  ): Promise<T>
+  ): Promisable<T>
 
   /*
   factory<T extends EmptyObject | void = void,

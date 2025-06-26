@@ -2,11 +2,10 @@ import { assertEx } from '@xylabs/assert'
 import type { EventData } from '@xylabs/events'
 import { BaseEmitter } from '@xylabs/events'
 import { type Logger } from '@xylabs/logger'
-import type { EmptyObject } from '@xylabs/object'
 import type { Promisable } from '@xylabs/promise'
 import { isError } from '@xylabs/typeof'
 
-import type { Creatable } from './Creatable.ts'
+import { type Creatable, creatable } from './Creatable.ts'
 import { getFunctionName, getRootFunction } from './lib/index.ts'
 import type {
   CreatableInstance, CreatableName, CreatableParams,
@@ -34,10 +33,10 @@ export abstract class AbstractCreatable<TParams extends CreatableParams = Creata
     return this.params.statusReporter
   }
 
-  static async create<T extends EmptyObject | void = void, TParams extends CreatableParams = CreatableParams>(
-    this: Creatable<CreatableInstance<T, TParams>>,
-    params: Partial<CreatableParams<TParams>>,
-  ): Promise<CreatableInstance<T, TParams>> {
+  static async create<T extends CreatableInstance>(
+    this: Creatable<T>,
+    params: Partial<T['params']> = {},
+  ): Promise<T> {
     const name: CreatableName = params.name ?? this.name
     params.statusReporter?.report(name, 'creating')
     try {
@@ -53,10 +52,10 @@ export abstract class AbstractCreatable<TParams extends CreatableParams = Creata
   }
 
   /* override this for initialization of instance */
-  static createHandler<T extends EmptyObject | void = void, TParams extends CreatableParams = CreatableParams>(
-    this: Creatable<CreatableInstance<T, TParams>>,
-    instance: CreatableInstance<T, TParams>,
-  ): Promisable<CreatableInstance<T, TParams>> {
+  static createHandler<T extends CreatableInstance>(
+    this: Creatable<T>,
+    instance: T,
+  ): Promisable<T> {
     return instance
   }
 

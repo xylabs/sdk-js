@@ -12,4 +12,4 @@ export type CreatableParamsFields = {
 }
 
 export type CreatableParams<TAdditionalParams extends EmptyObject | void = void>
-  = BaseEmitterParams<TAdditionalParams extends EmptyObject ? CreatableParamsFields & TAdditionalParams : CreatableParamsFields>
+  = BaseEmitterParams<TAdditionalParams extends void ? CreatableParamsFields : (TAdditionalParams & CreatableParamsFields)>

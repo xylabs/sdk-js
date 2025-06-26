@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/crypto",
-  "version": "4.12.12",
+  "version": "4.12.13",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "crypto",

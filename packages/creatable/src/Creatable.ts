@@ -27,8 +27,8 @@ export interface Creatable<T extends CreatableInstance = CreatableInstance> {
     instance: T
   ): Promisable<T>
 
-  defaultParams<T extends CreatableInstance>(
-    this: Creatable<T>): Promisable<Partial<T['params']>>
+  paramsHandler<T extends CreatableInstance>(
+    this: Creatable<T>, params?: Partial<T['params']>): Promisable<Partial<T['params']>>
 
   /*
   factory<T extends EmptyObject | void = void,

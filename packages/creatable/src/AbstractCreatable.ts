@@ -39,7 +39,7 @@ export class AbstractCreatable<TParams extends CreatableParams = CreatableParams
     this: Creatable<T>,
     inParams: Partial<T['params']> = {},
   ): Promise<T> {
-    const params: Partial<T['params']> = { ...(await this.defaultParams()), ...inParams }
+    const params = await this.paramsHandler(inParams)
     const name: CreatableName = params.name ?? this.name
     params.statusReporter?.report(name, 'creating')
     try {
@@ -61,10 +61,11 @@ export class AbstractCreatable<TParams extends CreatableParams = CreatableParams
     return instance
   }
 
-  static defaultParams<T extends CreatableInstance>(
+  static paramsHandler<T extends CreatableInstance>(
     this: Creatable<T>,
+    params: Partial<T['params']> = {},
   ): Promisable<Partial<T['params']>> {
-    return {}
+    return { ...params }
   }
 
   createHandler(): Promisable<void> {}

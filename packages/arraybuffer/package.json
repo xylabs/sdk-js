@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/arraybuffer",
-  "version": "4.12.20",
+  "version": "4.12.21",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "xylabs",

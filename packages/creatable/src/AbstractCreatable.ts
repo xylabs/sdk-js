@@ -11,22 +11,24 @@ import type {
   CreatableInstance, CreatableName, CreatableParams,
 } from './model/index.ts'
 
-export abstract class AbstractCreatable<TParams extends CreatableParams = CreatableParams,
+@creatable()
+export class AbstractCreatable<TParams extends CreatableParams = CreatableParams,
   TEventData extends EventData = EventData> extends BaseEmitter<Partial<TParams>, TEventData> {
   defaultLogger?: Logger
-  name: CreatableName
 
-  private _populatedParams: TParams | undefined
+  private _validatedParams?: TParams
 
   constructor(params: Partial<TParams>) {
     super(params)
-    this.name = params.name ?? this.constructor.name as CreatableName
   }
 
-  override get params(): CreatableParams<TParams> {
-    this._noOverride()
-    this._populatedParams = this._populatedParams ?? this.paramsHandler(super.params)
-    return this._populatedParams
+  get name(): CreatableName {
+    return this.params.name
+  }
+
+  override get params(): TParams {
+    this._validatedParams = this._validatedParams ?? this.paramsValidator(super.params)
+    return this._validatedParams
   }
 
   get statusReporter() {
@@ -35,8 +37,9 @@ export abstract class AbstractCreatable<TParams extends CreatableParams = Creata
 
   static async create<T extends CreatableInstance>(
     this: Creatable<T>,
-    params: Partial<T['params']> = {},
+    inParams: Partial<T['params']> = {},
   ): Promise<T> {
+    const params: Partial<T['params']> = { ...(await this.defaultParams()), ...inParams }
     const name: CreatableName = params.name ?? this.name
     params.statusReporter?.report(name, 'creating')
     try {
@@ -51,7 +54,6 @@ export abstract class AbstractCreatable<TParams extends CreatableParams = Creata
     }
   }
 
-  /* override this for initialization of instance */
   static createHandler<T extends CreatableInstance>(
     this: Creatable<T>,
     instance: T,
@@ -59,7 +61,17 @@ export abstract class AbstractCreatable<TParams extends CreatableParams = Creata
     return instance
   }
 
+  static defaultParams<T extends CreatableInstance>(
+    this: Creatable<T>,
+  ): Promisable<Partial<T['params']>> {
+    return {}
+  }
+
   createHandler(): Promisable<void> {}
+
+  paramsValidator(params: Partial<TParams>): TParams {
+    return { ...params, name: params.name ?? this.constructor.name } as TParams
+  }
 
   async start(): Promise<boolean> {
     this._noOverride('start')
@@ -102,6 +114,4 @@ export abstract class AbstractCreatable<TParams extends CreatableParams = Creata
   protected stopHandler(): Promisable<void> {
     // when overriding this, throw an error on failure
   }
-
-  protected abstract paramsHandler(params?: Partial<CreatableParams<TParams>>): CreatableParams<TParams>
 }

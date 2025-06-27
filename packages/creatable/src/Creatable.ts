@@ -16,7 +16,7 @@ export interface Creatable<T extends CreatableInstance = CreatableInstance> {
 
   defaultLogger?: Logger
 
-  new (params: Partial<T['params']>): T & AbstractCreatable<T['params']>
+  new(params: Partial<T['params']>): T & AbstractCreatable<T['params']>
 
   create<T extends CreatableInstance>(
     this: Creatable<T>,
@@ -26,6 +26,9 @@ export interface Creatable<T extends CreatableInstance = CreatableInstance> {
     this: Creatable<T>,
     instance: T
   ): Promisable<T>
+
+  defaultParams<T extends CreatableInstance>(
+    this: Creatable<T>): Promisable<Partial<T['params']>>
 
   /*
   factory<T extends EmptyObject | void = void,

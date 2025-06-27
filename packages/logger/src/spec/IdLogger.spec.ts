@@ -2,8 +2,8 @@ import {
   describe, expect, test,
 } from 'vitest'
 
+import { ConsoleLogger } from '../ConsoleLogger.ts'
 import { IdLogger } from '../IdLogger.ts'
-import { ConsoleLogger } from '../Logger.ts'
 
 describe('Logger', () => {
   test('checking happy path', () => {

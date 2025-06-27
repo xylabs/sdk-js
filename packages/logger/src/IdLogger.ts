@@ -1,4 +1,4 @@
-import type { Logger } from './Logger.ts'
+import type { Logger } from './LevelLogger.ts'
 
 export class IdLogger implements Logger {
   private _id?: () => string
@@ -27,6 +27,10 @@ export class IdLogger implements Logger {
 
   log(...data: unknown[]) {
     this._logger?.log(this.prefix(), ...data)
+  }
+
+  trace(...data: unknown[]) {
+    this._logger?.trace(this.prefix(), ...data)
   }
 
   warn(...data: unknown[]) {

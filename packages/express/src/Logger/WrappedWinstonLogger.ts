@@ -11,5 +11,6 @@ export class WrappedWinstonLogger implements Logger {
   error: LogFunction = message => this.winston.error(message)
   info: LogFunction = message => this.winston.info(message)
   log: LogFunction = message => this.winston.info(message)
+  trace: LogFunction = message => this.winston.debug(message)
   warn: LogFunction = message => this.winston.warn(message)
 }

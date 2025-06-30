@@ -9,10 +9,8 @@ interface TestCreatableParams2 extends TestCreatableParams {
   testParam2: number
 }
 
-// This is here to check types
 @creatable()
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-class TestCreatable2<TParams extends TestCreatableParams2 = TestCreatableParams2, TEventData extends EventData = EventData>
+export class TestCreatable2<TParams extends TestCreatableParams2 = TestCreatableParams2, TEventData extends EventData = EventData>
   extends TestCreatable<TParams, TEventData> {
   static override createHandler<T extends CreatableInstance>(
     this: Creatable<T>,

@@ -9,9 +9,7 @@ export interface TestCreatableParams extends CreatableParams {
   testParam: string
 }
 
-// This is here to check types
 @creatable()
-
 export class TestCreatable<TParams extends TestCreatableParams = TestCreatableParams, TEventData extends EventData = EventData>
   extends AbstractCreatable<TParams, TEventData> {
   static override createHandler<T extends CreatableInstance>(

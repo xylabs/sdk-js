@@ -50,7 +50,7 @@ export class AbstractCreatable<TParams extends CreatableParams = CreatableParams
       return initializedInstance
     } catch (ex) {
       params.statusReporter?.report(name, 'error', isError(ex) ? ex : new Error(`Error creating: ${name}`))
-      throw new Error(`Error creating: ${name}`)
+      throw isError(ex) ? ex : new Error(`Error creating: ${name}`)
     }
   }
 

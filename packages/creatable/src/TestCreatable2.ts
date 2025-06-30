@@ -1,19 +1,19 @@
 import type { EventData } from '@xylabs/events'
 import { Promisable } from '@xylabs/promise'
 
-import { AbstractCreatable } from './AbstractCreatable.ts'
 import { Creatable, creatable } from './Creatable.ts'
-import type { CreatableInstance, CreatableParams } from './model/index.ts'
+import type { CreatableInstance } from './model/index.ts'
+import { TestCreatable, TestCreatableParams } from './TestCreatable.ts'
 
-export interface TestCreatableParams extends CreatableParams {
-  testParam: string
+interface TestCreatableParams2 extends TestCreatableParams {
+  testParam2: number
 }
 
 // This is here to check types
 @creatable()
-
-export class TestCreatable<TParams extends TestCreatableParams = TestCreatableParams, TEventData extends EventData = EventData>
-  extends AbstractCreatable<TParams, TEventData> {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+class TestCreatable2<TParams extends TestCreatableParams2 = TestCreatableParams2, TEventData extends EventData = EventData>
+  extends TestCreatable<TParams, TEventData> {
   static override createHandler<T extends CreatableInstance>(
     this: Creatable<T>,
     instance: T,

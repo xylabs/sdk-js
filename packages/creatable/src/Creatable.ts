@@ -2,7 +2,7 @@ import type { Logger } from '@xylabs/logger'
 import type { Promisable } from '@xylabs/promise'
 
 import type { AbstractCreatable } from './AbstractCreatable.ts'
-import type { CreatableInstance } from './model/index.ts'
+import type { CreatableInstance, CreatableParams } from './model/index.ts'
 
 /*
 export interface CreatableFactory<T extends EmptyObject | void = void,
@@ -15,7 +15,7 @@ export interface Creatable<T extends CreatableInstance = CreatableInstance> {
 
   defaultLogger?: Logger
 
-  new(params: Partial<T['params']>): T & AbstractCreatable<T['params']>
+  new(params: Partial<CreatableParams>): T & AbstractCreatable<T['params']>
 
   create<T extends CreatableInstance>(
     this: Creatable<T>,

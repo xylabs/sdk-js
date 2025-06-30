@@ -1,9 +1,8 @@
 import type { Logger } from '@xylabs/logger'
-import type { EmptyObject } from '@xylabs/object'
 import type { Promisable } from '@xylabs/promise'
 
 import type { AbstractCreatable } from './AbstractCreatable.ts'
-import type { CreatableInstance, CreatableParams } from './model/index.ts'
+import type { CreatableInstance } from './model/index.ts'
 
 /*
 export interface CreatableFactory<T extends EmptyObject | void = void,
@@ -42,8 +41,8 @@ export interface Creatable<T extends CreatableInstance = CreatableInstance> {
  * @returns The decorated Module requiring it implement the members
  * of the CreatableModule as statics properties/methods
  */
-export function creatable<T extends EmptyObject | void = void, TParams extends CreatableParams = CreatableParams>() {
-  return <U extends Creatable<CreatableInstance<T, TParams>>>(constructor: U) => {
+export function creatable<T extends CreatableInstance>() {
+  return <U extends Creatable<T>>(constructor: U) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     constructor
   }

@@ -11,6 +11,8 @@ import type {
   CreatableInstance, CreatableName, CreatableParams,
 } from './model/index.ts'
 
+const AbstractCreatableConstructorKey = Symbol.for('AbstractCreatableConstructor')
+
 @creatable()
 export class AbstractCreatable<TParams extends CreatableParams = CreatableParams,
   TEventData extends EventData = EventData> extends BaseEmitter<Partial<TParams>, TEventData> {
@@ -18,7 +20,8 @@ export class AbstractCreatable<TParams extends CreatableParams = CreatableParams
 
   private _validatedParams?: TParams
 
-  constructor(params: Partial<TParams>) {
+  constructor(key: unknown, params: Partial<TParams>) {
+    assertEx(key === AbstractCreatableConstructorKey, () => 'AbstractCreatable should not be instantiated directly, use the static create method instead')
     super(params)
   }
 
@@ -43,7 +46,7 @@ export class AbstractCreatable<TParams extends CreatableParams = CreatableParams
     const name: CreatableName = params.name ?? this.name
     params.statusReporter?.report(name, 'creating')
     try {
-      const instance = new this(params)
+      const instance = new this(AbstractCreatableConstructorKey, params)
       const initializedInstance = await this.createHandler(instance)
       await instance.createHandler()
       params.statusReporter?.report(name, 'created')

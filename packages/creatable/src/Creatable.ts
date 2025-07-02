@@ -15,7 +15,7 @@ export interface Creatable<T extends CreatableInstance = CreatableInstance> {
 
   defaultLogger?: Logger
 
-  new(params: Partial<CreatableParams>): T & AbstractCreatable<T['params']>
+  new(key: unknown, params: Partial<CreatableParams>): T & AbstractCreatable<T['params']>
 
   create<T extends CreatableInstance>(
     this: Creatable<T>,

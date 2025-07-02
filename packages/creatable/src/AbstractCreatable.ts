@@ -26,7 +26,7 @@ export class AbstractCreatable<TParams extends CreatableParams = CreatableParams
   }
 
   get name(): CreatableName {
-    return this.params.name
+    return this.params.name ?? this.constructor.name
   }
 
   override get params(): TParams {

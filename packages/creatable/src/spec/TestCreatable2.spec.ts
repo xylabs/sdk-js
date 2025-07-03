@@ -15,7 +15,7 @@ interface TestCreatableParams2 extends TestCreatableParams {
 }
 
 @creatable()
-export class TestCreatable2<TParams extends TestCreatableParams2 = TestCreatableParams2, TEventData extends EventData = EventData>
+class TestCreatable2<TParams extends TestCreatableParams2 = TestCreatableParams2, TEventData extends EventData = EventData>
   extends TestCreatable<TParams, TEventData> {
   static override createHandler<T extends CreatableInstance>(
     this: Creatable<T>,
@@ -33,7 +33,7 @@ export class TestCreatable2<TParams extends TestCreatableParams2 = TestCreatable
 }
 
 @creatableFactory()
-export class TestCreatable2a<TParams extends TestCreatableParams2 = TestCreatableParams2, TEventData extends EventData = EventData>
+class TestCreatable2a<TParams extends TestCreatableParams2 = TestCreatableParams2, TEventData extends EventData = EventData>
   extends TestCreatable<TParams, TEventData> {
   static override createHandler<T extends CreatableInstance>(
     this: Creatable<T>,
@@ -43,9 +43,19 @@ export class TestCreatable2a<TParams extends TestCreatableParams2 = TestCreatabl
   }
 }
 
+const factory = TestCreatable2.factory()
+
 describe('TestCreatable2', () => {
   test('should create an instance with default params', async () => {
     const instance = await TestCreatable2.create()
+    expect(instance).toBeDefined()
+  })
+  test('should create an instance with default params as factory', async () => {
+    const instance = await TestCreatable2a.create()
+    expect(instance).toBeDefined()
+  })
+  test('should create an instance with default params from factory', async () => {
+    const instance = await factory.create()
     expect(instance).toBeDefined()
   })
 })

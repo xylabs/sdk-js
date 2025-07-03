@@ -29,11 +29,6 @@ export interface Creatable<T extends CreatableInstance = CreatableInstance> {
     instance: T
   ): Promisable<T>
 
-  factory<T extends CreatableInstance>(
-    this: Creatable<T>,
-    params?: Partial<T['params']>,
-    labels?: Labels): CreatableFactory<T>
-
   paramsHandler<T extends CreatableInstance>(
     this: Creatable<T>, params?: Partial<T['params']>): Promisable<T['params']>
 }

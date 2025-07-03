@@ -35,8 +35,4 @@ export class Factory<T extends CreatableInstance = CreatableInstance> implements
     } as T['params']
     return this.creatable.create<T>(mergedParams)
   }
-
-  factory<T extends CreatableInstance>(this: Factory<T>, params?: Partial<T['params']>, labels: Labels = {}): CreatableFactory<T> {
-    return new Factory<T>(this.creatable, params, labels)
-  }
 }

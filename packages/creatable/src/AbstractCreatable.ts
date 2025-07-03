@@ -5,7 +5,9 @@ import { type Logger } from '@xylabs/logger'
 import type { Promisable } from '@xylabs/promise'
 import { isError } from '@xylabs/typeof'
 
-import { type Creatable, creatable } from './Creatable.ts'
+import {
+  type Creatable, creatable, CreatableFactory,
+} from './Creatable.ts'
 import { Factory } from './Factory.ts'
 import { getFunctionName, getRootFunction } from './lib/index.ts'
 import type {
@@ -70,14 +72,14 @@ export class AbstractCreatable<TParams extends CreatableParams = CreatableParams
     this: Creatable<T>,
     params?: Partial<T['params']>,
     labels?: Labels,
-  ): Factory<T> {
+  ): CreatableFactory<T> {
     return Factory.withParams<T>(this, params, labels)
   }
 
   static paramsHandler<T extends CreatableInstance>(
     this: Creatable<T>,
     params: Partial<T['params']> = {},
-  ): Promisable<Partial<T['params']>> {
+  ): Promisable<T['params']> {
     return { ...params }
   }
 

@@ -7,7 +7,7 @@ import type {
 } from './model/index.ts'
 
 export interface CreatableFactory<T extends CreatableInstance = CreatableInstance>
-  extends Omit<Creatable<T>, 'create' | 'createHandler' | 'paramsHandler' | 'defaultLogger'> {
+  extends Omit<Creatable<T>, 'create' | 'createHandler' | 'paramsHandler' | 'defaultLogger' | 'factory'> {
 
   create(
     this: CreatableFactory<T>,
@@ -29,10 +29,13 @@ export interface Creatable<T extends CreatableInstance = CreatableInstance> {
     instance: T
   ): Promisable<T>
 
-  factory(params?: Partial<T['params']>, labels?: Labels): CreatableFactory<T>
+  factory<T extends CreatableInstance>(
+    this: Creatable<T>,
+    params?: Partial<T['params']>,
+    labels?: Labels): CreatableFactory<T>
 
   paramsHandler<T extends CreatableInstance>(
-    this: Creatable<T>, params?: Partial<T['params']>): Promisable<Partial<T['params']>>
+    this: Creatable<T>, params?: Partial<T['params']>): Promisable<T['params']>
 }
 
 /**

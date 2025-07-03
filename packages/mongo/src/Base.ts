@@ -31,6 +31,12 @@ export class BaseMongoSdk<T extends Document> {
     )
   }
 
+  async deleteMany(filter: Filter<T>) {
+    return await this.useCollection<DeleteResult>(async (collection: Collection<T>) => {
+      return await collection.deleteMany(filter)
+    })
+  }
+
   async deleteOne(filter: Filter<T>) {
     return await this.useCollection<DeleteResult>(async (collection: Collection<T>) => {
       return await collection.deleteOne(filter)

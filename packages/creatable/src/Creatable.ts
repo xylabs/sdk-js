@@ -38,6 +38,13 @@ export interface Creatable<T extends CreatableInstance = CreatableInstance> {
     this: Creatable<T>, params?: Partial<T['params']>): Promisable<T['params']>
 }
 
+export interface CreatableWithFactory<T extends CreatableInstance = CreatableInstance> extends Creatable<T> {
+  factory<T extends CreatableInstance>(
+    this: Creatable<T>,
+    params?: Partial<T['params']>,
+    labels?: Labels): CreatableFactory<T>
+}
+
 /**
  * Class annotation to be used to decorate Modules which support
  * an asynchronous creation pattern

@@ -2,14 +2,17 @@ import type { Logger } from '@xylabs/logger'
 import type { Promisable } from '@xylabs/promise'
 
 import type { AbstractCreatable } from './AbstractCreatable.ts'
-import type { CreatableInstance, CreatableParams } from './model/index.ts'
+import type {
+  CreatableInstance, CreatableParams, Labels,
+} from './model/index.ts'
 
-/*
-export interface CreatableFactory<T extends EmptyObject | void = void,
-  TParams extends EmptyObject | void = void> {
-  create(params?: CreatableParams<TParams>): Promise<CreatableInstance<T>>
+export interface CreatableFactory<T extends CreatableInstance = CreatableInstance>
+  extends Omit<Creatable<T>, 'create' | 'createHandler' | 'paramsHandler' | 'defaultLogger'> {
+
+  create(
+    this: CreatableFactory<T>,
+    params?: Partial<T['params']>): Promise<T>
 }
-*/
 
 export interface Creatable<T extends CreatableInstance = CreatableInstance> {
 
@@ -19,20 +22,17 @@ export interface Creatable<T extends CreatableInstance = CreatableInstance> {
 
   create<T extends CreatableInstance>(
     this: Creatable<T>,
-    params: Partial<T['params']>): Promise<T>
+    params?: Partial<T['params']>): Promise<T>
 
   createHandler<T extends CreatableInstance>(
     this: Creatable<T>,
     instance: T
   ): Promisable<T>
 
+  factory(params?: Partial<T['params']>, labels?: Labels): CreatableFactory<T>
+
   paramsHandler<T extends CreatableInstance>(
     this: Creatable<T>, params?: Partial<T['params']>): Promisable<Partial<T['params']>>
-
-  /*
-  factory<T extends EmptyObject | void = void,
-    TParams extends EmptyObject | void = void> (this: Creatable<T, TParams>, params: Partial<CreatableParams<TParams>>): CreatableFactory<T, TParams>
-  */
 }
 
 /**
@@ -55,11 +55,9 @@ export function creatable<T extends CreatableInstance>() {
  * of the CreatableModule as statics properties/methods
  */
 
-/*
 export function creatableFactory() {
   return <U extends CreatableFactory>(constructor: U) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     constructor
   }
 }
-*/

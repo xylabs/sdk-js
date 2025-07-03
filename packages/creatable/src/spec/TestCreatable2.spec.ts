@@ -4,7 +4,9 @@ import {
   describe, expect, test,
 } from 'vitest'
 
-import { Creatable, creatable } from '../Creatable.ts'
+import {
+  Creatable, creatable, creatableFactory,
+} from '../Creatable.ts'
 import { CreatableInstance } from '../model/index.ts'
 import { TestCreatable, TestCreatableParams } from './TestCreatable.spec.ts'
 
@@ -27,6 +29,17 @@ export class TestCreatable2<TParams extends TestCreatableParams2 = TestCreatable
       ...params, name: params.name ?? this.constructor.name, testParam: 'yo',
     }
     return result as TParams
+  }
+}
+
+@creatableFactory()
+export class TestCreatable2a<TParams extends TestCreatableParams2 = TestCreatableParams2, TEventData extends EventData = EventData>
+  extends TestCreatable<TParams, TEventData> {
+  static override createHandler<T extends CreatableInstance>(
+    this: Creatable<T>,
+    instance: T,
+  ): Promisable<T> {
+    return instance
   }
 }
 

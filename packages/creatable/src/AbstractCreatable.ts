@@ -6,9 +6,11 @@ import type { Promisable } from '@xylabs/promise'
 import { isError } from '@xylabs/typeof'
 
 import { type Creatable, creatable } from './Creatable.ts'
+import { Factory } from './Factory.ts'
 import { getFunctionName, getRootFunction } from './lib/index.ts'
 import type {
   CreatableInstance, CreatableName, CreatableParams,
+  Labels,
 } from './model/index.ts'
 
 const AbstractCreatableConstructorKey = Symbol.for('AbstractCreatableConstructor')
@@ -62,6 +64,14 @@ export class AbstractCreatable<TParams extends CreatableParams = CreatableParams
     instance: T,
   ): Promisable<T> {
     return instance
+  }
+
+  static factory<T extends CreatableInstance>(
+    this: Creatable<T>,
+    params?: Partial<T['params']>,
+    labels?: Labels,
+  ): Factory<T> {
+    return Factory.withParams<T>(this, params, labels)
   }
 
   static paramsHandler<T extends CreatableInstance>(

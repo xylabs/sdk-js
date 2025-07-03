@@ -2,10 +2,8 @@ import type { EventData } from '@xylabs/events'
 import { Promisable } from '@xylabs/promise'
 
 import { AbstractCreatable } from './AbstractCreatable.ts'
-import type {
-  CreatableFactory, CreatableInstance, CreatableParams,
-} from './model/index.ts'
-import { Creatable, creatable } from './model/index.ts'
+import { Creatable, creatable } from './Creatable.ts'
+import type { CreatableInstance, CreatableParams } from './model/index.ts'
 
 export interface TestCreatableParams extends CreatableParams {
   testParam: string
@@ -27,12 +25,4 @@ export class TestCreatable<TParams extends TestCreatableParams = TestCreatablePa
     }
     return result as TParams
   }
-}
-
-export const buildTestFactories = () => {
-  const factories: CreatableFactory[] = [
-    TestCreatable,
-    TestCreatable.factory(),
-  ]
-  return factories
 }

@@ -1,31 +1,38 @@
+import type { Logger } from '@xylabs/logger'
 import type { Promisable } from '@xylabs/promise'
 
-import type { AbstractCreatable } from '../AbstractCreatable.ts'
-import type { CreatableInstance } from './CreatableInstance.ts'
-import type { CreatableParams } from './CreatableParams.ts'
+import type { AbstractCreatable } from './AbstractCreatable.ts'
+import type { CreatableInstance, CreatableParams } from './model/index.ts'
 
-export interface CreatableFactory<T extends CreatableInstance = CreatableInstance> {
-  create(
-    params?: Partial<T['params']>): Promise<T>
+/*
+export interface CreatableFactory<T extends EmptyObject | void = void,
+  TParams extends EmptyObject | void = void> {
+  create(params?: CreatableParams<TParams>): Promise<CreatableInstance<T>>
 }
+*/
 
-export interface Creatable<T extends CreatableInstance = CreatableInstance> extends CreatableFactory<T> {
+export interface Creatable<T extends CreatableInstance = CreatableInstance> {
+
+  defaultLogger?: Logger
 
   new(key: unknown, params: Partial<CreatableParams>): T & AbstractCreatable<T['params']>
 
   create<T extends CreatableInstance>(
     this: Creatable<T>,
-    params?: Partial<T['params']>): Promise<T>
+    params: Partial<T['params']>): Promise<T>
 
   createHandler<T extends CreatableInstance>(
     this: Creatable<T>,
     instance: T
   ): Promisable<T>
 
-  factory<T extends CreatableInstance> (this: Creatable<T>, params?: Partial<T['params']>): CreatableFactory<T>
-
   paramsHandler<T extends CreatableInstance>(
     this: Creatable<T>, params?: Partial<T['params']>): Promisable<Partial<T['params']>>
+
+  /*
+  factory<T extends EmptyObject | void = void,
+    TParams extends EmptyObject | void = void> (this: Creatable<T, TParams>, params: Partial<CreatableParams<TParams>>): CreatableFactory<T, TParams>
+  */
 }
 
 /**

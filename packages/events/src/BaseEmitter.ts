@@ -10,7 +10,6 @@ import type {
 
 export interface BaseEmitterParamsFields {}
 
-// eslint-disable-next-line sonarjs/no-useless-intersection
 export type BaseEmitterParams<T extends EmptyObject = EmptyObject> = BaseParams<BaseEmitterParamsFields & T>
 
 export class BaseEmitter<TParams extends BaseParams = BaseParams, TEventData extends EventData = EventData>

@@ -68,14 +68,6 @@ export class AbstractCreatable<TParams extends CreatableParams = CreatableParams
     return instance
   }
 
-  static factory<T extends CreatableInstance>(
-    this: Creatable<T>,
-    params?: Partial<T['params']>,
-    labels?: Labels,
-  ): CreatableFactory<T> {
-    return Factory.withParams<T>(this, params, labels)
-  }
-
   static paramsHandler<T extends CreatableInstance>(
     this: Creatable<T>,
     params: Partial<T['params']> = {},
@@ -129,5 +121,17 @@ export class AbstractCreatable<TParams extends CreatableParams = CreatableParams
 
   protected stopHandler(): Promisable<void> {
     // when overriding this, throw an error on failure
+  }
+}
+
+@creatable()
+export class AbstractCreatableWithFactory<TParams extends CreatableParams = CreatableParams,
+  TEventData extends EventData = EventData> extends AbstractCreatable<TParams, TEventData> {
+  static factory<T extends CreatableInstance>(
+    this: Creatable<T>,
+    params?: Partial<T['params']>,
+    labels?: Labels,
+  ): CreatableFactory<T> {
+    return Factory.withParams<T>(this, params, labels)
   }
 }

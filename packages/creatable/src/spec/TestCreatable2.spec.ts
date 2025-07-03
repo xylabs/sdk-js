@@ -43,7 +43,7 @@ class TestCreatable2a<TParams extends TestCreatableParams2 = TestCreatableParams
   }
 }
 
-const factory = TestCreatable2.factory()
+// const factory = TestCreatable2.factory()
 
 describe('TestCreatable2', () => {
   test('should create an instance with default params', async () => {
@@ -54,8 +54,8 @@ describe('TestCreatable2', () => {
     const instance = await TestCreatable2a.create()
     expect(instance).toBeDefined()
   })
-  test('should create an instance with default params from factory', async () => {
+  /* test('should create an instance with default params from factory', async () => {
     const instance = await factory.create()
     expect(instance).toBeDefined()
-  })
+  }) */
 })

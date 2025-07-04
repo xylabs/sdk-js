@@ -1,3 +1,4 @@
+import type { Logger } from '@xylabs/logger'
 import type { Promisable } from '@xylabs/promise'
 
 import type { AbstractCreatable } from './AbstractCreatable.ts'
@@ -6,28 +7,34 @@ import type {
 } from './model/index.ts'
 
 export interface CreatableFactory<T extends CreatableInstance = CreatableInstance>
-  extends Omit<Creatable<T>, 'createHandler' | 'paramsHandler' | 'factory'> {
+  extends Omit<Creatable<T>, 'create' | 'createHandler' | 'paramsHandler' | 'defaultLogger' | 'factory'> {
+
+  create(
+    this: CreatableFactory<T>,
+    params?: Partial<T['params']>): Promise<T>
 }
 
 export interface Creatable<T extends CreatableInstance = CreatableInstance> {
 
+  defaultLogger?: Logger
+
   new(key: unknown, params: Partial<CreatableParams>): T & AbstractCreatable<T['params']>
 
-  create(
+  create<T extends CreatableInstance>(
     this: Creatable<T>,
     params?: Partial<T['params']>): Promise<T>
 
-  createHandler(
+  createHandler<T extends CreatableInstance>(
     this: Creatable<T>,
     instance: T
   ): Promisable<T>
 
-  paramsHandler(
+  paramsHandler<T extends CreatableInstance>(
     this: Creatable<T>, params?: Partial<T['params']>): Promisable<T['params']>
 }
 
 export interface CreatableWithFactory<T extends CreatableInstance = CreatableInstance> extends Creatable<T> {
-  factory(
+  factory<T extends CreatableInstance>(
     this: Creatable<T>,
     params?: Partial<T['params']>,
     labels?: Labels): CreatableFactory<T>

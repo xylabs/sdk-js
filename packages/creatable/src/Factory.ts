@@ -32,7 +32,7 @@ export class Factory<T extends CreatableInstance = CreatableInstance> implements
     const mergedParams: T['params'] = {
       ...this.defaultParams,
       ...params,
-    } as T['params']
-    return this.creatable.create<T>(mergedParams)
+    }
+    return this.creatable.create(mergedParams)
   }
 }

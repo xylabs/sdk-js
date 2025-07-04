@@ -2031,13 +2031,13 @@ __metadata:
     "@xylabs/base": "workspace:^"
     "@xylabs/events": "workspace:^"
     "@xylabs/logger": "workspace:^"
-    "@xylabs/object": "workspace:^"
     "@xylabs/promise": "workspace:^"
     "@xylabs/ts-scripts-yarn3": "npm:^6.5.12"
     "@xylabs/tsconfig": "npm:^6.5.12"
     "@xylabs/typeof": "workspace:^"
     tslib: "npm:^2.8.1"
     typescript: "npm:^5.8.3"
+    vitest: "npm:^3.2.4"
   languageName: unknown
   linkType: soft
 

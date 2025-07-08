@@ -68,9 +68,9 @@ export class BaseMongoSdk<T extends Document> {
     })
   }
 
-  async replaceOne(item: OptionalUnlessRequiredId<T>, options?: ReplaceOptions) {
+  async replaceOne(filter: Filter<T>, item: OptionalUnlessRequiredId<T>, options?: ReplaceOptions) {
     return await this.useCollection(async (collection: Collection<T>) => {
-      return await collection.replaceOne({ _id: item._id }, item, options)
+      return await collection.replaceOne(filter, item, options)
     })
   }
 

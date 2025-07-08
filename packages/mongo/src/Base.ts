@@ -9,6 +9,7 @@ import type {
   InsertOneOptions,
   MongoClient,
   OptionalUnlessRequiredId,
+  ReplaceOptions,
   UpdateFilter,
   WithId,
 } from 'mongodb'
@@ -64,6 +65,12 @@ export class BaseMongoSdk<T extends Document> {
   async insertOne(item: OptionalUnlessRequiredId<T>, options?: InsertOneOptions) {
     return await this.useCollection(async (collection: Collection<T>) => {
       return await collection.insertOne(item, options)
+    })
+  }
+
+  async replaceOne(item: OptionalUnlessRequiredId<T>, options?: ReplaceOptions) {
+    return await this.useCollection(async (collection: Collection<T>) => {
+      return await collection.replaceOne({ _id: item._id }, item, options)
     })
   }
 

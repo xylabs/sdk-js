@@ -62,10 +62,10 @@
   },
   "devDependencies": {
     "@types/debug": "^4.1.12",
-    "@types/node": "^24.0.10",
-    "@xylabs/eslint-config-flat": "^6.5.12",
+    "@types/node": "^24.0.12",
+    "@xylabs/eslint-config-flat": "^6.5.13",
     "@xylabs/threads": "workspace:^",
-    "@xylabs/ts-scripts-yarn3": "^6.5.12",
+    "@xylabs/ts-scripts-yarn3": "^6.5.13",
     "observable-fns": "^0.6.1",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"

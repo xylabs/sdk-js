@@ -46,8 +46,8 @@
     "uuid": "^11"
   },
   "dependencies": {
-    "@xylabs/api": "workspace:^",
-    "@xylabs/array": "workspace:^",
+    "@xylabs/api": "2.6.14",
+    "@xylabs/array": "2.8.0",
     "@xylabs/assert": "workspace:^",
     "@xylabs/axios": "workspace:^",
     "@xylabs/crypto": "workspace:^",
@@ -65,11 +65,11 @@
     "@xylabs/platform": "workspace:^",
     "@xylabs/profile": "workspace:^",
     "@xylabs/promise": "workspace:^",
-    "@xylabs/retry": "workspace:^",
+    "@xylabs/retry": "2.13.27",
     "@xylabs/set": "workspace:^",
-    "@xylabs/static-implements": "workspace:^",
+    "@xylabs/static-implements": "2.7.2",
     "@xylabs/timer": "workspace:^",
-    "@xylabs/url": "workspace:^"
+    "@xylabs/url": "2.9.2"
   },
   "devDependencies": {
     "@types/node": "^24.0.12",

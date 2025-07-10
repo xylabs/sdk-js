@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/express",
-  "version": "4.12.44",
+  "version": "4.13.0",
   "description": "SDK for base code for Api repos that use express and deploy on AWS ECS",
   "keywords": [
     "xylabs",
@@ -61,7 +61,7 @@
     "@types/body-parser": "^1.19.6",
     "@types/express": "^5.0.3",
     "@types/express-mung": "^0.5.5",
-    "@types/node": "^24.0.12",
+    "@types/node": "^24.0.13",
     "@xylabs/ts-scripts-yarn3": "^7.0.0-rc.7",
     "@xylabs/tsconfig": "^7.0.0-rc.7",
     "@xylabs/vitest-extended": "workspace:^",

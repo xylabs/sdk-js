@@ -1,6 +1,6 @@
+import type { TypeCheck } from '@xylabs/object-model'
 import type { TypedObject } from '@xylabs/typeof'
 
-import type { TypeCheck } from './AsTypeFactory.ts'
 import { AsTypeFactory } from './AsTypeFactory.ts'
 
 export const AsObjectFactory = {

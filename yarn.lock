@@ -2559,12 +2559,27 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@xylabs/object-model@workspace:^, @xylabs/object-model@workspace:packages/object-model":
+  version: 0.0.0-use.local
+  resolution: "@xylabs/object-model@workspace:packages/object-model"
+  dependencies:
+    "@xylabs/assert": "workspace:^"
+    "@xylabs/logger": "workspace:^"
+    "@xylabs/promise": "workspace:^"
+    "@xylabs/ts-scripts-yarn3": "npm:^7.0.0-rc.7"
+    "@xylabs/tsconfig": "npm:^7.0.0-rc.7"
+    "@xylabs/typeof": "workspace:^"
+    typescript: "npm:^5.8.3"
+    vitest: "npm:^3.2.4"
+  languageName: unknown
+  linkType: soft
+
 "@xylabs/object@workspace:^, @xylabs/object@workspace:packages/object":
   version: 0.0.0-use.local
   resolution: "@xylabs/object@workspace:packages/object"
   dependencies:
     "@xylabs/assert": "workspace:^"
-    "@xylabs/logger": "workspace:^"
+    "@xylabs/object-model": "workspace:^"
     "@xylabs/promise": "workspace:^"
     "@xylabs/ts-scripts-yarn3": "npm:^7.0.0-rc.7"
     "@xylabs/tsconfig": "npm:^7.0.0-rc.7"

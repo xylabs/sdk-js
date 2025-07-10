@@ -1,4 +1,5 @@
-import type { AnyObject } from './AnyObject.ts'
+import type { AnyObject } from '@xylabs/object-model'
+
 import { AsObjectFactory } from './AsObjectFactory.ts'
 import { isObject } from './isObject.ts'
 

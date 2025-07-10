@@ -1,4 +1,4 @@
-import type { AnyObject } from './AnyObject.ts'
+import type { AnyObject } from '@xylabs/object-model'
 
 /**
  * Deeply merges two types into a new type.

@@ -13,7 +13,6 @@ export default [
   workspacesConfig,
   rulesConfig,
   typescriptConfig,
-  importConfig,
   sonarConfig,
   {
     rules: {
@@ -45,4 +44,11 @@ export default [
       }],
     },
   },
+  {
+    ...importConfig,
+    rules: {
+      ...importConfig.rules,
+      'import-x/no-cycle': ['warn', { maxDepth: 5 }]
+    }
+  }
 ]

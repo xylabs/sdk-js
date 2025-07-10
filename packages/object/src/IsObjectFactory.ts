@@ -1,9 +1,9 @@
+import type { TypeCheck, TypeCheckConfig } from '@xylabs/object-model'
 import {
   isObject, isTruthy,
   type ObjectTypeShape, type TypedObject,
 } from '@xylabs/typeof'
 
-import type { TypeCheck, TypeCheckConfig } from './AsTypeFactory.ts'
 import { isType } from './isType.ts'
 
 export interface ObjectTypeConfig extends TypeCheckConfig {}

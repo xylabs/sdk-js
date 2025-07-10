@@ -1,6 +1,6 @@
+import type { AnyObject } from '@xylabs/object-model'
 import type { Promisable } from '@xylabs/promise'
 
-import type { AnyObject } from './AnyObject.ts'
 import type { EmptyObject } from './EmptyObject.ts'
 import { ObjectWrapper } from './ObjectWrapper.ts'
 

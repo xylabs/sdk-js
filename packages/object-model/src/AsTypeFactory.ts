@@ -1,12 +1,13 @@
 import { assertDefinedEx } from '@xylabs/assert'
-import type {
-  AsTypeFunction,
-  StringOrAlertFunction, TypeCheck, TypeCheckConfig,
-  TypeCheckRequiredConfig,
-} from '@xylabs/object-model'
 import type { AnyNonPromise } from '@xylabs/promise'
 import { isPromise } from '@xylabs/promise'
 import { isTruthy } from '@xylabs/typeof'
+
+import type { AsTypeFunction } from './AsTypeFunction.ts'
+import type {
+  StringOrAlertFunction, TypeCheck, TypeCheckConfig,
+  TypeCheckRequiredConfig,
+} from './types.ts'
 
 export const AsTypeFactory = {
   create: <T extends AnyNonPromise>(typeCheck: TypeCheck<T>): AsTypeFunction<T> => {

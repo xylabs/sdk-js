@@ -1,14 +1,5 @@
 {
-  "compilerOptions": {
-    "noEmit": false,
-    "emitDeclarationOnly": true,
-    "declarationMap": false,
-    "isolatedModules": false,
-    "preserveSymlinks": false,
-    "outDir": "dist",
-  },
   "exclude": ["dist", "docs", "packages", "node_modules"],
-  "include": ["src/**/*.ts", "src/**/*.mts", "src/**/*.cts"],
   "extends": "@xylabs/tsconfig"
 }
 

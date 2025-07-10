@@ -6,7 +6,7 @@ import { forget } from '@xylabs/forget'
 import { isDefined } from '@xylabs/typeof'
 
 import type {
-  EventAnyListener, EventArgs, EventData, EventFunctions, EventListener, EventName,
+  EventAnyListener, EventArgs, EventData, EventEmitter, EventListener, EventName,
 } from '../model/index.ts'
 
 /**
@@ -52,7 +52,7 @@ const isMetaEvent = (eventName: EventName) => eventName === 'listenerAdded' || e
 
 export type EventsParams = BaseParams<{ readonly debug?: DebugOptions }>
 
-export class Events<TEventData extends EventData = EventData> extends Base<EventsParams> implements EventFunctions<TEventData> {
+export class Events<TEventData extends EventData = EventData> extends Base<EventsParams> implements EventEmitter<TEventData> {
   protected static anyMap = new WeakMap<object, Set<EventAnyListener>>()
   protected static eventsMap = new WeakMap<object, Map<EventName, Set<EventListenerInfo>>>()
 
@@ -130,7 +130,7 @@ export class Events<TEventData extends EventData = EventData> extends Base<Event
   }
 
   async emit<TEventName extends keyof TEventData>(eventName: TEventName, eventArgs: TEventData[TEventName]) {
-    await this.emitInternal(eventName, eventArgs)
+    return await this.emitInternal(eventName, eventArgs)
   }
 
   async emitMetaEvent<TEventName extends keyof MetaEventData<TEventData>>(eventName: TEventName, eventArgs: MetaEventData<TEventData>[TEventName]) {
@@ -138,8 +138,10 @@ export class Events<TEventData extends EventData = EventData> extends Base<Event
       try {
         Events.canEmitMetaEvents = true
         await this.emitMetaEventInternal(eventName, eventArgs)
+        return true
       } finally {
         Events.canEmitMetaEvents = false
+        return false
       }
     }
   }
@@ -341,6 +343,7 @@ export class Events<TEventData extends EventData = EventData> extends Base<Event
         }
       }),
     ])
+    return true
   }
 
   private getListeners<TEventName extends keyof TEventData>(eventName: TEventName) {

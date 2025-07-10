@@ -1,6 +1,6 @@
 /* eslint-disable import-x/no-internal-modules */
 
-/// <reference lib="webworker" />
+/// <reference lib="dom" />
 // tslint:disable no-shadowed-variable
 
 import type { AbstractedWorkerAPI } from '../types/worker.ts'

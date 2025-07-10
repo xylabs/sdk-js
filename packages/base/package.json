@@ -21,13 +21,13 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
+      "types": "./dist/neutral/index.d.ts",
       "default": "./dist/neutral/index.mjs"
     },
     "./package.json": "./package.json"
   },
   "module": "dist/neutral/index.mjs",
-  "types": "dist/types/index.d.ts",
+  "types": "dist/neutral/index.d.ts",
   "dependencies": {
     "@opentelemetry/api": "^1.9.0",
     "@xylabs/assert": "workspace:^",
@@ -35,8 +35,8 @@
     "@xylabs/object": "workspace:^"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^6.5.13",
-    "@xylabs/tsconfig": "^6.5.13",
+    "@xylabs/ts-scripts-yarn3": "^7.0.0-rc.7",
+    "@xylabs/tsconfig": "^7.0.0-rc.7",
     "tslib": "^2.8.1",
     "typescript": "^5.8.3"
   },

@@ -1,3 +1,5 @@
+/// <reference lib="webworker" />
+
 /* eslint-disable import-x/no-internal-modules */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /*

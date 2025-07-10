@@ -21,13 +21,13 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
+      "types": "./dist/browser/index.d.ts",
       "default": "./dist/browser/index.mjs"
     },
     "./package.json": "./package.json"
   },
   "module": "dist/browser/index.mjs",
-  "types": "dist/types/index.d.ts",
+  "types": "dist/browser/index.d.ts",
   "dependencies": {
     "@xylabs/assert": "workspace:^",
     "@xylabs/object": "workspace:^",
@@ -44,8 +44,8 @@
     "@types/js-cookie": "^3.0.6",
     "@types/node": "^24.0.12",
     "@types/spark-md5": "^3.0.5",
-    "@xylabs/ts-scripts-yarn3": "^6.5.13",
-    "@xylabs/tsconfig-dom": "^6.5.13",
+    "@xylabs/ts-scripts-yarn3": "^7.0.0-rc.7",
+    "@xylabs/tsconfig-dom": "^7.0.0-rc.7",
     "axios": "^1.10.0",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"

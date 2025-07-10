@@ -1,3 +1,5 @@
+/// <reference lib="webworker" />
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { $transferable } from './symbols.ts'
 

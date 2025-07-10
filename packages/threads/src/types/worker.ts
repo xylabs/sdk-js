@@ -1,3 +1,4 @@
+/// <reference lib="webworker" />
 /* eslint-disable @typescript-eslint/no-explicit-any */
 type UnsubscribeFn = () => void
 

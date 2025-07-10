@@ -27,20 +27,20 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
+      "types": "./dist/neutral/index.d.ts",
       "import": "./dist/neutral/index.mjs"
     },
     "./package.json": "./package.json"
   },
   "module": "dist/neutral/index.mjs",
-  "types": "dist/types/index.d.ts",
+  "types": "dist/neutral/index.d.ts",
   "dependencies": {
     "@types/geojson": "^7946.0.16",
     "mapbox-gl": "^3.13.0"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^6.5.13",
-    "@xylabs/tsconfig": "^6.5.13",
+    "@xylabs/ts-scripts-yarn3": "^7.0.0-rc.7",
+    "@xylabs/tsconfig": "^7.0.0-rc.7",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"
   },

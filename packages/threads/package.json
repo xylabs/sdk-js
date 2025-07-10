@@ -28,86 +28,90 @@
   "exports": {
     ".": {
       "browser": {
-        "types": "./dist/types/index-browser.d.ts",
+        "types": "./dist/browser/index-browser.d.ts",
         "import": "./dist/browser/index-browser.mjs"
       },
       "node": {
-        "types": "./dist/types/index-node.d.ts",
+        "types": "./dist/node/index-node.d.ts",
         "import": "./dist/node/index-node.mjs"
       }
     },
     "./implementation": {
       "browser": {
-        "types": "./dist/types/master/implementation.browser.d.ts",
+        "types": "./dist/browser/master/implementation.browser.d.ts",
         "import": "./dist/browser/master/implementation.browser.mjs"
       },
       "node": {
-        "types": "./dist/types/master/implementation.node.d.ts",
+        "types": "./dist/node/master/implementation.node.d.ts",
         "import": "./dist/node/master/implementation.node.mjs"
       }
     },
     "./master": {
       "browser": {
-        "types": "./dist/types/master/index-browser.d.ts",
+        "types": "./dist/browser/master/index-browser.d.ts",
         "import": "./dist/browser/master/index-browser.mjs"
       },
       "node": {
-        "types": "./dist/types/master/index-node.d.ts",
+        "types": "./dist/node/master/index-node.d.ts",
         "import": "./dist/node/master/index-node.mjs"
       }
     },
     "./spawn": {
-      "types": "./dist/types/master/spawn.d.ts",
+      "types": "./dist/neutral/master/spawn.d.ts",
       "import": "./dist/neutral/master/spawn.mjs"
     },
     "./thread": {
-      "types": "./dist/types/master/thread.d.ts",
+      "types": "./dist/neutral/master/thread.d.ts",
       "import": "./dist/neutral/master/thread.mjs"
     },
     "./messenger": {
-      "types": "./dist/types/types/messages.d.ts"
+      "types": "./dist/neutral/types/messages.d.ts"
     },
     "./observable": {
-      "types": "./dist/types/observable.d.ts",
+      "types": "./dist/neutral/observable.d.ts",
       "import": "./dist/neutral/observable.mjs"
     },
     "./pool": {
       "browser": {
-        "types": "./dist/types/master/pool-browser.d.ts",
+        "types": "./dist/browser/master/pool-browser.d.ts",
         "import": "./dist/browser/master/pool-browser.mjs"
       },
       "node": {
-        "types": "./dist/types/master/pool-node.d.ts",
+        "types": "./dist/node/master/pool-node.d.ts",
         "import": "./dist/node/master/pool-node.mjs"
       }
     },
     "./observable-promise": {
-      "types": "./dist/types/observable-promise.d.ts",
+      "types": "./dist/neutral/observable-promise.d.ts",
       "import": "./dist/neutral/observable-promise.mjs"
     },
     "./register": {
-      "types": "./dist/types/master/register.d.ts",
+      "types": "./dist/neutral/master/register.d.ts",
       "import": "./dist/neutral/master/register.mjs"
     },
     "./worker": {
       "browser": {
-        "types": "./dist/types/worker/worker.browser.d.ts",
+        "types": "./dist/browser/worker/worker.browser.d.ts",
         "import": "./dist/browser/worker/worker.browser.mjs"
       },
       "node": {
-        "types": "./dist/types/worker/worker.node.d.ts",
+        "types": "./dist/node/worker/worker.node.d.ts",
         "import": "./dist/node/worker/worker.node.mjs"
       }
     }
   },
   "module": "dist/browser/index-browser.mjs",
-  "types": "dist/types/index-browser.d.ts",
+  "types": "dist/browser/index-browser.d.ts",
   "files": [
     "dist",
     "src",
     "README.md",
     "LICENSE"
   ],
+  "scripts": {
+    "package-compile": "yarn package-compile-tsup",
+    "package-compile-tsup": "tsup --config tsup.browser.config.ts && tsup --config tsup.node.config.ts && tsup --config tsup.neutral.config.ts"
+  },
   "dependencies": {
     "@xylabs/assert": "workspace:^",
     "debug": "^4.4.1",
@@ -115,10 +119,13 @@
     "observable-fns": "^0.6.1"
   },
   "devDependencies": {
+    "@swc/core": "^1.12.11",
     "@types/debug": "^4.1.12",
     "@types/node": "^24.0.12",
-    "@xylabs/eslint-config-flat": "^6.5.13",
-    "@xylabs/ts-scripts-yarn3": "^6.5.13",
+    "@xylabs/eslint-config-flat": "^7.0.0-rc.7",
+    "@xylabs/ts-scripts-yarn3": "^7.0.0-rc.7",
+    "tiny-worker": "^2.3.0",
+    "tsup": "^8.5.0",
     "typescript": "^5.8.3"
   },
   "publishConfig": {

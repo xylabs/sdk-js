@@ -29,24 +29,24 @@
   "exports": {
     ".": {
       "browser": {
-        "types": "./dist/types/browser/index.d.ts",
+        "types": "./dist/browser/browser/index.d.ts",
         "default": "./dist/browser/index.mjs"
       },
-      "types": "./dist/types/node/index.d.ts",
+      "types": "./dist/node/node/index.d.ts",
       "default": "./dist/node/index.mjs"
     },
     "./package.json": "./package.json"
   },
   "module": "./dist/node/index.mjs",
-  "types": "./dist/types/node/index.d.ts",
+  "types": "./dist/node/node/index.d.ts",
   "dependencies": {
     "crypto-js": "^4.2.0"
   },
   "devDependencies": {
     "@types/crypto-js": "^4.2.2",
     "@types/node": "^24.0.12",
-    "@xylabs/ts-scripts-yarn3": "^6.5.13",
-    "@xylabs/tsconfig-dom": "^6.5.13",
+    "@xylabs/ts-scripts-yarn3": "^7.0.0-rc.7",
+    "@xylabs/tsconfig-dom": "^7.0.0-rc.7",
     "typescript": "^5.8.3"
   },
   "engines": {

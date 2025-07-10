@@ -21,14 +21,14 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
+      "types": "./dist/neutral/index.d.ts",
       "default": "./dist/neutral/index.mjs"
     },
     "./package.json": "./package.json"
   },
   "module": "dist/neutral/index.mjs",
   "source": "./src/index.ts",
-  "types": "dist/types/index.d.ts",
+  "types": "dist/neutral/index.d.ts",
   "dependencies": {
     "@xylabs/assert": "workspace:^",
     "@xylabs/base": "workspace:^",
@@ -40,8 +40,8 @@
   },
   "devDependencies": {
     "@xylabs/delay": "workspace:^",
-    "@xylabs/ts-scripts-yarn3": "^6.5.13",
-    "@xylabs/tsconfig": "^6.5.13",
+    "@xylabs/ts-scripts-yarn3": "^7.0.0-rc.7",
+    "@xylabs/tsconfig": "^7.0.0-rc.7",
     "@xylabs/vitest-extended": "workspace:^",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"

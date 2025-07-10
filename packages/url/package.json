@@ -29,27 +29,27 @@
   "exports": {
     ".": {
       "browser": {
-        "types": "./dist/types/browser/index.d.ts",
+        "types": "./dist/browser/browser/index.d.ts",
         "default": "./dist/browser/index.mjs"
       },
       "neutral": {
-        "types": "./dist/types/neutral/index.d.ts",
+        "types": "./dist/neutral/neutral/index.d.ts",
         "default": "./dist/neutral/index.mjs"
       },
       "node": {
-        "types": "./dist/types/node/index.d.ts",
+        "types": "./dist/node/node/index.d.ts",
         "default": "./dist/node/index.mjs"
       }
     },
     "./package.json": "./package.json"
   },
   "module": "./dist/neutral/index.mjs",
-  "types": "./dist/types/neutral/index.d.ts",
+  "types": "./dist/neutral/neutral/index.d.ts",
   "devDependencies": {
     "@types/node": "^24.0.12",
-    "@xylabs/ts-scripts-yarn3": "^6.5.13",
-    "@xylabs/tsconfig": "^6.5.13",
-    "@xylabs/tsconfig-dom": "^6.5.13",
+    "@xylabs/ts-scripts-yarn3": "^7.0.0-rc.7",
+    "@xylabs/tsconfig": "^7.0.0-rc.7",
+    "@xylabs/tsconfig-dom": "^7.0.0-rc.7",
     "typescript": "^5.8.3"
   },
   "engines": {

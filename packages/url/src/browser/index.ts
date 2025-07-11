@@ -1,1 +1,3 @@
-export * from './Url.ts'
+/// <reference lib="dom" />
+const BrowserUrl = URL
+export { BrowserUrl as URL }

@@ -17,4 +17,9 @@ export interface TypeCheckOptionalConfig extends TypeCheckConfig {
 
 export type StringOrAlertFunction<T extends AnyNonPromise> = string | AssertExMessageFunc<T>
 
-export type TypeCheck<T extends TypedValue> = (obj: AnyNonPromise, config?: TypeCheckConfig) => obj is T
+export type TypeCheck<T extends TypedValue> = {
+  (obj: AnyNonPromise): obj is T
+  // this is here to allow it to be used as a predicate function
+  (obj: AnyNonPromise, index: number): obj is T
+  (obj: AnyNonPromise, config?: TypeCheckConfig): obj is T
+}

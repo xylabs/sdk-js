@@ -26,14 +26,22 @@ export const LogLevel = Enum({
 })
 
 export type LogLevelKey = EnumKey<typeof LogLevel>
-export type LogLevel = EnumValue<typeof LogLevel>
+export type LogVerbosity = LogLevelKey
+
+export type LogLevelValue = EnumValue<typeof LogLevel>
+/**
+ * @deprecated Use `LogLevelValue` instead.
+ * This name conflicts with the `LogLevel` enum and
+ * makes it confusing to import
+ */
+export type LogLevel = LogLevelValue
 
 export const NoOpLogFunction = (..._data: unknown[]) => void {}
 
 export class LevelLogger implements Logger {
-  readonly level: LogLevel
+  readonly level: LogLevelValue
   readonly logger: Logger
-  constructor(logger: Logger, level: LogLevel = LogLevel.warn) {
+  constructor(logger: Logger, level: LogLevelValue = LogLevel.warn) {
     this.level = level
     this.logger = logger
   }

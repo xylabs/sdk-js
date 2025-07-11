@@ -1,4 +1,4 @@
-import type { EnumValue } from '@xylabs/enum'
+import type { EnumKey, EnumValue } from '@xylabs/enum'
 import { Enum } from '@xylabs/enum'
 
 export type LogFunction = (...data: unknown[]) => void
@@ -25,6 +25,7 @@ export const LogLevel = Enum({
   trace: 6,
 })
 
+export type LogLevelKey = EnumKey<typeof LogLevel>
 export type LogLevel = EnumValue<typeof LogLevel>
 
 export const NoOpLogFunction = (..._data: unknown[]) => void {}

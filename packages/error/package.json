@@ -36,8 +36,8 @@
   "module": "dist/neutral/index.mjs",
   "types": "dist/neutral/index.d.ts",
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^7.0.0-rc.7",
-    "@xylabs/tsconfig": "^7.0.0-rc.7",
+    "@xylabs/ts-scripts-yarn3": "^7.0.0-rc.8",
+    "@xylabs/tsconfig": "^7.0.0-rc.8",
     "typescript": "^5.8.3"
   },
   "engines": {

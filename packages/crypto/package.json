@@ -45,8 +45,8 @@
   "devDependencies": {
     "@types/crypto-js": "^4.2.2",
     "@types/node": "^24.0.13",
-    "@xylabs/ts-scripts-yarn3": "^7.0.0-rc.7",
-    "@xylabs/tsconfig-dom": "^7.0.0-rc.7",
+    "@xylabs/ts-scripts-yarn3": "^7.0.0-rc.8",
+    "@xylabs/tsconfig-dom": "^7.0.0-rc.8",
     "typescript": "^5.8.3"
   },
   "engines": {

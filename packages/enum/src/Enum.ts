@@ -82,6 +82,11 @@ export type Enum<T extends Readonly<Record<string | number | symbol, unknown>>> 
 }
 
 /**
+ * A utility type that, given an `Enum` object, returns the union of its keys.
+ */
+export type EnumKey<T extends Record<string | number | symbol, unknown>, K = Enum<T>> = keyof K
+
+/**
  * A utility type that, given an `Enum` object, returns the union of its values.
  */
 export type EnumValue<T extends Record<string | number | symbol, unknown>, K = Enum<T>> = K[keyof K]

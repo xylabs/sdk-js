@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/geo",
-  "version": "4.13.10",
+  "version": "4.13.11",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "xylabs",

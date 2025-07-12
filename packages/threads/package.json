@@ -122,8 +122,8 @@
     "@swc/core": "^1.12.11",
     "@types/debug": "^4.1.12",
     "@types/node": "^24.0.13",
-    "@xylabs/eslint-config-flat": "^7.0.0-rc.9",
-    "@xylabs/ts-scripts-yarn3": "^7.0.0-rc.9",
+    "@xylabs/eslint-config-flat": "^7.0.0-rc.12",
+    "@xylabs/ts-scripts-yarn3": "^7.0.0-rc.12",
     "tiny-worker": "^2.3.0",
     "tsup": "^8.5.0",
     "typescript": "^5.8.3"

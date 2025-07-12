@@ -1,4 +1,14 @@
 {
+  "compilerOptions": {
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/types"
+    ],
+    "types": [
+      "global-config-node",
+      "global-config"
+    ],
+  },
   "exclude": ["dist", "docs", "packages", "node_modules"],
   "extends": "@xylabs/tsconfig-dom"
 }

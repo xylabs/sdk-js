@@ -15,7 +15,7 @@ export const disableGloballyUnique = () => {
 }
 
 export const globallyUnique = (name: string, value: unknown, domain = 'global') => {
-  const uniqueName = [domain, name].join(':')
+  const uniqueName = domain === 'bundle' ? [domain, name].join(':') : [domain, import.meta.url, name].join(':')
   if (!xyoGlobal().uniqueDisabled) {
     const xylabs = globalThis.xylabs = globalThis.xylabs ?? {}
     const unique = (xylabs.unique = xylabs.unique ?? {})

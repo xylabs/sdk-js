@@ -10,10 +10,11 @@ export interface ObjectTypeConfig extends TypeCheckConfig {}
 
 export class IsObjectFactory<T extends TypedObject> {
   create(shape?: ObjectTypeShape, additionalChecks?: TypeCheck<TypedObject>[]): TypeCheck<T> {
-    return (obj, { log } = {}): obj is T => {
+    return (obj: unknown, config?: TypeCheckConfig | number): obj is T => {
       if (!isObject(obj)) {
         return false
       }
+      const log = (typeof config === 'object') ? config.log : undefined
       return (
         // do primary check
         Object.entries(shape ?? {}).filter(([key, type]) => {

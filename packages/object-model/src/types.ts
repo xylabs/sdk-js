@@ -19,8 +19,6 @@ export type StringOrAlertFunction<T extends AnyNonPromise> = string | AssertExMe
 
 export type TypeCheck<T extends TypedValue> = {
   (obj: AnyNonPromise): obj is T
-  (obj: AnyNonPromise, config: undefined): obj is T
-  // this is here to allow it to be used as a predicate function
-  (obj: AnyNonPromise, index: number): obj is T
   (obj: AnyNonPromise, config: TypeCheckConfig): obj is T
+  (obj: AnyNonPromise, config: TypeCheckConfig | number /* for use as predicate */ | undefined): obj is T
 }

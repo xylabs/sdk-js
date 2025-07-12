@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/error",
-  "version": "4.13.12",
+  "version": "4.13.13",
   "description": "Primary SDK for using XYO Protocol 2.0",
   "keywords": [
     "error",

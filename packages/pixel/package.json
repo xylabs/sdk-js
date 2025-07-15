@@ -42,10 +42,10 @@
   },
   "devDependencies": {
     "@types/js-cookie": "^3.0.6",
-    "@types/node": "^24.0.13",
+    "@types/node": "^24.0.14",
     "@types/spark-md5": "^3.0.5",
-    "@xylabs/ts-scripts-yarn3": "^7.0.0-rc.23",
-    "@xylabs/tsconfig-dom": "^7.0.0-rc.23",
+    "@xylabs/ts-scripts-yarn3": "^7.0.0-rc.27",
+    "@xylabs/tsconfig-dom": "^7.0.0-rc.27",
     "axios": "^1.10.0",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"

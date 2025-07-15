@@ -39,6 +39,7 @@
   ],
   "scripts": {
     "build-typedoc-site": "xy gen-docs @xylabs/sdk-js",
+    "readme:gen": "node scripts/readme-gen.mjs",
     "test": "vitest run"
   },
   "resolutions": {

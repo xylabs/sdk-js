@@ -1,6 +1,6 @@
-[![logo][]](https://xylabs.com)
-
 # @xylabs/sdk-js
+
+[![logo][]](https://xylabs.com)
 
 [![main-build][]][main-build-link]
 [![npm-badge][]][npm-link]
@@ -12,53 +12,15 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-## Table of Contents
+Version: 4.13.15
 
--   [Description](#description)
--   [Install](#install)
--   [Scripts](#scripts)
--   [Maintainers](#maintainers)
--   [License](#license)
--   [Credits](#credits)
+Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## Description
+## Documentation
 
-SDK for base code for Typescript and Javascript Libraries. Common utility &
-helper code that is used throughout XYLabs/XYO Network TypeScript projects.
+Coming Soon!
 
-Features:
-
--   Mono-repo that publishes individual packages to npm
--   Fully written in TypeScript
--   Polyfills to ensure common operation across Node.js/Browser environments
-
-## Install
-
-Using npm:
-
-```sh
-npm i --save @xylabs/sdk-js
-```
-
-Using yarn:
-
-```sh
-yarn add @xylabs/sdk-js
-```
-
-## Scripts
-
-Using npm:
-
-```sh
-npm xy --help
-```
-
-Using yarn:
-
-```sh
-yarn xy --help
-```
+Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 
 ## Maintainers
 
@@ -69,13 +31,14 @@ yarn xy --help
 
 ## License
 
-See the [LICENSE](LICENSE) file for license details
+> See the [LICENSE](LICENSE) file for license details
 
 ## Credits
 
-[Made with 🔥 and ❄️ by XY Labs](https://xylabs.com)
+[Made with 🔥 and ❄️ by XYLabs](https://xylabs.com)
 
 [logo]: https://cdn.xy.company/img/brand/XYPersistentCompany_Logo_Icon_Colored.svg
+
 [main-build]: https://github.com/xylabs/sdk-js/actions/workflows/build.yml/badge.svg
 [main-build-link]: https://github.com/xylabs/sdk-js/actions/workflows/build.yml
 [npm-badge]: https://img.shields.io/npm/v/@xylabs/sdk-js.svg

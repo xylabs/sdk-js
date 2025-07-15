@@ -1,73 +1,60 @@
-[![logo][]](https://xylabs.com)
+# @xylabs/pixel
 
-# sdk-pixel-js
+[![logo][]](https://xylabs.com)
 
 [![main-build][]][main-build-link]
 [![npm-badge][]][npm-link]
+[![npm-downloads-badge][]][npm-link]
+[![jsdelivr-badge][]][jsdelivr-link]
+[![npm-license-badge][]](LICENSE)
 [![codacy-badge][]][codacy-link]
 [![codeclimate-badge][]][codeclimate-link]
 [![snyk-badge][]][snyk-link]
+[![socket-badge][]][socket-link]
 
-> This library is made public by XY Labs
+Version: 4.13.15
 
-## Table of Contents
+Event Client for xylabs ESB
 
--   [Title](#sdk-pixel-js)
--   [Description](#description)
--   [Install](#install)
--   [Scripts](#scripts)
--   [Maintainers](#maintainers)
--   [License](#license)
--   [Credits](#credits)
+## Documentation
 
-## Description
+Coming Soon!
 
-SDK for User Event Reporting
-
-## Install
-
-Using npm:
-
-```sh
-npm i --save @xylabs/sdk-js
-```
-
-Using yarn:
-
-```sh
-yarn add @xylabs/sdk-js
-```
-
-## Scripts
-
-See [ts-scripts](https://github.com/xylabs/ts-scripts/blob/main/README.md) for
-list of shared scripts.
+Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 
 ## Maintainers
 
--   [Arie Trouw](https://github.com/arietrouw) (<https://arietrouw.com>)
+-   [Arie Trouw](https://github.com/arietrouw) ([arietrouw.com](https://arietrouw.com))
+-   [Matt Jones](https://github.com/jonesmac)
+-   [Joel Carter](https://github.com/JoelBCarter)
+-   [Jordan Trouw](https://github.com/jordantrouw)
 
 ## License
 
-See the [LICENSE](LICENSE) file for license details
+> See the [LICENSE](LICENSE) file for license details
 
 ## Credits
 
-Made with 🔥and ❄️ by [XY Labs](https://xylabs.com)
+[Made with 🔥 and ❄️ by XYLabs](https://xylabs.com)
 
 [logo]: https://cdn.xy.company/img/brand/XYPersistentCompany_Logo_Icon_Colored.svg
 
-[main-build]: https://github.com/xylabs/sdk-pixel-js/actions/workflows/build.yml/badge.svg
-[main-build-link]: https://github.com/xylabs/sdk-pixel-js/actions/workflows/build.yml
-
+[main-build]: https://github.com/xylabs/sdk-js/actions/workflows/build.yml/badge.svg
+[main-build-link]: https://github.com/xylabs/sdk-js/actions/workflows/build.yml
 [npm-badge]: https://img.shields.io/npm/v/@xylabs/pixel.svg
 [npm-link]: https://www.npmjs.com/package/@xylabs/pixel
+[codacy-badge]: https://app.codacy.com/project/badge/Grade/c8e15e14f37741c18cfb47ac7245c698
+[codacy-link]: https://www.codacy.com/gh/xylabs/sdk-js/dashboard?utm_source=github.com&utm_medium=referral&utm_content=xylabs/sdk-js&utm_campaign=Badge_Grade
+[codeclimate-badge]: https://api.codeclimate.com/v1/badges/c5eb068f806f0b047ea7/maintainability
+[codeclimate-link]: https://codeclimate.com/github/xylabs/sdk-js/maintainability
+[snyk-badge]: https://snyk.io/test/github/xylabs/sdk-js/badge.svg?targetFile=package.json
+[snyk-link]: https://snyk.io/test/github/xylabs/sdk-js?targetFile=package.json
 
-[codacy-badge]: https://app.codacy.com/project/badge/Grade/c5405a253a0d489a98b2aa711c3c0824
-[codacy-link]: https://www.codacy.com/gh/xylabs/sdk-pixel-js/dashboard?utm_source=github.com&utm_medium=referral&utm_content=xylabs/sdk-pixel-js&utm_campaign=Badge_Grade
+[npm-downloads-badge]: https://img.shields.io/npm/dw/@xylabs/pixel
+[npm-license-badge]: https://img.shields.io/npm/l/@xylabs/pixel
 
-[codeclimate-badge]: https://api.codeclimate.com/v1/badges/c926665bade6b2493e32/maintainability
-[codeclimate-link]: https://codeclimate.com/github/xylabs/sdk-pixel-js/maintainability
+[jsdelivr-badge]: https://data.jsdelivr.com/v1/package/npm/@xylabs/pixel/badge
+[jsdelivr-link]: https://www.jsdelivr.com/package/npm/@xylabs/pixel
 
-[snyk-badge]: https://snyk.io/test/github/xylabs/sdk-pixel-js/badge.svg?targetFile=package.json
-[snyk-link]: https://snyk.io/test/github/xylabs/sdk-pixel-js?targetFile=package.json
+[socket-badge]: https://socket.dev/api/badge/npm/package/@xylabs/pixel
+[socket-link]: https://socket.dev/npm/package/@xylabs/pixel

@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/assert",
-  "version": "4.13.15",
+  "version": "4.13.16",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "xylabs",

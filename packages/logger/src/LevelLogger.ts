@@ -1,6 +1,8 @@
 import type { EnumKey, EnumValue } from '@xylabs/enum'
 import { Enum } from '@xylabs/enum'
 
+import { NoOpLogFunction } from './NoOpLogFunction.ts'
+
 export type LogFunction = (...data: unknown[]) => void
 
 /**
@@ -35,8 +37,6 @@ export type LogLevelValue = EnumValue<typeof LogLevel>
  * makes it confusing to import
  */
 export type LogLevel = LogLevelValue
-
-export const NoOpLogFunction = (..._data: unknown[]) => void {}
 
 export class LevelLogger implements Logger {
   readonly level: LogLevelValue

@@ -2797,6 +2797,7 @@ __metadata:
     "@xylabs/tsconfig": "npm:^7.0.0-rc.27"
     "@xylabs/tsconfig-dom": "npm:^7.0.0-rc.27"
     typescript: "npm:^5.8.3"
+    vitest: "npm:^3.2.4"
   languageName: unknown
   linkType: soft
 

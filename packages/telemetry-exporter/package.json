@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/telemetry-exporter",
-  "version": "4.13.17",
+  "version": "4.13.18",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "hex",

@@ -8,6 +8,7 @@ export const getSystemInfo = () => {
   try {
     systemInfo = systemInfo || Bowser.getParser(globalThis.navigator.userAgent).getResult()
   } catch (ex) {
+    // eslint-disable-next-line no-console
     console.log(`getSystemInfo Error: ${ex}`)
   }
   return systemInfo

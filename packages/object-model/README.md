@@ -12,7 +12,7 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.15
+Version: 4.13.19
 
 Primary SDK for using XYO Protocol 2.0
 

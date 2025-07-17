@@ -12,7 +12,7 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.15
+Version: 4.13.19
 
 SDK for base code for Api repos that use express and deploy on AWS ECS
 

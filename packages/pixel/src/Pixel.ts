@@ -99,6 +99,7 @@ export class XyPixel {
             // put it back since it failed
             this.queue = [...this.queue, ...events]
           }
+          // eslint-disable-next-line no-console
           console.error(ex)
         }
       }

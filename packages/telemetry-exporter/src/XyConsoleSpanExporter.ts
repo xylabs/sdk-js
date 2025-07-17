@@ -1,5 +1,6 @@
 import type { ReadableSpan } from '@opentelemetry/sdk-trace-base'
 import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-base'
+import type { Logger } from '@xylabs/logger'
 import chalk from 'chalk'
 
 export function spanDurationInMillis(span: ReadableSpan) {
@@ -23,11 +24,13 @@ export class XyConsoleSpanExporter extends ConsoleSpanExporter {
     chalk.red,
   ]
 
+  logger: Logger
   private _logLevel: number
 
-  constructor(logLevel = 0) {
+  constructor(logLevel = 0, logger: Logger = console) {
     super()
     this._logLevel = logLevel
+    this.logger = logger
   }
 
   get logLevel() {
@@ -41,7 +44,7 @@ export class XyConsoleSpanExporter extends ConsoleSpanExporter {
         continue
       }
       const duration = spanDurationInMillis(span)
-      console.log(chalk.grey([
+      this.logger.log(chalk.grey([
         `Span [${span.name}]`,
         this.logColor(spanLevel)(`${duration}ms`),
         `TraceId: ${span.spanContext().traceId}`,

@@ -45,6 +45,12 @@ export default [
     },
   },
   {
+    ignores: ['**/dist', '**/build', '**/docs', "**/*.spec.*"],
+    rules: {
+      'no-console': ['warn'],
+    }
+  },
+  {
     ...importConfig,
     rules: {
       ...importConfig.rules,

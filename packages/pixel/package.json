@@ -22,12 +22,18 @@
   "exports": {
     ".": {
       "types": "./dist/browser/index.d.ts",
+      "source": "./src/index.ts",
       "default": "./dist/browser/index.mjs"
     },
     "./package.json": "./package.json"
   },
-  "module": "dist/browser/index.mjs",
-  "types": "dist/browser/index.d.ts",
+  "module": "./dist/browser/index.mjs",
+  "source": "./src/index.ts",
+  "types": "./dist/browser/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
   "dependencies": {
     "@xylabs/assert": "workspace:^",
     "@xylabs/object": "workspace:^",

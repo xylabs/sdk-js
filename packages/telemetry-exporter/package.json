@@ -29,17 +29,21 @@
   "exports": {
     ".": {
       "types": "./dist/neutral/index.d.ts",
+      "source": "./src/index.ts",
       "default": "./dist/neutral/index.mjs"
     },
     "./package.json": "./package.json"
   },
   "module": "./dist/neutral/index.mjs",
+  "source": "./src/index.ts",
   "types": "./dist/neutral/index.d.ts",
-  "workspaces": [
-    "packages/**/*"
+  "files": [
+    "dist",
+    "src"
   ],
   "dependencies": {
     "@opentelemetry/sdk-trace-base": "^2.0.1",
+    "@xylabs/logger": "workspace:^",
     "chalk": "^5.4.1"
   },
   "devDependencies": {

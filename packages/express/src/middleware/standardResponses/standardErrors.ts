@@ -3,6 +3,7 @@ import type {
   NextFunction, Request, Response,
 } from 'express'
 
+import { getDefaultLogger } from '../../Logger/index.ts'
 import type { ExpressError } from '../../Model/index.ts'
 import type { ApiError } from './jsonApi/index.ts'
 
@@ -11,7 +12,7 @@ export const standardErrors = (err: ExpressError | undefined, req: Request, res:
     next(err)
     return
   }
-  console.error(err.message)
+  getDefaultLogger().error(err.message)
   err.statusCode = err.statusCode ?? 500
 
   const error: ApiError = {

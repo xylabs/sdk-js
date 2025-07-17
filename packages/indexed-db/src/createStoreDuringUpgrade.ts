@@ -38,7 +38,7 @@ export function createStoreDuringUpgrade<DBTypes extends DBSchema | unknown = un
     const indexKeys = Object.keys(key)
     const keys = indexKeys.length === 1 ? indexKeys[0] : indexKeys
     const indexName = buildStandardIndexName({ key, unique }) as IndexNames<DBTypes, StoreNames<DBTypes>>
-    console.log('createIndex', indexName, keys, { multiEntry, unique })
+    logger?.log('createIndex', indexName, keys, { multiEntry, unique })
     store.createIndex(indexName, keys, { multiEntry, unique })
   }
 }

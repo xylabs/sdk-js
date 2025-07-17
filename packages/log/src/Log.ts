@@ -1,5 +1,7 @@
+/* eslint-disable no-console */
 import type { LogConfig } from './model.ts'
 
+/** @deprecated use @xylabs/logger instead */
 export class Log {
   constructor(protected config: LogConfig) {}
 

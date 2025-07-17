@@ -2642,6 +2642,7 @@ __metadata:
   dependencies:
     "@opentelemetry/api": "npm:^1.9.0"
     "@opentelemetry/sdk-trace-base": "npm:^2.0.1"
+    "@xylabs/logger": "workspace:^"
     "@xylabs/ts-scripts-yarn3": "npm:^7.0.0-rc.27"
     "@xylabs/tsconfig": "npm:^7.0.0-rc.27"
     chalk: "npm:^5.4.1"

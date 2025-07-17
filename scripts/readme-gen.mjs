@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* eslint-disable no-console */
 
 // generate-readmes.mjs
 import { readFile, writeFile } from 'node:fs/promises'

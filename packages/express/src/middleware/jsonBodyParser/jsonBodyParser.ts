@@ -2,6 +2,8 @@ import type { OptionsJson } from 'body-parser'
 import bodyParser from 'body-parser'
 import type { NextHandleFunction } from 'connect'
 
+import { getDefaultLogger } from '../../Logger/index.ts'
+
 /**
  * The default maximum request body size for the JSON Body Parser
  */
@@ -46,7 +48,7 @@ export const getJsonBodyParser = (options: OptionsJson = DefaultJsonBodyParserOp
       parser(req, res, next)
     } catch (ex) {
       const error = ex as Error
-      console.log(`bodyParser failed [${error?.name}]: ${error?.message}`)
+      getDefaultLogger().log(`bodyParser failed [${error?.name}]: ${error?.message}`)
     }
   }
 }

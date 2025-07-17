@@ -12,7 +12,7 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.15
+Version: 4.13.19
 
 Base functionality used throughout XYO TypeScript/JavaScript libraries that access Mongo DB
 

@@ -12,7 +12,6 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: {{version}}
 
 {{description}}
 

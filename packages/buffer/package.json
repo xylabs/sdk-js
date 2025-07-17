@@ -30,22 +30,29 @@
     ".": {
       "browser": {
         "types": "./dist/browser/index.d.ts",
+        "source": "./src/browser/index.ts",
         "default": "./dist/browser/index.mjs"
       },
       "types": "./dist/node/index.d.ts",
+      "source": "./src/node/index.ts",
       "default": "./dist/node/index.mjs"
     },
     "./package.json": "./package.json"
   },
   "module": "./dist/node/index.mjs",
+  "source": "./src/node/index.ts",
   "types": "./dist/node/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
   "dependencies": {
     "buffer": "^6.0.3"
   },
   "devDependencies": {
     "@types/node": "^24.0.14",
-    "@xylabs/ts-scripts-yarn3": "^7.0.0-rc.27",
-    "@xylabs/tsconfig": "^7.0.0-rc.27",
+    "@xylabs/ts-scripts-yarn3": "^7.0.0",
+    "@xylabs/tsconfig": "^7.0.0",
     "typescript": "^5.8.3"
   },
   "engines": {

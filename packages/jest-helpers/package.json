@@ -44,8 +44,8 @@
   "devDependencies": {
     "@types/jest": "^30.0.0",
     "@types/node": "^24.0.14",
-    "@xylabs/ts-scripts-yarn3": "^7.0.0-rc.27",
-    "@xylabs/tsconfig": "^7.0.0-rc.27",
+    "@xylabs/ts-scripts-yarn3": "^7.0.0",
+    "@xylabs/tsconfig": "^7.0.0",
     "typescript": "^5.8.3"
   },
   "peerDependencies": {

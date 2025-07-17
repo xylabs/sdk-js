@@ -30,15 +30,22 @@
     ".": {
       "node": {
         "types": "./dist/node/node/index.d.ts",
+        "source": "./src/node/index.ts",
         "default": "./dist/node/index.mjs"
       },
       "types": "./dist/node/node/index.d.ts",
+      "source": "./src/node/index.ts",
       "default": "./dist/node/index.mjs"
     },
     "./package.json": "./package.json"
   },
   "module": "./dist/node/index.mjs",
+  "source": "./src/node/index.ts",
   "types": "./dist/node/node/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
   "dependencies": {
     "@xylabs/delay": "workspace:^",
     "@xylabs/logger": "workspace:^",
@@ -46,8 +53,8 @@
     "@xylabs/typeof": "workspace:^"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^7.0.0-rc.27",
-    "@xylabs/tsconfig-dom": "^7.0.0-rc.27",
+    "@xylabs/ts-scripts-yarn3": "^7.0.0",
+    "@xylabs/tsconfig-dom": "^7.0.0",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"
   },

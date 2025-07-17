@@ -1,6 +1,0 @@
-ignores: [
-  "@types/node",
-  "@xylabs/tsconfig",
-  "@xylabs/tsconfig",
-  "@xylabs/ts-scripts-yarn3"
-]

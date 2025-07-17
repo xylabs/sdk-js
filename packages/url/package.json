@@ -30,26 +30,34 @@
     ".": {
       "browser": {
         "types": "./dist/browser/index-browser.d.ts",
+        "source": "./src/index-browser.ts",
         "default": "./dist/browser/index-browser.mjs"
       },
       "neutral": {
         "types": "./dist/neutral/index-neutral.d.ts",
+        "source": "./src/index-neutral.ts",
         "default": "./dist/neutral/index-neutral.mjs"
       },
       "node": {
         "types": "./dist/node/index-node.d.ts",
+        "source": "./src/index-node.ts",
         "default": "./dist/node/index-node.mjs"
       }
     },
     "./package.json": "./package.json"
   },
   "module": "./dist/neutral/index-neutral.mjs",
+  "source": "./src/index-neutral.ts",
   "types": "./dist/neutral/index-neutral.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
   "devDependencies": {
     "@types/node": "^24.0.14",
-    "@xylabs/ts-scripts-yarn3": "^7.0.0-rc.27",
-    "@xylabs/tsconfig": "^7.0.0-rc.27",
-    "@xylabs/tsconfig-dom": "^7.0.0-rc.27",
+    "@xylabs/ts-scripts-yarn3": "^7.0.0",
+    "@xylabs/tsconfig": "^7.0.0",
+    "@xylabs/tsconfig-dom": "^7.0.0",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"
   },

@@ -29,19 +29,19 @@
   "exports": {
     ".": {
       "browser": {
-        "types": "./dist/browser/index.d.ts",
+        "types": "./dist/browser/index-browser.d.ts",
         "source": "./src/browser/index.ts",
-        "default": "./dist/browser/index.mjs"
+        "default": "./dist/browser/index-browser.mjs"
       },
-      "types": "./dist/node/index.d.ts",
+      "types": "./dist/node/index-node.d.ts",
       "source": "./src/node/index.ts",
-      "default": "./dist/node/index.mjs"
+      "default": "./dist/node/index-node.mjs"
     },
     "./package.json": "./package.json"
   },
-  "module": "./dist/node/index.mjs",
+  "module": "./dist/node/index-node.mjs",
   "source": "./src/node/index.ts",
-  "types": "./dist/node/index.d.ts",
+  "types": "./dist/node/index-node.d.ts",
   "files": [
     "dist",
     "src"

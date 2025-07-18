@@ -11,11 +11,16 @@ import { fileURLToPath } from 'node:url'
  * Generates inline TypeDoc markdown documentation
  * @param {string} packageLocation - The package location path
  * @param {string} sourceGlob - The glob pattern for source files
- * @returns {Promise<string>} A markdown string containing API documentation
+ * @returns {Promise<string>} A markdown string containing Reference
  */
 export async function generateTypeDoc(packageLocation, entryPoints) {
   const __dirname = path.dirname(fileURLToPath(import.meta.url))
   const tempDir = path.join(__dirname, '.temp-typedoc')
+
+  console.log(`Generating TypeDoc for package at: ${packageLocation}`)
+  for (const ep of entryPoints) {
+    console.log(`  - Entry point: ${path.resolve(packageLocation, ep)}`)
+  }
 
   try {
     // Create temp directory if it doesn't exist
@@ -25,7 +30,7 @@ export async function generateTypeDoc(packageLocation, entryPoints) {
 
     // Create a minimal TypeDoc config for markdown generation
     const typedocConfig = {
-      entryPoints: entryPoints.map(ep => path.resolve(ep)),
+      entryPoints: entryPoints.map(ep => path.resolve(packageLocation, ep)),
       entryPointStrategy: 'expand',
       out: tempDir,
       plugin: ['typedoc-plugin-markdown'],
@@ -57,14 +62,14 @@ export async function generateTypeDoc(packageLocation, entryPoints) {
       })
     } catch (error) {
       console.error(`TypeDoc error: ${error.stderr ? error.stderr.toString() : error.message}`)
-      return '## API Documentation\n\nAPI documentation generation failed.'
+      return '## Reference\n\nReference generation failed.'
     }
 
     // Combine all markdown files into a single document
     return consolidateMarkdown(tempDir)
   } catch (error) {
     console.warn(`⚠️ Error generating TypeDoc for ${packageLocation}:`, error.message)
-    return '## API Documentation\n\nAPI documentation generation failed.'
+    return '## Reference\n\nReference generation failed.'
   } finally {
     // Clean up the temp directory
     try {
@@ -82,7 +87,7 @@ export async function generateTypeDoc(packageLocation, entryPoints) {
  */
 function consolidateMarkdown(tempDir) {
   // Start with the main README content
-  let consolidated = '## API Documentation\n\n'
+  let consolidated = '## Reference\n\n'
 
   // Read main README.md first (if it exists)
   const mainReadmePath = path.join(tempDir, 'README.md')

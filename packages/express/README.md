@@ -15,7 +15,7 @@
 
 SDK for base code for Api repos that use express and deploy on AWS ECS
 
-## API Documentation
+## Reference
 
 **@xylabs/express**
 

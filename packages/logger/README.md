@@ -15,7 +15,7 @@
 
 XYLabs Logger Library
 
-## API Documentation
+## Reference
 
 **@xylabs/logger**
 

@@ -15,7 +15,7 @@
 
 Base functionality used throughout XYO TypeScript/JavaScript libraries that access Mongo DB
 
-## API Documentation
+## Reference
 
 **@xylabs/mongo**
 

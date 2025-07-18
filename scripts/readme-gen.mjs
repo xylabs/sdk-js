@@ -7,7 +7,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { yarnWorkspaces } from '@xylabs/ts-scripts-yarn3'
 import { generateTypeDoc } from './generate-typedoc.mjs'
-import { getPackageEntryPoints } from './get-package-entrypoints.mjs'
+// import { getPackageEntryPoints } from './get-package-entrypoints.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const templatePath = path.join(__dirname, 'README.template.md')
@@ -25,7 +25,7 @@ async function main() {
     try {
       const pkgJsonPath = path.join(location, 'package.json')
       const pkg = JSON.parse(await readFile(pkgJsonPath, 'utf8'))
-      const typedoc = await generateTypeDoc(location, await getPackageEntryPoints(location))
+      const typedoc = await generateTypeDoc(location, ['src/index*.ts'])
       const readmeContent = fillTemplate(template, { ...pkg, typedoc })
       await writeFile(path.join(location, 'README.md'), readmeContent)
       console.log(`✅ Created README.md for ${pkg.name}`)

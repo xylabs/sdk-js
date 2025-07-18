@@ -15,7 +15,7 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## API Documentation
+## Reference
 
 **@xylabs/object**
 

@@ -15,7 +15,7 @@
 
 Event Client for xylabs ESB
 
-## API Documentation
+## Reference
 
 **@xylabs/pixel**
 

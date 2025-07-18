@@ -15,7 +15,7 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## API Documentation
+## Reference
 
 **@xylabs/buffer**
 
@@ -23,10 +23,10 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Modules
 
-- [browser](#browser/README)
-- [node](#node/README)
+- [index-browser](#index-browser/README)
+- [index-node](#index-node/README)
 
-### browser
+### index-browser
 
   ### functions
 
@@ -44,7 +44,7 @@ function bufferPolyfill(): void;
 
 `void`
 
-### node
+### index-node
 
   ### functions
 

@@ -15,16 +15,11 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## API Documentation
+## Reference
 
 **@xylabs/assert**
 
 ***
-
-## Type Aliases
-
-- [AssertExMessageFunc](#type-aliases/AssertExMessageFunc)
-- [AssertExErrorFunc](#type-aliases/AssertExErrorFunc)
 
 ## Functions
 
@@ -39,13 +34,16 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ***
 
+Implementation of assertDefinedEx that handles all overloads.
+
 ## Call Signature
 
 ```ts
 function assertDefinedEx<T>(expr, messageFunc?): T;
 ```
 
-Intended for defined checks for variables
+Asserts that a value is defined (not undefined) and returns the value.
+Throws an error if the value is undefined.
 
 ### Type Parameters
 
@@ -53,27 +51,43 @@ Intended for defined checks for variables
 
 `T`
 
+The type of value to check
+
 ### Parameters
 
 ### expr
 
-Expression to be evaluated for truthiness
+Expression to be evaluated for being defined
 
 `undefined` | `T`
 
 ### messageFunc?
 
-[`AssertExMessageFunc`](#../type-aliases/AssertExMessageFunc)\<`T`\>
+`AssertExMessageFunc`\<`T`\>
+
+Function that returns a message for the error if expression is undefined
 
 ### Returns
 
 `T`
 
-Value of expression
+The value of the expression (guaranteed to be defined)
 
 ### Throws
 
-AssertExError
+Error with the message returned by messageFunc
+
+### Example
+
+```typescript
+// Simple usage with a message function
+const value = assertDefinedEx(possiblyUndefined, () => 'Value must be defined')
+
+// Using with type narrowing
+const config: Config | undefined = loadConfig()
+const safeConfig = assertDefinedEx(config, () => 'Config failed to load')
+// safeConfig is now type Config (not Config | undefined)
+```
 
 ## Call Signature
 
@@ -81,7 +95,8 @@ AssertExError
 function assertDefinedEx<T, R>(expr, errorFunc?): T;
 ```
 
-Intended for defined checks for variables
+Asserts that a value is defined (not undefined) and returns the value.
+Throws a custom error if the value is undefined.
 
 ### Type Parameters
 
@@ -89,31 +104,44 @@ Intended for defined checks for variables
 
 `T`
 
+The type of value to check
+
 ### R
 
 `R` *extends* `Error`
+
+The type of error to throw
 
 ### Parameters
 
 ### expr
 
-Expression to be evaluated for truthiness
+Expression to be evaluated for being defined
 
 `undefined` | `T`
 
 ### errorFunc?
 
-[`AssertExErrorFunc`](#../type-aliases/AssertExErrorFunc)\<`T`, `R`\>
+`AssertExErrorFunc`\<`T`, `R`\>
+
+Function that returns a custom error instance if expression is undefined
 
 ### Returns
 
 `T`
 
-Value of expression
+The value of the expression (guaranteed to be defined)
 
 ### Throws
 
-AssertExError
+Custom error returned by errorFunc
+
+### Example
+
+```typescript
+// Using with a custom error
+const user = assertDefinedEx(getUser(), () => new UserNotFoundError('User not found'))
+```
 
 ## Call Signature
 
@@ -121,15 +149,22 @@ AssertExError
 function assertDefinedEx<T>(expr): T;
 ```
 
+Asserts that a value is defined (not undefined) and returns the value.
+Throws an error if the value is undefined.
+
 ### Type Parameters
 
 ### T
 
 `T`
 
+The type of value to check
+
 ### Parameters
 
 ### expr
+
+Expression to be evaluated for being defined
 
 `undefined` | `T`
 
@@ -137,9 +172,15 @@ function assertDefinedEx<T>(expr): T;
 
 `T`
 
+The value of the expression (guaranteed to be defined)
+
 ### Deprecated
 
-- passing a message will soon be required
+Use overload with message function instead - passing a message will soon be required
+
+### Throws
+
+Error with a generic message
 
 ## Call Signature
 
@@ -147,15 +188,22 @@ function assertDefinedEx<T>(expr): T;
 function assertDefinedEx<T>(expr, message?): T;
 ```
 
+Asserts that a value is defined (not undefined) and returns the value.
+Throws an error with the provided message if the value is undefined.
+
 ### Type Parameters
 
 ### T
 
 `T`
 
+The type of value to check
+
 ### Parameters
 
 ### expr
+
+Expression to be evaluated for being defined
 
 `undefined` | `T`
 
@@ -163,13 +211,21 @@ function assertDefinedEx<T>(expr, message?): T;
 
 `string`
 
+Error message if expression is undefined
+
 ### Returns
 
 `T`
 
+The value of the expression (guaranteed to be defined)
+
 ### Deprecated
 
-- replace string with () => string
+Replace string with () => string for consistency
+
+### Throws
+
+Error with the provided message
 
   ### <a id="assertEx"></a>assertEx
 
@@ -177,19 +233,24 @@ function assertDefinedEx<T>(expr, message?): T;
 
 ***
 
+Implementation of assertEx that handles all overloads.
+
 ## Call Signature
 
 ```ts
 function assertEx<T>(expr, messageFunc?): T;
 ```
 
-Intended for simple truthiness checks for variables
+Asserts that an expression is truthy and returns the value.
+Throws an error if the expression is falsy.
 
 ### Type Parameters
 
 ### T
 
 `T`
+
+The type of value to check
 
 ### Parameters
 
@@ -201,17 +262,31 @@ Expression to be evaluated for truthiness
 
 ### messageFunc?
 
-[`AssertExMessageFunc`](#../type-aliases/AssertExMessageFunc)\<`T`\>
+`AssertExMessageFunc`\<`T`\>
+
+Function that returns a message for the error if expression is falsy
 
 ### Returns
 
 `T`
 
-Value of expression
+The value of the expression (guaranteed to be truthy)
 
 ### Throws
 
-AssertExError
+Error with the message returned by messageFunc
+
+### Example
+
+```typescript
+// Simple usage with a message function
+const value = assertEx(possiblyFalsy, () => 'Value must be truthy')
+
+// Using with type narrowing
+const config: Config | null = loadConfig()
+const safeConfig = assertEx(config, () => 'Config failed to load')
+// safeConfig is now type Config (not Config | null)
+```
 
 ## Call Signature
 
@@ -219,7 +294,8 @@ AssertExError
 function assertEx<T, R>(expr, errorFunc?): T;
 ```
 
-Intended for simple truthiness checks for variables
+Asserts that an expression is truthy and returns the value.
+Throws a custom error if the expression is falsy.
 
 ### Type Parameters
 
@@ -227,9 +303,13 @@ Intended for simple truthiness checks for variables
 
 `T`
 
+The type of value to check
+
 ### R
 
 `R` *extends* `Error`
+
+The type of error to throw
 
 ### Parameters
 
@@ -241,17 +321,26 @@ Expression to be evaluated for truthiness
 
 ### errorFunc?
 
-[`AssertExErrorFunc`](#../type-aliases/AssertExErrorFunc)\<`T`, `R`\>
+`AssertExErrorFunc`\<`T`, `R`\>
+
+Function that returns a custom error instance if expression is falsy
 
 ### Returns
 
 `T`
 
-Value of expression
+The value of the expression (guaranteed to be truthy)
 
 ### Throws
 
-AssertExError
+Custom error returned by errorFunc
+
+### Example
+
+```typescript
+// Using with a custom error
+const user = assertEx(getUser(), () => new UserNotFoundError('User not found'))
+```
 
 ## Call Signature
 
@@ -259,15 +348,22 @@ AssertExError
 function assertEx<T>(expr): T;
 ```
 
+Asserts that an expression is truthy and returns the value.
+Throws an error if the expression is falsy.
+
 ### Type Parameters
 
 ### T
 
 `T`
 
+The type of value to check
+
 ### Parameters
 
 ### expr
+
+Expression to be evaluated for truthiness
 
 `undefined` | `null` | `T`
 
@@ -275,9 +371,15 @@ function assertEx<T>(expr): T;
 
 `T`
 
+The value of the expression (guaranteed to be truthy)
+
 ### Deprecated
 
-- passing a message will soon be required
+Use overload with message function instead - passing a message will soon be required
+
+### Throws
+
+Error with a generic message
 
 ## Call Signature
 
@@ -285,15 +387,22 @@ function assertEx<T>(expr): T;
 function assertEx<T>(expr, message?): T;
 ```
 
+Asserts that an expression is truthy and returns the value.
+Throws an error with the provided message if the expression is falsy.
+
 ### Type Parameters
 
 ### T
 
 `T`
 
+The type of value to check
+
 ### Parameters
 
 ### expr
+
+Expression to be evaluated for truthiness
 
 `undefined` | `null` | `T`
 
@@ -301,71 +410,21 @@ function assertEx<T>(expr, message?): T;
 
 `string`
 
+Error message if expression is falsy
+
 ### Returns
 
 `T`
 
+The value of the expression (guaranteed to be truthy)
+
 ### Deprecated
 
-- replace string with () => string
+Replace string with () => string for consistency
 
-### type-aliases
+### Throws
 
-  ### <a id="AssertExErrorFunc"></a>AssertExErrorFunc
-
-[**@xylabs/assert**](#../README)
-
-***
-
-```ts
-type AssertExErrorFunc<T, R> = (value?) => R;
-```
-
-## Type Parameters
-
-### T
-
-`T`
-
-### R
-
-`R` *extends* `Error`
-
-## Parameters
-
-### value?
-
-`T` | `null`
-
-## Returns
-
-`R`
-
-  ### <a id="AssertExMessageFunc"></a>AssertExMessageFunc
-
-[**@xylabs/assert**](#../README)
-
-***
-
-```ts
-type AssertExMessageFunc<T> = (value?) => string;
-```
-
-## Type Parameters
-
-### T
-
-`T`
-
-## Parameters
-
-### value?
-
-`T` | `null`
-
-## Returns
-
-`string`
+Error with the provided message
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

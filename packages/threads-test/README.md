@@ -15,7 +15,7 @@
 
 Web workers & worker threads as simple as a function call
 
-## API Documentation
+## Reference
 
 **@xylabs/threads-test**
 

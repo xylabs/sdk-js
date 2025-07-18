@@ -15,93 +15,9 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## API Documentation
+## Reference
 
-**@xylabs/platform**
-
-***
-
-## Modules
-
-- [browser](#browser/README)
-- [node](#node/README)
-
-### browser
-
-  ### functions
-
-    ### <a id="isBrowser"></a>isBrowser
-
-[**@xylabs/platform**](#../../README)
-
-***
-
-```ts
-function isBrowser(): boolean;
-```
-
-## Returns
-
-`boolean`
-
-    ### <a id="isWebworker"></a>isWebworker
-
-[**@xylabs/platform**](#../../README)
-
-***
-
-```ts
-function isWebworker(): boolean;
-```
-
-## Returns
-
-`boolean`
-
-  ### variables
-
-    ### <a id="subtle"></a>subtle
-
-[**@xylabs/platform**](#../../README)
-
-***
-
-```ts
-const subtle: SubtleCrypto;
-```
-
-### node
-
-  ### functions
-
-    ### <a id="isBrowser"></a>isBrowser
-
-[**@xylabs/platform**](#../../README)
-
-***
-
-```ts
-function isBrowser(): boolean;
-```
-
-## Returns
-
-`boolean`
-
-    ### <a id="isWebworker"></a>isWebworker
-
-[**@xylabs/platform**](#../../README)
-
-***
-
-```ts
-function isWebworker(): boolean;
-```
-
-## Returns
-
-`boolean`
-
+Reference generation failed.
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

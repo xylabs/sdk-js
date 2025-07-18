@@ -12,13 +12,140 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.19
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## Documentation
+## API Documentation
 
-Coming Soon!
+**@xylabs/jest-helpers**
+
+***
+
+## Functions
+
+- [describeIf](#functions/describeIf)
+- [itIf](#functions/itIf)
+- [tags](#functions/tags)
+- [testIf](#functions/testIf)
+
+### functions
+
+  ### <a id="describeIf"></a>describeIf
+
+[**@xylabs/jest-helpers**](#../README)
+
+***
+
+```ts
+function describeIf<T>(expr?): any;
+```
+
+Conditionally runs or skips the describe
+
+## Type Parameters
+
+### T
+
+`T`
+
+## Parameters
+
+### expr?
+
+The condition to evaluate
+
+`null` | `T`
+
+## Returns
+
+`any`
+
+If the condition is true, describe, otherwise skips
+
+  ### <a id="itIf"></a>itIf
+
+[**@xylabs/jest-helpers**](#../README)
+
+***
+
+```ts
+function itIf<T>(expr?): any;
+```
+
+Conditionally runs or skips the it
+
+## Type Parameters
+
+### T
+
+`T`
+
+## Parameters
+
+### expr?
+
+The condition to evaluate
+
+`null` | `T`
+
+## Returns
+
+`any`
+
+If the condition is true, it, otherwise skips
+
+  ### <a id="tags"></a>tags
+
+[**@xylabs/jest-helpers**](#../README)
+
+***
+
+```ts
+function tags(...tagLabels): Record<string, any>;
+```
+
+## Parameters
+
+### tagLabels
+
+...`string`[]
+
+## Returns
+
+`Record`\<`string`, `any`\>
+
+  ### <a id="testIf"></a>testIf
+
+[**@xylabs/jest-helpers**](#../README)
+
+***
+
+```ts
+function testIf<T>(expr?): any;
+```
+
+Conditionally runs or skips the test
+
+## Type Parameters
+
+### T
+
+`T`
+
+## Parameters
+
+### expr?
+
+The condition to evaluate
+
+`null` | `T`
+
+## Returns
+
+`any`
+
+If the condition is true, test, otherwise skips
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

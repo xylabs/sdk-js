@@ -12,13 +12,301 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.19
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## Documentation
+## API Documentation
 
-Coming Soon!
+**@xylabs/eth-address**
+
+***
+
+## Classes
+
+- [EthAddress](#classes/EthAddress)
+
+## Functions
+
+- [isEthAddress](#functions/isEthAddress)
+- [ellipsize](#functions/ellipsize)
+- [padHex](#functions/padHex)
+
+### classes
+
+  ### <a id="EthAddress"></a>EthAddress
+
+[**@xylabs/eth-address**](#../README)
+
+***
+
+## Properties
+
+### type
+
+```ts
+readonly static type: "EthAddress" = 'EthAddress';
+```
+
+***
+
+### type
+
+```ts
+type: string = EthAddress.type;
+```
+
+## Methods
+
+### fromString()
+
+```ts
+static fromString(value?, base?): undefined | EthAddress;
+```
+
+### Parameters
+
+#### value?
+
+`string`
+
+#### base?
+
+`number` = `16`
+
+### Returns
+
+`undefined` \| `EthAddress`
+
+***
+
+### parse()
+
+```ts
+static parse(value, base?): undefined | EthAddress;
+```
+
+### Parameters
+
+#### value
+
+`unknown`
+
+#### base?
+
+`number`
+
+### Returns
+
+`undefined` \| `EthAddress`
+
+***
+
+### validate()
+
+```ts
+static validate(address): boolean;
+```
+
+### Parameters
+
+#### address
+
+`string`
+
+### Returns
+
+`boolean`
+
+***
+
+### equals()
+
+```ts
+equals(address?): boolean;
+```
+
+### Parameters
+
+#### address?
+
+`null` | `string` | `EthAddress`
+
+### Returns
+
+`boolean`
+
+***
+
+### toBigNumber()
+
+```ts
+toBigNumber(): bigint;
+```
+
+### Returns
+
+`bigint`
+
+***
+
+### toHex()
+
+```ts
+toHex(): string;
+```
+
+### Returns
+
+`string`
+
+***
+
+### toJSON()
+
+```ts
+toJSON(): string;
+```
+
+### Returns
+
+`string`
+
+***
+
+### toLowerCaseString()
+
+```ts
+toLowerCaseString(): string;
+```
+
+### Returns
+
+`string`
+
+***
+
+### toShortString()
+
+```ts
+toShortString(length): string;
+```
+
+### Parameters
+
+#### length
+
+`number` = `2`
+
+### Returns
+
+`string`
+
+***
+
+### toString()
+
+```ts
+toString(checksum?, chainId?): string;
+```
+
+### Parameters
+
+#### checksum?
+
+`boolean`
+
+#### chainId?
+
+`string`
+
+### Returns
+
+`string`
+
+***
+
+### validate()
+
+```ts
+validate(): boolean;
+```
+
+### Returns
+
+`boolean`
+
+### functions
+
+  ### <a id="ellipsize"></a>ellipsize
+
+[**@xylabs/eth-address**](#../README)
+
+***
+
+```ts
+function ellipsize(value, length): string;
+```
+
+## Parameters
+
+### value
+
+`string`
+
+### length
+
+`number` = `2`
+
+## Returns
+
+`string`
+
+  ### <a id="isEthAddress"></a>isEthAddress
+
+[**@xylabs/eth-address**](#../README)
+
+***
+
+```ts
+function isEthAddress(obj): boolean;
+```
+
+## Parameters
+
+### obj
+
+### type
+
+`string`
+
+## Returns
+
+`boolean`
+
+  ### <a id="padHex"></a>padHex
+
+[**@xylabs/eth-address**](#../README)
+
+***
+
+```ts
+function padHex(hex, byteCount): string;
+```
+
+## Parameters
+
+### hex
+
+`string`
+
+### byteCount
+
+`number` = `0`
+
+## Returns
+
+`string`
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

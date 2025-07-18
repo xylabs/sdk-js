@@ -12,13 +12,16 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.19
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## Documentation
+## API Documentation
 
-Coming Soon!
+**@xylabs/bignumber**
+
+***
+
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

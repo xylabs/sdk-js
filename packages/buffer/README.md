@@ -12,13 +12,56 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.19
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## Documentation
+## API Documentation
 
-Coming Soon!
+**@xylabs/buffer**
+
+***
+
+## Modules
+
+- [browser](#browser/README)
+- [node](#node/README)
+
+### browser
+
+  ### functions
+
+    ### <a id="bufferPolyfill"></a>bufferPolyfill
+
+[**@xylabs/buffer**](#../../README)
+
+***
+
+```ts
+function bufferPolyfill(): void;
+```
+
+## Returns
+
+`void`
+
+### node
+
+  ### functions
+
+    ### <a id="bufferPolyfill"></a>bufferPolyfill
+
+[**@xylabs/buffer**](#../../README)
+
+***
+
+```ts
+function bufferPolyfill(): void;
+```
+
+## Returns
+
+`void`
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

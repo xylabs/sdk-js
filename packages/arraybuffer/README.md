@@ -12,13 +12,263 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.19
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## Documentation
+## API Documentation
 
-Coming Soon!
+**@xylabs/arraybuffer**
+
+***
+
+## Functions
+
+- [equalArrayBuffers](#functions/equalArrayBuffers)
+- [isArrayBuffer](#functions/isArrayBuffer)
+- [isArrayBufferLike](#functions/isArrayBufferLike)
+- [toArrayBuffer](#functions/toArrayBuffer)
+- [toUint8Array](#functions/toUint8Array)
+
+### functions
+
+  ### <a id="equalArrayBuffers"></a>equalArrayBuffers
+
+[**@xylabs/arraybuffer**](#../README)
+
+***
+
+```ts
+function equalArrayBuffers(a1, a2): boolean;
+```
+
+## Parameters
+
+### a1
+
+`ArrayBufferLike`
+
+### a2
+
+`ArrayBufferLike`
+
+## Returns
+
+`boolean`
+
+  ### <a id="isArrayBuffer"></a>isArrayBuffer
+
+[**@xylabs/arraybuffer**](#../README)
+
+***
+
+```ts
+function isArrayBuffer(value): value is ArrayBuffer;
+```
+
+## Parameters
+
+### value
+
+`unknown`
+
+## Returns
+
+`value is ArrayBuffer`
+
+  ### <a id="isArrayBufferLike"></a>isArrayBufferLike
+
+[**@xylabs/arraybuffer**](#../README)
+
+***
+
+```ts
+function isArrayBufferLike(value): value is ArrayBufferLike;
+```
+
+## Parameters
+
+### value
+
+`unknown`
+
+## Returns
+
+`value is ArrayBufferLike`
+
+  ### <a id="toArrayBuffer"></a>toArrayBuffer
+
+[**@xylabs/arraybuffer**](#../README)
+
+***
+
+## Call Signature
+
+```ts
+function toArrayBuffer(
+   value, 
+   padLength?, 
+   base?): undefined;
+```
+
+### Parameters
+
+### value
+
+`undefined`
+
+### padLength?
+
+`number`
+
+### base?
+
+`number`
+
+### Returns
+
+`undefined`
+
+## Call Signature
+
+```ts
+function toArrayBuffer(
+   value, 
+   padLength?, 
+   base?): ArrayBufferLike;
+```
+
+### Parameters
+
+### value
+
+`string` | `bigint` | `ArrayBufferLike`
+
+### padLength?
+
+`number`
+
+### base?
+
+`number`
+
+### Returns
+
+`ArrayBufferLike`
+
+## Call Signature
+
+```ts
+function toArrayBuffer(
+   value, 
+   padLength?, 
+   base?): undefined | ArrayBufferLike;
+```
+
+### Parameters
+
+### value
+
+`undefined` | `string` | `bigint` | `ArrayBufferLike`
+
+### padLength?
+
+`number`
+
+### base?
+
+`number`
+
+### Returns
+
+`undefined` \| `ArrayBufferLike`
+
+  ### <a id="toUint8Array"></a>toUint8Array
+
+[**@xylabs/arraybuffer**](#../README)
+
+***
+
+## Call Signature
+
+```ts
+function toUint8Array(
+   value, 
+   padLength?, 
+   base?): undefined;
+```
+
+### Parameters
+
+### value
+
+`undefined`
+
+### padLength?
+
+`number`
+
+### base?
+
+`number`
+
+### Returns
+
+`undefined`
+
+## Call Signature
+
+```ts
+function toUint8Array(
+   value, 
+   padLength?, 
+   base?): Uint8Array;
+```
+
+### Parameters
+
+### value
+
+`string` | `bigint` | `ArrayBufferLike`
+
+### padLength?
+
+`number`
+
+### base?
+
+`number`
+
+### Returns
+
+`Uint8Array`
+
+## Call Signature
+
+```ts
+function toUint8Array(
+   value, 
+   padLength?, 
+base?): undefined | Uint8Array<ArrayBufferLike>;
+```
+
+### Parameters
+
+### value
+
+`undefined` | `string` | `bigint` | `ArrayBufferLike`
+
+### padLength?
+
+`number`
+
+### base?
+
+`number`
+
+### Returns
+
+`undefined` \| `Uint8Array`\<`ArrayBufferLike`\>
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

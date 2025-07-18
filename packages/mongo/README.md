@@ -12,13 +12,518 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.19
 
 Base functionality used throughout XYO TypeScript/JavaScript libraries that access Mongo DB
 
-## Documentation
+## API Documentation
 
-Coming Soon!
+**@xylabs/mongo**
+
+***
+
+## Classes
+
+- [BaseMongoSdk](#classes/BaseMongoSdk)
+- [MongoClientWrapper](#classes/MongoClientWrapper)
+
+## Interfaces
+
+- [BaseMongoSdkPublicConfig](#interfaces/BaseMongoSdkPublicConfig)
+- [BaseMongoSdkPrivateConfig](#interfaces/BaseMongoSdkPrivateConfig)
+
+## Type Aliases
+
+- [BaseMongoSdkConfig](#type-aliases/BaseMongoSdkConfig)
+
+### classes
+
+  ### <a id="BaseMongoSdk"></a>BaseMongoSdk
+
+[**@xylabs/mongo**](#../README)
+
+***
+
+## Type Parameters
+
+### T
+
+`T` *extends* `Document`
+
+## Constructors
+
+### Constructor
+
+```ts
+new BaseMongoSdk<T>(config): BaseMongoSdk<T>;
+```
+
+### Parameters
+
+#### config
+
+[`BaseMongoSdkConfig`](#../type-aliases/BaseMongoSdkConfig)
+
+### Returns
+
+`BaseMongoSdk`\<`T`\>
+
+## Properties
+
+### config
+
+```ts
+config: BaseMongoSdkConfig;
+```
+
+## Accessors
+
+### uri
+
+### Get Signature
+
+```ts
+get uri(): string;
+```
+
+#### Returns
+
+`string`
+
+## Methods
+
+### deleteMany()
+
+```ts
+deleteMany(filter): Promise<DeleteResult>;
+```
+
+### Parameters
+
+#### filter
+
+`Filter`\<`T`\>
+
+### Returns
+
+`Promise`\<`DeleteResult`\>
+
+***
+
+### deleteOne()
+
+```ts
+deleteOne(filter): Promise<DeleteResult>;
+```
+
+### Parameters
+
+#### filter
+
+`Filter`\<`T`\>
+
+### Returns
+
+`Promise`\<`DeleteResult`\>
+
+***
+
+### find()
+
+```ts
+find(filter): Promise<FindCursor<WithId<T>>>;
+```
+
+### Parameters
+
+#### filter
+
+`Filter`\<`T`\>
+
+### Returns
+
+`Promise`\<`FindCursor`\<`WithId`\<`T`\>\>\>
+
+***
+
+### findOne()
+
+```ts
+findOne(filter): Promise<null | WithId<T>>;
+```
+
+### Parameters
+
+#### filter
+
+`Filter`\<`T`\>
+
+### Returns
+
+`Promise`\<`null` \| `WithId`\<`T`\>\>
+
+***
+
+### insertMany()
+
+```ts
+insertMany(items, options?): Promise<InsertManyResult<T>>;
+```
+
+### Parameters
+
+#### items
+
+`OptionalUnlessRequiredId`\<`T`\>[]
+
+#### options?
+
+`BulkWriteOptions`
+
+### Returns
+
+`Promise`\<`InsertManyResult`\<`T`\>\>
+
+***
+
+### insertOne()
+
+```ts
+insertOne(item, options?): Promise<InsertOneResult<T>>;
+```
+
+### Parameters
+
+#### item
+
+`OptionalUnlessRequiredId`\<`T`\>
+
+#### options?
+
+`InsertOneOptions`
+
+### Returns
+
+`Promise`\<`InsertOneResult`\<`T`\>\>
+
+***
+
+### replaceOne()
+
+```ts
+replaceOne(
+   filter, 
+   item, 
+options?): Promise<UpdateResult<T>>;
+```
+
+### Parameters
+
+#### filter
+
+`Filter`\<`T`\>
+
+#### item
+
+`OptionalUnlessRequiredId`\<`T`\>
+
+#### options?
+
+`ReplaceOptions`
+
+### Returns
+
+`Promise`\<`UpdateResult`\<`T`\>\>
+
+***
+
+### updateOne()
+
+```ts
+updateOne(filter, fields): Promise<UpdateResult<T>>;
+```
+
+### Parameters
+
+#### filter
+
+`Filter`\<`T`\>
+
+#### fields
+
+`UpdateFilter`\<`T`\>
+
+### Returns
+
+`Promise`\<`UpdateResult`\<`T`\>\>
+
+***
+
+### upsertOne()
+
+```ts
+upsertOne(filter, fields): Promise<UpdateResult<T>>;
+```
+
+### Parameters
+
+#### filter
+
+`Filter`\<`T`\>
+
+#### fields
+
+`UpdateFilter`\<`T`\>
+
+### Returns
+
+`Promise`\<`UpdateResult`\<`T`\>\>
+
+***
+
+### useCollection()
+
+```ts
+useCollection<R>(func): Promise<R>;
+```
+
+### Type Parameters
+
+#### R
+
+`R`
+
+### Parameters
+
+#### func
+
+(`collection`) => `R` \| `Promise`\<`R`\>
+
+### Returns
+
+`Promise`\<`R`\>
+
+***
+
+### useMongo()
+
+```ts
+useMongo<R>(func): Promise<R>;
+```
+
+### Type Parameters
+
+#### R
+
+`R`
+
+### Parameters
+
+#### func
+
+(`client`) => `R` \| `Promise`\<`R`\>
+
+### Returns
+
+`Promise`\<`R`\>
+
+  ### <a id="MongoClientWrapper"></a>MongoClientWrapper
+
+[**@xylabs/mongo**](#../README)
+
+***
+
+## Constructors
+
+### Constructor
+
+```ts
+new MongoClientWrapper(
+   uri, 
+   maxPoolSize?, 
+   closeDelay?): MongoClientWrapper;
+```
+
+### Parameters
+
+#### uri
+
+`string`
+
+#### maxPoolSize?
+
+`number`
+
+#### closeDelay?
+
+`number`
+
+### Returns
+
+`MongoClientWrapper`
+
+## Properties
+
+### clients
+
+```ts
+readonly static clients: Map<string, MongoClientWrapper>;
+```
+
+## Methods
+
+### get()
+
+```ts
+static get(
+   uri, 
+   poolSize?, 
+   closeDelay?): MongoClientWrapper;
+```
+
+### Parameters
+
+#### uri
+
+`string`
+
+#### poolSize?
+
+`number`
+
+#### closeDelay?
+
+`number`
+
+### Returns
+
+`MongoClientWrapper`
+
+***
+
+### connect()
+
+```ts
+connect(): Promise<MongoClient>;
+```
+
+### Returns
+
+`Promise`\<`MongoClient`\>
+
+***
+
+### disconnect()
+
+```ts
+disconnect(): Promise<number>;
+```
+
+### Returns
+
+`Promise`\<`number`\>
+
+***
+
+### initiateClose()
+
+```ts
+initiateClose(): Promise<void>;
+```
+
+### Returns
+
+`Promise`\<`void`\>
+
+### interfaces
+
+  ### <a id="BaseMongoSdkPrivateConfig"></a>BaseMongoSdkPrivateConfig
+
+[**@xylabs/mongo**](#../README)
+
+***
+
+## Properties
+
+### dbConnectionString?
+
+```ts
+optional dbConnectionString: string;
+```
+
+***
+
+### dbDomain?
+
+```ts
+optional dbDomain: string;
+```
+
+***
+
+### dbName?
+
+```ts
+optional dbName: string;
+```
+
+***
+
+### dbPassword?
+
+```ts
+optional dbPassword: string;
+```
+
+***
+
+### dbUserName?
+
+```ts
+optional dbUserName: string;
+```
+
+  ### <a id="BaseMongoSdkPublicConfig"></a>BaseMongoSdkPublicConfig
+
+[**@xylabs/mongo**](#../README)
+
+***
+
+## Properties
+
+### closeDelay?
+
+```ts
+optional closeDelay: number;
+```
+
+***
+
+### collection
+
+```ts
+collection: string;
+```
+
+***
+
+### maxPoolSize?
+
+```ts
+optional maxPoolSize: number;
+```
+
+### type-aliases
+
+  ### <a id="BaseMongoSdkConfig"></a>BaseMongoSdkConfig
+
+[**@xylabs/mongo**](#../README)
+
+***
+
+```ts
+type BaseMongoSdkConfig = BaseMongoSdkPublicConfig & BaseMongoSdkPrivateConfig;
+```
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

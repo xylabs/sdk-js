@@ -12,13 +12,185 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.19
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## Documentation
+## API Documentation
 
-Coming Soon!
+**@xylabs/telemetry-exporter**
+
+***
+
+## Classes
+
+- [XyConsoleSpanExporter](#classes/XyConsoleSpanExporter)
+
+## Functions
+
+- [spanDurationInMillis](#functions/spanDurationInMillis)
+
+### classes
+
+  ### <a id="XyConsoleSpanExporter"></a>XyConsoleSpanExporter
+
+[**@xylabs/telemetry-exporter**](#../README)
+
+***
+
+## Extends
+
+- `ConsoleSpanExporter`
+
+## Constructors
+
+### Constructor
+
+```ts
+new XyConsoleSpanExporter(logLevel, logger): XyConsoleSpanExporter;
+```
+
+### Parameters
+
+#### logLevel
+
+`number` = `0`
+
+#### logger
+
+`Logger` = `console`
+
+### Returns
+
+`XyConsoleSpanExporter`
+
+### Overrides
+
+```ts
+ConsoleSpanExporter.constructor
+```
+
+## Properties
+
+### durationToLogLevel
+
+```ts
+readonly static durationToLogLevel: number[];
+```
+
+***
+
+### logLevelToChalkColor
+
+```ts
+readonly static logLevelToChalkColor: ChalkInstance[];
+```
+
+***
+
+### logger
+
+```ts
+logger: Logger;
+```
+
+## Accessors
+
+### logLevel
+
+### Get Signature
+
+```ts
+get logLevel(): number;
+```
+
+#### Returns
+
+`number`
+
+## Methods
+
+### export()
+
+```ts
+export(spans): void;
+```
+
+Export spans.
+
+### Parameters
+
+#### spans
+
+`ReadableSpan`[]
+
+### Returns
+
+`void`
+
+### Overrides
+
+```ts
+ConsoleSpanExporter.export
+```
+
+***
+
+### logColor()
+
+```ts
+logColor(level): ChalkInstance;
+```
+
+### Parameters
+
+#### level
+
+`number`
+
+### Returns
+
+`ChalkInstance`
+
+***
+
+### spanLevel()
+
+```ts
+spanLevel(span): number;
+```
+
+### Parameters
+
+#### span
+
+`ReadableSpan`
+
+### Returns
+
+`number`
+
+### functions
+
+  ### <a id="spanDurationInMillis"></a>spanDurationInMillis
+
+[**@xylabs/telemetry-exporter**](#../README)
+
+***
+
+```ts
+function spanDurationInMillis(span): number;
+```
+
+## Parameters
+
+### span
+
+`ReadableSpan`
+
+## Returns
+
+`number`
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

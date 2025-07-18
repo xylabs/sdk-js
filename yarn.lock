@@ -2582,6 +2582,7 @@ __metadata:
     knip: "npm:^5.61.3"
     lodash.merge: "npm:^4.6.2"
     typedoc: "npm:^0.28.7"
+    typedoc-plugin-markdown: "npm:^4.7.0"
     typescript: "npm:^5.8.3"
     vitest: "npm:^3.2.4"
   languageName: unknown
@@ -9200,6 +9201,15 @@ __metadata:
     possible-typed-array-names: "npm:^1.0.0"
     reflect.getprototypeof: "npm:^1.0.6"
   checksum: 10/d6b2f0e81161682d2726eb92b1dc2b0890890f9930f33f9bcf6fc7272895ce66bc368066d273e6677776de167608adc53fcf81f1be39a146d64b630edbf2081c
+  languageName: node
+  linkType: hard
+
+"typedoc-plugin-markdown@npm:^4.7.0":
+  version: 4.7.0
+  resolution: "typedoc-plugin-markdown@npm:4.7.0"
+  peerDependencies:
+    typedoc: 0.28.x
+  checksum: 10/ecb1d655d7a689791e1837a80733b5114c91acd4d3e9ad70aad929a42931d1192a64fbd107bfc1e14a41915642dd9a159d868d495acd09179506904166e9972c
   languageName: node
   linkType: hard
 

@@ -12,13 +12,64 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.19
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## Documentation
+## API Documentation
 
-Coming Soon!
+**@xylabs/static-implements**
+
+***
+
+## Functions
+
+- [staticImplements](#functions/staticImplements)
+
+### functions
+
+  ### <a id="staticImplements"></a>staticImplements
+
+[**@xylabs/static-implements**](#../README)
+
+***
+
+```ts
+function staticImplements<T>(): <U>(constructor) => void;
+```
+
+Annotation to decorate classes which implement static methods
+
+## Type Parameters
+
+### T
+
+`T`
+
+## Returns
+
+The decorated class requiring it to implement
+the members of the the type as static properties/methods
+
+```ts
+<U>(constructor): void;
+```
+
+### Type Parameters
+
+### U
+
+`U`
+
+### Parameters
+
+### constructor
+
+`U`
+
+### Returns
+
+`void`
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

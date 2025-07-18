@@ -12,13 +12,197 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.19
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## Documentation
+## API Documentation
 
-Coming Soon!
+**@xylabs/telemetry**
+
+***
+
+## Functions
+
+- [cloneContextWithoutSpan](#functions/cloneContextWithoutSpan)
+- [span](#functions/span)
+- [spanRoot](#functions/spanRoot)
+- [spanAsync](#functions/spanAsync)
+- [spanRootAsync](#functions/spanRootAsync)
+
+### functions
+
+  ### <a id="cloneContextWithoutSpan"></a>cloneContextWithoutSpan
+
+[**@xylabs/telemetry**](#../README)
+
+***
+
+```ts
+function cloneContextWithoutSpan(activeCtx, configKeys): Context;
+```
+
+## Parameters
+
+### activeCtx
+
+`Context`
+
+### configKeys
+
+`symbol`[] = `[]`
+
+## Returns
+
+`Context`
+
+  ### <a id="span"></a>span
+
+[**@xylabs/telemetry**](#../README)
+
+***
+
+```ts
+function span<T>(
+   name, 
+   fn, 
+   tracer?): T;
+```
+
+## Type Parameters
+
+### T
+
+`T`
+
+## Parameters
+
+### name
+
+`string`
+
+### fn
+
+() => `T`
+
+### tracer?
+
+`Tracer`
+
+## Returns
+
+`T`
+
+  ### <a id="spanAsync"></a>spanAsync
+
+[**@xylabs/telemetry**](#../README)
+
+***
+
+```ts
+function spanAsync<T>(
+   name, 
+   fn, 
+tracer?): Promise<T>;
+```
+
+## Type Parameters
+
+### T
+
+`T`
+
+## Parameters
+
+### name
+
+`string`
+
+### fn
+
+() => `Promise`\<`T`\>
+
+### tracer?
+
+`Tracer`
+
+## Returns
+
+`Promise`\<`T`\>
+
+  ### <a id="spanRoot"></a>spanRoot
+
+[**@xylabs/telemetry**](#../README)
+
+***
+
+```ts
+function spanRoot<T>(
+   name, 
+   fn, 
+   tracer?): T;
+```
+
+## Type Parameters
+
+### T
+
+`T`
+
+## Parameters
+
+### name
+
+`string`
+
+### fn
+
+() => `T`
+
+### tracer?
+
+`Tracer`
+
+## Returns
+
+`T`
+
+  ### <a id="spanRootAsync"></a>spanRootAsync
+
+[**@xylabs/telemetry**](#../README)
+
+***
+
+```ts
+function spanRootAsync<T>(
+   name, 
+   fn, 
+tracer?): Promise<T>;
+```
+
+## Type Parameters
+
+### T
+
+`T`
+
+## Parameters
+
+### name
+
+`string`
+
+### fn
+
+() => `Promise`\<`T`\>
+
+### tracer?
+
+`Tracer`
+
+## Returns
+
+`Promise`\<`T`\>
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

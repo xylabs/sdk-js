@@ -12,13 +12,31 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.19
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## Documentation
+## API Documentation
 
-Coming Soon!
+**@xylabs/lodash**
+
+***
+
+## Variables
+
+- [default](#variables/default)
+
+### variables
+
+  ### <a id="default"></a>default
+
+[**@xylabs/lodash**](#../README)
+
+***
+
+```ts
+default: object;
+```
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

@@ -12,13 +12,113 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.19
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## Documentation
+## API Documentation
 
-Coming Soon!
+**@xylabs/set**
+
+***
+
+## Functions
+
+- [difference](#functions/difference)
+- [intersection](#functions/intersection)
+- [union](#functions/union)
+
+### functions
+
+  ### <a id="difference"></a>difference
+
+[**@xylabs/set**](#../README)
+
+***
+
+```ts
+function difference<TKey>(a, b): Set<TKey>;
+```
+
+## Type Parameters
+
+### TKey
+
+`TKey`
+
+## Parameters
+
+### a
+
+`Set`\<`TKey`\>
+
+### b
+
+`Set`\<`TKey`\>
+
+## Returns
+
+`Set`\<`TKey`\>
+
+  ### <a id="intersection"></a>intersection
+
+[**@xylabs/set**](#../README)
+
+***
+
+```ts
+function intersection<TKey>(a, b): Set<TKey>;
+```
+
+## Type Parameters
+
+### TKey
+
+`TKey`
+
+## Parameters
+
+### a
+
+`Set`\<`TKey`\>
+
+### b
+
+`Set`\<`TKey`\>
+
+## Returns
+
+`Set`\<`TKey`\>
+
+  ### <a id="union"></a>union
+
+[**@xylabs/set**](#../README)
+
+***
+
+```ts
+function union<TKey>(a, b): Set<TKey>;
+```
+
+## Type Parameters
+
+### TKey
+
+`TKey`
+
+## Parameters
+
+### a
+
+`Set`\<`TKey`\>
+
+### b
+
+`Set`\<`TKey`\>
+
+## Returns
+
+`Set`\<`TKey`\>
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

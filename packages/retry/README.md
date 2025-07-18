@@ -12,13 +12,162 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.19
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## Documentation
+## API Documentation
 
-Coming Soon!
+**@xylabs/retry**
+
+***
+
+## Interfaces
+
+- [RetryConfig](#interfaces/RetryConfig)
+- [RetryConfigWithComplete](#interfaces/RetryConfigWithComplete)
+
+## Functions
+
+- [retry](#functions/retry)
+
+### functions
+
+  ### <a id="retry"></a>retry
+
+[**@xylabs/retry**](#../README)
+
+***
+
+```ts
+function retry<T>(func, config?): Promise<undefined | T>;
+```
+
+## Type Parameters
+
+### T
+
+`T` = `unknown`
+
+## Parameters
+
+### func
+
+() => `Promisable`\<`undefined` \| `T`\>
+
+### config?
+
+[`RetryConfigWithComplete`](#../interfaces/RetryConfigWithComplete)\<`T`\>
+
+## Returns
+
+`Promise`\<`undefined` \| `T`\>
+
+### interfaces
+
+  ### <a id="RetryConfig"></a>RetryConfig
+
+[**@xylabs/retry**](#../README)
+
+***
+
+## Extended by
+
+- [`RetryConfigWithComplete`](#RetryConfigWithComplete)
+
+## Properties
+
+### backoff?
+
+```ts
+optional backoff: number;
+```
+
+***
+
+### interval?
+
+```ts
+optional interval: number;
+```
+
+***
+
+### retries?
+
+```ts
+optional retries: number;
+```
+
+  ### <a id="RetryConfigWithComplete"></a>RetryConfigWithComplete
+
+[**@xylabs/retry**](#../README)
+
+***
+
+## Extends
+
+- [`RetryConfig`](#RetryConfig)
+
+## Type Parameters
+
+### T
+
+`T` = `unknown`
+
+## Properties
+
+### backoff?
+
+```ts
+optional backoff: number;
+```
+
+### Inherited from
+
+[`RetryConfig`](#RetryConfig).[`backoff`](RetryConfig.md#backoff)
+
+***
+
+### interval?
+
+```ts
+optional interval: number;
+```
+
+### Inherited from
+
+[`RetryConfig`](#RetryConfig).[`interval`](RetryConfig.md#interval)
+
+***
+
+### retries?
+
+```ts
+optional retries: number;
+```
+
+### Inherited from
+
+[`RetryConfig`](#RetryConfig).[`retries`](RetryConfig.md#retries)
+
+***
+
+### complete()?
+
+```ts
+optional complete: (result?) => boolean;
+```
+
+### Parameters
+
+#### result?
+
+`T`
+
+### Returns
+
+`boolean`
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

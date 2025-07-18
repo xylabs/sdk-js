@@ -12,13 +12,326 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.19
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## Documentation
+## API Documentation
 
-Coming Soon!
+**@xylabs/array**
+
+***
+
+## Functions
+
+- [containsAll](#functions/containsAll)
+- [distinct](#functions/distinct)
+- [filterAs](#functions/filterAs)
+- [filterAsync](#functions/filterAsync)
+- [findAs](#functions/findAs)
+- [findLastAs](#functions/findLastAs)
+- [flatten](#functions/flatten)
+- [uniq](#functions/uniq)
+- [uniqBy](#functions/uniqBy)
+
+### functions
+
+  ### <a id="containsAll"></a>containsAll
+
+[**@xylabs/array**](#../README)
+
+***
+
+```ts
+function containsAll<T>(source, target): boolean;
+```
+
+## Type Parameters
+
+### T
+
+`T`
+
+## Parameters
+
+### source
+
+`T`[]
+
+### target
+
+`T`[]
+
+## Returns
+
+`boolean`
+
+  ### <a id="distinct"></a>distinct
+
+[**@xylabs/array**](#../README)
+
+***
+
+```ts
+function distinct<T>(
+   value, 
+   index, 
+   array): boolean;
+```
+
+## Type Parameters
+
+### T
+
+`T`
+
+## Parameters
+
+### value
+
+`T`
+
+### index
+
+`number`
+
+### array
+
+`T`[]
+
+## Returns
+
+`boolean`
+
+  ### <a id="filterAs"></a>filterAs
+
+[**@xylabs/array**](#../README)
+
+***
+
+```ts
+function filterAs<In, Out>(x, predicate): NonNullable<Out>[];
+```
+
+## Type Parameters
+
+### In
+
+`In`
+
+### Out
+
+`Out`
+
+## Parameters
+
+### x
+
+`In`[]
+
+### predicate
+
+(`a`) => `Out`
+
+## Returns
+
+`NonNullable`\<`Out`\>[]
+
+  ### <a id="filterAsync"></a>filterAsync
+
+[**@xylabs/array**](#../README)
+
+***
+
+```ts
+function filterAsync<T>(array, predicate): Promise<T[]>;
+```
+
+Returns the elements of an array that meet the condition specified in a callback function.
+
+## Type Parameters
+
+### T
+
+`T`
+
+## Parameters
+
+### array
+
+`T`[]
+
+The array to filter.
+
+### predicate
+
+(`value`, `index`, `array`) => `Promise`\<`boolean`\>
+
+A function that accepts up to three arguments. The filter method calls the predicate function one time for each element in the array.
+
+## Returns
+
+`Promise`\<`T`[]\>
+
+The elements of an array that meet the condition specified in a callback function.
+
+  ### <a id="findAs"></a>findAs
+
+[**@xylabs/array**](#../README)
+
+***
+
+```ts
+function findAs<In, Out>(x, predicate): undefined | NonNullable<Out>;
+```
+
+## Type Parameters
+
+### In
+
+`In`
+
+### Out
+
+`Out`
+
+## Parameters
+
+### x
+
+`In`[]
+
+### predicate
+
+(`a`) => `Out`
+
+## Returns
+
+`undefined` \| `NonNullable`\<`Out`\>
+
+  ### <a id="findLastAs"></a>findLastAs
+
+[**@xylabs/array**](#../README)
+
+***
+
+```ts
+function findLastAs<In, Out>(x, predicate): undefined | NonNullable<Out>;
+```
+
+## Type Parameters
+
+### In
+
+`In`
+
+### Out
+
+`Out`
+
+## Parameters
+
+### x
+
+`In`[]
+
+### predicate
+
+(`a`) => `Out`
+
+## Returns
+
+`undefined` \| `NonNullable`\<`Out`\>
+
+  ### <a id="flatten"></a>flatten
+
+[**@xylabs/array**](#../README)
+
+***
+
+```ts
+function flatten<T>(a?, b?): T[];
+```
+
+## Type Parameters
+
+### T
+
+`T`
+
+## Parameters
+
+### a?
+
+`T` | `ConcatArray`\<`T`\>
+
+### b?
+
+`T` | `ConcatArray`\<`T`\>
+
+## Returns
+
+`T`[]
+
+  ### <a id="uniq"></a>uniq
+
+[**@xylabs/array**](#../README)
+
+***
+
+```ts
+function uniq<T>(arr): T[];
+```
+
+## Type Parameters
+
+### T
+
+`T`
+
+## Parameters
+
+### arr
+
+`T`[]
+
+## Returns
+
+`T`[]
+
+  ### <a id="uniqBy"></a>uniqBy
+
+[**@xylabs/array**](#../README)
+
+***
+
+```ts
+function uniqBy<T, I>(arr, iteratee): T[];
+```
+
+## Type Parameters
+
+### T
+
+`T`
+
+### I
+
+`I`
+
+## Parameters
+
+### arr
+
+`T`[]
+
+### iteratee
+
+(`item`) => `I`
+
+## Returns
+
+`T`[]
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

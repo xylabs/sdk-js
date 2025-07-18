@@ -12,13 +12,97 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.19
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## Documentation
+## API Documentation
 
-Coming Soon!
+**@xylabs/profile**
+
+***
+
+## Type Aliases
+
+- [Profiler](#type-aliases/Profiler)
+
+## Functions
+
+- [createProfiler](#functions/createProfiler)
+- [profile](#functions/profile)
+- [profileReport](#functions/profileReport)
+
+### functions
+
+  ### <a id="createProfiler"></a>createProfiler
+
+[**@xylabs/profile**](#../README)
+
+***
+
+```ts
+function createProfiler(): Profiler;
+```
+
+## Returns
+
+[`Profiler`](#../type-aliases/Profiler)
+
+  ### <a id="profile"></a>profile
+
+[**@xylabs/profile**](#../README)
+
+***
+
+```ts
+function profile(profiler, name): void;
+```
+
+## Parameters
+
+### profiler
+
+[`Profiler`](#../type-aliases/Profiler)
+
+### name
+
+`string`
+
+## Returns
+
+`void`
+
+  ### <a id="profileReport"></a>profileReport
+
+[**@xylabs/profile**](#../README)
+
+***
+
+```ts
+function profileReport(profiler): Record<string, number>;
+```
+
+## Parameters
+
+### profiler
+
+[`Profiler`](#../type-aliases/Profiler)
+
+## Returns
+
+`Record`\<`string`, `number`\>
+
+### type-aliases
+
+  ### <a id="Profiler"></a>Profiler
+
+[**@xylabs/profile**](#../README)
+
+***
+
+```ts
+type Profiler = Record<string, number[]>;
+```
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

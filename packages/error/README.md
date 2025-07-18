@@ -12,13 +12,103 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.19
 
-Primary SDK for using XYO Protocol 2.0
+Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## Documentation
+## API Documentation
 
-Coming Soon!
+**@xylabs/error**
+
+***
+
+## Functions
+
+- [handleError](#functions/handleError)
+- [handleErrorAsync](#functions/handleErrorAsync)
+- [isError](#functions/isError)
+
+### functions
+
+  ### <a id="handleError"></a>handleError
+
+[**@xylabs/error**](#../README)
+
+***
+
+```ts
+function handleError<T>(error, handler): T;
+```
+
+## Type Parameters
+
+### T
+
+`T`
+
+## Parameters
+
+### error
+
+`any`
+
+### handler
+
+(`error`) => `T`
+
+## Returns
+
+`T`
+
+  ### <a id="handleErrorAsync"></a>handleErrorAsync
+
+[**@xylabs/error**](#../README)
+
+***
+
+```ts
+function handleErrorAsync<T>(error, handler): Promise<T>;
+```
+
+## Type Parameters
+
+### T
+
+`T`
+
+## Parameters
+
+### error
+
+`any`
+
+### handler
+
+(`error`) => `Promise`\<`T`\>
+
+## Returns
+
+`Promise`\<`T`\>
+
+  ### <a id="isError"></a>isError
+
+[**@xylabs/error**](#../README)
+
+***
+
+```ts
+function isError(error): error is Error;
+```
+
+## Parameters
+
+### error
+
+`any`
+
+## Returns
+
+`error is Error`
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

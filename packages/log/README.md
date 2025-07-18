@@ -12,13 +12,147 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.19
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## Documentation
+## API Documentation
 
-Coming Soon!
+**@xylabs/log**
+
+***
+
+## Classes
+
+- [~~Log~~](#classes/Log)
+
+### classes
+
+  ### <a id="Log"></a>Log
+
+[**@xylabs/log**](#../README)
+
+***
+
+## Deprecated
+
+use @xylabs/logger instead
+
+## Constructors
+
+### Constructor
+
+```ts
+new Log(config): Log;
+```
+
+### Parameters
+
+#### config
+
+`LogConfig`
+
+### Returns
+
+`Log`
+
+## Properties
+
+### ~~config~~
+
+```ts
+protected config: LogConfig;
+```
+
+## Methods
+
+### ~~debug()~~
+
+```ts
+debug(...params): void;
+```
+
+### Parameters
+
+#### params
+
+...`any`[]
+
+### Returns
+
+`void`
+
+***
+
+### ~~error()~~
+
+```ts
+error(...params): void;
+```
+
+### Parameters
+
+#### params
+
+...`any`[]
+
+### Returns
+
+`void`
+
+***
+
+### ~~info()~~
+
+```ts
+info(...params): void;
+```
+
+### Parameters
+
+#### params
+
+...`any`[]
+
+### Returns
+
+`void`
+
+***
+
+### ~~log()~~
+
+```ts
+log(...params): void;
+```
+
+### Parameters
+
+#### params
+
+...`any`[]
+
+### Returns
+
+`void`
+
+***
+
+### ~~warn()~~
+
+```ts
+warn(...params): void;
+```
+
+### Parameters
+
+#### params
+
+...`any`[]
+
+### Returns
+
+`void`
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

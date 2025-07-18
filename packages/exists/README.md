@@ -12,13 +12,60 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.19
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## Documentation
+## API Documentation
 
-Coming Soon!
+**@xylabs/exists**
+
+***
+
+## Functions
+
+- [exists](#functions/exists)
+
+### functions
+
+  ### <a id="exists"></a>exists
+
+[**@xylabs/exists**](#../README)
+
+***
+
+```ts
+function exists<T>(x?): x is NonNullable<T>;
+```
+
+Used to type narrow an object which is possibly null or undefined. Works well
+with functional Array methods. For example:
+
+## Type Parameters
+
+### T
+
+`T`
+
+## Parameters
+
+### x?
+
+The object which is potentially undefined or null
+
+`null` | `T`
+
+## Returns
+
+`x is NonNullable<T>`
+
+False if the object is null/undefined, true otherwise
+
+## Example
+
+```ts
+const payloads: XyoPayload[] = boundWitness._payloads?.filter(exists) || []
+```
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

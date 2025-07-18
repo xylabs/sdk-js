@@ -12,13 +12,433 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.19
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## Documentation
+## API Documentation
 
-Coming Soon!
+**@xylabs/forget**
+
+***
+
+## Classes
+
+- [ForgetPromise](#classes/ForgetPromise)
+
+## Interfaces
+
+- [ForgetNodeConfig](#interfaces/ForgetNodeConfig)
+
+## Variables
+
+- [defaultForgetNodeConfig](#variables/defaultForgetNodeConfig)
+
+## Functions
+
+- [forget](#functions/forget)
+
+### classes
+
+  ### <a id="ForgetPromise"></a>ForgetPromise
+
+[**@xylabs/forget**](#../README)
+
+***
+
+## Extends
+
+- `ForgetPromise`
+
+## Constructors
+
+### Constructor
+
+```ts
+new ForgetPromise(): ForgetPromiseNode;
+```
+
+### Returns
+
+`ForgetPromiseNode`
+
+### Inherited from
+
+```ts
+ForgetPromise.constructor
+```
+
+## Properties
+
+### activeForgets
+
+```ts
+static activeForgets: number = 0;
+```
+
+### Inherited from
+
+```ts
+ForgetPromise.activeForgets
+```
+
+***
+
+### exceptedForgets
+
+```ts
+static exceptedForgets: number = 0;
+```
+
+### Inherited from
+
+```ts
+ForgetPromise.exceptedForgets
+```
+
+***
+
+### logger
+
+```ts
+static logger: Logger = console;
+```
+
+### Inherited from
+
+```ts
+ForgetPromise.logger
+```
+
+## Accessors
+
+### active
+
+### Get Signature
+
+```ts
+get static active(): boolean;
+```
+
+#### Returns
+
+`boolean`
+
+### Inherited from
+
+```ts
+ForgetPromise.active
+```
+
+## Methods
+
+### awaitInactive()
+
+```ts
+static awaitInactive(interval, timeout?): Promise<number>;
+```
+
+### Parameters
+
+#### interval
+
+`number` = `100`
+
+#### timeout?
+
+`number`
+
+### Returns
+
+`Promise`\<`number`\>
+
+### Inherited from
+
+```ts
+ForgetPromise.awaitInactive
+```
+
+***
+
+### exceptionHandler()
+
+```ts
+static exceptionHandler(
+   error, 
+   config, 
+   externalStackTrace?): void;
+```
+
+### Parameters
+
+#### error
+
+`Error`
+
+#### config
+
+[`ForgetNodeConfig`](#../interfaces/ForgetNodeConfig)
+
+#### externalStackTrace?
+
+`string`
+
+### Returns
+
+`void`
+
+### Overrides
+
+```ts
+ForgetPromise.exceptionHandler
+```
+
+***
+
+### forget()
+
+```ts
+static forget<T>(promise, config?): void;
+```
+
+Used to explicitly launch an async function (or Promise) with awaiting it
+
+### Type Parameters
+
+#### T
+
+`T`
+
+### Parameters
+
+#### promise
+
+`Promisable`\<`T`\>
+
+The promise to forget
+
+#### config?
+
+[`ForgetNodeConfig`](#../interfaces/ForgetNodeConfig)\<`T`\>
+
+Configuration of forget settings
+
+### Returns
+
+`void`
+
+### Overrides
+
+```ts
+ForgetPromise.forget
+```
+
+***
+
+### timeoutHandler()
+
+```ts
+static timeoutHandler(
+   time, 
+   config, 
+   externalStackTrace?): void;
+```
+
+### Parameters
+
+#### time
+
+`number`
+
+#### config
+
+[`ForgetNodeConfig`](#../interfaces/ForgetNodeConfig)
+
+#### externalStackTrace?
+
+`string`
+
+### Returns
+
+`void`
+
+### Overrides
+
+```ts
+ForgetPromise.timeoutHandler
+```
+
+### functions
+
+  ### <a id="forget"></a>forget
+
+[**@xylabs/forget**](#../README)
+
+***
+
+```ts
+function forget<T>(promise, config?): void;
+```
+
+## Type Parameters
+
+### T
+
+`T`
+
+## Parameters
+
+### promise
+
+`Promisable`\<`T`\>
+
+### config?
+
+[`ForgetNodeConfig`](#../interfaces/ForgetNodeConfig)\<`T`\>
+
+## Returns
+
+`void`
+
+### interfaces
+
+  ### <a id="ForgetNodeConfig"></a>ForgetNodeConfig
+
+[**@xylabs/forget**](#../README)
+
+***
+
+## Extends
+
+- `ForgetConfig`\<`T`\>
+
+## Type Parameters
+
+### T
+
+`T` = `any`
+
+## Properties
+
+### name?
+
+```ts
+optional name: string;
+```
+
+### Inherited from
+
+```ts
+ForgetConfig.name
+```
+
+***
+
+### onCancel()?
+
+```ts
+optional onCancel: () => void;
+```
+
+### Returns
+
+`void`
+
+### Inherited from
+
+```ts
+ForgetConfig.onCancel
+```
+
+***
+
+### onComplete()?
+
+```ts
+optional onComplete: (result) => void;
+```
+
+### Parameters
+
+#### result
+
+\[`undefined` \| `T`, `undefined` \| `Error`\]
+
+### Returns
+
+`void`
+
+### Inherited from
+
+```ts
+ForgetConfig.onComplete
+```
+
+***
+
+### onException()?
+
+```ts
+optional onException: (error) => void;
+```
+
+### Parameters
+
+#### error
+
+`Error`
+
+### Returns
+
+`void`
+
+### Inherited from
+
+```ts
+ForgetConfig.onException
+```
+
+***
+
+### timeout?
+
+```ts
+optional timeout: number;
+```
+
+### Inherited from
+
+```ts
+ForgetConfig.timeout
+```
+
+***
+
+### terminateOnException?
+
+```ts
+optional terminateOnException: boolean;
+```
+
+***
+
+### terminateOnTimeout?
+
+```ts
+optional terminateOnTimeout: boolean;
+```
+
+### variables
+
+  ### <a id="defaultForgetNodeConfig"></a>defaultForgetNodeConfig
+
+[**@xylabs/forget**](#../README)
+
+***
+
+```ts
+const defaultForgetNodeConfig: ForgetNodeConfig<unknown>;
+```
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

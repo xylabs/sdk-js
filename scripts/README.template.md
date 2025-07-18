@@ -15,9 +15,7 @@
 
 {{description}}
 
-## Documentation
-
-Coming Soon!
+{{typedoc}}
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

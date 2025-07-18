@@ -12,13 +12,497 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.19
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## Documentation
+## API Documentation
 
-Coming Soon!
+**@xylabs/vitest-matchers**
+
+***
+
+## Interfaces
+
+- [ExpectationResult](#interfaces/ExpectationResult)
+
+## Variables
+
+- [matchers](#variables/matchers)
+
+### interfaces
+
+  ### <a id="ExpectationResult"></a>ExpectationResult
+
+[**@xylabs/vitest-matchers**](#../README)
+
+***
+
+## Properties
+
+### actual?
+
+```ts
+optional actual: unknown;
+```
+
+***
+
+### expected?
+
+```ts
+optional expected: unknown;
+```
+
+***
+
+### message()
+
+```ts
+message: () => string;
+```
+
+### Returns
+
+`string`
+
+***
+
+### pass
+
+```ts
+pass: boolean;
+```
+
+### variables
+
+  ### <a id="matchers"></a>matchers
+
+[**@xylabs/vitest-matchers**](#../README)
+
+***
+
+```ts
+const matchers: object;
+```
+
+## Type declaration
+
+### toBeArrayOfSize()
+
+```ts
+toBeArrayOfSize(received, expectedSize): ExpectationResult;
+```
+
+### Parameters
+
+#### received
+
+`unknown`
+
+#### expectedSize
+
+`number`
+
+### Returns
+
+[`ExpectationResult`](#../interfaces/ExpectationResult)
+
+### toBeArray()
+
+```ts
+toBeArray(received): ExpectationResult;
+```
+
+### Parameters
+
+#### received
+
+`unknown`
+
+### Returns
+
+[`ExpectationResult`](#../interfaces/ExpectationResult)
+
+### toBeOneOf()
+
+```ts
+toBeOneOf(received, expected): ExpectationResult;
+```
+
+### Parameters
+
+#### received
+
+`unknown`
+
+#### expected
+
+`unknown`[]
+
+### Returns
+
+[`ExpectationResult`](#../interfaces/ExpectationResult)
+
+### toBeNegative()
+
+```ts
+toBeNegative(received): ExpectationResult;
+```
+
+### Parameters
+
+#### received
+
+`number`
+
+### Returns
+
+[`ExpectationResult`](#../interfaces/ExpectationResult)
+
+### toBePositive()
+
+```ts
+toBePositive(received): ExpectationResult;
+```
+
+### Parameters
+
+#### received
+
+`number`
+
+### Returns
+
+[`ExpectationResult`](#../interfaces/ExpectationResult)
+
+### toBeNumber()
+
+```ts
+toBeNumber: (received) => ExpectationResult;
+```
+
+### Parameters
+
+#### received
+
+`unknown`
+
+### Returns
+
+[`ExpectationResult`](#../interfaces/ExpectationResult)
+
+### toBeFunction()
+
+```ts
+toBeFunction: (received) => ExpectationResult;
+```
+
+### Parameters
+
+#### received
+
+`unknown`
+
+### Returns
+
+[`ExpectationResult`](#../interfaces/ExpectationResult)
+
+### toBeString()
+
+```ts
+toBeString: (received) => ExpectationResult;
+```
+
+### Parameters
+
+#### received
+
+`unknown`
+
+### Returns
+
+[`ExpectationResult`](#../interfaces/ExpectationResult)
+
+### toBeObject()
+
+```ts
+toBeObject(received): ExpectationResult;
+```
+
+### Parameters
+
+#### received
+
+`unknown`
+
+### Returns
+
+[`ExpectationResult`](#../interfaces/ExpectationResult)
+
+### toBeInteger()
+
+```ts
+toBeInteger(received): ExpectationResult;
+```
+
+### Parameters
+
+#### received
+
+`number`
+
+### Returns
+
+[`ExpectationResult`](#../interfaces/ExpectationResult)
+
+### toBeFalse()
+
+```ts
+toBeFalse(received): ExpectationResult;
+```
+
+### Parameters
+
+#### received
+
+`unknown`
+
+### Returns
+
+[`ExpectationResult`](#../interfaces/ExpectationResult)
+
+### toBeTrue()
+
+```ts
+toBeTrue(received): ExpectationResult;
+```
+
+### Parameters
+
+#### received
+
+`unknown`
+
+### Returns
+
+[`ExpectationResult`](#../interfaces/ExpectationResult)
+
+### toContainAllValues()
+
+```ts
+toContainAllValues(received, expectedValues): object;
+```
+
+### Parameters
+
+#### received
+
+`unknown`
+
+#### expectedValues
+
+`unknown`[]
+
+### Returns
+
+`object`
+
+#### pass
+
+```ts
+pass: boolean = false;
+```
+
+#### message()
+
+```ts
+message: () => string;
+```
+
+##### Returns
+
+`string`
+
+### toContainKey()
+
+```ts
+toContainKey(received, key): object;
+```
+
+### Parameters
+
+#### received
+
+`object`
+
+#### key
+
+`string`
+
+### Returns
+
+`object`
+
+#### pass
+
+```ts
+pass: boolean = true;
+```
+
+#### message()
+
+```ts
+message: () => string;
+```
+
+##### Returns
+
+`string`
+
+### toInclude()
+
+```ts
+toInclude(received, value): object;
+```
+
+### Parameters
+
+#### received
+
+`unknown`
+
+#### value
+
+`any`
+
+### Returns
+
+`object`
+
+#### pass
+
+```ts
+pass: boolean;
+```
+
+#### message()
+
+```ts
+message: () => string;
+```
+
+##### Returns
+
+`string`
+
+### toIncludeAllMembers()
+
+```ts
+toIncludeAllMembers(received, expected): ExpectationResult;
+```
+
+### Parameters
+
+#### received
+
+`unknown`[]
+
+#### expected
+
+`unknown`[]
+
+### Returns
+
+[`ExpectationResult`](#../interfaces/ExpectationResult)
+
+### toContainAllKeys()
+
+```ts
+toContainAllKeys(received, expectedKeys): ExpectationResult;
+```
+
+### Parameters
+
+#### received
+
+`object`
+
+#### expectedKeys
+
+`string`[]
+
+### Returns
+
+[`ExpectationResult`](#../interfaces/ExpectationResult)
+
+### toContainValues()
+
+```ts
+toContainValues(received, expectedValues): ExpectationResult;
+```
+
+### Parameters
+
+#### received
+
+`object`
+
+#### expectedValues
+
+`unknown`[]
+
+### Returns
+
+[`ExpectationResult`](#../interfaces/ExpectationResult)
+
+### toBeEmpty()
+
+```ts
+toBeEmpty(received): ExpectationResult;
+```
+
+### Parameters
+
+#### received
+
+`unknown`
+
+### Returns
+
+[`ExpectationResult`](#../interfaces/ExpectationResult)
+
+### toBeValidDate()
+
+```ts
+toBeValidDate(received): object;
+```
+
+### Parameters
+
+#### received
+
+`unknown`
+
+### Returns
+
+`object`
+
+#### pass
+
+```ts
+pass: boolean = isValid;
+```
+
+#### message()
+
+```ts
+message: () => string;
+```
+
+##### Returns
+
+`string`
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

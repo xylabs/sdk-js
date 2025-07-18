@@ -12,13 +12,41 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.19
 
-Primary SDK for using XYO Protocol 2.0
+Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## Documentation
+## API Documentation
 
-Coming Soon!
+**@xylabs/function-name**
+
+***
+
+## Functions
+
+- [functionName](#functions/functionName)
+
+### functions
+
+  ### <a id="functionName"></a>functionName
+
+[**@xylabs/function-name**](#../README)
+
+***
+
+```ts
+function functionName(depth): string;
+```
+
+## Parameters
+
+### depth
+
+`number` = `2`
+
+## Returns
+
+`string`
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

@@ -12,13 +12,16 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.19
 
 Web workers & worker threads as simple as a function call
 
-## Documentation
+## API Documentation
 
-Coming Soon!
+**@xylabs/sdk-js**
+
+***
+
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

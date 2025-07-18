@@ -12,13 +12,198 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.19
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## Documentation
+## API Documentation
 
-Coming Soon!
+**@xylabs/storage**
+
+***
+
+## Interfaces
+
+- [ReadonlyKeyValueStore](#interfaces/ReadonlyKeyValueStore)
+- [KeyValueStore](#interfaces/KeyValueStore)
+
+### interfaces
+
+  ### <a id="KeyValueStore"></a>KeyValueStore
+
+[**@xylabs/storage**](#../README)
+
+***
+
+A read/write storage device.
+
+## Extends
+
+- [`ReadonlyKeyValueStore`](#ReadonlyKeyValueStore)\<`TValue`, `TKey`\>
+
+## Type Parameters
+
+### TValue
+
+`TValue`
+
+### TKey
+
+`TKey` = `string`
+
+## Methods
+
+### get()
+
+```ts
+get(key): Promisable<undefined | TValue>;
+```
+
+Returns a promise that resolves to the value for the given key.
+
+### Parameters
+
+#### key
+
+`TKey`
+
+The key to get the value for.
+
+### Returns
+
+`Promisable`\<`undefined` \| `TValue`\>
+
+### Inherited from
+
+[`ReadonlyKeyValueStore`](#ReadonlyKeyValueStore).[`get`](ReadonlyKeyValueStore.md#get)
+
+***
+
+### keys()?
+
+```ts
+optional keys(): Promisable<TKey[]>;
+```
+
+The keys an array of keys.
+
+### Returns
+
+`Promisable`\<`TKey`[]\>
+
+### Inherited from
+
+[`ReadonlyKeyValueStore`](#ReadonlyKeyValueStore).[`keys`](ReadonlyKeyValueStore.md#keys)
+
+***
+
+### clear()?
+
+```ts
+optional clear(): Promisable<void>;
+```
+
+### Returns
+
+`Promisable`\<`void`\>
+
+***
+
+### delete()
+
+```ts
+delete(key): Promisable<void>;
+```
+
+### Parameters
+
+#### key
+
+`TKey`
+
+### Returns
+
+`Promisable`\<`void`\>
+
+***
+
+### set()
+
+```ts
+set(key, value): Promisable<void>;
+```
+
+### Parameters
+
+#### key
+
+`TKey`
+
+#### value
+
+`TValue`
+
+### Returns
+
+`Promisable`\<`void`\>
+
+  ### <a id="ReadonlyKeyValueStore"></a>ReadonlyKeyValueStore
+
+[**@xylabs/storage**](#../README)
+
+***
+
+A readonly storage device.
+
+## Extended by
+
+- [`KeyValueStore`](#KeyValueStore)
+
+## Type Parameters
+
+### TValue
+
+`TValue`
+
+### TKey
+
+`TKey` = `string`
+
+## Methods
+
+### get()
+
+```ts
+get(key): Promisable<undefined | TValue>;
+```
+
+Returns a promise that resolves to the value for the given key.
+
+### Parameters
+
+#### key
+
+`TKey`
+
+The key to get the value for.
+
+### Returns
+
+`Promisable`\<`undefined` \| `TValue`\>
+
+***
+
+### keys()?
+
+```ts
+optional keys(): Promisable<TKey[]>;
+```
+
+The keys an array of keys.
+
+### Returns
+
+`Promisable`\<`TKey`[]\>
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

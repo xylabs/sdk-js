@@ -12,13 +12,361 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.19
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## Documentation
+## API Documentation
 
-Coming Soon!
+**@xylabs/assert**
+
+***
+
+## Type Aliases
+
+- [AssertExMessageFunc](#type-aliases/AssertExMessageFunc)
+- [AssertExErrorFunc](#type-aliases/AssertExErrorFunc)
+
+## Functions
+
+- [assertDefinedEx](#functions/assertDefinedEx)
+- [assertEx](#functions/assertEx)
+
+### functions
+
+  ### <a id="assertDefinedEx"></a>assertDefinedEx
+
+[**@xylabs/assert**](#../README)
+
+***
+
+## Call Signature
+
+```ts
+function assertDefinedEx<T>(expr, messageFunc?): T;
+```
+
+Intended for defined checks for variables
+
+### Type Parameters
+
+### T
+
+`T`
+
+### Parameters
+
+### expr
+
+Expression to be evaluated for truthiness
+
+`undefined` | `T`
+
+### messageFunc?
+
+[`AssertExMessageFunc`](#../type-aliases/AssertExMessageFunc)\<`T`\>
+
+### Returns
+
+`T`
+
+Value of expression
+
+### Throws
+
+AssertExError
+
+## Call Signature
+
+```ts
+function assertDefinedEx<T, R>(expr, errorFunc?): T;
+```
+
+Intended for defined checks for variables
+
+### Type Parameters
+
+### T
+
+`T`
+
+### R
+
+`R` *extends* `Error`
+
+### Parameters
+
+### expr
+
+Expression to be evaluated for truthiness
+
+`undefined` | `T`
+
+### errorFunc?
+
+[`AssertExErrorFunc`](#../type-aliases/AssertExErrorFunc)\<`T`, `R`\>
+
+### Returns
+
+`T`
+
+Value of expression
+
+### Throws
+
+AssertExError
+
+## Call Signature
+
+```ts
+function assertDefinedEx<T>(expr): T;
+```
+
+### Type Parameters
+
+### T
+
+`T`
+
+### Parameters
+
+### expr
+
+`undefined` | `T`
+
+### Returns
+
+`T`
+
+### Deprecated
+
+- passing a message will soon be required
+
+## Call Signature
+
+```ts
+function assertDefinedEx<T>(expr, message?): T;
+```
+
+### Type Parameters
+
+### T
+
+`T`
+
+### Parameters
+
+### expr
+
+`undefined` | `T`
+
+### message?
+
+`string`
+
+### Returns
+
+`T`
+
+### Deprecated
+
+- replace string with () => string
+
+  ### <a id="assertEx"></a>assertEx
+
+[**@xylabs/assert**](#../README)
+
+***
+
+## Call Signature
+
+```ts
+function assertEx<T>(expr, messageFunc?): T;
+```
+
+Intended for simple truthiness checks for variables
+
+### Type Parameters
+
+### T
+
+`T`
+
+### Parameters
+
+### expr
+
+Expression to be evaluated for truthiness
+
+`undefined` | `null` | `T`
+
+### messageFunc?
+
+[`AssertExMessageFunc`](#../type-aliases/AssertExMessageFunc)\<`T`\>
+
+### Returns
+
+`T`
+
+Value of expression
+
+### Throws
+
+AssertExError
+
+## Call Signature
+
+```ts
+function assertEx<T, R>(expr, errorFunc?): T;
+```
+
+Intended for simple truthiness checks for variables
+
+### Type Parameters
+
+### T
+
+`T`
+
+### R
+
+`R` *extends* `Error`
+
+### Parameters
+
+### expr
+
+Expression to be evaluated for truthiness
+
+`undefined` | `null` | `T`
+
+### errorFunc?
+
+[`AssertExErrorFunc`](#../type-aliases/AssertExErrorFunc)\<`T`, `R`\>
+
+### Returns
+
+`T`
+
+Value of expression
+
+### Throws
+
+AssertExError
+
+## Call Signature
+
+```ts
+function assertEx<T>(expr): T;
+```
+
+### Type Parameters
+
+### T
+
+`T`
+
+### Parameters
+
+### expr
+
+`undefined` | `null` | `T`
+
+### Returns
+
+`T`
+
+### Deprecated
+
+- passing a message will soon be required
+
+## Call Signature
+
+```ts
+function assertEx<T>(expr, message?): T;
+```
+
+### Type Parameters
+
+### T
+
+`T`
+
+### Parameters
+
+### expr
+
+`undefined` | `null` | `T`
+
+### message?
+
+`string`
+
+### Returns
+
+`T`
+
+### Deprecated
+
+- replace string with () => string
+
+### type-aliases
+
+  ### <a id="AssertExErrorFunc"></a>AssertExErrorFunc
+
+[**@xylabs/assert**](#../README)
+
+***
+
+```ts
+type AssertExErrorFunc<T, R> = (value?) => R;
+```
+
+## Type Parameters
+
+### T
+
+`T`
+
+### R
+
+`R` *extends* `Error`
+
+## Parameters
+
+### value?
+
+`T` | `null`
+
+## Returns
+
+`R`
+
+  ### <a id="AssertExMessageFunc"></a>AssertExMessageFunc
+
+[**@xylabs/assert**](#../README)
+
+***
+
+```ts
+type AssertExMessageFunc<T> = (value?) => string;
+```
+
+## Type Parameters
+
+### T
+
+`T`
+
+## Parameters
+
+### value?
+
+`T` | `null`
+
+## Returns
+
+`string`
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

@@ -12,13 +12,35 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.19
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## Documentation
+## API Documentation
 
-Coming Soon!
+**@xylabs/libauth**
+
+***
+
+## Variables
+
+- [~~libauth~~](#variables/libauth)
+
+### variables
+
+  ### <a id="libauth"></a>libauth
+
+[**@xylabs/libauth**](#../README)
+
+***
+
+```ts
+const libauth: 1 = 1;
+```
+
+## Deprecated
+
+use actual libauth instead
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

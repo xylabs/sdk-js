@@ -12,13 +12,66 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.19
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## Documentation
+## API Documentation
 
-Coming Soon!
+**@xylabs/timer**
+
+***
+
+## Functions
+
+- [setTimeoutEx](#functions/setTimeoutEx)
+- [clearTimeoutEx](#functions/clearTimeoutEx)
+
+### functions
+
+  ### <a id="clearTimeoutEx"></a>clearTimeoutEx
+
+[**@xylabs/timer**](#../README)
+
+***
+
+```ts
+function clearTimeoutEx(id): void;
+```
+
+## Parameters
+
+### id
+
+`string`
+
+## Returns
+
+`void`
+
+  ### <a id="setTimeoutEx"></a>setTimeoutEx
+
+[**@xylabs/timer**](#../README)
+
+***
+
+```ts
+function setTimeoutEx(func, delay): string;
+```
+
+## Parameters
+
+### func
+
+`Function`
+
+### delay
+
+`number`
+
+## Returns
+
+`string`
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

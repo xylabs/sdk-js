@@ -12,13 +12,95 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.19
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## Documentation
+## API Documentation
 
-Coming Soon!
+**@xylabs/decimal-precision**
+
+***
+
+## Functions
+
+- [fromFixedPoint](#functions/fromFixedPoint)
+- [toDecimalPrecision](#functions/toDecimalPrecision)
+- [toFixedPoint](#functions/toFixedPoint)
+
+### functions
+
+  ### <a id="fromFixedPoint"></a>fromFixedPoint
+
+[**@xylabs/decimal-precision**](#../README)
+
+***
+
+```ts
+function fromFixedPoint(value, places): bigint;
+```
+
+## Parameters
+
+### value
+
+`bigint`
+
+### places
+
+`number` = `18`
+
+## Returns
+
+`bigint`
+
+  ### <a id="toDecimalPrecision"></a>toDecimalPrecision
+
+[**@xylabs/decimal-precision**](#../README)
+
+***
+
+```ts
+function toDecimalPrecision(value, digits): string;
+```
+
+## Parameters
+
+### value
+
+`number`
+
+### digits
+
+`number`
+
+## Returns
+
+`string`
+
+  ### <a id="toFixedPoint"></a>toFixedPoint
+
+[**@xylabs/decimal-precision**](#../README)
+
+***
+
+```ts
+function toFixedPoint(value, places): bigint;
+```
+
+## Parameters
+
+### value
+
+`string` | `bigint`
+
+### places
+
+`number` = `18`
+
+## Returns
+
+`bigint`
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

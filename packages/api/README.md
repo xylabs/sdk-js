@@ -12,13 +12,274 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.19
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## Documentation
+## API Documentation
 
-Coming Soon!
+**@xylabs/api**
+
+***
+
+## Classes
+
+- [ApiClient](#classes/ApiClient)
+- [ApiEndpoint](#classes/ApiEndpoint)
+
+## Interfaces
+
+- [ApiConfig](#interfaces/ApiConfig)
+
+## Type Aliases
+
+- [ApiStage](#type-aliases/ApiStage)
+
+## Variables
+
+- [ApiStage](#variables/ApiStage)
+
+## Functions
+
+- [getApiStage](#functions/getApiStage)
+
+### classes
+
+  ### <a id="ApiClient"></a>ApiClient
+
+[**@xylabs/api**](#../README)
+
+***
+
+## Constructors
+
+### Constructor
+
+```ts
+new ApiClient(token?, stage?): ApiClient;
+```
+
+### Parameters
+
+#### token?
+
+`null` | `string`
+
+#### stage?
+
+[`ApiStage`](#../type-aliases/ApiStage)
+
+### Returns
+
+`ApiClient`
+
+## Properties
+
+### token?
+
+```ts
+protected optional token: null | string;
+```
+
+***
+
+### stage?
+
+```ts
+protected optional stage: ApiStage;
+```
+
+## Methods
+
+### endPoint()
+
+```ts
+abstract endPoint(): string;
+```
+
+### Returns
+
+`string`
+
+  ### <a id="ApiEndpoint"></a>ApiEndpoint
+
+[**@xylabs/api**](#../README)
+
+***
+
+## Type Parameters
+
+### T
+
+`T`
+
+## Constructors
+
+### Constructor
+
+```ts
+new ApiEndpoint<T>(config, path): ApiEndpoint<T>;
+```
+
+### Parameters
+
+#### config
+
+[`ApiConfig`](#../interfaces/ApiConfig)
+
+#### path
+
+`string`
+
+### Returns
+
+`ApiEndpoint`\<`T`\>
+
+## Accessors
+
+### value
+
+### Get Signature
+
+```ts
+get value(): undefined | T;
+```
+
+#### Returns
+
+`undefined` \| `T`
+
+## Methods
+
+### fetch()
+
+```ts
+fetch(): Promise<T>;
+```
+
+### Returns
+
+`Promise`\<`T`\>
+
+***
+
+### get()
+
+```ts
+get(): Promise<T | NonNullable<T>>;
+```
+
+### Returns
+
+`Promise`\<`T` \| `NonNullable`\<`T`\>\>
+
+***
+
+### insert()
+
+```ts
+insert(value): Promise<T>;
+```
+
+### Parameters
+
+#### value
+
+`T`
+
+### Returns
+
+`Promise`\<`T`\>
+
+### functions
+
+  ### <a id="getApiStage"></a>getApiStage
+
+[**@xylabs/api**](#../README)
+
+***
+
+```ts
+function getApiStage(hostname): "beta" | "local" | "prod";
+```
+
+## Parameters
+
+### hostname
+
+`string`
+
+## Returns
+
+`"beta"` \| `"local"` \| `"prod"`
+
+### interfaces
+
+  ### <a id="ApiConfig"></a>ApiConfig
+
+[**@xylabs/api**](#../README)
+
+***
+
+## Properties
+
+### apiDomain
+
+```ts
+apiDomain: string;
+```
+
+***
+
+### apiKey?
+
+```ts
+optional apiKey: string;
+```
+
+***
+
+### jwtToken?
+
+```ts
+optional jwtToken: string;
+```
+
+***
+
+### userid?
+
+```ts
+optional userid: string;
+```
+
+### type-aliases
+
+  ### <a id="ApiStage"></a>ApiStage
+
+[**@xylabs/api**](#../README)
+
+***
+
+```ts
+type ApiStage = EnumValue<typeof ApiStage>;
+```
+
+### variables
+
+  ### <a id="ApiStage"></a>ApiStage
+
+[**@xylabs/api**](#../README)
+
+***
+
+```ts
+const ApiStage: Enum<{
+  Beta: "beta";
+  Local: "local";
+  Prod: "prod";
+}>;
+```
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

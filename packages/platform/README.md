@@ -12,13 +12,96 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.19
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## Documentation
+## API Documentation
 
-Coming Soon!
+**@xylabs/platform**
+
+***
+
+## Modules
+
+- [browser](#browser/README)
+- [node](#node/README)
+
+### browser
+
+  ### functions
+
+    ### <a id="isBrowser"></a>isBrowser
+
+[**@xylabs/platform**](#../../README)
+
+***
+
+```ts
+function isBrowser(): boolean;
+```
+
+## Returns
+
+`boolean`
+
+    ### <a id="isWebworker"></a>isWebworker
+
+[**@xylabs/platform**](#../../README)
+
+***
+
+```ts
+function isWebworker(): boolean;
+```
+
+## Returns
+
+`boolean`
+
+  ### variables
+
+    ### <a id="subtle"></a>subtle
+
+[**@xylabs/platform**](#../../README)
+
+***
+
+```ts
+const subtle: SubtleCrypto;
+```
+
+### node
+
+  ### functions
+
+    ### <a id="isBrowser"></a>isBrowser
+
+[**@xylabs/platform**](#../../README)
+
+***
+
+```ts
+function isBrowser(): boolean;
+```
+
+## Returns
+
+`boolean`
+
+    ### <a id="isWebworker"></a>isWebworker
+
+[**@xylabs/platform**](#../../README)
+
+***
+
+```ts
+function isWebworker(): boolean;
+```
+
+## Returns
+
+`boolean`
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

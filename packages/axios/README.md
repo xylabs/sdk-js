@@ -12,13 +12,216 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.19
 
-Primary SDK for using XYO Protocol 2.0
+Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## Documentation
+## API Documentation
 
-Coming Soon!
+**@xylabs/axios**
+
+***
+
+## Classes
+
+- [AxiosJson](#classes/AxiosJson)
+- [AxiosJsonUncompressed](#classes/AxiosJsonUncompressed)
+
+## Type Aliases
+
+- [RawAxiosJsonRequestConfig](#type-aliases/RawAxiosJsonRequestConfig)
+- [RawAxiosJsonRequestUncompressedConfig](#type-aliases/RawAxiosJsonRequestUncompressedConfig)
+
+## Variables
+
+- [axios](#variables/axios)
+- [axiosUncompressed](#variables/axiosUncompressed)
+
+### classes
+
+  ### <a id="AxiosJson"></a>AxiosJson
+
+[**@xylabs/axios**](#../README)
+
+***
+
+## Extends
+
+- `Axios`
+
+## Constructors
+
+### Constructor
+
+```ts
+new AxiosJson(config?): AxiosJson;
+```
+
+### Parameters
+
+#### config?
+
+[`RawAxiosJsonRequestConfig`](#../type-aliases/RawAxiosJsonRequestConfig)\<`any`\>
+
+### Returns
+
+`AxiosJson`
+
+### Overrides
+
+```ts
+Axios.constructor
+```
+
+## Properties
+
+### defaultLogger?
+
+```ts
+static optional defaultLogger: Logger;
+```
+
+## Methods
+
+### finalPath()
+
+```ts
+static finalPath(response): any;
+```
+
+### Parameters
+
+#### response
+
+`AxiosResponse`
+
+### Returns
+
+`any`
+
+  ### <a id="AxiosJsonUncompressed"></a>AxiosJsonUncompressed
+
+[**@xylabs/axios**](#../README)
+
+***
+
+## Extends
+
+- `Axios`
+
+## Constructors
+
+### Constructor
+
+```ts
+new AxiosJsonUncompressed(config?): AxiosJsonUncompressed;
+```
+
+### Parameters
+
+#### config?
+
+[`RawAxiosJsonRequestUncompressedConfig`](#../type-aliases/RawAxiosJsonRequestUncompressedConfig)\<`any`\>
+
+### Returns
+
+`AxiosJsonUncompressed`
+
+### Overrides
+
+```ts
+Axios.constructor
+```
+
+## Properties
+
+### defaultLogger?
+
+```ts
+static optional defaultLogger: Logger;
+```
+
+## Methods
+
+### finalPath()
+
+```ts
+static finalPath(response): any;
+```
+
+### Parameters
+
+#### response
+
+`AxiosResponse`
+
+### Returns
+
+`any`
+
+### type-aliases
+
+  ### <a id="RawAxiosJsonRequestConfig"></a>RawAxiosJsonRequestConfig
+
+[**@xylabs/axios**](#../README)
+
+***
+
+```ts
+type RawAxiosJsonRequestConfig<D> = RawAxiosRequestConfig<D> & object;
+```
+
+## Type declaration
+
+### compressLength?
+
+```ts
+optional compressLength: number;
+```
+
+## Type Parameters
+
+### D
+
+`D` = `any`
+
+  ### <a id="RawAxiosJsonRequestUncompressedConfig"></a>RawAxiosJsonRequestUncompressedConfig
+
+[**@xylabs/axios**](#../README)
+
+***
+
+```ts
+type RawAxiosJsonRequestUncompressedConfig<D> = RawAxiosRequestConfig<D>;
+```
+
+## Type Parameters
+
+### D
+
+`D` = `any`
+
+### variables
+
+  ### <a id="axios"></a>axios
+
+[**@xylabs/axios**](#../README)
+
+***
+
+```ts
+const axios: AxiosJson;
+```
+
+  ### <a id="axiosUncompressed"></a>axiosUncompressed
+
+[**@xylabs/axios**](#../README)
+
+***
+
+```ts
+const axiosUncompressed: AxiosJsonUncompressed;
+```
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

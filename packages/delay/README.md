@@ -12,13 +12,41 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.19
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## Documentation
+## API Documentation
 
-Coming Soon!
+**@xylabs/delay**
+
+***
+
+## Functions
+
+- [delay](#functions/delay)
+
+### functions
+
+  ### <a id="delay"></a>delay
+
+[**@xylabs/delay**](#../README)
+
+***
+
+```ts
+function delay(ms): Promise<unknown>;
+```
+
+## Parameters
+
+### ms
+
+`number`
+
+## Returns
+
+`Promise`\<`unknown`\>
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

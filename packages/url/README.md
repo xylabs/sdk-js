@@ -12,13 +12,101 @@
 [![snyk-badge][]][snyk-link]
 [![socket-badge][]][socket-link]
 
-Version: 4.13.19
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
-## Documentation
+## API Documentation
 
-Coming Soon!
+**@xylabs/url**
+
+***
+
+## Modules
+
+- [index-browser](#index-browser/README)
+- [index-neutral](#index-neutral/README)
+- [index-node](#index-node/README)
+
+### index-browser
+
+  ### functions
+
+    ### <a id="isLocalhost"></a>isLocalhost
+
+[**@xylabs/url**](#../../README)
+
+***
+
+```ts
+function isLocalhost(hostname): boolean;
+```
+
+## Parameters
+
+### hostname
+
+`string`
+
+## Returns
+
+`boolean`
+
+  ### variables
+
+    ### <a id="URL"></a>URL
+
+[**@xylabs/url**](#../../README)
+
+***
+
+```ts
+const URL: (url, base?) => URL;
+```
+
+## Parameters
+
+### url
+
+`string` | `URL`
+
+### base?
+
+`string` | `URL`
+
+## Returns
+
+`URL`
+
+### index-neutral
+
+  ### variables
+
+    ### <a id="URL"></a>URL
+
+[**@xylabs/url**](#../../README)
+
+***
+
+```ts
+const URL: (url, base?) => URL;
+```
+
+## Parameters
+
+### url
+
+`string` | `URL`
+
+### base?
+
+`string` | `URL`
+
+## Returns
+
+`URL`
+
+### index-node
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

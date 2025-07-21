@@ -1,7 +1,7 @@
 import { d2r } from '../../constants.ts'
-import type { MercatorLngLat } from '../../types.ts'
+import type { MercatorLngLat, MercatorTile } from '../../types.ts'
 
-const pointToTileFraction = (point: MercatorLngLat, z: number) => {
+const pointToTileFraction = (point: MercatorLngLat, z: number): MercatorTile => {
   const sin = Math.sin(point.lat * d2r)
   const z2 = Math.pow(2, z)
   let x = z2 * (point.lng / 360 + 0.5)
@@ -13,17 +13,11 @@ const pointToTileFraction = (point: MercatorLngLat, z: number) => {
   return [x, y, z]
 }
 
-const tileFromPoint = (point: MercatorLngLat, z: number) => {
-  const tile = pointToTileFraction(point, z)
-  tile[0] = Math.floor(tile[0])
-  tile[1] = Math.floor(tile[1])
-  if (tile[0] < 0) {
-    tile[0] = 0
-  }
-  if (tile[1] < 0) {
-    tile[1] = 0
-  }
-  return tile
+const tileFromPoint = (point: MercatorLngLat, z: number): MercatorTile => {
+  const [tileX, tileY, tileZoom] = pointToTileFraction(point, z)
+  const x = Math.max(Math.floor(tileX), 0)
+  const y = Math.max(Math.floor(tileY), 0)
+  return [x, y, tileZoom]
 }
 
 export { tileFromPoint }

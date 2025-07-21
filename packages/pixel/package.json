@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/pixel",
-  "version": "4.13.21",
+  "version": "4.13.22",
   "description": "Event Client for xylabs ESB",
   "homepage": "https://xylabs.com",
   "bugs": {
@@ -48,7 +48,7 @@
   },
   "devDependencies": {
     "@types/js-cookie": "^3.0.6",
-    "@types/node": "^24.0.14",
+    "@types/node": "^24.0.15",
     "@types/spark-md5": "^3.0.5",
     "@xylabs/ts-scripts-yarn3": "^7.0.0",
     "@xylabs/tsconfig-dom": "^7.0.0",

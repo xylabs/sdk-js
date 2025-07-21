@@ -68,7 +68,7 @@ function extractExportPaths(exportsObj) {
 
   if (typeof exportsObj === 'string') {
     paths.push(exportsObj)
-  } else if (exportsObj && typeof exportsObj === 'object') {
+  } else if (typeof exportsObj === 'object') {
     for (const key in exportsObj) {
       if (key === 'types' && typeof exportsObj[key] === 'string') {
         paths.push(exportsObj[key])

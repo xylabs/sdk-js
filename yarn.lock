@@ -2521,6 +2521,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/promise@workspace:packages/promise"
   dependencies:
+    "@types/geojson": "npm:^7946.0.16"
     "@xylabs/ts-scripts-yarn3": "npm:^7.0.0"
     "@xylabs/tsconfig": "npm:^7.0.0"
     "@xylabs/typeof": "workspace:^"

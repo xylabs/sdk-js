@@ -1,4 +1,6 @@
-const tileFromQuadkey = (quadkey: string) => {
+import type { MercatorTile } from '../../types.ts'
+
+const tileFromQuadkey = (quadkey: string): MercatorTile => {
   let x = 0
   let y = 0
   const z = quadkey.length

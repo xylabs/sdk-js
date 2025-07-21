@@ -4,6 +4,7 @@ const config: XyTsupConfig = {
     browser: {},
     neutral: { src: true },
     node: {},
+    bundleTypes: true,
   },
 }
 

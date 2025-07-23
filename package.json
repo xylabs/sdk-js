@@ -65,7 +65,7 @@
     "@xylabs/forget": "workspace:^",
     "@xylabs/function-name": "workspace:^",
     "@xylabs/hex": "workspace:^",
-    "@xylabs/log": "workspace:^",
+    "@xylabs/log": "2.10.1",
     "@xylabs/logger": "workspace:^",
     "@xylabs/object": "workspace:^",
     "@xylabs/profile": "workspace:^",

@@ -44,14 +44,14 @@
     "src"
   ],
   "dependencies": {
-    "@xylabs/assert": "workspace:^",
-    "ethers": "^6.15.0"
+    "@xylabs/assert": "workspace:~",
+    "ethers": "~6.15.0"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^7.0.0",
-    "@xylabs/tsconfig": "^7.0.0",
-    "typescript": "^5.8.3",
-    "vitest": "^3.2.4"
+    "@xylabs/ts-scripts-yarn3": "~7.0.0",
+    "@xylabs/tsconfig": "~7.0.0",
+    "typescript": "~5.8.3",
+    "vitest": "~3.2.4"
   },
   "engines": {
     "node": ">=18"

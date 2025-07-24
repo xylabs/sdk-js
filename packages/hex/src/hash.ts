@@ -1,11 +1,15 @@
 import { isUndefined } from '@xylabs/typeof'
+import z from 'zod'
 
 import type { AssertConfig } from './assert.ts'
 import { assertError } from './assert.ts'
 import type { Hex } from './hex/index.ts'
 import { hexFromHexString, isHex } from './hex/index.ts'
+import { HexRegExMinMax } from './HexRegExMinMax.ts'
 
-export const ZERO_HASH: Hash = '0000000000000000000000000000000000000000000000000000000000000000' as const
+export const HashRegEx = HexRegExMinMax(32, 32)
+
+export const ZERO_HASH = '0000000000000000000000000000000000000000000000000000000000000000' as Hash
 
 export type HashBitLength = 32 | 64 | 128 | 256 | 512 | 1024 | 2048 | 4096
 export const HashBitLength: HashBitLength[] = [32, 64, 128, 256, 512, 1024, 2048, 4096]
@@ -14,10 +18,17 @@ export const isHashBitLength = (value: unknown): value is HashBitLength => {
   return typeof value === 'number' && HashBitLength.includes(value as HashBitLength)
 }
 
-export type Hash = Exclude<Hex, 'reserved-hash-value'>
+export type Hash = Hex & { readonly __hash: unique symbol }
 export const isHash = (value: unknown, bitLength: HashBitLength = 256): value is Hash => {
   return isHex(value, { bitLength })
 }
+
+export const HashZod = z.string()
+  .toLowerCase()
+  .regex(HashRegEx, { message: 'Invalid hash format' })
+  .refine(
+    isHash,
+  )
 
 export function asHash(value: unknown): Hash | undefined
 export function asHash(value: unknown, assert: AssertConfig): Hash

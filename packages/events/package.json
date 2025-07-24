@@ -35,21 +35,21 @@
     "src"
   ],
   "dependencies": {
-    "@xylabs/assert": "workspace:^",
-    "@xylabs/base": "workspace:^",
-    "@xylabs/error": "workspace:^",
-    "@xylabs/forget": "workspace:^",
-    "@xylabs/object": "workspace:^",
-    "@xylabs/promise": "workspace:^",
-    "@xylabs/typeof": "workspace:^"
+    "@xylabs/assert": "workspace:~",
+    "@xylabs/base": "workspace:~",
+    "@xylabs/error": "workspace:~",
+    "@xylabs/forget": "workspace:~",
+    "@xylabs/object": "workspace:~",
+    "@xylabs/promise": "workspace:~",
+    "@xylabs/typeof": "workspace:~"
   },
   "devDependencies": {
-    "@xylabs/delay": "workspace:^",
-    "@xylabs/ts-scripts-yarn3": "^7.0.0",
-    "@xylabs/tsconfig": "^7.0.0",
-    "@xylabs/vitest-extended": "workspace:^",
-    "typescript": "^5.8.3",
-    "vitest": "^3.2.4"
+    "@xylabs/delay": "workspace:~",
+    "@xylabs/ts-scripts-yarn3": "~7.0.0",
+    "@xylabs/tsconfig": "~7.0.0",
+    "@xylabs/vitest-extended": "workspace:~",
+    "typescript": "~5.8.3",
+    "vitest": "~3.2.4"
   },
   "publishConfig": {
     "access": "public"

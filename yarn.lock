@@ -2465,6 +2465,8 @@ __metadata:
     mongodb: "npm:~6.18.0"
     typescript: "npm:~5.8.3"
     vitest: "npm:~3.2.4"
+  peerDependencies:
+    mongodb: ~6
   languageName: unknown
   linkType: soft
 

@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/mongo",
-  "version": "4.14.0",
+  "version": "4.14.1",
   "description": "Base functionality used throughout XYO TypeScript/JavaScript libraries that access Mongo DB",
   "keywords": [
     "mongo",
@@ -53,8 +53,8 @@
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.0.1",
     "@xylabs/tsconfig": "~7.0.1",
-    "typescript": "~5.8.3",
     "mongodb": "~6.18.0",
+    "typescript": "~5.8.3",
     "vitest": "~3.2.4"
   },
   "peerDependencies": {

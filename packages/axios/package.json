@@ -43,13 +43,13 @@
   ],
   "dependencies": {
     "@xylabs/logger": "workspace:~",
-    "axios": "~1.10.0",
+    "axios": "~1.11.0",
     "pako": "~2.1.0"
   },
   "devDependencies": {
     "@types/pako": "~2.0.3",
-    "@xylabs/ts-scripts-yarn3": "~7.0.0",
-    "@xylabs/tsconfig": "~7.0.0",
+    "@xylabs/ts-scripts-yarn3": "~7.0.1",
+    "@xylabs/tsconfig": "~7.0.1",
     "typescript": "~5.8.3"
   },
   "engines": {

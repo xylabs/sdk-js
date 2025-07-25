@@ -43,11 +43,11 @@
   "dependencies": {
     "@xylabs/enum": "workspace:~",
     "@xylabs/typeof": "workspace:~",
-    "axios": "~1.10.0"
+    "axios": "~1.11.0"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.0.0",
-    "@xylabs/tsconfig": "~7.0.0",
+    "@xylabs/ts-scripts-yarn3": "~7.0.1",
+    "@xylabs/tsconfig": "~7.0.1",
     "typescript": "~5.8.3",
     "vitest": "~3.2.4"
   },

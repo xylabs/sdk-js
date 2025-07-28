@@ -3,7 +3,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { expect, test } from 'vitest'
-import { toJsonString } from '@xylabs/object'
 
 import {
   spawn, Thread, Worker,

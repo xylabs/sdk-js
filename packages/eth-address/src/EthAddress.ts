@@ -4,23 +4,22 @@ import { getAddress } from 'ethers'
 import { ellipsize } from './ellipsize.ts'
 import { padHex } from './padHex.ts'
 
-export const isEthAddress = (obj: { type: string }) => obj?.type === EthAddress.type
+export const isEthAddressWrapper = (obj: { type: string }) => obj instanceof EthAddressWrapper
 
-export class EthAddress {
-  static readonly type = 'EthAddress'
+/** @deprecated use isEthAddressWrapper */
+export const isEthAddress = isEthAddressWrapper
 
-  type = EthAddress.type
-
+export class EthAddressWrapper {
   private address: bigint
 
-  private constructor(address: bigint) {
+  protected constructor(address: bigint) {
     this.address = address
   }
 
   static fromString(value?: string, base = 16) {
     if (value !== undefined) {
       const bi = base === 16 ? BigInt(value.startsWith('0x') ? value : `0x${value}`) : BigInt(value)
-      return new EthAddress(bi)
+      return new EthAddressWrapper(bi)
     }
   }
 
@@ -34,9 +33,9 @@ export class EthAddress {
     return /^(0x)?[\da-f]{40}$/i.test(address)
   }
 
-  equals(address?: EthAddress | string | null): boolean {
+  equals(address?: EthAddressWrapper | string | null): boolean {
     if (address !== null && address !== undefined) {
-      const inAddress = typeof address === 'string' ? assertEx(EthAddress.fromString(address), () => 'Bad Address') : address
+      const inAddress = typeof address === 'string' ? assertEx(EthAddressWrapper.fromString(address), () => 'Bad Address') : address
       return this.address === inAddress.address
     }
     return false
@@ -71,6 +70,9 @@ export class EthAddress {
   }
 
   validate() {
-    return EthAddress.validate(this.toString())
+    return EthAddressWrapper.validate(this.toString())
   }
 }
+
+/** @deprecated use EthAddressWrapper */
+export class EthAddress extends EthAddressWrapper {}

@@ -43,14 +43,14 @@
     "src"
   ],
   "dependencies": {
-    "@xylabs/error": "workspace:~",
-    "@xylabs/typeof": "workspace:~"
+    "@xylabs/error": "workspace:^",
+    "@xylabs/typeof": "workspace:^"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.0.1",
-    "@xylabs/tsconfig": "~7.0.1",
-    "typescript": "~5.8.3",
-    "vitest": "~3.2.4"
+    "@xylabs/ts-scripts-yarn3": "^7.0.1",
+    "@xylabs/tsconfig": "^7.0.1",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
   },
   "engines": {
     "node": ">=18"

@@ -113,21 +113,21 @@
     "package-compile-tsup": "tsup --config tsup.browser.config.ts && tsup --config tsup.node.config.ts && tsup --config tsup.neutral.config.ts"
   },
   "dependencies": {
-    "@xylabs/assert": "workspace:~",
-    "debug": "~4.4.1",
+    "@xylabs/assert": "workspace:^",
+    "debug": "^4.4.1",
     "is-observable-2-1-0": "npm:is-observable@2.1.0",
-    "observable-fns": "~0.6.1"
+    "observable-fns": "^0.6.1"
   },
   "devDependencies": {
-    "@swc/core": "~1.13.2",
-    "@types/debug": "~4.1.12",
-    "@types/node": "~24.1.0",
-    "@xylabs/eslint-config-flat": "~7.0.1",
-    "@xylabs/ts-scripts-yarn3": "~7.0.1",
-    "eslint": "~9.32.0",
-    "tiny-worker": "~2.3.0",
-    "tsup": "~8.5.0",
-    "typescript": "~5.8.3"
+    "@swc/core": "^1.13.2",
+    "@types/debug": "^4.1.12",
+    "@types/node": "^24.1.0",
+    "@xylabs/eslint-config-flat": "^7.0.1",
+    "@xylabs/ts-scripts-yarn3": "^7.0.1",
+    "eslint": "^9.32.0",
+    "tiny-worker": "^2.3.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
   },
   "publishConfig": {
     "access": "public"

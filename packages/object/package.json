@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/object",
-  "version": "4.14.3",
+  "version": "4.14.4",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "homepage": "https://xyo.network",
   "bugs": {

@@ -1,3 +1,5 @@
+import type { JsonValue } from './index.ts'
+
 export type OmitStartsWith<T, Prefix extends string> = {
   [K in keyof T as K extends `${Prefix}${string}` ? never : K]: T[K];
 }
@@ -20,4 +22,14 @@ export type DeepRestrictToStringKeys<T> = {
     : T[K] extends object
       ? DeepRestrictToStringKeys<T[K]> // Handle objects recursively
       : T[K]; // Leave other types untouched
+}
+
+export type DeepRestrictToJson<T> = {
+  [K in keyof T as K extends string ? K : never]: T[K] extends (infer U)[]
+    ? DeepRestrictToJson<U>[] // Handle arrays recursively
+    : T[K] extends object
+      ? DeepRestrictToJson<T[K]> // Handle objects recursively
+      : T[K] extends JsonValue
+        ? T[K] // Leave JsonValue types untouched
+        : never; // Exclude other types
 }

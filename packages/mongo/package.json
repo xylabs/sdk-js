@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/mongo",
-  "version": "4.14.6",
+  "version": "4.15.0",
   "description": "Base functionality used throughout XYO TypeScript/JavaScript libraries that access Mongo DB",
   "keywords": [
     "mongo",

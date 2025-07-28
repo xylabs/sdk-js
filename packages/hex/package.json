@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/hex",
-  "version": "4.14.2",
+  "version": "4.14.3",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "hex",
@@ -43,7 +43,7 @@
   ],
   "dependencies": {
     "@xylabs/typeof": "workspace:~",
-    "zod": "~4.0.9",
+    "zod": "~4.0.10",
     "zod-to-json-schema": "~3.24.6"
   },
   "devDependencies": {

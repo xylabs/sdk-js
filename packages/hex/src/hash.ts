@@ -18,7 +18,7 @@ export const isHashBitLength = (value: unknown): value is HashBitLength => {
   return typeof value === 'number' && HashBitLength.includes(value as HashBitLength)
 }
 
-export type Hash = Hex & string // { readonly __hash: unique symbol }
+export type Hash = Hex & { readonly __hash: unique symbol }
 export const isHash = (value: unknown, bitLength: HashBitLength = 256): value is Hash => {
   return isHex(value, { bitLength })
 }

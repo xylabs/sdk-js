@@ -14,7 +14,7 @@ export const AddressRegEx = HexRegExMinMax(20, 20)
 export const AddressToStringSchema = z.string().toLowerCase().regex(AddressRegEx)
 export const AddressFromStringSchema = z.string().toLowerCase().regex(AddressRegEx).transform(v => toAddress(v))
 
-export type Address = Hex & string // { readonly __address: unique symbol }
+export type Address = Hex & { readonly __address: unique symbol }
 
 export const ZERO_ADDRESS = '0000000000000000000000000000000000000000' as Address
 

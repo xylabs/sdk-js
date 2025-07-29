@@ -1,6 +1,6 @@
+import { HexRegEx, HexRegExWithPrefix } from '../HexRegEx.ts'
 import type { Hex, HexConfig } from './model.ts'
 import { bitsToNibbles } from './nibble.ts'
-import { hexRegex, hexRegexWithPrefix } from './regex.ts'
 
 export const isHex = (value: unknown, config?: HexConfig): value is Hex => {
   // Is it a string?
@@ -12,5 +12,5 @@ export const isHex = (value: unknown, config?: HexConfig): value is Hex => {
   if (config?.bitLength !== undefined && valueCharLength !== bitsToNibbles(config?.bitLength)) return false
 
   // Does it only has hex values?
-  return config?.prefix ? hexRegexWithPrefix.test(value) : hexRegex.test(value)
+  return config?.prefix ? HexRegExWithPrefix.test(value) : HexRegEx.test(value)
 }

@@ -6,7 +6,7 @@ import type { HexConfig } from './hex/index.ts'
 import {
   hexFrom, hexFromHexString, isHex,
 } from './hex/index.ts'
-import { HexRegExMinMaxMixedCaseWithPrefix } from './HexRegExMinMax.ts'
+import { HexRegExMinMaxMixedCaseWithPrefix } from './HexRegEx.ts'
 
 export const EthAddressRegEx = HexRegExMinMaxMixedCaseWithPrefix(20, 20)
 

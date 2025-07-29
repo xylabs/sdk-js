@@ -24,12 +24,7 @@
   "funding": "https://github.com/andywer/threads.js?sponsor=1",
   "license": "MIT",
   "author": "Andy Wermke (https://github.com/andywer)",
-  "sideEffects": [
-    "./dist*/master/register.js",
-    "./dist*/worker/index.js",
-    "./register.*js",
-    "./worker.*js"
-  ],
+  "sideEffects": false,
   "type": "module",
   "exports": {
     ".": {
@@ -38,7 +33,6 @@
       "default": "./dist/neutral/index.mjs"
     }
   },
-  "main": "dist/neutral/index.mjs",
   "module": "dist/neutral/index.mjs",
   "types": "dist/neutral/index.d.ts",
   "files": [
@@ -63,9 +57,9 @@
   "devDependencies": {
     "@types/debug": "^4.1.12",
     "@types/node": "^24.1.0",
-    "@xylabs/eslint-config-flat": "^7.0.1",
+    "@xylabs/eslint-config-flat": "^7.0.2",
     "@xylabs/threads": "workspace:^",
-    "@xylabs/ts-scripts-yarn3": "^7.0.1",
+    "@xylabs/ts-scripts-yarn3": "^7.0.2",
     "eslint": "^9.32.0",
     "observable-fns": "^0.6.1",
     "typescript": "^5.8.3",

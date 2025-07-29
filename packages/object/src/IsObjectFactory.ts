@@ -3,8 +3,7 @@ import {
   isObject, isTruthy,
   type ObjectTypeShape, type TypedObject,
 } from '@xylabs/typeof'
-
-import { isType } from './isType.ts'
+import { isType } from '@xylabs/typeof'
 
 export interface ObjectTypeConfig extends TypeCheckConfig {}
 

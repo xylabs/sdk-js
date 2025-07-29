@@ -1,17 +1,22 @@
 import type { TypedValue } from '@xylabs/typeof'
 
+/** @deprecated */
 export interface PromiseType {
   then: () => unknown
 }
 
+/** @deprecated */
+// eslint-disable-next-line sonarjs/deprecation
 export type AnyNonPromise = Exclude<TypedValue, PromiseType>
 
+/*
 export const isPromise = (value: unknown): value is Promise<unknown> => {
   if (typeof value === 'object' && !Array.isArray(value)) {
     return typeof (value as PromiseType).then === 'function'
   }
   return false
 }
+*/
 
 // type test
 /*

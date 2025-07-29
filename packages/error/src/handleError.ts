@@ -1,4 +1,4 @@
-import { isError } from './isError.ts'
+import { isError } from '@xylabs/typeof'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const handleError = <T>(error: any, handler: (error: Error) => T) => {

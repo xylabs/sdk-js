@@ -1,2 +1,2 @@
 export * from './handleError.ts'
-export * from './isError.ts'
+export { isError } from '@xylabs/typeof'

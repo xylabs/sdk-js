@@ -25,6 +25,11 @@
       "source": "./src/index.ts",
       "default": "./dist/neutral/index.mjs"
     },
+    "./index-un-deprecated": {
+      "types": "./dist/neutral/index-un-deprecated.d.ts",
+      "source": "./src/index-un-deprecated.ts",
+      "default": "./dist/neutral/index-un-deprecated.mjs"
+    },
     "./package.json": "./package.json"
   },
   "module": "./dist/neutral/index.mjs",

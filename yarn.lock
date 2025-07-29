@@ -2212,6 +2212,7 @@ __metadata:
   dependencies:
     "@xylabs/ts-scripts-yarn3": "npm:^7.0.1"
     "@xylabs/tsconfig": "npm:^7.0.1"
+    "@xylabs/typeof": "workspace:^"
     typescript: "npm:^5.8.3"
   languageName: unknown
   linkType: soft
@@ -2602,6 +2603,8 @@ __metadata:
     "@xylabs/ts-scripts-yarn3": "npm:^7.0.1"
     "@xylabs/tsconfig": "npm:^7.0.1"
     "@xylabs/tsconfig-dom": "npm:^7.0.1"
+    "@xylabs/typeof": "workspace:^"
+    "@xylabs/url": "workspace:^"
     dotenv: "npm:^17.2.1"
     eslint: "npm:^9.32.0"
     eslint-import-resolver-typescript: "npm:^4.4.4"
@@ -2819,7 +2822,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/url@workspace:packages/url":
+"@xylabs/url@workspace:^, @xylabs/url@workspace:packages/url":
   version: 0.0.0-use.local
   resolution: "@xylabs/url@workspace:packages/url"
   dependencies:

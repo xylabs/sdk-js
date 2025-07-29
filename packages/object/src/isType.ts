@@ -1,5 +1,6 @@
 import type { FieldType } from '@xylabs/typeof'
 
+/** @deprecated use from @xylabs/typeof instead */
 export const isType = (value: unknown, expectedType: FieldType) => {
   const typeofValue = typeof value
   switch (expectedType) {

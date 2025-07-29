@@ -72,7 +72,9 @@
     "@xylabs/retry": "workspace:^",
     "@xylabs/set": "workspace:^",
     "@xylabs/static-implements": "workspace:^",
-    "@xylabs/timer": "workspace:^"
+    "@xylabs/timer": "workspace:^",
+    "@xylabs/typeof": "workspace:^",
+    "@xylabs/url": "workspace:^"
   },
   "devDependencies": {
     "@types/node": "^24.1.0",

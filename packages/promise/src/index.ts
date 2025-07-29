@@ -1,6 +1,5 @@
 export { fulfilled } from './fulfilled.ts'
 export { fulfilledValues } from './fulfilledValues.ts'
-export * from './isPromise.ts'
 export * from './PromiseEx.ts'
 export { rejected } from './rejected.ts'
 export * from './toPromise.ts'

@@ -1,3 +1,5 @@
+import type { TypedValue } from '@xylabs/typeof'
+
 import type { PromiseEx } from './PromiseEx.ts'
 
 export type Promisable<T, V = never> = PromiseEx<T, V> | Promise<T> | T
@@ -9,3 +11,9 @@ export type NullablePromisableArray<T, V = never> = PromisableArray<T | null, V>
 
 /** @description Used to document promises that are being used as Mutexes */
 export type AsyncMutex<T> = Promise<T>
+
+export interface PromiseType {
+  then: () => unknown
+}
+
+export type AnyNonPromise = Exclude<TypedValue, PromiseType>

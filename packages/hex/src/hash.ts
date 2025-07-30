@@ -3,9 +3,10 @@ import z from 'zod'
 
 import type { AssertConfig } from './assert.ts'
 import { assertError } from './assert.ts'
+import type { Brand } from './Brand.ts'
 import type { Hex } from './hex/index.ts'
 import { hexFromHexString, isHex } from './hex/index.ts'
-import { HexRegExMinMax } from './HexRegExMinMax.ts'
+import { HexRegExMinMax } from './HexRegEx.ts'
 
 export const HashRegEx = HexRegExMinMax(32, 32)
 
@@ -18,7 +19,9 @@ export const isHashBitLength = (value: unknown): value is HashBitLength => {
   return typeof value === 'number' && HashBitLength.includes(value as HashBitLength)
 }
 
-export type Hash = Hex & { readonly __hash: unique symbol }
+// using true instead of unique symbol to avoid conflicts with other versions of library
+export type Hash = Brand<Hex, { readonly __hash: true }>
+
 export const isHash = (value: unknown, bitLength: HashBitLength = 256): value is Hash => {
   return isHex(value, { bitLength })
 }

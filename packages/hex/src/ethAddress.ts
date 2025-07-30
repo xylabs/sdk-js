@@ -2,18 +2,20 @@ import z from 'zod'
 
 import type { AssertConfig } from './assert.ts'
 import { assertError } from './assert.ts'
+import type { Brand } from './Brand.ts'
 import type { HexConfig } from './hex/index.ts'
 import {
   hexFrom, hexFromHexString, isHex,
 } from './hex/index.ts'
-import { HexRegExMinMaxMixedCaseWithPrefix } from './HexRegExMinMax.ts'
+import { HexRegExMinMaxMixedCaseWithPrefix } from './HexRegEx.ts'
 
 export const EthAddressRegEx = HexRegExMinMaxMixedCaseWithPrefix(20, 20)
 
 export const EthAddressToStringSchema = z.string().regex(EthAddressRegEx)
 export const EthAddressFromStringSchema = z.string().regex(EthAddressRegEx).transform(v => toEthAddress(v))
 
-export type EthAddress = string & { readonly __eth_address: unique symbol }
+// using true instead of unique symbol to avoid conflicts with other versions of library
+export type EthAddress = Brand<string, { readonly __eth_address: true }>
 
 export const ETH_ZERO_ADDRESS = '0x0000000000000000000000000000000000000000' as EthAddress
 

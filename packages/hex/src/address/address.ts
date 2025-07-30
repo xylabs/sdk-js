@@ -1,22 +1,29 @@
 import { isObject } from '@xylabs/typeof'
 import z from 'zod'
 
-import type { AssertConfig } from './assert.ts'
-import { assertError } from './assert.ts'
-import type { Hex, HexConfig } from './hex/index.ts'
+import type { AssertConfig } from '../assert.ts'
+import { assertError } from '../assert.ts'
+import type { HexConfig } from '../hex/index.ts'
 import {
   hexFrom, hexFromHexString, isHex,
-} from './hex/index.ts'
-import { HexRegExMinMax } from './HexRegExMinMax.ts'
+} from '../hex/index.ts'
+import { HexRegExMinMax } from '../HexRegEx.ts'
+import type { Address } from './AddressNamespace.ts'
 
 export const AddressRegEx = HexRegExMinMax(20, 20)
 
-export const AddressToStringSchema = z.string().toLowerCase().regex(AddressRegEx)
-export const AddressFromStringSchema = z.string().toLowerCase().regex(AddressRegEx).transform(v => toAddress(v))
+export const AddressToStringZod = z.string().regex(AddressRegEx)
 
-export type Address = Hex & { readonly __address: unique symbol }
+/** @deprecated use AddressToStringZod */
+export const AddressToStringSchema = AddressToStringZod
+
+export const AddressFromStringZod = z.string().toLowerCase().regex(AddressRegEx).transform(v => toAddress(v))
+
+/** @deprecated use AddressFromStringZod */
+export const AddressFromStringSchema = AddressFromStringZod
 
 export const ZERO_ADDRESS = '0000000000000000000000000000000000000000' as Address
+export const ADDRESS_LENGTH = 40 as const
 
 export const toAddress = (value: string | number | bigint | ArrayBufferLike, config: HexConfig = {}): Address => {
   const { bitLength = 160, prefix = false } = config
@@ -29,13 +36,6 @@ export const isAddress = (value: unknown, config: HexConfig = {}): value is Addr
   const { bitLength = 160, prefix = false } = config
   return isHex(value, { bitLength, prefix })
 }
-
-export const AddressZod = z.string()
-  .toLowerCase()
-  .regex(AddressRegEx, { message: 'Invalid address format' })
-  .refine(
-    isAddress,
-  )
 
 export function asAddress(value: unknown): Address | undefined
 export function asAddress(value: unknown, assert: AssertConfig): Address

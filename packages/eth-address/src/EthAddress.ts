@@ -6,9 +6,6 @@ import { padHex } from './padHex.ts'
 
 export const isEthAddressWrapper = (obj: { type: string }) => obj instanceof EthAddressWrapper
 
-/** @deprecated use isEthAddressWrapper */
-export const isEthAddress = isEthAddressWrapper
-
 export class EthAddressWrapper {
   private address: bigint
 
@@ -73,6 +70,3 @@ export class EthAddressWrapper {
     return EthAddressWrapper.validate(this.toString())
   }
 }
-
-/** @deprecated use EthAddressWrapper */
-export class EthAddress extends EthAddressWrapper {}

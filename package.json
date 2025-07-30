@@ -67,7 +67,7 @@
     "@xylabs/hex": "workspace:^",
     "@xylabs/log": "workspace:^",
     "@xylabs/logger": "workspace:^",
-    "@xylabs/object": "workspace:^",
+    "@xylabs/object": "2.88.3",
     "@xylabs/profile": "workspace:^",
     "@xylabs/promise": "workspace:^",
     "@xylabs/retry": "workspace:^",

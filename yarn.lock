@@ -2239,7 +2239,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xylabs/eth-address@workspace:packages/eth-address":
+"@xylabs/eth-address@workspace:^, @xylabs/eth-address@workspace:packages/eth-address":
   version: 0.0.0-use.local
   resolution: "@xylabs/eth-address@workspace:packages/eth-address"
   dependencies:
@@ -2587,6 +2587,7 @@ __metadata:
     "@xylabs/delay": "workspace:^"
     "@xylabs/error": "workspace:^"
     "@xylabs/eslint-config-flat": "npm:^7.0.2"
+    "@xylabs/eth-address": "workspace:^"
     "@xylabs/exists": "workspace:^"
     "@xylabs/forget": "workspace:^"
     "@xylabs/function-name": "workspace:^"

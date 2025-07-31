@@ -56,11 +56,12 @@ export class Events<TEventData extends EventData = EventData> extends Base<Event
   protected static anyMap = new WeakMap<object, Set<EventAnyListener>>()
   protected static eventsMap = new WeakMap<object, Map<EventName, Set<EventListenerInfo>>>()
 
-  private static canEmitMetaEvents = false
   private static isGlobalDebugEnabled = false
 
   // this is here to be able to query the type, not use
   eventData = {} as TEventData
+
+  private _canEmitMetaEvents = false
 
   constructor(params: EventsParams = {}) {
     const mutatedParams = { ...params }
@@ -100,7 +101,7 @@ export class Events<TEventData extends EventData = EventData> extends Base<Event
   }
 
   static set isDebugEnabled(newValue) {
-    Events.isGlobalDebugEnabled = newValue
+    this.isGlobalDebugEnabled = newValue
   }
 
   get debug() {
@@ -136,18 +137,18 @@ export class Events<TEventData extends EventData = EventData> extends Base<Event
   async emitMetaEvent<TEventName extends keyof MetaEventData<TEventData>>(eventName: TEventName, eventArgs: MetaEventData<TEventData>[TEventName]) {
     if (isMetaEvent(eventName)) {
       try {
-        Events.canEmitMetaEvents = true
+        this._canEmitMetaEvents = true
         await this.emitMetaEventInternal(eventName, eventArgs)
         return true
       } finally {
-        Events.canEmitMetaEvents = false
+        this._canEmitMetaEvents = false
         return false
       }
     }
   }
 
   async emitSerial<TEventName extends keyof TEventData>(eventName: TEventName, eventArgs: TEventData[TEventName]) {
-    if (isMetaEvent(eventName) && !Events.canEmitMetaEvents) {
+    if (isMetaEvent(eventName) && !this._canEmitMetaEvents) {
       throw new TypeError(NO_META_EVENT_ERROR_MESSAGE)
     }
 
@@ -291,7 +292,7 @@ export class Events<TEventData extends EventData = EventData> extends Base<Event
     eventArgs: TEventArgs,
     filter?: TEventArgs,
   ) {
-    if (isMetaEvent(eventName) && !Events.canEmitMetaEvents) {
+    if (isMetaEvent(eventName) && !this._canEmitMetaEvents) {
       throw new TypeError(NO_META_EVENT_ERROR_MESSAGE)
     }
 
@@ -320,7 +321,7 @@ export class Events<TEventData extends EventData = EventData> extends Base<Event
     eventName: TEventName,
     eventArgs: MetaEventData<TEventData>[TEventName],
   ) {
-    if (isMetaEvent(eventName) && !Events.canEmitMetaEvents) {
+    if (isMetaEvent(eventName) && !this._canEmitMetaEvents) {
       throw new TypeError('`eventName` cannot be meta event `listenerAdded` or `listenerRemoved`')
     }
 

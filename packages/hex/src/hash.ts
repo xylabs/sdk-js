@@ -1,9 +1,9 @@
+import type { Brand } from '@xylabs/typeof'
 import { isUndefined } from '@xylabs/typeof'
 import z from 'zod'
 
 import type { AssertConfig } from './assert.ts'
 import { assertError } from './assert.ts'
-import type { Brand } from './Brand.ts'
 import type { Hex } from './hex/index.ts'
 import { hexFromHexString, isHex } from './hex/index.ts'
 import { HexRegExMinMax } from './HexRegEx.ts'

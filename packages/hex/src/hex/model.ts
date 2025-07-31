@@ -1,6 +1,6 @@
+import type { Brand } from '@xylabs/typeof'
 import z from 'zod'
 
-import type { Brand } from '../Brand.ts'
 import { HexRegEx } from '../HexRegEx.ts'
 
 // using true instead of unique symbol to avoid conflicts with other versions of library

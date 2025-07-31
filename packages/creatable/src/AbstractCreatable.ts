@@ -30,7 +30,7 @@ export class AbstractCreatable<TParams extends CreatableParams = CreatableParams
   }
 
   get name(): CreatableName {
-    return this.params.name ?? this.constructor.name
+    return this.params.name ?? this.constructor.name as CreatableName
   }
 
   override get params(): TParams {
@@ -47,7 +47,7 @@ export class AbstractCreatable<TParams extends CreatableParams = CreatableParams
     inParams: Partial<T['params']> = {},
   ): Promise<T> {
     const params = await this.paramsHandler(inParams)
-    const name: CreatableName = params.name ?? this.name
+    const name: CreatableName = params.name ?? this.name as CreatableName
     params.statusReporter?.report(name, 'creating')
     try {
       const instance = new this(AbstractCreatableConstructorKey, params)

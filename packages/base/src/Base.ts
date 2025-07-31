@@ -6,15 +6,13 @@ import { assertEx } from '@xylabs/assert'
 import type { Logger } from '@xylabs/logger'
 import type { EmptyObject } from '@xylabs/object'
 
-import { globallyUnique } from './globallyUnique.ts'
-
 const DEFAULT_HISTORY_INTERVAL = 1000 * 5
 const DEFAULT_HISTORY_TIME = 60 * 60 * 1000
 const MAX_GC_FREQUENCY = 1000 * 60
 const MIN_GC_FREQUENCY = 1000
 const MIN_HISTORY_INTERVAL = 1000
 
-export type BaseClassName = Exclude<string, 'base-class-name-reserved-32546239486'>
+export type BaseClassName = string & { __baseClassName: true }
 
 export type BaseParamsFields = {
   logger?: Logger
@@ -28,7 +26,6 @@ export abstract class Base<TParams extends BaseParams = BaseParams> {
   static defaultLogger?: Logger
   static readonly globalInstances: Record<BaseClassName, WeakRef<Base>[]> = {}
   static readonly globalInstancesCountHistory: Record<BaseClassName, number[]> = {}
-  static readonly uniqueName = globallyUnique(this.name, this, 'xyo')
   private static _historyInterval = DEFAULT_HISTORY_INTERVAL
   private static _historyTime = DEFAULT_HISTORY_TIME
   private static _historyTimeout?: ReturnType<typeof setTimeout>
@@ -89,8 +86,8 @@ export abstract class Base<TParams extends BaseParams = BaseParams> {
   }
 
   static gc(force?: boolean): void
-  static gc(className: string): void
-  static gc(classNameOrForce: string | boolean = false): void {
+  static gc(className: BaseClassName): void
+  static gc(classNameOrForce: BaseClassName | boolean = false): void {
     if (typeof classNameOrForce === 'string') {
       this.gcClass(classNameOrForce)
     } else {
@@ -100,14 +97,14 @@ export abstract class Base<TParams extends BaseParams = BaseParams> {
     }
   }
 
-  static instanceCount(className: string): number {
+  static instanceCount(className: BaseClassName): number {
     return this.globalInstances[className]?.length ?? 0
   }
 
   static instanceCounts(): Record<BaseClassName, number> {
     this.gc()
     const result: Record<BaseClassName, number> = {}
-    for (const [className, instances] of Object.entries(this.globalInstances)) result[className] = instances.length
+    for (const [className, instances] of Object.entries(this.globalInstances)) result[className as BaseClassName] = instances.length
     return result
   }
 
@@ -135,14 +132,14 @@ export abstract class Base<TParams extends BaseParams = BaseParams> {
 
   private static addToHistory() {
     const counts = this.instanceCounts()
-    for (const className of Object.keys(this.globalInstances)) {
+    for (const className of Object.keys(this.globalInstances) as BaseClassName[]) {
       this.globalInstancesCountHistory[className] = this.globalInstancesCountHistory[className]?.slice(-this.maxHistoryDepth) ?? []
       this.globalInstancesCountHistory[className].push(counts[className])
     }
   }
 
   private static gcAll() {
-    for (const className of Object.keys(this.globalInstances)) {
+    for (const className of Object.keys(this.globalInstances) as BaseClassName[]) {
       this.gcClass(className)
     }
   }
@@ -153,8 +150,9 @@ export abstract class Base<TParams extends BaseParams = BaseParams> {
   }
 
   private recordInstance() {
-    const instanceArray = Base.globalInstances[this.constructor.name] ?? []
+    const baseClassName = this.constructor.name as BaseClassName
+    const instanceArray = Base.globalInstances[baseClassName] ?? []
     instanceArray.push(new WeakRef(this))
-    Base.globalInstances[this.constructor.name] = instanceArray
+    Base.globalInstances[baseClassName] = instanceArray
   }
 }

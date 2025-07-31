@@ -1,3 +1,4 @@
+export * from './Brand.ts'
 export * from './ifDefined.ts'
 export * from './ifTypeOf.ts'
 export * from './is.ts'

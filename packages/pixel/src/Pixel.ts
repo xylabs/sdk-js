@@ -49,10 +49,10 @@ export class XyPixel {
   }
 
   private static utmFields = () => {
-    if (XyPixel.utmFieldsObj === undefined) {
-      XyPixel.utmFieldsObj = new UtmFields()
+    if (this.utmFieldsObj === undefined) {
+      this.utmFieldsObj = new UtmFields()
     }
-    return XyPixel.utmFieldsObj
+    return this.utmFieldsObj
   }
 
   identify(email?: string) {

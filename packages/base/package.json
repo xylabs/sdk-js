@@ -35,16 +35,16 @@
     "src"
   ],
   "dependencies": {
-    "@opentelemetry/api": "^1.9.0",
-    "@xylabs/assert": "workspace:^",
-    "@xylabs/logger": "workspace:^",
-    "@xylabs/object": "workspace:^"
+    "@opentelemetry/api": "~1.9.0",
+    "@xylabs/assert": "workspace:~",
+    "@xylabs/logger": "workspace:~",
+    "@xylabs/object": "workspace:~"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^7.0.2",
-    "@xylabs/tsconfig": "^7.0.2",
-    "tslib": "^2.8.1",
-    "typescript": "^5.8.3"
+    "@xylabs/ts-scripts-yarn3": "~7.0.3",
+    "@xylabs/tsconfig": "~7.0.3",
+    "tslib": "~2.8.1",
+    "typescript": "~5.9.2"
   },
   "publishConfig": {
     "access": "public"

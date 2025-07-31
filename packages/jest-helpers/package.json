@@ -42,11 +42,11 @@
     "src"
   ],
   "devDependencies": {
-    "@types/jest": "^30.0.0",
-    "@types/node": "^24.1.0",
-    "@xylabs/ts-scripts-yarn3": "^7.0.2",
-    "@xylabs/tsconfig": "^7.0.2",
-    "typescript": "^5.8.3"
+    "@types/jest": "~30.0.0",
+    "@types/node": "~24.1.0",
+    "@xylabs/ts-scripts-yarn3": "~7.0.3",
+    "@xylabs/tsconfig": "~7.0.3",
+    "typescript": "~5.9.2"
   },
   "peerDependencies": {
     "jest": "*"

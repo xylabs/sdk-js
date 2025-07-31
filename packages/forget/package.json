@@ -47,16 +47,16 @@
     "src"
   ],
   "dependencies": {
-    "@xylabs/delay": "workspace:^",
-    "@xylabs/logger": "workspace:^",
-    "@xylabs/promise": "workspace:^",
-    "@xylabs/typeof": "workspace:^"
+    "@xylabs/delay": "workspace:~",
+    "@xylabs/logger": "workspace:~",
+    "@xylabs/promise": "workspace:~",
+    "@xylabs/typeof": "workspace:~"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^7.0.2",
-    "@xylabs/tsconfig-dom": "^7.0.2",
-    "typescript": "^5.8.3",
-    "vitest": "^3.2.4"
+    "@xylabs/ts-scripts-yarn3": "~7.0.3",
+    "@xylabs/tsconfig-dom": "~7.0.3",
+    "typescript": "~5.9.2",
+    "vitest": "~3.2.4"
   },
   "engines": {
     "node": ">=18"

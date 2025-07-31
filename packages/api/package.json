@@ -41,15 +41,15 @@
     "src"
   ],
   "dependencies": {
-    "@xylabs/enum": "workspace:^",
-    "@xylabs/typeof": "workspace:^",
-    "axios": "^1.11.0"
+    "@xylabs/enum": "workspace:~",
+    "@xylabs/typeof": "workspace:~",
+    "axios": "~1.11.0"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^7.0.2",
-    "@xylabs/tsconfig": "^7.0.2",
-    "typescript": "^5.8.3",
-    "vitest": "^3.2.4"
+    "@xylabs/ts-scripts-yarn3": "~7.0.3",
+    "@xylabs/tsconfig": "~7.0.3",
+    "typescript": "~5.9.2",
+    "vitest": "~3.2.4"
   },
   "engines": {
     "node": ">=18"

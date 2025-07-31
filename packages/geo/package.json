@@ -41,14 +41,14 @@
     "src"
   ],
   "dependencies": {
-    "@types/geojson": "^7946.0.16",
-    "mapbox-gl": "^3.13.0"
+    "@types/geojson": "~7946.0.16",
+    "mapbox-gl": "~3.14.0"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^7.0.2",
-    "@xylabs/tsconfig": "^7.0.2",
-    "typescript": "^5.8.3",
-    "vitest": "^3.2.4"
+    "@xylabs/ts-scripts-yarn3": "~7.0.3",
+    "@xylabs/tsconfig": "~7.0.3",
+    "typescript": "~5.9.2",
+    "vitest": "~3.2.4"
   },
   "packageManager": "yarn@3.2.0",
   "publishConfig": {

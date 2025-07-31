@@ -42,13 +42,13 @@
     "src"
   ],
   "dependencies": {
-    "bn.js": "^5.2.2"
+    "bn.js": "~5.2.2"
   },
   "devDependencies": {
-    "@types/bn.js": "^5.2.0",
-    "@xylabs/ts-scripts-yarn3": "^7.0.2",
-    "@xylabs/tsconfig": "^7.0.2",
-    "typescript": "^5.8.3"
+    "@types/bn.js": "~5.2.0",
+    "@xylabs/ts-scripts-yarn3": "~7.0.3",
+    "@xylabs/tsconfig": "~7.0.3",
+    "typescript": "~5.9.2"
   },
   "engines": {
     "node": ">=18"

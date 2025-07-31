@@ -42,16 +42,16 @@
     "src"
   ],
   "dependencies": {
-    "@xylabs/typeof": "workspace:^",
-    "zod": "^4.0.13",
-    "zod-to-json-schema": "^3.24.6"
+    "@xylabs/typeof": "workspace:~",
+    "zod": "~4.0.14",
+    "zod-to-json-schema": "~3.24.6"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^7.0.2",
-    "@xylabs/tsconfig": "^7.0.2",
-    "@xylabs/vitest-extended": "workspace:^",
-    "typescript": "^5.8.3",
-    "vitest": "^3.2.4"
+    "@xylabs/ts-scripts-yarn3": "~7.0.3",
+    "@xylabs/tsconfig": "~7.0.3",
+    "@xylabs/vitest-extended": "workspace:~",
+    "typescript": "~5.9.2",
+    "vitest": "~3.2.4"
   },
   "engines": {
     "node": ">=18"

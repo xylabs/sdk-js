@@ -47,14 +47,14 @@
     "src"
   ],
   "dependencies": {
-    "crypto-js": "^4.2.0"
+    "crypto-js": "~4.2.0"
   },
   "devDependencies": {
-    "@types/crypto-js": "^4.2.2",
-    "@types/node": "^24.1.0",
-    "@xylabs/ts-scripts-yarn3": "^7.0.2",
-    "@xylabs/tsconfig-dom": "^7.0.2",
-    "typescript": "^5.8.3"
+    "@types/crypto-js": "~4.2.2",
+    "@types/node": "~24.1.0",
+    "@xylabs/ts-scripts-yarn3": "~7.0.3",
+    "@xylabs/tsconfig-dom": "~7.0.3",
+    "typescript": "~5.9.2"
   },
   "engines": {
     "node": ">=18"

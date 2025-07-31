@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/function-name",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "function",

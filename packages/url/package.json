@@ -54,7 +54,7 @@
     "src"
   ],
   "devDependencies": {
-    "@types/node": "~24.1.0",
+    "@types/node": "~24.2.0",
     "@xylabs/ts-scripts-yarn3": "~7.0.3",
     "@xylabs/tsconfig": "~7.0.3",
     "@xylabs/tsconfig-dom": "~7.0.3",

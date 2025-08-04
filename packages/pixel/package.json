@@ -48,7 +48,7 @@
   },
   "devDependencies": {
     "@types/js-cookie": "~3.0.6",
-    "@types/node": "~24.1.0",
+    "@types/node": "~24.2.0",
     "@types/spark-md5": "~3.0.5",
     "@xylabs/ts-scripts-yarn3": "~7.0.3",
     "@xylabs/tsconfig-dom": "~7.0.3",

@@ -3,7 +3,11 @@ import type { LogConfig } from './model.ts'
 
 /** @deprecated use @xylabs/logger instead */
 export class Log {
-  constructor(protected config: LogConfig) {}
+  protected config: LogConfig
+
+  constructor(config: LogConfig) {
+    this.config = config
+  }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   debug(...params: any[]) {

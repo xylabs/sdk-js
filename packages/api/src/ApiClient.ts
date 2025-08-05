@@ -1,9 +1,12 @@
 import { ApiStage } from './ApiStage.ts'
 
 abstract class ApiClient {
+  protected stage?: ApiStage
+  protected token?: string | null
+
   constructor(
-    protected token?: string | null,
-    protected stage?: ApiStage,
+    token?: string | null,
+    stage?: ApiStage,
   ) {
     this.stage = stage ?? ApiStage.Prod
     this.token = token

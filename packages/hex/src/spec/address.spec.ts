@@ -5,7 +5,9 @@ import {
 } from 'vitest'
 
 import {
-  Address, asAddress, isAddress,
+  asAddress, asAddressV2, isAddress,
+  isAddressV2,
+  toAddressV2,
 } from '../address/index.ts'
 
 describe('address', () => {
@@ -28,34 +30,34 @@ describe('address', () => {
 
 describe('address [zod]', () => {
   test('identify', () => {
-    expect(Address.identify(true)).toBeFalse()
-    expect(Address.identify({})).toBeFalse()
-    expect(Address.identify('NotHex')).toBeFalse()
-    expect(Address.identify('deadbeef')).toBeFalse()
-    expect(Address.identify('0xdeadbeef')).toBeFalse()
-    expect(Address.identify('deadbeefdeadbeefdeadbeefdeadbeefdeadbeef')).toBeTrue()
-    expect(Address.identify('0xdeadbeefdeadbeefdeadxxxxdeadbeefdeadbeef')).toBeFalse()
+    expect(isAddressV2(true)).toBeFalse()
+    expect(isAddressV2({})).toBeFalse()
+    expect(isAddressV2('NotHex')).toBeFalse()
+    expect(isAddressV2('deadbeef')).toBeFalse()
+    expect(isAddressV2('0xdeadbeef')).toBeFalse()
+    expect(isAddressV2('deadbeefdeadbeefdeadbeefdeadbeefdeadbeef')).toBeTrue()
+    expect(isAddressV2('0xdeadbeefdeadbeefdeadxxxxdeadbeefdeadbeef')).toBeFalse()
   })
   test('cast', () => {
-    expect(Address.cast('0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef')).toBe(undefined)
-    expect(Address.cast('deadbeefdeadbeefdeadbeefdeadbeefdeadbeef')).toBe('deadbeefdeadbeefdeadbeefdeadbeefdeadbeef')
-    expect(Address.cast('0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef', false)).toBe(undefined)
-    expect(Address.cast('000000000000000000000000000000000000000a', true)).toBe('000000000000000000000000000000000000000a')
-    expect(Address.cast('0x000000000000000000000000000000000000000a', false)).toBe(undefined)
+    expect(asAddressV2('0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef')).toBe(undefined)
+    expect(asAddressV2('deadbeefdeadbeefdeadbeefdeadbeefdeadbeef')).toBe('deadbeefdeadbeefdeadbeefdeadbeefdeadbeef')
+    expect(asAddressV2('0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef', false)).toBe(undefined)
+    expect(asAddressV2('000000000000000000000000000000000000000a', true)).toBe('000000000000000000000000000000000000000a')
+    expect(asAddressV2('0x000000000000000000000000000000000000000a', false)).toBe(undefined)
   })
 
   test('from', () => {
-    expect(Address.from('0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef')).toBe('deadbeefdeadbeefdeadbeefdeadbeefdeadbeef')
-    expect(Address.from('deadbeefdeadbeefdeadbeefdeadbeefdeadbeef')).toBe('deadbeefdeadbeefdeadbeefdeadbeefdeadbeef')
-    expect(Address.from('0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef', true)).toBe('deadbeefdeadbeefdeadbeefdeadbeefdeadbeef')
-    expect(Address.from('000000000000000000000000000000000000000a', true)).toBe('000000000000000000000000000000000000000a')
-    expect(Address.from('0x000000000000000000000000000000000000000a', true)).toBe('000000000000000000000000000000000000000a')
-    expect(Address.from(10n, true)).toBe('000000000000000000000000000000000000000a')
-    expect(Address.from(
+    expect(toAddressV2('0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef')).toBe('deadbeefdeadbeefdeadbeefdeadbeefdeadbeef')
+    expect(toAddressV2('deadbeefdeadbeefdeadbeefdeadbeefdeadbeef')).toBe('deadbeefdeadbeefdeadbeefdeadbeefdeadbeef')
+    expect(toAddressV2('0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef', true)).toBe('deadbeefdeadbeefdeadbeefdeadbeefdeadbeef')
+    expect(toAddressV2('000000000000000000000000000000000000000a', true)).toBe('000000000000000000000000000000000000000a')
+    expect(toAddressV2('0x000000000000000000000000000000000000000a', true)).toBe('000000000000000000000000000000000000000a')
+    expect(toAddressV2(10n, true)).toBe('000000000000000000000000000000000000000a')
+    expect(toAddressV2(
       1_234_567_890_123_456_789_012_345_678_901_234_567_890_123_456_789_012_345_678_901_234_567_890n,
       false,
     )).toBe(undefined)
-    expect(Address.from(
+    expect(toAddressV2(
       1_234_567_890_123_456_789_012_345_678_901_234_567n,
       true,
     )).toBe('0000000000edc4e57e669eb52d3a8e6e7c9f4b87')
@@ -63,7 +65,7 @@ describe('address [zod]', () => {
 
   test('from [assert]', () => {
     try {
-      Address.from(
+      toAddressV2(
         1_234_567_890_123_456_789_012_345_678_901_234_567_890_123_456_789_012_345_678_901_234_567_890n,
         true,
       )

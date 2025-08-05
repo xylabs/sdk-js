@@ -10,7 +10,13 @@ import { withDb } from './withDb.ts'
  * An IndexedDB key/value store.
  */
 export class IndexedDbKeyValueStore<T extends DBSchema, S extends StoreNames<T>> implements KeyValueStore<StoreValue<T, S>, StoreKey<T, S>> {
-  constructor(readonly dbName: string, readonly storeName: S) {}
+  readonly dbName: string
+  readonly storeName: S
+
+  constructor(dbName: string, storeName: S) {
+    this.dbName = dbName
+    this.storeName = storeName
+  }
 
   async clear?(): Promise<void> {
     return await this.withDb((db) => {

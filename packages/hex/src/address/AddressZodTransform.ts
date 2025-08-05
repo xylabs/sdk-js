@@ -1,6 +1,6 @@
 import z from 'zod'
 
-import type { Address } from './AddressNamespace.ts'
+import type { Address } from './address.ts'
 import { AddressZodValidation } from './AddressZodValidation.ts'
 
 export const AddressZodTransform = z.union([z.string(), z.bigint()])

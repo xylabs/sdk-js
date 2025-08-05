@@ -3,12 +3,18 @@ import z from 'zod'
 
 import type { AssertConfig } from '../assert.ts'
 import { assertError } from '../assert.ts'
-import type { HexConfig } from '../hex/index.ts'
+import type { Hex, HexConfig } from '../hex/index.ts'
 import {
   hexFrom, hexFromHexString, isHex,
 } from '../hex/index.ts'
 import { HexRegExMinMax } from '../HexRegEx.ts'
-import type { Address } from './AddressNamespace.ts'
+import { AddressZodTransform } from './AddressZodTransform.ts'
+import { AddressZodValidation } from './AddressZodValidation.ts'
+
+// using true instead of unique symbol to avoid conflicts with other versions of library
+export type Address = Hex & {
+  readonly __address: true
+}
 
 export const AddressRegEx = HexRegExMinMax(20, 20)
 
@@ -57,4 +63,23 @@ export function asAddress(value: unknown, assert?: AssertConfig): Address | unde
     const error = ex as Error
     return assertError(undefined, assert, error.message)
   }
+}
+
+/** @alpha */
+export function isAddressV2(value: unknown): value is Address {
+  return AddressZodValidation.safeParse(value).success
+}
+
+/** @alpha */
+export function asAddressV2(value: unknown, assert: boolean = false): Address | undefined {
+  return assert
+    ? AddressZodValidation.parse(value)
+    : AddressZodValidation.safeParse(value).data
+}
+
+/** @alpha */
+export function toAddressV2(value: unknown, assert: boolean = false): Address | undefined {
+  return assert
+    ? AddressZodTransform.parse(value)
+    : AddressZodTransform.safeParse(value).data
 }

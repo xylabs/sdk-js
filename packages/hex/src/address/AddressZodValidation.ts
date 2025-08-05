@@ -1,8 +1,8 @@
 import z from 'zod'
 
 import { HexZod } from '../hex/index.ts'
+import type { Address } from './address.ts'
 import { ADDRESS_LENGTH } from './address.ts'
-import type { Address } from './AddressNamespace.ts'
 
 export const AddressZodValidation = z.string()
   .refine(x => HexZod.safeParse(x))

@@ -48,8 +48,7 @@
   ],
   "dependencies": {
     "@xylabs/typeof": "workspace:~",
-    "zod": "~4.0.14",
-    "zod-to-json-schema": "~3.24.6"
+    "zod": "~4.0.15"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.0.3",

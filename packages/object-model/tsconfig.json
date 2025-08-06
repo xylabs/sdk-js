@@ -7,9 +7,7 @@
     "preserveSymlinks": false,
     "outDir": "dist",
   },
-  "compilerOptions": {
-    "erasableSyntaxOnly": true,
-  },
+
   "exclude": ["dist", "docs", "packages", "node_modules"],
   "include": ["src/**/*.ts", "src/**/*.mts", "src/**/*.cts"],
   "extends": "@xylabs/tsconfig"

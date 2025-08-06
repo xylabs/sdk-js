@@ -9,9 +9,7 @@
       "global-config"
     ],
   },
-  "compilerOptions": {
-    "erasableSyntaxOnly": true,
-  },
+
   "exclude": ["dist", "docs", "packages", "node_modules"],
   "extends": "@xylabs/tsconfig-dom"
 }

@@ -45,8 +45,8 @@
     "@xylabs/timer": "workspace:~"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.0.3",
-    "@xylabs/tsconfig": "~7.0.3",
+    "@xylabs/ts-scripts-yarn3": "~7.1.0",
+    "@xylabs/tsconfig": "~7.1.0",
     "typescript": "~5.9.2",
     "vitest": "~3.2.4"
   },

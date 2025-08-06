@@ -5,13 +5,15 @@ import Transport from 'winston-transport'
 import { logFormatRollbar } from '../../LogFormats/index.ts'
 
 export class RollbarTransport extends Transport {
+  protected readonly rollbar?: Rollbar
   constructor(
     opts: TransportStreamOptions,
-    protected readonly rollbar?: Rollbar,
+    rollbar?: Rollbar,
   ) {
     super({
       ...opts, format: logFormatRollbar, level: 'error',
     })
+    this.rollbar = rollbar
   }
 
   override log(info: { message?: string }, next: () => void) {

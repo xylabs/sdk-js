@@ -45,13 +45,16 @@
     "types.d.ts"
   ],
   "dependencies": {
-    "@xylabs/vitest-matchers": "workspace:~",
-    "vitest": "~3.2.4"
+    "@xylabs/vitest-matchers": "workspace:~"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.1.0",
     "@xylabs/tsconfig": "~7.1.0",
-    "typescript": "~5.9.2"
+    "typescript": "~5.9.2",
+    "vitest": "^3.2.4"
+  },
+  "peerDependencies": {
+    "vitest": "^3"
   },
   "engines": {
     "node": ">=18"

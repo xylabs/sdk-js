@@ -121,10 +121,10 @@
   "devDependencies": {
     "@swc/core": "~1.13.3",
     "@types/debug": "~4.1.12",
-    "@types/node": "~24.2.0",
+    "@types/node": "~24.2.1",
     "@xylabs/eslint-config-flat": "~7.1.0",
     "@xylabs/ts-scripts-yarn3": "~7.1.0",
-    "eslint": "~9.32.0",
+    "eslint": "~9.33.0",
     "tiny-worker": "~2.3.0",
     "tsup": "~8.5.0",
     "typescript": "~5.9.2"

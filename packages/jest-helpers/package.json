@@ -43,7 +43,7 @@
   ],
   "devDependencies": {
     "@types/jest": "~30.0.0",
-    "@types/node": "~24.2.0",
+    "@types/node": "~24.2.1",
     "@xylabs/ts-scripts-yarn3": "~7.1.0",
     "@xylabs/tsconfig": "~7.1.0",
     "typescript": "~5.9.2"

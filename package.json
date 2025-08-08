@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/sdk-js",
-  "version": "5.0.3",
+  "version": "5.0.4",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "xylabs",

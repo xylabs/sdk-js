@@ -11,8 +11,15 @@ import { HexRegExMinMaxMixedCaseWithPrefix } from './HexRegEx.ts'
 
 export const EthAddressRegEx = HexRegExMinMaxMixedCaseWithPrefix(20, 20)
 
-export const EthAddressToStringSchema = z.string().regex(EthAddressRegEx)
-export const EthAddressFromStringSchema = z.string().regex(EthAddressRegEx).transform(v => toEthAddress(v))
+export const EthAddressToStringZod = z.string().regex(EthAddressRegEx)
+
+/** @deprecated use EthAddressToStringZod */
+export const EthAddressToStringSchema = EthAddressToStringZod
+
+export const EthAddressFromStringZod = z.string().regex(EthAddressRegEx).transform(v => toEthAddress(v))
+
+/** @deprecated use EthAddressFromStringZod */
+export const EthAddressFromStringSchema = EthAddressFromStringZod
 
 // using true instead of unique symbol to avoid conflicts with other versions of library
 export type EthAddress = Brand<string, { readonly __eth_address: true }>

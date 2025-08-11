@@ -1,7 +1,7 @@
 import { isNumber } from '@xylabs/typeof'
 
+import type { Hex, HexConfig } from '../hex.ts'
 import { isHex } from '../is.ts'
-import type { Hex, HexConfig } from '../model.ts'
 import { bitsToNibbles } from '../nibble.ts'
 
 export const hexFromHexString = (value: string, config: HexConfig = {}): Hex => {

@@ -1,4 +1,4 @@
-import type { Hex, HexConfig } from '../model.ts'
+import type { Hex, HexConfig } from '../hex.ts'
 import { hexFromHexString } from './fromHexString.ts'
 
 /** Convert a bigint to a hex string */

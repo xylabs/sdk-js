@@ -1,8 +1,8 @@
 import type { AssertConfig } from '../assert.ts'
 import { assertError } from '../assert.ts'
 import { hexFromHexString } from './from/index.ts'
+import type { Hex } from './hex.ts'
 import { isHex } from './is.ts'
-import type { Hex } from './model.ts'
 
 export function asHex(value: unknown): Hex | undefined
 export function asHex(value: unknown, assert: AssertConfig): Hex

@@ -1,5 +1,5 @@
 import { HexRegEx, HexRegExWithPrefix } from '../HexRegEx.ts'
-import type { Hex, HexConfig } from './model.ts'
+import type { Hex, HexConfig } from './hex.ts'
 import { bitsToNibbles } from './nibble.ts'
 
 export const isHex = (value: unknown, config?: HexConfig): value is Hex => {

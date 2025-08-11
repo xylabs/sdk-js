@@ -4,7 +4,7 @@ import {
   describe, expect, test,
 } from 'vitest'
 
-import { isHash } from '../hash.ts'
+import { isHash } from '../hash/index.ts'
 import { hexFromNumber } from '../hex/index.ts'
 
 describe('hash', () => {

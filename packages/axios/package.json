@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/axios",
-  "version": "5.0.6",
+  "version": "5.0.7",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "axios",

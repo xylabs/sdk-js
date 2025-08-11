@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/creatable",
-  "version": "5.0.6",
+  "version": "5.0.7",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "homepage": "https://xyo.network",
   "bugs": {

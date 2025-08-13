@@ -1,0 +1,60 @@
+{
+  "name": "@xylabs/readme-gen",
+  "version": "5.0.7",
+  "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
+  "keywords": [
+    "readme",
+    "generator",
+    "documentation",
+    "xylabs",
+    "utility",
+    "typescript",
+    "esm"
+  ],
+  "homepage": "https://xylabs.com",
+  "bugs": {
+    "url": "git+https://github.com/xylabs/sdk-js/issues",
+    "email": "support@xylabs.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xylabs/sdk-js.git"
+  },
+  "license": "LGPL-3.0-only",
+  "author": {
+    "name": "XY Labs Development Team",
+    "email": "support@xylabs.com",
+    "url": "https://xylabs.com"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/node/index.d.ts",
+      "source": "./src/index.ts",
+      "default": "./dist/node/index.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "module": "./dist/node/index.mjs",
+  "source": "./src/index.ts",
+  "types": "./dist/node/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "dependencies": {
+    "@xylabs/ts-scripts-yarn3": "~7.1.0"
+  },
+  "devDependencies": {
+    "@xylabs/tsconfig": "~7.1.0",
+    "typescript": "~5.9.2",
+    "vitest": "~3.2.4"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

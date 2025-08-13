@@ -2536,6 +2536,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@xylabs/readme-gen@workspace:packages/readme-gen":
+  version: 0.0.0-use.local
+  resolution: "@xylabs/readme-gen@workspace:packages/readme-gen"
+  dependencies:
+    "@xylabs/ts-scripts-yarn3": "npm:~7.1.0"
+    "@xylabs/tsconfig": "npm:~7.1.0"
+    typescript: "npm:~5.9.2"
+    vitest: "npm:~3.2.4"
+  languageName: unknown
+  linkType: soft
+
 "@xylabs/retry@workspace:packages/retry, @xylabs/retry@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xylabs/retry@workspace:packages/retry"

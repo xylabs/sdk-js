@@ -3,15 +3,13 @@
  * extended from, which then adds only those additional fields
  */
 
-import type { TypedKey } from '@xylabs/typeof'
+export type EmptyObject<T extends object = object> = Exclude<{ [K in keyof T]?: never }, unknown[] | ((...args: unknown[]) => unknown) | null>
 
-export type EmptyObject<T extends object = object> = Exclude<{ [K in keyof T]?: never }, unknown[] | ((...args: unknown[]) => unknown)>
-
-export type EmptyObjectExperimental = Exclude<
+/* export type EmptyObjectExperimental = Exclude<
 
   Record<TypedKey, unknown>,
   unknown[] | ((...args: unknown[]) => unknown) | null
->
+> */
 
 /*
 const foo: EmptyObjectExperimental = {}

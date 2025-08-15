@@ -1,5 +1,5 @@
 import type { Brand } from '@xylabs/typeof'
-import { z } from 'zod'
+import * as z from 'zod'
 
 import type { AssertConfig } from './assert.ts'
 import { assertError } from './assert.ts'

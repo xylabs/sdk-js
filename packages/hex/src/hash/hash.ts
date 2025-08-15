@@ -1,5 +1,5 @@
 import type { Brand } from '@xylabs/typeof'
-import { z } from 'zod'
+import * as z from 'zod'
 
 import type { Hex } from '../hex/index.ts'
 import { HexRegExMinMax } from '../HexRegEx.ts'

@@ -1,4 +1,5 @@
 import type { Brand } from '@xylabs/typeof'
+// eslint-disable-next-line no-restricted-syntax
 import * as z from 'zod'
 
 import type { AssertConfig } from './assert.ts'

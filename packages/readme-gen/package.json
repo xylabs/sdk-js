@@ -44,10 +44,10 @@
     "src"
   ],
   "dependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.1.1"
+    "@xylabs/ts-scripts-yarn3": "~7.1.3"
   },
   "devDependencies": {
-    "@xylabs/tsconfig": "~7.1.1",
+    "@xylabs/tsconfig": "~7.1.3",
     "typescript": "~5.9.2",
     "vitest": "~3.2.4"
   },

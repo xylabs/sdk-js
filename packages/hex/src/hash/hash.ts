@@ -1,4 +1,5 @@
 import type { Brand } from '@xylabs/typeof'
+// eslint-disable-next-line no-restricted-syntax
 import * as z from 'zod'
 
 import type { Hex } from '../hex/index.ts'

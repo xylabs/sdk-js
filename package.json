@@ -56,7 +56,7 @@
     "@xylabs/decimal-precision": "workspace:~",
     "@xylabs/delay": "workspace:~",
     "@xylabs/error": "workspace:~",
-    "@xylabs/eth-address": "workspace:~",
+    "@xylabs/eth-address": "2.6.14",
     "@xylabs/exists": "workspace:~",
     "@xylabs/forget": "workspace:~",
     "@xylabs/function-name": "workspace:~",

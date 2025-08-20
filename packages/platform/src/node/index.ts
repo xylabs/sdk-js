@@ -7,3 +7,7 @@ export const isBrowser = () => {
 export const isWebworker = () => {
   return false
 }
+
+export const isNode = () => {
+  return true
+}

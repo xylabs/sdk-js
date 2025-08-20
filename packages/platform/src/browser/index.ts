@@ -8,4 +8,8 @@ export const isWebworker = () => {
   return typeof globalThis === 'object' && globalThis.constructor?.name === 'DedicatedWorkerGlobalScope'
 }
 
+export const isNode = () => {
+  return false
+}
+
 export const subtle = globalThis.crypto.subtle as typeof subtleType

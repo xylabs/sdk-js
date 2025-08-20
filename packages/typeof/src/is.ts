@@ -198,12 +198,6 @@ export function isWeakSet(value: unknown): value is WeakSet<WeakKey> {
   return value instanceof WeakSet
 }
 
-export function isArrayBuffer(value: unknown): value is ArrayBuffer
-export function isArrayBuffer<T extends ArrayBuffer>(value: T): value is Extract<T, ArrayBuffer>
-export function isArrayBuffer(value: unknown): value is ArrayBuffer {
-  return value instanceof ArrayBuffer
-}
-
 export function isDataView(value: unknown): value is DataView
 export function isDataView<T>(value: T): value is Extract<T, DataView>
 export function isDataView(value: unknown): value is DataView {

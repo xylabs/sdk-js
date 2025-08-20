@@ -5,7 +5,6 @@ import {
 
 import {
   isArray,
-  isArrayBuffer,
   isArrayBufferView,
   isBigInt,
   isBlob,
@@ -455,17 +454,6 @@ describe('is.ts type guards', () => {
       expect(isWeakSet({})).toBe(false)
       expect(isWeakSet(null)).toBe(false)
       expect(isWeakSet(Undefined)).toBe(false)
-    })
-  })
-
-  describe('isArrayBuffer', () => {
-    it('correctly identifies ArrayBuffer objects', () => {
-      expect(isArrayBuffer(new ArrayBuffer(10))).toBe(true)
-
-      expect(isArrayBuffer(new Uint8Array())).toBe(false)
-      expect(isArrayBuffer({})).toBe(false)
-      expect(isArrayBuffer(null)).toBe(false)
-      expect(isArrayBuffer(Undefined)).toBe(false)
     })
   })
 

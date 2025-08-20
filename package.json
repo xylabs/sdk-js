@@ -56,7 +56,7 @@
     "@xylabs/base": "workspace:~",
     "@xylabs/bignumber": "workspace:~",
     "@xylabs/buffer": "workspace:~",
-    "@xylabs/creatable": "workspace:~",
+    "@xylabs/creatable": "4.12.3",
     "@xylabs/decimal-precision": "workspace:~",
     "@xylabs/delay": "workspace:~",
     "@xylabs/enum": "workspace:~",

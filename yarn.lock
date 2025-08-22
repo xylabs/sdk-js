@@ -2043,7 +2043,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/arraybuffer@workspace:packages/arraybuffer, @xylabs/arraybuffer@workspace:~":
+"@xylabs/arraybuffer@workspace:packages/arraybuffer":
   version: 0.0.0-use.local
   resolution: "@xylabs/arraybuffer@workspace:packages/arraybuffer"
   dependencies:
@@ -2138,7 +2138,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xylabs/crypto@workspace:packages/crypto, @xylabs/crypto@workspace:~":
+"@xylabs/crypto@workspace:packages/crypto":
   version: 0.0.0-use.local
   resolution: "@xylabs/crypto@workspace:packages/crypto"
   dependencies:
@@ -2575,7 +2575,6 @@ __metadata:
     "@xylabs/bignumber": "workspace:~"
     "@xylabs/buffer": "workspace:~"
     "@xylabs/creatable": "workspace:~"
-    "@xylabs/crypto": "workspace:~"
     "@xylabs/decimal-precision": "workspace:~"
     "@xylabs/delay": "workspace:~"
     "@xylabs/enum": "workspace:~"
@@ -2815,7 +2814,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/typeof@workspace:packages/typeof"
   dependencies:
-    "@xylabs/arraybuffer": "workspace:~"
     "@xylabs/ts-scripts-yarn3": "npm:~7.1.7"
     "@xylabs/tsconfig": "npm:~7.1.7"
     typescript: "npm:~5.9.2"

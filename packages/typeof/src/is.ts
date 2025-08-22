@@ -51,9 +51,9 @@ export function isObject(value: unknown): value is object {
   return (typeof value === 'object') && (value !== null) && !Array.isArray(value)
 }
 
-export function isArray(value: unknown): value is []
-export function isArray<T extends []>(value: T): value is Extract<T, Array<unknown>>
-export function isArray(value: unknown): value is [] {
+export function isArray(value: unknown): value is readonly unknown[]
+export function isArray<T>(value: T): value is Extract<T, readonly unknown[]>
+export function isArray(value: unknown): value is readonly unknown[] {
   return Array.isArray(value)
 }
 

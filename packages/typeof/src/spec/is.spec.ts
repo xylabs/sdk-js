@@ -178,9 +178,11 @@ describe('is.ts type guards', () => {
           expectTypeOf(v).toEqualTypeOf<[number, string]>()
           takesTuple(v)
 
-          // access index 0 should be allowed (would fail if v were mistakenly narrowed to [])
-          const first = v[0]
+          // access index should be allowed (would fail if v were mistakenly narrowed to [])
+          const first: number = v[0]
           expectTypeOf(first).toEqualTypeOf<number>()
+          const second: string = v[1]
+          expectTypeOf(second).toEqualTypeOf<string>()
         } else {
           expectTypeOf(v).toEqualTypeOf<string>()
           // @ts-expect-error not an array in this branch
@@ -197,8 +199,10 @@ describe('is.ts type guards', () => {
           takesReadonlyTuple(v)
 
           // index access must compile (would fail if narrowed to empty tuple [])
-          const first = v[0]
+          const first: 1 = v[0]
           expectTypeOf(first).toEqualTypeOf<1>()
+          const second: 2 = v[1]
+          expectTypeOf(second).toEqualTypeOf<2>()
         } else {
           expectTypeOf(v).toEqualTypeOf<number>()
           // @ts-expect-error not an array here
@@ -214,7 +218,7 @@ describe('is.ts type guards', () => {
           takesNumArray(v)
 
           // element access should be number (not never)
-          const n = v[0]
+          const n: number = v[0]
           expectTypeOf(n).toEqualTypeOf<number>()
         } else {
           expectTypeOf(v).toEqualTypeOf<{ a: 1 }>()
@@ -233,7 +237,7 @@ describe('is.ts type guards', () => {
           takesReadonlyNumberArray(v)
 
           // element access should still be number
-          const n = v[0]
+          const n: number = v[0]
           expectTypeOf(n).toEqualTypeOf<number>()
         } else {
           expectTypeOf(v).toEqualTypeOf<string>()

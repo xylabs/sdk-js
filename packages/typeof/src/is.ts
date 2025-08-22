@@ -87,9 +87,9 @@ export function isEmptyArray(value: unknown): value is [] {
   return isArray(value) && value.length === 0
 }
 
-export function isPopulatedArray(value: unknown): value is []
-export function isPopulatedArray<T extends Array<unknown>>(value: T): value is Extract<T, Array<unknown>>
-export function isPopulatedArray(value: unknown): value is [] {
+export function isPopulatedArray(value: unknown): value is readonly unknown[]
+export function isPopulatedArray<T extends Array<unknown>>(value: T): value is Extract<T, readonly unknown[]>
+export function isPopulatedArray(value: unknown): value is readonly unknown[] {
   return isArray(value) && value.length > 0
 }
 

@@ -1,6 +1,7 @@
 /* eslint-disable max-statements */
 import {
-  describe, expect, it,
+  describe, expect, expectTypeOf,
+  it,
 } from 'vitest'
 
 import {
@@ -160,6 +161,96 @@ describe('is.ts type guards', () => {
   })
 
   describe('isArray', () => {
+    describe('narrowing', () => {
+      const takesTuple = (_x: [number, string]): void => {}
+      const takesROTuple = (_x: readonly [1, 2]): void => {}
+      const takesNumArray = (_x: number[]): void => {}
+      const takesRONumArray = (_x: readonly number[]): void => {}
+      it('narrows a union with a specific tuple', () => {
+        const v: string | [number, string] = Math.random() ? 'x' : [1, 'y']
+
+        if (isArray(v)) {
+          // should preserve the exact tuple type, not degrade to unknown[] or []
+          expectTypeOf(v).toEqualTypeOf<[number, string]>()
+          takesTuple(v)
+
+          // access index 0 should be allowed (would fail if v were mistakenly narrowed to [])
+          const first = v[0]
+          expectTypeOf(first).toEqualTypeOf<number>()
+        } else {
+          expectTypeOf(v).toEqualTypeOf<string>()
+          // @ts-expect-error not an array in this branch
+          takesTuple(v)
+        }
+      })
+
+      it('narrows a union with a readonly tuple', () => {
+        const v: number | (readonly [1, 2]) = Math.random() ? 42 : [1, 2] as const
+
+        if (isArray(v)) {
+          // preserve readonly tuple-ness
+          expectTypeOf(v).toEqualTypeOf<readonly [1, 2]>()
+          takesROTuple(v)
+
+          // index access must compile (would fail if narrowed to empty tuple [])
+          const first = v[0]
+          expectTypeOf(first).toEqualTypeOf<1>()
+        } else {
+          expectTypeOf(v).toEqualTypeOf<number>()
+          // @ts-expect-error not an array here
+          takesROTuple(v)
+        }
+      })
+
+      it('narrows to mutable array when member is number[]', () => {
+        const v: { a: 1 } | number[] = Math.random() ? { a: 1 } : [1, 2, 3]
+
+        if (isArray(v)) {
+          expectTypeOf(v).toEqualTypeOf<number[]>()
+          takesNumArray(v)
+
+          // element access should be number (not never)
+          const n = v[0]
+          expectTypeOf(n).toEqualTypeOf<number>()
+        } else {
+          expectTypeOf(v).toEqualTypeOf<{ a: 1 }>()
+          // @ts-expect-error not an array here
+          takesNumArray(v)
+        }
+      })
+
+      it('preserves readonly array types', () => {
+        const v: string | readonly number[]
+      = Math.random() ? 'nope' : [1, 2, 3] as const
+
+        if (isArray(v)) {
+          // preserve readonly array
+          expectTypeOf(v).toEqualTypeOf<readonly number[]>()
+          takesRONumArray(v)
+
+          // element access should still be number
+          const n = v[0]
+          expectTypeOf(n).toEqualTypeOf<number>()
+        } else {
+          expectTypeOf(v).toEqualTypeOf<string>()
+          // @ts-expect-error not an array here
+          takesRONumArray(v)
+        }
+      })
+
+      it('does not narrow non-array tuples/objects', () => {
+        const v: { x: 1 } | 'hi' = Math.random() ? { x: 1 } : 'hi'
+
+        if (isArray(v)) {
+          // this branch must be impossible
+          // @ts-expect-error v cannot be an array here
+          expectTypeOf(v).toEqualTypeOf<readonly unknown[]>()
+        } else {
+          // remains original union minus arrays (i.e., unchanged)
+          expectTypeOf(v).toEqualTypeOf<{ x: 1 } | 'hi'>()
+        }
+      })
+    })
     it('correctly identifies array values', () => {
       expect(isArray([])).toBe(true)
       expect(isArray([1, 2, 3])).toBe(true)

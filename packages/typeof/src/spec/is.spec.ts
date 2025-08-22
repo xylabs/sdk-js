@@ -163,11 +163,15 @@ describe('is.ts type guards', () => {
   describe('isArray', () => {
     describe('narrowing', () => {
       const takesTuple = (_x: [number, string]): void => {}
-      const takesROTuple = (_x: readonly [1, 2]): void => {}
+      const takesReadonlyTuple = (_x: readonly [1, 2]): void => {}
       const takesNumArray = (_x: number[]): void => {}
-      const takesRONumArray = (_x: readonly number[]): void => {}
+      const takesReadonlyNumberArray = (_x: readonly number[]): void => {}
+
+      // NOTE: We're randomly generating a value for testing purposes
+      // using Math.random() so that TypeScript can't optimize away the
+      // narrowing prematurely by knowing the type the constant is initialized to.
       it('narrows a union with a specific tuple', () => {
-        const v: string | [number, string] = Math.random() ? 'x' : [1, 'y']
+        const v: string | [number, string] = Math.random() > 0.5 ? 'x' : [1, 'y']
 
         if (isArray(v)) {
           // should preserve the exact tuple type, not degrade to unknown[] or []
@@ -185,12 +189,12 @@ describe('is.ts type guards', () => {
       })
 
       it('narrows a union with a readonly tuple', () => {
-        const v: number | (readonly [1, 2]) = Math.random() ? 42 : [1, 2] as const
+        const v: number | (readonly [1, 2]) = Math.random() > 0.5 ? 42 : [1, 2] as const
 
         if (isArray(v)) {
           // preserve readonly tuple-ness
           expectTypeOf(v).toEqualTypeOf<readonly [1, 2]>()
-          takesROTuple(v)
+          takesReadonlyTuple(v)
 
           // index access must compile (would fail if narrowed to empty tuple [])
           const first = v[0]
@@ -198,12 +202,12 @@ describe('is.ts type guards', () => {
         } else {
           expectTypeOf(v).toEqualTypeOf<number>()
           // @ts-expect-error not an array here
-          takesROTuple(v)
+          takesReadonlyTuple(v)
         }
       })
 
       it('narrows to mutable array when member is number[]', () => {
-        const v: { a: 1 } | number[] = Math.random() ? { a: 1 } : [1, 2, 3]
+        const v: { a: 1 } | number[] = Math.random() > 0.5 ? { a: 1 } : [1, 2, 3]
 
         if (isArray(v)) {
           expectTypeOf(v).toEqualTypeOf<number[]>()
@@ -221,12 +225,12 @@ describe('is.ts type guards', () => {
 
       it('preserves readonly array types', () => {
         const v: string | readonly number[]
-      = Math.random() ? 'nope' : [1, 2, 3] as const
+      = Math.random() > 0.5 ? 'nope' : [1, 2, 3] as const
 
         if (isArray(v)) {
           // preserve readonly array
           expectTypeOf(v).toEqualTypeOf<readonly number[]>()
-          takesRONumArray(v)
+          takesReadonlyNumberArray(v)
 
           // element access should still be number
           const n = v[0]
@@ -234,12 +238,12 @@ describe('is.ts type guards', () => {
         } else {
           expectTypeOf(v).toEqualTypeOf<string>()
           // @ts-expect-error not an array here
-          takesRONumArray(v)
+          takesReadonlyNumberArray(v)
         }
       })
 
       it('does not narrow non-array tuples/objects', () => {
-        const v: { x: 1 } | 'hi' = Math.random() ? { x: 1 } : 'hi'
+        const v: { x: 1 } | 'hi' = Math.random() > 0.5 ? { x: 1 } : 'hi'
 
         if (isArray(v)) {
           // this branch must be impossible
@@ -251,15 +255,17 @@ describe('is.ts type guards', () => {
         }
       })
     })
-    it('correctly identifies array values', () => {
-      expect(isArray([])).toBe(true)
-      expect(isArray([1, 2, 3])).toBe(true)
-      expect(isArray(Array.from({ length: 5 }))).toBe(true)
+    describe('usage', () => {
+      it('correctly identifies array values', () => {
+        expect(isArray([])).toBe(true)
+        expect(isArray([1, 2, 3])).toBe(true)
+        expect(isArray(Array.from({ length: 5 }))).toBe(true)
 
-      expect(isArray({})).toBe(false)
-      expect(isArray('array')).toBe(false)
-      expect(isArray(null)).toBe(false)
-      expect(isArray(Undefined)).toBe(false)
+        expect(isArray({})).toBe(false)
+        expect(isArray('array')).toBe(false)
+        expect(isArray(null)).toBe(false)
+        expect(isArray(Undefined)).toBe(false)
+      })
     })
   })
 

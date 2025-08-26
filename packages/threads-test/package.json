@@ -60,7 +60,7 @@
     "@xylabs/eslint-config-flat": "~7.1.7",
     "@xylabs/threads": "workspace:~",
     "@xylabs/ts-scripts-yarn3": "~7.1.7",
-    "eslint": "~9.33.0",
+    "eslint": "~9.34.0",
     "observable-fns": "~0.6.1",
     "typescript": "~5.9.2",
     "vitest": "~3.2.4"

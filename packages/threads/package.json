@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/threads",
-  "version": "5.0.10",
+  "version": "5.0.11",
   "description": "Web workers & worker threads as simple as a function call",
   "keywords": [
     "thread",

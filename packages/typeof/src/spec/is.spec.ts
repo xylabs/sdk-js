@@ -109,7 +109,7 @@ describe('is.ts type guards', () => {
 
   describe('isBigInt', () => {
     it('correctly identifies BigInt values', () => {
-      expect(isBigInt(BigInt(123))).toBe(true)
+      expect(isBigInt(123n)).toBe(true)
       expect(isBigInt(123n)).toBe(true)
 
       expect(isBigInt(123)).toBe(false)
@@ -230,7 +230,7 @@ describe('is.ts type guards', () => {
 
       it('preserves readonly array types', () => {
         const v: string | readonly number[]
-      = Math.random() > 0.5 ? 'nope' : [1, 2, 3] as const
+          = Math.random() > 0.5 ? 'nope' : [1, 2, 3] as const
 
         if (isArray(v)) {
           // preserve readonly array

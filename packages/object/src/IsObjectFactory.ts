@@ -26,6 +26,7 @@ export class IsObjectFactory<T extends TypedObject> {
           return !result
         }).length === 0
         // perform additional checks
+        // eslint-disable-next-line unicorn/no-array-reduce
         && (additionalChecks?.reduce((prev, check) => prev && check(obj, { log }), true) ?? true)
       )
     }

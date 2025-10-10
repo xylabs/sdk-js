@@ -44,11 +44,11 @@
     "src"
   ],
   "dependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.1.7"
+    "@xylabs/ts-scripts-yarn3": "~7.1.8"
   },
   "devDependencies": {
-    "@xylabs/tsconfig": "~7.1.7",
-    "typescript": "~5.9.2",
+    "@xylabs/tsconfig": "~7.1.8",
+    "typescript": "~5.9.3",
     "vitest": "~3.2.4"
   },
   "engines": {

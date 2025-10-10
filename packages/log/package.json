@@ -44,10 +44,10 @@
     "src"
   ],
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.1.7",
-    "@xylabs/tsconfig-dom": "~7.1.7",
+    "@xylabs/ts-scripts-yarn3": "~7.1.8",
+    "@xylabs/tsconfig-dom": "~7.1.8",
     "rollbar": "~2.26.4",
-    "typescript": "~5.9.2",
+    "typescript": "~5.9.3",
     "vitest": "~3.2.4"
   },
   "peerDependencies": {

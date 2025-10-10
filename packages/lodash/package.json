@@ -42,9 +42,9 @@
     "src"
   ],
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.1.7",
-    "@xylabs/tsconfig": "~7.1.7",
-    "typescript": "~5.9.2"
+    "@xylabs/ts-scripts-yarn3": "~7.1.8",
+    "@xylabs/tsconfig": "~7.1.8",
+    "typescript": "~5.9.3"
   },
   "engines": {
     "node": "18>"

@@ -119,9 +119,9 @@
     "observable-fns": "~0.6.1"
   },
   "devDependencies": {
-    "@swc/core": "1.13.5",
+    "@swc/core": "1.13.20",
     "@types/debug": "~4.1.12",
-    "@types/node": "~24.7.1",
+    "@types/node": "~24.7.2",
     "@xylabs/eslint-config-flat": "~7.1.8",
     "@xylabs/ts-scripts-yarn3": "~7.1.8",
     "eslint": "~9.37.0",

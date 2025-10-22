@@ -56,7 +56,7 @@
     "@xylabs/base": "workspace:~",
     "@xylabs/bignumber": "workspace:~",
     "@xylabs/buffer": "workspace:~",
-    "@xylabs/creatable": "workspace:~",
+    "@xylabs/creatable": "4.12.3",
     "@xylabs/decimal-precision": "workspace:~",
     "@xylabs/delay": "workspace:~",
     "@xylabs/enum": "workspace:~",
@@ -73,7 +73,7 @@
     "@xylabs/platform": "workspace:~",
     "@xylabs/profile": "workspace:~",
     "@xylabs/promise": "workspace:~",
-    "@xylabs/retry": "workspace:~",
+    "@xylabs/retry": "2.13.27",
     "@xylabs/set": "workspace:~",
     "@xylabs/static-implements": "workspace:~",
     "@xylabs/storage": "workspace:~",
@@ -81,7 +81,7 @@
     "@xylabs/telemetry-exporter": "workspace:~",
     "@xylabs/timer": "workspace:~",
     "@xylabs/typeof": "workspace:~",
-    "@xylabs/url": "workspace:~"
+    "@xylabs/url": "2.9.2"
   },
   "devDependencies": {
     "@types/node": "~24.9.1",

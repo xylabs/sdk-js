@@ -84,7 +84,7 @@
     "@xylabs/url": "workspace:~"
   },
   "devDependencies": {
-    "@types/node": "~24.9.1",
+    "@types/node": "~24.9.2",
     "@typescript-eslint/eslint-plugin": "~8.46.2",
     "@typescript-eslint/parser": "~8.46.2",
     "@typescript-eslint/types": "~8.46.2",
@@ -96,7 +96,7 @@
     "eslint": "~9.38.0",
     "eslint-import-resolver-typescript": "~4.4.4",
     "jsdom": "~27.0.1",
-    "knip": "~5.66.2",
+    "knip": "~5.66.4",
     "lodash.merge": "~4.6.2",
     "typedoc": "~0.28.14",
     "typedoc-plugin-markdown": "~4.9.0",

@@ -15,20 +15,21 @@ import type {
   CreatableInstance, CreatableName, CreatableParams,
   CreatableStatus,
   Labels,
+  RequiredCreatableParams,
 } from './model/index.ts'
 
 const AbstractCreatableConstructorKey = Symbol.for('AbstractCreatableConstructor')
 
 @creatable()
 export class AbstractCreatable<TParams extends CreatableParams = CreatableParams,
-  TEventData extends EventData = EventData> extends BaseEmitter<Partial<TParams>, TEventData> {
+  TEventData extends EventData = EventData> extends BaseEmitter<Partial<TParams & RequiredCreatableParams>, TEventData> {
   defaultLogger?: Logger
 
   private _status: CreatableStatus | null = null
   private _statusMutex = new Mutex()
-  private _validatedParams?: TParams
+  private _validatedParams?: TParams & RequiredCreatableParams
 
-  constructor(key: unknown, params: Partial<TParams>) {
+  constructor(key: unknown, params: Partial<TParams & RequiredCreatableParams>) {
     assertEx(key === AbstractCreatableConstructorKey, () => 'AbstractCreatable should not be instantiated directly, use the static create method instead')
     super(params)
   }
@@ -37,7 +38,7 @@ export class AbstractCreatable<TParams extends CreatableParams = CreatableParams
     return this.params.name ?? this.constructor.name as CreatableName
   }
 
-  override get params(): TParams {
+  override get params(): TParams & RequiredCreatableParams {
     this._validatedParams = this._validatedParams ?? this.paramsValidator(super.params)
     return this._validatedParams
   }
@@ -91,8 +92,8 @@ export class AbstractCreatable<TParams extends CreatableParams = CreatableParams
     assertEx(this._status === 'creating', () => `createHandler can not be called [status = ${this.status}]`)
   }
 
-  paramsValidator(params: Partial<TParams>): TParams {
-    return { ...params, name: params.name ?? this.constructor.name } as TParams
+  paramsValidator(params: Partial<TParams & RequiredCreatableParams>): TParams & RequiredCreatableParams {
+    return { ...params, name: params.name ?? this.constructor.name } as TParams & RequiredCreatableParams
   }
 
   async start(): Promise<boolean> {

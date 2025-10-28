@@ -4,6 +4,7 @@ import type { Promisable } from '@xylabs/promise'
 import type { AbstractCreatable } from './AbstractCreatable.ts'
 import type {
   CreatableInstance, CreatableParams, Labels,
+  RequiredCreatableParams,
 } from './model/index.ts'
 
 export interface CreatableFactory<T extends CreatableInstance = CreatableInstance>
@@ -30,7 +31,7 @@ export interface Creatable<T extends CreatableInstance = CreatableInstance> {
   ): Promisable<T>
 
   paramsHandler<T extends CreatableInstance>(
-    this: Creatable<T>, params?: Partial<T['params']>): Promisable<T['params']>
+    this: Creatable<T>, params?: Partial<T['params']>): Promisable<T['params'] & RequiredCreatableParams>
 }
 
 export interface CreatableWithFactory<T extends CreatableInstance = CreatableInstance> extends Creatable<T> {

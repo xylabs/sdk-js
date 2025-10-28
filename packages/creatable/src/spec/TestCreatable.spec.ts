@@ -6,7 +6,9 @@ import {
 
 import { AbstractCreatable } from '../AbstractCreatable.ts'
 import { Creatable, creatable } from '../Creatable.ts'
-import { CreatableInstance, CreatableParams } from '../model/index.ts'
+import {
+  CreatableInstance, CreatableParams, RequiredCreatableParams,
+} from '../model/index.ts'
 
 export interface TestCreatableParams extends CreatableParams {
   testParam: string
@@ -22,7 +24,7 @@ export class TestCreatable<TParams extends TestCreatableParams = TestCreatablePa
     return instance
   }
 
-  override paramsValidator(params: Partial<TParams> = {}): TParams {
+  override paramsValidator(params: Partial<TParams & RequiredCreatableParams> = {}): TParams {
     const result: TestCreatableParams = {
       ...params, name: params.name ?? this.constructor.name, testParam: 'yo',
     }

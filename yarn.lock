@@ -2171,6 +2171,8 @@ __metadata:
     axios: "npm:~1.13.0"
     pako: "npm:~2.1.0"
     typescript: "npm:~5.9.3"
+  peerDependencies:
+    axios: ^1.13.0
   languageName: unknown
   linkType: soft
 

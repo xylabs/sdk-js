@@ -64,7 +64,7 @@
     "@xylabs/eth-address": "workspace:~",
     "@xylabs/events": "workspace:~",
     "@xylabs/exists": "workspace:~",
-    "@xylabs/forget": "workspace:~",
+    "@xylabs/forget": "2.6.4",
     "@xylabs/function-name": "workspace:~",
     "@xylabs/hex": "workspace:~",
     "@xylabs/log": "workspace:~",

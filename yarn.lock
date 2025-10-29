@@ -2117,7 +2117,7 @@ __metadata:
     "@xylabs/ts-scripts-yarn3": "npm:~7.1.8"
     "@xylabs/tsconfig": "npm:~7.1.8"
     "@xylabs/typeof": "workspace:~"
-    axios: "npm:~1.13.0"
+    axios: "npm:~1.13.1"
     typescript: "npm:~5.9.3"
     vitest: "npm:~3.2.4"
   languageName: unknown
@@ -2168,7 +2168,7 @@ __metadata:
     "@xylabs/logger": "workspace:~"
     "@xylabs/ts-scripts-yarn3": "npm:~7.1.8"
     "@xylabs/tsconfig": "npm:~7.1.8"
-    axios: "npm:~1.13.0"
+    axios: "npm:~1.13.1"
     pako: "npm:~2.1.0"
     typescript: "npm:~5.9.3"
   peerDependencies:
@@ -2588,7 +2588,7 @@ __metadata:
     "@xylabs/tsconfig-dom": "npm:~7.1.8"
     "@xylabs/typeof": "workspace:~"
     async-mutex: "npm:~0.5.0"
-    axios: "npm:~1.13.0"
+    axios: "npm:~1.13.1"
     bowser: "npm:2.12.1"
     fast-deep-equal: "npm:~3.1.3"
     js-cookie: "npm:~3.0.5"
@@ -3164,14 +3164,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:~1.13.0":
-  version: 1.13.0
-  resolution: "axios@npm:1.13.0"
+"axios@npm:~1.13.1":
+  version: 1.13.1
+  resolution: "axios@npm:1.13.1"
   dependencies:
     follow-redirects: "npm:^1.15.6"
     form-data: "npm:^4.0.4"
     proxy-from-env: "npm:^1.1.0"
-  checksum: 10/b06319dda4dc5a9520a47e47f99b0335fcd82a573596fef7ff0dd745d2e4907d440c1a1060fdb12906d355b6cd1c45b69005ecb01af1431901b90946c8379e7e
+  checksum: 10/8046c15f3ffb5d5d45ce33074f69a9226d4c4312b205307d8a8f0d38bd549fdec7612b307a092b82d7af51d8f3a211ae27589f56a65643655acd01c6ee9bfdac
   languageName: node
   linkType: hard
 

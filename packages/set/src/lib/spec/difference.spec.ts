@@ -9,7 +9,7 @@ const cases = [
   [new Set([1, 2, 3]), new Set([2, 3, 4]), new Set([1])],
   [new Set([2, 3, 4]), new Set([1, 2, 3]), new Set([4])],
   // Difference of identical sets yields empty set
-  [new Set([1, 2, 3]), new Set([1, 2, 3]), new Set([])],
+  [new Set([1, 2, 3]), new Set([1, 2, 3]), new Set()],
 ]
 
 describe('difference', () => {

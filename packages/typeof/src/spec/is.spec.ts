@@ -532,8 +532,7 @@ describe('is.ts type guards', () => {
       expect(isWeakMap(new WeakMap())).toBe(true)
 
       const obj = {}
-      const wm = new WeakMap()
-      wm.set(obj, 'value')
+      const wm = new WeakMap([[obj, 'value']])
       expect(isWeakMap(wm)).toBe(true)
 
       expect(isWeakMap(new Map())).toBe(false)
@@ -548,8 +547,7 @@ describe('is.ts type guards', () => {
       expect(isWeakSet(new WeakSet())).toBe(true)
 
       const obj = {}
-      const ws = new WeakSet()
-      ws.add(obj)
+      const ws = new WeakSet([obj])
       expect(isWeakSet(ws)).toBe(true)
 
       expect(isWeakSet(new Set())).toBe(false)

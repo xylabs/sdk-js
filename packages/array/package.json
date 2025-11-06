@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/array",
-  "version": "5.0.17",
+  "version": "5.0.18",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "xylabs",

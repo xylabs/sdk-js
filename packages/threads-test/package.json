@@ -57,9 +57,9 @@
   "devDependencies": {
     "@types/debug": "~4.1.12",
     "@types/node": "~24.10.0",
-    "@xylabs/eslint-config-flat": "~7.2.2",
+    "@xylabs/eslint-config-flat": "~7.2.3",
     "@xylabs/threads": "workspace:~",
-    "@xylabs/ts-scripts-yarn3": "~7.2.2",
+    "@xylabs/ts-scripts-yarn3": "~7.2.3",
     "eslint": "~9.39.1",
     "observable-fns": "~0.6.1",
     "typescript": "~5.9.3",

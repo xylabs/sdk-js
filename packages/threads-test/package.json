@@ -56,14 +56,14 @@
   },
   "devDependencies": {
     "@types/debug": "~4.1.12",
-    "@types/node": "~24.9.2",
+    "@types/node": "~24.10.0",
     "@xylabs/eslint-config-flat": "~7.1.8",
     "@xylabs/threads": "workspace:~",
     "@xylabs/ts-scripts-yarn3": "~7.1.8",
-    "eslint": "~9.38.0",
+    "eslint": "~9.39.1",
     "observable-fns": "~0.6.1",
     "typescript": "~5.9.3",
-    "vitest": "~3.2.4"
+    "vitest": "~4.0.7"
   },
   "optionalDependencies": {
     "tiny-worker": "~2.3.0"

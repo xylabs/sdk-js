@@ -49,7 +49,7 @@
     "typescript": "~5.9.3"
   },
   "peerDependencies": {
-    "vitest": "~3"
+    "vitest": ">=3 <5"
   },
   "engines": {
     "node": ">=18"

@@ -62,12 +62,12 @@
     "idb": "~8.0.3"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.2.3",
-    "@xylabs/tsconfig-dom": "~7.2.3",
-    "fake-indexeddb": "~6.2.4",
+    "@xylabs/ts-scripts-yarn3": "~7.2.4",
+    "@xylabs/tsconfig-dom": "~7.2.4",
+    "fake-indexeddb": "~6.2.5",
     "jsdom": "~27.1.0",
     "typescript": "~5.9.3",
-    "vitest": "~4.0.7"
+    "vitest": "~4.0.8"
   },
   "engines": {
     "node": ">=18"

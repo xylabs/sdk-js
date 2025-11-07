@@ -42,15 +42,19 @@
     "src"
   ],
   "dependencies": {
-    "@opentelemetry/sdk-trace-base": "~2.2.0",
     "@xylabs/logger": "workspace:~",
     "chalk": "~5.6.2"
   },
   "devDependencies": {
     "@opentelemetry/api": "~1.9.0",
-    "@xylabs/ts-scripts-yarn3": "~7.2.3",
-    "@xylabs/tsconfig": "~7.2.3",
+    "@opentelemetry/sdk-trace-base": "~2.2.0",
+    "@xylabs/ts-scripts-yarn3": "~7.2.4",
+    "@xylabs/tsconfig": "~7.2.4",
     "typescript": "~5.9.3"
+  },
+  "peerDependencies": {
+    "@opentelemetry/api": "^1",
+    "@opentelemetry/sdk-trace-base": "^2"
   },
   "engines": {
     "node": ">=18"

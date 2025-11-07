@@ -51,11 +51,11 @@
     "zod": "^4.1.12"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.2.3",
-    "@xylabs/tsconfig": "~7.2.3",
+    "@xylabs/ts-scripts-yarn3": "~7.2.4",
+    "@xylabs/tsconfig": "~7.2.4",
     "@xylabs/vitest-extended": "workspace:~",
     "typescript": "~5.9.3",
-    "vitest": "~4.0.7"
+    "vitest": "~4.0.8"
   },
   "engines": {
     "node": ">=18"

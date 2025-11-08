@@ -36,7 +36,8 @@ export const toEthAddress = (value: string | number | bigint | ArrayBufferLike, 
 
 export const isEthAddress = (value: unknown, config: HexConfig = {}): value is EthAddress => {
   const { bitLength = 160, prefix = true } = config
-  return isHex(value, { bitLength, prefix })
+  const loweredValue = typeof value === 'string' ? value.toLowerCase() : value
+  return isHex(loweredValue, { bitLength, prefix })
 }
 
 export const EthAddressZod = z.string()
@@ -53,7 +54,7 @@ export function asEthAddress(value: unknown, assert?: AssertConfig): EthAddress 
 
     switch (typeof value) {
       case 'string': {
-        stringValue = hexFromHexString(value, { prefix: true })
+        stringValue = hexFromHexString(value, { prefix: true, byteSize: 4 })
         break
       }
       default: {

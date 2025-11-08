@@ -62,8 +62,8 @@
     "idb": "~8.0.3"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.2.4",
-    "@xylabs/tsconfig-dom": "~7.2.4",
+    "@xylabs/ts-scripts-yarn3": "~7.2.8",
+    "@xylabs/tsconfig-dom": "~7.2.8",
     "fake-indexeddb": "~6.2.5",
     "jsdom": "~27.1.0",
     "typescript": "~5.9.3",

@@ -43,8 +43,8 @@
     "src"
   ],
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.2.4",
-    "@xylabs/tsconfig": "~7.2.4",
+    "@xylabs/ts-scripts-yarn3": "~7.2.8",
+    "@xylabs/tsconfig": "~7.2.8",
     "@xylabs/vitest-extended": "workspace:~",
     "tslib": "~2.8.1",
     "typescript": "~5.9.3",

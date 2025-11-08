@@ -93,7 +93,7 @@ export class AbstractCreatable<TParams extends CreatableParams = CreatableParams
   }
 
   paramsValidator(params: Partial<TParams & RequiredCreatableParams>): TParams & RequiredCreatableParams {
-    return { ...params, name: params.name ?? this.constructor.name } as TParams & RequiredCreatableParams
+    return { ...params, name: params.name } as TParams & RequiredCreatableParams
   }
 
   async start(): Promise<boolean> {

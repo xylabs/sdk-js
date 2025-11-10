@@ -18,7 +18,7 @@ export const isHashBitLength = (value: unknown): value is HashBitLength => {
   return typeof value === 'number' && HashBitLength.includes(value as HashBitLength)
 }
 
-export const HashZod = z.string()
-  .regex(HashRegEx, { message: 'Invalid hex format' }) as unknown as z.ZodType<Brand<Hex, { readonly __hash: true }>>
+export type Hash = Brand<Hex, { readonly __hash: true }>
 
-export type Hash = z.infer<typeof HashZod>
+export const HashZod = z.string()
+  .regex(HashRegEx, { message: 'Invalid hex format' }).transform(val => val as Hash)

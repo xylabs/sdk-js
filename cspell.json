@@ -9,6 +9,7 @@
         "depcheck",
         "ellipsize",
         "rollbar",
+        "Validatable",
         "xylabs"
     ]
 }

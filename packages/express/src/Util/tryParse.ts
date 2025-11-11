@@ -2,6 +2,9 @@ import { isDefined } from '@xylabs/typeof'
 
 export type ParseFunc<T = number> = (value: string) => T
 
+/**
+ * @deprecated use zod instead
+ */
 export const tryParse = <T = number>(func: ParseFunc<T>, value?: string) => {
   try {
     const result = isDefined(value) ? func(value) : null
@@ -13,10 +16,16 @@ export const tryParse = <T = number>(func: ParseFunc<T>, value?: string) => {
   }
 }
 
+/**
+ * @deprecated use zod instead
+ */
 export const tryParseFloat = (value?: string) => {
   return tryParse(Number.parseFloat, value)
 }
 
+/**
+ * @deprecated use zod instead
+ */
 export const tryParseInt = (value?: string) => {
   return tryParse(Number.parseInt, value)
 }

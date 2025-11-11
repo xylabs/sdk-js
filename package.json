@@ -49,7 +49,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@xylabs/api": "workspace:~",
+    "@xylabs/api": "2.6.14",
     "@xylabs/array": "workspace:~",
     "@xylabs/assert": "workspace:~",
     "@xylabs/axios": "workspace:~",

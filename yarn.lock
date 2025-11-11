@@ -2235,6 +2235,7 @@ __metadata:
     vitest-mock-extended: "npm:~3.1.0"
     winston: "npm:~3.18.3"
     winston-transport: "npm:~4.9.0"
+    zod: "npm:^4.1.12"
   peerDependencies:
     express: ~5
   languageName: unknown

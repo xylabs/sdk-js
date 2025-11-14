@@ -2,10 +2,12 @@ import type { Logger } from '@xylabs/logger'
 import type { AxiosResponse, RawAxiosRequestConfig } from 'axios'
 import { Axios, AxiosHeaders } from 'axios'
 
+import type { AxiosClassType } from './AxiosClassType.ts'
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type RawAxiosJsonRequestUncompressedConfig<D = any> = RawAxiosRequestConfig<D>
 
-export class AxiosJsonUncompressed extends Axios {
+export class AxiosJsonUncompressed extends Axios implements AxiosClassType {
   static defaultLogger?: Logger
 
   constructor(config?: RawAxiosJsonRequestUncompressedConfig) {

@@ -1,12 +1,18 @@
 import type { Logger } from '@xylabs/logger'
-import type { AxiosResponse, RawAxiosRequestConfig } from 'axios'
+import type {
+  AxiosInstance, AxiosResponse, RawAxiosRequestConfig,
+} from 'axios'
 import { Axios, AxiosHeaders } from 'axios'
 import { gzip } from 'pako'
+
+import type { AxiosClassType } from './AxiosClassType.ts'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type RawAxiosJsonRequestConfig<D = any> = RawAxiosRequestConfig<D> & { compressLength?: number }
 
-export class AxiosJson extends Axios {
+export type AxiosType = typeof Axios
+
+export class AxiosJson extends Axios implements AxiosClassType {
   static defaultLogger?: Logger
 
   constructor(config?: RawAxiosJsonRequestConfig) {
@@ -57,3 +63,5 @@ export class AxiosJson extends Axios {
     return axiosHeaders
   }
 }
+
+export const createAxiosJson = (config?: RawAxiosJsonRequestConfig) => new AxiosJson(config) as AxiosInstance

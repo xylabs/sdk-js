@@ -1,22 +1,20 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type { Logger } from '@xylabs/logger'
-import type { AxiosRequestConfig, AxiosResponse } from 'axios'
+import type {
+  AxiosRequestConfig, AxiosResponse, RawAxiosRequestConfig,
+} from 'axios'
 import { Axios, AxiosHeaders } from 'axios'
 import { gzip } from 'pako'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type AxiosJsonRequestConfig<D = any> = AxiosRequestConfig<D> & { compressLength?: number }
+export type RawAxiosJsonRequestConfig<D = any> = RawAxiosRequestConfig<D> & { compressLength?: number }
 
-export type AxiosType = typeof Axios
-
-export class AxiosJson extends Axios {
+export class AxiosJson {
   static defaultLogger?: Logger
 
-  constructor(config?: AxiosJsonRequestConfig) {
-    super(config)
-  }
+  private axios: Axios = new Axios(AxiosJson.axiosConfig())
 
-  static create(config?: AxiosJsonRequestConfig) {
-    return new this(config) as Axios
+  constructor(config?: RawAxiosJsonRequestConfig) {
+    this.axios = new Axios(AxiosJson.axiosConfig(config))
   }
 
   static finalPath(response: AxiosResponse) {
@@ -33,7 +31,7 @@ export class AxiosJson extends Axios {
 
   private static axiosConfig({
     compressLength, headers, ...config
-  }: AxiosJsonRequestConfig = {}): AxiosJsonRequestConfig {
+  }: RawAxiosJsonRequestConfig = {}): RawAxiosJsonRequestConfig {
     return {
       headers: this.buildHeaders(headers),
       transformRequest: (data, headers) => {
@@ -55,11 +53,59 @@ export class AxiosJson extends Axios {
     }
   }
 
-  private static buildHeaders(headers: AxiosJsonRequestConfig['headers']) {
+  private static buildHeaders(headers: RawAxiosJsonRequestConfig['headers']) {
     const axiosHeaders = new AxiosHeaders()
     axiosHeaders.set('Accept', 'application/json, text/plain, *.*')
     axiosHeaders.set('Content-Type', 'application/json')
     for (const [key, value] of Object.entries(headers ?? {})) axiosHeaders.set(key, value)
     return axiosHeaders
+  }
+
+  delete<T = any, R = AxiosResponse<T>, D = any>(url: string, config?: AxiosRequestConfig<D>): Promise<R> {
+    return this.axios.delete<T, R, D>(url, config)
+  }
+
+  get<T = any, R = AxiosResponse<T>, D = any>(url: string, config?: AxiosRequestConfig<D>): Promise<R> {
+    return this.axios.get<T, R, D>(url, config)
+  }
+
+  getUri(config?: AxiosRequestConfig): string {
+    return this.axios.getUri(config)
+  }
+
+  head<T = any, R = AxiosResponse<T>, D = any>(url: string, config?: AxiosRequestConfig<D>): Promise<R> {
+    return this.axios.head<T, R, D>(url, config)
+  }
+
+  options<T = any, R = AxiosResponse<T>, D = any>(url: string, config?: AxiosRequestConfig<D>): Promise<R> {
+    return this.axios.options<T, R, D>(url, config)
+  }
+
+  patch<T = any, R = AxiosResponse<T>, D = any>(url: string, data?: D, config?: AxiosRequestConfig<D>): Promise<R> {
+    return this.axios.patch<T, R, D>(url, data, config)
+  }
+
+  patchForm<T = any, R = AxiosResponse<T>, D = any>(url: string, data?: D, config?: AxiosRequestConfig<D>): Promise<R> {
+    return this.axios.patch<T, R, D>(url, data, config)
+  }
+
+  post<T = any, R = AxiosResponse<T>, D = any>(url: string, data?: D, config?: AxiosRequestConfig<D>): Promise<R> {
+    return this.axios.post<T, R, D>(url, data, config)
+  }
+
+  postForm<T = any, R = AxiosResponse<T>, D = any>(url: string, data?: D, config?: AxiosRequestConfig<D>): Promise<R> {
+    return this.axios.post<T, R, D>(url, data, config)
+  }
+
+  put<T = any, R = AxiosResponse<T>, D = any>(url: string, data?: D, config?: AxiosRequestConfig<D>): Promise<R> {
+    return this.axios.put<T, R, D>(url, data, config)
+  }
+
+  putForm<T = any, R = AxiosResponse<T>, D = any>(url: string, data?: D, config?: AxiosRequestConfig<D>): Promise<R> {
+    return this.axios.put<T, R, D>(url, data, config)
+  }
+
+  request<T = any, R = AxiosResponse<T>, D = any>(config: AxiosRequestConfig<D>): Promise<R> {
+    return this.axios.request<T, R, D>(config)
   }
 }

@@ -32,11 +32,6 @@
       "source": "./src/index.ts",
       "default": "./dist/neutral/index.mjs"
     },
-    "./internal": {
-      "types": "./dist/neutral/index-internal.d.ts",
-      "source": "./src/index-internal.ts",
-      "default": "./dist/neutral/index-internal.mjs"
-    },
     "./package.json": "./package.json"
   },
   "module": "./dist/neutral/index.mjs",

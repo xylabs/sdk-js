@@ -120,12 +120,12 @@
   },
   "devDependencies": {
     "@types/debug": "~4.1.12",
-    "@types/node": "~24.10.0",
+    "@types/node": "~24.10.1",
     "@xylabs/eslint-config-flat": "~7.2.8",
     "@xylabs/ts-scripts-yarn3": "~7.2.8",
     "eslint": "~9.39.1",
     "tiny-worker": "~2.3.0",
-    "tsup": "~8.5.0",
+    "tsup": "~8.5.1",
     "typescript": "~5.9.3"
   },
   "publishConfig": {

@@ -1,5 +1,4 @@
-// eslint-disable-next-line no-restricted-syntax
-import * as z from 'zod'
+import z from 'zod'
 
 import { type Address, ADDRESS_LENGTH } from './address.ts'
 import { AddressValidationZod } from './AddressValidationZod.ts'

@@ -1,5 +1,4 @@
-// eslint-disable-next-line no-restricted-syntax
-import * as z from 'zod'
+import z from 'zod'
 
 import { AddressRegEx } from './address.ts'
 import { toAddress } from './to.ts'

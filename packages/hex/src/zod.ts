@@ -1,5 +1,4 @@
-// eslint-disable-next-line no-restricted-syntax
-import * as z from 'zod'
+import z from 'zod'
 
 import { toHex } from './hex/index.ts'
 import { hexToBigInt } from './hexToBigInt.ts'

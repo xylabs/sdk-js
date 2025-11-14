@@ -20,6 +20,7 @@ export const tryParse = <T = number>(func: ParseFunc<T>, value?: string) => {
  * @deprecated use zod instead
  */
 export const tryParseFloat = (value?: string) => {
+  // eslint-disable-next-line sonarjs/deprecation
   return tryParse(Number.parseFloat, value)
 }
 
@@ -27,5 +28,6 @@ export const tryParseFloat = (value?: string) => {
  * @deprecated use zod instead
  */
 export const tryParseInt = (value?: string) => {
+  // eslint-disable-next-line sonarjs/deprecation
   return tryParse(Number.parseInt, value)
 }

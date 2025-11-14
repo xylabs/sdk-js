@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/error",
-  "version": "5.0.27",
+  "version": "5.0.28",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "error",

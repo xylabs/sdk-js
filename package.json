@@ -51,6 +51,7 @@
   "dependencies": {
     "@xylabs/api": "workspace:~",
     "@xylabs/array": "workspace:~",
+    "@xylabs/arraybuffer": "workspace:~",
     "@xylabs/assert": "workspace:~",
     "@xylabs/axios": "workspace:~",
     "@xylabs/base": "workspace:~",

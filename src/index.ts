@@ -1,5 +1,6 @@
 export * from '@xylabs/api'
 export * from '@xylabs/array'
+export * from '@xylabs/arraybuffer'
 export * from '@xylabs/assert'
 export * from '@xylabs/axios'
 export * from '@xylabs/base'

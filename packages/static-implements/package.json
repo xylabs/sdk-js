@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/static-implements",
-  "version": "5.0.26",
+  "version": "5.0.27",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "static",

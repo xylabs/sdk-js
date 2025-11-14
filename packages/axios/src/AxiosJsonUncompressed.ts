@@ -1,17 +1,19 @@
 import type { Logger } from '@xylabs/logger'
-import type { AxiosResponse, RawAxiosRequestConfig } from 'axios'
+import type { AxiosRequestConfig, AxiosResponse } from 'axios'
 import { Axios, AxiosHeaders } from 'axios'
 
-import type { AxiosClassType } from './AxiosClassType.ts'
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type RawAxiosJsonRequestUncompressedConfig<D = any> = RawAxiosRequestConfig<D>
+export type AxiosJsonRequestUncompressedConfig<D = any> = AxiosRequestConfig<D>
 
-export class AxiosJsonUncompressed extends Axios implements AxiosClassType {
+export class AxiosJsonUncompressed extends Axios {
   static defaultLogger?: Logger
 
-  constructor(config?: RawAxiosJsonRequestUncompressedConfig) {
+  constructor(config?: AxiosJsonRequestUncompressedConfig) {
     super(AxiosJsonUncompressed.axiosConfig(config))
+  }
+
+  static create(config?: AxiosJsonRequestUncompressedConfig) {
+    return new this(config) as Axios
   }
 
   static finalPath(response: AxiosResponse) {
@@ -26,7 +28,7 @@ export class AxiosJsonUncompressed extends Axios implements AxiosClassType {
     }
   }
 
-  private static axiosConfig({ headers, ...config }: RawAxiosJsonRequestUncompressedConfig = {}): RawAxiosJsonRequestUncompressedConfig {
+  private static axiosConfig({ headers, ...config }: AxiosJsonRequestUncompressedConfig = {}): AxiosJsonRequestUncompressedConfig {
     return {
       headers: this.buildHeaders(headers),
       transformRequest: (data) => {
@@ -44,7 +46,7 @@ export class AxiosJsonUncompressed extends Axios implements AxiosClassType {
     }
   }
 
-  private static buildHeaders(headers: RawAxiosJsonRequestUncompressedConfig['headers']) {
+  private static buildHeaders(headers: AxiosJsonRequestUncompressedConfig['headers']) {
     const axiosHeaders = new AxiosHeaders()
     axiosHeaders.set('Accept', 'application/json, text/plain, *.*')
     axiosHeaders.set('Content-Type', 'application/json')

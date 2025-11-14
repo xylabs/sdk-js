@@ -1,22 +1,22 @@
 import type { Logger } from '@xylabs/logger'
-import type {
-  AxiosInstance, AxiosResponse, RawAxiosRequestConfig,
-} from 'axios'
+import type { AxiosRequestConfig, AxiosResponse } from 'axios'
 import { Axios, AxiosHeaders } from 'axios'
 import { gzip } from 'pako'
 
-import type { AxiosClassType } from './AxiosClassType.ts'
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type RawAxiosJsonRequestConfig<D = any> = RawAxiosRequestConfig<D> & { compressLength?: number }
+export type AxiosJsonRequestConfig<D = any> = AxiosRequestConfig<D> & { compressLength?: number }
 
 export type AxiosType = typeof Axios
 
-export class AxiosJson extends Axios implements AxiosClassType {
+export class AxiosJson extends Axios {
   static defaultLogger?: Logger
 
-  constructor(config?: RawAxiosJsonRequestConfig) {
-    super(AxiosJson.axiosConfig(config))
+  constructor(config?: AxiosJsonRequestConfig) {
+    super(config)
+  }
+
+  static create(config?: AxiosJsonRequestConfig) {
+    return new this(config) as Axios
   }
 
   static finalPath(response: AxiosResponse) {
@@ -33,7 +33,7 @@ export class AxiosJson extends Axios implements AxiosClassType {
 
   private static axiosConfig({
     compressLength, headers, ...config
-  }: RawAxiosJsonRequestConfig = {}): RawAxiosJsonRequestConfig {
+  }: AxiosJsonRequestConfig = {}): AxiosJsonRequestConfig {
     return {
       headers: this.buildHeaders(headers),
       transformRequest: (data, headers) => {
@@ -55,7 +55,7 @@ export class AxiosJson extends Axios implements AxiosClassType {
     }
   }
 
-  private static buildHeaders(headers: RawAxiosJsonRequestConfig['headers']) {
+  private static buildHeaders(headers: AxiosJsonRequestConfig['headers']) {
     const axiosHeaders = new AxiosHeaders()
     axiosHeaders.set('Accept', 'application/json, text/plain, *.*')
     axiosHeaders.set('Content-Type', 'application/json')
@@ -63,5 +63,3 @@ export class AxiosJson extends Axios implements AxiosClassType {
     return axiosHeaders
   }
 }
-
-export const createAxiosJson = (config?: RawAxiosJsonRequestConfig) => new AxiosJson(config) as AxiosInstance

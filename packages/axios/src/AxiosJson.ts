@@ -13,23 +13,7 @@ export class AxiosJson extends Axios {
     super(AxiosJson.axiosConfig(config))
   }
 
-  static create(config?: RawAxiosJsonRequestConfig) {
-    return new Axios(this.axiosConfig(config))
-  }
-
-  static finalPath(response: AxiosResponse) {
-    if (response.request.path) {
-      // nodejs
-      return response.request.path.split('/').pop()
-    } else if (response.request.responseURL) {
-      // browser
-      return response.request.responseURL.split('/').pop()
-    } else {
-      this.defaultLogger?.warn('Failed to get final path from response')
-    }
-  }
-
-  private static axiosConfig({
+  static axiosConfig({
     compressLength, headers, ...config
   }: RawAxiosJsonRequestConfig = {}): RawAxiosJsonRequestConfig {
     return {
@@ -50,6 +34,22 @@ export class AxiosJson extends Axios {
         }
       },
       ...config,
+    }
+  }
+
+  static create(config?: RawAxiosJsonRequestConfig) {
+    return new Axios(this.axiosConfig(config))
+  }
+
+  static finalPath(response: AxiosResponse) {
+    if (response.request.path) {
+      // nodejs
+      return response.request.path.split('/').pop()
+    } else if (response.request.responseURL) {
+      // browser
+      return response.request.responseURL.split('/').pop()
+    } else {
+      this.defaultLogger?.warn('Failed to get final path from response')
     }
   }
 

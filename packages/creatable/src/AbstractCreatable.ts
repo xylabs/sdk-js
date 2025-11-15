@@ -70,6 +70,7 @@ export class AbstractCreatable<TParams extends CreatableParams = CreatableParams
       return initializedInstance
     } catch (ex) {
       params.statusReporter?.report(name, 'error', isError(ex) ? ex : new Error(`Error creating: ${name}`))
+      params.logger?.error(`Error creating creatable [${name}]: ${(isError(ex) ? `${ex.message} ${ex.stack}` : ex)}`)
       throw isError(ex) ? ex : new Error(`Error creating: ${name}`)
     }
   }

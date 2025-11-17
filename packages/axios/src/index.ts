@@ -9,3 +9,5 @@ export const axiosJson = new Axios(axiosJsonConfig())
 
 /** @deprecated use axiosJson instead */
 export const axios = axiosJson
+
+export { axiosJsonConfig } from './axiosJsonConfig.ts'

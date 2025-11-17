@@ -1,63 +1,26 @@
 import type { Logger } from '@xylabs/logger'
-import type { AxiosResponse, RawAxiosRequestConfig } from 'axios'
-import { Axios, AxiosHeaders } from 'axios'
-import { gzip } from 'pako'
+import { Axios } from 'axios'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type RawAxiosJsonRequestConfig<D = any> = RawAxiosRequestConfig<D> & { compressLength?: number }
+import type { RawAxiosJsonRequestConfig } from './axiosJsonConfig.ts'
+import { axiosJsonConfig } from './axiosJsonConfig.ts'
 
+function deprecated(from: string, to: string, logger: Logger = console) {
+  logger.warn(`${from} is deprecated. Please use ${to} instead.`)
+}
+
+/** @deprecated use axiosJsonConfig instead */
 export class AxiosJson extends Axios {
-  static defaultLogger?: Logger
-
   constructor(config?: RawAxiosJsonRequestConfig) {
+    deprecated('AxiosJson', 'axiosJsonConfig')
+    // eslint-disable-next-line sonarjs/deprecation
     super(AxiosJson.axiosConfig(config))
   }
 
-  static axiosConfig({
-    compressLength, headers, ...config
-  }: RawAxiosJsonRequestConfig = {}): RawAxiosJsonRequestConfig {
-    return {
-      headers: this.buildHeaders(headers),
-      transformRequest: (data, headers) => {
-        const json = JSON.stringify(data)
-        if (headers !== undefined && data && json.length > (compressLength ?? 1024)) {
-          headers.set('Content-Encoding', 'gzip')
-          return gzip(json).buffer
-        }
-        return json
-      },
-      transformResponse: (data) => {
-        try {
-          return JSON.parse(data)
-        } catch {
-          return null
-        }
-      },
-      ...config,
-    }
+  static axiosConfig(config: RawAxiosJsonRequestConfig = {}): RawAxiosJsonRequestConfig {
+    return axiosJsonConfig(config)
   }
 
   static create(config?: RawAxiosJsonRequestConfig) {
     return new Axios(this.axiosConfig(config))
-  }
-
-  static finalPath(response: AxiosResponse) {
-    if (response.request.path) {
-      // nodejs
-      return response.request.path.split('/').pop()
-    } else if (response.request.responseURL) {
-      // browser
-      return response.request.responseURL.split('/').pop()
-    } else {
-      this.defaultLogger?.warn('Failed to get final path from response')
-    }
-  }
-
-  private static buildHeaders(headers: RawAxiosJsonRequestConfig['headers']) {
-    const axiosHeaders = new AxiosHeaders()
-    axiosHeaders.set('Accept', 'application/json, text/plain, *.*')
-    axiosHeaders.set('Content-Type', 'application/json')
-    for (const [key, value] of Object.entries(headers ?? {})) axiosHeaders.set(key, value)
-    return axiosHeaders
   }
 }

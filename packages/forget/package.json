@@ -44,7 +44,10 @@
   "types": "./dist/node/index.d.ts",
   "files": [
     "dist",
-    "src"
+    "src",
+    "!**/*.bench.*",
+    "!**/*.spec.*",
+    "!**/*.test.*"
   ],
   "dependencies": {
     "@xylabs/delay": "workspace:~",

@@ -46,7 +46,10 @@
   "types": "./dist/browser/index-browser.d.ts",
   "files": [
     "dist",
-    "src"
+    "src",
+    "!**/*.bench.*",
+    "!**/*.spec.*",
+    "!**/*.test.*"
   ],
   "devDependencies": {
     "@types/node": "~24.10.1",

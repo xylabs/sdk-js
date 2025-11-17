@@ -51,7 +51,10 @@
   "types": "./dist/browser/index.d.ts",
   "files": [
     "dist",
-    "src"
+    "src",
+    "!**/*.bench.*",
+    "!**/*.spec.*",
+    "!**/*.test.*"
   ],
   "dependencies": {
     "@xylabs/exists": "workspace:~",

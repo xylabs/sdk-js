@@ -115,6 +115,7 @@ export class AbstractCreatable<TParams extends CreatableParams = CreatableParams
         return true
       } catch (ex) {
         this.setStatus('error', isError(ex) ? ex : new Error(`Error starting: ${ex}`))
+        this.logger?.error(`Error starting creatable [${this.name}]: ${(isError(ex) ? `${ex.message} ${ex.stack}` : ex)}`)
         return false
       }
     })

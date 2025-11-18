@@ -62,7 +62,7 @@
     "@xylabs/tsconfig": "~7.2.8",
     "@xylabs/tsconfig-dom": "~7.2.8",
     "typescript": "~5.9.3",
-    "vitest": "~4.0.9"
+    "vitest": "~4.0.10"
   },
   "engines": {
     "node": ">=18"

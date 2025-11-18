@@ -51,7 +51,7 @@
     "@xylabs/vitest-extended": "workspace:~",
     "tslib": "~2.8.1",
     "typescript": "~5.9.3",
-    "vitest": "~4.0.9"
+    "vitest": "~4.0.10"
   },
   "engines": {
     "node": ">=18"

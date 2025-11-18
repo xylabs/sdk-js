@@ -63,7 +63,7 @@
     "eslint": "~9.39.1",
     "observable-fns": "~0.6.1",
     "typescript": "~5.9.3",
-    "vitest": "~4.0.9"
+    "vitest": "~4.0.10"
   },
   "optionalDependencies": {
     "tiny-worker": "~2.3.0"

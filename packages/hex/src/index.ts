@@ -1,5 +1,4 @@
 export * from './address/index.ts'
-export * from './assert.ts'
 export * from './ethAddress.ts'
 export * from './hash/index.ts'
 export * from './hex/index.ts'

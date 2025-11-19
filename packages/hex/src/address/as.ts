@@ -1,7 +1,7 @@
+import type { AssertConfig } from '@xylabs/error'
+import { assertError } from '@xylabs/error'
 import { isObject } from '@xylabs/typeof'
 
-import type { AssertConfig } from '../assert.ts'
-import { assertError } from '../assert.ts'
 import { hexFromHexString } from '../hex/index.ts'
 import type { Address } from './address.ts'
 import { AddressValidationZod } from './AddressValidationZod.ts'

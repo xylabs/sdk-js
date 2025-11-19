@@ -1,7 +1,7 @@
+import type { AssertConfig } from '@xylabs/error'
+import { assertError } from '@xylabs/error'
 import { isUndefined } from '@xylabs/typeof'
 
-import type { AssertConfig } from '../assert.ts'
-import { assertError } from '../assert.ts'
 import { hexFromHexString } from '../hex/index.ts'
 import { type Hash } from './hash.ts'
 import { isHash } from './is.ts'

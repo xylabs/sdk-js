@@ -46,7 +46,9 @@
     "@xylabs/assert": "workspace:~",
     "@xylabs/object-model": "workspace:~",
     "@xylabs/promise": "workspace:~",
-    "@xylabs/typeof": "workspace:~"
+    "@xylabs/typeof": "workspace:~",
+    "@xylabs/zod": "workspace:~",
+    "zod": "~4.1.12"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.2.8",

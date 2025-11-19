@@ -2603,6 +2603,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/hex@workspace:packages/hex"
   dependencies:
+    "@xylabs/error": "workspace:~"
     "@xylabs/ts-scripts-yarn3": "npm:~7.2.8"
     "@xylabs/tsconfig": "npm:~7.2.8"
     "@xylabs/typeof": "workspace:~"
@@ -2738,8 +2739,10 @@ __metadata:
     "@xylabs/ts-scripts-yarn3": "npm:~7.2.8"
     "@xylabs/tsconfig": "npm:~7.2.8"
     "@xylabs/typeof": "workspace:~"
+    "@xylabs/zod": "workspace:~"
     typescript: "npm:~5.9.3"
     vitest: "npm:~4.0.10"
+    zod: "npm:~4.1.12"
   languageName: unknown
   linkType: soft
 
@@ -3127,6 +3130,19 @@ __metadata:
     typescript: "npm:~5.9.3"
   peerDependencies:
     vitest: ">=3 <5"
+  languageName: unknown
+  linkType: soft
+
+"@xylabs/zod@workspace:packages/zod, @xylabs/zod@workspace:~":
+  version: 0.0.0-use.local
+  resolution: "@xylabs/zod@workspace:packages/zod"
+  dependencies:
+    "@xylabs/error": "workspace:~"
+    "@xylabs/ts-scripts-yarn3": "npm:~7.2.8"
+    "@xylabs/tsconfig": "npm:~7.2.8"
+    typescript: "npm:~5.9.3"
+    vitest: "npm:~4.0.10"
+    zod: "npm:~4.1.12"
   languageName: unknown
   linkType: soft
 
@@ -9449,7 +9465,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zod@npm:^4.1.11, zod@npm:^4.1.12":
+"zod@npm:^4.1.11, zod@npm:^4.1.12, zod@npm:~4.1.12":
   version: 4.1.12
   resolution: "zod@npm:4.1.12"
   checksum: 10/c5f04e6ac306515c4db6ef73cf7705f521c7a2107c8c8912416a0658d689f361db9bee829b0bf01ef4a22492f1065c5cbcdb523ce532606ac6792fd714f3c326

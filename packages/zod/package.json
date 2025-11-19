@@ -1,28 +1,21 @@
 {
-  "name": "@xylabs/hex",
+  "name": "@xylabs/zod",
   "version": "5.0.38",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
-  "keywords": [
-    "hex",
-    "xylabs",
-    "utility",
-    "typescript",
-    "esm"
-  ],
-  "homepage": "https://xylabs.com",
+  "homepage": "https://xyo.network",
   "bugs": {
-    "url": "git+https://github.com/xylabs/sdk-js/issues",
-    "email": "support@xylabs.com"
+    "url": "git+https://github.com/XYOracleNetwork/sdk-xyo-client-js/issues",
+    "email": "support@xyo.network"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xylabs/sdk-js.git"
+    "url": "git+https://github.com/XYOracleNetwork/sdk-xyo-client-js.git"
   },
   "license": "LGPL-3.0-only",
   "author": {
-    "name": "XY Labs Development Team",
-    "email": "support@xylabs.com",
-    "url": "https://xylabs.com"
+    "name": "XYO Development Team",
+    "email": "support@xyo.network",
+    "url": "https://xyo.network"
   },
   "sideEffects": false,
   "type": "module",
@@ -46,18 +39,13 @@
   ],
   "dependencies": {
     "@xylabs/error": "workspace:~",
-    "@xylabs/typeof": "workspace:~",
-    "zod": "^4.1.12"
+    "zod": "~4.1.12"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.2.8",
     "@xylabs/tsconfig": "~7.2.8",
-    "@xylabs/vitest-extended": "workspace:~",
     "typescript": "~5.9.3",
     "vitest": "~4.0.10"
-  },
-  "engines": {
-    "node": ">=18"
   },
   "publishConfig": {
     "access": "public"

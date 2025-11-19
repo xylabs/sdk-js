@@ -5,7 +5,6 @@ import {
   rulesConfig,
   sonarConfig,
   importConfig,
-  ignores,
 } from '@xylabs/eslint-config-flat'
 
 export default [

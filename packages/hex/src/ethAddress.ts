@@ -1,8 +1,8 @@
+import type { AssertConfig } from '@xylabs/error'
+import { assertError } from '@xylabs/error'
 import type { Brand } from '@xylabs/typeof'
 import z from 'zod'
 
-import type { AssertConfig } from './assert.ts'
-import { assertError } from './assert.ts'
 import type { HexConfig } from './hex/index.ts'
 import {
   hexFrom, hexFromHexString, isHex,

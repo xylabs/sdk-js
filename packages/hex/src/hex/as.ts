@@ -1,5 +1,6 @@
-import type { AssertConfig } from '../assert.ts'
-import { assertError } from '../assert.ts'
+import type { AssertConfig } from '@xylabs/error'
+import { assertError } from '@xylabs/error'
+
 import { hexFromHexString } from './from/index.ts'
 import type { Hex } from './hex.ts'
 import { isHex } from './is.ts'

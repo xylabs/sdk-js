@@ -970,7 +970,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@opentelemetry/api@npm:^1.9.0, @opentelemetry/api@npm:~1.9.0":
+"@opentelemetry/api@npm:^1.9.0":
   version: 1.9.0
   resolution: "@opentelemetry/api@npm:1.9.0"
   checksum: 10/a607f0eef971893c4f2ee2a4c2069aade6ec3e84e2a1f5c2aac19f65c5d9eeea41aa72db917c1029faafdd71789a1a040bdc18f40d63690e22ccae5d7070f194
@@ -1000,7 +1000,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@opentelemetry/sdk-trace-base@npm:~2.2.0":
+"@opentelemetry/sdk-trace-base@npm:^2":
   version: 2.2.0
   resolution: "@opentelemetry/sdk-trace-base@npm:2.2.0"
   dependencies:
@@ -2354,8 +2354,6 @@ __metadata:
     "@xylabs/tsconfig": "npm:~7.2.8"
     tslib: "npm:~2.8.1"
     typescript: "npm:~5.9.3"
-  peerDependencies:
-    "@opentelemetry/api": ^1
   languageName: unknown
   linkType: soft
 
@@ -2939,16 +2937,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/telemetry-exporter@workspace:packages/telemetry-exporter"
   dependencies:
-    "@opentelemetry/api": "npm:~1.9.0"
-    "@opentelemetry/sdk-trace-base": "npm:~2.2.0"
+    "@opentelemetry/sdk-trace-base": "npm:^2"
     "@xylabs/logger": "workspace:~"
     "@xylabs/ts-scripts-yarn3": "npm:~7.2.8"
     "@xylabs/tsconfig": "npm:~7.2.8"
     chalk: "npm:~5.6.2"
     typescript: "npm:~5.9.3"
-  peerDependencies:
-    "@opentelemetry/api": ^1
-    "@opentelemetry/sdk-trace-base": ^2
   languageName: unknown
   linkType: soft
 
@@ -2956,13 +2950,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/telemetry@workspace:packages/telemetry"
   dependencies:
-    "@opentelemetry/api": "npm:~1.9.0"
+    "@opentelemetry/api": "npm:^1.9.0"
     "@xylabs/ts-scripts-yarn3": "npm:~7.2.8"
     "@xylabs/tsconfig": "npm:~7.2.8"
     "@xylabs/typeof": "workspace:~"
     typescript: "npm:~5.9.3"
-  peerDependencies:
-    "@opentelemetry/api": ^1
   languageName: unknown
   linkType: soft
 

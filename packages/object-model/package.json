@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/object-model",
-  "version": "5.0.39",
+  "version": "5.0.40",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "homepage": "https://xyo.network",
   "bugs": {

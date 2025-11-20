@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/sdk-meta",
-  "version": "5.0.39",
+  "version": "5.0.40",
   "description": "Base functionality used throughout XYO TypeScript/JavaScript libraries",
   "keywords": [
     "meta",

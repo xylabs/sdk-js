@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/telemetry-exporter",
-  "version": "5.0.39",
+  "version": "5.0.40",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "hex",
@@ -45,19 +45,14 @@
     "!**/*.test.*"
   ],
   "dependencies": {
+    "@opentelemetry/sdk-trace-base": "^2",
     "@xylabs/logger": "workspace:~",
     "chalk": "~5.6.2"
   },
   "devDependencies": {
-    "@opentelemetry/api": "~1.9.0",
-    "@opentelemetry/sdk-trace-base": "~2.2.0",
     "@xylabs/ts-scripts-yarn3": "~7.2.8",
     "@xylabs/tsconfig": "~7.2.8",
     "typescript": "~5.9.3"
-  },
-  "peerDependencies": {
-    "@opentelemetry/api": "^1",
-    "@opentelemetry/sdk-trace-base": "^2"
   },
   "engines": {
     "node": ">=18"

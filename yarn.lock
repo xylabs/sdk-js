@@ -2937,6 +2937,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xylabs/telemetry-exporter@workspace:packages/telemetry-exporter"
   dependencies:
+    "@opentelemetry/api": "npm:^1.9.0"
     "@opentelemetry/sdk-trace-base": "npm:^2"
     "@xylabs/logger": "workspace:~"
     "@xylabs/ts-scripts-yarn3": "npm:~7.2.8"

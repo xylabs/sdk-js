@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/eth-address",
-  "version": "5.0.41",
+  "version": "5.0.42",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "eth",

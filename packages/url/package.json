@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/url",
-  "version": "5.0.41",
+  "version": "5.0.42",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "url",

@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/express",
-  "version": "5.0.45",
+  "version": "5.0.46",
   "description": "SDK for base code for Api repos that use express and deploy on AWS ECS",
   "keywords": [
     "xylabs",

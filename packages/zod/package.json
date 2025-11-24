@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/zod",
-  "version": "5.0.45",
+  "version": "5.0.46",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -39,6 +39,7 @@
   ],
   "dependencies": {
     "@xylabs/error": "workspace:~",
+    "@xylabs/typeof": "workspace:~",
     "zod": "~4.1.12"
   },
   "devDependencies": {

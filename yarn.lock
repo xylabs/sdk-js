@@ -3133,6 +3133,7 @@ __metadata:
     "@xylabs/error": "workspace:~"
     "@xylabs/ts-scripts-yarn3": "npm:~7.2.8"
     "@xylabs/tsconfig": "npm:~7.2.8"
+    "@xylabs/typeof": "workspace:~"
     typescript: "npm:~5.9.3"
     vitest: "npm:~4.0.10"
     zod: "npm:~4.1.12"

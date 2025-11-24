@@ -1,5 +1,7 @@
 export * from './Config.ts'
 export * from './zodAllFactory.ts'
+export * from './zodAsAsyncFactory.ts'
 export * from './zodAsFactory.ts'
 export * from './zodIsFactory.ts'
+export * from './zodToAsyncFactory.ts'
 export * from './zodToFactory.ts'

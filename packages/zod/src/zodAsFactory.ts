@@ -4,13 +4,13 @@ import type z from 'zod'
 
 import type { ZodFactoryConfig } from './Config.ts'
 
-export function zodAsFactory<T>(zod: z.ZodType<T>, name: string) {
-  function asFunc(value: unknown): T | undefined
-  function asFunc(value: unknown, assert: ZodFactoryConfig): T
-  function asFunc(value: unknown, assert?: ZodFactoryConfig): T | undefined {
+export function zodAsFactory<TZod>(zod: z.ZodType<TZod>, name: string) {
+  function asFunc<T>(value: unknown): (T & TZod) | undefined
+  function asFunc<T>(value: unknown, assert: ZodFactoryConfig): (T & TZod)
+  function asFunc<T>(value: unknown, assert?: ZodFactoryConfig): (T & TZod) | undefined {
     const result = zod.safeParse(value)
     if (result.success) {
-      return result.data
+      return value as (T & TZod)
     }
     if (assert !== undefined) {
       let assertConfig: AssertConfig

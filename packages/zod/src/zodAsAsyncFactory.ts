@@ -5,9 +5,9 @@ import type z from 'zod'
 import type { ZodFactoryConfig } from './Config.ts'
 
 export function zodAsAsyncFactory<TZod>(zod: z.ZodType<TZod>, name: string) {
-  function asFunc<T>(value: unknown): Promise<(T & TZod) | undefined>
-  function asFunc<T>(value: unknown, assert: ZodFactoryConfig): Promise<(T & TZod)>
-  async function asFunc<T>(value: unknown, assert?: ZodFactoryConfig): Promise<(T & TZod) | undefined> {
+  function asFunc<T>(value: T): Promise<(T & TZod) | undefined>
+  function asFunc<T>(value: T, assert: ZodFactoryConfig): Promise<(T & TZod)>
+  async function asFunc<T>(value: T, assert?: ZodFactoryConfig): Promise<(T & TZod) | undefined> {
     const result = await zod.safeParseAsync(value)
     if (result.success) {
       return value as (T & TZod)

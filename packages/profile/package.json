@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/profile",
-  "version": "5.0.42",
+  "version": "5.0.43",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "profile",

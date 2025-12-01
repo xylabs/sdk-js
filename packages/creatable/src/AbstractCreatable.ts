@@ -3,7 +3,9 @@ import type { EventData } from '@xylabs/events'
 import { BaseEmitter } from '@xylabs/events'
 import { type Logger } from '@xylabs/logger'
 import type { Promisable } from '@xylabs/promise'
-import { isError, isNumber } from '@xylabs/typeof'
+import {
+  isError, isNumber, isString,
+} from '@xylabs/typeof'
 import { Mutex } from 'async-mutex'
 
 import {
@@ -19,6 +21,7 @@ import type {
 } from './model/index.ts'
 
 const AbstractCreatableConstructorKey = Symbol.for('AbstractCreatableConstructor')
+const CREATABLE_NOT_STARTED = 'Creatable not Started' as const
 
 @creatable()
 export class AbstractCreatable<TParams extends CreatableParams = CreatableParams,
@@ -119,6 +122,37 @@ export class AbstractCreatable<TParams extends CreatableParams = CreatableParams
         return false
       }
     })
+  }
+
+  started(notStartedAction: 'error' | 'throw' | 'warn' | 'log' | 'none' = 'log'): boolean {
+    if (isString(this.status) && this.status === 'started') {
+      return true
+    } else {
+      const message = () => `${CREATABLE_NOT_STARTED} [${this.name}] current state: ${this.status}`
+      switch (notStartedAction) {
+        case 'error': {
+          throw new Error(message())
+        }
+        case 'throw': {
+          throw new Error(message())
+        }
+        case 'warn': {
+          this.logger?.warn(message())
+          break
+        }
+        case 'log': {
+          this.logger?.log(message())
+          break
+        }
+        case 'none': {
+          break
+        }
+        default: {
+          throw new Error(`Unknown notStartedAction: ${notStartedAction}`)
+        }
+      }
+      return false
+    }
   }
 
   async stop(): Promise<boolean> {

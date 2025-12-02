@@ -7,4 +7,6 @@ export interface CreatableInstance<TParams extends CreatableParams = CreatablePa
   eventData: TEventData
   name: CreatableName
   params: TParams
+  start: () => Promise<boolean>
+  stop: () => Promise<boolean>
 }

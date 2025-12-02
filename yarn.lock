@@ -2390,6 +2390,7 @@ __metadata:
     "@xylabs/events": "workspace:~"
     "@xylabs/logger": "workspace:~"
     "@xylabs/promise": "workspace:~"
+    "@xylabs/telemetry": "workspace:~"
     "@xylabs/ts-scripts-yarn3": "npm:~7.2.8"
     "@xylabs/tsconfig": "npm:~7.2.8"
     "@xylabs/typeof": "workspace:~"

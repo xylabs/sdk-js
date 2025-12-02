@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/zod",
-  "version": "5.0.47",
+  "version": "5.0.48",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "homepage": "https://xyo.network",
   "bugs": {

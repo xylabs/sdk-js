@@ -3,6 +3,7 @@ import type { EventData } from '@xylabs/events'
 import { BaseEmitter } from '@xylabs/events'
 import { type Logger } from '@xylabs/logger'
 import type { Promisable } from '@xylabs/promise'
+import { spanRoot, spanRootAsync } from '@xylabs/telemetry'
 import {
   isError, isNumber, isString,
 } from '@xylabs/typeof'
@@ -98,6 +99,14 @@ export class AbstractCreatable<TParams extends CreatableParams = CreatableParams
 
   paramsValidator(params: Partial<TParams & RequiredCreatableParams>): TParams & RequiredCreatableParams {
     return { ...params, name: params.name } as TParams & RequiredCreatableParams
+  }
+
+  span<T>(name: string, fn: () => T): T {
+    return spanRoot(name, fn, this.tracer)
+  }
+
+  async spanAsync<T>(name: string, fn: () => Promise<T>): Promise<T> {
+    return await spanRootAsync(name, fn, this.tracer)
   }
 
   async start(): Promise<boolean> {

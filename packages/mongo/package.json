@@ -58,7 +58,7 @@
     "@xylabs/tsconfig": "~7.2.8",
     "mongodb": "~6.20.0",
     "typescript": "~5.9.3",
-    "vitest": "~4.0.10"
+    "vitest": "~4.0.15"
   },
   "peerDependencies": {
     "mongodb": "~6"

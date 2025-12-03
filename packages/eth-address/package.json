@@ -48,13 +48,13 @@
   ],
   "dependencies": {
     "@xylabs/assert": "workspace:~",
-    "ethers": "~6.15.0"
+    "ethers": "^6.16.0"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.2.8",
     "@xylabs/tsconfig": "~7.2.8",
     "typescript": "~5.9.3",
-    "vitest": "~4.0.10"
+    "vitest": "~4.0.15"
   },
   "engines": {
     "node": ">=18"

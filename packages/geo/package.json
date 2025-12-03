@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/geo",
-  "version": "5.0.49",
+  "version": "5.0.50",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "xylabs",
@@ -45,7 +45,7 @@
   ],
   "dependencies": {
     "@types/geojson": "~7946.0.16",
-    "mapbox-gl": "~3.16.0"
+    "mapbox-gl": "~3.17.0"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.2.8",

@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/enum",
-  "version": "5.0.50",
+  "version": "5.0.51",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "homepage": "https://xyo.network",
   "bugs": {

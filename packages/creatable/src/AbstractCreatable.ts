@@ -6,6 +6,7 @@ import type { Promisable } from '@xylabs/promise'
 import { spanRoot, spanRootAsync } from '@xylabs/telemetry'
 import {
   isError, isNumber, isString,
+  isUndefined,
 } from '@xylabs/typeof'
 import { Mutex } from 'async-mutex'
 
@@ -29,6 +30,7 @@ export class AbstractCreatable<TParams extends CreatableParams = CreatableParams
   TEventData extends EventData = EventData> extends BaseEmitter<Partial<TParams & RequiredCreatableParams>, TEventData> {
   defaultLogger?: Logger
 
+  protected _startPromise: Promisable<boolean> | undefined
   private _status: CreatableStatus | null = null
   private _statusMutex = new Mutex()
   private _validatedParams?: TParams & RequiredCreatableParams
@@ -162,6 +164,32 @@ export class AbstractCreatable<TParams extends CreatableParams = CreatableParams
       }
       return false
     }
+  }
+
+  async startedAsync(notStartedAction: 'error' | 'throw' | 'warn' | 'log' | 'none' = 'log', tryStart = true): Promise<boolean> {
+    if (isString(this.status) && this.status === 'started') {
+      return true
+    } else if (this.status === 'created' || this.status === 'stopped' || this.status === 'starting') {
+      // using promise as mutex
+      this._startPromise = this._startPromise ?? (async () => {
+        if (tryStart) {
+          try {
+            return await this.start()
+          } finally {
+            this._startPromise = undefined
+          }
+        }
+        return this.started(notStartedAction)
+      })()
+    } else {
+      const message = `${CREATABLE_NOT_STARTED} [${this.name}] current state: ${this.status}`
+      throw new Error(message)
+    }
+
+    if (isUndefined(this._startPromise)) {
+      throw new Error(`Failed to create start promise: ${this.status}`)
+    }
+    return await this._startPromise
   }
 
   async stop(): Promise<boolean> {

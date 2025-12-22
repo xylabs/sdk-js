@@ -24,14 +24,14 @@ export type JsonValue = z.infer<typeof JsonValueZod>
 export type JsonObject = z.infer<typeof JsonObjectZod>
 export type JsonArray = z.infer<typeof JsonArrayZod>
 
-export const isJsonValue = zodIsFactory<JsonValue>(JsonValueZod)
-export const asJsonValue = zodAsFactory<JsonValue>(JsonValueZod, 'asJsonValue')
-export const toJsonValue = zodToFactory<JsonValue>(JsonValueZod, 'toJsonValue')
+export const isJsonValue = zodIsFactory(JsonValueZod)
+export const asJsonValue = zodAsFactory(JsonValueZod, 'asJsonValue')
+export const toJsonValue = zodToFactory(JsonValueZod, 'toJsonValue')
 
-export const isJsonArray = zodIsFactory<JsonArray>(JsonArrayZod)
-export const asJsonArray = zodAsFactory<JsonArray>(JsonArrayZod, 'asJsonArray')
-export const toJsonArray = zodToFactory<JsonArray>(JsonArrayZod, 'toJsonArray')
+export const isJsonArray = zodIsFactory(JsonArrayZod)
+export const asJsonArray = zodAsFactory(JsonArrayZod, 'asJsonArray')
+export const toJsonArray = zodToFactory(JsonArrayZod, 'toJsonArray')
 
-export const isJsonObject = zodIsFactory<JsonObject>(JsonObjectZod)
-export const asJsonObject = zodAsFactory<JsonObject>(JsonObjectZod, 'asJsonObject')
-export const toJsonObject = zodToFactory<JsonObject>(JsonObjectZod, 'toJsonObject')
+export const isJsonObject = zodIsFactory(JsonObjectZod)
+export const asJsonObject = zodAsFactory(JsonObjectZod, 'asJsonObject')
+export const toJsonObject = zodToFactory(JsonObjectZod, 'toJsonObject')

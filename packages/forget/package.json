@@ -28,12 +28,12 @@
   "type": "module",
   "exports": {
     ".": {
+      "types": "./dist/node/index.d.ts",
       "node": {
         "types": "./dist/node/index.d.ts",
         "source": "./src/node/index.ts",
         "default": "./dist/node/index.mjs"
       },
-      "types": "./dist/node/index.d.ts",
       "source": "./src/node/index.ts",
       "default": "./dist/node/index.mjs"
     },

@@ -1,7 +1,7 @@
 import {
   zodAsFactory, zodIsFactory, zodToFactory,
 } from '@xylabs/zod'
-import { z } from 'zod'
+import * as z from 'zod'
 
 const JsonArrayZod = z.array(z.lazy(() => JsonValueZod))
 

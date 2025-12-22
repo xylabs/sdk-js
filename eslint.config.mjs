@@ -36,23 +36,7 @@ export default [
             'lodash',
             'lodash-es',
             '@xylabs/lodash',
-            {
-              name: "zod",
-              importNames: ["default"],
-              message: 'Use `import { z } from "zod"` (no default import).',
-            },
-            {
-              name: "zod",
-              importNames: ["*"],
-              message: 'Use `import { z } from "zod"` (no namespace import).',
-            },
           ],
-          patterns: [
-            {
-              group: ["zod/*"],
-              message: 'Import from "zod" only.'
-            }
-          ]
         }
       ],
       '@typescript-eslint/strict-boolean-expressions': ['warn', {
@@ -94,10 +78,10 @@ export default [
         },
         
         // Detect namespace imports that block tree-shaking
-        {
-          selector: "ImportNamespaceSpecifier",
-          message: "Namespace imports (* as X) prevent effective tree-shaking. Use named imports instead."
-        },
+        // {
+        //   selector: "ImportNamespaceSpecifier",
+        //   message: "Namespace imports (* as X) prevent effective tree-shaking. Use named imports instead."
+        // },
         
         // Detect mutations of imported objects
         {

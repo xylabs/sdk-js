@@ -1,4 +1,4 @@
-import { z } from 'zod'
+import * as z from 'zod'
 
 import { toHex } from './hex/index.ts'
 import { hexToBigInt } from './hexToBigInt.ts'

@@ -4,8 +4,7 @@ import type {
   NextFunction, Request, RequestHandler, Response,
 } from 'express'
 import { ReasonPhrases, StatusCodes } from 'http-status-codes'
-import type { ZodType } from 'zod'
-import { z } from 'zod'
+import * as z from 'zod'
 
 import type { ExpressError } from '../Model/index.ts'
 
@@ -37,10 +36,10 @@ type ValidatableRequestKey = 'params' | 'query' | 'body'
  * @returns A middleware function for validating requests and responses.
  */
 export function requestHandlerValidator<
-  TParams extends typeof EmptyQueryParamsZod | ZodType<Record<string, string>> = typeof EmptyQueryParamsZod,
-  TQuery extends typeof EmptyQueryParamsZod | ZodType<Record<string, string | string[]>> = typeof EmptyQueryParamsZod,
-  TBody extends ZodType<unknown> = ZodType<unknown>,
-  TResponse extends ZodType<unknown> = ZodType<unknown>,
+  TParams extends typeof EmptyQueryParamsZod | z.ZodType<Record<string, string>> = typeof EmptyQueryParamsZod,
+  TQuery extends typeof EmptyQueryParamsZod | z.ZodType<Record<string, string | string[]>> = typeof EmptyQueryParamsZod,
+  TBody extends z.ZodType<unknown> = z.ZodType<unknown>,
+  TResponse extends z.ZodType<unknown> = z.ZodType<unknown>,
 >(schemas?: Partial<{
   body: TBody
   params: TParams

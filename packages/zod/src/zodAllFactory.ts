@@ -1,4 +1,4 @@
-import type { ZodType } from 'zod'
+import type * as z from 'zod'
 
 import { zodAsFactory } from './zodAsFactory.ts'
 import { zodIsFactory } from './zodIsFactory.ts'
@@ -14,7 +14,7 @@ export type AllZodFactories<TType, TName extends string> = {
 }
 
 /** @alpha */
-export function zodAllFactory<T, TName extends string>(zod: ZodType<T>, name: TName) {
+export function zodAllFactory<T, TName extends string>(zod: z.ZodType<T>, name: TName) {
   return {
     [`is${name}`]: zodIsFactory<T>(zod),
     [`as${name}`]: zodAsFactory<T>(zod, `as${name}`),

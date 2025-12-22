@@ -1,7 +1,7 @@
 import type { AssertConfig } from '@xylabs/error'
 import { assertError } from '@xylabs/error'
 import type { Brand } from '@xylabs/typeof'
-import { z } from 'zod'
+import * as z from 'zod'
 
 import type { HexConfig } from './hex/index.ts'
 import {

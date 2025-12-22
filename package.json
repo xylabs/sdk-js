@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/sdk-js",
-  "version": "5.0.51",
+  "version": "5.0.52",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "xylabs",
@@ -48,6 +48,7 @@
   ],
   "scripts": {
     "build-typedoc-site": "xy gen-docs @xylabs/sdk-js",
+    "publish": "yarn workspaces foreach -A --no-private npm publish",
     "readme:gen": "node scripts/readme-gen.mjs",
     "test": "vitest run"
   },

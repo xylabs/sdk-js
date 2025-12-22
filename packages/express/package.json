@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/express",
-  "version": "5.0.54",
+  "version": "5.0.55",
   "description": "SDK for base code for Api repos that use express and deploy on AWS ECS",
   "keywords": [
     "xylabs",
@@ -63,8 +63,7 @@
     "http-status-codes": "~2.3.0",
     "rollbar": "~2.26.5",
     "winston": "~3.19.0",
-    "winston-transport": "~4.9.0",
-    "zod": "^4.1.13"
+    "winston-transport": "~4.9.0"
   },
   "devDependencies": {
     "@types/body-parser": "~1.19.6",
@@ -84,10 +83,12 @@
     "vitest": "~4.0.16",
     "vitest-mock-extended": "~3.1.0",
     "winston": "~3.19.0",
-    "winston-transport": "~4.9.0"
+    "winston-transport": "~4.9.0",
+    "zod": "^4.2.1"
   },
   "peerDependencies": {
-    "express": "~5"
+    "express": "~5",
+    "zod": "^4"
   },
   "packageManager": "yarn@4.5.1",
   "volta": {

@@ -5,7 +5,7 @@ import type {
 } from 'express'
 import { ReasonPhrases, StatusCodes } from 'http-status-codes'
 import type { ZodType } from 'zod'
-import z from 'zod'
+import { z } from 'zod'
 
 import type { ExpressError } from '../Model/index.ts'
 

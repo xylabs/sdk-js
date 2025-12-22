@@ -1,4 +1,4 @@
-import z from 'zod'
+import { z } from 'zod'
 
 import { asHash } from './as.ts'
 import type { Hash } from './hash.ts'

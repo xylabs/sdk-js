@@ -7,6 +7,13 @@ import {
   importConfig,
 } from '@xylabs/eslint-config-flat'
 
+const basePaths = rulesConfig.rules["no-restricted-imports"][1].paths;
+
+const filteredBasePaths = basePaths.filter((p) => {
+  if (typeof p === "string") return p !== "zod";
+  return p?.name !== "zod";
+});
+
 export default [
   { ignores: ['.yarn', 'dist', 'build', 'docs', 'eslint.config.mjs', '**/dist', '**/build', '**/docs', 'packages/threads', 'packages/threads-test'] },
   unicornConfig,
@@ -24,29 +31,29 @@ export default [
         'warn',
         {
           paths: [
-            ...rulesConfig.rules['no-restricted-imports'][1].paths,
+            ...filteredBasePaths,
             '@xyo-network/*',
             'lodash',
             'lodash-es',
             '@xylabs/lodash',
             {
               name: "zod",
-              importNames: ["z"],
-              message: "Use `import z from \"zod\"` (default import)."
+              importNames: ["default"],
+              message: 'Use `import { z } from "zod"` (no default import).',
             },
             {
               name: "zod",
               importNames: ["*"],
-              message: "Use `import z from \"zod\"` (default import)."
-            }
+              message: 'Use `import { z } from "zod"` (no namespace import).',
+            },
           ],
           patterns: [
-          {
-            group: ["zod/*"],
-            message: "Import from \"zod\" only."
-          }
-        ]
-        },
+            {
+              group: ["zod/*"],
+              message: 'Import from "zod" only.'
+            }
+          ]
+        }
       ],
       '@typescript-eslint/strict-boolean-expressions': ['warn', {
         allowAny: true,

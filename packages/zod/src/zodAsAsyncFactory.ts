@@ -1,10 +1,10 @@
 import type { AssertConfig } from '@xylabs/error'
 import { assertError } from '@xylabs/error'
-import type z from 'zod'
+import type { ZodType } from 'zod'
 
 import type { ZodFactoryConfig } from './Config.ts'
 
-export function zodAsAsyncFactory<TZod>(zod: z.ZodType<TZod>, name: string) {
+export function zodAsAsyncFactory<TZod>(zod: ZodType<TZod>, name: string) {
   function asFunc<T>(value: T): Promise<(T & TZod) | undefined>
   function asFunc<T>(value: T, assert: ZodFactoryConfig): Promise<(T & TZod)>
   async function asFunc<T>(value: T, assert?: ZodFactoryConfig): Promise<(T & TZod) | undefined> {

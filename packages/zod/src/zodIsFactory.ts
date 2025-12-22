@@ -1,5 +1,5 @@
 import type z from 'zod'
 
-export function zodIsFactory<TZod extends z.ZodTypeAny>(zod: TZod) {
-  return <T>(value: T): value is T & z.output<TZod> => zod.safeParse(value).success
+export function zodIsFactory<TZod>(zod: z.ZodType<TZod>) {
+  return <T>(value: T): value is T & TZod => zod.safeParse(value).success
 }

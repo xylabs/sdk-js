@@ -29,7 +29,23 @@ export default [
             'lodash',
             'lodash-es',
             '@xylabs/lodash',
+            {
+              name: "zod",
+              importNames: ["z"],
+              message: "Use `import z from \"zod\"` (default import)."
+            },
+            {
+              name: "zod",
+              importNames: ["*"],
+              message: "Use `import z from \"zod\"` (default import)."
+            }
           ],
+          patterns: [
+          {
+            group: ["zod/*"],
+            message: "Import from \"zod\" only."
+          }
+        ]
         },
       ],
       '@typescript-eslint/strict-boolean-expressions': ['warn', {

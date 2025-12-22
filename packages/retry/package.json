@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/retry",
-  "version": "5.0.52",
+  "version": "5.0.54",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "delay",

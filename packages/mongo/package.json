@@ -54,11 +54,11 @@
     "@xylabs/assert": "workspace:~"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.2.8",
-    "@xylabs/tsconfig": "~7.2.8",
-    "mongodb": "^6.21.0",
+    "@xylabs/ts-scripts-yarn3": "~7.2.32",
+    "@xylabs/tsconfig": "~7.2.32",
+    "mongodb": "^7.0.0",
     "typescript": "~5.9.3",
-    "vitest": "~4.0.15"
+    "vitest": "~4.0.16"
   },
   "peerDependencies": {
     "mongodb": "^6"

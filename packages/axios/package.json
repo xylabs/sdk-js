@@ -51,8 +51,8 @@
   "devDependencies": {
     "@types/pako": "~2.0.4",
     "@xylabs/logger": "workspace:~",
-    "@xylabs/ts-scripts-yarn3": "~7.2.8",
-    "@xylabs/tsconfig": "~7.2.8",
+    "@xylabs/ts-scripts-yarn3": "~7.2.32",
+    "@xylabs/tsconfig": "~7.2.32",
     "axios": "~1.13.2",
     "typescript": "~5.9.3"
   },

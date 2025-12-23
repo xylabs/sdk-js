@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/base",
-  "version": "5.0.58",
+  "version": "5.0.59",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "homepage": "https://xyo.network",
   "bugs": {

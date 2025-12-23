@@ -2504,7 +2504,6 @@ __metadata:
     zod: "npm:^4.2.1"
   peerDependencies:
     express: ~5
-    zod: ^4
   languageName: unknown
   linkType: soft
 
@@ -2561,10 +2560,6 @@ __metadata:
     typescript: "npm:~5.9.3"
     vitest: "npm:~4.0.16"
     zod: "npm:^4.2.1"
-  peerDependencies:
-    "@xylabs/error": ^5
-    "@xylabs/typeof": ^5
-    zod: ^4
   languageName: unknown
   linkType: soft
 
@@ -2697,8 +2692,6 @@ __metadata:
     typescript: "npm:~5.9.3"
     vitest: "npm:~4.0.16"
     zod: "npm:^4.2.1"
-  peerDependencies:
-    zod: ^4
   languageName: unknown
   linkType: soft
 
@@ -3095,8 +3088,6 @@ __metadata:
     typescript: "npm:~5.9.3"
     vitest: "npm:~4.0.16"
     zod: "npm:^4.2.1"
-  peerDependencies:
-    zod: ^4
   languageName: unknown
   linkType: soft
 

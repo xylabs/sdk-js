@@ -47,17 +47,14 @@
     "@xylabs/object-model": "workspace:~",
     "@xylabs/promise": "workspace:~",
     "@xylabs/typeof": "workspace:~",
-    "@xylabs/zod": "workspace:~"
+    "@xylabs/zod": "workspace:~",
+    "zod": "^4.2.1"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.2.32",
     "@xylabs/tsconfig": "~7.2.32",
     "typescript": "~5.9.3",
-    "vitest": "~4.0.16",
-    "zod": "^4.2.1"
-  },
-  "peerDependencies": {
-    "zod": "^4"
+    "vitest": "~4.0.16"
   },
   "publishConfig": {
     "access": "public"

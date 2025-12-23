@@ -2562,6 +2562,8 @@ __metadata:
     vitest: "npm:~4.0.16"
     zod: "npm:^4.2.1"
   peerDependencies:
+    "@xylabs/error": ^5
+    "@xylabs/typeof": ^5
     zod: ^4
   languageName: unknown
   linkType: soft

@@ -3,12 +3,9 @@ import * as z from 'zod'
 
 import { HexRegEx } from '../HexRegEx.ts'
 
-export type Hex = Brand<Lowercase<string>, { readonly __hex: true }>
+export type BrandedHex = Brand<Lowercase<string>, { readonly __hex: true }>
 
-export const UntypedHexZod = z.string()
-  .regex(HexRegEx, { message: 'Invalid hex format' })
-
-export const HexZod = UntypedHexZod.transform(val => val as Hex)
+export const HexZod = z.string().regex(HexRegEx, { message: 'Invalid hex format' }).transform(val => val as BrandedHex)
 
 /** Configuration of validation and output format */
 export interface HexConfig {
@@ -16,3 +13,5 @@ export interface HexConfig {
   byteSize?: number
   prefix?: boolean
 }
+
+export type Hex = z.infer<typeof HexZod>

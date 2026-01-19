@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/typeof",
-  "version": "5.0.61",
+  "version": "5.0.62",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "typeof",

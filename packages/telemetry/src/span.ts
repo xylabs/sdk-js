@@ -5,7 +5,16 @@ import type {
 import {
   context, propagation, ROOT_CONTEXT, SpanStatusCode, trace as TRACE_API,
 } from '@opentelemetry/api'
+import type { Logger } from '@xylabs/logger'
 import { isDefined } from '@xylabs/typeof'
+
+import { timeBudget } from './timeBudget.ts'
+
+export interface SpanConfig {
+  logger?: Logger | null
+  timeBudgetLimit?: number
+  tracer?: Tracer
+}
 
 export function cloneContextWithoutSpan(activeCtx: Context, configKeys: symbol[] = []): Context {
   // Start from root to ensure no span is propagated
@@ -86,14 +95,17 @@ export function spanRoot<T>(name: string, fn: () => T, tracer?: Tracer): T {
 export async function spanAsync<T>(
   name: string,
   fn: () => Promise<T>,
-  tracer?: Tracer,
+  {
+    timeBudgetLimit, logger, tracer,
+  }: SpanConfig = {},
 ): Promise<T> {
   const activeTracer = tracer ?? TRACE_API.getTracer(name)
+  const funcToRun = isDefined(timeBudgetLimit) ? () => timeBudget(name, logger ?? console, fn, timeBudgetLimit) : fn
   if (isDefined(activeTracer)) {
     const span = activeTracer.startSpan(name)
     return await context.with(TRACE_API.setSpan(context.active(), span), async () => {
       try {
-        const result = await fn()
+        const result = await funcToRun()
         span.setStatus({ code: SpanStatusCode.OK })
         return result
       } catch (ex) {
@@ -106,15 +118,18 @@ export async function spanAsync<T>(
       }
     })
   } else {
-    return await fn()
+    return await funcToRun()
   }
 }
 
 export async function spanRootAsync<T>(
   name: string,
   fn: () => Promise<T>,
-  tracer?: Tracer,
+  {
+    timeBudgetLimit, logger, tracer,
+  }: SpanConfig = {},
 ): Promise<T> {
+  const funcToRun = isDefined(timeBudgetLimit) ? () => timeBudget(name, logger ?? console, fn, timeBudgetLimit) : fn
   const activeTracer = tracer ?? TRACE_API.getTracer(name)
   if (isDefined(activeTracer)) {
     const activeContext = context.active()
@@ -127,7 +142,7 @@ export async function spanRootAsync<T>(
     // Use the active context but replace its span with our new root span
     return await context.with(TRACE_API.setSpan(noSpanContext, span), async () => {
       try {
-        const result = await fn()
+        const result = await funcToRun()
         span.setStatus({ code: SpanStatusCode.OK })
         return result
       } catch (ex) {
@@ -140,6 +155,6 @@ export async function spanRootAsync<T>(
       }
     })
   } else {
-    return await fn()
+    return await funcToRun()
   }
 }

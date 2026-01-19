@@ -43,18 +43,21 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/assert": "workspace:~",
-    "@xylabs/object-model": "workspace:~",
-    "@xylabs/promise": "workspace:~",
-    "@xylabs/typeof": "workspace:~",
-    "@xylabs/zod": "workspace:~",
-    "zod": "^4.2.1"
+    "@xylabs/assert": "~5.0.61",
+    "@xylabs/object-model": "~5.0.61",
+    "@xylabs/promise": "~5.0.61",
+    "@xylabs/typeof": "~5.0.61",
+    "@xylabs/zod": "~5.0.61"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.2.32",
     "@xylabs/tsconfig": "~7.2.32",
     "typescript": "~5.9.3",
-    "vitest": "~4.0.16"
+    "vitest": "~4.0.17",
+    "zod": "^4.3.5"
+  },
+  "peerDependencies": {
+    "zod": "^4"
   },
   "publishConfig": {
     "access": "public"

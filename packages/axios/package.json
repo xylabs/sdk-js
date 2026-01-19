@@ -50,7 +50,7 @@
   },
   "devDependencies": {
     "@types/pako": "~2.0.4",
-    "@xylabs/logger": "workspace:~",
+    "@xylabs/logger": "~5.0.61",
     "@xylabs/ts-scripts-yarn3": "~7.2.32",
     "@xylabs/tsconfig": "~7.2.32",
     "axios": "~1.13.2",

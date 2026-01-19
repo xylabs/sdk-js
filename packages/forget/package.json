@@ -50,16 +50,16 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/delay": "workspace:~",
-    "@xylabs/logger": "workspace:~",
-    "@xylabs/promise": "workspace:~",
-    "@xylabs/typeof": "workspace:~"
+    "@xylabs/delay": "~5.0.61",
+    "@xylabs/logger": "~5.0.61",
+    "@xylabs/promise": "~5.0.61",
+    "@xylabs/typeof": "~5.0.61"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.2.32",
     "@xylabs/tsconfig-dom": "~7.2.32",
     "typescript": "~5.9.3",
-    "vitest": "~4.0.16"
+    "vitest": "~4.0.17"
   },
   "engines": {
     "node": ">=18"

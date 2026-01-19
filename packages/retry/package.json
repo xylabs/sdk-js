@@ -45,8 +45,8 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/delay": "workspace:~",
-    "@xylabs/promise": "workspace:~"
+    "@xylabs/delay": "~5.0.61",
+    "@xylabs/promise": "~5.0.61"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.2.32",

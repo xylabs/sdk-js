@@ -45,14 +45,14 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/typeof": "workspace:~"
+    "@xylabs/typeof": "~5.0.61"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.2.32",
     "@xylabs/tsconfig": "~7.2.32",
-    "@xylabs/vitest-extended": "workspace:~",
+    "@xylabs/vitest-extended": "~5.0.61",
     "typescript": "~5.9.3",
-    "vitest": "~4.0.16"
+    "vitest": "~4.0.17"
   },
   "engines": {
     "node": ">=18"

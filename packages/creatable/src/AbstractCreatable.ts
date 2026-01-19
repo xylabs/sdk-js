@@ -3,9 +3,10 @@ import type { EventData } from '@xylabs/events'
 import { BaseEmitter } from '@xylabs/events'
 import { type Logger } from '@xylabs/logger'
 import type { Promisable } from '@xylabs/promise'
-import { spanRoot, spanRootAsync } from '@xylabs/telemetry'
 import {
-  isDefined,
+  SpanConfig, spanRoot, spanRootAsync,
+} from '@xylabs/telemetry'
+import {
   isError, isNumber, isString,
   isUndefined,
 } from '@xylabs/typeof'
@@ -22,15 +23,9 @@ import type {
   Labels,
   RequiredCreatableParams,
 } from './model/index.ts'
-import { timeBudget } from './timeBudget.ts'
 
 const AbstractCreatableConstructorKey = Symbol.for('AbstractCreatableConstructor')
 const CREATABLE_NOT_STARTED = 'Creatable not Started' as const
-
-export interface SpanConfig {
-  logger?: Logger | null
-  timeBudgetLimit?: number
-}
 
 @creatable()
 export class AbstractCreatable<TParams extends CreatableParams = CreatableParams,
@@ -114,11 +109,10 @@ export class AbstractCreatable<TParams extends CreatableParams = CreatableParams
     return spanRoot(name, fn, this.tracer)
   }
 
-  async spanAsync<T>(name: string, fn: () => Promise<T>, { timeBudgetLimit, logger }: SpanConfig = {}): Promise<T> {
-    if (isDefined(timeBudgetLimit)) {
-      return await timeBudget(name, logger ?? this.defaultLogger, fn, timeBudgetLimit)
-    }
-    return await spanRootAsync(name, fn, this.tracer)
+  async spanAsync<T>(name: string, fn: () => Promise<T>, config: SpanConfig = {}): Promise<T> {
+    return await spanRootAsync(name, fn, {
+      ...config, tracer: config.tracer ?? this.tracer, logger: config.logger ?? this.defaultLogger,
+    })
   }
 
   async start(): Promise<boolean> {

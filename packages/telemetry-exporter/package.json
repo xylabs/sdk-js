@@ -46,8 +46,8 @@
   ],
   "dependencies": {
     "@opentelemetry/api": "^1.9.0",
-    "@opentelemetry/sdk-trace-base": "^2.2.0",
-    "@xylabs/logger": "workspace:~",
+    "@opentelemetry/sdk-trace-base": "^2.4.0",
+    "@xylabs/logger": "~5.0.61",
     "chalk": "~5.6.2"
   },
   "devDependencies": {

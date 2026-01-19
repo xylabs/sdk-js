@@ -38,21 +38,21 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/assert": "workspace:~",
-    "@xylabs/base": "workspace:~",
-    "@xylabs/error": "workspace:~",
-    "@xylabs/forget": "workspace:~",
-    "@xylabs/object": "workspace:~",
-    "@xylabs/promise": "workspace:~",
-    "@xylabs/typeof": "workspace:~"
+    "@xylabs/assert": "~5.0.61",
+    "@xylabs/base": "~5.0.61",
+    "@xylabs/error": "~5.0.61",
+    "@xylabs/forget": "~5.0.61",
+    "@xylabs/object": "~5.0.61",
+    "@xylabs/promise": "~5.0.61",
+    "@xylabs/typeof": "~5.0.61"
   },
   "devDependencies": {
-    "@xylabs/delay": "workspace:~",
+    "@xylabs/delay": "~5.0.61",
     "@xylabs/ts-scripts-yarn3": "~7.2.32",
     "@xylabs/tsconfig": "~7.2.32",
-    "@xylabs/vitest-extended": "workspace:~",
+    "@xylabs/vitest-extended": "~5.0.61",
     "typescript": "~5.9.3",
-    "vitest": "~4.0.16"
+    "vitest": "~4.0.17"
   },
   "publishConfig": {
     "access": "public"

@@ -45,7 +45,7 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/promise": "workspace:~"
+    "@xylabs/promise": "~5.0.61"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.2.32",

@@ -52,7 +52,7 @@
   "devDependencies": {
     "@xylabs/tsconfig": "~7.2.32",
     "typescript": "~5.9.3",
-    "vitest": "~4.0.16"
+    "vitest": "~4.0.17"
   },
   "engines": {
     "node": ">=18"

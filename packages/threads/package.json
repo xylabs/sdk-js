@@ -113,14 +113,14 @@
     "package-compile-tsup": "tsup --config tsup.browser.config.ts && tsup --config tsup.node.config.ts && tsup --config tsup.neutral.config.ts"
   },
   "dependencies": {
-    "@xylabs/assert": "workspace:~",
+    "@xylabs/assert": "~5.0.61",
     "debug": "~4.4.3",
     "is-observable-2-1-0": "npm:is-observable@2.1.0",
     "observable-fns": "~0.6.1"
   },
   "devDependencies": {
     "@types/debug": "~4.1.12",
-    "@types/node": "~25.0.3",
+    "@types/node": "~25.0.9",
     "@xylabs/eslint-config-flat": "~7.2.32",
     "@xylabs/ts-scripts-yarn3": "~7.2.32",
     "eslint": "~9.39.2",

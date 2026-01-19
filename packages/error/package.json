@@ -45,7 +45,7 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/typeof": "workspace:~"
+    "@xylabs/typeof": "~5.0.61"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.2.32",

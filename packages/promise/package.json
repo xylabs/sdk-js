@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/promise",
-  "version": "5.0.62",
+  "version": "5.0.63",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "promise",
@@ -45,12 +45,12 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/typeof": "~5.0.62"
+    "@xylabs/typeof": "~5.0.63"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.2.32",
     "@xylabs/tsconfig": "~7.2.32",
-    "@xylabs/vitest-extended": "~5.0.62",
+    "@xylabs/vitest-extended": "~5.0.63",
     "typescript": "~5.9.3",
     "vitest": "~4.0.17"
   },

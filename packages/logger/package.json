@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/logger",
-  "version": "5.0.62",
+  "version": "5.0.63",
   "description": "XYLabs Logger Library",
   "keywords": [
     "logger",
@@ -45,9 +45,9 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/enum": "~5.0.62",
-    "@xylabs/error": "~5.0.62",
-    "@xylabs/typeof": "~5.0.62"
+    "@xylabs/enum": "~5.0.63",
+    "@xylabs/error": "~5.0.63",
+    "@xylabs/typeof": "~5.0.63"
   },
   "devDependencies": {
     "@types/node": "~25.0.9",

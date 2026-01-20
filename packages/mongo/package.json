@@ -61,7 +61,7 @@
     "vitest": "~4.0.17"
   },
   "peerDependencies": {
-    "mongodb": "^6"
+    "mongodb": "^6 || ^7"
   },
   "publishConfig": {
     "access": "public"

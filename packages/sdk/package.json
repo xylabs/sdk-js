@@ -1,7 +1,6 @@
 {
-  "name": "@xylabs/sdk-js-build",
+  "name": "@xylabs/sdk-js",
   "version": "5.0.63",
-  "private": true,
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "xylabs",
@@ -52,25 +51,47 @@
     "readme:gen": "node scripts/readme-gen.mjs",
     "test": "vitest run"
   },
+  "dependencies": {
+    "@xylabs/api": "~5.0.63",
+    "@xylabs/array": "~5.0.63",
+    "@xylabs/arraybuffer": "~5.0.63",
+    "@xylabs/assert": "~5.0.63",
+    "@xylabs/axios": "~5.0.63",
+    "@xylabs/base": "~5.0.63",
+    "@xylabs/bignumber": "~5.0.63",
+    "@xylabs/buffer": "~5.0.63",
+    "@xylabs/creatable": "~5.0.63",
+    "@xylabs/decimal-precision": "~5.0.63",
+    "@xylabs/delay": "~5.0.63",
+    "@xylabs/enum": "~5.0.63",
+    "@xylabs/error": "~5.0.63",
+    "@xylabs/eth-address": "~5.0.63",
+    "@xylabs/events": "~5.0.63",
+    "@xylabs/exists": "~5.0.63",
+    "@xylabs/forget": "~5.0.63",
+    "@xylabs/function-name": "~5.0.63",
+    "@xylabs/hex": "~5.0.63",
+    "@xylabs/log": "~5.0.63",
+    "@xylabs/logger": "~5.0.63",
+    "@xylabs/object": "~5.0.63",
+    "@xylabs/platform": "~5.0.63",
+    "@xylabs/profile": "~5.0.63",
+    "@xylabs/promise": "~5.0.63",
+    "@xylabs/retry": "~5.0.63",
+    "@xylabs/set": "~5.0.63",
+    "@xylabs/static-implements": "~5.0.63",
+    "@xylabs/storage": "~5.0.63",
+    "@xylabs/telemetry": "~5.0.63",
+    "@xylabs/telemetry-exporter": "~5.0.63",
+    "@xylabs/timer": "~5.0.63",
+    "@xylabs/typeof": "~5.0.63",
+    "@xylabs/url": "~5.0.63"
+  },
   "devDependencies": {
-    "@types/node": "~25.0.9",
-    "@typescript-eslint/eslint-plugin": "~8.53.1",
-    "@typescript-eslint/parser": "~8.53.1",
-    "@typescript-eslint/types": "~8.53.1",
-    "@xylabs/eslint-config-flat": "~7.3.1",
     "@xylabs/ts-scripts-yarn3": "~7.3.1",
     "@xylabs/tsconfig": "~7.3.1",
     "@xylabs/tsconfig-dom": "~7.3.1",
-    "dotenv": "~17.2.3",
-    "eslint": "~9.39.2",
-    "eslint-import-resolver-typescript": "~4.4.4",
-    "jsdom": "~27.4.0",
-    "knip": "~5.82.1",
-    "lodash.merge": "~4.6.2",
-    "typedoc": "~0.28.16",
-    "typedoc-plugin-markdown": "~4.9.0",
-    "typescript": "~5.9.3",
-    "vitest": "~4.0.17"
+    "typescript": "~5.9.3"
   },
   "packageManager": "yarn@4.12.0",
   "engines": {
@@ -82,6 +103,6 @@
     "yarn": "1.22.19"
   },
   "publishConfig": {
-    "access": "restricted"
+    "access": "public"
   }
 }

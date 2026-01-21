@@ -56,8 +56,8 @@
     "@xylabs/typeof": "~5.0.63"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.2.32",
-    "@xylabs/tsconfig-dom": "~7.2.32",
+    "@xylabs/ts-scripts-yarn3": "~7.3.1",
+    "@xylabs/tsconfig-dom": "~7.3.1",
     "typescript": "~5.9.3",
     "vitest": "~4.0.17"
   },

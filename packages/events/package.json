@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/events",
-  "version": "5.0.63",
+  "version": "5.0.64",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -38,19 +38,19 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/assert": "~5.0.63",
-    "@xylabs/base": "~5.0.63",
-    "@xylabs/error": "~5.0.63",
-    "@xylabs/forget": "~5.0.63",
-    "@xylabs/object": "~5.0.63",
-    "@xylabs/promise": "~5.0.63",
-    "@xylabs/typeof": "~5.0.63"
+    "@xylabs/assert": "~5.0.64",
+    "@xylabs/base": "~5.0.64",
+    "@xylabs/error": "~5.0.64",
+    "@xylabs/forget": "~5.0.64",
+    "@xylabs/object": "~5.0.64",
+    "@xylabs/promise": "~5.0.64",
+    "@xylabs/typeof": "~5.0.64"
   },
   "devDependencies": {
-    "@xylabs/delay": "~5.0.63",
+    "@xylabs/delay": "~5.0.64",
     "@xylabs/ts-scripts-yarn3": "~7.3.1",
     "@xylabs/tsconfig": "~7.3.1",
-    "@xylabs/vitest-extended": "~5.0.63",
+    "@xylabs/vitest-extended": "~5.0.64",
     "typescript": "~5.9.3",
     "vitest": "~4.0.17"
   },

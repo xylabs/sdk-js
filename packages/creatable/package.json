@@ -48,11 +48,11 @@
     "async-mutex": "~0.5.0"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.3.1",
-    "@xylabs/tsconfig": "~7.3.1",
+    "@xylabs/ts-scripts-yarn3": "~7.3.2",
+    "@xylabs/tsconfig": "~7.3.2",
     "tslib": "~2.8.1",
     "typescript": "~5.9.3",
-    "vitest": "~4.0.17"
+    "vitest": "~4.0.18"
   },
   "publishConfig": {
     "access": "public"

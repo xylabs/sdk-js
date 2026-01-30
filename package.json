@@ -53,14 +53,14 @@
     "test": "vitest run"
   },
   "devDependencies": {
-    "@types/node": "~25.0.9",
-    "@typescript-eslint/eslint-plugin": "~8.53.1",
-    "@typescript-eslint/parser": "~8.53.1",
-    "@typescript-eslint/types": "~8.53.1",
-    "@xylabs/eslint-config-flat": "~7.3.1",
-    "@xylabs/ts-scripts-yarn3": "~7.3.1",
-    "@xylabs/tsconfig": "~7.3.1",
-    "@xylabs/tsconfig-dom": "~7.3.1",
+    "@types/node": "~25.1.0",
+    "@typescript-eslint/eslint-plugin": "~8.54.0",
+    "@typescript-eslint/parser": "~8.54.0",
+    "@typescript-eslint/types": "~8.54.0",
+    "@xylabs/eslint-config-flat": "~7.3.2",
+    "@xylabs/ts-scripts-yarn3": "~7.3.2",
+    "@xylabs/tsconfig": "~7.3.2",
+    "@xylabs/tsconfig-dom": "~7.3.2",
     "dotenv": "~17.2.3",
     "eslint": "~9.39.2",
     "eslint-import-resolver-typescript": "~4.4.4",
@@ -70,7 +70,7 @@
     "typedoc": "~0.28.16",
     "typedoc-plugin-markdown": "~4.9.0",
     "typescript": "~5.9.3",
-    "vitest": "~4.0.17"
+    "vitest": "~4.0.18"
   },
   "packageManager": "yarn@4.12.0",
   "engines": {

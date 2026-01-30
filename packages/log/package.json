@@ -47,11 +47,11 @@
     "!**/*.test.*"
   ],
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.3.1",
-    "@xylabs/tsconfig-dom": "~7.3.1",
+    "@xylabs/ts-scripts-yarn3": "~7.3.2",
+    "@xylabs/tsconfig-dom": "~7.3.2",
     "rollbar": "~2.26.5",
     "typescript": "~5.9.3",
-    "vitest": "~4.0.17"
+    "vitest": "~4.0.18"
   },
   "peerDependencies": {
     "rollbar": "~2"

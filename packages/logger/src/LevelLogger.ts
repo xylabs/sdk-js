@@ -31,12 +31,6 @@ export type LogLevelKey = EnumKey<typeof LogLevel>
 export type LogVerbosity = LogLevelKey
 
 export type LogLevelValue = EnumValue<typeof LogLevel>
-/**
- * @deprecated Use `LogLevelValue` instead.
- * This name conflicts with the `LogLevel` enum and
- * makes it confusing to import
- */
-export type LogLevel = LogLevelValue
 
 export class LevelLogger implements Logger {
   readonly level: LogLevelValue

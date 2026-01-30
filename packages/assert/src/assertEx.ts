@@ -41,45 +41,22 @@ function assertEx<T>(expr: T | null | undefined, messageFunc?: AssertExMessageFu
 function assertEx<T, R extends Error>(expr: T | null | undefined, errorFunc?: AssertExErrorFunc<T, R>): T
 
 /**
- * Asserts that an expression is truthy and returns the value.
- * Throws an error if the expression is falsy.
- *
- * @deprecated Use overload with message function instead - passing a message will soon be required
- * @template T - The type of value to check
- * @param expr - Expression to be evaluated for truthiness
- * @throws Error with a generic message
- * @returns The value of the expression (guaranteed to be truthy)
- */
-function assertEx<T>(expr: T | null | undefined): T
-
-/**
- * Asserts that an expression is truthy and returns the value.
- * Throws an error with the provided message if the expression is falsy.
- *
- * @deprecated Replace string with () => string for consistency
- * @template T - The type of value to check
- * @param expr - Expression to be evaluated for truthiness
- * @param message - Error message if expression is falsy
- * @throws Error with the provided message
- * @returns The value of the expression (guaranteed to be truthy)
- */
-function assertEx<T>(expr: T | null | undefined, message?: string): T
-
-/**
  * Implementation of assertEx that handles all overloads.
  */
-function assertEx<T, R extends Error, P extends string | AssertExMessageFunc<T> | AssertExErrorFunc<T, R>>(
+function assertEx<T, R extends Error, P extends AssertExMessageFunc<T> | AssertExErrorFunc<T, R>>(
   expr: T | null | undefined,
-  messageOrFunc?: P,
+  func?: P,
 ): T {
   // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
   if (expr) return expr
-  if (typeof messageOrFunc === 'function') {
-    const errorOrMessage = messageOrFunc(expr)
+  if (typeof func === 'function') {
+    const errorOrMessage = func(expr)
     throw typeof errorOrMessage === 'string' ? new Error(errorOrMessage) : errorOrMessage
   }
-  // a string was sent
-  throw new Error(messageOrFunc)
+  if (func !== undefined) {
+    throw new Error('Invalid assertEx usage: second argument must be a function or undefined')
+  }
+  throw new Error('Assertion failed')
 }
 
 export { assertEx }

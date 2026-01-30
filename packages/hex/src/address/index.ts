@@ -1,5 +1,4 @@
 export * from './address.ts'
-export * from './addressDeprecated.ts'
 export * from './AddressTransformZod.ts'
 export * from './AddressValidationZod.ts'
 export * from './as.ts'

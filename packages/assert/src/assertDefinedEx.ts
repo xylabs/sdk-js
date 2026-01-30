@@ -41,45 +41,22 @@ function assertDefinedEx<T>(expr: T | undefined, messageFunc?: AssertExMessageFu
 function assertDefinedEx<T, R extends Error>(expr: T | undefined, errorFunc?: AssertExErrorFunc<T, R>): T
 
 /**
- * Asserts that a value is defined (not undefined) and returns the value.
- * Throws an error if the value is undefined.
- *
- * @deprecated Use overload with message function instead - passing a message will soon be required
- * @template T - The type of value to check
- * @param expr - Expression to be evaluated for being defined
- * @throws Error with a generic message
- * @returns The value of the expression (guaranteed to be defined)
- */
-function assertDefinedEx<T>(expr: T | undefined): T
-
-/**
- * Asserts that a value is defined (not undefined) and returns the value.
- * Throws an error with the provided message if the value is undefined.
- *
- * @deprecated Replace string with () => string for consistency
- * @template T - The type of value to check
- * @param expr - Expression to be evaluated for being defined
- * @param message - Error message if expression is undefined
- * @throws Error with the provided message
- * @returns The value of the expression (guaranteed to be defined)
- */
-function assertDefinedEx<T>(expr: T | undefined, message?: string): T
-
-/**
  * Implementation of assertDefinedEx that handles all overloads.
  *
  */
-function assertDefinedEx<T, R extends Error, P extends string | AssertExMessageFunc<T> | AssertExErrorFunc<T, R>>(
+function assertDefinedEx<T, R extends Error, P extends AssertExMessageFunc<T> | AssertExErrorFunc<T, R>>(
   expr: T | undefined,
-  messageOrFunc?: P,
+  func?: P,
 ): T {
   if (expr !== undefined) return expr
-  if (typeof messageOrFunc === 'function') {
-    const errorOrMessage = messageOrFunc(expr)
+  if (typeof func === 'function') {
+    const errorOrMessage = func(expr)
     throw typeof errorOrMessage === 'string' ? new Error(errorOrMessage) : errorOrMessage
   }
-  // a string was sent
-  throw new Error(messageOrFunc)
+  if (func !== undefined) {
+    throw new Error('Invalid assertEx usage: second argument must be a function or undefined')
+  }
+  throw new Error('Assertion failed: value is undefined')
 }
 
 export { assertDefinedEx }

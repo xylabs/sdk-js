@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/object",
-  "version": "5.0.64",
+  "version": "5.0.65",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -43,11 +43,11 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/assert": "~5.0.64",
-    "@xylabs/object-model": "~5.0.64",
-    "@xylabs/promise": "~5.0.64",
-    "@xylabs/typeof": "~5.0.64",
-    "@xylabs/zod": "~5.0.64"
+    "@xylabs/assert": "~5.0.65",
+    "@xylabs/object-model": "~5.0.65",
+    "@xylabs/promise": "~5.0.65",
+    "@xylabs/typeof": "~5.0.65",
+    "@xylabs/zod": "~5.0.65"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.3.2",

@@ -12,7 +12,7 @@ export class FactoryV2<T extends CreatableInstanceV2 = CreatableInstanceV2> impl
 
   constructor(
     creatable: CreatableV2<T>,
-    params: Partial<T['params']>,
+    params: T['params'],
     labels: Labels = {},
   ) {
     this.creatable = creatable
@@ -22,7 +22,7 @@ export class FactoryV2<T extends CreatableInstanceV2 = CreatableInstanceV2> impl
 
   static withParams<T extends CreatableInstanceV2>(
     creatableModule: CreatableV2<T>,
-    params: Partial<T['params']>,
+    params: T['params'],
     labels: Labels = {},
   ) {
     return new FactoryV2<T>(creatableModule, params, labels)

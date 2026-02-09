@@ -10,18 +10,18 @@ export interface CreatableFactoryV2<T extends CreatableInstanceV2 = CreatableIns
 
   create(
     this: CreatableFactoryV2<T>,
-    params: Partial<T['params']>): Promise<T>
+    params: T['params']): Promise<T>
 }
 
 export interface CreatableV2<T extends CreatableInstanceV2 = CreatableInstanceV2> {
 
   defaultLogger?: Logger
 
-  new(key: unknown, params: Partial<CreatableParamsV2>): T
+  new(key: unknown, params: CreatableParamsV2): T
 
   create<T extends CreatableInstanceV2>(
     this: CreatableV2<T>,
-    params: Partial<T['params']>): Promise<T>
+    params: T['params']): Promise<T>
 
   createHandler<T extends CreatableInstanceV2>(
     this: CreatableV2<T>,
@@ -35,7 +35,7 @@ export interface CreatableV2<T extends CreatableInstanceV2 = CreatableInstanceV2
 export interface CreatableWithFactoryV2<T extends CreatableInstanceV2 = CreatableInstanceV2> extends CreatableV2<T> {
   factory<T extends CreatableInstanceV2>(
     this: CreatableV2<T>,
-    params: Partial<T['params']>,
+    params: T['params'],
     labels?: Labels): CreatableFactoryV2<T>
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/mongo",
-  "version": "5.0.73",
+  "version": "5.0.74",
   "description": "Base functionality used throughout XYO TypeScript/JavaScript libraries that access Mongo DB",
   "keywords": [
     "mongo",
@@ -51,7 +51,7 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/assert": "~5.0.73"
+    "@xylabs/assert": "~5.0.74"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.3.2",

@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/arraybuffer",
-  "version": "5.0.69",
+  "version": "5.0.70",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "xylabs",
@@ -44,9 +44,9 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/assert": "~5.0.69",
-    "@xylabs/hex": "~5.0.69",
-    "@xylabs/typeof": "~5.0.69"
+    "@xylabs/assert": "~5.0.70",
+    "@xylabs/hex": "~5.0.70",
+    "@xylabs/typeof": "~5.0.70"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.3.2",

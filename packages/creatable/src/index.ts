@@ -1,5 +1,7 @@
 export * from './AbstractCreatable.ts'
+export * from './AbstractCreatableV2.ts'
 export * from './Creatable.ts'
+export * from './CreatableV2.ts'
 export * from './Factory.ts'
 export * from './FactoryV2.ts'
 export * from './model/index.ts'

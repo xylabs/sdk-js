@@ -262,7 +262,7 @@ export abstract class AbstractCreatableWithFactoryV2<TParams extends CreatablePa
   TEventData extends EventData = EventData> extends AbstractCreatableV2<TParams, TEventData> {
   static factory<T extends CreatableInstanceV2>(
     this: CreatableV2<T>,
-    params?: Partial<T['params']>,
+    params: Partial<T['params']>,
     labels?: Labels,
   ): CreatableFactoryV2<T> {
     return FactoryV2.withParams<T>(this, params, labels)

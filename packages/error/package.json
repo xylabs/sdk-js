@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/error",
-  "version": "5.0.72",
+  "version": "5.0.73",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "error",
@@ -45,7 +45,7 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/typeof": "~5.0.72"
+    "@xylabs/typeof": "~5.0.73"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.3.2",

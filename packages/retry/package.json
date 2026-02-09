@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/retry",
-  "version": "5.0.72",
+  "version": "5.0.73",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "delay",
@@ -45,8 +45,8 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/delay": "~5.0.72",
-    "@xylabs/promise": "~5.0.72"
+    "@xylabs/delay": "~5.0.73",
+    "@xylabs/promise": "~5.0.73"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.3.2",

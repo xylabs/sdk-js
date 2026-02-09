@@ -4,8 +4,8 @@ import z from 'zod'
 
 import { CreatableStatusReporterV2Zod } from './CreatableStatusReporter.zod.ts'
 
-export const CreatableContext = z.intersection(BaseContextZod, z.object({ name: z.string(), statusReporter: CreatableStatusReporterV2Zod.optional() }))
+export const CreatableContextZod = BaseContextZod.extend(z.object({ name: z.string(), statusReporter: CreatableStatusReporterV2Zod.optional() }).shape)
 
-export const CreatableParamsV2Zod = BaseEmitterParamsV2Zod.extend(z.object({ context: CreatableContext, name: z.string() }).shape)
+export const CreatableParamsV2Zod = BaseEmitterParamsV2Zod.extend(z.object({ context: CreatableContextZod, name: z.string() }).shape)
 
 export type CreatableParamsV2 = z.infer<typeof CreatableParamsV2Zod>

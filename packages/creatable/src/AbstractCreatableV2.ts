@@ -1,5 +1,5 @@
 import { assertEx } from '@xylabs/assert'
-import type { BaseEmitterParamsV2, EventData } from '@xylabs/events'
+import type { EventData } from '@xylabs/events'
 import { BaseEmitterV2 } from '@xylabs/events'
 import { type Logger } from '@xylabs/logger'
 import type { Promisable } from '@xylabs/promise'
@@ -31,7 +31,7 @@ export abstract class AbstractCreatableV2<TParams extends CreatableParamsV2 = Cr
   protected _startPromise: Promisable<boolean> | undefined
   private _status: CreatableStatusV2 | null = null
   private _statusMutex = new Mutex()
-  private _validatedParams?: TParams & BaseEmitterParamsV2
+  private _validatedParams?: TParams
 
   constructor(key: unknown, params: TParams) {
     assertEx(key === AbstractCreatableConstructorKey, () => 'AbstractCreatable should not be instantiated directly, use the static create method instead')
@@ -39,7 +39,7 @@ export abstract class AbstractCreatableV2<TParams extends CreatableParamsV2 = Cr
     this.setStatus('creating')
   }
 
-  override get context(): TParams['context'] & BaseEmitterParamsV2['context'] {
+  override get context(): TParams['context'] {
     return this.params.context
   }
 
@@ -47,7 +47,7 @@ export abstract class AbstractCreatableV2<TParams extends CreatableParamsV2 = Cr
     return this.params.name as CreatableName
   }
 
-  override get params(): TParams & BaseEmitterParamsV2 {
+  override get params(): TParams {
     this._validatedParams = this._validatedParams ?? this.paramsValidator(super.params)
     return assertEx(this._validatedParams)
   }

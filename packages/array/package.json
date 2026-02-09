@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/array",
-  "version": "5.0.70",
+  "version": "5.0.71",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "xylabs",
@@ -44,12 +44,12 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/exists": "~5.0.70"
+    "@xylabs/exists": "~5.0.71"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.3.2",
     "@xylabs/tsconfig": "~7.3.2",
-    "@xylabs/vitest-extended": "~5.0.70",
+    "@xylabs/vitest-extended": "~5.0.71",
     "typescript": "~5.9.3",
     "vitest": "~4.0.18"
   },

@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/platform",
-  "version": "5.0.70",
+  "version": "5.0.71",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "platform",

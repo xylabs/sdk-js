@@ -68,7 +68,7 @@ export abstract class AbstractCreatableV2<TParams extends CreatableParamsV2 = Cr
 
   static async create<T extends CreatableInstanceV2>(
     this: CreatableV2<T>,
-    inParams: Partial<T['params']> = {},
+    inParams: T['params'],
   ): Promise<T> {
     const params = await this.paramsHandler(inParams)
     const name = (params.name ?? this.name) as CreatableName

@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/eth-address",
-  "version": "5.0.71",
+  "version": "5.0.72",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "eth",
@@ -47,7 +47,7 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/assert": "~5.0.71",
+    "@xylabs/assert": "~5.0.72",
     "ethers": "^6.16.0"
   },
   "devDependencies": {

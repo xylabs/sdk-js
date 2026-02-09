@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/sdk-js-build",
-  "version": "5.0.75",
+  "version": "5.0.76",
   "private": true,
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [

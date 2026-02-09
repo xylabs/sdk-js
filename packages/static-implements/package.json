@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/static-implements",
-  "version": "5.0.75",
+  "version": "5.0.76",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "static",
@@ -48,7 +48,7 @@
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.3.2",
     "@xylabs/tsconfig": "~7.3.2",
-    "@xylabs/vitest-extended": "~5.0.75",
+    "@xylabs/vitest-extended": "~5.0.76",
     "tslib": "~2.8.1",
     "typescript": "~5.9.3",
     "vitest": "~4.0.18"

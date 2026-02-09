@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/delay",
-  "version": "5.0.74",
+  "version": "5.0.75",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "delay",
@@ -45,7 +45,7 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/timer": "~5.0.74"
+    "@xylabs/timer": "~5.0.75"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.3.2",

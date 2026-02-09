@@ -20,10 +20,11 @@ export const TracerProviderZod = z.custom<TracerProvider>(val => val && typeof v
 export const TimeBudgetLimitZod = z.number()
 
 export const BaseContextZod = z.object({
-  caches: CachesZod.optional(),
   logger: LoggerZod.optional(),
   meterProvider: MeterProviderZod.optional(),
   singletons: SingletonsZod,
   timeBudgetLimit: TimeBudgetLimitZod.optional(),
   traceProvider: TracerProviderZod.optional(),
 })
+
+export const CachingContextZod = BaseContextZod.extend({ caches: CachesZod })

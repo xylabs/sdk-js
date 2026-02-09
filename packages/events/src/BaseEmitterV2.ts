@@ -1,5 +1,5 @@
 import { BaseParamsV2Zod, BaseV2 } from '@xylabs/base'
-import z from 'zod'
+import type z from 'zod'
 
 import { Events } from './Events/index.ts'
 import type {
@@ -7,7 +7,7 @@ import type {
   EventListener,
 } from './model/index.ts'
 
-export const BaseEmitterParamsV2Zod = BaseParamsV2Zod.extend(z.object({}).shape)
+export const BaseEmitterParamsV2Zod = BaseParamsV2Zod.extend({})
 
 export type BaseEmitterParamsV2 = z.infer<typeof BaseEmitterParamsV2Zod>
 

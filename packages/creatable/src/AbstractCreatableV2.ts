@@ -25,7 +25,7 @@ const AbstractCreatableConstructorKey = Symbol.for('AbstractCreatableConstructor
 const CREATABLE_NOT_STARTED = 'Creatable not Started' as const
 
 export abstract class AbstractCreatableV2<TParams extends CreatableParamsV2 = CreatableParamsV2,
-  TEventData extends EventData = EventData> extends BaseEmitterV2<TParams, TEventData> {
+  TEventData extends EventData = EventData> extends BaseEmitterV2<TParams, TEventData> implements CreatableInstanceV2<TParams, TEventData> {
   defaultLogger?: Logger
 
   protected _startPromise: Promisable<boolean> | undefined
@@ -36,6 +36,7 @@ export abstract class AbstractCreatableV2<TParams extends CreatableParamsV2 = Cr
   constructor(key: unknown, params: TParams) {
     assertEx(key === AbstractCreatableConstructorKey, () => 'AbstractCreatable should not be instantiated directly, use the static create method instead')
     super(params)
+    this.setStatus('creating')
   }
 
   override get context(): TParams['context'] & BaseEmitterParamsV2['context'] {
@@ -73,10 +74,8 @@ export abstract class AbstractCreatableV2<TParams extends CreatableParamsV2 = Cr
     const name = (params.name ?? this.name) as CreatableName
     try {
       const instance = new this(AbstractCreatableConstructorKey, params)
-      instance.setStatus('creating')
       const initializedInstance = await this.createHandler(instance)
       await instance.createHandler()
-      instance.setStatus('created')
       return initializedInstance
     } catch (ex) {
       params.context.statusReporter?.report(name, 'error', isError(ex) ? ex : new Error(`Error creating: ${name}`))
@@ -101,6 +100,7 @@ export abstract class AbstractCreatableV2<TParams extends CreatableParamsV2 = Cr
 
   createHandler(): Promisable<void> {
     assertEx(this._status === 'creating', () => `createHandler can not be called [status = ${this.status}]`)
+    this.setStatus('created')
   }
 
   paramsValidator(params: Partial<TParams>): TParams {

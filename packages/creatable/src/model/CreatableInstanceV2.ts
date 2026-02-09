@@ -10,7 +10,6 @@ export interface CreatableInstanceV2<TParams extends CreatableParamsV2 = Creatab
   eventData: TEventData
   name: CreatableName
   params: TParams
-  setStatus: (status: string) => void
   start: () => Promise<boolean>
   stop: () => Promise<boolean>
 }

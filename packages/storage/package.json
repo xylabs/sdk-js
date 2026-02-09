@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/storage",
-  "version": "5.0.66",
+  "version": "5.0.67",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "hex",
@@ -45,7 +45,7 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/promise": "~5.0.66"
+    "@xylabs/promise": "~5.0.67"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.3.2",

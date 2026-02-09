@@ -1,10 +1,13 @@
 import type {
   Meter,
-  MeterProvider, Tracer, TracerProvider,
+  Tracer,
 } from '@opentelemetry/api'
 import { assertEx } from '@xylabs/assert'
 import type { Logger } from '@xylabs/logger'
-import type { EmptyObject } from '@xylabs/object'
+
+import type {
+  BaseClassName, BaseParams,
+} from './BaseParams.ts'
 
 const DEFAULT_HISTORY_INTERVAL = 1000 * 5
 const DEFAULT_HISTORY_TIME = 60 * 60 * 1000
@@ -12,16 +15,7 @@ const MAX_GC_FREQUENCY = 1000 * 60
 const MIN_GC_FREQUENCY = 1000
 const MIN_HISTORY_INTERVAL = 1000
 
-export type BaseClassName = string & { __baseClassName: true }
-
-export type BaseParamsFields = {
-  logger?: Logger
-  meterProvider?: MeterProvider
-  traceProvider?: TracerProvider
-}
-
-export type BaseParams<TAdditionalParams extends EmptyObject = EmptyObject> = TAdditionalParams & BaseParamsFields
-
+/** @deprecated use BaseV2 instead */
 export abstract class Base<TParams extends BaseParams = BaseParams> {
   static defaultLogger?: Logger
   static readonly globalInstances: Record<BaseClassName, WeakRef<Base>[]> = {}

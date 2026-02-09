@@ -7,6 +7,7 @@ import type {
   RequiredCreatableParams,
 } from './model/index.ts'
 
+/** @deprecated use CreatableFactoryV2 instead */
 export interface CreatableFactory<T extends CreatableInstance = CreatableInstance>
   extends Omit<Creatable<T>, 'create' | 'createHandler' | 'paramsHandler' | 'defaultLogger' | 'factory'> {
 
@@ -15,6 +16,7 @@ export interface CreatableFactory<T extends CreatableInstance = CreatableInstanc
     params?: Partial<T['params']>): Promise<T>
 }
 
+/** @deprecated use CreatableV2 instead */
 export interface Creatable<T extends CreatableInstance = CreatableInstance> {
 
   defaultLogger?: Logger
@@ -34,6 +36,7 @@ export interface Creatable<T extends CreatableInstance = CreatableInstance> {
     this: Creatable<T>, params?: Partial<T['params']>): Promisable<T['params'] & RequiredCreatableParams>
 }
 
+/** @deprecated use CreatableWithFactoryV2 instead */
 export interface CreatableWithFactory<T extends CreatableInstance = CreatableInstance> extends Creatable<T> {
   factory<T extends CreatableInstance>(
     this: Creatable<T>,
@@ -47,6 +50,7 @@ export interface CreatableWithFactory<T extends CreatableInstance = CreatableIns
  * @returns The decorated Module requiring it implement the members
  * of the CreatableModule as statics properties/methods
  */
+/** @deprecated use creatableV2 instead */
 export function creatable<T extends CreatableInstance>() {
   return <U extends Creatable<T>>(constructor: U) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
@@ -61,6 +65,7 @@ export function creatable<T extends CreatableInstance>() {
  * of the CreatableModule as statics properties/methods
  */
 
+/** @deprecated use creatableFactoryV2 instead */
 export function creatableFactory() {
   return <U extends CreatableFactory>(constructor: U) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions

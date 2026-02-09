@@ -1,76 +1,76 @@
 import { assertEx } from '@xylabs/assert'
-import type { EventData } from '@xylabs/events'
-import { BaseEmitter } from '@xylabs/events'
+import type { BaseEmitterParamsV2, EventData } from '@xylabs/events'
+import { BaseEmitterV2 } from '@xylabs/events'
 import { type Logger } from '@xylabs/logger'
 import type { Promisable } from '@xylabs/promise'
-import {
-  SpanConfig, spanRoot, spanRootAsync,
-} from '@xylabs/telemetry'
+import type { SpanConfig } from '@xylabs/telemetry'
+import { spanRoot, spanRootAsync } from '@xylabs/telemetry'
 import {
   isError, isNumber, isString,
   isUndefined,
 } from '@xylabs/typeof'
 import { Mutex } from 'async-mutex'
 
-import {
-  type Creatable, creatable, CreatableFactory,
-} from './Creatable.ts'
-import { Factory } from './Factory.ts'
+import type { CreatableFactoryV2, CreatableV2 } from './CreatableV2.ts'
+import { FactoryV2 } from './FactoryV2.ts'
 import { getFunctionName, getRootFunction } from './lib/index.ts'
-import { CreatableName } from './model/CreatableName.ts'
 import type {
-  CreatableInstance, CreatableParams,
-  CreatableStatus,
+  CreatableInstanceV2,
+  CreatableName, CreatableParamsV2,
+  CreatableStatusV2,
   Labels,
-  RequiredCreatableParams,
 } from './model/index.ts'
 
 const AbstractCreatableConstructorKey = Symbol.for('AbstractCreatableConstructor')
 const CREATABLE_NOT_STARTED = 'Creatable not Started' as const
 
-/** @deprecated use AbstractCreatableV2 instead */
-@creatable()
-export class AbstractCreatable<TParams extends CreatableParams = CreatableParams,
-  TEventData extends EventData = EventData> extends BaseEmitter<Partial<TParams & RequiredCreatableParams>, TEventData> {
+export abstract class AbstractCreatableV2<TParams extends CreatableParamsV2 = CreatableParamsV2,
+  TEventData extends EventData = EventData> extends BaseEmitterV2<TParams, TEventData> {
   defaultLogger?: Logger
 
   protected _startPromise: Promisable<boolean> | undefined
-  private _status: CreatableStatus | null = null
+  private _status: CreatableStatusV2 | null = null
   private _statusMutex = new Mutex()
-  private _validatedParams?: TParams & RequiredCreatableParams
+  private _validatedParams?: TParams & BaseEmitterParamsV2
 
-  constructor(key: unknown, params: Partial<TParams & RequiredCreatableParams>) {
+  constructor(key: unknown, params: TParams) {
     assertEx(key === AbstractCreatableConstructorKey, () => 'AbstractCreatable should not be instantiated directly, use the static create method instead')
     super(params)
+  }
+
+  override get context(): TParams['context'] & BaseEmitterParamsV2['context'] {
+    return this.params.context
   }
 
   get name(): CreatableName {
     return this.params.name as CreatableName
   }
 
-  override get params(): TParams & RequiredCreatableParams {
+  override get params(): TParams & BaseEmitterParamsV2 {
     this._validatedParams = this._validatedParams ?? this.paramsValidator(super.params)
-    return this._validatedParams
+    return assertEx(this._validatedParams)
   }
 
   get startable() {
     return this.status === 'created' || this.status === 'stopped'
   }
 
-  get status(): CreatableStatus | null {
+  get status(): CreatableStatusV2 | null {
     return this._status
   }
 
   get statusReporter() {
-    return this.params.statusReporter
+    return this.context.statusReporter
   }
 
-  static async create<T extends CreatableInstance>(
-    this: Creatable<T>,
+  abstract override get className(): CreatableName
+
+  static async create<T extends CreatableInstanceV2>(
+    this: CreatableV2<T>,
     inParams: Partial<T['params']> = {},
   ): Promise<T> {
     const params = await this.paramsHandler(inParams)
-    const name: CreatableName = params.name ?? this.name as CreatableName
+    const name = (params.name ?? this.name) as CreatableName
     try {
       const instance = new this(AbstractCreatableConstructorKey, params)
       instance.setStatus('creating')
@@ -79,32 +79,32 @@ export class AbstractCreatable<TParams extends CreatableParams = CreatableParams
       instance.setStatus('created')
       return initializedInstance
     } catch (ex) {
-      params.statusReporter?.report(name, 'error', isError(ex) ? ex : new Error(`Error creating: ${name}`))
-      params.logger?.error(`Error creating creatable [${name}]: ${(isError(ex) ? `${ex.message} ${ex.stack}` : ex)}`)
+      params.context.statusReporter?.report(name, 'error', isError(ex) ? ex : new Error(`Error creating: ${name}`))
+      params.context.logger?.error(`Error creating creatable [${name}]: ${(isError(ex) ? `${ex.message} ${ex.stack}` : ex)}`)
       throw isError(ex) ? ex : new Error(`Error creating: ${name}`)
     }
   }
 
-  static createHandler<T extends CreatableInstance>(
-    this: Creatable<T>,
+  static createHandler<T extends CreatableInstanceV2>(
+    this: CreatableV2<T>,
     instance: T,
   ): Promisable<T> {
     return instance
   }
 
-  static paramsHandler<T extends CreatableInstance>(
-    this: Creatable<T>,
+  static paramsHandler<T extends CreatableInstanceV2>(
+    this: CreatableV2<T>,
     params: Partial<T['params']> = {},
   ): Promisable<T['params']> {
-    return { ...params }
+    return { ...params } as T['params']
   }
 
   createHandler(): Promisable<void> {
     assertEx(this._status === 'creating', () => `createHandler can not be called [status = ${this.status}]`)
   }
 
-  paramsValidator(params: Partial<TParams & RequiredCreatableParams>): TParams & RequiredCreatableParams {
-    return { ...params, name: params.name } as TParams & RequiredCreatableParams
+  paramsValidator(params: Partial<TParams>): TParams {
+    return { ...params, name: params.name } as TParams
   }
 
   span<T>(name: string, fn: () => T): T {
@@ -229,9 +229,9 @@ export class AbstractCreatable<TParams extends CreatableParams = CreatableParams
     assertEx(thisFunc === rootFunc, () => `Override not allowed for [${functionName}] - override ${functionName}Handler instead`)
   }
 
-  protected setStatus(value: Exclude<CreatableStatus, 'error'>, progress?: number): void
-  protected setStatus(value: Extract<CreatableStatus, 'error'>, error?: Error): void
-  protected setStatus(value: CreatableStatus, progressOrError?: number | Error): void {
+  protected setStatus(value: Exclude<CreatableStatusV2, 'error'>, progress?: number): void
+  protected setStatus(value: Extract<CreatableStatusV2, 'error'>, error?: Error): void
+  protected setStatus(value: CreatableStatusV2, progressOrError?: number | Error): void {
     this._status = value
     if (value !== null) {
       if (value === 'error') {
@@ -258,14 +258,13 @@ export class AbstractCreatable<TParams extends CreatableParams = CreatableParams
   }
 }
 
-@creatable()
-export class AbstractCreatableWithFactory<TParams extends CreatableParams = CreatableParams,
-  TEventData extends EventData = EventData> extends AbstractCreatable<TParams, TEventData> {
-  static factory<T extends CreatableInstance>(
-    this: Creatable<T>,
+export abstract class AbstractCreatableWithFactoryV2<TParams extends CreatableParamsV2 = CreatableParamsV2,
+  TEventData extends EventData = EventData> extends AbstractCreatableV2<TParams, TEventData> {
+  static factory<T extends CreatableInstanceV2>(
+    this: CreatableV2<T>,
     params?: Partial<T['params']>,
     labels?: Labels,
-  ): CreatableFactory<T> {
-    return Factory.withParams<T>(this, params, labels)
+  ): CreatableFactoryV2<T> {
+    return FactoryV2.withParams<T>(this, params, labels)
   }
 }

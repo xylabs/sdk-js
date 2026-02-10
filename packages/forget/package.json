@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/forget",
-  "version": "5.0.78",
+  "version": "5.0.79",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "forget",
@@ -50,10 +50,10 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/delay": "~5.0.78",
-    "@xylabs/logger": "~5.0.78",
-    "@xylabs/promise": "~5.0.78",
-    "@xylabs/typeof": "~5.0.78"
+    "@xylabs/delay": "~5.0.79",
+    "@xylabs/logger": "~5.0.79",
+    "@xylabs/promise": "~5.0.79",
+    "@xylabs/typeof": "~5.0.79"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.3.2",

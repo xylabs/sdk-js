@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/jest-helpers",
-  "version": "5.0.78",
+  "version": "5.0.79",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "jest",

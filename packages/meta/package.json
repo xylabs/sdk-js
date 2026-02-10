@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/sdk-meta",
-  "version": "5.0.78",
+  "version": "5.0.79",
   "description": "Base functionality used throughout XYO TypeScript/JavaScript libraries",
   "keywords": [
     "meta",
@@ -40,7 +40,7 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/typeof": "~5.0.78",
+    "@xylabs/typeof": "~5.0.79",
     "cheerio": "~1.2.0"
   },
   "devDependencies": {

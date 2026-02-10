@@ -56,7 +56,7 @@
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.3.2",
     "@xylabs/tsconfig": "~7.3.2",
-    "mongodb": "^7.0.0",
+    "mongodb": "^7.1.0",
     "typescript": "~5.9.3",
     "vitest": "~4.0.18"
   },

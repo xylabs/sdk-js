@@ -69,7 +69,7 @@
     "@types/body-parser": "~1.19.6",
     "@types/express": "~5.0.6",
     "@types/express-mung": "~0.5.5",
-    "@types/node": "~25.1.0",
+    "@types/node": "~25.2.3",
     "@xylabs/ts-scripts-yarn3": "~7.3.2",
     "@xylabs/tsconfig": "~7.3.2",
     "@xylabs/vitest-extended": "~5.0.78",

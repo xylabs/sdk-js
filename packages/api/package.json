@@ -45,14 +45,17 @@
   ],
   "dependencies": {
     "@xylabs/enum": "~5.0.78",
-    "@xylabs/typeof": "~5.0.78",
-    "axios": "~1.13.4"
+    "@xylabs/typeof": "~5.0.78"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.3.2",
     "@xylabs/tsconfig": "~7.3.2",
+    "axios": "^1.13.5",
     "typescript": "~5.9.3",
     "vitest": "~4.0.18"
+  },
+  "peerDependencies": {
+    "axios": "^1"
   },
   "engines": {
     "node": ">=18"

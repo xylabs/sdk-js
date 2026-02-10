@@ -56,7 +56,7 @@
   },
   "devDependencies": {
     "@types/debug": "~4.1.12",
-    "@types/node": "~25.1.0",
+    "@types/node": "~25.2.3",
     "@xylabs/eslint-config-flat": "~7.3.2",
     "@xylabs/threads": "~5.0.78",
     "@xylabs/ts-scripts-yarn3": "~7.3.2",

@@ -45,7 +45,6 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "axios": "^1.13.4",
     "pako": "~2.1.0"
   },
   "devDependencies": {
@@ -53,8 +52,11 @@
     "@xylabs/logger": "~5.0.78",
     "@xylabs/ts-scripts-yarn3": "~7.3.2",
     "@xylabs/tsconfig": "~7.3.2",
-    "axios": "~1.13.4",
+    "axios": "^1.13.5",
     "typescript": "~5.9.3"
+  },
+  "peerDependencies": {
+    "axios": "^1"
   },
   "engines": {
     "node": ">=18"

@@ -85,13 +85,18 @@
     "@xylabs/telemetry-exporter": "~5.0.79",
     "@xylabs/timer": "~5.0.79",
     "@xylabs/typeof": "~5.0.79",
-    "@xylabs/url": "~5.0.79"
+    "@xylabs/url": "~5.0.79",
+    "@xylabs/zod": "^5.0.79"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.3.2",
     "@xylabs/tsconfig": "~7.3.2",
     "@xylabs/tsconfig-dom": "~7.3.2",
-    "typescript": "~5.9.3"
+    "typescript": "~5.9.3",
+    "zod": "^4.3.6"
+  },
+  "peerDependencies": {
+    "zod": "^4"
   },
   "packageManager": "yarn@4.12.0",
   "engines": {

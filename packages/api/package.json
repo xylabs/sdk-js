@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/api",
-  "version": "5.0.79",
+  "version": "5.0.80",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "xylabs",
@@ -44,8 +44,8 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/enum": "~5.0.79",
-    "@xylabs/typeof": "~5.0.79"
+    "@xylabs/enum": "~5.0.80",
+    "@xylabs/typeof": "~5.0.80"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.3.2",

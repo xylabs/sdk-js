@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/threads",
-  "version": "5.0.79",
+  "version": "5.0.80",
   "description": "Web workers & worker threads as simple as a function call",
   "keywords": [
     "thread",
@@ -113,7 +113,7 @@
     "package-compile-tsup": "tsup --config tsup.browser.config.ts && tsup --config tsup.node.config.ts && tsup --config tsup.neutral.config.ts"
   },
   "dependencies": {
-    "@xylabs/assert": "~5.0.79",
+    "@xylabs/assert": "~5.0.80",
     "debug": "~4.4.3",
     "is-observable-2-1-0": "npm:is-observable@2.1.0",
     "observable-fns": "~0.6.1"

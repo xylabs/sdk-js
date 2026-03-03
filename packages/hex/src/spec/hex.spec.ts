@@ -5,7 +5,7 @@ import {
 } from 'vitest'
 
 import {
-  hexFromArrayBuffer, hexFromNumber, isHex,
+  hexFromArrayBuffer, hexFromHexString, hexFromNumber, isHex,
 } from '../hex/index.ts'
 
 describe('hex', () => {
@@ -19,6 +19,7 @@ describe('hex', () => {
   test('asHex', () => {
     expect(hexFromArrayBuffer(new ArrayBuffer(2))).toBe('0000')
     expect(hexFromNumber(10)).toBe('0a')
+    expect(hexFromHexString('a', { bitLength: 4 })).toBe('a')
     expect(hexFromNumber(10, { bitLength: 256 })).toBe('000000000000000000000000000000000000000000000000000000000000000a')
   })
 })

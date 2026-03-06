@@ -81,4 +81,36 @@ describe('ethAddress', () => {
       expect(toEthAddress(address)).toBeDefined()
     })
   })
+
+  describe('asEthAddress edge cases', () => {
+    it('returns undefined for undefined value', () => {
+      expect(asEthAddress(undefined)).toBeUndefined()
+    })
+
+    it('returns undefined for non-string non-undefined value (number)', () => {
+      expect(asEthAddress(42)).toBeUndefined()
+    })
+
+    it('throws with assert config for unsupported type', () => {
+      expect(() => asEthAddress(42, { assert: true } as any)).toThrow()
+    })
+
+    it('returns undefined for invalid hex string that throws during conversion', () => {
+      expect(asEthAddress('not-hex-at-all')).toBeUndefined()
+    })
+  })
+
+  describe('toEthAddress with non-string types', () => {
+    it('converts a number to eth address', () => {
+      const result = toEthAddress(0)
+      expect(result).toBeDefined()
+      expect(result.startsWith('0x')).toBeTrue()
+    })
+
+    it('converts a bigint to eth address', () => {
+      const result = toEthAddress(0n)
+      expect(result).toBeDefined()
+      expect(result.startsWith('0x')).toBeTrue()
+    })
+  })
 })

@@ -15,4 +15,16 @@ describe('flatten', () => {
   it.each(testCases)('flattens inputs', (a, b, expected) => {
     expect(flatten(a, b)).toEqual(expected)
   })
+
+  it('handles single scalar values', () => {
+    expect(flatten('x', 'y')).toEqual(['x', 'y'])
+  })
+
+  it('handles first undefined, second array', () => {
+    expect(flatten(undefined, ['a', 'b'])).toEqual(['a', 'b'])
+  })
+
+  it('filters out null and undefined from arrays', () => {
+    expect(flatten([1, null, 2], [undefined, 3])).toEqual([1, 2, 3])
+  })
 })

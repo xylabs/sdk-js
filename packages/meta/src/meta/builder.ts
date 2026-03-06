@@ -7,7 +7,7 @@ import type { Meta } from '../models/index.ts'
 
 /* test change */
 
-const addMetaToHead = ($: CheerioAPI, name: string, value: string | object) => {
+export const addMetaToHead = ($: CheerioAPI, name: string, value: string | object) => {
   if (typeof value === 'string') {
     const newMeta = `<meta property="${name}" content="${value}" />`
     const existingMeta = $(`head meta[property="${name}"]`)

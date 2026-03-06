@@ -31,9 +31,6 @@ export function zodAsAsyncFactory<TZod>(zod: z.ZodType<TZod>, name: string) {
           assertConfig = assert(value, result.error.message)
           break
         }
-        default: {
-          assertConfig = true
-        }
       }
       return assertError(value, assertConfig, result.error.message)
     }

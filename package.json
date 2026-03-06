@@ -50,12 +50,14 @@
   "scripts": {
     "build-typedoc-site": "xy gen-docs @xylabs/sdk-js",
     "readme:gen": "node scripts/readme-gen.mjs",
-    "test": "vitest run"
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage"
   },
   "devDependencies": {
     "@types/node": "~25.3.4",
     "@typescript-eslint/eslint-plugin": "~8.56.1",
     "@typescript-eslint/parser": "~8.56.1",
+    "@vitest/coverage-v8": "~4.0.18",
     "@xylabs/eslint-config-flat": "~7.4.4",
     "@xylabs/ts-scripts-yarn3": "~7.4.4",
     "@xylabs/tsconfig": "~7.4.4",

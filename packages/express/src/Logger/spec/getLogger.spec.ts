@@ -11,7 +11,7 @@ import type { Logger } from 'winston'
 import { getLogger } from '../getLogger.ts'
 
 type LoggerKey = keyof Logger
-const loggerKeys: LoggerKey[] = ['error', 'warn', 'log', 'info', 'debug']
+const loggerKeys: LoggerKey[] = ['error', 'warn', 'log', 'info', 'debug', 'trace' as LoggerKey]
 
 describe('getLogger', () => {
   describe('verbosity', () => {

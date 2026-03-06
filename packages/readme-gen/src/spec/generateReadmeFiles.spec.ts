@@ -112,6 +112,51 @@ describe('generateReadmeFiles', () => {
     warnSpy.mockRestore()
   })
 
+  it('replaces unknown template keys with empty string', async () => {
+    const mockReadFile = vi.mocked(readFile)
+    const mockWriteFile = vi.mocked(writeFile)
+    const mockWorkspaces = vi.mocked(yarnWorkspaces)
+
+    mockReadFile.mockImplementation(async (filePath: any) => {
+      if (typeof filePath === 'string' && filePath.endsWith('README.template.md')) {
+        return '# {{name}}\n{{nonExistentField}}\nEnd'
+      }
+      if (typeof filePath === 'string' && filePath.endsWith('package.json')) {
+        return JSON.stringify({ name: '@xylabs/test-unknown' })
+      }
+      if (typeof filePath === 'string' && filePath.endsWith('README.body.md')) {
+        return ''
+      }
+      if (typeof filePath === 'string' && filePath.endsWith('README.reference.md')) {
+        return ''
+      }
+      throw new Error('File not found')
+    })
+
+    mockWorkspaces.mockReturnValue([
+      { location: '/tmp/unknown-key-pkg' },
+    ] as any)
+    mockWriteFile.mockClear()
+    mockWriteFile.mockResolvedValue(undefined)
+
+    const logSpy = vi.spyOn(console, 'log').mockImplementation(() => {})
+
+    await generateReadmeFiles()
+
+    expect(mockWriteFile).toHaveBeenCalledWith(
+      '/tmp/unknown-key-pkg/README.md',
+      expect.stringContaining('# @xylabs/test-unknown'),
+    )
+    // The unknown key should be replaced with empty string, not left as {{nonExistentField}}
+    const writtenContent = mockWriteFile.mock.calls.find(
+      (call: any) => typeof call[0] === 'string' && call[0].includes('unknown-key-pkg'),
+    )?.[1] as string
+    expect(writtenContent).not.toContain('{{nonExistentField}}')
+    expect(writtenContent).toContain('# @xylabs/test-unknown\n\nEnd')
+
+    logSpy.mockRestore()
+  })
+
   it('falls back to generateTypeDoc when no README.reference.md exists', async () => {
     const mockReadFile = vi.mocked(readFile)
     const mockWriteFile = vi.mocked(writeFile)

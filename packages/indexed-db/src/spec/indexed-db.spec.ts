@@ -174,6 +174,31 @@ describe('getExistingIndexes', () => {
     }, expectedIndexes)
   })
 
+  it('returns compound indexes with Array.isArray keyPath', async () => {
+    const dbName = 'test-getExistingIndexes-compound'
+    const storeName = 'compoundStore'
+    const expectedIndexes = {
+      [storeName]: [
+        { key: { field1: 1 as const, field2: 1 as const }, unique: true },
+      ],
+    }
+
+    await withDb(dbName, async (db) => {
+      const indexes = await getExistingIndexes(db as never, storeName as never)
+      expect(indexes).not.toBeNull()
+      expect(Array.isArray(indexes)).toBe(true)
+      if (indexes) {
+        expect(indexes.length).toBe(1)
+        const idx = indexes[0]
+        // The compound index should have both keys
+        expect(Object.keys(idx.key)).toContain('field1')
+        expect(Object.keys(idx.key)).toContain('field2')
+        expect(idx.key.field1).toBe(1)
+        expect(idx.key.field2).toBe(1)
+      }
+    }, expectedIndexes)
+  })
+
   it('accepts a db name string instead of a db object', async () => {
     const dbName = 'test-getExistingIndexes-string'
     const storeName = 'myStore'
@@ -269,6 +294,27 @@ describe('createStoreDuringUpgrade', () => {
 
     expect(result).toBe(true)
   })
+
+  it('catches error when store already exists in the same upgrade', async () => {
+    const dbName = 'test-createStore-already-exists'
+    const storeName = 'dupeStore'
+    const indexes = [{ key: { id: 1 as const }, unique: true }]
+
+    // Use openDB directly to create the store, then call createStoreDuringUpgrade
+    // on the same store name in the same upgrade transaction to trigger the catch
+    const { openDB } = await import('idb')
+    const db = await openDB(dbName, 1, {
+      upgrade(db) {
+        // Create it first
+        db.createObjectStore(storeName, { autoIncrement: true })
+        // Now call createStoreDuringUpgrade which will try to create it again and hit the catch
+        createStoreDuringUpgrade(db as never, storeName as never, indexes)
+      },
+    })
+    // The store should still exist (created by the first call)
+    expect(db.objectStoreNames.contains(storeName)).toBe(true)
+    db.close()
+  })
 })
 
 describe('checkDbNeedsUpgrade (via withDb)', () => {
@@ -343,6 +389,18 @@ describe('IndexedDbKeyValueStore', () => {
     await store.set('key1' as never, { id: 'key1', value: 1 } as never)
     await store.clear?.()
     const result = await store.get('key1' as never)
+    expect(result).toBeUndefined()
+  })
+
+  it('get returns undefined for a non-existent key', async () => {
+    const dbName = 'test-kvstore-get-missing'
+    const storeName = 'items'
+    const indexes = { [storeName]: [{ key: { id: 1 }, unique: true }] }
+
+    await withDb(dbName, async () => {}, indexes)
+
+    const store = new IndexedDbKeyValueStore(dbName, storeName as never)
+    const result = await store.get('nonexistent-key' as never)
     expect(result).toBeUndefined()
   })
 

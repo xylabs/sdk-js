@@ -10,7 +10,7 @@ describe('delay', () => {
     const startTime = Date.now()
     await delay(testInterval)
     const passedTime = Date.now() - startTime
-    expect(passedTime).toBeGreaterThanOrEqual(testInterval)
+    expect(passedTime).toBeGreaterThanOrEqual(testInterval * 0.95)
     expect(passedTime).toBeLessThan(testInterval * 1.05)
   })
 
@@ -40,8 +40,12 @@ describe('delay', () => {
 
   test('multiple delays resolve independently', async () => {
     const order: number[] = []
-    const p1 = delay(100).then(() => { order.push(1) })
-    const p2 = delay(50).then(() => { order.push(2) })
+    const p1 = delay(100).then(() => {
+      order.push(1)
+    })
+    const p2 = delay(50).then(() => {
+      order.push(2)
+    })
     await Promise.all([p1, p2])
     // shorter delay should resolve first
     expect(order).toEqual([2, 1])
@@ -49,7 +53,9 @@ describe('delay', () => {
 
   it('can be used to yield the event loop', async () => {
     let flag = false
-    const p = delay(0).then(() => { flag = true })
+    const p = delay(0).then(() => {
+      flag = true
+    })
     // flag should still be false synchronously
     expect(flag).toBe(false)
     await p

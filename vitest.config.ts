@@ -19,6 +19,7 @@ export default defineConfig({
         '**/*.d.ts',
         '**/threads/src/master/**',
         '**/threads/src/worker/**',
+        '**/events/src/model/**',
       ],
     },
     globals: true,

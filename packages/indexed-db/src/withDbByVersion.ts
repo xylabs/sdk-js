@@ -22,12 +22,15 @@ export async function withDbByVersion<DBTypes extends DBSchema | unknown = unkno
   dbMutexes[dbName] = dbMutexes[dbName] ?? new Mutex()
   const handler = async () => {
     const db = await openDB<DBTypes>(dbName, version, {
+      /* v8 ignore next 2 */
       blocked(currentVersion, blockedVersion, event) {
         logger?.warn(`IndexedDb: Blocked from upgrading from ${currentVersion} to ${blockedVersion}`, event)
       },
+      /* v8 ignore next 2 */
       blocking(currentVersion, blockedVersion, event) {
         logger?.warn(`IndexedDb: Blocking upgrade from ${currentVersion} to ${blockedVersion}`, event)
       },
+      /* v8 ignore next 2 */
       terminated() {
         logger?.log('IndexedDb: Terminated')
       },

@@ -164,6 +164,28 @@ describe('generateTypeDoc', () => {
     logSpy.mockRestore()
   })
 
+  it('catches outer error when mkdirSync throws', async () => {
+    const mockExistsSync = vi.mocked(existsSync)
+    const mockMkdirSync = vi.mocked(mkdirSync)
+
+    mockExistsSync.mockReturnValue(false)
+    mockMkdirSync.mockImplementation(() => { throw new Error('permission denied') })
+
+    const logSpy = vi.spyOn(console, 'log').mockImplementation(() => {})
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
+
+    const result = await generateTypeDoc('/tmp/pkg', ['src/index.ts'])
+
+    expect(result).toBe('## Reference\n\nReference generation failed.')
+    expect(warnSpy).toHaveBeenCalledWith(
+      expect.stringContaining('Error generating TypeDoc'),
+      'permission denied',
+    )
+
+    logSpy.mockRestore()
+    warnSpy.mockRestore()
+  })
+
   it('handles processDirectory error gracefully', async () => {
     const mockExistsSync = vi.mocked(existsSync)
     const mockExecSync = vi.mocked(execSync)

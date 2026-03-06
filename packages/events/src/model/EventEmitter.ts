@@ -1,3 +1,4 @@
+/* v8 ignore start */
 import type {
   EventAnyListener, EventData, EventListener, EventUnsubscribeFunction,
 } from './Event.ts'
@@ -17,3 +18,4 @@ export interface EventEmitter<T extends EventData> {
   onAny(listener: EventAnyListener): EventUnsubscribeFunction
   once<TEventName extends keyof T>(eventName: TEventName, listener: EventListener<T[TEventName]>): EventUnsubscribeFunction
 }
+/* v8 ignore stop */

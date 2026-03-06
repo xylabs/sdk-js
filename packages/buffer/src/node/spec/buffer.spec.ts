@@ -3,8 +3,9 @@ import {
 } from 'vitest'
 
 import { Buffer, bufferPolyfill } from '../index.ts'
+import { Buffer as NodeEntryBuffer, bufferPolyfill as nodeEntryPolyfill } from '../../index-node.ts'
 
-describe('buffer', () => {
+describe('buffer (node)', () => {
   it('Buffer is available', () => {
     expect(Buffer).toBeDefined()
   })
@@ -22,5 +23,15 @@ describe('buffer', () => {
   it('bufferPolyfill is a function', () => {
     expect(typeof bufferPolyfill).toBe('function')
     expect(bufferPolyfill()).toBeUndefined()
+  })
+})
+
+describe('buffer (node entry)', () => {
+  it('Buffer is available from node entry', () => {
+    expect(NodeEntryBuffer).toBeDefined()
+  })
+
+  it('bufferPolyfill is available from node entry', () => {
+    expect(typeof nodeEntryPolyfill).toBe('function')
   })
 })

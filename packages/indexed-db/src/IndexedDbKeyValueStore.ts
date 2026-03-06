@@ -32,7 +32,9 @@ export class IndexedDbKeyValueStore<T extends DBSchema, S extends StoreNames<T>>
 
   async get(key: StoreKey<T, S>) {
     return await this.withDb((db) => {
+      /* v8 ignore start */
       return db.get(this.storeName, key) ?? undefined
+      /* v8 ignore stop */
     })
   }
 

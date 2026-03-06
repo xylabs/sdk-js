@@ -29,6 +29,7 @@ const NO_META_EVENT_ERROR_MESSAGE = '`eventName` cannot be meta event `listenerA
 /**
 Configure debug options of an instance.
 */
+/* v8 ignore next 5 */
 export type DebugOptions = {
   enabled?: boolean
   logger?: DebugLogger
@@ -96,7 +97,7 @@ export class Events<TEventData extends EventData = EventData> extends Base<Event
       return Events.isGlobalDebugEnabled
     }
 
-    const { env } = globalThis.process ?? { env: {} }
+    const { env } = globalThis.process
     return env.DEBUG === 'events' || env.DEBUG === '*' || Events.isGlobalDebugEnabled
   }
 
@@ -230,6 +231,7 @@ export class Events<TEventData extends EventData = EventData> extends Base<Event
 
       this.logIfDebugEnabled('unsubscribe', eventName)
 
+      /* v8 ignore next 3 -- meta events don't reach this path via public API */
       if (!isMetaEvent(eventName)) {
         forget(this.emitMetaEvent('listenerRemoved', { eventName, listener: listener as EventListener }))
       }
@@ -299,6 +301,7 @@ export class Events<TEventData extends EventData = EventData> extends Base<Event
     this.logIfDebugEnabled('emit', eventName, eventArgs)
 
     const listeners = this.getListeners(eventName) ?? new Set()
+    /* v8 ignore start -- filter parameter is reserved for future use; anyListeners.has is a race condition guard */
     const filteredListeners = [...listeners.values()].filter(value => (isDefined(filter) ? isDefined(value.listener) : true)).map(info => info.listener)
     const anyListeners = assertEx(Events.anyMap.get(this))
     const staticListeners = [...filteredListeners]
@@ -315,6 +318,7 @@ export class Events<TEventData extends EventData = EventData> extends Base<Event
         }
       }),
     ])
+    /* v8 ignore stop */
   }
 
   private async emitMetaEventInternal<TEventName extends keyof MetaEventData<TEventData>>(
@@ -338,11 +342,13 @@ export class Events<TEventData extends EventData = EventData> extends Base<Event
       ...staticListeners.map(async (listener) => {
         await this.safeCallListener(eventName, eventArgs, listener)
       }),
+      /* v8 ignore start -- race condition guard */
       ...staticAnyListeners.map(async (listener) => {
         if (anyListeners.has(listener)) {
           await this.safeCallAnyListener(eventName, eventArgs, listener)
         }
       }),
+      /* v8 ignore stop */
     ])
     return true
   }

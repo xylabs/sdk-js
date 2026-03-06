@@ -138,6 +138,29 @@ describe('Events', () => {
       sut.off('test', listener)
     })
 
+    it('should clean up eventsMap entry when removing the last listener causes set.size === 0', () => {
+      const sut = new Events<TestEvents>()
+      const listener = vi.fn()
+      sut.on('test', listener)
+
+      // The set stores EventListenerInfo objects, not raw listeners.
+      // To trigger the cleanup branch (lines 226-227), we must pass the actual
+      // stored object reference so that Set.delete succeeds and size reaches 0.
+      const eventsMap = (Events as unknown as { eventsMap: WeakMap<object, Map<string, Set<unknown>>> }).eventsMap
+      const events = eventsMap.get(sut)!
+      const set = events.get('test' as string)!
+      expect(set.size).toBe(1)
+
+      // Grab the actual EventListenerInfo object from the set
+      const storedInfo = [...set.values()][0]
+
+      // Call off with the stored info object (bypassing the type system)
+      sut.off('test', storedInfo as unknown as () => void)
+
+      // The set should now be empty and the event key should be deleted from the map
+      expect(events.has('test' as string)).toBe(false)
+    })
+
     it('should exercise off code path including logIfDebugEnabled and emitMetaEvent', async () => {
       const debugLogger = vi.fn()
       const sut = new Events<TestEvents>({
@@ -812,6 +835,17 @@ describe('Events', () => {
       await sut.emit('test', { test: true })
       expect(anyListener).toHaveBeenCalledTimes(1)
       expect(anyListener).toHaveBeenCalledWith('test', { test: true })
+    })
+  })
+
+  describe('off with meta event names', () => {
+    it('skips emitting listenerRemoved when off is called for a meta event', () => {
+      const sut = new Events<TestEvents>()
+      const listener = vi.fn()
+      // Register on listenerAdded (a meta event)
+      sut.on('listenerAdded' as keyof TestEvents, listener as any)
+      // Calling off for a meta event should skip the listenerRemoved emission
+      expect(() => sut.off('listenerAdded' as keyof TestEvents, listener as any)).not.toThrow()
     })
   })
 })

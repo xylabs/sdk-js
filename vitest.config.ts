@@ -41,6 +41,17 @@ export default defineConfig({
         // Runs shared tests (spec/*.spec.ts) and browser-only tests (spec/browser/**/*.spec.ts)
         // To make a test browser-compatible, keep it in spec/ root (runs in both)
         // or put it in spec/browser/ (browser only). Node-only tests go in spec/node/.
+        optimizeDeps: {
+          esbuildOptions: {
+            // Suppress "Module buffer has been externalized for browser compatibility" from bn.js
+            plugins: [{
+              name: 'buffer-external',
+              setup(build) {
+                build.onResolve({ filter: /^buffer$/ }, () => ({ external: true }))
+              },
+            }],
+          },
+        },
         test: {
           name: 'browser',
           browser: {

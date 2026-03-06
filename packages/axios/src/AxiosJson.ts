@@ -12,7 +12,7 @@ function deprecated(from: string, to: string, logger: Logger = console) {
 export class AxiosJson extends Axios {
   constructor(config?: RawAxiosJsonRequestConfig) {
     deprecated('AxiosJson', 'axiosJsonConfig')
-    // eslint-disable-next-line sonarjs/deprecation
+    // eslint-disable-next-line sonarjs/deprecation, @typescript-eslint/no-deprecated
     super(AxiosJson.axiosConfig(config))
   }
 

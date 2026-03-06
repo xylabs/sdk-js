@@ -120,9 +120,9 @@
   },
   "devDependencies": {
     "@types/debug": "~4.1.12",
-    "@types/node": "~25.2.3",
-    "@xylabs/eslint-config-flat": "~7.3.2",
-    "@xylabs/ts-scripts-yarn3": "~7.3.2",
+    "@xylabs/eslint-config-flat": "~7.4.4",
+    "@xylabs/ts-scripts-yarn3": "~7.4.4",
+    "@xylabs/tsconfig": "~7.4.4",
     "eslint": "~9.39.2",
     "tiny-worker": "~2.3.0",
     "tsup": "~8.5.1",

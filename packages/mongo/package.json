@@ -54,8 +54,7 @@
     "@xylabs/assert": "~5.0.80"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.3.2",
-    "@xylabs/tsconfig": "~7.3.2",
+    "@xylabs/tsconfig": "~7.4.4",
     "mongodb": "^7.1.0",
     "typescript": "~5.9.3",
     "vitest": "~4.0.18"

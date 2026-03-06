@@ -50,8 +50,8 @@
     "@xylabs/typeof": "~5.0.80"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.3.2",
-    "@xylabs/tsconfig": "~7.3.2",
+    "@xylabs/ts-scripts-yarn3": "~7.4.4",
+    "@xylabs/tsconfig": "~7.4.4",
     "typescript": "~5.9.3",
     "vitest": "~4.0.18"
   },

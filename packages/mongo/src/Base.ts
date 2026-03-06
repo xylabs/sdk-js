@@ -27,7 +27,6 @@ export class BaseMongoSdk<T extends Document> {
   get uri() {
     return (
       this.config.dbConnectionString
-      // eslint-disable-next-line @stylistic/max-len
       ?? `mongodb+srv://${this.config.dbUserName}:${this.config.dbPassword}@${this.config.dbDomain}.mongodb.net/${this.config.dbName}?retryWrites=true&w=majority`
     )
   }

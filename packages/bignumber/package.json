@@ -45,12 +45,12 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "bn.js": "~5.2.2"
+    "bn.js": "~5.2.3"
   },
   "devDependencies": {
     "@types/bn.js": "~5.2.0",
-    "@xylabs/ts-scripts-yarn3": "~7.3.2",
-    "@xylabs/tsconfig": "~7.3.2",
+    "@xylabs/ts-scripts-yarn3": "~7.4.4",
+    "@xylabs/tsconfig": "~7.4.4",
     "typescript": "~5.9.3"
   },
   "engines": {

@@ -11,7 +11,7 @@ export const hexFromHexString = (value: string, config: HexConfig = {}): Hex => 
   const nibbleBoundary = bitsToNibbles(byteSize)
   const unEvened = (value.startsWith('0x') ? value.slice(2) : value).toLowerCase()
   if (isHex(unEvened)) {
-    const evenCharacters = unEvened.padStart(unEvened.length + (unEvened.length % nibbleBoundary), '0')
+    const evenCharacters = unEvened.padStart(Math.ceil(unEvened.length / nibbleBoundary) * nibbleBoundary, '0')
     const padded = isNumber(bitLength) ? evenCharacters.padStart(bitLength / 4, '0') : evenCharacters
     return (prefix ? `0x${padded}` : padded).toLowerCase() as Hex
   } else {

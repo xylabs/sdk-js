@@ -45,15 +45,18 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@opentelemetry/api": "^1.9.0",
-    "@opentelemetry/sdk-trace-base": "^2.5.0",
+    "@opentelemetry/sdk-trace-base": "^2.6.0",
     "@xylabs/logger": "~5.0.80",
     "chalk": "~5.6.2"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.3.2",
-    "@xylabs/tsconfig": "~7.3.2",
+    "@opentelemetry/api": "^1.9.0",
+    "@xylabs/ts-scripts-yarn3": "~7.4.4",
+    "@xylabs/tsconfig": "~7.4.4",
     "typescript": "~5.9.3"
+  },
+  "peerDependencies": {
+    "@opentelemetry/api": "^1"
   },
   "engines": {
     "node": ">=18"

@@ -1,4 +1,3 @@
-/* eslint-disable @stylistic/max-len */
 import {
   describe, expect, it,
 } from 'vitest'

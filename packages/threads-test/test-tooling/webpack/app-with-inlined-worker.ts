@@ -1,12 +1,12 @@
 /* eslint-disable import-x/no-unresolved */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-/// <reference types="./raw-loader" />
+/// <reference types="./raw-loader.d.ts" />
 
 import AdditionWorkerNodeBundle from 'raw-loader!./dist/addition-worker.node/worker.js'
 import AdditionWorkerWebBundle from 'raw-loader!./dist/addition-worker.web/worker.js'
 
-import { BlobWorker, spawn } from '../../src/index'
+import { BlobWorker, spawn } from '@xylabs/threads'
 
 const AdditionWorkerBundle = (process as any).browser ? AdditionWorkerWebBundle : AdditionWorkerNodeBundle
 type AdditionWorker = (a: number, b: number) => number

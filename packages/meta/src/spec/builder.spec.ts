@@ -14,7 +14,6 @@ import type {
 
 const title = 'Death Valley Wilderness: Wilderness Light'
 const description
-  // eslint-disable-next-line @stylistic/max-len
   = 'Follow the course of light through the Death Valley Wilderness and observe the obvious and subtle changes across the landscape.Produced by Sylvia JohnsonTo w...'
 
 const meta: Meta = { description, title }

@@ -54,7 +54,7 @@
     "@xylabs/assert": "~5.0.80"
   },
   "devDependencies": {
-    "@xylabs/tsconfig": "~7.4.4",
+    "@xylabs/tsconfig": "~7.4.8",
     "mongodb": "^7.1.0",
     "typescript": "~5.9.3",
     "vitest": "~4.0.18"

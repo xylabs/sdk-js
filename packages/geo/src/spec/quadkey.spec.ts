@@ -2,9 +2,8 @@ import {
   describe, expect, it,
 } from 'vitest'
 
-import { tileFromQuadkey } from '../mercator/tile/from/quadkey.ts'
-import { tileToQuadkey } from '../mercator/tile/to/quadkey.ts'
-import type { MercatorTile } from '../mercator/types.ts'
+import type { MercatorTile } from '../mercator/index.ts'
+import { tileFromQuadkey, tileToQuadkey } from '../mercator/index.ts'
 
 describe('Quadkey encoding/decoding', () => {
   describe('tileFromQuadkey', () => {
@@ -84,11 +83,11 @@ describe('Quadkey encoding/decoding', () => {
       ['21030', [8, 13, 5]],
     ]
 
-    it.each(testCases)('quadkey "%s" round-trips through tile %s', (quadkey, tile) => {
+    it.each(testCases)('quadkey "%s" round-trips through tile %s', (quadkey, _tile) => {
       expect(tileToQuadkey(tileFromQuadkey(quadkey))).toBe(quadkey)
     })
 
-    it.each(testCases)('tile %s round-trips through quadkey "%s"', (quadkey, tile) => {
+    it.each(testCases)('tile %s round-trips through quadkey "%s"', (_quadkey, tile) => {
       expect(tileFromQuadkey(tileToQuadkey(tile))).toEqual([...tile])
     })
   })

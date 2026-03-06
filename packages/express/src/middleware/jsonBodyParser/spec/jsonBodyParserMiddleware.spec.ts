@@ -1,8 +1,9 @@
+import type { Request, Response } from 'express'
 import {
   describe, expect, it, vi,
 } from 'vitest'
 
-vi.mock('../../../Logger/index.ts', () => ({
+vi.mock('../../../Logger/getDefaultLogger.ts', () => ({
   getDefaultLogger: () => ({
     error: vi.fn(),
     log: vi.fn(),
@@ -46,7 +47,7 @@ describe('jsonBodyParser', () => {
     })
 
     it('should return defaults when undefined passed', () => {
-      expect(getJsonBodyParserOptions(undefined)).toEqual(DefaultJsonBodyParserOptions)
+      expect(getJsonBodyParserOptions()).toEqual(DefaultJsonBodyParserOptions)
     })
 
     it('should merge provided options with defaults', () => {
@@ -75,8 +76,10 @@ describe('jsonBodyParser', () => {
 
     it('should call next when parsing succeeds on empty body', () => {
       const parser = getJsonBodyParser()
-      const mockReq = { headers: {}, on: vi.fn(), removeListener: vi.fn() } as any
-      const mockRes = { on: vi.fn() } as any
+      const mockReq = {
+        headers: {}, on: vi.fn(), removeListener: vi.fn(),
+      } as unknown as Request
+      const mockRes = { on: vi.fn() } as unknown as Response
       const mockNext = vi.fn()
 
       // bodyParser.json will call next since there is no content-type header
@@ -86,8 +89,10 @@ describe('jsonBodyParser', () => {
 
     it('should accept custom options and return working middleware', () => {
       const parser = getJsonBodyParser({ limit: '50kb', type: 'application/json' })
-      const mockReq = { headers: {}, on: vi.fn(), removeListener: vi.fn() } as any
-      const mockRes = { on: vi.fn() } as any
+      const mockReq = {
+        headers: {}, on: vi.fn(), removeListener: vi.fn(),
+      } as unknown as Request
+      const mockRes = { on: vi.fn() } as unknown as Response
       const mockNext = vi.fn()
 
       parser(mockReq, mockRes, mockNext)
@@ -101,8 +106,10 @@ describe('jsonBodyParser', () => {
     })
 
     it('should call next when invoked with a request without json content-type', () => {
-      const mockReq = { headers: {}, on: vi.fn(), removeListener: vi.fn() } as any
-      const mockRes = { on: vi.fn() } as any
+      const mockReq = {
+        headers: {}, on: vi.fn(), removeListener: vi.fn(),
+      } as unknown as Request
+      const mockRes = { on: vi.fn() } as unknown as Response
       const mockNext = vi.fn()
 
       jsonBodyParser(mockReq, mockRes, mockNext)

@@ -2,7 +2,10 @@ import {
   describe, expect, it,
 } from 'vitest'
 
-import { isBrowser, isNode, isWebworker } from '../index.ts'
+// eslint-disable-next-line no-restricted-imports
+import {
+  isBrowser, isNode, isWebworker,
+} from '../index.ts'
 
 describe('platform', () => {
   it('isNode returns true in node environment', () => {

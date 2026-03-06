@@ -1,8 +1,8 @@
+import '../customMatchers.ts'
+
 import {
   describe, expect, it,
 } from 'vitest'
-
-import '../index.ts'
 
 describe('vitest-extended matchers', () => {
   it('toBeTrue works', () => {

@@ -2,7 +2,8 @@ import {
   describe, expect, it,
 } from 'vitest'
 
-import { Crypto, cryptoPolyfill } from '../index.ts'
+import { Crypto } from '../Crypto.ts'
+import { cryptoPolyfill } from '../cryptoPolyfill.ts'
 
 describe('crypto (node)', () => {
   it('Crypto is the node crypto module', () => {

@@ -2,8 +2,8 @@ import {
   describe, expect, it, vi,
 } from 'vitest'
 
-import type { ApiConfig } from '../ApiConfig.ts'
 import { ApiClient } from '../ApiClient.ts'
+import type { ApiConfig } from '../ApiConfig.ts'
 import { ApiEndpoint } from '../ApiEndpoint.ts'
 import { ApiStage } from '../ApiStage.ts'
 import { getApiStage } from '../getApiStage.ts'

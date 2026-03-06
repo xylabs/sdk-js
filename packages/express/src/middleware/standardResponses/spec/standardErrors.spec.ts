@@ -2,14 +2,16 @@ import {
   beforeEach, describe, expect, it, vi,
 } from 'vitest'
 
-vi.mock('../../../Logger/index.ts', () => ({
+vi.mock('../../../Logger/getDefaultLogger.ts', () => ({
   getDefaultLogger: () => ({
     error: vi.fn(),
     log: vi.fn(),
   }),
 }))
 
-import type { NextFunction, Request, Response } from 'express'
+import type {
+  NextFunction, Request, Response,
+} from 'express'
 
 import type { ExpressError } from '../../../Model/index.ts'
 import { standardErrors } from '../standardErrors.ts'
@@ -24,7 +26,7 @@ describe('standardErrors', () => {
     mockRes = {
       json: vi.fn(),
       status: vi.fn().mockReturnThis(),
-    } as any
+    } as unknown as Response
     mockNext = vi.fn()
   })
 
@@ -47,15 +49,13 @@ describe('standardErrors', () => {
 
     expect(mockRes.status).toHaveBeenCalledWith(500)
     expect(mockRes.json).toHaveBeenCalledWith(
-      expect.objectContaining({
-        status: '500',
-      }),
+      expect.objectContaining({ status: '500' }),
     )
     expect(mockNext).toHaveBeenCalledWith(error)
   })
 
   it('should call next with err and skip processing for non-Error values', () => {
-    const notAnError = 'string error' as any
+    const notAnError = 'string error' as unknown as ExpressError
     standardErrors(notAnError, mockReq, mockRes, mockNext)
 
     expect(mockRes.status).not.toHaveBeenCalled()
@@ -89,9 +89,7 @@ describe('standardErrors', () => {
 
     expect(mockRes.status).toHaveBeenCalledWith(500)
     expect(mockRes.json).toHaveBeenCalledWith(
-      expect.objectContaining({
-        status: '500',
-      }),
+      expect.objectContaining({ status: '500' }),
     )
   })
 
@@ -100,9 +98,7 @@ describe('standardErrors', () => {
     standardErrors(error, mockReq, mockRes, mockNext)
 
     expect(mockRes.json).toHaveBeenCalledWith(
-      expect.objectContaining({
-        status: '403',
-      }),
+      expect.objectContaining({ status: '403' }),
     )
   })
 
@@ -111,14 +107,12 @@ describe('standardErrors', () => {
     standardErrors(error, mockReq, mockRes, mockNext)
 
     expect(mockRes.json).toHaveBeenCalledWith(
-      expect.objectContaining({
-        detail: 'detailed message here',
-      }),
+      expect.objectContaining({ detail: 'detailed message here' }),
     )
   })
 
   it('should not call res.status or res.json for a number value', () => {
-    standardErrors(42 as any, mockReq, mockRes, mockNext)
+    standardErrors(42 as unknown as ExpressError, mockReq, mockRes, mockNext)
 
     expect(mockRes.status).not.toHaveBeenCalled()
     expect(mockRes.json).not.toHaveBeenCalled()

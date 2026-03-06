@@ -1,6 +1,8 @@
-import { describe, expect, it } from 'vitest'
+import {
+  describe, expect, it,
+} from 'vitest'
 
-import { isHexZero } from '../hex/isHexZero.ts'
+import { isHexZero } from '../hex/index.ts'
 
 describe('isHexZero', () => {
   it('returns true for zero hex strings', () => {
@@ -17,10 +19,10 @@ describe('isHexZero', () => {
   })
 
   it('returns undefined when value is undefined', () => {
-    expect(isHexZero(undefined)).toBeUndefined()
+    expect(isHexZero()).toBeUndefined()
   })
 
   it('returns undefined when value is not a string', () => {
-    expect(isHexZero(undefined)).toBeUndefined()
+    expect(isHexZero()).toBeUndefined()
   })
 })

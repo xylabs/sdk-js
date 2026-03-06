@@ -3,9 +3,12 @@ import {
 } from 'vitest'
 import { z } from 'zod'
 
-import {
-  zodAllFactory, zodAsAsyncFactory, zodAsFactory, zodIsFactory, zodToAsyncFactory, zodToFactory,
-} from '../index.ts'
+import { zodAllFactory } from '../zodAllFactory.ts'
+import { zodAsAsyncFactory } from '../zodAsAsyncFactory.ts'
+import { zodAsFactory } from '../zodAsFactory.ts'
+import { zodIsFactory } from '../zodIsFactory.ts'
+import { zodToAsyncFactory } from '../zodToAsyncFactory.ts'
+import { zodToFactory } from '../zodToFactory.ts'
 
 const StringSchema = z.string()
 const NumberSchema = z.number()

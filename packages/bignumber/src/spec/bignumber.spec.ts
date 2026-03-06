@@ -1,8 +1,9 @@
+import BigNumber from 'bn.js'
 import {
   describe, expect, it,
 } from 'vitest'
 
-import { BigNumber, BN } from '../index.ts'
+const BN = BigNumber
 
 describe('BigNumber', () => {
   it('creates from number', () => {

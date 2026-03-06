@@ -2,7 +2,7 @@ import {
   describe, expect, it,
 } from 'vitest'
 
-import { Enum } from '../index.ts'
+import { Enum } from '../Enum.ts'
 
 describe('Enum', () => {
   it('creates a readonly enum-like object', () => {

@@ -2,7 +2,8 @@ import {
   describe, expect, it,
 } from 'vitest'
 
-import { assertDefinedEx, assertEx } from '../index.ts'
+import { assertDefinedEx } from '../assertDefinedEx.ts'
+import { assertEx } from '../assertEx.ts'
 
 describe('assertEx', () => {
   it('returns truthy values', () => {
@@ -18,6 +19,7 @@ describe('assertEx', () => {
   })
 
   it('throws on undefined', () => {
+    // eslint-disable-next-line unicorn/no-useless-undefined
     expect(() => assertEx(undefined)).toThrow('Assertion failed')
   })
 
@@ -38,7 +40,7 @@ describe('assertEx', () => {
 
   it('throws when func is provided but is not a function', () => {
     // Testing the guard for invalid second argument
-    expect(() => (assertEx as any)(null, 'not a function')).toThrow('Invalid assertEx usage')
+    expect(() => (assertEx as unknown as (v: unknown, f: unknown) => unknown)(null, 'not a function')).toThrow('Invalid assertEx usage')
   })
 })
 
@@ -51,6 +53,7 @@ describe('assertDefinedEx', () => {
   })
 
   it('throws on undefined', () => {
+    // eslint-disable-next-line unicorn/no-useless-undefined
     expect(() => assertDefinedEx(undefined)).toThrow('value is undefined')
   })
 
@@ -65,6 +68,6 @@ describe('assertDefinedEx', () => {
 
   it('throws when func is provided but is not a function', () => {
     // Testing the guard for invalid second argument
-    expect(() => (assertDefinedEx as any)(undefined, 'not a function')).toThrow('Invalid assertEx usage')
+    expect(() => (assertDefinedEx as unknown as (v: unknown, f: unknown) => unknown)(undefined, 'not a function')).toThrow('Invalid assertEx usage')
   })
 })

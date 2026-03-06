@@ -2,7 +2,9 @@ import {
   describe, expect, it,
 } from 'vitest'
 
-import { createProfiler, profile, profileReport } from '../index.ts'
+import {
+  createProfiler, profile, profileReport,
+} from '../profiler.ts'
 
 describe('profiler', () => {
   it('creates an empty profiler', () => {
@@ -100,9 +102,7 @@ describe('profiler', () => {
   })
 
   it('handles single reading entry (start equals end)', () => {
-    const profiler: Record<string, number[]> = {
-      single: [5000],
-    }
+    const profiler: Record<string, number[]> = { single: [5000] }
     const report = profileReport(profiler)
     // at(0) === at(-1) for single element array, so duration is 0
     expect(report['single']).toBe(0)

@@ -2,8 +2,8 @@ import {
   describe, expect, it,
 } from 'vitest'
 
-import { EthAddressWrapper, isEthAddressWrapper } from '../EthAddress.ts'
 import { ellipsize } from '../ellipsize.ts'
+import { EthAddressWrapper, isEthAddressWrapper } from '../EthAddress.ts'
 import { padHex } from '../padHex.ts'
 
 const validAddressLower = '7284b6a4233b8b05910f2cbf7dbf6715325f6fcb'
@@ -26,7 +26,7 @@ describe('EthAddressWrapper', () => {
     })
 
     it('returns undefined when value is undefined', () => {
-      const address = EthAddressWrapper.fromString(undefined)
+      const address = EthAddressWrapper.fromString()
       expect(address).toBeUndefined()
     })
 
@@ -34,12 +34,12 @@ describe('EthAddressWrapper', () => {
       const decimalValue = '1000'
       const address = EthAddressWrapper.fromString(decimalValue, 10)
       expect(address).toBeDefined()
-      expect(address?.toBigNumber()).toBe(BigInt(1000))
+      expect(address?.toBigNumber()).toBe(1000n)
     })
 
     it('defaults to base 16', () => {
       const address = EthAddressWrapper.fromString('ff')
-      expect(address?.toBigNumber()).toBe(BigInt(255))
+      expect(address?.toBigNumber()).toBe(255n)
     })
   })
 
@@ -53,12 +53,13 @@ describe('EthAddressWrapper', () => {
     it('parses a string value with base', () => {
       const address = EthAddressWrapper.parse('1000', 10)
       expect(address).toBeDefined()
-      expect(address?.toBigNumber()).toBe(BigInt(1000))
+      expect(address?.toBigNumber()).toBe(1000n)
     })
 
     it('returns undefined for non-string values', () => {
       expect(EthAddressWrapper.parse(123)).toBeUndefined()
       expect(EthAddressWrapper.parse(null)).toBeUndefined()
+      // eslint-disable-next-line unicorn/no-useless-undefined
       expect(EthAddressWrapper.parse(undefined)).toBeUndefined()
       expect(EthAddressWrapper.parse({})).toBeUndefined()
       expect(EthAddressWrapper.parse(true)).toBeUndefined()
@@ -146,14 +147,14 @@ describe('EthAddressWrapper', () => {
 
     it('returns false when passed undefined', () => {
       const address = EthAddressWrapper.fromString(validAddressLower)!
-      expect(address.equals(undefined)).toBe(false)
+      expect(address.equals()).toBe(false)
     })
   })
 
   describe('toBigNumber', () => {
     it('returns a bigint representation', () => {
       const address = EthAddressWrapper.fromString('ff')!
-      expect(address.toBigNumber()).toBe(BigInt(255))
+      expect(address.toBigNumber()).toBe(255n)
     })
 
     it('returns the correct bigint for a full address', () => {
@@ -269,7 +270,7 @@ describe('EthAddressWrapper', () => {
     })
 
     it('returns false for objects with similar shape', () => {
-      const fake = { type: 'EthAddressWrapper', address: BigInt(0) }
+      const fake = { type: 'EthAddressWrapper', address: 0n }
       expect(isEthAddressWrapper(fake)).toBe(false)
     })
   })

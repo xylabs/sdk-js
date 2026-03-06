@@ -1,3 +1,6 @@
+import type {
+  Express, Request, Response,
+} from 'express'
 import {
   describe, expect, it, vi,
 } from 'vitest'
@@ -15,7 +18,7 @@ describe('customPoweredByHeader', () => {
   describe('enableExpressDefaultPoweredByHeader', () => {
     it('should call app.enable with x-powered-by', () => {
       const app = createMockApp()
-      enableExpressDefaultPoweredByHeader(app as any)
+      enableExpressDefaultPoweredByHeader(app as unknown as Express)
       expect(app.enable).toHaveBeenCalledWith('x-powered-by')
     })
   })
@@ -23,29 +26,28 @@ describe('customPoweredByHeader', () => {
   describe('disableExpressDefaultPoweredByHeader', () => {
     it('should call app.disable with x-powered-by', () => {
       const app = createMockApp()
-      disableExpressDefaultPoweredByHeader(app as any)
+      disableExpressDefaultPoweredByHeader(app as unknown as Express)
       expect(app.disable).toHaveBeenCalledWith('x-powered-by')
     })
   })
 
   describe('customPoweredByHeader middleware', () => {
     it('should set X-Powered-By header to XYO and call next', () => {
-      const req = {} as any
-      const res = { setHeader: vi.fn() } as any
+      const req = {} as Request
+      const setHeader = vi.fn()
+      const res = { setHeader } as unknown as Response
       const next = vi.fn()
 
       customPoweredByHeader(req, res, next)
 
-      expect(res.setHeader).toHaveBeenCalledWith('X-Powered-By', 'XYO')
+      expect(setHeader).toHaveBeenCalledWith('X-Powered-By', 'XYO')
       expect(next).toHaveBeenCalled()
     })
 
     it('should call setHeader before calling next', () => {
       const callOrder: string[] = []
-      const req = {} as any
-      const res = {
-        setHeader: vi.fn(() => callOrder.push('setHeader')),
-      } as any
+      const req = {} as Request
+      const res = { setHeader: vi.fn(() => callOrder.push('setHeader')) } as unknown as Response
       const next = vi.fn(() => callOrder.push('next'))
 
       customPoweredByHeader(req, res, next)
@@ -54,8 +56,8 @@ describe('customPoweredByHeader', () => {
     })
 
     it('should call next exactly once', () => {
-      const req = {} as any
-      const res = { setHeader: vi.fn() } as any
+      const req = {} as Request
+      const res = { setHeader: vi.fn() } as unknown as Response
       const next = vi.fn()
 
       customPoweredByHeader(req, res, next)

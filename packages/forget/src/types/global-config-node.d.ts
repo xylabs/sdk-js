@@ -1,4 +1,4 @@
-import type { ForgetNodeConfig } from './ForgetNodeConfig.ts'
+import type { ForgetNodeConfig } from '../ForgetNodeConfig.ts'
 
 declare global {
   var xy: {

@@ -1,3 +1,4 @@
+import type { Request, Response } from 'express'
 import {
   describe, expect, it, vi,
 } from 'vitest'
@@ -5,11 +6,12 @@ import {
 import { asyncHandler } from '../asyncHandler.ts'
 
 describe('asyncHandler', () => {
-  const mockReq = {} as any
-  const mockRes = {} as any
+  const mockReq = {} as Request
+  const mockRes = {} as Response
 
   it('should call the handler and return a promise', async () => {
-    const handler = vi.fn().mockResolvedValue(undefined)
+    const handler // eslint-disable-next-line unicorn/no-useless-undefined
+      = vi.fn().mockResolvedValue(undefined)
     const next = vi.fn()
     const wrapped = asyncHandler(handler)
     await wrapped(mockReq, mockRes, next)
@@ -26,7 +28,8 @@ describe('asyncHandler', () => {
   })
 
   it('should not call next when handler succeeds', async () => {
-    const handler = vi.fn().mockResolvedValue(undefined)
+    const handler // eslint-disable-next-line unicorn/no-useless-undefined
+      = vi.fn().mockResolvedValue(undefined)
     const next = vi.fn()
     const wrapped = asyncHandler(handler)
     await wrapped(mockReq, mockRes, next)
@@ -49,10 +52,11 @@ describe('asyncHandler', () => {
   })
 
   it('should pass through req, res, and next to the handler', async () => {
-    const customReq = { path: '/test', params: { id: '1' } } as any
-    const customRes = { status: vi.fn() } as any
+    const customReq = { path: '/test', params: { id: '1' } } as unknown as Request
+    const customRes = { status: vi.fn() } as unknown as Response
     const next = vi.fn()
-    const handler = vi.fn().mockResolvedValue(undefined)
+    const handler // eslint-disable-next-line unicorn/no-useless-undefined
+      = vi.fn().mockResolvedValue(undefined)
     const wrapped = asyncHandler(handler)
     await wrapped(customReq, customRes, next)
     expect(handler).toHaveBeenCalledWith(customReq, customRes, next)

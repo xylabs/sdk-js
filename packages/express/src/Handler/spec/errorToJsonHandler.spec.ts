@@ -2,14 +2,16 @@ import {
   beforeEach, describe, expect, it, vi,
 } from 'vitest'
 
-vi.mock('../../Logger/index.ts', () => ({
+vi.mock('../../Logger/getDefaultLogger.ts', () => ({
   getDefaultLogger: () => ({
     error: vi.fn(),
     log: vi.fn(),
   }),
 }))
 
-import type { NextFunction, Request, Response } from 'express'
+import type {
+  NextFunction, Request, Response,
+} from 'express'
 
 import type { ExpressError } from '../../Model/index.ts'
 import { errorToJsonHandler } from '../errorToJsonHandler.ts'
@@ -25,7 +27,7 @@ describe('errorToJsonHandler', () => {
       json: vi.fn(),
       send: vi.fn(),
       status: vi.fn().mockReturnThis(),
-    } as any
+    } as unknown as Response
     mockNext = vi.fn()
   })
 
@@ -46,14 +48,14 @@ describe('errorToJsonHandler', () => {
   })
 
   it('should call next with the error even for non-error values', () => {
-    const notAnError = 'string error' as any
+    const notAnError = 'string error' as unknown as ExpressError
     errorToJsonHandler(notAnError, mockReq, mockRes, mockNext)
     expect(mockRes.status).not.toHaveBeenCalled()
     expect(mockNext).toHaveBeenCalledWith(notAnError)
   })
 
   it('should default to 500 when statusCode is not a number', () => {
-    const error: ExpressError = Object.assign(new Error('bad code'), { statusCode: 'not a number' as any })
+    const error: ExpressError = Object.assign(new Error('bad code'), { statusCode: 'not a number' as unknown as number })
     errorToJsonHandler(error, mockReq, mockRes, mockNext)
     expect(mockRes.status).toHaveBeenCalledWith(500)
   })
@@ -66,21 +68,21 @@ describe('errorToJsonHandler', () => {
   })
 
   it('should not call send or status for non-Error objects like null', () => {
-    errorToJsonHandler(null as any, mockReq, mockRes, mockNext)
+    errorToJsonHandler(null as unknown as ExpressError, mockReq, mockRes, mockNext)
     expect(mockRes.status).not.toHaveBeenCalled()
     expect(mockRes.send).not.toHaveBeenCalled()
     expect(mockNext).toHaveBeenCalledWith(null)
   })
 
   it('should not call send or status for undefined error', () => {
-    errorToJsonHandler(undefined as any, mockReq, mockRes, mockNext)
+    errorToJsonHandler(undefined as unknown as ExpressError, mockReq, mockRes, mockNext)
     expect(mockRes.status).not.toHaveBeenCalled()
     expect(mockRes.send).not.toHaveBeenCalled()
     expect(mockNext).toHaveBeenCalledWith(undefined)
   })
 
   it('should not call send or status for a plain object (not Error instance)', () => {
-    const plainObj = { message: 'not an error', statusCode: 400 } as any
+    const plainObj = { message: 'not an error', statusCode: 400 } as unknown as ExpressError
     errorToJsonHandler(plainObj, mockReq, mockRes, mockNext)
     // isError checks for Error instances, so plain objects should not trigger send
     expect(mockNext).toHaveBeenCalledWith(plainObj)

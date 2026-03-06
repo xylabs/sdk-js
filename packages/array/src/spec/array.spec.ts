@@ -13,7 +13,7 @@ describe('filterAs', () => {
   })
 
   it('returns empty array when no matches', () => {
-    expect(filterAs([1, 3, 5], () => undefined)).toEqual([])
+    expect(filterAs([1, 3, 5], () => {})).toEqual([])
   })
 
   it('handles empty array', () => {
@@ -38,7 +38,7 @@ describe('findAs', () => {
   })
 
   it('returns undefined when no match', () => {
-    expect(findAs([1, 2, 3], () => undefined)).toBeUndefined()
+    expect(findAs([1, 2, 3], () => {})).toBeUndefined()
   })
 
   it('handles empty array', () => {
@@ -58,7 +58,7 @@ describe('findLastAs', () => {
   })
 
   it('returns undefined when no match', () => {
-    expect(findLastAs([1, 2, 3], () => undefined)).toBeUndefined()
+    expect(findLastAs([1, 2, 3], () => {})).toBeUndefined()
   })
 
   it('handles empty array', () => {

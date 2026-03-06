@@ -1,8 +1,10 @@
-import { describe, expect, it } from 'vitest'
+import {
+  describe, expect, it,
+} from 'vitest'
 
 import {
   HashZod, isHashBitLength, ZERO_HASH,
-} from '../hash/hash.ts'
+} from '../hash/index.ts'
 
 describe('isHashBitLength', () => {
   it('returns true for valid hash bit lengths', () => {
@@ -26,6 +28,7 @@ describe('isHashBitLength', () => {
   it('returns false for non-number types', () => {
     expect(isHashBitLength('256')).toBe(false)
     expect(isHashBitLength(null)).toBe(false)
+    // eslint-disable-next-line unicorn/no-useless-undefined
     expect(isHashBitLength(undefined)).toBe(false)
   })
 })

@@ -2,7 +2,7 @@ import {
   describe, expect, it,
 } from 'vitest'
 
-import { retry } from '../index.ts'
+import { retry } from '../retry.ts'
 
 describe('retry', () => {
   it('returns result on first success', async () => {
@@ -11,7 +11,7 @@ describe('retry', () => {
   })
 
   it('returns undefined when function returns undefined with no retries', async () => {
-    const result = await retry(() => undefined)
+    const result = await retry(() => {})
     expect(result).toBeUndefined()
   })
 
@@ -29,7 +29,6 @@ describe('retry', () => {
     let attempts = 0
     const result = await retry(() => {
       attempts++
-      return undefined
     }, { retries: 2, interval: 10 })
     expect(result).toBeUndefined()
     expect(attempts).toBe(3)

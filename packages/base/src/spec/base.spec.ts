@@ -1,16 +1,27 @@
+import type { MeterProvider, TracerProvider } from '@opentelemetry/api'
+import type { Logger } from '@xylabs/logger'
 import {
   afterEach,
   describe, expect, it,
 } from 'vitest'
 
+import type { BaseClassName } from '../Base.ts'
 import { Base } from '../Base.ts'
 import { disableGloballyUnique, globallyUnique } from '../globallyUnique.ts'
 import { UniqueBase } from '../UniqueBase.ts'
 
 class TestBase extends Base {
-  getLogger() { return this.logger }
-  getMeter() { return this.meter }
-  getTracer() { return this.tracer }
+  getLogger() {
+    return this.logger
+  }
+
+  getMeter() {
+    return this.meter
+  }
+
+  getTracer() {
+    return this.tracer
+  }
 }
 
 describe('Base', () => {
@@ -21,7 +32,7 @@ describe('Base', () => {
   })
 
   it('logger falls back to defaultLogger', () => {
-    const logger = { log: () => {} } as any
+    const logger = { log: () => {} } as unknown as Logger
     Base.defaultLogger = logger
     const b = new TestBase({})
     expect(b.getLogger()).toBe(logger)
@@ -29,7 +40,7 @@ describe('Base', () => {
   })
 
   it('logger uses params logger', () => {
-    const logger = { log: () => {}, debug: () => {} } as any
+    const logger = { log: () => {}, debug: () => {} } as unknown as Logger
     const b = new TestBase({ logger })
     expect(b.getLogger()).toBe(logger)
   })
@@ -41,7 +52,7 @@ describe('Base', () => {
 
   it('meter returns meter from provider', () => {
     const fakeMeter = { name: 'test-meter' }
-    const meterProvider = { getMeter: () => fakeMeter } as any
+    const meterProvider = { getMeter: () => fakeMeter } as unknown as MeterProvider
     const b = new TestBase({ meterProvider })
     expect(b.getMeter()).toBe(fakeMeter)
   })
@@ -53,21 +64,21 @@ describe('Base', () => {
 
   it('tracer returns tracer from provider', () => {
     const fakeTracer = { name: 'test-tracer' }
-    const traceProvider = { getTracer: () => fakeTracer } as any
+    const traceProvider = { getTracer: () => fakeTracer } as unknown as TracerProvider
     const b = new TestBase({ traceProvider })
     expect(b.getTracer()).toBe(fakeTracer)
   })
 
   it('records instances globally', () => {
-    const before = Base.instanceCount('TestBase2' as any)
+    const before = Base.instanceCount('TestBase2' as BaseClassName)
     class TestBase2 extends Base {}
     new TestBase2({})
-    expect(Base.instanceCount('TestBase2' as any)).toBe(before + 1)
+    expect(Base.instanceCount('TestBase2' as BaseClassName)).toBe(before + 1)
   })
 
   it('records multiple instances under the same class name', () => {
     class MultiInstance extends Base {}
-    const className = 'MultiInstance' as any
+    const className = 'MultiInstance' as BaseClassName
     const before = Base.instanceCount(className)
     new MultiInstance({})
     new MultiInstance({})
@@ -101,7 +112,7 @@ describe('Base', () => {
   })
 
   it('instanceCount returns 0 for unknown class', () => {
-    expect(Base.instanceCount('NonExistentClass12345' as any)).toBe(0)
+    expect(Base.instanceCount('NonExistentClass12345' as BaseClassName)).toBe(0)
   })
 
   it('historyInterval getter/setter', () => {
@@ -149,15 +160,14 @@ describe('Base', () => {
   })
 
   it('gc with className runs without error', () => {
-    expect(() => Base.gc('TestBase' as any)).not.toThrow()
+    expect(() => Base.gc('TestBase' as BaseClassName)).not.toThrow()
   })
 
   it('gc with className for nonexistent class runs without error', () => {
-    expect(() => Base.gc('DoesNotExist999' as any)).not.toThrow()
+    expect(() => Base.gc('DoesNotExist999' as BaseClassName)).not.toThrow()
   })
 
   it('historyTime getter/setter', () => {
-    const original = Base.historyTime
     Base.historyTime = Base.historyInterval + 1000
     expect(Base.historyTime).toBeGreaterThan(0)
     // Reset
@@ -225,7 +235,7 @@ describe('Base.gc advanced', () => {
 
   it('gc cleans up dereferenced WeakRefs', () => {
     class GcCleanup extends Base {}
-    const className = 'GcCleanup' as any
+    const className = 'GcCleanup' as BaseClassName
     new GcCleanup({})
     const countBefore = Base.instanceCount(className)
     expect(countBefore).toBeGreaterThan(0)

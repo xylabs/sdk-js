@@ -25,6 +25,7 @@ describe('validateType', () => {
   })
 
   it('returns error for non-optional undefined', () => {
+    // eslint-disable-next-line unicorn/no-useless-undefined
     const [value, errors] = validateType('string', undefined)
     expect(value).toBeUndefined()
     expect(errors).toHaveLength(1)

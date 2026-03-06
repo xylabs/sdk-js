@@ -3,13 +3,14 @@ import {
 } from 'vitest'
 
 import type { ApiError, Source } from '../error.ts'
-import type { ApiLink, ApiLinks, HrefWithMeta } from '../links.ts'
+import type {
+  ApiLink, ApiLinks, HrefWithMeta,
+} from '../links.ts'
 import type {
   IRelationshipData,
   IRelationshipLinks,
   IRelationshipRelatedLink,
   IRelationshipSelfLink,
-  Relationship,
   ResourceLinkage,
 } from '../relationship.ts'
 import type { ApiResourceIdentifierObject } from '../resourceIdentifier.ts'
@@ -167,25 +168,21 @@ describe('JSON API Types', () => {
     it('should allow ApiDataResponse with included resources', () => {
       const response: ApiDataResponse<ApiResourceObject> = {
         data: { id: '1', type: 'articles' },
-        included: [{ id: '2', type: 'people', attributes: { name: 'Author' } }],
+        included: [{
+          id: '2', type: 'people', attributes: { name: 'Author' },
+        }],
       }
       expect(response.included?.length).toBe(1)
     })
 
     it('should allow ApiErrorResponse', () => {
-      const response: ApiErrorResponse = {
-        errors: [{ status: '404', title: 'Not Found' }],
-      }
+      const response: ApiErrorResponse = { errors: [{ status: '404', title: 'Not Found' }] }
       expect(response.errors.length).toBe(1)
     })
 
     it('should allow ApiResponse union type', () => {
-      const dataResponse: ApiResponse<ApiResourceIdentifierObject> = {
-        data: { id: '1', type: 'articles' },
-      }
-      const errorResponse: ApiResponse<ApiResourceIdentifierObject> = {
-        errors: [{ status: '500' }],
-      }
+      const dataResponse: ApiResponse<ApiResourceIdentifierObject> = { data: { id: '1', type: 'articles' } }
+      const errorResponse: ApiResponse<ApiResourceIdentifierObject> = { errors: [{ status: '500' }] }
       expect(dataResponse).toBeDefined()
       expect(errorResponse).toBeDefined()
     })

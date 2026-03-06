@@ -3,7 +3,6 @@ import {
 } from 'vitest'
 
 import { BaseEmitter } from '../BaseEmitter.ts'
-import type { EventData } from '../model/index.ts'
 
 type TestEventData = {
   click: { x: number; y: number }
@@ -50,7 +49,7 @@ describe('BaseEmitter', () => {
     it('supports subscribing to multiple event names at once', async () => {
       const emitter = new TestEmitter()
       const listener = vi.fn()
-      emitter.on(['click', 'message'], listener as any)
+      emitter.on(['click', 'message'], listener as unknown as (args: TestEventData[keyof TestEventData]) => void)
       await emitter.emit('click', { x: 0, y: 0 })
       await emitter.emit('message', { text: 'hi' })
       expect(listener).toHaveBeenCalledTimes(2)
@@ -69,7 +68,7 @@ describe('BaseEmitter', () => {
       const emitter = new TestEmitter()
       const listener = vi.fn()
       emitter.on('click', listener)
-      expect(() => emitter.off(['click'] as any, listener)).not.toThrow()
+      expect(() => emitter.off(['click'] as unknown as keyof TestEventData, listener)).not.toThrow()
     })
   })
 
@@ -131,7 +130,7 @@ describe('BaseEmitter', () => {
         await new Promise(resolve => setTimeout(resolve, 30))
         order.push(1)
       })
-      emitter.on('click', async () => {
+      emitter.on('click', () => {
         order.push(2)
       })
       await emitter.emitSerial('click', { x: 0, y: 0 })

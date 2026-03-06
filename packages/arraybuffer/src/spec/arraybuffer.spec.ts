@@ -61,7 +61,7 @@ describe('isArrayBufferLike', () => {
     expect(isArrayBufferLike(new ArrayBuffer(4))).toBe(true)
   })
 
-  it('returns true for SharedArrayBuffer', () => {
+  it.skipIf(typeof SharedArrayBuffer === 'undefined')('returns true for SharedArrayBuffer', () => {
     expect(isArrayBufferLike(new SharedArrayBuffer(4))).toBe(true)
   })
 
@@ -73,6 +73,7 @@ describe('isArrayBufferLike', () => {
   })
 
   it('returns false for undefined and number', () => {
+    // eslint-disable-next-line unicorn/no-useless-undefined
     expect(isArrayBufferLike(undefined)).toBe(false)
     expect(isArrayBufferLike(42)).toBe(false)
   })
@@ -84,6 +85,7 @@ describe('isArrayBufferLike', () => {
 
 describe('toArrayBuffer', () => {
   it('returns undefined for undefined', () => {
+    // eslint-disable-next-line unicorn/no-useless-undefined
     expect(toArrayBuffer(undefined)).toBeUndefined()
   })
 
@@ -156,7 +158,7 @@ describe('toArrayBuffer', () => {
   })
 
   it('converts large bigint to ArrayBuffer', () => {
-    const result = new Uint8Array(toArrayBuffer(0xFFFFn))
+    const result = new Uint8Array(toArrayBuffer(0xFF_FFn))
     expect(result).toEqual(new Uint8Array([0xFF, 0xFF]))
   })
 
@@ -175,6 +177,7 @@ describe('toArrayBuffer', () => {
 
 describe('toUint8Array', () => {
   it('returns undefined for undefined', () => {
+    // eslint-disable-next-line unicorn/no-useless-undefined
     expect(toUint8Array(undefined)).toBeUndefined()
   })
 

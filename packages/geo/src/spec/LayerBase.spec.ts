@@ -2,21 +2,19 @@ import {
   describe, expect, it, vi,
 } from 'vitest'
 
-vi.mock('mapbox-gl', () => ({
-  default: {},
-}))
+vi.mock('mapbox-gl', () => ({ default: {} }))
+
+import type MapBox from 'mapbox-gl'
 
 import { LayerBase } from '../LayerBase.ts'
 
-interface MockLayer {
-  id: string
-  source: string
-  type: string
-}
+type MockLayer = MapBox.Layer & { type: 'fill' }
 
 class TestLayer extends LayerBase<MockLayer> {
   buildLayer(): MockLayer {
-    return { id: this.id, source: this.source, type: 'fill' }
+    return {
+      id: this.id, source: this.source, type: 'fill',
+    }
   }
 }
 
@@ -39,13 +37,16 @@ describe('LayerBase', () => {
     it('returns a layer object with id, source, and type', () => {
       const layer = new TestLayer('my-layer', 'my-source')
       const built = layer.buildLayer()
-      expect(built).toEqual({ id: 'my-layer', source: 'my-source', type: 'fill' })
+      expect(built).toEqual({
+        id: 'my-layer', source: 'my-source', type: 'fill',
+      })
     })
   })
 
   describe('update', () => {
     it('adds the layer when show is true and no existing layer', () => {
       const mockMap = createMockMap()
+      // eslint-disable-next-line unicorn/no-useless-undefined
       mockMap.getLayer.mockReturnValue(undefined)
 
       const layer = new TestLayer('layer-1', 'source-1')
@@ -53,7 +54,9 @@ describe('LayerBase', () => {
 
       expect(mockMap.getLayer).toHaveBeenCalledWith('layer-1')
       expect(mockMap.removeLayer).not.toHaveBeenCalled()
-      expect(mockMap.addLayer).toHaveBeenCalledWith({ id: 'layer-1', source: 'source-1', type: 'fill' })
+      expect(mockMap.addLayer).toHaveBeenCalledWith({
+        id: 'layer-1', source: 'source-1', type: 'fill',
+      })
     })
 
     it('removes existing layer before adding when show is true', () => {
@@ -64,7 +67,9 @@ describe('LayerBase', () => {
       layer.update(mockMap as never, true)
 
       expect(mockMap.removeLayer).toHaveBeenCalledWith('layer-1')
-      expect(mockMap.addLayer).toHaveBeenCalledWith({ id: 'layer-1', source: 'source-1', type: 'fill' })
+      expect(mockMap.addLayer).toHaveBeenCalledWith({
+        id: 'layer-1', source: 'source-1', type: 'fill',
+      })
     })
 
     it('removes existing layer and does not add when show is false', () => {
@@ -80,6 +85,7 @@ describe('LayerBase', () => {
 
     it('does nothing when show is false and no existing layer', () => {
       const mockMap = createMockMap()
+      // eslint-disable-next-line unicorn/no-useless-undefined
       mockMap.getLayer.mockReturnValue(undefined)
 
       const layer = new TestLayer('layer-1', 'source-1')
@@ -91,6 +97,7 @@ describe('LayerBase', () => {
 
     it('defaults show to true', () => {
       const mockMap = createMockMap()
+      // eslint-disable-next-line unicorn/no-useless-undefined
       mockMap.getLayer.mockReturnValue(undefined)
 
       const layer = new TestLayer('layer-1', 'source-1')

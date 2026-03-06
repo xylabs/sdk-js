@@ -14,6 +14,6 @@ describe('NoOpLogFunction', () => {
   })
 
   it('accepts any number of arguments', () => {
-    expect(() => NoOpLogFunction('a', 1, {}, [], null, undefined)).not.toThrow()
+    expect(() => NoOpLogFunction('a', 1, {}, [], null)).not.toThrow()
   })
 })

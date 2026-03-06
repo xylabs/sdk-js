@@ -5,11 +5,12 @@ import {
 } from 'vitest'
 
 import {
-  ADDRESS_LENGTH, AddressRegEx, AddressZod, ZERO_ADDRESS,
-} from '../address/address.ts'
-import { asAddress, asAddressV2 } from '../address/as.ts'
-import { isAddress, isAddressV2 } from '../address/is.ts'
-import { toAddress, toAddressV2 } from '../address/to.ts'
+  ADDRESS_LENGTH, AddressRegEx, AddressZod,
+  asAddress, asAddressV2,
+  isAddress, isAddressV2,
+  toAddress, toAddressV2,
+  ZERO_ADDRESS,
+} from '../address/index.ts'
 
 const VALID_ADDRESS = 'deadbeefdeadbeefdeadbeefdeadbeefdeadbeef'
 const VALID_ADDRESS_PREFIXED = '0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef'
@@ -50,6 +51,7 @@ describe('address constants and Zod schema', () => {
     expect(AddressZod.safeParse(TOO_LONG_HEX).success).toBeFalse()
     expect(AddressZod.safeParse(123).success).toBeFalse()
     expect(AddressZod.safeParse(null).success).toBeFalse()
+    // eslint-disable-next-line unicorn/no-useless-undefined
     expect(AddressZod.safeParse(undefined).success).toBeFalse()
   })
 })
@@ -69,6 +71,7 @@ describe('isAddress', () => {
     expect(isAddress({})).toBeFalse()
     expect(isAddress([])).toBeFalse()
     expect(isAddress(null)).toBeFalse()
+    // eslint-disable-next-line unicorn/no-useless-undefined
     expect(isAddress(undefined)).toBeFalse()
     expect(isAddress(42)).toBeFalse()
   })
@@ -113,6 +116,7 @@ describe('isAddressV2', () => {
     expect(isAddressV2(true)).toBeFalse()
     expect(isAddressV2({})).toBeFalse()
     expect(isAddressV2(null)).toBeFalse()
+    // eslint-disable-next-line unicorn/no-useless-undefined
     expect(isAddressV2(undefined)).toBeFalse()
     expect(isAddressV2(42)).toBeFalse()
   })
@@ -203,6 +207,7 @@ describe('toAddressV2', () => {
 
   it('returns undefined for invalid types without assert', () => {
     expect(toAddressV2(null)).toBe(undefined)
+    // eslint-disable-next-line unicorn/no-useless-undefined
     expect(toAddressV2(undefined)).toBe(undefined)
     expect(toAddressV2({})).toBe(undefined)
     expect(toAddressV2(true)).toBe(undefined)
@@ -245,6 +250,7 @@ describe('asAddress', () => {
   it('returns undefined for non-string types without assert', () => {
     expect(asAddress(42)).toBeUndefined()
     expect(asAddress(null)).toBeUndefined()
+    // eslint-disable-next-line unicorn/no-useless-undefined
     expect(asAddress(undefined)).toBeUndefined()
     expect(asAddress(true)).toBeUndefined()
     expect(asAddress({})).toBeUndefined()
@@ -337,6 +343,7 @@ describe('asAddressV2', () => {
     expect(asAddressV2('NotHex')).toBe(undefined)
     expect(asAddressV2(42)).toBe(undefined)
     expect(asAddressV2(null)).toBe(undefined)
+    // eslint-disable-next-line unicorn/no-useless-undefined
     expect(asAddressV2(undefined)).toBe(undefined)
     expect(asAddressV2(true)).toBe(undefined)
   })

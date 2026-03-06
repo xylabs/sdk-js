@@ -47,10 +47,9 @@
     "!**/*.test.*"
   ],
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.4.4",
-    "@xylabs/tsconfig": "~7.4.4",
-    "@xylabs/tsconfig-dom": "~7.4.4",
-    "rollbar": "~3.0.0",
+    "@xylabs/ts-scripts-yarn3": "~7.4.8",
+    "@xylabs/tsconfig": "~7.4.8",
+    "@xylabs/tsconfig-dom": "~7.4.8",
     "typescript": "~5.9.3"
   },
   "peerDependencies": {

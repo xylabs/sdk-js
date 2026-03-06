@@ -15,7 +15,7 @@ const filteredBasePaths = basePaths.filter((p) => {
 });
 
 export default [
-  { ignores: ['.yarn', 'dist', 'build', 'docs', 'eslint.config.mjs', '**/dist', '**/build', '**/docs', 'packages/threads', 'packages/threads-test'] },
+  { ignores: ['.yarn', 'dist', 'build', 'coverage', 'docs', 'eslint.config.mjs', '**/dist', '**/build', '**/docs', 'packages/threads', 'packages/threads-test'] },
   unicornConfig,
   workspacesConfig,
   rulesConfig,

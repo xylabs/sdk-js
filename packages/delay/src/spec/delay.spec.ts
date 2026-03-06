@@ -1,5 +1,5 @@
 import {
-  describe, expect, it, test, vi,
+  describe, expect, it, test,
 } from 'vitest'
 
 import { delay } from '../delay.ts'

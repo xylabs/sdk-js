@@ -2,7 +2,7 @@ import {
   describe, expect, it,
 } from 'vitest'
 
-import { clearTimeoutEx, setTimeoutEx } from '../index.ts'
+import { clearTimeoutEx, setTimeoutEx } from '../setTimeoutEx.ts'
 
 describe('setTimeoutEx', () => {
   it('returns a string id', () => {
@@ -13,14 +13,18 @@ describe('setTimeoutEx', () => {
 
   it('executes callback after delay', async () => {
     let called = false
-    setTimeoutEx(() => { called = true }, 50)
+    setTimeoutEx(() => {
+      called = true
+    }, 50)
     await new Promise(resolve => setTimeout(resolve, 100))
     expect(called).toBe(true)
   })
 
   it('can be cancelled', async () => {
     let called = false
-    const id = setTimeoutEx(() => { called = true }, 50)
+    const id = setTimeoutEx(() => {
+      called = true
+    }, 50)
     clearTimeoutEx(id)
     await new Promise(resolve => setTimeout(resolve, 100))
     expect(called).toBe(false)
@@ -32,17 +36,25 @@ describe('setTimeoutEx', () => {
 
   it('handles multiple timeouts with same interval', async () => {
     let count = 0
-    setTimeoutEx(() => { count++ }, 50)
+    setTimeoutEx(() => {
+      count++
+    }, 50)
     // Adding another with the same delay should hit the "nothing changed" path
-    setTimeoutEx(() => { count++ }, 50)
+    setTimeoutEx(() => {
+      count++
+    }, 50)
     await new Promise(resolve => setTimeout(resolve, 100))
     expect(count).toBe(2)
   })
 
   it('handles multiple timeouts with different intervals', async () => {
     const order: number[] = []
-    setTimeoutEx(() => { order.push(1) }, 30)
-    setTimeoutEx(() => { order.push(2) }, 80)
+    setTimeoutEx(() => {
+      order.push(1)
+    }, 30)
+    setTimeoutEx(() => {
+      order.push(2)
+    }, 80)
     await new Promise(resolve => setTimeout(resolve, 150))
     expect(order).toEqual([1, 2])
   })
@@ -50,10 +62,14 @@ describe('setTimeoutEx', () => {
   it('returns early when interval unchanged and currentTimeout exists', async () => {
     // First timeout sets interval to 50 and starts currentTimeout
     let count = 0
-    const id1 = setTimeoutEx(() => { count++ }, 50)
+    const id1 = setTimeoutEx(() => {
+      count++
+    }, 50)
     // Second timeout with a longer delay should not change the minimum interval (still 50)
     // This hits line 30: newInterval === interval && currentTimeout !== undefined => return
-    const id2 = setTimeoutEx(() => { count++ }, 100)
+    const id2 = setTimeoutEx(() => {
+      count++
+    }, 100)
     // Wait for all to fire
     await new Promise(resolve => setTimeout(resolve, 200))
     expect(count).toBe(2)

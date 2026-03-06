@@ -1,15 +1,19 @@
+import type { TypedObject } from '@xylabs/typeof'
 import {
   describe, expect, it,
 } from 'vitest'
 
+// eslint-disable-next-line no-restricted-imports
 import {
+  asAnyObject,
   AsObjectFactory,
   AsTypeFactory,
   createDeepMerge,
-  IsObjectFactory,
   isJsonArray,
   isJsonObject,
   isJsonValue,
+  IsObjectFactory,
+  isType, // eslint-disable-line sonarjs/deprecation
   ObjectWrapper,
   omitBy,
   omitByPrefix,
@@ -20,12 +24,12 @@ import {
   toSafeJsonString,
   toSafeJsonValue,
 } from '../index.ts'
-import { asAnyObject } from '../asObject.ts'
-import { isType } from '../isType.ts'
 
 describe('removeFields', () => {
   it('removes specified fields', () => {
-    const obj = { a: 1, b: 2, c: 3 }
+    const obj = {
+      a: 1, b: 2, c: 3,
+    }
     expect(removeFields(obj, ['b'])).toEqual({ a: 1, c: 3 })
   })
 
@@ -39,8 +43,10 @@ describe('removeFields', () => {
 
 describe('pickBy', () => {
   it('picks matching fields', () => {
-    const obj = { a: 1, b: 'two', c: 3 }
-    const result = pickBy(obj, (v) => typeof v === 'number')
+    const obj = {
+      a: 1, b: 'two', c: 3,
+    }
+    const result = pickBy(obj, v => typeof v === 'number')
     expect(result).toEqual({ a: 1, c: 3 })
   })
 
@@ -51,13 +57,13 @@ describe('pickBy', () => {
 
   it('handles arrays', () => {
     const arr = [{ a: 1, b: 'x' }, { a: 2, b: 'y' }]
-    const result = pickBy(arr as any, (v) => typeof v === 'number', 2)
+    const result = pickBy(arr as unknown as Record<string, unknown>, v => typeof v === 'number', 2)
     expect(result).toEqual([{ a: 1 }, { a: 2 }])
   })
 
   it('recurses into nested objects', () => {
     const obj = { top: 1, nested: { keep: 1, drop: 'x' } }
-    const result = pickBy(obj, (v) => typeof v !== 'string', 3)
+    const result = pickBy(obj, v => typeof v !== 'string', 3)
     expect(result).toEqual({ top: 1, nested: { keep: 1 } })
   })
 
@@ -67,18 +73,22 @@ describe('pickBy', () => {
     child.own = 'mine'
     const result = pickBy(child, () => true)
     expect(result).toEqual({ own: 'mine' })
-    expect((result as any).inherited).toBeUndefined()
+    expect((result as Record<string, unknown>).inherited).toBeUndefined()
   })
 })
 
 describe('pickByPrefix', () => {
   it('picks fields starting with prefix', () => {
-    const obj = { _a: 1, _b: 2, c: 3 }
+    const obj = {
+      _a: 1, _b: 2, c: 3,
+    }
     expect(pickByPrefix(obj, '_')).toEqual({ _a: 1, _b: 2 })
   })
 
   it('recurses deeply and only keeps prefixed keys at each level', () => {
-    const obj = { _a: 1, b: 'no', nested: { _c: 2, d: 'no' } }
+    const obj = {
+      _a: 1, b: 'no', nested: { _c: 2, d: 'no' },
+    }
     // pickByPrefix only picks keys starting with '_', so 'nested' and 'b' are dropped
     expect(pickByPrefix(obj, '_')).toEqual({ _a: 1 })
   })
@@ -86,13 +96,13 @@ describe('pickByPrefix', () => {
 
 describe('pickBy - array edge cases', () => {
   it('handles arrays with primitive (non-object) items', () => {
-    const arr = [1, 'two', 3] as any
+    const arr = [1, 'two', 3] as unknown as Record<string, unknown>
     const result = pickBy(arr, () => true, 2)
     expect(result).toEqual([1, 'two', 3])
   })
 
   it('handles arrays with null items', () => {
-    const arr = [null, { a: 1 }] as any
+    const arr = [null, { a: 1 }] as unknown as Record<string, unknown>
     const result = pickBy(arr, () => true, 2)
     expect(result).toEqual([null, { a: 1 }])
   })
@@ -100,8 +110,10 @@ describe('pickBy - array edge cases', () => {
 
 describe('omitBy', () => {
   it('omits matching fields', () => {
-    const obj = { a: 1, b: 'two', c: 3 }
-    const result = omitBy(obj, (v) => typeof v === 'string')
+    const obj = {
+      a: 1, b: 'two', c: 3,
+    }
+    const result = omitBy(obj, v => typeof v === 'string')
     expect(result).toEqual({ a: 1, c: 3 })
   })
 
@@ -112,13 +124,13 @@ describe('omitBy', () => {
 
   it('handles arrays', () => {
     const arr = [{ a: 1, b: 'x' }, { a: 2, b: 'y' }]
-    const result = omitBy(arr as any, (v) => typeof v === 'string', 2)
+    const result = omitBy(arr as unknown as Record<string, unknown>, v => typeof v === 'string', 2)
     expect(result).toEqual([{ a: 1 }, { a: 2 }])
   })
 
   it('recurses into nested objects', () => {
     const obj = { top: 1, nested: { keep: 1, drop: 'x' } }
-    const result = omitBy(obj, (v) => typeof v === 'string', 3)
+    const result = omitBy(obj, v => typeof v === 'string', 3)
     expect(result).toEqual({ top: 1, nested: { keep: 1 } })
   })
 
@@ -128,31 +140,35 @@ describe('omitBy', () => {
     child.own = 'mine'
     const result = omitBy(child, () => false)
     expect(result).toEqual({ own: 'mine' })
-    expect((result as any).inherited).toBeUndefined()
+    expect((result as Record<string, unknown>).inherited).toBeUndefined()
   })
 })
 
 describe('omitByPrefix', () => {
   it('omits fields starting with prefix', () => {
-    const obj = { _a: 1, _b: 2, c: 3 }
+    const obj = {
+      _a: 1, _b: 2, c: 3,
+    }
     expect(omitByPrefix(obj, '_')).toEqual({ c: 3 })
   })
 
   it('recurses deeply into nested objects', () => {
-    const obj = { _hidden: 1, visible: 'yes', nested: { _secret: 2, public: 'ok' } }
+    const obj = {
+      _hidden: 1, visible: 'yes', nested: { _secret: 2, public: 'ok' },
+    }
     expect(omitByPrefix(obj, '_')).toEqual({ visible: 'yes', nested: { public: 'ok' } })
   })
 })
 
 describe('omitBy - array edge cases', () => {
   it('handles arrays with primitive (non-object) items', () => {
-    const arr = [1, 'two', 3] as any
+    const arr = [1, 'two', 3] as unknown as Record<string, unknown>
     const result = omitBy(arr, () => false, 2)
     expect(result).toEqual([1, 'two', 3])
   })
 
   it('handles arrays with null items', () => {
-    const arr = [null, { a: 1 }] as any
+    const arr = [null, { a: 1 }] as unknown as Record<string, unknown>
     const result = omitBy(arr, () => false, 2)
     expect(result).toEqual([null, { a: 1 }])
   })
@@ -175,21 +191,22 @@ describe('toSafeJson', () => {
   })
 
   it('handles circular references', () => {
-    const obj: any = { a: 1 }
+    const obj: Record<string, unknown> = { a: 1 }
     obj.self = obj
-    const result = toSafeJson(obj) as any
+    const result = toSafeJson(obj) as Record<string, unknown>
     expect(result.self).toBe('[Circular]')
   })
 
   it('handles max depth', () => {
     const deep = { a: { b: { c: { d: 'deep' } } } }
-    const result = toSafeJson(deep, 2) as any
-    expect(result.a.b).toBe('[MaxDepth]')
+    const result = toSafeJson(deep, 2) as Record<string, unknown>
+    expect((result.a as Record<string, unknown>).b).toBe('[MaxDepth]')
   })
 
   it('handles non-json types', () => {
+    // eslint-disable-next-line unicorn/no-useless-undefined
     expect(toSafeJsonValue(undefined)).toBe('[undefined]')
-    expect(toSafeJsonValue(Symbol())).toBe('[symbol]')
+    expect(toSafeJsonValue(Symbol('test'))).toBe('[symbol]')
     expect(toSafeJsonValue(() => {})).toBe('[function]')
   })
 })
@@ -220,7 +237,7 @@ describe('createDeepMerge', () => {
   it('skips unsafe keys', () => {
     const merge = createDeepMerge({ mutate: false })
     const result = merge({}, JSON.parse('{"__proto__": {"polluted": true}}'))
-    expect((result as any).polluted).toBeUndefined()
+    expect((result as Record<string, unknown>).polluted).toBeUndefined()
   })
 
   it('creates target object when merging into non-object', () => {
@@ -237,7 +254,7 @@ describe('createDeepMerge', () => {
 
   it('handles null values in source', () => {
     const merge = createDeepMerge({ mutate: false })
-    const result = merge({ a: { nested: 1 } }, { a: null } as any)
+    const result = merge({ a: { nested: 1 } }, { a: null } as unknown as Record<string, unknown>)
     expect(result.a).toBeNull()
   })
 
@@ -257,8 +274,13 @@ describe('createDeepMerge', () => {
 
 describe('ObjectWrapper', () => {
   class TestWrapper extends ObjectWrapper<{ name: string }> {
-    getName() { return this.obj.name }
-    getStringKey() { return this.stringKeyObj }
+    getName() {
+      return this.obj.name
+    }
+
+    getStringKey() {
+      return this.stringKeyObj
+    }
   }
 
   it('wraps an object', () => {
@@ -275,24 +297,31 @@ describe('ObjectWrapper', () => {
 
 describe('isType (deprecated)', () => {
   it('checks object type', () => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated, sonarjs/deprecation
     expect(isType({}, 'object')).toBe(true)
+    // eslint-disable-next-line @typescript-eslint/no-deprecated, sonarjs/deprecation
     expect(isType(null, 'object')).toBe(false)
+    // eslint-disable-next-line @typescript-eslint/no-deprecated, sonarjs/deprecation
     expect(isType([], 'object')).toBe(false)
   })
 
   it('checks array type', () => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated, sonarjs/deprecation
     expect(isType([], 'array')).toBe(true)
   })
 
   it('checks null type', () => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated, sonarjs/deprecation
     expect(isType(null, 'null')).toBe(true)
   })
 
   it('checks undefined type', () => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated, sonarjs/deprecation
     expect(isType(undefined, 'undefined')).toBe(true)
   })
 
   it('checks string type via default', () => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated, sonarjs/deprecation
     expect(isType('hi', 'string')).toBe(true)
   })
 })
@@ -328,7 +357,7 @@ describe('IsObjectFactory', () => {
 
   it('supports additional checks', () => {
     const factory = new IsObjectFactory()
-    const check = factory.create({}, [(obj) => 'required' in (obj as any)])
+    const check = factory.create({}, [(obj): obj is TypedObject => 'required' in (obj as Record<string, unknown>)])
     expect(check({ required: true })).toBe(true)
     expect(check({})).toBe(false)
   })
@@ -338,6 +367,7 @@ describe('IsObjectFactory', () => {
     const warnings: string[] = []
     const logger = { warn: (msg: string) => warnings.push(msg) }
     const check = factory.create({ name: 'string' })
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     check({ name: 42 }, { log: logger as any })
     expect(warnings.length).toBeGreaterThan(0)
     expect(warnings[0]).toContain('isType Failed')
@@ -363,10 +393,10 @@ describe('IsObjectFactory', () => {
   })
 })
 
-describe('AsTypeFactory', () => {
-  const isStringObj = (v: unknown): v is { value: string } =>
-    typeof v === 'object' && v !== null && 'value' in v && typeof (v as any).value === 'string'
+const isStringObj = (v: unknown): v is { value: string } =>
+  typeof v === 'object' && v !== null && 'value' in v && typeof (v as { value: unknown }).value === 'string'
 
+describe('AsTypeFactory', () => {
   it('create returns value when type check passes', () => {
     const asStringObj = AsTypeFactory.create(isStringObj)
     expect(asStringObj({ value: 'hello' })).toEqual({ value: 'hello' })
@@ -380,12 +410,13 @@ describe('AsTypeFactory', () => {
   it('create returns undefined for null/undefined when not required', () => {
     const asStringObj = AsTypeFactory.create(isStringObj)
     expect(asStringObj(null)).toBeUndefined()
+    // eslint-disable-next-line unicorn/no-useless-undefined
     expect(asStringObj(undefined)).toBeUndefined()
   })
 
   it('create throws for promises', () => {
     const asStringObj = AsTypeFactory.create(isStringObj)
-    expect(() => asStringObj(Promise.resolve() as any)).toThrow('un-awaited promises')
+    expect(() => asStringObj(Promise.resolve() as unknown as Record<string, unknown>)).toThrow('un-awaited promises')
   })
 
   it('create throws with assert string when check fails', () => {
@@ -401,7 +432,7 @@ describe('AsTypeFactory', () => {
   it('create handles number as second arg (predicate usage)', () => {
     const asStringObj = AsTypeFactory.create(isStringObj)
     // When used as filter predicate, index (number) is passed as second arg
-    expect(asStringObj({ value: 'hi' }, 0 as any)).toEqual({ value: 'hi' })
+    expect(asStringObj({ value: 'hi' }, 0 as unknown as string)).toEqual({ value: 'hi' })
   })
 
   it('create handles object config', () => {
@@ -417,6 +448,7 @@ describe('AsTypeFactory', () => {
   it('createOptional returns undefined for null/undefined', () => {
     const optional = AsTypeFactory.createOptional(isStringObj)
     expect(optional(null)).toBeUndefined()
+    // eslint-disable-next-line unicorn/no-useless-undefined
     expect(optional(undefined)).toBeUndefined()
   })
 
@@ -427,14 +459,11 @@ describe('AsTypeFactory', () => {
 
   it('createOptional throws for promises', () => {
     const optional = AsTypeFactory.createOptional(isStringObj)
-    expect(() => optional(Promise.resolve() as any)).toThrow('un-awaited promises')
+    expect(() => optional(Promise.resolve() as unknown as Record<string, unknown>)).toThrow('un-awaited promises')
   })
 })
 
 describe('AsObjectFactory', () => {
-  const isStringObj = (v: unknown): v is { value: string } =>
-    typeof v === 'object' && v !== null && 'value' in v && typeof (v as any).value === 'string'
-
   it('create returns value when check passes', () => {
     const asFunc = AsObjectFactory.create(isStringObj)
     expect(asFunc({ value: 'hello' })).toEqual({ value: 'hello' })

@@ -7,9 +7,9 @@ import {
   vi,
 } from 'vitest'
 
+import { forget } from '../forget.ts'
 import type { ForgetConfig } from '../ForgetConfig.ts'
 import { defaultForgetConfig } from '../ForgetConfig.ts'
-import { forget } from '../forget.ts'
 import { ForgetPromise } from '../ForgetPromise.ts'
 
 describe('forget', () => {
@@ -61,7 +61,9 @@ describe('forget', () => {
 
     test('accepts a function returning a promise', async () => {
       let completed = false
-      forget(() => delay(50).then(() => { completed = true }), { timeout: 500 })
+      forget(() => delay(50).then(() => {
+        completed = true
+      }), { timeout: 500 })
       await delay(200)
       expect(completed).toBe(true)
     })
@@ -215,11 +217,7 @@ describe('forget', () => {
   describe('config merging', () => {
     test('merges global config with provided config', async () => {
       let cancelCalled = false
-      globalThis.xy = {
-        forget: {
-          config: { name: 'global-name' },
-        },
-      }
+      globalThis.xy = { forget: { config: { name: 'global-name' } } }
       forget(delay(500), {
         onCancel: () => { cancelCalled = true },
         timeout: 50,
@@ -230,11 +228,7 @@ describe('forget', () => {
 
     test('provided config overrides global config', async () => {
       let cancelCalled = false
-      globalThis.xy = {
-        forget: {
-          config: { timeout: 50 },
-        },
-      }
+      globalThis.xy = { forget: { config: { timeout: 50 } } }
       // provided timeout overrides global
       forget(delay(100), {
         onCancel: () => { cancelCalled = true },
@@ -262,7 +256,9 @@ describe('forget', () => {
       const originalRace = Promise.race
       const exceptedBefore = ForgetPromise.exceptedForgets
       // Override Promise.race to throw synchronously
-      Promise.race = () => { throw new Error('sync-race-throw') }
+      Promise.race = () => {
+        throw new Error('sync-race-throw')
+      }
       try {
         const onException = vi.fn()
         ForgetPromise.forget(Promise.resolve('ok'), { name: 'sync-exception-test', onException })

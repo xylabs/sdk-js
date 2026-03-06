@@ -1,8 +1,9 @@
+/* eslint-disable require-await */
 import {
   describe, expect, it,
 } from 'vitest'
 
-import { span, spanAsync } from '../index.ts'
+import { span, spanAsync } from '../span.ts'
 
 describe('span', () => {
   it('executes function and returns result', () => {
@@ -11,7 +12,9 @@ describe('span', () => {
   })
 
   it('propagates errors', () => {
-    expect(() => span('test-span', () => { throw new Error('test error') })).toThrow('test error')
+    expect(() => span('test-span', () => {
+      throw new Error('test error')
+    })).toThrow('test error')
   })
 })
 
@@ -22,6 +25,8 @@ describe('spanAsync', () => {
   })
 
   it('propagates async errors', async () => {
-    await expect(spanAsync('test-span', async () => { throw new Error('async error') })).rejects.toThrow('async error')
+    await expect(spanAsync('test-span', async () => {
+      throw new Error('async error')
+    })).rejects.toThrow('async error')
   })
 })

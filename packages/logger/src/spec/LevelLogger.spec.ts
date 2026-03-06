@@ -2,8 +2,8 @@ import {
   describe, expect, it, vi,
 } from 'vitest'
 
-import { LevelLogger, LogLevel } from '../LevelLogger.ts'
 import type { Logger } from '../LevelLogger.ts'
+import { LevelLogger, LogLevel } from '../LevelLogger.ts'
 import { NoOpLogFunction } from '../NoOpLogFunction.ts'
 
 describe('LevelLogger', () => {

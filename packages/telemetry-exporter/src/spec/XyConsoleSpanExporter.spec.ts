@@ -1,3 +1,5 @@
+import type { ReadableSpan } from '@opentelemetry/sdk-trace-base'
+import type { Logger } from '@xylabs/logger'
 import {
   describe, expect, it, vi,
 } from 'vitest'
@@ -8,22 +10,22 @@ const createMockSpan = (durationMs: number) => ({
   duration: [Math.floor(durationMs / 1000), (durationMs % 1000) * 1e6],
   name: 'test-span',
   spanContext: () => ({ traceId: 'abc123' }),
-}) as any
+}) as unknown as ReadableSpan
 
 describe('spanDurationInMillis', () => {
   it('converts span duration to milliseconds', () => {
-    const span = createMockSpan(1500)
-    expect(spanDurationInMillis(span)).toBeCloseTo(1500, 0)
+    const mockSpan = createMockSpan(1500)
+    expect(spanDurationInMillis(mockSpan)).toBeCloseTo(1500, 0)
   })
 
   it('handles zero duration', () => {
-    const span = createMockSpan(0)
-    expect(spanDurationInMillis(span)).toBe(0)
+    const mockSpan = createMockSpan(0)
+    expect(spanDurationInMillis(mockSpan)).toBe(0)
   })
 
   it('handles sub-millisecond durations', () => {
-    const span = { duration: [0, 500_000], name: 'fast' } as any
-    expect(spanDurationInMillis(span)).toBeCloseTo(0.5)
+    const mockSpan = { duration: [0, 500_000], name: 'fast' } as unknown as ReadableSpan
+    expect(spanDurationInMillis(mockSpan)).toBeCloseTo(0.5)
   })
 })
 
@@ -35,21 +37,21 @@ describe('XyConsoleSpanExporter', () => {
   })
 
   it('constructs with custom logLevel and logger', () => {
-    const logger = { log: vi.fn() } as any
+    const logger = { log: vi.fn() } as unknown as Logger
     const exporter = new XyConsoleSpanExporter(2, logger)
     expect(exporter.logLevel).toBe(2)
     expect(exporter.logger).toBe(logger)
   })
 
   it('export logs spans above logLevel', () => {
-    const logger = { log: vi.fn() } as any
+    const logger = { log: vi.fn() } as unknown as Logger
     const exporter = new XyConsoleSpanExporter(0, logger)
     exporter.export([createMockSpan(50)])
     expect(logger.log).toHaveBeenCalled()
   })
 
   it('export filters spans below logLevel', () => {
-    const logger = { log: vi.fn() } as any
+    const logger = { log: vi.fn() } as unknown as Logger
     const exporter = new XyConsoleSpanExporter(4, logger)
     // A 50ms span should be level 2, below logLevel 4
     exporter.export([createMockSpan(50)])
@@ -57,7 +59,7 @@ describe('XyConsoleSpanExporter', () => {
   })
 
   it('export handles multiple spans', () => {
-    const logger = { log: vi.fn() } as any
+    const logger = { log: vi.fn() } as unknown as Logger
     const exporter = new XyConsoleSpanExporter(0, logger)
     exporter.export([createMockSpan(50), createMockSpan(100)])
     expect(logger.log).toHaveBeenCalledTimes(2)

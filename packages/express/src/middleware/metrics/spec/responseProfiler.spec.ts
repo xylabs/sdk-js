@@ -1,7 +1,9 @@
+import type {
+  NextFunction, Request, Response,
+} from 'express'
 import {
   describe, expect, it, vi,
 } from 'vitest'
-import type { NextFunction, Request, Response } from 'express'
 
 import { responseProfiler } from '../responseProfiler.ts'
 
@@ -22,7 +24,7 @@ describe('responseProfiler', () => {
 
   it('should preserve existing meta properties', () => {
     const mockReq = {} as Request
-    const mockRes = { locals: { meta: { existing: 'value' } } } as any
+    const mockRes = { locals: { meta: { existing: 'value' } } } as unknown as Response
     const mockNext = vi.fn() as NextFunction
 
     responseProfiler(mockReq, mockRes, mockNext)

@@ -2,7 +2,7 @@ import {
   describe, expect, it,
 } from 'vitest'
 
-import { HashToJsonZod, JsonToHashZod } from '../hash/zod.ts'
+import { HashToJsonZod, JsonToHashZod } from '../hash/index.ts'
 import { BigIntToJsonZod, JsonToBigIntZod } from '../zod.ts'
 
 describe('BigIntToJsonZod', () => {

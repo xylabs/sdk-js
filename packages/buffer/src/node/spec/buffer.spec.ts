@@ -1,9 +1,11 @@
+import { Buffer } from 'node:buffer'
+
 import {
   describe, expect, it,
 } from 'vitest'
 
-import { Buffer, bufferPolyfill } from '../index.ts'
 import { Buffer as NodeEntryBuffer, bufferPolyfill as nodeEntryPolyfill } from '../../index-node.ts'
+import { bufferPolyfill } from '../bufferPolyfill.ts'
 
 describe('buffer (node)', () => {
   it('Buffer is available', () => {

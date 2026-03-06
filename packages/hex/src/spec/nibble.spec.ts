@@ -1,6 +1,8 @@
-import { describe, expect, it } from 'vitest'
+import {
+  describe, expect, it,
+} from 'vitest'
 
-import { bitsToNibbles, nibblesToBits } from '../hex/nibble.ts'
+import { bitsToNibbles, nibblesToBits } from '../hex/index.ts'
 
 describe('bitsToNibbles', () => {
   it('converts multiples of 4 correctly', () => {

@@ -28,6 +28,7 @@ describe('typeOf', () => {
   })
 
   it('returns "undefined" for undefined', () => {
+    // eslint-disable-next-line unicorn/no-useless-undefined
     expect(typeOf(undefined)).toBe('undefined')
   })
 

@@ -1,3 +1,6 @@
+import type {
+  Application, NextFunction, Request, Response,
+} from 'express'
 import {
   beforeEach, describe, expect, it, vi,
 } from 'vitest'
@@ -5,24 +8,26 @@ import {
 import { Counters } from '../../../Performance/index.ts'
 import { useRequestCounters } from '../counters.ts'
 
+type MiddlewareHandler = (req: Request, res: Response, next: NextFunction) => void
+
 describe('useRequestCounters', () => {
-  let mockApp: any
-  let registeredMiddleware: any
-  let registeredStatsHandler: any
+  let mockApp: Application
+  let registeredMiddleware: MiddlewareHandler
+  let registeredStatsHandler: MiddlewareHandler
 
   beforeEach(() => {
     Counters.counters = {}
-    registeredMiddleware = null
-    registeredStatsHandler = null
+    registeredMiddleware = undefined as unknown as MiddlewareHandler
+    registeredStatsHandler = undefined as unknown as MiddlewareHandler
 
     mockApp = {
-      use: vi.fn((handler: any) => {
+      use: vi.fn((handler: MiddlewareHandler) => {
         registeredMiddleware = handler
       }),
-      get: vi.fn((path: string, handler: any) => {
+      get: vi.fn((_path: string, handler: MiddlewareHandler) => {
         registeredStatsHandler = handler
       }),
-    }
+    } as unknown as Application
 
     useRequestCounters(mockApp)
   })
@@ -34,8 +39,8 @@ describe('useRequestCounters', () => {
 
   describe('request counting middleware', () => {
     it('should increment the path counter and _calls counter', () => {
-      const mockReq = { path: '/test' } as any
-      const mockRes = {} as any
+      const mockReq = { path: '/test' } as unknown as Request
+      const mockRes = {} as Response
       const mockNext = vi.fn()
 
       registeredMiddleware(mockReq, mockRes, mockNext)
@@ -48,9 +53,9 @@ describe('useRequestCounters', () => {
     it('should accumulate counts for multiple requests', () => {
       const mockNext = vi.fn()
 
-      registeredMiddleware({ path: '/test' } as any, {} as any, mockNext)
-      registeredMiddleware({ path: '/test' } as any, {} as any, mockNext)
-      registeredMiddleware({ path: '/other' } as any, {} as any, mockNext)
+      registeredMiddleware({ path: '/test' } as unknown as Request, {} as Response, mockNext)
+      registeredMiddleware({ path: '/test' } as unknown as Request, {} as Response, mockNext)
+      registeredMiddleware({ path: '/other' } as unknown as Request, {} as Response, mockNext)
 
       expect(Counters.counters['/test']).toBe(2)
       expect(Counters.counters['/other']).toBe(1)
@@ -60,13 +65,14 @@ describe('useRequestCounters', () => {
 
   describe('/stats endpoint', () => {
     it('should respond with alive status and counters', () => {
-      const mockReq = {} as any
-      const mockRes = { json: vi.fn() } as any
+      const mockReq = {} as Request
+      const jsonFn = vi.fn()
+      const mockRes = { json: jsonFn } as unknown as Response
       const mockNext = vi.fn()
 
       registeredStatsHandler(mockReq, mockRes, mockNext)
 
-      expect(mockRes.json).toHaveBeenCalledWith(
+      expect(jsonFn).toHaveBeenCalledWith(
         expect.objectContaining({
           alive: true,
           counters: Counters.counters,
@@ -79,49 +85,53 @@ describe('useRequestCounters', () => {
       Counters.counters._totalTime = 1000
       Counters.counters._calls = 10
 
-      const mockReq = {} as any
-      const mockRes = { json: vi.fn() } as any
+      const mockReq = {} as Request
+      const jsonFn = vi.fn()
+      const mockRes = { json: jsonFn } as unknown as Response
       const mockNext = vi.fn()
 
       registeredStatsHandler(mockReq, mockRes, mockNext)
 
-      const response = mockRes.json.mock.calls[0][0]
+      const response = jsonFn.mock.calls[0][0] as Record<string, unknown>
       expect(response.avgTime).toBe('100.00ms')
     })
 
     it('should handle zero calls gracefully', () => {
-      const mockReq = {} as any
-      const mockRes = { json: vi.fn() } as any
+      const mockReq = {} as Request
+      const jsonFn = vi.fn()
+      const mockRes = { json: jsonFn } as unknown as Response
       const mockNext = vi.fn()
 
       registeredStatsHandler(mockReq, mockRes, mockNext)
 
-      const response = mockRes.json.mock.calls[0][0]
+      const response = jsonFn.mock.calls[0][0] as Record<string, unknown>
       expect(response.avgTime).toBe('0.00ms')
     })
 
     it('should include the alive field as true', () => {
-      const mockReq = {} as any
-      const mockRes = { json: vi.fn() } as any
+      const mockReq = {} as Request
+      const jsonFn = vi.fn()
+      const mockRes = { json: jsonFn } as unknown as Response
       const mockNext = vi.fn()
 
       registeredStatsHandler(mockReq, mockRes, mockNext)
 
-      const response = mockRes.json.mock.calls[0][0]
+      const response = jsonFn.mock.calls[0][0] as Record<string, unknown>
       expect(response.alive).toBe(true)
     })
 
     it('should reflect counter state accumulated from middleware calls', () => {
       const mockNext = vi.fn()
-      registeredMiddleware({ path: '/api/test' } as any, {} as any, mockNext)
-      registeredMiddleware({ path: '/api/test' } as any, {} as any, mockNext)
+      registeredMiddleware({ path: '/api/test' } as unknown as Request, {} as Response, mockNext)
+      registeredMiddleware({ path: '/api/test' } as unknown as Request, {} as Response, mockNext)
 
-      const mockRes = { json: vi.fn() } as any
-      registeredStatsHandler({} as any, mockRes, mockNext)
+      const jsonFn = vi.fn()
+      const mockRes = { json: jsonFn } as unknown as Response
+      registeredStatsHandler({} as Request, mockRes, mockNext)
 
-      const response = mockRes.json.mock.calls[0][0]
-      expect(response.counters['/api/test']).toBe(2)
-      expect(response.counters['_calls']).toBe(2)
+      const response = jsonFn.mock.calls[0][0] as Record<string, unknown>
+      expect((response.counters as Record<string, number>)['/api/test']).toBe(2)
+      expect((response.counters as Record<string, number>)['_calls']).toBe(2)
     })
   })
 
@@ -129,9 +139,9 @@ describe('useRequestCounters', () => {
     it('should track each unique path separately', () => {
       const mockNext = vi.fn()
 
-      registeredMiddleware({ path: '/a' } as any, {} as any, mockNext)
-      registeredMiddleware({ path: '/b' } as any, {} as any, mockNext)
-      registeredMiddleware({ path: '/a' } as any, {} as any, mockNext)
+      registeredMiddleware({ path: '/a' } as unknown as Request, {} as Response, mockNext)
+      registeredMiddleware({ path: '/b' } as unknown as Request, {} as Response, mockNext)
+      registeredMiddleware({ path: '/a' } as unknown as Request, {} as Response, mockNext)
 
       expect(Counters.counters['/a']).toBe(2)
       expect(Counters.counters['/b']).toBe(1)

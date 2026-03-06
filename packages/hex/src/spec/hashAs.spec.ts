@@ -1,6 +1,8 @@
-import { describe, expect, it } from 'vitest'
+import {
+  describe, expect, it,
+} from 'vitest'
 
-import { asHash } from '../hash/as.ts'
+import { asHash } from '../hash/index.ts'
 
 const validHash = 'deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef'
 const invalidHash = 'deadbeef' // too short to be a hash (need 64 chars for 256-bit)
@@ -18,6 +20,7 @@ describe('asHash', () => {
     expect(asHash(123)).toBeUndefined()
     expect(asHash(true)).toBeUndefined()
     expect(asHash(null)).toBeUndefined()
+    // eslint-disable-next-line unicorn/no-useless-undefined
     expect(asHash(undefined)).toBeUndefined()
     expect(asHash({})).toBeUndefined()
   })
@@ -33,18 +36,18 @@ describe('asHash', () => {
   })
 
   it('throws for non-string types with assert', () => {
-    expect(() => asHash(123, {})).toThrow()
-    expect(() => asHash(true, {})).toThrow()
-    expect(() => asHash(null, {})).toThrow()
+    expect(() => asHash(123, true)).toThrow()
+    expect(() => asHash(true, true)).toThrow()
+    expect(() => asHash(null, true)).toThrow()
   })
 
   it('throws for invalid hash string with assert', () => {
-    expect(() => asHash(invalidHash, {})).toThrow()
-    expect(() => asHash('xyz', {})).toThrow()
+    expect(() => asHash(invalidHash, true)).toThrow()
+    expect(() => asHash('xyz', true)).toThrow()
   })
 
   it('returns valid hash with assert for valid input', () => {
-    expect(asHash(validHash, {})).toBe(validHash)
+    expect(asHash(validHash, true)).toBe(validHash)
   })
 
   it('lowercases the result', () => {

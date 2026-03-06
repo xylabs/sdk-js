@@ -3,7 +3,8 @@ import {
 } from 'vitest'
 
 import { AsTypeFactory } from '../AsTypeFactory.ts'
-import type { TypeCheck, TypeCheckConfig } from '../types.ts'
+// eslint-disable-next-line no-restricted-imports
+import type { TypeCheck, TypeCheckConfig } from '../index.ts'
 
 interface TestType {
   kind: 'test'
@@ -32,18 +33,18 @@ describe('AsTypeFactory.create', () => {
   })
 
   it('returns undefined for null input (not required)', () => {
-    const result = asTestType(null as any)
+    const result = asTestType(null as unknown as TestType)
     expect(result).toBeUndefined()
   })
 
   it('returns undefined for undefined input (not required)', () => {
-    const result = asTestType(undefined as any)
+    const result = asTestType(undefined as unknown as TestType)
     expect(result).toBeUndefined()
   })
 
   it('throws for un-awaited promise input', () => {
     const promise = Promise.resolve({ kind: 'test', value: 1 })
-    expect(() => asTestType(promise as any)).toThrow('un-awaited promises may not be sent to "as" functions')
+    expect(() => asTestType(promise as unknown as TestType)).toThrow('un-awaited promises may not be sent to "as" functions')
   })
 
   describe('with string assert', () => {
@@ -79,7 +80,7 @@ describe('AsTypeFactory.create', () => {
     })
 
     it('returns undefined for null input with optional config', () => {
-      const result = asTestType(null as any, { required: false })
+      const result = asTestType(null as unknown as TestType, { required: false })
       expect(result).toBeUndefined()
     })
 
@@ -98,12 +99,12 @@ describe('AsTypeFactory.create', () => {
     it('does not short-circuit for null when required is true', () => {
       // When required is true, null should not return undefined early;
       // instead it goes through the typeCheck which will fail and return undefined
-      const result = asTestType(null as any, { required: true })
+      const result = asTestType(null as unknown as TestType, { required: true })
       expect(result).toBeUndefined()
     })
 
     it('does not short-circuit for undefined when required is true', () => {
-      const result = asTestType(undefined as any, { required: true })
+      const result = asTestType(undefined as unknown as TestType, { required: true })
       expect(result).toBeUndefined()
     })
   })
@@ -128,12 +129,12 @@ describe('AsTypeFactory.create', () => {
     it('handles numeric second argument as predicate index', () => {
       // When used as a predicate (e.g., in .filter), the index is passed as second arg
       const input: TestType = { kind: 'test', value: 1 }
-      const result = asTestType(input, 0 as any)
+      const result = asTestType(input, 0 as unknown as string)
       expect(result).toBe(input)
     })
 
     it('returns undefined for invalid value when used as predicate', () => {
-      const result = asTestType({ kind: 'wrong' }, 0 as any)
+      const result = asTestType({ kind: 'wrong' }, 0 as unknown as string)
       expect(result).toBeUndefined()
     })
 
@@ -178,18 +179,18 @@ describe('AsTypeFactory.createOptional', () => {
   })
 
   it('returns undefined for null input', () => {
-    const result = asOptionalTestType(null as any)
+    const result = asOptionalTestType(null as unknown as TestType)
     expect(result).toBeUndefined()
   })
 
   it('returns undefined for undefined input', () => {
-    const result = asOptionalTestType(undefined as any)
+    const result = asOptionalTestType(undefined as unknown as TestType)
     expect(result).toBeUndefined()
   })
 
   it('throws for un-awaited promise input', () => {
     const promise = Promise.resolve({ kind: 'test', value: 1 })
-    expect(() => asOptionalTestType(promise as any)).toThrow('un-awaited promises may not be sent to "as" functions')
+    expect(() => asOptionalTestType(promise as unknown as TestType)).toThrow('un-awaited promises may not be sent to "as" functions')
   })
 
   it('returns the exact same reference for valid input', () => {

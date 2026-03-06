@@ -1,6 +1,8 @@
-import { describe, expect, it } from 'vitest'
+import {
+  describe, expect, it,
+} from 'vitest'
 
-import { hexFrom } from '../hex/from/from.ts'
+import { hexFrom } from '../hex/index.ts'
 
 describe('hexFrom', () => {
   it('converts a string', () => {

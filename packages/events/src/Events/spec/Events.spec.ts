@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import '@xylabs/vitest-extended'
 
 import { delay } from '@xylabs/delay'
@@ -45,9 +46,7 @@ describe('Events', () => {
     })
 
     it('should instantiate with debug options', () => {
-      const events = new Events<TestEvents>({
-        debug: { enabled: true, name: 'test-debug' },
-      })
+      const events = new Events<TestEvents>({ debug: { enabled: true, name: 'test-debug' } })
       expect(events).toBeTruthy()
       expect(events.debug?.name).toBe('test-debug')
     })
@@ -55,7 +54,9 @@ describe('Events', () => {
     it('should instantiate with debug options and custom logger', () => {
       const logger = vi.fn()
       const events = new Events<TestEvents>({
-        debug: { enabled: true, logger, name: 'test-debug' },
+        debug: {
+          enabled: true, logger, name: 'test-debug',
+        },
       })
       expect(events).toBeTruthy()
       expect(events.debug?.logger).toBe(logger)
@@ -88,8 +89,12 @@ describe('Events', () => {
     it('should call multiple listeners for the same event', async () => {
       const sut = new Events<TestEvents>()
       const calls: number[] = []
-      sut.on('testNumber', () => { calls.push(1) })
-      sut.on('testNumber', () => { calls.push(2) })
+      sut.on('testNumber', () => {
+        calls.push(1)
+      })
+      sut.on('testNumber', () => {
+        calls.push(2)
+      })
       await sut.emit('testNumber', { testNumber: 42 })
       expect(calls).toEqual([1, 2])
     })
@@ -97,7 +102,9 @@ describe('Events', () => {
     it('should subscribe to multiple event names at once', async () => {
       const sut = new Events<TestEvents>()
       const calls: string[] = []
-      sut.on(['test', 'testNumber'], () => { calls.push('called') })
+      sut.on(['test', 'testNumber'], () => {
+        calls.push('called')
+      })
       await sut.emit('test', { test: true })
       await sut.emit('testNumber', { testNumber: 1 })
       expect(calls).toEqual(['called', 'called'])
@@ -164,14 +171,16 @@ describe('Events', () => {
     it('should exercise off code path including logIfDebugEnabled and emitMetaEvent', async () => {
       const debugLogger = vi.fn()
       const sut = new Events<TestEvents>({
-        debug: { enabled: true, logger: debugLogger, name: 'off-test' },
+        debug: {
+          enabled: true, logger: debugLogger, name: 'off-test',
+        },
       })
       const listener = vi.fn()
       sut.on('test', listener)
       sut.off('test', listener)
       await delay(50)
       // off should have logged the unsubscribe event
-      const unsubCalls = debugLogger.mock.calls.filter((call: string[]) => call[0] === 'unsubscribe')
+      const unsubCalls = debugLogger.mock.calls.filter((call: unknown[]) => call[0] === 'unsubscribe')
       expect(unsubCalls.length).toBeGreaterThan(0)
     })
   })
@@ -254,7 +263,7 @@ describe('Events', () => {
         await delay(50)
         order.push(1)
       })
-      sut.on('test', async () => {
+      sut.on('test', () => {
         order.push(2)
       })
       await sut.emitSerial('test', { test: true })
@@ -268,7 +277,7 @@ describe('Events', () => {
         await delay(20)
         calls.push('specific')
       })
-      sut.onAny(async () => {
+      sut.onAny(() => {
         calls.push('any')
       })
       await sut.emitSerial('test', { test: true })
@@ -548,7 +557,9 @@ describe('Events', () => {
     it('should use custom debug logger when enabled', async () => {
       const debugLogger = vi.fn()
       const sut = new Events<TestEvents>({
-        debug: { enabled: true, logger: debugLogger, name: 'debug-test' },
+        debug: {
+          enabled: true, logger: debugLogger, name: 'debug-test',
+        },
       })
       sut.on('test', () => {})
       await sut.emit('test', { test: true })
@@ -563,9 +574,7 @@ describe('Events', () => {
     })
 
     it('should log with default logger when debug is enabled without custom logger', async () => {
-      const sut = new Events<TestEvents>({
-        debug: { enabled: true, name: 'default-logger-test' },
-      })
+      const sut = new Events<TestEvents>({ debug: { enabled: true, name: 'default-logger-test' } })
       // The default logger should be created and should call this.logger?.log
       // It should not throw
       sut.on('test', () => {})
@@ -573,9 +582,7 @@ describe('Events', () => {
     })
 
     it('default debug logger handles JSON.stringify failure', async () => {
-      const sut = new Events<TestEvents>({
-        debug: { enabled: true, name: 'stringify-fail-test' },
-      })
+      const sut = new Events<TestEvents>({ debug: { enabled: true, name: 'stringify-fail-test' } })
 
       // Create a circular reference object to make JSON.stringify throw
       const circular: Record<string, unknown> = {}
@@ -591,9 +598,7 @@ describe('Events', () => {
         [key: symbol]: { data: string }
       }
       const sym = Symbol('testSymbol')
-      const sut = new Events<SymbolEvents>({
-        debug: { enabled: true, name: 'symbol-test' },
-      })
+      const sut = new Events<SymbolEvents>({ debug: { enabled: true, name: 'symbol-test' } })
 
       sut.on(sym, () => {})
       await sut.emit(sym, { data: 'hello' })
@@ -603,18 +608,14 @@ describe('Events', () => {
       type NumberEvents = {
         [key: number]: { data: string }
       }
-      const sut = new Events<NumberEvents>({
-        debug: { enabled: true, name: 'number-test' },
-      })
+      const sut = new Events<NumberEvents>({ debug: { enabled: true, name: 'number-test' } })
 
       sut.on(42, () => {})
       await sut.emit(42, { data: 'hello' })
     })
 
     it('default debug logger handles string eventName (not symbol/number)', async () => {
-      const sut = new Events<TestEvents>({
-        debug: { enabled: true, name: 'string-event-test' },
-      })
+      const sut = new Events<TestEvents>({ debug: { enabled: true, name: 'string-event-test' } })
 
       sut.on('test', () => {})
       await sut.emit('test', { test: true })
@@ -623,7 +624,9 @@ describe('Events', () => {
     it('logIfDebugEnabled fires when static isDebugEnabled is true', async () => {
       const debugLogger = vi.fn()
       const sut = new Events<TestEvents>({
-        debug: { enabled: false, logger: debugLogger, name: 'static-debug' },
+        debug: {
+          enabled: false, logger: debugLogger, name: 'static-debug',
+        },
       })
       Events.isDebugEnabled = true
       sut.on('test', () => {})
@@ -634,7 +637,9 @@ describe('Events', () => {
     it('logIfDebugEnabled does not fire when both static and instance debug are off', async () => {
       const debugLogger = vi.fn()
       const sut = new Events<TestEvents>({
-        debug: { enabled: false, logger: debugLogger, name: 'no-debug' },
+        debug: {
+          enabled: false, logger: debugLogger, name: 'no-debug',
+        },
       })
       Events.isDebugEnabled = false
       sut.on('test', () => {})
@@ -647,19 +652,15 @@ describe('Events', () => {
       expect(sut.debug).toBeUndefined()
     })
 
-    it('default debug logger handles undefined eventData in stringify catch', async () => {
-      const sut = new Events<TestEvents>({
-        debug: { enabled: true, name: 'undefined-data-test' },
-      })
+    it('default debug logger handles undefined eventData in stringify catch', () => {
+      const sut = new Events<TestEvents>({ debug: { enabled: true, name: 'undefined-data-test' } })
       // Call logIfDebugEnabled directly with undefined eventArgs to cover the ?? {} fallback
-      sut.logIfDebugEnabled('test', 'someEvent', undefined)
+      sut.logIfDebugEnabled('test', 'someEvent')
     })
 
-    it('default debug logger catch block uses Object.keys with eventData ?? {} fallback', async () => {
+    it('default debug logger catch block uses Object.keys with eventData ?? {} fallback', () => {
       // We need JSON.stringify to fail AND eventData to be undefined to hit the ?? {} branch
-      const sut = new Events<TestEvents>({
-        debug: { enabled: true, name: 'catch-fallback-test' },
-      })
+      const sut = new Events<TestEvents>({ debug: { enabled: true, name: 'catch-fallback-test' } })
       // Pass undefined as eventArgs so the catch branch uses `eventData ?? {}`
       // We need to trigger stringify failure on undefined - but JSON.stringify(undefined) returns undefined, not throw
       // To trigger the catch: we need a circular reference with eventData being undefined afterward
@@ -667,18 +668,18 @@ describe('Events', () => {
       // The only way to test this is to make JSON.stringify throw with undefined eventData
       // Let's mock JSON.stringify temporarily
       const originalStringify = JSON.stringify
-      JSON.stringify = () => { throw new Error('stringify fail') }
+      JSON.stringify = () => {
+        throw new Error('stringify fail')
+      }
       try {
-        sut.logIfDebugEnabled('test', 'someEvent', undefined)
+        sut.logIfDebugEnabled('test', 'someEvent')
       } finally {
         JSON.stringify = originalStringify
       }
     })
 
-    it('default debug logger catch block uses Object.keys on eventData when stringify fails', async () => {
-      const sut = new Events<TestEvents>({
-        debug: { enabled: true, name: 'catch-keys-test' },
-      })
+    it('default debug logger catch block uses Object.keys on eventData when stringify fails', () => {
+      const sut = new Events<TestEvents>({ debug: { enabled: true, name: 'catch-keys-test' } })
       const circular: Record<string, unknown> = { a: 1, b: 2 }
       circular.self = circular
       // This triggers catch where eventData is defined, so ?? {} is not used
@@ -769,7 +770,7 @@ describe('Events', () => {
     it('throws when called with a meta event name while _canEmitMetaEvents is false (line 325)', async () => {
       const sut = new Events<TestEvents>()
       // Access the private method directly to test the defensive guard
-      const internal = (sut as unknown as Record<string, (...args: unknown[]) => Promise<boolean>>)
+      const internal = sut as unknown as Record<string, (...args: unknown[]) => Promise<boolean>>
       await expect(
         internal.emitMetaEventInternal('listenerAdded', { listener: vi.fn() }),
       ).rejects.toThrow('meta event')
@@ -786,9 +787,7 @@ describe('Events', () => {
       const sutAny = sut as unknown as Record<string, unknown>
       sutAny._canEmitMetaEvents = true
       try {
-        await (sutAny.emitMetaEventInternal as (name: string, args: unknown) => Promise<boolean>)(
-          'test', { test: true },
-        )
+        await (sutAny.emitMetaEventInternal as (name: string, args: unknown) => Promise<boolean>)('test', { test: true })
       } finally {
         sutAny._canEmitMetaEvents = false
       }
@@ -843,9 +842,9 @@ describe('Events', () => {
       const sut = new Events<TestEvents>()
       const listener = vi.fn()
       // Register on listenerAdded (a meta event)
-      sut.on('listenerAdded' as keyof TestEvents, listener as any)
+      sut.on('listenerAdded' as keyof TestEvents, listener as unknown as (args: TestEvents[keyof TestEvents]) => void)
       // Calling off for a meta event should skip the listenerRemoved emission
-      expect(() => sut.off('listenerAdded' as keyof TestEvents, listener as any)).not.toThrow()
+      expect(() => sut.off('listenerAdded' as keyof TestEvents, listener as unknown as (args: TestEvents[keyof TestEvents]) => void)).not.toThrow()
     })
   })
 })

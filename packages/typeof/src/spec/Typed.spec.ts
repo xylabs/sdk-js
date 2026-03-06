@@ -25,6 +25,7 @@ describe('isTypedKey', () => {
 
   it('returns false for non-key types', () => {
     expect(isTypedKey(null)).toBe(false)
+    // eslint-disable-next-line unicorn/no-useless-undefined
     expect(isTypedKey(undefined)).toBe(false)
     expect(isTypedKey({})).toBe(false)
     expect(isTypedKey(true)).toBe(false)

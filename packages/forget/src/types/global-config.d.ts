@@ -1,4 +1,4 @@
-import type { ForgetConfig } from './ForgetConfig.ts'
+import type { ForgetConfig } from '../ForgetConfig.ts'
 
 declare global {
   var xy: {

@@ -1,6 +1,8 @@
-import { describe, expect, it } from 'vitest'
+import {
+  describe, expect, it,
+} from 'vitest'
 
-import { toHexLegacy } from '../hex/legacy.ts'
+import { toHexLegacy } from '../hex/index.ts'
 
 describe('toHexLegacy', () => {
   it('converts an ArrayBuffer to hex string', () => {

@@ -1,35 +1,40 @@
+import type { Request, Response } from 'express'
+import { StatusCodes } from 'http-status-codes'
 import {
   describe, expect, it, vi,
 } from 'vitest'
-import { StatusCodes } from 'http-status-codes'
-import * as z from 'zod'
+import { z } from 'zod'
 
 import { requestHandlerValidator } from '../requestHandlerValidator.ts'
 
 describe('requestHandlerValidator', () => {
-  const createMockReqResNext = (overrides?: { params?: any; query?: any; body?: any }) => {
+  const createMockReqResNext = (overrides?: { body?: unknown; params?: unknown; query?: unknown }) => {
     const req = {
       params: {},
       query: {},
       body: undefined,
       ...overrides,
-    } as any
+    } as unknown as Request
 
     const originalJson = vi.fn().mockReturnThis()
     const res = {
       json: originalJson,
       status: vi.fn().mockReturnThis(),
-    } as any
+    } as unknown as Response
 
     const next = vi.fn()
 
-    return { req, res, next, originalJson }
+    return {
+      req, res, next, originalJson,
+    }
   }
 
   it('should call the handler when validation passes with default schemas', async () => {
     const handler = vi.fn()
     const middleware = requestHandlerValidator()(handler)
-    const { req, res, next } = createMockReqResNext()
+    const {
+      req, res, next,
+    } = createMockReqResNext()
 
     await middleware(req, res, next)
 
@@ -38,18 +43,19 @@ describe('requestHandlerValidator', () => {
   })
 
   it('should call next with error when params validation fails', async () => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated, sonarjs/deprecation
     const paramsSchema = z.object({ id: z.string().uuid() })
     const handler = vi.fn()
     const middleware = requestHandlerValidator({ params: paramsSchema })(handler)
-    const { req, res, next } = createMockReqResNext({ params: { id: 'not-a-uuid' } })
+    const {
+      req, res, next,
+    } = createMockReqResNext({ params: { id: 'not-a-uuid' } })
 
     await middleware(req, res, next)
 
     expect(handler).not.toHaveBeenCalled()
     expect(next).toHaveBeenCalledWith(
-      expect.objectContaining({
-        statusCode: StatusCodes.BAD_REQUEST,
-      }),
+      expect.objectContaining({ statusCode: StatusCodes.BAD_REQUEST }),
     )
   })
 
@@ -57,15 +63,15 @@ describe('requestHandlerValidator', () => {
     const querySchema = z.object({ page: z.string().regex(/^\d+$/) })
     const handler = vi.fn()
     const middleware = requestHandlerValidator({ query: querySchema })(handler)
-    const { req, res, next } = createMockReqResNext({ query: { page: 'abc' } })
+    const {
+      req, res, next,
+    } = createMockReqResNext({ query: { page: 'abc' } })
 
     await middleware(req, res, next)
 
     expect(handler).not.toHaveBeenCalled()
     expect(next).toHaveBeenCalledWith(
-      expect.objectContaining({
-        statusCode: StatusCodes.BAD_REQUEST,
-      }),
+      expect.objectContaining({ statusCode: StatusCodes.BAD_REQUEST }),
     )
   })
 
@@ -73,7 +79,9 @@ describe('requestHandlerValidator', () => {
     const error = new Error('handler error')
     const handler = vi.fn().mockRejectedValue(error)
     const middleware = requestHandlerValidator()(handler)
-    const { req, res, next } = createMockReqResNext()
+    const {
+      req, res, next,
+    } = createMockReqResNext()
 
     await middleware(req, res, next)
 
@@ -86,7 +94,9 @@ describe('requestHandlerValidator', () => {
       throw error
     })
     const middleware = requestHandlerValidator()(handler)
-    const { req, res, next } = createMockReqResNext()
+    const {
+      req, res, next,
+    } = createMockReqResNext()
 
     await middleware(req, res, next)
 
@@ -95,11 +105,13 @@ describe('requestHandlerValidator', () => {
 
   it('should validate response via wrapped res.json', async () => {
     const responseSchema = z.object({ name: z.string() })
-    const handler = vi.fn().mockImplementation((_req: any, res: any) => {
+    const handler = vi.fn().mockImplementation((_req: unknown, res: Response) => {
       res.json({ name: 'valid' })
     })
     const middleware = requestHandlerValidator({ response: responseSchema })(handler)
-    const { req, res, next, originalJson } = createMockReqResNext()
+    const {
+      req, res, next, originalJson,
+    } = createMockReqResNext()
 
     await middleware(req, res, next)
 
@@ -108,18 +120,18 @@ describe('requestHandlerValidator', () => {
 
   it('should throw when response validation fails', async () => {
     const responseSchema = z.object({ name: z.string() })
-    const handler = vi.fn().mockImplementation((_req: any, res: any) => {
+    const handler = vi.fn().mockImplementation((_req: unknown, res: Response) => {
       res.json({ name: 123 })
     })
     const middleware = requestHandlerValidator({ response: responseSchema })(handler)
-    const { req, res, next } = createMockReqResNext()
+    const {
+      req, res, next,
+    } = createMockReqResNext()
 
     await middleware(req, res, next)
 
     expect(next).toHaveBeenCalledWith(
-      expect.objectContaining({
-        statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
-      }),
+      expect.objectContaining({ statusCode: StatusCodes.INTERNAL_SERVER_ERROR }),
     )
   })
 
@@ -127,23 +139,26 @@ describe('requestHandlerValidator', () => {
     const bodySchema = z.object({ name: z.string(), age: z.number() })
     const handler = vi.fn()
     const middleware = requestHandlerValidator({ body: bodySchema })(handler)
-    const { req, res, next } = createMockReqResNext({ body: { name: 123, age: 'not a number' } })
+    const {
+      req, res, next,
+    } = createMockReqResNext({ body: { name: 123, age: 'not a number' } })
 
     await middleware(req, res, next)
 
     expect(handler).not.toHaveBeenCalled()
     expect(next).toHaveBeenCalledWith(
-      expect.objectContaining({
-        statusCode: StatusCodes.BAD_REQUEST,
-      }),
+      expect.objectContaining({ statusCode: StatusCodes.BAD_REQUEST }),
     )
   })
 
   it('should include field paths in validation error messages', async () => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated, sonarjs/deprecation
     const paramsSchema = z.object({ id: z.string().uuid() })
     const handler = vi.fn()
     const middleware = requestHandlerValidator({ params: paramsSchema })(handler)
-    const { req, res, next } = createMockReqResNext({ params: { id: 'bad' } })
+    const {
+      req, res, next,
+    } = createMockReqResNext({ params: { id: 'bad' } })
 
     await middleware(req, res, next)
 
@@ -152,10 +167,13 @@ describe('requestHandlerValidator', () => {
   })
 
   it('should join multiple validation errors with semicolons', async () => {
+    // eslint-disable-next-line @typescript-eslint/no-deprecated, sonarjs/deprecation
     const paramsSchema = z.object({ id: z.string().uuid(), slug: z.string().min(5) })
     const handler = vi.fn()
     const middleware = requestHandlerValidator({ params: paramsSchema })(handler)
-    const { req, res, next } = createMockReqResNext({ params: { id: 'bad', slug: 'ab' } })
+    const {
+      req, res, next,
+    } = createMockReqResNext({ params: { id: 'bad', slug: 'ab' } })
 
     await middleware(req, res, next)
 
@@ -167,7 +185,9 @@ describe('requestHandlerValidator', () => {
     const paramsSchema = z.object({ id: z.string() })
     const handler = vi.fn()
     const middleware = requestHandlerValidator({ params: paramsSchema })(handler)
-    const { req, res, next } = createMockReqResNext({ params: { id: '123' } })
+    const {
+      req, res, next,
+    } = createMockReqResNext({ params: { id: '123' } })
 
     await middleware(req, res, next)
 
@@ -178,7 +198,9 @@ describe('requestHandlerValidator', () => {
   it('should use default schemas when no schemas are provided', async () => {
     const handler = vi.fn()
     const middleware = requestHandlerValidator()(handler)
-    const { req, res, next } = createMockReqResNext()
+    const {
+      req, res, next,
+    } = createMockReqResNext()
 
     await middleware(req, res, next)
 
@@ -188,7 +210,9 @@ describe('requestHandlerValidator', () => {
   it('should restore original res.json in the catch block', async () => {
     const handler = vi.fn().mockRejectedValue(new Error('handler failed'))
     const middleware = requestHandlerValidator()(handler)
-    const { req, res, next } = createMockReqResNext()
+    const {
+      req, res, next,
+    } = createMockReqResNext()
 
     await middleware(req, res, next)
 
@@ -202,11 +226,13 @@ describe('requestHandlerValidator', () => {
 
   it('should include response path info in response validation error', async () => {
     const responseSchema = z.object({ id: z.number(), name: z.string() })
-    const handler = vi.fn().mockImplementation((_req: any, res: any) => {
+    const handler = vi.fn().mockImplementation((_req: unknown, res: Response) => {
       res.json({ id: 'not-a-number', name: 42 })
     })
     const middleware = requestHandlerValidator({ response: responseSchema })(handler)
-    const { req, res, next } = createMockReqResNext()
+    const {
+      req, res, next,
+    } = createMockReqResNext()
 
     await middleware(req, res, next)
 
@@ -217,7 +243,9 @@ describe('requestHandlerValidator', () => {
   it('should handle handler that returns a non-promise value', async () => {
     const handler = vi.fn().mockReturnValue('sync result')
     const middleware = requestHandlerValidator()(handler)
-    const { req, res, next } = createMockReqResNext()
+    const {
+      req, res, next,
+    } = createMockReqResNext()
 
     await middleware(req, res, next)
 
@@ -229,7 +257,9 @@ describe('requestHandlerValidator', () => {
     const bodySchema = z.string()
     const handler = vi.fn()
     const middleware = requestHandlerValidator({ body: bodySchema })(handler)
-    const { req, res, next } = createMockReqResNext({ body: 123 })
+    const {
+      req, res, next,
+    } = createMockReqResNext({ body: 123 })
 
     await middleware(req, res, next)
 

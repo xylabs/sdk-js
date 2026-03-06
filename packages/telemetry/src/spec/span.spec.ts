@@ -1,6 +1,9 @@
+/* eslint-disable require-await */
+import type { Tracer } from '@opentelemetry/api'
 import {
   context, createContextKey, propagation, trace as TRACE_API,
 } from '@opentelemetry/api'
+import type { Logger } from '@xylabs/logger'
 import {
   afterEach,
   describe, expect, it, vi,
@@ -16,11 +19,13 @@ describe('span', () => {
   })
 
   it('propagates errors', () => {
-    expect(() => span('test', () => { throw new Error('fail') })).toThrow('fail')
+    expect(() => span('test', () => {
+      throw new Error('fail')
+    })).toThrow('fail')
   })
 
   it('falls back to running fn directly when tracer is undefined', () => {
-    const result = span('test', () => 'no-trace', undefined as any)
+    const result = span('test', () => 'no-trace', undefined as unknown as Tracer)
     expect(result).toBe('no-trace')
   })
 })
@@ -31,11 +36,13 @@ describe('spanRoot', () => {
   })
 
   it('propagates errors', () => {
-    expect(() => spanRoot('test', () => { throw new Error('root fail') })).toThrow('root fail')
+    expect(() => spanRoot('test', () => {
+      throw new Error('root fail')
+    })).toThrow('root fail')
   })
 
   it('falls back to running fn directly when tracer is undefined', () => {
-    const result = spanRoot('test', () => 'no-trace-root', undefined as any)
+    const result = spanRoot('test', () => 'no-trace-root', undefined as unknown as Tracer)
     expect(result).toBe('no-trace-root')
   })
 })
@@ -46,7 +53,9 @@ describe('spanAsync', () => {
   })
 
   it('propagates async errors', async () => {
-    await expect(spanAsync('test', async () => { throw new Error('async fail') })).rejects.toThrow('async fail')
+    await expect(spanAsync('test', async () => {
+      throw new Error('async fail')
+    })).rejects.toThrow('async fail')
   })
 
   it('supports timeBudgetLimit config', async () => {
@@ -55,7 +64,7 @@ describe('spanAsync', () => {
   })
 
   it('supports timeBudgetLimit with custom logger', async () => {
-    const logger = { warn: vi.fn() } as any
+    const logger = { warn: vi.fn() } as unknown as Logger
     const result = await spanAsync('test', async () => 'logged', { timeBudgetLimit: 5000, logger })
     expect(result).toBe('logged')
   })
@@ -66,12 +75,12 @@ describe('spanAsync', () => {
   })
 
   it('falls back to running fn directly when tracer is undefined', async () => {
-    const result = await spanAsync('test', async () => 'async-no-trace', { tracer: undefined as any })
+    const result = await spanAsync('test', async () => 'async-no-trace', { tracer: undefined as unknown as Tracer })
     expect(result).toBe('async-no-trace')
   })
 
   it('falls back with timeBudgetLimit when tracer is undefined', async () => {
-    const result = await spanAsync('test', async () => 'budget-no-trace', { tracer: undefined as any, timeBudgetLimit: 5000 })
+    const result = await spanAsync('test', async () => 'budget-no-trace', { tracer: undefined as unknown as Tracer, timeBudgetLimit: 5000 })
     expect(result).toBe('budget-no-trace')
   })
 })
@@ -82,7 +91,9 @@ describe('spanRootAsync', () => {
   })
 
   it('propagates async errors', async () => {
-    await expect(spanRootAsync('test', async () => { throw new Error('root async fail') })).rejects.toThrow('root async fail')
+    await expect(spanRootAsync('test', async () => {
+      throw new Error('root async fail')
+    })).rejects.toThrow('root async fail')
   })
 
   it('supports timeBudgetLimit config', async () => {
@@ -91,7 +102,7 @@ describe('spanRootAsync', () => {
   })
 
   it('supports timeBudgetLimit with custom logger', async () => {
-    const logger = { warn: vi.fn() } as any
+    const logger = { warn: vi.fn() } as unknown as Logger
     const result = await spanRootAsync('test', async () => 'logged-root', { timeBudgetLimit: 5000, logger })
     expect(result).toBe('logged-root')
   })
@@ -102,12 +113,12 @@ describe('spanRootAsync', () => {
   })
 
   it('falls back to running fn directly when tracer is undefined', async () => {
-    const result = await spanRootAsync('test', async () => 'root-no-trace', { tracer: undefined as any })
+    const result = await spanRootAsync('test', async () => 'root-no-trace', { tracer: undefined as unknown as Tracer })
     expect(result).toBe('root-no-trace')
   })
 
   it('falls back with timeBudgetLimit when tracer is undefined', async () => {
-    const result = await spanRootAsync('test', async () => 'root-budget-no-trace', { tracer: undefined as any, timeBudgetLimit: 5000 })
+    const result = await spanRootAsync('test', async () => 'root-budget-no-trace', { tracer: undefined as unknown as Tracer, timeBudgetLimit: 5000 })
     expect(result).toBe('root-budget-no-trace')
   })
 })
@@ -118,25 +129,25 @@ describe('span fallback when getTracer returns undefined', () => {
   })
 
   it('span falls back to fn when tracer resolves to undefined', () => {
-    vi.spyOn(TRACE_API, 'getTracer').mockReturnValue(undefined as any)
+    vi.spyOn(TRACE_API, 'getTracer').mockReturnValue(undefined as unknown as Tracer)
     const result = span('test', () => 'fallback-span')
     expect(result).toBe('fallback-span')
   })
 
   it('spanRoot falls back to fn when tracer resolves to undefined', () => {
-    vi.spyOn(TRACE_API, 'getTracer').mockReturnValue(undefined as any)
+    vi.spyOn(TRACE_API, 'getTracer').mockReturnValue(undefined as unknown as Tracer)
     const result = spanRoot('test', () => 'fallback-spanRoot')
     expect(result).toBe('fallback-spanRoot')
   })
 
   it('spanAsync falls back to fn when tracer resolves to undefined', async () => {
-    vi.spyOn(TRACE_API, 'getTracer').mockReturnValue(undefined as any)
+    vi.spyOn(TRACE_API, 'getTracer').mockReturnValue(undefined as unknown as Tracer)
     const result = await spanAsync('test', async () => 'fallback-spanAsync')
     expect(result).toBe('fallback-spanAsync')
   })
 
   it('spanRootAsync falls back to fn when tracer resolves to undefined', async () => {
-    vi.spyOn(TRACE_API, 'getTracer').mockReturnValue(undefined as any)
+    vi.spyOn(TRACE_API, 'getTracer').mockReturnValue(undefined as unknown as Tracer)
     const result = await spanRootAsync('test', async () => 'fallback-spanRootAsync')
     expect(result).toBe('fallback-spanRootAsync')
   })

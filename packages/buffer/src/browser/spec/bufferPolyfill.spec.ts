@@ -2,8 +2,8 @@ import {
   afterEach, describe, expect, it,
 } from 'vitest'
 
-import { bufferPolyfill } from '../bufferPolyfill.ts'
 import { Buffer as BrowserEntryBuffer, bufferPolyfill as browserEntryPolyfill } from '../../index-browser.ts'
+import { bufferPolyfill } from '../bufferPolyfill.ts'
 
 describe('browser bufferPolyfill', () => {
   const originalBuffer = globalThis.Buffer

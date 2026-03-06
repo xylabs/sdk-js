@@ -1,9 +1,10 @@
+import type { Express } from 'express'
 import {
   describe, expect, it, vi,
 } from 'vitest'
 
-import type { RouteDefinition } from '../RouteDefinition.ts'
 import { addRouteDefinitions } from '../addRouteDefinitions.ts'
+import type { RouteDefinition } from '../RouteDefinition.ts'
 
 describe('addRouteDefinitions', () => {
   it('should register routes on the app for each definition', () => {
@@ -13,11 +14,15 @@ describe('addRouteDefinitions', () => {
     const app = {
       get: vi.fn(),
       post: vi.fn(),
-    } as any
+    } as unknown as Express
 
     const routes: RouteDefinition[] = [
-      { method: 'get', path: '/foo', handlers: handler1 },
-      { method: 'post', path: '/bar', handlers: [handler2] },
+      {
+        method: 'get', path: '/foo', handlers: handler1,
+      },
+      {
+        method: 'post', path: '/bar', handlers: [handler2],
+      },
     ]
 
     addRouteDefinitions(app, routes)
@@ -27,7 +32,7 @@ describe('addRouteDefinitions', () => {
   })
 
   it('should handle an empty array of route definitions', () => {
-    const app = { get: vi.fn() } as any
+    const app = { get: vi.fn() } as unknown as Express
     addRouteDefinitions(app, [])
     expect(app.get).not.toHaveBeenCalled()
   })
@@ -40,14 +45,24 @@ describe('addRouteDefinitions', () => {
       delete: vi.fn(),
       options: vi.fn(),
       head: vi.fn(),
-    } as any
+    } as unknown as Express
 
     const routes: RouteDefinition[] = [
-      { method: 'put', path: '/a', handlers: handler },
-      { method: 'patch', path: '/b', handlers: handler },
-      { method: 'delete', path: '/c', handlers: handler },
-      { method: 'options', path: '/d', handlers: handler },
-      { method: 'head', path: '/e', handlers: handler },
+      {
+        method: 'put', path: '/a', handlers: handler,
+      },
+      {
+        method: 'patch', path: '/b', handlers: handler,
+      },
+      {
+        method: 'delete', path: '/c', handlers: handler,
+      },
+      {
+        method: 'options', path: '/d', handlers: handler,
+      },
+      {
+        method: 'head', path: '/e', handlers: handler,
+      },
     ]
 
     addRouteDefinitions(app, routes)
@@ -62,10 +77,12 @@ describe('addRouteDefinitions', () => {
   it('should support RegExp paths', () => {
     const handler = vi.fn()
     const pattern = /^\/api\/.*/
-    const app = { get: vi.fn() } as any
+    const app = { get: vi.fn() } as unknown as Express
 
     const routes: RouteDefinition[] = [
-      { method: 'get', path: pattern, handlers: handler },
+      {
+        method: 'get', path: pattern, handlers: handler,
+      },
     ]
 
     addRouteDefinitions(app, routes)
@@ -77,10 +94,12 @@ describe('addRouteDefinitions', () => {
     const h1 = vi.fn()
     const h2 = vi.fn()
     const h3 = vi.fn()
-    const app = { get: vi.fn() } as any
+    const app = { get: vi.fn() } as unknown as Express
 
     const routes: RouteDefinition[] = [
-      { method: 'get', path: '/multi', handlers: [h1, h2, h3] },
+      {
+        method: 'get', path: '/multi', handlers: [h1, h2, h3],
+      },
     ]
 
     addRouteDefinitions(app, routes)

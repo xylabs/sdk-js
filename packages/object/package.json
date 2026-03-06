@@ -50,8 +50,8 @@
     "@xylabs/zod": "~5.0.80"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.4.4",
-    "@xylabs/tsconfig": "~7.4.4",
+    "@xylabs/ts-scripts-yarn3": "~7.4.8",
+    "@xylabs/tsconfig": "~7.4.8",
     "typescript": "~5.9.3",
     "vitest": "~4.0.18",
     "zod": "^4.3.6"

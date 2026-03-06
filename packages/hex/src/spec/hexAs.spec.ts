@@ -1,6 +1,8 @@
-import { describe, expect, it } from 'vitest'
+import {
+  describe, expect, it,
+} from 'vitest'
 
-import { asHex } from '../hex/as.ts'
+import { asHex } from '../hex/index.ts'
 
 describe('asHex', () => {
   it('returns Hex for a valid hex string', () => {
@@ -15,6 +17,7 @@ describe('asHex', () => {
     expect(asHex(123)).toBeUndefined()
     expect(asHex(true)).toBeUndefined()
     expect(asHex(null)).toBeUndefined()
+    // eslint-disable-next-line unicorn/no-useless-undefined
     expect(asHex(undefined)).toBeUndefined()
     expect(asHex({})).toBeUndefined()
     expect(asHex([])).toBeUndefined()
@@ -27,18 +30,18 @@ describe('asHex', () => {
   })
 
   it('throws for non-string types with assert', () => {
-    expect(() => asHex(123, {})).toThrow()
-    expect(() => asHex(true, {})).toThrow()
-    expect(() => asHex(null, {})).toThrow()
+    expect(() => asHex(123, true)).toThrow()
+    expect(() => asHex(true, true)).toThrow()
+    expect(() => asHex(null, true)).toThrow()
   })
 
   it('throws for invalid hex string with assert', () => {
-    expect(() => asHex('xyz', {})).toThrow()
+    expect(() => asHex('xyz', true)).toThrow()
   })
 
   it('returns valid hex with assert for valid input', () => {
-    expect(asHex('abcd', {})).toBe('abcd')
-    expect(asHex('0xabcd', {})).toBe('abcd')
+    expect(asHex('abcd', true)).toBe('abcd')
+    expect(asHex('0xabcd', true)).toBe('abcd')
   })
 
   it('handles single character hex', () => {

@@ -2,8 +2,8 @@ import {
   describe, expect, it,
 } from 'vitest'
 
-import { hexToBigInt } from '../hexToBigInt.ts'
 import type { Hex } from '../hex/index.ts'
+import { hexToBigInt } from '../hexToBigInt.ts'
 
 describe('hexToBigInt', () => {
   it('converts hex string to bigint', () => {
@@ -19,6 +19,6 @@ describe('hexToBigInt', () => {
   })
 
   it('converts multi-byte hex', () => {
-    expect(hexToBigInt('deadbeef' as Hex)).toBe(0xDEADBEEFn)
+    expect(hexToBigInt('deadbeef' as Hex)).toBe(0xDE_AD_BE_EFn)
   })
 })

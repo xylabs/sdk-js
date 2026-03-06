@@ -84,6 +84,7 @@ describe('ethAddress', () => {
 
   describe('asEthAddress edge cases', () => {
     it('returns undefined for undefined value', () => {
+      // eslint-disable-next-line unicorn/no-useless-undefined
       expect(asEthAddress(undefined)).toBeUndefined()
     })
 
@@ -92,7 +93,7 @@ describe('ethAddress', () => {
     })
 
     it('throws with assert config for unsupported type', () => {
-      expect(() => asEthAddress(42, { assert: true } as any)).toThrow()
+      expect(() => asEthAddress(42, { assert: true } as unknown as Parameters<typeof asEthAddress>[1])).toThrow()
     })
 
     it('returns undefined for invalid hex string that throws during conversion', () => {

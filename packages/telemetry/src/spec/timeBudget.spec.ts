@@ -1,3 +1,5 @@
+/* eslint-disable require-await */
+import type { Logger } from '@xylabs/logger'
 import {
   describe, expect, it, vi,
 } from 'vitest'
@@ -11,7 +13,7 @@ describe('timeBudget', () => {
   })
 
   it('warns when budget exceeded (no status interval)', async () => {
-    const logger = { warn: vi.fn() } as any
+    const logger = { warn: vi.fn() } as unknown as Logger
     await timeBudget('slow', logger, async () => {
       await new Promise(r => setTimeout(r, 50))
       return 'done'
@@ -21,13 +23,13 @@ describe('timeBudget', () => {
   })
 
   it('does not warn when within budget', async () => {
-    const logger = { warn: vi.fn() } as any
+    const logger = { warn: vi.fn() } as unknown as Logger
     await timeBudget('fast', logger, async () => 'ok', 5000)
     expect(logger.warn).not.toHaveBeenCalled()
   })
 
   it('uses status interval and warns while running', async () => {
-    const logger = { warn: vi.fn() } as any
+    const logger = { warn: vi.fn() } as unknown as Logger
     await timeBudget('interval', logger, async () => {
       await new Promise(r => setTimeout(r, 300))
       return 'done'
@@ -41,7 +43,7 @@ describe('timeBudget', () => {
   })
 
   it('does not warn in status interval when budget is 0', async () => {
-    const logger = { warn: vi.fn() } as any
+    const logger = { warn: vi.fn() } as unknown as Logger
     await timeBudget('zero-budget', logger, async () => {
       await new Promise(r => setTimeout(r, 150))
       return 'done'
@@ -51,7 +53,7 @@ describe('timeBudget', () => {
   })
 
   it('does not warn when budget is 0 and status is false', async () => {
-    const logger = { warn: vi.fn() } as any
+    const logger = { warn: vi.fn() } as unknown as Logger
     await timeBudget('zero-budget-no-status', logger, async () => {
       await new Promise(r => setTimeout(r, 50))
       return 'done'
@@ -61,7 +63,7 @@ describe('timeBudget', () => {
   })
 
   it('does not warn in status interval when budget is negative', async () => {
-    const logger = { warn: vi.fn() } as any
+    const logger = { warn: vi.fn() } as unknown as Logger
     await timeBudget('negative-budget', logger, async () => {
       await new Promise(r => setTimeout(r, 150))
       return 'done'

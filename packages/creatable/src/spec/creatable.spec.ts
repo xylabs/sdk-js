@@ -1,14 +1,26 @@
+/* eslint-disable max-lines */
+import type { Logger } from '@xylabs/logger'
 import {
   describe, expect, it, vi,
 } from 'vitest'
 
-import { AbstractCreatable, AbstractCreatableWithFactory } from '../AbstractCreatable.ts'
-import { creatable, creatableFactory } from '../Creatable.ts'
-import { Factory } from '../Factory.ts'
-import { getFunctionName } from '../lib/getFunctionName.ts'
-import { getRootFunction } from '../lib/getRootFunction.ts'
-import { hasAllLabels } from '../model/Labels.ts'
-import type { CreatableParams, RequiredCreatableParams } from '../model/index.ts'
+import type { // eslint-disable-line no-restricted-imports
+  CreatableParams,
+  RequiredCreatableParams,
+} from '../index.ts'
+// eslint-disable-next-line no-restricted-imports
+import {
+  AbstractCreatable,
+  AbstractCreatableWithFactory,
+  creatable,
+  creatableFactory,
+  Factory,
+  hasAllLabels,
+} from '../index.ts'
+import {
+  getFunctionName,
+  getRootFunction,
+} from '../lib/index.ts'
 
 @creatable()
 class SimpleCreatable extends AbstractCreatable {
@@ -17,6 +29,7 @@ class SimpleCreatable extends AbstractCreatable {
   }
 }
 
+// eslint-disable-next-line max-statements
 describe('AbstractCreatable', () => {
   it('create returns an instance', async () => {
     const instance = await SimpleCreatable.create()
@@ -25,7 +38,7 @@ describe('AbstractCreatable', () => {
   })
 
   it('name returns the creatable name', async () => {
-    const instance = await SimpleCreatable.create({ name: 'test-name' as any })
+    const instance = await SimpleCreatable.create({ name: 'test-name' as CreatableParams['name'] })
     expect(instance.name).toBe('test-name')
   })
 
@@ -87,16 +100,30 @@ describe('AbstractCreatable', () => {
 
   it('started with warn action calls logger.warn', async () => {
     const warn = vi.fn()
-    const logger = { debug: vi.fn(), error: vi.fn(), info: vi.fn(), log: vi.fn(), trace: vi.fn(), warn }
-    const instance = await SimpleCreatable.create({ logger: logger as any })
+    const logger: Logger = {
+      debug: vi.fn(),
+      error: vi.fn(),
+      info: vi.fn(),
+      log: vi.fn(),
+      trace: vi.fn(),
+      warn,
+    }
+    const instance = await SimpleCreatable.create({ logger })
     instance.started('warn')
     expect(warn).toHaveBeenCalledOnce()
   })
 
   it('started with log action calls logger.log', async () => {
     const log = vi.fn()
-    const logger = { debug: vi.fn(), error: vi.fn(), info: vi.fn(), log, trace: vi.fn(), warn: vi.fn() }
-    const instance = await SimpleCreatable.create({ logger: logger as any })
+    const logger: Logger = {
+      debug: vi.fn(),
+      error: vi.fn(),
+      info: vi.fn(),
+      log,
+      trace: vi.fn(),
+      warn: vi.fn(),
+    }
+    const instance = await SimpleCreatable.create({ logger })
     instance.started('log')
     expect(log).toHaveBeenCalledOnce()
   })
@@ -122,10 +149,8 @@ describe('AbstractCreatable', () => {
 
   it('statusReporter is called during lifecycle', async () => {
     const reports: [string, string][] = []
-    const reporter = {
-      report: (name: string, status: string) => reports.push([name, status]),
-    }
-    const instance = await SimpleCreatable.create({ statusReporter: reporter as any })
+    const reporter = { report: (name: string, status: string) => reports.push([name, status]) }
+    const instance = await SimpleCreatable.create({ statusReporter: reporter as unknown as CreatableParams['statusReporter'] })
     await instance.start()
     await instance.stop()
     expect(reports.some(([, s]) => s === 'creating')).toBe(true)
@@ -137,16 +162,16 @@ describe('AbstractCreatable', () => {
   })
 
   it('statusReporter receives progress numbers', async () => {
-    const reports: any[] = []
-    const reporter = {
-      report: (...args: any[]) => reports.push(args),
-    }
-    const instance = await SimpleCreatable.create({ statusReporter: reporter as any })
+    const reports: unknown[][] = []
+    const reporter = { report: (...args: unknown[]) => reports.push(args) }
+    const instance = await SimpleCreatable.create({ statusReporter: reporter as unknown as CreatableParams['statusReporter'] })
     expect(reports.length).toBeGreaterThan(0)
+    // Use instance to avoid unused variable warning
+    expect(instance).toBeDefined()
   })
 
   it('throws when constructed directly', () => {
-    expect(() => new (SimpleCreatable as any)('wrong-key', {})).toThrow('should not be instantiated directly')
+    expect(() => new (SimpleCreatable as unknown as new (key: string, params: Record<string, unknown>) => unknown)('wrong-key', {})).toThrow('should not be instantiated directly')
   })
 
   it('span executes and returns result', async () => {
@@ -157,6 +182,7 @@ describe('AbstractCreatable', () => {
 
   it('spanAsync executes and returns result', async () => {
     const instance = await SimpleCreatable.create()
+    // eslint-disable-next-line require-await
     const result = await instance.spanAsync('test-span', async () => 'async-result')
     expect(result).toBe('async-result')
   })
@@ -164,8 +190,8 @@ describe('AbstractCreatable', () => {
   it('startedAsync throws for error status', async () => {
     @creatable()
     class FailCreatable extends AbstractCreatable {
-      override paramsValidator(params: any): any {
-        return { ...params, name: params.name ?? 'FailCreatable' }
+      override paramsValidator(params: Partial<CreatableParams & RequiredCreatableParams>): CreatableParams & RequiredCreatableParams {
+        return { ...params, name: params.name ?? 'FailCreatable' } as CreatableParams & RequiredCreatableParams
       }
 
       override startHandler() {
@@ -189,10 +215,8 @@ describe('AbstractCreatable', () => {
 
   it('start transitions through starting to started', async () => {
     const statuses: string[] = []
-    const reporter = {
-      report: (_name: string, status: string) => statuses.push(status),
-    }
-    const instance = await SimpleCreatable.create({ statusReporter: reporter as any })
+    const reporter = { report: (_name: string, status: string) => statuses.push(status) }
+    const instance = await SimpleCreatable.create({ statusReporter: reporter as unknown as CreatableParams['statusReporter'] })
     await instance.start()
     expect(statuses).toContain('starting')
     expect(statuses).toContain('started')
@@ -231,8 +255,8 @@ describe('AbstractCreatable', () => {
   it('start handles error in startHandler gracefully', async () => {
     @creatable()
     class ErrorStartCreatable extends AbstractCreatable {
-      override paramsValidator(params: any): any {
-        return { ...params, name: params.name ?? 'ErrorStartCreatable' }
+      override paramsValidator(params: Partial<CreatableParams & RequiredCreatableParams>): CreatableParams & RequiredCreatableParams {
+        return { ...params, name: params.name ?? 'ErrorStartCreatable' } as CreatableParams & RequiredCreatableParams
       }
 
       override startHandler() {
@@ -248,12 +272,11 @@ describe('AbstractCreatable', () => {
   it('start handles non-Error thrown in startHandler', async () => {
     @creatable()
     class StringThrowCreatable extends AbstractCreatable {
-      override paramsValidator(params: any): any {
-        return { ...params, name: params.name ?? 'StringThrowCreatable' }
+      override paramsValidator(params: Partial<CreatableParams & RequiredCreatableParams>): CreatableParams & RequiredCreatableParams {
+        return { ...params, name: params.name ?? 'StringThrowCreatable' } as CreatableParams & RequiredCreatableParams
       }
 
       override startHandler() {
-        // eslint-disable-next-line no-throw-literal
         throw 'string error'
       }
     }
@@ -266,8 +289,8 @@ describe('AbstractCreatable', () => {
   it('stop handles error in stopHandler gracefully', async () => {
     @creatable()
     class ErrorStopCreatable extends AbstractCreatable {
-      override paramsValidator(params: any): any {
-        return { ...params, name: params.name ?? 'ErrorStopCreatable' }
+      override paramsValidator(params: Partial<CreatableParams & RequiredCreatableParams>): CreatableParams & RequiredCreatableParams {
+        return { ...params, name: params.name ?? 'ErrorStopCreatable' } as CreatableParams & RequiredCreatableParams
       }
 
       override stopHandler() {
@@ -288,35 +311,33 @@ describe('AbstractCreatable', () => {
   })
 
   it('statusReporter receives error on start failure', async () => {
-    const reports: any[] = []
-    const reporter = {
-      report: (...args: any[]) => reports.push(args),
-    }
+    const reports: unknown[][] = []
+    const reporter = { report: (...args: unknown[]) => reports.push(args) }
     @creatable()
     class FailReportCreatable extends AbstractCreatable {
-      override paramsValidator(params: any): any {
-        return { ...params, name: params.name ?? 'FailReportCreatable' }
+      override paramsValidator(params: Partial<CreatableParams & RequiredCreatableParams>): CreatableParams & RequiredCreatableParams {
+        return { ...params, name: params.name ?? 'FailReportCreatable' } as CreatableParams & RequiredCreatableParams
       }
 
       override startHandler() {
         throw new Error('fail for report')
       }
     }
-    const instance = await FailReportCreatable.create({ statusReporter: reporter as any })
+    const instance = await FailReportCreatable.create({ statusReporter: reporter as unknown as CreatableParams['statusReporter'] })
     await instance.start()
     const errorReport = reports.find(([, status]) => status === 'error')
     expect(errorReport).toBeDefined()
-    expect(errorReport[2]).toBeInstanceOf(Error)
+    expect(errorReport?.[2]).toBeInstanceOf(Error)
   })
 
-  it('static createHandler returns the instance by default', async () => {
-    const fakeInstance = {} as any
+  it('static createHandler returns the instance by default', () => {
+    const fakeInstance = {} as unknown as AbstractCreatable
     const result = AbstractCreatable.createHandler.call(SimpleCreatable, fakeInstance)
     expect(result).toBe(fakeInstance)
   })
 
-  it('static paramsHandler returns spread params', async () => {
-    const params = { name: 'test' as any }
+  it('static paramsHandler returns spread params', () => {
+    const params = { name: 'test' as CreatableParams['name'] }
     const result = AbstractCreatable.paramsHandler.call(SimpleCreatable, params)
     expect(result).toEqual(params)
     expect(result).not.toBe(params) // should be a copy
@@ -326,88 +347,88 @@ describe('AbstractCreatable', () => {
 describe('AbstractCreatableWithFactory', () => {
   @creatable()
   class FactoryCreatable extends AbstractCreatableWithFactory {
-    override paramsValidator(params: any): any {
-      return { ...params, name: params.name ?? 'FactoryCreatable' }
+    override paramsValidator(params: Partial<CreatableParams & RequiredCreatableParams>): CreatableParams & RequiredCreatableParams {
+      return { ...params, name: params.name ?? 'FactoryCreatable' } as CreatableParams & RequiredCreatableParams
     }
   }
 
   it('factory method returns a Factory instance', () => {
-    const factory = (FactoryCreatable as any).factory()
+    const factory = (FactoryCreatable as unknown as { factory: () => unknown }).factory()
     expect(factory).toBeInstanceOf(Factory)
   })
 
   it('factory creates instances', async () => {
-    const factory = (FactoryCreatable as any).factory()
+    const factory = (FactoryCreatable as unknown as { factory: () => Factory }).factory()
     const instance = await factory.create()
     expect(instance).toBeDefined()
-    expect(instance.status).toBe('created')
+    expect((instance as unknown as Record<string, unknown>).status).toBe('created')
   })
 
   it('factory with params passes them through', async () => {
-    const factory = (FactoryCreatable as any).factory({ name: 'from-factory' as any })
+    const factory = (FactoryCreatable as unknown as { factory: (params: Partial<CreatableParams>) => Factory }).factory({ name: 'from-factory' as CreatableParams['name'] })
     const instance = await factory.create()
     expect(instance.name).toBe('from-factory')
   })
 
   it('factory with labels stores them', () => {
-    const factory = (FactoryCreatable as any).factory({}, { env: 'test' })
+    const factory = (FactoryCreatable as unknown as { factory: (params: Partial<CreatableParams>, labels: Record<string, string>) => Factory }).factory({}, { env: 'test' })
     expect(factory.labels).toEqual({ env: 'test' })
   })
 })
 
 describe('Factory', () => {
   it('creates instances via factory', async () => {
-    const factory = Factory.withParams(SimpleCreatable as any)
+    const factory = Factory.withParams(SimpleCreatable as unknown as Parameters<typeof Factory.withParams>[0])
     const instance = await factory.create()
     expect(instance).toBeDefined()
   })
 
   it('merges default params', async () => {
-    const factory = Factory.withParams(SimpleCreatable as any, { name: 'factory-name' as any })
+    const factory = Factory.withParams(SimpleCreatable as unknown as Parameters<typeof Factory.withParams>[0], { name: 'factory-name' as CreatableParams['name'] })
     const instance = await factory.create()
     expect(instance.name).toBe('factory-name')
   })
 
   it('overrides default params with create params', async () => {
-    const factory = Factory.withParams(SimpleCreatable as any, { name: 'default-name' as any })
-    const instance = await factory.create({ name: 'override-name' as any })
+    const factory = Factory.withParams(SimpleCreatable as unknown as Parameters<typeof Factory.withParams>[0], { name: 'default-name' as CreatableParams['name'] })
+    const instance = await factory.create({ name: 'override-name' as CreatableParams['name'] })
     expect(instance.name).toBe('override-name')
   })
 
   it('stores labels', () => {
-    const factory = Factory.withParams(SimpleCreatable as any, {}, { env: 'test' })
+    const factory = Factory.withParams(SimpleCreatable as unknown as Parameters<typeof Factory.withParams>[0], {}, { env: 'test' })
     expect(factory.labels).toEqual({ env: 'test' })
   })
 
   it('stores default params', () => {
-    const params = { name: 'stored' as any }
-    const factory = Factory.withParams(SimpleCreatable as any, params)
+    const params = { name: 'stored' as CreatableParams['name'] }
+    const factory = Factory.withParams(SimpleCreatable as unknown as Parameters<typeof Factory.withParams>[0], params)
     expect(factory.defaultParams).toEqual(params)
   })
 
   it('merges labels from creatable and provided', () => {
-    const creatableWithLabels = Object.assign(Object.create(SimpleCreatable), { labels: { base: 'label' } })
-    const factory = new Factory(creatableWithLabels as any, {}, { extra: 'label' })
+    const creatableWithLabels = Object.assign(Object.create(SimpleCreatable) as Record<string, unknown>, { labels: { base: 'label' } })
+    const factory = new Factory(creatableWithLabels as unknown as ConstructorParameters<typeof Factory>[0], {}, { extra: 'label' })
     expect(factory.labels).toEqual({ base: 'label', extra: 'label' })
   })
 
   it('defaults labels to empty object', () => {
-    const factory = Factory.withParams(SimpleCreatable as any)
+    const factory = Factory.withParams(SimpleCreatable as unknown as Parameters<typeof Factory.withParams>[0])
     expect(factory.labels).toEqual({})
   })
 
   it('constructor stores creatable reference', () => {
-    const factory = new Factory(SimpleCreatable as any)
+    const factory = new Factory(SimpleCreatable as unknown as ConstructorParameters<typeof Factory>[0])
     expect(factory.creatable).toBe(SimpleCreatable)
   })
 
   it('constructor with no params sets defaultParams to undefined', () => {
-    const factory = new Factory(SimpleCreatable as any)
+    const factory = new Factory(SimpleCreatable as unknown as ConstructorParameters<typeof Factory>[0])
     expect(factory.defaultParams).toBeUndefined()
   })
 
   it('constructor with explicit undefined labels defaults to empty object', () => {
-    const factory = new Factory(SimpleCreatable as any, {}, undefined as any)
+    const factory = new Factory(SimpleCreatable as unknown as ConstructorParameters<typeof Factory>[0], {}, undefined as unknown as Record<string, string>)
     expect(factory.labels).toEqual({})
   })
 })
@@ -434,7 +455,7 @@ describe('hasAllLabels', () => {
   })
 
   it('returns true when source is undefined and required is undefined', () => {
-    expect(hasAllLabels(undefined)).toBe(true)
+    expect(hasAllLabels()).toBe(true)
   })
 
   it('returns false when source is undefined but required has labels', () => {
@@ -442,7 +463,9 @@ describe('hasAllLabels', () => {
   })
 
   it('handles multiple required labels all present', () => {
-    expect(hasAllLabels({ a: '1', b: '2', c: '3' }, { a: '1', b: '2' })).toBe(true)
+    expect(hasAllLabels({
+      a: '1', b: '2', c: '3',
+    }, { a: '1', b: '2' })).toBe(true)
   })
 
   it('handles multiple required labels with one missing', () => {
@@ -496,17 +519,33 @@ describe('getFunctionName', () => {
 
 describe('getRootFunction', () => {
   it('traverses prototype chain to find root function', () => {
-    class A { foo() { return 'a' } }
-    class B extends A { override foo() { return 'b' } }
+    class A {
+      foo() {
+        return 'a'
+      }
+    }
+    class B extends A {
+      override foo() {
+        return 'b'
+      }
+    }
     const b = new B()
     const root = getRootFunction(b, 'foo')
     expect(typeof root).toBe('function')
   })
 
   it('returns the function from the deepest prototype', () => {
-    class A { bar() { return 'a' } }
+    class A {
+      bar() {
+        return 'a'
+      }
+    }
     class B extends A {}
-    class C extends B { override bar() { return 'c' } }
+    class C extends B {
+      override bar() {
+        return 'c'
+      }
+    }
     const c = new C()
     const root = getRootFunction(c, 'bar')
     expect(typeof root).toBe('function')
@@ -515,13 +554,21 @@ describe('getRootFunction', () => {
   })
 
   it('returns the function directly when no prototype chain', () => {
-    const obj = { baz() { return 'direct' } }
+    const obj = {
+      baz() {
+        return 'direct'
+      },
+    }
     const root = getRootFunction(obj, 'baz')
     expect(typeof root).toBe('function')
   })
 
   it('returns undefined for nonexistent function name', () => {
-    const obj = { foo() { return 1 } }
+    const obj = {
+      foo() {
+        return 1
+      },
+    }
     const root = getRootFunction(obj, 'nonexistent')
     expect(root).toBeUndefined()
   })
@@ -536,8 +583,8 @@ describe('creatable and creatableFactory decorators', () => {
   it('creatable decorator does not modify the class', () => {
     @creatable()
     class Decorated extends AbstractCreatable {
-      override paramsValidator(params: any): any {
-        return { ...params, name: params.name ?? 'Decorated' }
+      override paramsValidator(params: Partial<CreatableParams & RequiredCreatableParams>): CreatableParams & RequiredCreatableParams {
+        return { ...params, name: params.name ?? 'Decorated' } as CreatableParams & RequiredCreatableParams
       }
     }
     expect(Decorated).toBeDefined()
@@ -550,9 +597,9 @@ describe('creatable and creatableFactory decorators', () => {
   })
 
   it('creatableFactory decorator does not modify the class', () => {
-    const factoryClass = { create: async () => ({}) }
+    const factoryClass = { create: () => ({}) }
     const decorator = creatableFactory()
-    decorator(factoryClass as any)
+    decorator(factoryClass as unknown as Parameters<typeof decorator>[0])
     expect(factoryClass).toBeDefined()
     expect(typeof factoryClass.create).toBe('function')
   })
@@ -560,37 +607,34 @@ describe('creatable and creatableFactory decorators', () => {
 
 describe('AbstractCreatable.create error path', () => {
   it('create reports error to statusReporter on failure', async () => {
-    const reports: any[] = []
-    const reporter = {
-      report: (...args: any[]) => reports.push(args),
-    }
+    const reports: unknown[][] = []
+    const reporter = { report: (...args: unknown[]) => reports.push(args) }
 
     @creatable()
     class CreateFailCreatable extends AbstractCreatable {
-      override paramsValidator(params: any): any {
-        return { ...params, name: params.name ?? 'CreateFailCreatable' }
-      }
-
       override createHandler() {
         throw new Error('create handler failure')
       }
+
+      override paramsValidator(params: Partial<CreatableParams & RequiredCreatableParams>): CreatableParams & RequiredCreatableParams {
+        return { ...params, name: params.name ?? 'CreateFailCreatable' } as CreatableParams & RequiredCreatableParams
+      }
     }
 
-    await expect(CreateFailCreatable.create({ statusReporter: reporter as any })).rejects.toThrow('create handler failure')
-    const errorReport = reports.find(([, status]: any) => status === 'error')
+    await expect(CreateFailCreatable.create({ statusReporter: reporter as unknown as CreatableParams['statusReporter'] })).rejects.toThrow('create handler failure')
+    const errorReport = reports.find(([, status]) => status === 'error')
     expect(errorReport).toBeDefined()
   })
 
   it('create wraps non-Error thrown in createHandler', async () => {
     @creatable()
     class NonErrorCreateCreatable extends AbstractCreatable {
-      override paramsValidator(params: any): any {
-        return { ...params, name: params.name ?? 'NonErrorCreateCreatable' }
+      override createHandler() {
+        throw 'string error in create'
       }
 
-      override createHandler() {
-        // eslint-disable-next-line no-throw-literal
-        throw 'string error in create'
+      override paramsValidator(params: Partial<CreatableParams & RequiredCreatableParams>): CreatableParams & RequiredCreatableParams {
+        return { ...params, name: params.name ?? 'NonErrorCreateCreatable' } as CreatableParams & RequiredCreatableParams
       }
     }
 
@@ -609,8 +653,8 @@ describe('AbstractCreatable.stop concurrent path', () => {
   it('stop returns true when status becomes stopped inside mutex (concurrent stop)', async () => {
     @creatable()
     class SlowStopCreatable extends AbstractCreatable {
-      override paramsValidator(params: any): any {
-        return { ...params, name: params.name ?? 'SlowStopCreatable' }
+      override paramsValidator(params: Partial<CreatableParams & RequiredCreatableParams>): CreatableParams & RequiredCreatableParams {
+        return { ...params, name: params.name ?? 'SlowStopCreatable' } as CreatableParams & RequiredCreatableParams
       }
 
       override async stopHandler() {
@@ -631,28 +675,26 @@ describe('AbstractCreatable.stop concurrent path', () => {
 
 describe('AbstractCreatable.setStatus with progress', () => {
   it('setStatus reports progress number to statusReporter', async () => {
-    const reports: any[] = []
-    const reporter = {
-      report: (...args: any[]) => reports.push(args),
-    }
+    const reports: unknown[][] = []
+    const reporter = { report: (...args: unknown[]) => reports.push(args) }
 
     @creatable()
     class ProgressCreatable extends AbstractCreatable {
-      override paramsValidator(params: any): any {
-        return { ...params, name: params.name ?? 'ProgressCreatable' }
+      override paramsValidator(params: Partial<CreatableParams & RequiredCreatableParams>): CreatableParams & RequiredCreatableParams {
+        return { ...params, name: params.name ?? 'ProgressCreatable' } as CreatableParams & RequiredCreatableParams
       }
 
-      override async startHandler() {
+      override startHandler() {
         // Call setStatus with a progress number to hit lines 242-243
-        this.setStatus('starting' as any, 0.5)
+        this.setStatus('starting', 0.5)
       }
     }
-    const instance = await ProgressCreatable.create({ statusReporter: reporter as any })
+    const instance = await ProgressCreatable.create({ statusReporter: reporter as unknown as CreatableParams['statusReporter'] })
     await instance.start()
     // Find a report that includes a numeric progress value
-    const progressReport = reports.find(([, , third]: any) => typeof third === 'number')
+    const progressReport = reports.find(r => typeof r[2] === 'number')
     expect(progressReport).toBeDefined()
-    expect(progressReport[2]).toBe(0.5)
+    expect(progressReport?.[2]).toBe(0.5)
   })
 })
 
@@ -660,12 +702,11 @@ describe('AbstractCreatable.stop error path', () => {
   it('stop handles non-Error thrown in stopHandler', async () => {
     @creatable()
     class StringStopCreatable extends AbstractCreatable {
-      override paramsValidator(params: any): any {
-        return { ...params, name: params.name ?? 'StringStopCreatable' }
+      override paramsValidator(params: Partial<CreatableParams & RequiredCreatableParams>): CreatableParams & RequiredCreatableParams {
+        return { ...params, name: params.name ?? 'StringStopCreatable' } as CreatableParams & RequiredCreatableParams
       }
 
       override stopHandler() {
-        // eslint-disable-next-line no-throw-literal
         throw 'stop string error'
       }
     }

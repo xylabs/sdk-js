@@ -1,7 +1,9 @@
-import { describe, expect, it } from 'vitest'
+import {
+  describe, expect, it,
+} from 'vitest'
 
-import { toHex } from '../hex/to.ts'
-import { toAddress } from '../address/to.ts'
+import { toAddress } from '../address/index.ts'
+import { toHex } from '../hex/index.ts'
 
 describe('toHex', () => {
   it('converts a string without prefix by default', () => {

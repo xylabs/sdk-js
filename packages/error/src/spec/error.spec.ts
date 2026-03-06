@@ -2,7 +2,8 @@ import {
   describe, expect, it,
 } from 'vitest'
 
-import { assertError, handleError, handleErrorAsync } from '../index.ts'
+import { assertError } from '../assert.ts'
+import { handleError, handleErrorAsync } from '../handleError.ts'
 
 describe('assertError', () => {
   it('returns undefined when assert is undefined', () => {
@@ -60,11 +61,11 @@ describe('handleError', () => {
 
 describe('handleErrorAsync', () => {
   it('calls async handler for Error instances', async () => {
-    const result = await handleErrorAsync(new Error('async test'), async error => error.message)
+    const result = await handleErrorAsync(new Error('async test'), error => Promise.resolve(error.message))
     expect(result).toBe('async test')
   })
 
   it('rethrows non-Error values', async () => {
-    await expect(handleErrorAsync('not an error', async () => 'handled')).rejects.toThrow('not an error')
+    await expect(handleErrorAsync('not an error', () => Promise.resolve('handled'))).rejects.toThrow('not an error')
   })
 })

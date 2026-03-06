@@ -1,8 +1,7 @@
-import {
-  describe, expect, it, vi,
-} from 'vitest'
-
 import type { Response } from 'express'
+import {
+  describe, expect, it,
+} from 'vitest'
 
 import {
   clearRawResponseFormat,
@@ -22,7 +21,7 @@ describe('standardResponses', () => {
 
   describe('clearRawResponseFormat', () => {
     it('should set rawResponse to false on res.locals', () => {
-      const mockRes = { locals: { rawResponse: true } } as any
+      const mockRes = { locals: { rawResponse: true } } as unknown as Response
       clearRawResponseFormat(mockRes)
       expect(mockRes.locals.rawResponse).toBe(false)
     })
@@ -30,12 +29,12 @@ describe('standardResponses', () => {
 
   describe('isRawResponseFormatSet', () => {
     it('should return true when rawResponse is true', () => {
-      const mockRes = { locals: { rawResponse: true } } as any
+      const mockRes = { locals: { rawResponse: true } } as unknown as Response
       expect(isRawResponseFormatSet(mockRes)).toBe(true)
     })
 
     it('should return false when rawResponse is false', () => {
-      const mockRes = { locals: { rawResponse: false } } as any
+      const mockRes = { locals: { rawResponse: false } } as unknown as Response
       expect(isRawResponseFormatSet(mockRes)).toBe(false)
     })
 
@@ -45,7 +44,7 @@ describe('standardResponses', () => {
     })
 
     it('should return false when rawResponse is null', () => {
-      const mockRes = { locals: { rawResponse: null } } as any
+      const mockRes = { locals: { rawResponse: null } } as unknown as Response
       expect(isRawResponseFormatSet(mockRes)).toBe(false)
     })
   })

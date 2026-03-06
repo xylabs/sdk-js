@@ -1,8 +1,9 @@
+/* eslint-disable max-lines */
 import {
   describe, expect, it,
 } from 'vitest'
 
-import { matchers } from '../index.ts'
+import { matchers } from '../index.ts' // eslint-disable-line no-restricted-imports
 
 describe('matchers', () => {
   describe('toBeArray', () => {
@@ -31,6 +32,7 @@ describe('matchers', () => {
       expect(result.message()).toBe('expected array, but received object')
     })
     it('fails for undefined', () => {
+      // eslint-disable-next-line unicorn/no-useless-undefined
       const result = matchers.toBeArray(undefined)
       expect(result.pass).toBe(false)
       expect(result.message()).toBe('expected array, but received undefined')
@@ -211,6 +213,7 @@ describe('matchers', () => {
       expect(matchers.toBeNumber(null).pass).toBe(false)
     })
     it('fails for undefined', () => {
+      // eslint-disable-next-line unicorn/no-useless-undefined
       expect(matchers.toBeNumber(undefined).pass).toBe(false)
     })
     it('fails for boolean', () => {
@@ -236,6 +239,7 @@ describe('matchers', () => {
       expect(matchers.toBeString(null).pass).toBe(false)
     })
     it('fails for undefined', () => {
+      // eslint-disable-next-line unicorn/no-useless-undefined
       expect(matchers.toBeString(undefined).pass).toBe(false)
     })
     it('fails for boolean', () => {
@@ -305,6 +309,7 @@ describe('matchers', () => {
       expect(result.message()).toContain('was number')
     })
     it('fails for undefined', () => {
+      // eslint-disable-next-line unicorn/no-useless-undefined
       expect(matchers.toBeObject(undefined).pass).toBe(false)
     })
     it('fails for function', () => {
@@ -374,6 +379,7 @@ describe('matchers', () => {
       expect(matchers.toBeTrue(null).pass).toBe(false)
     })
     it('fails for undefined', () => {
+      // eslint-disable-next-line unicorn/no-useless-undefined
       expect(matchers.toBeTrue(undefined).pass).toBe(false)
     })
   })
@@ -400,6 +406,7 @@ describe('matchers', () => {
       expect(matchers.toBeFalse(null).pass).toBe(false)
     })
     it('fails for undefined', () => {
+      // eslint-disable-next-line unicorn/no-useless-undefined
       expect(matchers.toBeFalse(undefined).pass).toBe(false)
     })
   })
@@ -411,7 +418,9 @@ describe('matchers', () => {
       expect(result.message()).toContain('not to contain all values')
     })
     it('passes when object contains all values', () => {
-      const result = matchers.toContainAllValues({ a: 1, b: 2, c: 3 }, [1, 3])
+      const result = matchers.toContainAllValues({
+        a: 1, b: 2, c: 3,
+      }, [1, 3])
       expect(result.pass).toBe(true)
     })
     it('fails when array missing values', () => {
@@ -561,7 +570,9 @@ describe('matchers', () => {
 
   describe('toContainAllKeys', () => {
     it('passes when all keys present', () => {
-      const result = matchers.toContainAllKeys({ a: 1, b: 2, c: 3 }, ['a', 'b'])
+      const result = matchers.toContainAllKeys({
+        a: 1, b: 2, c: 3,
+      }, ['a', 'b'])
       expect(result.pass).toBe(true)
       expect(result.message()).toContain('not to contain all keys')
     })
@@ -597,7 +608,9 @@ describe('matchers', () => {
 
   describe('toContainValues', () => {
     it('passes when object contains all values (primitives)', () => {
-      const result = matchers.toContainValues({ a: 1, b: 2, c: 3 }, [1, 3])
+      const result = matchers.toContainValues({
+        a: 1, b: 2, c: 3,
+      }, [1, 3])
       expect(result.pass).toBe(true)
       expect(result.message()).toContain('not to contain all values')
     })
@@ -672,6 +685,7 @@ describe('matchers', () => {
       expect(result.message()).toContain('Expected value to be an empty array, string, object, Map, or Set')
     })
     it('fails for undefined', () => {
+      // eslint-disable-next-line unicorn/no-useless-undefined
       const result = matchers.toBeEmpty(undefined)
       expect(result.pass).toBe(false)
       expect(result.message()).toContain('but received undefined')
@@ -746,6 +760,7 @@ describe('matchers', () => {
       expect(result.pass).toBe(false)
     })
     it('fails for undefined', () => {
+      // eslint-disable-next-line unicorn/no-useless-undefined
       const result = matchers.toBeValidDate(undefined)
       expect(result.pass).toBe(false)
     })

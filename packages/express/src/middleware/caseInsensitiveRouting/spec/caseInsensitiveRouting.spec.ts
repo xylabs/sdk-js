@@ -1,3 +1,4 @@
+import type { Express } from 'express'
 import {
   describe, expect, it, vi,
 } from 'vitest'
@@ -13,7 +14,7 @@ describe('caseInsensitiveRouting', () => {
   describe('enableCaseSensitiveRouting', () => {
     it('should call app.enable with the correct setting', () => {
       const app = createMockApp()
-      enableCaseSensitiveRouting(app as any)
+      enableCaseSensitiveRouting(app as unknown as Express)
       expect(app.enable).toHaveBeenCalledWith('case sensitive routing')
     })
   })
@@ -21,7 +22,7 @@ describe('caseInsensitiveRouting', () => {
   describe('disableCaseSensitiveRouting', () => {
     it('should call app.disable with the correct setting', () => {
       const app = createMockApp()
-      disableCaseSensitiveRouting(app as any)
+      disableCaseSensitiveRouting(app as unknown as Express)
       expect(app.disable).toHaveBeenCalledWith('case sensitive routing')
     })
   })

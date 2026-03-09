@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/pixel",
-  "version": "5.0.80",
+  "version": "5.0.81",
   "description": "Event Client for xylabs ESB",
   "homepage": "https://xylabs.com",
   "bugs": {
@@ -35,10 +35,10 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/assert": "~5.0.80",
-    "@xylabs/object": "~5.0.80",
-    "@xylabs/promise": "~5.0.80",
-    "@xylabs/typeof": "~5.0.80",
+    "@xylabs/assert": "~5.0.81",
+    "@xylabs/object": "~5.0.81",
+    "@xylabs/promise": "~5.0.81",
+    "@xylabs/typeof": "~5.0.81",
     "async-mutex": "~0.5.0",
     "bowser": "2.14.1",
     "fast-deep-equal": "~3.1.3",

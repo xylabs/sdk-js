@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/timer",
-  "version": "5.0.80",
+  "version": "5.0.81",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "xylabs",
@@ -43,7 +43,7 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/assert": "~5.0.80"
+    "@xylabs/assert": "~5.0.81"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.4.11",

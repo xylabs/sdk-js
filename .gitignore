@@ -24,5 +24,6 @@ bin
 *.heapprofile
 coverage
 scripts/.temp-typedoc/
+.claude
 
 CLAUDE.MD

@@ -30,12 +30,10 @@
     ".": {
       "browser": {
         "types": "./dist/browser/index-browser.d.ts",
-        "source": "./src/browser/index.ts",
         "default": "./dist/browser/index-browser.mjs"
       },
       "node": {
         "types": "./dist/node/index-node.d.ts",
-        "source": "./src/node/index.ts",
         "default": "./dist/node/index-node.mjs"
       }
     },
@@ -46,7 +44,6 @@
   "types": "./dist/browser/index-browser.d.ts",
   "files": [
     "dist",
-    "src",
     "!**/*.bench.*",
     "!**/*.spec.*",
     "!**/*.test.*"

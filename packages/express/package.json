@@ -32,7 +32,6 @@
     ".": {
       "node": {
         "types": "./dist/node/index.d.ts",
-        "source": "./src/index.ts",
         "default": "./dist/node/index.mjs"
       }
     },
@@ -44,7 +43,6 @@
   "types": "./dist/node/index.d.ts",
   "files": [
     "dist",
-    "src",
     "!**/*.bench.*",
     "!**/*.spec.*",
     "!**/*.test.*"

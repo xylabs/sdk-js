@@ -30,17 +30,14 @@
     ".": {
       "node": {
         "types": "./dist/node/index.d.ts",
-        "source": "./src/index.ts",
         "default": "./dist/node/index.mjs"
       },
       "browser": {
         "types": "./dist/browser/index.d.ts",
-        "source": "./src/index.ts",
         "default": "./dist/browser/index.mjs"
       },
       "neutral": {
         "types": "./dist/neutral/index.d.ts",
-        "source": "./src/index.ts",
         "default": "./dist/neutral/index.mjs"
       }
     },
@@ -51,7 +48,6 @@
   "types": "./dist/browser/index.d.ts",
   "files": [
     "dist",
-    "src",
     "!**/*.bench.*",
     "!**/*.spec.*",
     "!**/*.test.*"

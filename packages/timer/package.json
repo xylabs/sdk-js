@@ -30,7 +30,6 @@
   "exports": {
     ".": {
       "types": "./dist/neutral/index.d.ts",
-      "source": "./src/index.ts",
       "default": "./dist/neutral/index.mjs"
     },
     "./package.json": "./package.json"
@@ -40,7 +39,6 @@
   "types": "./dist/neutral/index.d.ts",
   "files": [
     "dist",
-    "src",
     "!**/*.bench.*",
     "!**/*.spec.*",
     "!**/*.test.*"

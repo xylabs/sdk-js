@@ -44,7 +44,6 @@
     "./package.json": "./package.json"
   },
   "module": "./dist/browser/index.mjs",
-  "source": "./src/index.ts",
   "types": "./dist/browser/index.d.ts",
   "files": [
     "dist",
@@ -62,9 +61,9 @@
     "idb": "~8.0.3"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.4.8",
-    "@xylabs/tsconfig": "~7.4.8",
-    "@xylabs/tsconfig-dom": "~7.4.8",
+    "@xylabs/ts-scripts-yarn3": "~7.4.11",
+    "@xylabs/tsconfig": "~7.4.11",
+    "@xylabs/tsconfig-dom": "~7.4.11",
     "jsdom": "~28.1.0",
     "typescript": "~5.9.3",
     "vitest": "~4.0.18"

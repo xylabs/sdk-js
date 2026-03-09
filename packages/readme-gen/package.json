@@ -36,7 +36,6 @@
     "./package.json": "./package.json"
   },
   "module": "./dist/node/index.mjs",
-  "source": "./src/index.ts",
   "types": "./dist/node/index.d.ts",
   "files": [
     "dist",
@@ -45,10 +44,10 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.4.8"
+    "@xylabs/ts-scripts-yarn3": "~7.4.11"
   },
   "devDependencies": {
-    "@xylabs/tsconfig": "~7.4.8",
+    "@xylabs/tsconfig": "~7.4.11",
     "typescript": "~5.9.3",
     "vitest": "^4.0.18"
   },

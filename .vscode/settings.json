@@ -71,6 +71,7 @@
     "copyfiles",
     "cryengine",
     "depcheck",
+    "deplint",
     "dmarc",
     "DNSSEC",
     "edns",

@@ -55,7 +55,7 @@ A read/write storage device.
 ### get()
 
 ```ts
-get(key): Promisable<undefined | TValue>;
+get(key): Promisable<TValue | undefined>;
 ```
 
 Returns a promise that resolves to the value for the given key.
@@ -70,7 +70,7 @@ The key to get the value for.
 
 ### Returns
 
-`Promisable`\<`undefined` \| `TValue`\>
+`Promisable`\<`TValue` \| `undefined`\>
 
 ### Inherited from
 
@@ -173,7 +173,7 @@ A readonly storage device.
 ### get()
 
 ```ts
-get(key): Promisable<undefined | TValue>;
+get(key): Promisable<TValue | undefined>;
 ```
 
 Returns a promise that resolves to the value for the given key.
@@ -188,7 +188,7 @@ The key to get the value for.
 
 ### Returns
 
-`Promisable`\<`undefined` \| `TValue`\>
+`Promisable`\<`TValue` \| `undefined`\>
 
 ***
 

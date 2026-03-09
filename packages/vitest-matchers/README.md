@@ -85,7 +85,7 @@ pass: boolean;
 const matchers: object;
 ```
 
-## Type declaration
+## Type Declaration
 
 ### toBeArrayOfSize()
 

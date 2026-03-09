@@ -59,12 +59,12 @@ Event Client for xylabs ESB
 ### Constructor
 
 ```ts
-new PixelApi(baseUri): PixelApi;
+new PixelApi(baseUri?): PixelApi;
 ```
 
 ### Parameters
 
-#### baseUri
+#### baseUri?
 
 `string` = `'prod'`
 
@@ -130,20 +130,20 @@ session: string;
 
 ```ts
 toJson(): 
-  | undefined
   | {
   local: string;
   session: string;
-};
+}
+  | undefined;
 ```
 
 ### Returns
 
-  \| `undefined`
   \| \{
   `local`: `string`;
   `session`: `string`;
 \}
+  \| `undefined`
 
   ### <a id="UniqueUserId"></a>UniqueUserId
 
@@ -338,12 +338,12 @@ fields: Record<string, string>[] = [];
 ### getUtmRecord()
 
 ```ts
-getUtmRecord(): null | Record<string, string>;
+getUtmRecord(): Record<string, string> | null;
 ```
 
 ### Returns
 
-`null` \| `Record`\<`string`, `string`\>
+`Record`\<`string`, `string`\> \| `null`
 
 ***
 
@@ -404,7 +404,7 @@ optional email: string;
 ### email\_hash?
 
 ```ts
-optional email_hash: null | string;
+optional email_hash: string | null;
 ```
 
 ***
@@ -514,7 +514,7 @@ eventId?): Promise<void>;
 
 #### T
 
-`T` *extends* `JsonObject`
+`T` *extends* `Record`\<`string`, `unknown`\>
 
 ### Parameters
 

@@ -28,7 +28,17 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ### index-browser
 
-  ### functions
+  ### variables
+
+    ### <a id="Buffer"></a>Buffer
+
+[**@xylabs/buffer**](#../../README)
+
+***
+
+```ts
+const Buffer: typeof Buffer;
+```
 
     ### <a id="bufferPolyfill"></a>bufferPolyfill
 
@@ -37,7 +47,7 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 ***
 
 ```ts
-function bufferPolyfill(): void;
+const bufferPolyfill: () => void;
 ```
 
 ## Returns
@@ -46,7 +56,17 @@ function bufferPolyfill(): void;
 
 ### index-node
 
-  ### functions
+  ### variables
+
+    ### <a id="Buffer"></a>Buffer
+
+[**@xylabs/buffer**](#../../README)
+
+***
+
+```ts
+const Buffer: BufferConstructor;
+```
 
     ### <a id="bufferPolyfill"></a>bufferPolyfill
 
@@ -55,7 +75,7 @@ function bufferPolyfill(): void;
 ***
 
 ```ts
-function bufferPolyfill(): void;
+const bufferPolyfill: () => void;
 ```
 
 ## Returns

@@ -34,12 +34,12 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 ***
 
 ```ts
-function functionName(depth): string;
+function functionName(depth?): string;
 ```
 
 ## Parameters
 
-### depth
+### depth?
 
 `number` = `2`
 

@@ -46,16 +46,16 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 ### Constructor
 
 ```ts
-new XyConsoleSpanExporter(logLevel, logger): XyConsoleSpanExporter;
+new XyConsoleSpanExporter(logLevel?, logger?): XyConsoleSpanExporter;
 ```
 
 ### Parameters
 
-#### logLevel
+#### logLevel?
 
 `number` = `0`
 
-#### logger
+#### logger?
 
 `Logger` = `console`
 

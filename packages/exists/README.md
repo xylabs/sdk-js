@@ -52,7 +52,7 @@ with functional Array methods. For example:
 
 The object which is potentially undefined or null
 
-`null` | `T`
+`T` | `null`
 
 ## Returns
 

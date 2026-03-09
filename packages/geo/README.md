@@ -312,7 +312,7 @@ source: string;
 ### update()
 
 ```ts
-update(map, show): void;
+update(map, show?): void;
 ```
 
 ### Parameters
@@ -321,7 +321,7 @@ update(map, show): void;
 
 `Map$1`
 
-#### show
+#### show?
 
 `boolean` = `true`
 
@@ -446,7 +446,7 @@ function boundingBoxToBoundary(box): MercatorBoundary;
 ***
 
 ```ts
-function boundingBoxToCenter(boundingBox, decimal): number[];
+function boundingBoxToCenter(boundingBox, decimal?): number[];
 ```
 
 ## Parameters
@@ -455,7 +455,7 @@ function boundingBoxToCenter(boundingBox, decimal): number[];
 
 [`MercatorBoundingBox`](#../classes/MercatorBoundingBox)
 
-### decimal
+### decimal?
 
 `number` = `6`
 
@@ -514,7 +514,7 @@ function hasSiblings(tiles, tile): boolean;
 ***
 
 ```ts
-function tileFromPoint(point, z): number[];
+function tileFromPoint(point, z): MercatorTile;
 ```
 
 ## Parameters
@@ -529,7 +529,7 @@ function tileFromPoint(point, z): number[];
 
 ## Returns
 
-`number`[]
+[`MercatorTile`](#../type-aliases/MercatorTile)
 
   ### <a id="tileFromQuadkey"></a>tileFromQuadkey
 
@@ -538,7 +538,7 @@ function tileFromPoint(point, z): number[];
 ***
 
 ```ts
-function tileFromQuadkey(quadkey): number[];
+function tileFromQuadkey(quadkey): MercatorTile;
 ```
 
 ## Parameters
@@ -549,7 +549,7 @@ function tileFromQuadkey(quadkey): number[];
 
 ## Returns
 
-`number`[]
+[`MercatorTile`](#../type-aliases/MercatorTile)
 
   ### <a id="tileToBoundingBox"></a>tileToBoundingBox
 
@@ -578,7 +578,7 @@ function tileToBoundingBox(tile): MercatorBoundingBox;
 ***
 
 ```ts
-function tileToChildren(tile): number[][];
+function tileToChildren(tile): MercatorTile[];
 ```
 
 ## Parameters
@@ -589,7 +589,7 @@ function tileToChildren(tile): number[][];
 
 ## Returns
 
-`number`[][]
+[`MercatorTile`](#../type-aliases/MercatorTile)[]
 
   ### <a id="tileToGeoJson"></a>tileToGeoJson
 
@@ -658,12 +658,12 @@ function tileToPoint(tile): MercatorLngLat;
 ***
 
 ```ts
-function tileToQuadkey(tile): string;
+function tileToQuadkey(__namedParameters): string;
 ```
 
 ## Parameters
 
-### tile
+### \_\_namedParameters
 
 [`MercatorTile`](#../type-aliases/MercatorTile)
 
@@ -698,16 +698,16 @@ function tileToSiblings(tile): MercatorTile[];
 ***
 
 ```ts
-function tilesEqual(tile1, tile2): boolean;
+function tilesEqual(__namedParameters, __namedParameters): boolean;
 ```
 
 ## Parameters
 
-### tile1
+### \_\_namedParameters
 
 [`MercatorTile`](#../type-aliases/MercatorTile)
 
-### tile2
+### \_\_namedParameters
 
 [`MercatorTile`](#../type-aliases/MercatorTile)
 
@@ -782,7 +782,7 @@ type MercatorBoundary = MercatorLngLat[];
 ***
 
 ```ts
-type MercatorTile = number[];
+type MercatorTile = readonly [number, number, number];
 ```
 
 ### variables

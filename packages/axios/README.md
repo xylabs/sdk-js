@@ -23,18 +23,16 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Classes
 
-- [AxiosJson](#classes/AxiosJson)
-- [AxiosJsonUncompressed](#classes/AxiosJsonUncompressed)
-
-## Type Aliases
-
-- [RawAxiosJsonRequestConfig](#type-aliases/RawAxiosJsonRequestConfig)
-- [RawAxiosJsonRequestUncompressedConfig](#type-aliases/RawAxiosJsonRequestUncompressedConfig)
+- [~~AxiosJson~~](#classes/AxiosJson)
 
 ## Variables
 
-- [axios](#variables/axios)
-- [axiosUncompressed](#variables/axiosUncompressed)
+- [axiosJson](#variables/axiosJson)
+- [~~axios~~](#variables/axios)
+
+## Functions
+
+- [axiosJsonConfig](#functions/axiosJsonConfig)
 
 ### classes
 
@@ -43,6 +41,10 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 [**@xylabs/axios**](#../README)
 
 ***
+
+## Deprecated
+
+use axiosJsonConfig instead
 
 ## Extends
 
@@ -60,7 +62,7 @@ new AxiosJson(config?): AxiosJson;
 
 #### config?
 
-[`RawAxiosJsonRequestConfig`](#../type-aliases/RawAxiosJsonRequestConfig)\<`any`\>
+`RawAxiosJsonRequestConfig`
 
 ### Returns
 
@@ -72,133 +74,63 @@ new AxiosJson(config?): AxiosJson;
 Axios.constructor
 ```
 
-## Properties
-
-### defaultLogger?
-
-```ts
-static optional defaultLogger: Logger;
-```
-
 ## Methods
 
-### finalPath()
+### ~~axiosConfig()~~
 
 ```ts
-static finalPath(response): any;
-```
-
-### Parameters
-
-#### response
-
-`AxiosResponse`
-
-### Returns
-
-`any`
-
-  ### <a id="AxiosJsonUncompressed"></a>AxiosJsonUncompressed
-
-[**@xylabs/axios**](#../README)
-
-***
-
-## Extends
-
-- `Axios`
-
-## Constructors
-
-### Constructor
-
-```ts
-new AxiosJsonUncompressed(config?): AxiosJsonUncompressed;
+static axiosConfig(config?): RawAxiosJsonRequestConfig;
 ```
 
 ### Parameters
 
 #### config?
 
-[`RawAxiosJsonRequestUncompressedConfig`](#../type-aliases/RawAxiosJsonRequestUncompressedConfig)\<`any`\>
+`RawAxiosJsonRequestConfig` = `{}`
 
 ### Returns
 
-`AxiosJsonUncompressed`
+`RawAxiosJsonRequestConfig`
 
-### Overrides
+***
 
-```ts
-Axios.constructor
-```
-
-## Properties
-
-### defaultLogger?
+### ~~create()~~
 
 ```ts
-static optional defaultLogger: Logger;
-```
-
-## Methods
-
-### finalPath()
-
-```ts
-static finalPath(response): any;
+static create(config?): Axios;
 ```
 
 ### Parameters
 
-#### response
+#### config?
 
-`AxiosResponse`
+`RawAxiosJsonRequestConfig`
 
 ### Returns
 
-`any`
+`Axios`
 
-### type-aliases
+### functions
 
-  ### <a id="RawAxiosJsonRequestConfig"></a>RawAxiosJsonRequestConfig
-
-[**@xylabs/axios**](#../README)
-
-***
-
-```ts
-type RawAxiosJsonRequestConfig<D> = RawAxiosRequestConfig<D> & object;
-```
-
-## Type declaration
-
-### compressLength?
-
-```ts
-optional compressLength: number;
-```
-
-## Type Parameters
-
-### D
-
-`D` = `any`
-
-  ### <a id="RawAxiosJsonRequestUncompressedConfig"></a>RawAxiosJsonRequestUncompressedConfig
+  ### <a id="axiosJsonConfig"></a>axiosJsonConfig
 
 [**@xylabs/axios**](#../README)
 
 ***
 
 ```ts
-type RawAxiosJsonRequestUncompressedConfig<D> = RawAxiosRequestConfig<D>;
+function axiosJsonConfig(__namedParameters?): RawAxiosJsonRequestConfig;
 ```
 
-## Type Parameters
+## Parameters
 
-### D
+### \_\_namedParameters?
 
-`D` = `any`
+`RawAxiosJsonRequestConfig` = `{}`
+
+## Returns
+
+`RawAxiosJsonRequestConfig`
 
 ### variables
 
@@ -209,17 +141,21 @@ type RawAxiosJsonRequestUncompressedConfig<D> = RawAxiosRequestConfig<D>;
 ***
 
 ```ts
-const axios: AxiosJson;
+const axios: Axios = axiosJson;
 ```
 
-  ### <a id="axiosUncompressed"></a>axiosUncompressed
+## Deprecated
+
+use axiosJson instead
+
+  ### <a id="axiosJson"></a>axiosJson
 
 [**@xylabs/axios**](#../README)
 
 ***
 
 ```ts
-const axiosUncompressed: AxiosJsonUncompressed;
+const axiosJson: Axios;
 ```
 
 

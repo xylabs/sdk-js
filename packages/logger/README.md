@@ -35,7 +35,6 @@ XYLabs Logger Library
 ## Type Aliases
 
 - [LogFunction](#type-aliases/LogFunction)
-- [~~LogLevel~~](#type-aliases/LogLevel)
 - [LogLevelKey](#type-aliases/LogLevelKey)
 - [LogVerbosity](#type-aliases/LogVerbosity)
 - [LogLevelValue](#type-aliases/LogLevelValue)
@@ -69,12 +68,12 @@ Interface to handle overlap between Winston &
 ### Constructor
 
 ```ts
-new ConsoleLogger(level): ConsoleLogger;
+new ConsoleLogger(level?): ConsoleLogger;
 ```
 
 ### Parameters
 
-#### level
+#### level?
 
 [`LogLevelValue`](#../type-aliases/LogLevelValue) = `LogLevel.warn`
 
@@ -439,7 +438,7 @@ Interface to handle overlap between Winston &
 ### Constructor
 
 ```ts
-new LevelLogger(logger, level): LevelLogger;
+new LevelLogger(logger, level?): LevelLogger;
 ```
 
 ### Parameters
@@ -448,7 +447,7 @@ new LevelLogger(logger, level): LevelLogger;
 
 [`Logger`](#../interfaces/Logger)
 
-#### level
+#### level?
 
 [`LogLevelValue`](#../type-aliases/LogLevelValue) = `LogLevel.warn`
 
@@ -769,12 +768,12 @@ function NoOpLogFunction(..._data): undefined;
 ***
 
 ```ts
-function getFunctionName(depth): string;
+function getFunctionName(depth?): string;
 ```
 
 ## Parameters
 
-### depth
+### depth?
 
 `number` = `2`
 
@@ -862,22 +861,6 @@ type LogFunction = (...data) => void;
 ## Returns
 
 `void`
-
-  ### <a id="LogLevel"></a>LogLevel
-
-[**@xylabs/logger**](#../README)
-
-***
-
-```ts
-type LogLevel = LogLevelValue;
-```
-
-## Deprecated
-
-Use `LogLevelValue` instead.
-This name conflicts with the `LogLevel` enum and
-makes it confusing to import
 
   ### <a id="LogLevelKey"></a>LogLevelKey
 

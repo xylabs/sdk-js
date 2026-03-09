@@ -36,7 +36,7 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 ***
 
 ```ts
-function fromFixedPoint(value, places): bigint;
+function fromFixedPoint(value, places?): bigint;
 ```
 
 ## Parameters
@@ -45,7 +45,7 @@ function fromFixedPoint(value, places): bigint;
 
 `bigint`
 
-### places
+### places?
 
 `number` = `18`
 
@@ -84,7 +84,7 @@ function toDecimalPrecision(value, digits): string;
 ***
 
 ```ts
-function toFixedPoint(value, places): bigint;
+function toFixedPoint(value, places?): bigint;
 ```
 
 ## Parameters
@@ -93,7 +93,7 @@ function toFixedPoint(value, places): bigint;
 
 `string` | `bigint`
 
-### places
+### places?
 
 `number` = `18`
 

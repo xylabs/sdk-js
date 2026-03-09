@@ -21,13 +21,49 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ***
 
+## Type Aliases
+
+- [AssertConfig](#type-aliases/AssertConfig)
+
 ## Functions
 
+- [assertError](#functions/assertError)
 - [handleError](#functions/handleError)
 - [handleErrorAsync](#functions/handleErrorAsync)
 - [isError](#functions/isError)
 
 ### functions
+
+  ### <a id="assertError"></a>assertError
+
+[**@xylabs/error**](#../README)
+
+***
+
+```ts
+function assertError(
+   value, 
+   assert, 
+   defaultMessage): undefined;
+```
+
+## Parameters
+
+### value
+
+`unknown`
+
+### assert
+
+[`AssertConfig`](#../type-aliases/AssertConfig) | `undefined`
+
+### defaultMessage
+
+`string`
+
+## Returns
+
+`undefined`
 
   ### <a id="handleError"></a>handleError
 
@@ -95,19 +131,55 @@ function handleErrorAsync<T>(error, handler): Promise<T>;
 
 ***
 
+## Call Signature
+
 ```ts
-function isError(error): error is Error;
+function isError(value): value is Error;
 ```
 
-## Parameters
+### Parameters
 
-### error
+### value
 
-`any`
+`unknown`
 
-## Returns
+### Returns
 
-`error is Error`
+`value is Error`
+
+## Call Signature
+
+```ts
+function isError<T>(value): value is Extract<T, Error>;
+```
+
+### Type Parameters
+
+### T
+
+`T`
+
+### Parameters
+
+### value
+
+`T`
+
+### Returns
+
+`value is Extract<T, Error>`
+
+### type-aliases
+
+  ### <a id="AssertConfig"></a>AssertConfig
+
+[**@xylabs/error**](#../README)
+
+***
+
+```ts
+type AssertConfig = string | AssertCallback | boolean;
+```
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

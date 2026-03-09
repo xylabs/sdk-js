@@ -23,6 +23,8 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Type Aliases
 
+- [Brand](#type-aliases/Brand)
+- [IdentityFunction](#type-aliases/IdentityFunction)
 - [FieldType](#type-aliases/FieldType)
 - [ObjectTypeShape](#type-aliases/ObjectTypeShape)
 - [TypeOfTypes](#type-aliases/TypeOfTypes)
@@ -73,7 +75,6 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 - [isSet](#functions/isSet)
 - [isWeakMap](#functions/isWeakMap)
 - [isWeakSet](#functions/isWeakSet)
-- [isArrayBuffer](#functions/isArrayBuffer)
 - [isDataView](#functions/isDataView)
 - [isBlob](#functions/isBlob)
 - [isFile](#functions/isFile)
@@ -90,7 +91,7 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 ***
 
 ```ts
-function ifDefined<T>(value, func): undefined | T;
+function ifDefined<T>(value, func): T | undefined;
 ```
 
 ## Type Parameters
@@ -111,7 +112,7 @@ function ifDefined<T>(value, func): undefined | T;
 
 ## Returns
 
-`undefined` \| `T`
+`T` \| `undefined`
 
   ### <a id="ifTypeOf"></a>ifTypeOf
 
@@ -124,7 +125,7 @@ function ifTypeOf<T, R>(
    typeName, 
    value, 
    trueFunc, 
-   isFunc?): undefined | R;
+   isFunc?): R | undefined;
 ```
 
 ## Type Parameters
@@ -157,7 +158,7 @@ function ifTypeOf<T, R>(
 
 ## Returns
 
-`undefined` \| `R`
+`R` \| `undefined`
 
   ### <a id="isArray"></a>isArray
 
@@ -168,7 +169,7 @@ function ifTypeOf<T, R>(
 ## Call Signature
 
 ```ts
-function isArray(value): value is [];
+function isArray(value): value is readonly unknown[];
 ```
 
 ### Parameters
@@ -179,19 +180,19 @@ function isArray(value): value is [];
 
 ### Returns
 
-`value is []`
+`value is readonly unknown[]`
 
 ## Call Signature
 
 ```ts
-function isArray<T>(value): value is Extract<T, unknown[]>;
+function isArray<T>(value): value is Extract<T, readonly unknown[]>;
 ```
 
 ### Type Parameters
 
 ### T
 
-`T` *extends* \[\]
+`T`
 
 ### Parameters
 
@@ -201,51 +202,7 @@ function isArray<T>(value): value is Extract<T, unknown[]>;
 
 ### Returns
 
-`value is Extract<T, unknown[]>`
-
-  ### <a id="isArrayBuffer"></a>isArrayBuffer
-
-[**@xylabs/typeof**](#../README)
-
-***
-
-## Call Signature
-
-```ts
-function isArrayBuffer(value): value is ArrayBuffer;
-```
-
-### Parameters
-
-### value
-
-`unknown`
-
-### Returns
-
-`value is ArrayBuffer`
-
-## Call Signature
-
-```ts
-function isArrayBuffer<T>(value): value is Extract<T, ArrayBuffer>;
-```
-
-### Type Parameters
-
-### T
-
-`T` *extends* `ArrayBuffer`
-
-### Parameters
-
-### value
-
-`T`
-
-### Returns
-
-`value is Extract<T, ArrayBuffer>`
+`value is Extract<T, readonly unknown[]>`
 
   ### <a id="isArrayBufferView"></a>isArrayBufferView
 
@@ -588,7 +545,7 @@ function isDefined<T>(value): value is Exclude<T, undefined>;
 ***
 
 ```ts
-function isDefinedNotNull<T>(value): value is Exclude<T, undefined | null>;
+function isDefinedNotNull<T>(value): value is Exclude<T, null | undefined>;
 ```
 
 ## Type Parameters
@@ -605,7 +562,7 @@ function isDefinedNotNull<T>(value): value is Exclude<T, undefined | null>;
 
 ## Returns
 
-value is Exclude\<T, undefined \| null\>
+value is Exclude\<T, null \| undefined\>
 
   ### <a id="isEmpty"></a>isEmpty
 
@@ -880,7 +837,7 @@ function isError<T>(value): value is Extract<T, Error>;
 ## Call Signature
 
 ```ts
-function isFalsy<T>(value): value is Extract<T, undefined | null | false | "" | 0 | 0n>;
+function isFalsy<T>(value): value is Extract<T, false | "" | 0 | 0n | null | undefined>;
 ```
 
 ### Type Parameters
@@ -897,7 +854,7 @@ function isFalsy<T>(value): value is Extract<T, undefined | null | false | "" | 
 
 ### Returns
 
-value is Extract\<T, undefined \| null \| false \| "" \| 0 \| 0n\>
+value is Extract\<T, false \| "" \| 0 \| 0n \| null \| undefined\>
 
 ## Call Signature
 
@@ -1312,7 +1269,7 @@ function isObject<T>(value): value is Extract<T, object>;
 ## Call Signature
 
 ```ts
-function isPopulatedArray(value): value is [];
+function isPopulatedArray(value): value is readonly unknown[];
 ```
 
 ### Parameters
@@ -1323,12 +1280,12 @@ function isPopulatedArray(value): value is [];
 
 ### Returns
 
-`value is []`
+`value is readonly unknown[]`
 
 ## Call Signature
 
 ```ts
-function isPopulatedArray<T>(value): value is Extract<T, unknown[]>;
+function isPopulatedArray<T>(value): value is Extract<T, readonly unknown[]>;
 ```
 
 ### Type Parameters
@@ -1345,7 +1302,7 @@ function isPopulatedArray<T>(value): value is Extract<T, unknown[]>;
 
 ### Returns
 
-`value is Extract<T, unknown[]>`
+`value is Extract<T, readonly unknown[]>`
 
   ### <a id="isPromise"></a>isPromise
 
@@ -1620,7 +1577,7 @@ function isSymbol<T>(value): value is Extract<T, symbol>;
 ## Call Signature
 
 ```ts
-function isTruthy<T>(value): value is Exclude<T, undefined | null | false | "" | 0 | 0n>;
+function isTruthy<T>(value): value is Exclude<T, false | "" | 0 | 0n | null | undefined>;
 ```
 
 ### Type Parameters
@@ -1637,7 +1594,7 @@ function isTruthy<T>(value): value is Exclude<T, undefined | null | false | "" |
 
 ### Returns
 
-value is Exclude\<T, undefined \| null \| false \| "" \| 0 \| 0n\>
+value is Exclude\<T, false \| "" \| 0 \| 0n \| null \| undefined\>
 
 ## Call Signature
 
@@ -1928,7 +1885,7 @@ function isUndefined<T>(value): value is Extract<T, undefined>;
 ## Call Signature
 
 ```ts
-function isUndefinedOrNull(value): value is undefined | null;
+function isUndefinedOrNull(value): value is null | undefined;
 ```
 
 ### Parameters
@@ -1939,12 +1896,12 @@ function isUndefinedOrNull(value): value is undefined | null;
 
 ### Returns
 
-value is undefined \| null
+value is null \| undefined
 
 ## Call Signature
 
 ```ts
-function isUndefinedOrNull<T>(value): value is Extract<T, undefined | null>;
+function isUndefinedOrNull<T>(value): value is Extract<T, null | undefined>;
 ```
 
 ### Type Parameters
@@ -1961,7 +1918,7 @@ function isUndefinedOrNull<T>(value): value is Extract<T, undefined | null>;
 
 ### Returns
 
-value is Extract\<T, undefined \| null\>
+value is Extract\<T, null \| undefined\>
 
   ### <a id="isValidTypedFieldPair"></a>isValidTypedFieldPair
 
@@ -2119,7 +2076,7 @@ function typeOf<T>(item): TypeOfTypes;
 function validateType<T>(
    typeName, 
    value, 
-   optional): [undefined | T, Error[]];
+   optional?): [T | undefined, Error[]];
 ```
 
 ## Type Parameters
@@ -2138,13 +2095,13 @@ function validateType<T>(
 
 `T`
 
-### optional
+### optional?
 
 `boolean` = `false`
 
 ## Returns
 
-\[`undefined` \| `T`, `Error`[]\]
+\[`T` \| `undefined`, `Error`[]\]
 
 ### type-aliases
 
@@ -2168,6 +2125,26 @@ type AnyFunction = (...args) => unknown;
 
 `unknown`
 
+  ### <a id="Brand"></a>Brand
+
+[**@xylabs/typeof**](#../README)
+
+***
+
+```ts
+type Brand<T, B> = T & { [K in keyof B]: B[K] };
+```
+
+## Type Parameters
+
+### T
+
+`T`
+
+### B
+
+`B`
+
   ### <a id="FieldType"></a>FieldType
 
 [**@xylabs/typeof**](#../README)
@@ -2185,6 +2162,32 @@ type FieldType =
   | "array"
   | "function";
 ```
+
+  ### <a id="IdentityFunction"></a>IdentityFunction
+
+[**@xylabs/typeof**](#../README)
+
+***
+
+```ts
+type IdentityFunction<T> = (value) => value is T;
+```
+
+## Type Parameters
+
+### T
+
+`T`
+
+## Parameters
+
+### value
+
+`unknown`
+
+## Returns
+
+`value is T`
 
   ### <a id="ObjectTypeShape"></a>ObjectTypeShape
 

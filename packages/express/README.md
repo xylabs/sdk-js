@@ -29,6 +29,7 @@ SDK for base code for Api repos that use express and deploy on AWS ECS
 
 ## Interfaces
 
+- [RouteDefinition](#interfaces/RouteDefinition)
 - [Empty](#interfaces/Empty)
 - [LoggerOptions](#interfaces/LoggerOptions)
 - [ExpressError](#interfaces/ExpressError)
@@ -48,6 +49,7 @@ SDK for base code for Api repos that use express and deploy on AWS ECS
 
 ## Type Aliases
 
+- [HttpMethod](#type-aliases/HttpMethod)
 - [NoReqParams](#type-aliases/NoReqParams)
 - [NoResBody](#type-aliases/NoResBody)
 - [NoReqBody](#type-aliases/NoReqBody)
@@ -68,6 +70,9 @@ SDK for base code for Api repos that use express and deploy on AWS ECS
 ## Variables
 
 - [notImplemented](#variables/notImplemented)
+- [EmptyParamsZod](#variables/EmptyParamsZod)
+- [EmptyQueryParamsZod](#variables/EmptyQueryParamsZod)
+- [ValidateRequestDefaults](#variables/ValidateRequestDefaults)
 - [DefaultJsonBodyParserOptionsLimit](#variables/DefaultJsonBodyParserOptionsLimit)
 - [DefaultJsonBodyParserOptionsTypes](#variables/DefaultJsonBodyParserOptionsTypes)
 - [DefaultJsonBodyParserOptions](#variables/DefaultJsonBodyParserOptions)
@@ -76,15 +81,15 @@ SDK for base code for Api repos that use express and deploy on AWS ECS
 
 ## Functions
 
+- [addRouteDefinitions](#functions/addRouteDefinitions)
 - [asyncHandler](#functions/asyncHandler)
 - [errorToJsonHandler](#functions/errorToJsonHandler)
 - [getHttpHeader](#functions/getHttpHeader)
 - [getDefaultLogger](#functions/getDefaultLogger)
 - [getLogger](#functions/getLogger)
 - [compactObject](#functions/compactObject)
-- [tryParse](#functions/tryParse)
-- [tryParseFloat](#functions/tryParseFloat)
-- [tryParseInt](#functions/tryParseInt)
+- [~~tryParse~~](#functions/tryParse)
+- [requestHandlerValidator](#functions/requestHandlerValidator)
 - [enableCaseSensitiveRouting](#functions/enableCaseSensitiveRouting)
 - [disableCaseSensitiveRouting](#functions/disableCaseSensitiveRouting)
 - [enableExpressDefaultPoweredByHeader](#functions/enableExpressDefaultPoweredByHeader)
@@ -133,7 +138,7 @@ static counters: Record<string, number> = {};
 ### inc()
 
 ```ts
-static inc(name, count): void;
+static inc(name, count?): void;
 ```
 
 ### Parameters
@@ -142,7 +147,7 @@ static inc(name, count): void;
 
 `string`
 
-#### count
+#### count?
 
 `number` = `1`
 
@@ -373,6 +378,30 @@ Logger.warn
 
 ### functions
 
+  ### <a id="addRouteDefinitions"></a>addRouteDefinitions
+
+[**@xylabs/express**](#../README)
+
+***
+
+```ts
+function addRouteDefinitions(app, routeDefinitions): void;
+```
+
+## Parameters
+
+### app
+
+`Express`
+
+### routeDefinitions
+
+[`RouteDefinition`](#../interfaces/RouteDefinition)\<`RequestHandler`\<`ParamsDictionary`, `any`, `any`, `ParsedQs`, `Record`\<`string`, `any`\>\>\>[]
+
+## Returns
+
+`void`
+
   ### <a id="asyncHandler"></a>asyncHandler
 
 [**@xylabs/express**](#../README)
@@ -380,7 +409,7 @@ Logger.warn
 ***
 
 ```ts
-function asyncHandler<P, ResBody, ReqBody, ReqQuery, Locals>(fn): (req, res, next) => Promise<void>;
+function asyncHandler<P, ResBody, ReqBody, ReqQuery, Locals>(fn): (req, res, next) => Promise<unknown>;
 ```
 
 ## Type Parameters
@@ -417,7 +446,7 @@ function asyncHandler<P, ResBody, ReqBody, ReqQuery, Locals>(fn): (req, res, nex
 (
    req, 
    res, 
-next): Promise<void>;
+next): Promise<unknown>;
 ```
 
 ### Parameters
@@ -436,7 +465,7 @@ next): Promise<void>;
 
 ### Returns
 
-`Promise`\<`void`\>
+`Promise`\<`unknown`\>
 
   ### <a id="clearRawResponseFormat"></a>clearRawResponseFormat
 
@@ -677,7 +706,7 @@ function getDefaultLogger(): Logger;
 ***
 
 ```ts
-function getHttpHeader(header, req): undefined | string;
+function getHttpHeader(header, req): string | undefined;
 ```
 
 Since there can be multiple of certain HTTP headers or
@@ -701,7 +730,7 @@ The received HTTP request (with headers)
 
 ## Returns
 
-`undefined` \| `string`
+`string` \| `undefined`
 
 The first or only occurrence of the specified HTTP header
 
@@ -712,14 +741,14 @@ The first or only occurrence of the specified HTTP header
 ***
 
 ```ts
-function getJsonBodyParser(options): NextHandleFunction;
+function getJsonBodyParser(options?): NextHandleFunction;
 ```
 
 Get a JSON Body Parser connect middleware handler
 
 ## Parameters
 
-### options
+### options?
 
 `OptionsJson` = `DefaultJsonBodyParserOptions`
 
@@ -766,12 +795,12 @@ precedence over the default
 ***
 
 ```ts
-function getLogger(minVerbosity): Logger;
+function getLogger(minVerbosity?): Logger;
 ```
 
 ## Parameters
 
-### minVerbosity
+### minVerbosity?
 
 [`LoggerVerbosity`](#../type-aliases/LoggerVerbosity) = `'info'`
 
@@ -824,6 +853,75 @@ body to the client
 `boolean`
 
 True if there are any flags on the response, false otherwise
+
+  ### <a id="requestHandlerValidator"></a>requestHandlerValidator
+
+[**@xylabs/express**](#../README)
+
+***
+
+```ts
+function requestHandlerValidator<TParams, TQuery, TBody, TResponse>(schemas?): (handler) => RequestHandler;
+```
+
+Factory for Express middleware that validates request and response objects using Zod schemas.
+
+## Type Parameters
+
+### TParams
+
+`TParams` *extends* 
+  \| `ZodObject`\<\{
+\}, `$catchall`\<`ZodUnion`\<readonly \[`ZodString`, `ZodArray`\<`ZodString`\>\]\>\>\>
+  \| `ZodType`\<`Record`\<`string`, `string`\>, `unknown`, `$ZodTypeInternals`\<`Record`\<`string`, `string`\>, `unknown`\>\> = `ZodObject`\<\{
+\}, `$catchall`\<`ZodUnion`\<readonly \[`ZodString`, `ZodArray`\<`ZodString`\>\]\>\>\>
+
+### TQuery
+
+`TQuery` *extends* 
+  \| `ZodObject`\<\{
+\}, `$catchall`\<`ZodUnion`\<readonly \[`ZodString`, `ZodArray`\<`ZodString`\>\]\>\>\>
+  \| `ZodType`\<`Record`\<`string`, `string` \| `string`[]\>, `unknown`, `$ZodTypeInternals`\<`Record`\<`string`, `string` \| `string`[]\>, `unknown`\>\> = `ZodObject`\<\{
+\}, `$catchall`\<`ZodUnion`\<readonly \[`ZodString`, `ZodArray`\<`ZodString`\>\]\>\>\>
+
+### TBody
+
+`TBody` *extends* `ZodType`\<`unknown`, `unknown`, `$ZodTypeInternals`\<`unknown`, `unknown`\>\> = `ZodType`\<`unknown`, `unknown`, `$ZodTypeInternals`\<`unknown`, `unknown`\>\>
+
+### TResponse
+
+`TResponse` *extends* `ZodType`\<`unknown`, `unknown`, `$ZodTypeInternals`\<`unknown`, `unknown`\>\> = `ZodType`\<`unknown`, `unknown`, `$ZodTypeInternals`\<`unknown`, `unknown`\>\>
+
+## Parameters
+
+### schemas?
+
+`Partial`\<\{
+  `body`: `TBody`;
+  `params`: `TParams`;
+  `query`: `TQuery`;
+  `response`: `TResponse`;
+\}\>
+
+The Zod schemas to use for validation.
+
+## Returns
+
+A middleware function for validating requests and responses.
+
+```ts
+(handler): RequestHandler;
+```
+
+### Parameters
+
+### handler
+
+(`req`, `res`, `next`) => `unknown`
+
+### Returns
+
+`RequestHandler`
 
   ### <a id="responseProfiler"></a>responseProfiler
 
@@ -917,7 +1015,7 @@ function standardErrors(
 
 ### err
 
-`undefined` | [`ExpressError`](#../interfaces/ExpressError)
+[`ExpressError`](#../interfaces/ExpressError) | `undefined`
 
 ### req
 
@@ -942,7 +1040,7 @@ function standardErrors(
 ***
 
 ```ts
-function tryParse<T>(func, value?): undefined | T & object;
+function tryParse<T>(func, value?): T & object | undefined;
 ```
 
 ## Type Parameters
@@ -963,47 +1061,11 @@ function tryParse<T>(func, value?): undefined | T & object;
 
 ## Returns
 
-`undefined` \| `T` & `object`
+`T` & `object` \| `undefined`
 
-  ### <a id="tryParseFloat"></a>tryParseFloat
+## Deprecated
 
-[**@xylabs/express**](#../README)
-
-***
-
-```ts
-function tryParseFloat(value?): undefined | number;
-```
-
-## Parameters
-
-### value?
-
-`string`
-
-## Returns
-
-`undefined` \| `number`
-
-  ### <a id="tryParseInt"></a>tryParseInt
-
-[**@xylabs/express**](#../README)
-
-***
-
-```ts
-function tryParseInt(value?): undefined | number;
-```
-
-## Parameters
-
-### value?
-
-`string`
-
-## Returns
-
-`undefined` \| `number`
+use zod instead
 
   ### <a id="useRequestCounters"></a>useRequestCounters
 
@@ -1541,6 +1603,42 @@ optional defaultMeta: LoggerMeta;
 optional level: LoggerVerbosity;
 ```
 
+  ### <a id="RouteDefinition"></a>RouteDefinition
+
+[**@xylabs/express**](#../README)
+
+***
+
+## Type Parameters
+
+### H
+
+`H` *extends* `RequestHandler` = `RequestHandler`
+
+## Properties
+
+### handlers
+
+```ts
+handlers: H | H[];
+```
+
+***
+
+### method
+
+```ts
+method: HttpMethod;
+```
+
+***
+
+### path
+
+```ts
+path: string | RegExp;
+```
+
   ### <a id="Source"></a>Source
 
 [**@xylabs/express**](#../README)
@@ -1609,6 +1707,16 @@ type ApiResponse<T> =
 ### T
 
 `T` *extends* [`ApiResourceIdentifierObject`](#../interfaces/ApiResourceIdentifierObject)
+
+  ### <a id="HttpMethod"></a>HttpMethod
+
+[**@xylabs/express**](#../README)
+
+***
+
+```ts
+type HttpMethod = "get" | "post" | "put" | "patch" | "delete" | "options" | "head";
+```
 
   ### <a id="LogFunction"></a>LogFunction
 
@@ -1819,6 +1927,72 @@ const DefaultJsonBodyParserOptionsTypes: string[];
 ```
 
 The default MIME types for the JSON Body Parser
+
+  ### <a id="EmptyParamsZod"></a>EmptyParamsZod
+
+[**@xylabs/express**](#../README)
+
+***
+
+```ts
+const EmptyParamsZod: ZodObject<{
+}, $catchall<ZodString>>;
+```
+
+Empty Zod schema for requests with no parameters.
+
+  ### <a id="EmptyQueryParamsZod"></a>EmptyQueryParamsZod
+
+[**@xylabs/express**](#../README)
+
+***
+
+```ts
+const EmptyQueryParamsZod: ZodObject<{
+}, $catchall<ZodUnion<readonly [ZodString, ZodArray<ZodString>]>>>;
+```
+
+Empty Zod schema for requests with no query parameters.
+
+  ### <a id="ValidateRequestDefaults"></a>ValidateRequestDefaults
+
+[**@xylabs/express**](#../README)
+
+***
+
+```ts
+const ValidateRequestDefaults: object;
+```
+
+Default validation schemas for request handler validator.
+
+## Type Declaration
+
+### params
+
+```ts
+params: ZodObject<{
+}, $catchall<ZodString>> = EmptyParamsZod;
+```
+
+### query
+
+```ts
+query: ZodObject<{
+}, $catchall<ZodUnion<readonly [ZodString, ZodArray<ZodString>]>>> = EmptyQueryParamsZod;
+```
+
+### body
+
+```ts
+body: ZodOptional<ZodJSONSchema>;
+```
+
+### response
+
+```ts
+response: ZodOptional<ZodJSONSchema>;
+```
 
   ### <a id="jsonBodyParser"></a>jsonBodyParser
 

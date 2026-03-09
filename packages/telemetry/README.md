@@ -21,6 +21,10 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ***
 
+## Interfaces
+
+- [SpanConfig](#interfaces/SpanConfig)
+
 ## Functions
 
 - [cloneContextWithoutSpan](#functions/cloneContextWithoutSpan)
@@ -28,6 +32,7 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 - [spanRoot](#functions/spanRoot)
 - [spanAsync](#functions/spanAsync)
 - [spanRootAsync](#functions/spanRootAsync)
+- [timeBudget](#functions/timeBudget)
 
 ### functions
 
@@ -38,7 +43,7 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 ***
 
 ```ts
-function cloneContextWithoutSpan(activeCtx, configKeys): Context;
+function cloneContextWithoutSpan(activeCtx, configKeys?): Context;
 ```
 
 ## Parameters
@@ -47,7 +52,7 @@ function cloneContextWithoutSpan(activeCtx, configKeys): Context;
 
 `Context`
 
-### configKeys
+### configKeys?
 
 `symbol`[] = `[]`
 
@@ -102,7 +107,7 @@ function span<T>(
 function spanAsync<T>(
    name, 
    fn, 
-tracer?): Promise<T>;
+__namedParameters?): Promise<T>;
 ```
 
 ## Type Parameters
@@ -121,9 +126,9 @@ tracer?): Promise<T>;
 
 () => `Promise`\<`T`\>
 
-### tracer?
+### \_\_namedParameters?
 
-`Tracer`
+[`SpanConfig`](#../interfaces/SpanConfig) = `{}`
 
 ## Returns
 
@@ -176,7 +181,7 @@ function spanRoot<T>(
 function spanRootAsync<T>(
    name, 
    fn, 
-tracer?): Promise<T>;
+__namedParameters?): Promise<T>;
 ```
 
 ## Type Parameters
@@ -195,13 +200,92 @@ tracer?): Promise<T>;
 
 () => `Promise`\<`T`\>
 
-### tracer?
+### \_\_namedParameters?
 
-`Tracer`
+[`SpanConfig`](#../interfaces/SpanConfig) = `{}`
 
 ## Returns
 
 `Promise`\<`T`\>
+
+  ### <a id="timeBudget"></a>timeBudget
+
+[**@xylabs/telemetry**](#../README)
+
+***
+
+```ts
+function timeBudget<TResult>(
+   name, 
+   logger, 
+   func, 
+   budget, 
+status?): Promise<TResult>;
+```
+
+## Type Parameters
+
+### TResult
+
+`TResult`
+
+## Parameters
+
+### name
+
+`string`
+
+### logger
+
+`Logger` | `undefined`
+
+### func
+
+() => `Promise`\<`TResult`\>
+
+### budget
+
+`number`
+
+### status?
+
+`boolean` = `false`
+
+## Returns
+
+`Promise`\<`TResult`\>
+
+### interfaces
+
+  ### <a id="SpanConfig"></a>SpanConfig
+
+[**@xylabs/telemetry**](#../README)
+
+***
+
+## Properties
+
+### logger?
+
+```ts
+optional logger: Logger | null;
+```
+
+***
+
+### timeBudgetLimit?
+
+```ts
+optional timeBudgetLimit: number;
+```
+
+***
+
+### tracer?
+
+```ts
+optional tracer: Tracer;
+```
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

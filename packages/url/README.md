@@ -107,6 +107,32 @@ const URL: (url, base?) => URL;
 
 ### index-node
 
+  ### variables
+
+    ### <a id="URL"></a>URL
+
+[**@xylabs/url**](#../../README)
+
+***
+
+```ts
+const URL: (url, base?) => URL;
+```
+
+## Parameters
+
+### url
+
+`string` | `URL`
+
+### base?
+
+`string` | `URL`
+
+## Returns
+
+`URL`
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

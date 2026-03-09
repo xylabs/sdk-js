@@ -140,20 +140,6 @@ Base.globalInstancesCountHistory
 
 ***
 
-### uniqueName
-
-```ts
-readonly static uniqueName: string;
-```
-
-### Inherited from
-
-```ts
-Base.uniqueName
-```
-
-***
-
 ### eventData
 
 ```ts
@@ -299,12 +285,12 @@ Base.maxHistoryDepth
 ### Get Signature
 
 ```ts
-get logger(): undefined | Logger;
+get logger(): Logger | undefined;
 ```
 
 #### Returns
 
-`undefined` \| `Logger`
+`Logger` \| `undefined`
 
 ### Inherited from
 
@@ -319,12 +305,12 @@ Base.logger
 ### Get Signature
 
 ```ts
-get meter(): undefined | Meter;
+get meter(): Meter | undefined;
 ```
 
 #### Returns
 
-`undefined` \| `Meter`
+`Meter` \| `undefined`
 
 ### Inherited from
 
@@ -359,12 +345,12 @@ Base.params
 ### Get Signature
 
 ```ts
-get tracer(): undefined | Tracer;
+get tracer(): Tracer | undefined;
 ```
 
 #### Returns
 
-`undefined` \| `Tracer`
+`Tracer` \| `undefined`
 
 ### Inherited from
 
@@ -408,7 +394,7 @@ static gc(className): void;
 
 ##### className
 
-`string`
+`BaseClassName`
 
 #### Returns
 
@@ -432,7 +418,7 @@ static instanceCount(className): number;
 
 #### className
 
-`string`
+`BaseClassName`
 
 ### Returns
 
@@ -815,12 +801,12 @@ once<TEventName>(eventName, listener): (...args) => void;
 ### Constructor
 
 ```ts
-new Events<TEventData>(params): Events<TEventData>;
+new Events<TEventData>(params?): Events<TEventData>;
 ```
 
 ### Parameters
 
-#### params
+#### params?
 
 [`EventsParams`](#../type-aliases/EventsParams) = `{}`
 
@@ -874,20 +860,6 @@ readonly static globalInstancesCountHistory: Record<BaseClassName, number[]>;
 
 ```ts
 Base.globalInstancesCountHistory
-```
-
-***
-
-### uniqueName
-
-```ts
-readonly static uniqueName: string;
-```
-
-### Inherited from
-
-```ts
-Base.uniqueName
 ```
 
 ***
@@ -1053,12 +1025,12 @@ Base.maxHistoryDepth
 ### Get Signature
 
 ```ts
-get logger(): undefined | Logger;
+get logger(): Logger | undefined;
 ```
 
 #### Returns
 
-`undefined` \| `Logger`
+`Logger` \| `undefined`
 
 ### Inherited from
 
@@ -1073,12 +1045,12 @@ Base.logger
 ### Get Signature
 
 ```ts
-get meter(): undefined | Meter;
+get meter(): Meter | undefined;
 ```
 
 #### Returns
 
-`undefined` \| `Meter`
+`Meter` \| `undefined`
 
 ### Inherited from
 
@@ -1113,12 +1085,12 @@ Base.params
 ### Get Signature
 
 ```ts
-get tracer(): undefined | Tracer;
+get tracer(): Tracer | undefined;
 ```
 
 #### Returns
 
-`undefined` \| `Tracer`
+`Tracer` \| `undefined`
 
 ### Inherited from
 
@@ -1163,12 +1135,12 @@ set static isDebugEnabled(newValue): void;
 ### Get Signature
 
 ```ts
-get debug(): undefined | DebugOptions;
+get debug(): DebugOptions | undefined;
 ```
 
 #### Returns
 
-`undefined` \| [`DebugOptions`](#../type-aliases/DebugOptions)
+[`DebugOptions`](#../type-aliases/DebugOptions) \| `undefined`
 
 ## Methods
 
@@ -1206,7 +1178,7 @@ static gc(className): void;
 
 ##### className
 
-`string`
+`BaseClassName`
 
 #### Returns
 
@@ -1230,7 +1202,7 @@ static instanceCount(className): number;
 
 #### className
 
-`string`
+`BaseClassName`
 
 ### Returns
 
@@ -1355,7 +1327,7 @@ emit<TEventName>(eventName, eventArgs): Promise<void>;
 ### emitMetaEvent()
 
 ```ts
-emitMetaEvent<TEventName>(eventName, eventArgs): Promise<undefined | boolean>;
+emitMetaEvent<TEventName>(eventName, eventArgs): Promise<boolean | undefined>;
 ```
 
 ### Type Parameters
@@ -1376,7 +1348,7 @@ emitMetaEvent<TEventName>(eventName, eventArgs): Promise<undefined | boolean>;
 
 ### Returns
 
-`Promise`\<`undefined` \| `boolean`\>
+`Promise`\<`boolean` \| `undefined`\>
 
 ***
 

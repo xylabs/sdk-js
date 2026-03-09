@@ -173,7 +173,7 @@ the worker has initialized successfully.
 
 `Worker`
 
-Instance of `Worker`. Either a web worker, `worker_threads` worker or `tiny-worker` worker.
+Instance of `Worker`. Either a web worker or `worker_threads` worker.
 
 ### options?
 
@@ -363,13 +363,13 @@ Attaches callbacks for the resolution and/or rejection of the Promise.
 
 The callback to execute when the Promise is resolved.
 
-`null` | (`value`) => `TResult1` \| `PromiseLike`\<`TResult1`\>
+(`value`) => `TResult1` \| `PromiseLike`\<`TResult1`\> | `null`
 
 #### onrejected?
 
 The callback to execute when the Promise is rejected.
 
-`null` | (`reason`) => `TResult2` \| `PromiseLike`\<`TResult2`\>
+(`reason`) => `TResult2` \| `PromiseLike`\<`TResult2`\> | `null`
 
 ### Returns
 
@@ -583,6 +583,8 @@ type EventType = PoolEventType;
 type BlobWorker = typeof BlobWorkerClass;
 ```
 
+Separate class to spawn workers from source code blobs or strings.
+
     ### <a id="ExposedAs"></a>ExposedAs
 
 [**@xylabs/threads**](#../../README)
@@ -659,6 +661,8 @@ type ModuleThread<Methods> = ModuleProxy<Methods> & PrivateThreadProps;
 type Thread = ThreadType;
 ```
 
+Thread utility functions. Use them to manage or inspect a `spawn()`-ed thread.
+
     ### <a id="Worker"></a>Worker
 
 [**@xylabs/threads**](#../../README)
@@ -668,6 +672,8 @@ type Thread = ThreadType;
 ```ts
 type Worker = WorkerType;
 ```
+
+Worker implementation. Either web worker or a node.js Worker class.
 
   ### variables
 
@@ -705,7 +711,7 @@ Pool: <ThreadType>(spawnWorker, optionsOrSize?) => WorkerPool<ThreadType> & obje
 
 Thread pool constructor. Creates a new pool and spawns its worker threads.
 
-## Type declaration
+## Type Declaration
 
 ### EventType
 
@@ -725,7 +731,7 @@ Thread: object;
 
 Thread utility functions. Use them to manage or inspect a `spawn()`-ed thread.
 
-## Type declaration
+## Type Declaration
 
 ### errors()
 
@@ -841,6 +847,8 @@ function isWorkerRuntime(): boolean;
 type BlobWorker = typeof BlobWorkerClass;
 ```
 
+Separate class to spawn workers from source code blobs or strings.
+
     ### <a id="Worker"></a>Worker
 
 [**@xylabs/threads**](#../../README)
@@ -850,6 +858,8 @@ type BlobWorker = typeof BlobWorkerClass;
 ```ts
 type Worker = WorkerType;
 ```
+
+Worker implementation. Either web worker or a node.js Worker class.
 
   ### variables
 

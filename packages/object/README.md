@@ -21,78 +21,21 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ***
 
-## Classes
+## Modules
 
-- [IsObjectFactory](#classes/IsObjectFactory)
-- [ObjectWrapper](#classes/ObjectWrapper)
-- [ValidatorBase](#classes/ValidatorBase)
+- [index-deprecated](#index-deprecated/README)
+- [index-un-deprecated](#index-un-deprecated/README)
+- [index](#index/README)
 
-## Interfaces
+### index
 
-- [ObjectTypeConfig](#interfaces/ObjectTypeConfig)
-- [Validator](#interfaces/Validator)
-- [TypeCheckConfig](#interfaces/TypeCheckConfig)
-- [TypeCheckRequiredConfig](#interfaces/TypeCheckRequiredConfig)
-- [TypeCheckOptionalConfig](#interfaces/TypeCheckOptionalConfig)
+### index-deprecated
 
-## Type Aliases
+  ### classes
 
-- [EmptyObject](#type-aliases/EmptyObject)
-- [EmptyObjectOf](#type-aliases/EmptyObjectOf)
-- [JsonValue](#type-aliases/JsonValue)
-- [JsonObject](#type-aliases/JsonObject)
-- [JsonArray](#type-aliases/JsonArray)
-- [OmitStartsWith](#type-aliases/OmitStartsWith)
-- [DeepOmitStartsWith](#type-aliases/DeepOmitStartsWith)
-- [DeepRestrictToStringKeys](#type-aliases/DeepRestrictToStringKeys)
-- [Optional](#type-aliases/Optional)
-- [Override](#type-aliases/Override)
-- [~~PartialRecord~~](#type-aliases/PartialRecord)
-- [PickStartsWith](#type-aliases/PickStartsWith)
-- [DeepPickStartsWith](#type-aliases/DeepPickStartsWith)
-- [StringKeyObject](#type-aliases/StringKeyObject)
-- [WithAdditional](#type-aliases/WithAdditional)
-- [OmitByPredicate](#type-aliases/OmitByPredicate)
-- [PickByPredicate](#type-aliases/PickByPredicate)
-- [AnyObject](#type-aliases/AnyObject)
-- [AsTypeFunction](#type-aliases/AsTypeFunction)
-- [AsOptionalTypeFunction](#type-aliases/AsOptionalTypeFunction)
-- [Compare](#type-aliases/Compare)
-- [StringOrAlertFunction](#type-aliases/StringOrAlertFunction)
-- [TypeCheck](#type-aliases/TypeCheck)
+    ### <a id="IsObjectFactory"></a>IsObjectFactory
 
-## Variables
-
-- [AsObjectFactory](#variables/AsObjectFactory)
-- [AsTypeFactory](#variables/AsTypeFactory)
-- [asAnyObject](#variables/asAnyObject)
-- [deepMerge](#variables/deepMerge)
-
-## Functions
-
-- [isJsonValue](#functions/isJsonValue)
-- [isJsonArray](#functions/isJsonArray)
-- [isValidJsonFieldPair](#functions/isValidJsonFieldPair)
-- [isJsonObject](#functions/isJsonObject)
-- [createDeepMerge](#functions/createDeepMerge)
-- [isObject](#functions/isObject)
-- [isType](#functions/isType)
-- [omitBy](#functions/omitBy)
-- [omitByPrefix](#functions/omitByPrefix)
-- [pickBy](#functions/pickBy)
-- [pickByPrefix](#functions/pickByPrefix)
-- [removeFields](#functions/removeFields)
-- [toJsonArray](#functions/toJsonArray)
-- [toJsonObject](#functions/toJsonObject)
-- [toJsonValue](#functions/toJsonValue)
-- [toJsonString](#functions/toJsonString)
-- [toJson](#functions/toJson)
-
-### classes
-
-  ### <a id="IsObjectFactory"></a>IsObjectFactory
-
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -136,9 +79,9 @@ create(shape?, additionalChecks?): TypeCheck<T>;
 
 [`TypeCheck`](#../type-aliases/TypeCheck)\<`T`\>
 
-  ### <a id="ObjectWrapper"></a>ObjectWrapper
+    ### <a id="ObjectWrapper"></a>ObjectWrapper
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -192,9 +135,9 @@ get protected stringKeyObj(): StringKeyObject;
 
 [`StringKeyObject`](#../type-aliases/StringKeyObject)
 
-  ### <a id="ValidatorBase"></a>ValidatorBase
+    ### <a id="ValidatorBase"></a>ValidatorBase
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -286,11 +229,11 @@ abstract validate(payload): Promisable<Error[]>;
 
 [`Validator`](#../interfaces/Validator).[`validate`](../interfaces/Validator.md#validate)
 
-### functions
+  ### functions
 
-  ### <a id="createDeepMerge"></a>createDeepMerge
+    ### <a id="createDeepMerge"></a>createDeepMerge
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -332,95 +275,53 @@ A deep merge function configured for the specified options.
 
 `MergeAll`\<`T`\>
 
-  ### <a id="isJsonArray"></a>isJsonArray
+    ### <a id="isObject"></a>isObject
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
+## Call Signature
+
 ```ts
-function isJsonArray(value): value is JsonArray;
+function isObject(value): value is object;
 ```
 
-## Parameters
+### Parameters
 
 ### value
 
 `unknown`
 
-## Returns
+### Returns
 
-`value is JsonArray`
+`value is object`
 
-  ### <a id="isJsonObject"></a>isJsonObject
-
-[**@xylabs/object**](#../README)
-
-***
+## Call Signature
 
 ```ts
-function isJsonObject(value): value is JsonObject;
+function isObject<T>(value): value is Extract<T, object>;
 ```
 
-## Parameters
-
-### value
-
-`unknown`
-
-## Returns
-
-`value is JsonObject`
-
-  ### <a id="isJsonValue"></a>isJsonValue
-
-[**@xylabs/object**](#../README)
-
-***
-
-```ts
-function isJsonValue(value): value is JsonValue;
-```
-
-## Parameters
-
-### value
-
-`unknown`
-
-## Returns
-
-`value is JsonValue`
-
-  ### <a id="isObject"></a>isObject
-
-[**@xylabs/object**](#../README)
-
-***
-
-```ts
-function isObject<T>(value): value is T & object;
-```
-
-## Type Parameters
+### Type Parameters
 
 ### T
 
-`T`
+`T` *extends* `object`
 
-## Parameters
+### Parameters
 
 ### value
 
 `T`
 
-## Returns
+### Returns
 
-`value is T & object`
+`value is Extract<T, object>`
 
-  ### <a id="isType"></a>isType
+    ### <a id="isType"></a>isType
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -442,29 +343,13 @@ function isType(value, expectedType): boolean;
 
 `boolean`
 
-  ### <a id="isValidJsonFieldPair"></a>isValidJsonFieldPair
+## Deprecated
 
-[**@xylabs/object**](#../README)
+use from @xylabs/typeof instead
 
-***
+    ### <a id="omitBy"></a>omitBy
 
-```ts
-function isValidJsonFieldPair(__namedParameters): boolean;
-```
-
-## Parameters
-
-### \_\_namedParameters
-
-\[`unknown`, `unknown`\]
-
-## Returns
-
-`boolean`
-
-  ### <a id="omitBy"></a>omitBy
-
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -472,7 +357,7 @@ function isValidJsonFieldPair(__namedParameters): boolean;
 function omitBy<T>(
    obj, 
    predicate, 
-maxDepth): Partial<T>;
+maxDepth?): Partial<T>;
 ```
 
 ## Type Parameters
@@ -491,7 +376,7 @@ maxDepth): Partial<T>;
 
 [`OmitByPredicate`](#../type-aliases/OmitByPredicate)
 
-### maxDepth
+### maxDepth?
 
 `number` = `1`
 
@@ -499,9 +384,9 @@ maxDepth): Partial<T>;
 
 `Partial`\<`T`\>
 
-  ### <a id="omitByPrefix"></a>omitByPrefix
+    ### <a id="omitByPrefix"></a>omitByPrefix
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -509,7 +394,7 @@ maxDepth): Partial<T>;
 function omitByPrefix<T, P>(
    payload, 
    prefix, 
-maxDepth): DeepOmitStartsWith<T, P>;
+maxDepth?): DeepOmitStartsWith<T, P>;
 ```
 
 ## Type Parameters
@@ -532,7 +417,7 @@ maxDepth): DeepOmitStartsWith<T, P>;
 
 `P`
 
-### maxDepth
+### maxDepth?
 
 `number` = `100`
 
@@ -540,9 +425,9 @@ maxDepth): DeepOmitStartsWith<T, P>;
 
 [`DeepOmitStartsWith`](#../type-aliases/DeepOmitStartsWith)\<`T`, `P`\>
 
-  ### <a id="pickBy"></a>pickBy
+    ### <a id="pickBy"></a>pickBy
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -550,7 +435,7 @@ maxDepth): DeepOmitStartsWith<T, P>;
 function pickBy<T>(
    obj, 
    predicate, 
-maxDepth): Partial<T>;
+maxDepth?): Partial<T>;
 ```
 
 ## Type Parameters
@@ -569,7 +454,7 @@ maxDepth): Partial<T>;
 
 [`PickByPredicate`](#../type-aliases/PickByPredicate)
 
-### maxDepth
+### maxDepth?
 
 `number` = `1`
 
@@ -577,9 +462,9 @@ maxDepth): Partial<T>;
 
 `Partial`\<`T`\>
 
-  ### <a id="pickByPrefix"></a>pickByPrefix
+    ### <a id="pickByPrefix"></a>pickByPrefix
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -587,7 +472,7 @@ maxDepth): Partial<T>;
 function pickByPrefix<T, P>(
    payload, 
    prefix, 
-maxDepth): DeepPickStartsWith<T, P>;
+maxDepth?): DeepPickStartsWith<T, P>;
 ```
 
 ## Type Parameters
@@ -610,7 +495,7 @@ maxDepth): DeepPickStartsWith<T, P>;
 
 `P`
 
-### maxDepth
+### maxDepth?
 
 `number` = `100`
 
@@ -618,9 +503,9 @@ maxDepth): DeepPickStartsWith<T, P>;
 
 [`DeepPickStartsWith`](#../type-aliases/DeepPickStartsWith)\<`T`, `P`\>
 
-  ### <a id="removeFields"></a>removeFields
+    ### <a id="removeFields"></a>removeFields
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -652,14 +537,14 @@ function removeFields<T, K>(obj, fields): Omit<T, K>;
 
 `Omit`\<`T`, `K`\>
 
-  ### <a id="toJson"></a>toJson
+    ### <a id="toSafeJson"></a>toSafeJson
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
 ```ts
-function toJson(value, maxDepth): JsonValue;
+function toSafeJson(value, maxDepth?): unknown;
 ```
 
 ## Parameters
@@ -668,25 +553,25 @@ function toJson(value, maxDepth): JsonValue;
 
 `unknown`
 
-### maxDepth
+### maxDepth?
 
 `number` = `3`
 
 ## Returns
 
-[`JsonValue`](#../type-aliases/JsonValue)
+`unknown`
 
-  ### <a id="toJsonArray"></a>toJsonArray
+    ### <a id="toSafeJsonArray"></a>toSafeJsonArray
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
 ```ts
-function toJsonArray(
+function toSafeJsonArray(
    value, 
    cycleList?, 
-   maxDepth?): JsonArray;
+   maxDepth?): unknown[];
 ```
 
 ## Parameters
@@ -705,16 +590,16 @@ function toJsonArray(
 
 ## Returns
 
-[`JsonArray`](#../type-aliases/JsonArray)
+`unknown`[]
 
-  ### <a id="toJsonObject"></a>toJsonObject
+    ### <a id="toSafeJsonObject"></a>toSafeJsonObject
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
 ```ts
-function toJsonObject(
+function toSafeJsonObject(
    value, 
    cycleList?, 
    maxDepth?): JsonObject;
@@ -738,14 +623,14 @@ function toJsonObject(
 
 [`JsonObject`](#../type-aliases/JsonObject)
 
-  ### <a id="toJsonString"></a>toJsonString
+    ### <a id="toSafeJsonString"></a>toSafeJsonString
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
 ```ts
-function toJsonString(value, maxDepth): string;
+function toSafeJsonString(value, maxDepth?): string;
 ```
 
 ## Parameters
@@ -754,7 +639,7 @@ function toJsonString(value, maxDepth): string;
 
 `unknown`
 
-### maxDepth
+### maxDepth?
 
 `number` = `3`
 
@@ -762,17 +647,17 @@ function toJsonString(value, maxDepth): string;
 
 `string`
 
-  ### <a id="toJsonValue"></a>toJsonValue
+    ### <a id="toSafeJsonValue"></a>toSafeJsonValue
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
 ```ts
-function toJsonValue(
+function toSafeJsonValue(
    value, 
    cycleList?, 
-   maxDepth?): JsonValue;
+   maxDepth?): unknown;
 ```
 
 ## Parameters
@@ -791,13 +676,13 @@ function toJsonValue(
 
 ## Returns
 
-[`JsonValue`](#../type-aliases/JsonValue)
+`unknown`
 
-### interfaces
+  ### interfaces
 
-  ### <a id="ObjectTypeConfig"></a>ObjectTypeConfig
+    ### <a id="ObjectTypeConfig"></a>ObjectTypeConfig
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -817,9 +702,9 @@ optional log: boolean | Logger;
 
 [`TypeCheckConfig`](#TypeCheckConfig).[`log`](TypeCheckConfig.md#log)
 
-  ### <a id="TypeCheckConfig"></a>TypeCheckConfig
+    ### <a id="TypeCheckConfig"></a>TypeCheckConfig
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -837,9 +722,9 @@ optional log: boolean | Logger;
 optional log: boolean | Logger;
 ```
 
-  ### <a id="TypeCheckOptionalConfig"></a>TypeCheckOptionalConfig
+    ### <a id="TypeCheckOptionalConfig"></a>TypeCheckOptionalConfig
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -867,9 +752,9 @@ optional log: boolean | Logger;
 required: false;
 ```
 
-  ### <a id="TypeCheckRequiredConfig"></a>TypeCheckRequiredConfig
+    ### <a id="TypeCheckRequiredConfig"></a>TypeCheckRequiredConfig
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -897,9 +782,9 @@ optional log: boolean | Logger;
 required: true;
 ```
 
-  ### <a id="Validator"></a>Validator
+    ### <a id="Validator"></a>Validator
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -927,29 +812,29 @@ validate(payload): Promisable<Error[]>;
 
 `Promisable`\<`Error`[]\>
 
-### type-aliases
+  ### type-aliases
 
-  ### <a id="AnyObject"></a>AnyObject
+    ### <a id="AnyObject"></a>AnyObject
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
 ```ts
-type AnyObject = Record<TypedKey, unknown>;
+type AnyObject = EmptyObject & Partial<Record<TypedKey, unknown>>;
 ```
 
 Any object, which means that it does not enforce the set of fields that it has.  Extending from AnyObject
 will result in a type that includes the universal set of field names
 
-  ### <a id="AsOptionalTypeFunction"></a>AsOptionalTypeFunction
+    ### <a id="AsOptionalTypeFunction"></a>AsOptionalTypeFunction
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
 ```ts
-type AsOptionalTypeFunction<T> = <TType>(value) => undefined | TType;
+type AsOptionalTypeFunction<T> = <TType>(value) => TType | undefined;
 ```
 
 ## Type Parameters
@@ -972,22 +857,22 @@ type AsOptionalTypeFunction<T> = <TType>(value) => undefined | TType;
 
 ## Returns
 
-`undefined` \| `TType`
+`TType` \| `undefined`
 
-  ### <a id="AsTypeFunction"></a>AsTypeFunction
+    ### <a id="AsTypeFunction"></a>AsTypeFunction
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
 ```ts
 type AsTypeFunction<T> = {
-<TType>  (value): undefined | TType;
+<TType>  (value): TType | undefined;
 <TType>  (value, config): TType;
-<TType>  (value, config): undefined | TType;
-<TType>  (value, assert): undefined | TType;
+<TType>  (value, config): TType | undefined;
+<TType>  (value, assert): TType | undefined;
 <TType>  (value, assert, config): TType;
-<TType>  (value, assert, config): undefined | TType;
+<TType>  (value, assert, config): TType | undefined;
 };
 ```
 
@@ -1000,7 +885,7 @@ type AsTypeFunction<T> = {
 ## Call Signature
 
 ```ts
-<TType>(value): undefined | TType;
+<TType>(value): TType | undefined;
 ```
 
 ### Type Parameters
@@ -1017,7 +902,7 @@ type AsTypeFunction<T> = {
 
 ### Returns
 
-`undefined` \| `TType`
+`TType` \| `undefined`
 
 ## Call Signature
 
@@ -1048,7 +933,7 @@ type AsTypeFunction<T> = {
 ## Call Signature
 
 ```ts
-<TType>(value, config): undefined | TType;
+<TType>(value, config): TType | undefined;
 ```
 
 ### Type Parameters
@@ -1069,12 +954,12 @@ type AsTypeFunction<T> = {
 
 ### Returns
 
-`undefined` \| `TType`
+`TType` \| `undefined`
 
 ## Call Signature
 
 ```ts
-<TType>(value, assert): undefined | TType;
+<TType>(value, assert): TType | undefined;
 ```
 
 ### Type Parameters
@@ -1095,7 +980,7 @@ type AsTypeFunction<T> = {
 
 ### Returns
 
-`undefined` \| `TType`
+`TType` \| `undefined`
 
 ## Call Signature
 
@@ -1136,7 +1021,7 @@ type AsTypeFunction<T> = {
 <TType>(
    value, 
    assert, 
-   config): undefined | TType;
+   config): TType | undefined;
 ```
 
 ### Type Parameters
@@ -1161,11 +1046,11 @@ type AsTypeFunction<T> = {
 
 ### Returns
 
-`undefined` \| `TType`
+`TType` \| `undefined`
 
-  ### <a id="Compare"></a>Compare
+    ### <a id="Compare"></a>Compare
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -1193,9 +1078,9 @@ type Compare<T> = (a, b) => number;
 
 `number`
 
-  ### <a id="DeepOmitStartsWith"></a>DeepOmitStartsWith
+    ### <a id="DeepOmitStartsWith"></a>DeepOmitStartsWith
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -1213,9 +1098,9 @@ type DeepOmitStartsWith<T, Prefix> = T extends infer U[] ? DeepOmitStartsWith<U,
 
 `Prefix` *extends* `string`
 
-  ### <a id="DeepPickStartsWith"></a>DeepPickStartsWith
+    ### <a id="DeepPickStartsWith"></a>DeepPickStartsWith
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -1233,9 +1118,25 @@ type DeepPickStartsWith<T, Prefix> = T extends infer U[] ? DeepPickStartsWith<U,
 
 `Prefix` *extends* `string`
 
-  ### <a id="DeepRestrictToStringKeys"></a>DeepRestrictToStringKeys
+    ### <a id="DeepRestrictToJson"></a>DeepRestrictToJson
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
+
+***
+
+```ts
+type DeepRestrictToJson<T> = { [K in keyof T as K extends string ? K : never]: T[K] extends (infer U)[] ? DeepRestrictToJson<U>[] : T[K] extends object ? DeepRestrictToJson<T[K]> : T[K] extends JsonValue ? T[K] : never };
+```
+
+## Type Parameters
+
+### T
+
+`T`
+
+    ### <a id="DeepRestrictToStringKeys"></a>DeepRestrictToStringKeys
+
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -1249,14 +1150,14 @@ type DeepRestrictToStringKeys<T> = { [K in keyof T as K extends string ? K : nev
 
 `T`
 
-  ### <a id="EmptyObject"></a>EmptyObject
+    ### <a id="EmptyObject"></a>EmptyObject
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
 ```ts
-type EmptyObject<T> = { [K in keyof T]?: never };
+type EmptyObject<T> = Exclude<{ [K in keyof T]?: never }, unknown[] | (...args) => unknown | null>;
 ```
 
 An empty object, which means that it does enforce the set of field names, defaulting to an empty set until
@@ -1268,67 +1169,39 @@ extended from, which then adds only those additional fields
 
 `T` *extends* `object` = `object`
 
-  ### <a id="EmptyObjectOf"></a>EmptyObjectOf
+    ### <a id="JsonArray"></a>JsonArray
 
-[**@xylabs/object**](#../README)
-
-***
-
-```ts
-type EmptyObjectOf<T> = EmptyObject<T> extends T ? EmptyObject<T> : never;
-```
-
-## Type Parameters
-
-### T
-
-`T` *extends* `object`
-
-  ### <a id="JsonArray"></a>JsonArray
-
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
 ```ts
-type JsonArray = JsonValue[];
+type JsonArray = z.infer<typeof JsonArrayZod>;
 ```
 
-  ### <a id="JsonObject"></a>JsonObject
+    ### <a id="JsonObject"></a>JsonObject
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
 ```ts
-type JsonObject = object;
+type JsonObject = z.infer<typeof JsonObjectZod>;
 ```
 
-## Index Signature
+    ### <a id="JsonValue"></a>JsonValue
 
-```ts
-[key: string]: JsonValue
-```
-
-  ### <a id="JsonValue"></a>JsonValue
-
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
 ```ts
-type JsonValue = 
-  | string
-  | number
-  | boolean
-  | null
-  | JsonObject
-  | JsonArray;
+type JsonValue = z.infer<typeof JsonValueZod>;
 ```
 
-  ### <a id="OmitByPredicate"></a>OmitByPredicate
+    ### <a id="OmitByPredicate"></a>OmitByPredicate
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -1356,9 +1229,9 @@ keyof `T`
 
 `boolean`
 
-  ### <a id="OmitStartsWith"></a>OmitStartsWith
+    ### <a id="OmitStartsWith"></a>OmitStartsWith
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -1376,9 +1249,9 @@ type OmitStartsWith<T, Prefix> = { [K in keyof T as K extends `${Prefix}${string
 
 `Prefix` *extends* `string`
 
-  ### <a id="Optional"></a>Optional
+    ### <a id="Optional"></a>Optional
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -1396,9 +1269,9 @@ type Optional<T, F> = Omit<T, F> & Partial<Pick<T, F>>;
 
 `F` *extends* keyof `T`
 
-  ### <a id="Override"></a>Override
+    ### <a id="Override"></a>Override
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -1416,9 +1289,9 @@ type Override<T1, T2> = Omit<T1, keyof T2> & T2;
 
 `T2`
 
-  ### <a id="PartialRecord"></a>PartialRecord
+    ### <a id="PartialRecord"></a>PartialRecord
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -1440,9 +1313,9 @@ type PartialRecord<K, T> = { [P in K]?: T };
 
 use Partial<Record<>> instead
 
-  ### <a id="PickByPredicate"></a>PickByPredicate
+    ### <a id="PickByPredicate"></a>PickByPredicate
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -1470,9 +1343,9 @@ keyof `T`
 
 `boolean`
 
-  ### <a id="PickStartsWith"></a>PickStartsWith
+    ### <a id="PickStartsWith"></a>PickStartsWith
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -1490,9 +1363,25 @@ type PickStartsWith<T, Prefix> = { [K in keyof T as K extends `${Prefix}${string
 
 `Prefix` *extends* `string`
 
-  ### <a id="StringKeyObject"></a>StringKeyObject
+    ### <a id="Simplify"></a>Simplify
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
+
+***
+
+```ts
+type Simplify<T> = { [K in keyof T]: T[K] } & object;
+```
+
+## Type Parameters
+
+### T
+
+`T`
+
+    ### <a id="StringKeyObject"></a>StringKeyObject
+
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -1512,9 +1401,9 @@ type StringKeyObject<T> = object;
 [key: string]: T
 ```
 
-  ### <a id="StringOrAlertFunction"></a>StringOrAlertFunction
+    ### <a id="StringOrAlertFunction"></a>StringOrAlertFunction
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -1528,9 +1417,9 @@ type StringOrAlertFunction<T> = string | AssertExMessageFunc<T>;
 
 `T` *extends* `AnyNonPromise`
 
-  ### <a id="TypeCheck"></a>TypeCheck
+    ### <a id="TypeCheck"></a>TypeCheck
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -1598,15 +1487,15 @@ type TypeCheck<T> = {
 
 ### config
 
-`undefined` | `number` | [`TypeCheckConfig`](#../interfaces/TypeCheckConfig)
+`number` | [`TypeCheckConfig`](#../interfaces/TypeCheckConfig) | `undefined`
 
 ### Returns
 
 `obj is T`
 
-  ### <a id="WithAdditional"></a>WithAdditional
+    ### <a id="WithAdditional"></a>WithAdditional
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -1624,11 +1513,11 @@ type WithAdditional<T, TAdditional> = TAdditional extends EmptyObject ? T & TAdd
 
 `TAdditional` *extends* [`EmptyObject`](#EmptyObject) \| `void` = `void`
 
-### variables
+  ### variables
 
-  ### <a id="AsObjectFactory"></a>AsObjectFactory
+    ### <a id="AsObjectFactory"></a>AsObjectFactory
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -1636,7 +1525,7 @@ type WithAdditional<T, TAdditional> = TAdditional extends EmptyObject ? T & TAdd
 const AsObjectFactory: object;
 ```
 
-## Type declaration
+## Type Declaration
 
 ### create()
 
@@ -1663,7 +1552,7 @@ create: <T>(typeCheck) => AsTypeFunction<T>;
 ### createOptional()
 
 ```ts
-createOptional: <T>(typeCheck) => (value) => undefined | T;
+createOptional: <T>(typeCheck) => (value) => T | undefined;
 ```
 
 ### Type Parameters
@@ -1681,7 +1570,7 @@ createOptional: <T>(typeCheck) => (value) => undefined | T;
 ### Returns
 
 ```ts
-(value): undefined | T;
+(value): T | undefined;
 ```
 
 #### Parameters
@@ -1692,11 +1581,11 @@ createOptional: <T>(typeCheck) => (value) => undefined | T;
 
 #### Returns
 
-`undefined` \| `T`
+`T` \| `undefined`
 
-  ### <a id="AsTypeFactory"></a>AsTypeFactory
+    ### <a id="AsTypeFactory"></a>AsTypeFactory
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -1704,7 +1593,7 @@ createOptional: <T>(typeCheck) => (value) => undefined | T;
 const AsTypeFactory: object;
 ```
 
-## Type declaration
+## Type Declaration
 
 ### create()
 
@@ -1731,7 +1620,7 @@ create: <T>(typeCheck) => AsTypeFunction<T>;
 ### createOptional()
 
 ```ts
-createOptional: <T>(typeCheck) => (value) => undefined | T;
+createOptional: <T>(typeCheck) => (value) => T | undefined;
 ```
 
 ### Type Parameters
@@ -1749,7 +1638,7 @@ createOptional: <T>(typeCheck) => (value) => undefined | T;
 ### Returns
 
 ```ts
-(value): undefined | T;
+(value): T | undefined;
 ```
 
 #### Parameters
@@ -1760,11 +1649,21 @@ createOptional: <T>(typeCheck) => (value) => undefined | T;
 
 #### Returns
 
-`undefined` \| `T`
+`T` \| `undefined`
 
-  ### <a id="asAnyObject"></a>asAnyObject
+    ### <a id="JsonObjectZod"></a>JsonObjectZod
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
+
+***
+
+```ts
+const JsonObjectZod: ZodRecord<ZodString, ZodType<unknown, unknown, $ZodTypeInternals<unknown, unknown>>>;
+```
+
+    ### <a id="asAnyObject"></a>asAnyObject
+
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -1772,9 +1671,192 @@ createOptional: <T>(typeCheck) => (value) => undefined | T;
 const asAnyObject: AsTypeFunction<AnyObject>;
 ```
 
-  ### <a id="deepMerge"></a>deepMerge
+    ### <a id="asJsonArray"></a>asJsonArray
 
-[**@xylabs/object**](#../README)
+[**@xylabs/object**](#../../README)
+
+***
+
+```ts
+const asJsonArray: {
+<T>  (value): T & unknown[] | undefined;
+<T>  (value, assert): T & unknown[];
+};
+```
+
+## Call Signature
+
+```ts
+<T>(value): T & unknown[] | undefined;
+```
+
+### Type Parameters
+
+### T
+
+`T`
+
+### Parameters
+
+### value
+
+`T`
+
+### Returns
+
+`T` & `unknown`[] \| `undefined`
+
+## Call Signature
+
+```ts
+<T>(value, assert): T & unknown[];
+```
+
+### Type Parameters
+
+### T
+
+`T`
+
+### Parameters
+
+### value
+
+`T`
+
+### assert
+
+`ZodFactoryConfig`
+
+### Returns
+
+`T` & `unknown`[]
+
+    ### <a id="asJsonObject"></a>asJsonObject
+
+[**@xylabs/object**](#../../README)
+
+***
+
+```ts
+const asJsonObject: {
+<T>  (value): T & Record<string, unknown> | undefined;
+<T>  (value, assert): T & Record<string, unknown>;
+};
+```
+
+## Call Signature
+
+```ts
+<T>(value): T & Record<string, unknown> | undefined;
+```
+
+### Type Parameters
+
+### T
+
+`T`
+
+### Parameters
+
+### value
+
+`T`
+
+### Returns
+
+`T` & `Record`\<`string`, `unknown`\> \| `undefined`
+
+## Call Signature
+
+```ts
+<T>(value, assert): T & Record<string, unknown>;
+```
+
+### Type Parameters
+
+### T
+
+`T`
+
+### Parameters
+
+### value
+
+`T`
+
+### assert
+
+`ZodFactoryConfig`
+
+### Returns
+
+`T` & `Record`\<`string`, `unknown`\>
+
+    ### <a id="asJsonValue"></a>asJsonValue
+
+[**@xylabs/object**](#../../README)
+
+***
+
+```ts
+const asJsonValue: {
+<T>  (value): T | undefined;
+<T>  (value, assert): T;
+};
+```
+
+## Call Signature
+
+```ts
+<T>(value): T | undefined;
+```
+
+### Type Parameters
+
+### T
+
+`T`
+
+### Parameters
+
+### value
+
+`T`
+
+### Returns
+
+`T` \| `undefined`
+
+## Call Signature
+
+```ts
+<T>(value, assert): T;
+```
+
+### Type Parameters
+
+### T
+
+`T`
+
+### Parameters
+
+### value
+
+`T`
+
+### assert
+
+`ZodFactoryConfig`
+
+### Returns
+
+`T`
+
+    ### <a id="deepMerge"></a>deepMerge
+
+[**@xylabs/object**](#../../README)
 
 ***
 
@@ -1810,6 +1892,269 @@ If a property is a symbol, it will be merged as well.
 `MergeAll`\<`T`\>
 
 A new object with the merged properties.
+
+    ### <a id="isJsonArray"></a>isJsonArray
+
+[**@xylabs/object**](#../../README)
+
+***
+
+```ts
+const isJsonArray: <T>(value) => value is T & unknown[];
+```
+
+## Type Parameters
+
+### T
+
+`T`
+
+## Parameters
+
+### value
+
+`T`
+
+## Returns
+
+`value is T & unknown[]`
+
+    ### <a id="isJsonObject"></a>isJsonObject
+
+[**@xylabs/object**](#../../README)
+
+***
+
+```ts
+const isJsonObject: <T>(value) => value is T & Record<string, unknown>;
+```
+
+## Type Parameters
+
+### T
+
+`T`
+
+## Parameters
+
+### value
+
+`T`
+
+## Returns
+
+`value is T & Record<string, unknown>`
+
+    ### <a id="isJsonValue"></a>isJsonValue
+
+[**@xylabs/object**](#../../README)
+
+***
+
+```ts
+const isJsonValue: <T>(value) => value is T;
+```
+
+## Type Parameters
+
+### T
+
+`T`
+
+## Parameters
+
+### value
+
+`T`
+
+## Returns
+
+`value is T`
+
+    ### <a id="toJsonArray"></a>toJsonArray
+
+[**@xylabs/object**](#../../README)
+
+***
+
+```ts
+const toJsonArray: {
+<T>  (value): T & unknown[] | undefined;
+<T>  (value, assert): T & unknown[];
+};
+```
+
+## Call Signature
+
+```ts
+<T>(value): T & unknown[] | undefined;
+```
+
+### Type Parameters
+
+### T
+
+`T`
+
+### Parameters
+
+### value
+
+`T`
+
+### Returns
+
+`T` & `unknown`[] \| `undefined`
+
+## Call Signature
+
+```ts
+<T>(value, assert): T & unknown[];
+```
+
+### Type Parameters
+
+### T
+
+`T`
+
+### Parameters
+
+### value
+
+`T`
+
+### assert
+
+`ZodFactoryConfig`
+
+### Returns
+
+`T` & `unknown`[]
+
+    ### <a id="toJsonObject"></a>toJsonObject
+
+[**@xylabs/object**](#../../README)
+
+***
+
+```ts
+const toJsonObject: {
+<T>  (value): T & Record<string, unknown> | undefined;
+<T>  (value, assert): T & Record<string, unknown>;
+};
+```
+
+## Call Signature
+
+```ts
+<T>(value): T & Record<string, unknown> | undefined;
+```
+
+### Type Parameters
+
+### T
+
+`T`
+
+### Parameters
+
+### value
+
+`T`
+
+### Returns
+
+`T` & `Record`\<`string`, `unknown`\> \| `undefined`
+
+## Call Signature
+
+```ts
+<T>(value, assert): T & Record<string, unknown>;
+```
+
+### Type Parameters
+
+### T
+
+`T`
+
+### Parameters
+
+### value
+
+`T`
+
+### assert
+
+`ZodFactoryConfig`
+
+### Returns
+
+`T` & `Record`\<`string`, `unknown`\>
+
+    ### <a id="toJsonValue"></a>toJsonValue
+
+[**@xylabs/object**](#../../README)
+
+***
+
+```ts
+const toJsonValue: {
+<T>  (value): T | undefined;
+<T>  (value, assert): T;
+};
+```
+
+## Call Signature
+
+```ts
+<T>(value): T | undefined;
+```
+
+### Type Parameters
+
+### T
+
+`T`
+
+### Parameters
+
+### value
+
+`T`
+
+### Returns
+
+`T` \| `undefined`
+
+## Call Signature
+
+```ts
+<T>(value, assert): T;
+```
+
+### Type Parameters
+
+### T
+
+`T`
+
+### Parameters
+
+### value
+
+`T`
+
+### assert
+
+`ZodFactoryConfig`
+
+### Returns
+
+`T`
+
+### index-un-deprecated
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

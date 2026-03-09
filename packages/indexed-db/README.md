@@ -159,7 +159,7 @@ KeyValueStore.delete
 ### get()
 
 ```ts
-get(key): Promise<undefined | StoreValue<T, S>>;
+get(key): Promise<StoreValue<T, S> | undefined>;
 ```
 
 Returns a promise that resolves to the value for the given key.
@@ -174,7 +174,7 @@ The key to get the value for.
 
 ### Returns
 
-`Promise`\<`undefined` \| `StoreValue`\<`T`, `S`\>\>
+`Promise`\<`StoreValue`\<`T`, `S`\> \| `undefined`\>
 
 ### Implementation of
 
@@ -366,7 +366,7 @@ function createStoreDuringUpgrade<DBTypes>(
 function getExistingIndexes<T>(
    db, 
    storeName, 
-logger?): Promise<null | IndexDescription[]>;
+logger?): Promise<IndexDescription[] | null>;
 ```
 
 ## Type Parameters
@@ -391,7 +391,7 @@ logger?): Promise<null | IndexDescription[]>;
 
 ## Returns
 
-`Promise`\<`null` \| [`IndexDescription`](#../type-aliases/IndexDescription)[]\>
+`Promise`\<[`IndexDescription`](#../type-aliases/IndexDescription)[] \| `null`\>
 
   ### <a id="withDb"></a>withDb
 

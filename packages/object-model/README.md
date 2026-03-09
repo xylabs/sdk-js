@@ -33,6 +33,7 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 - [AsTypeFunction](#type-aliases/AsTypeFunction)
 - [AsOptionalTypeFunction](#type-aliases/AsOptionalTypeFunction)
 - [Compare](#type-aliases/Compare)
+- [EmptyObject](#type-aliases/EmptyObject)
 - [StringOrAlertFunction](#type-aliases/StringOrAlertFunction)
 - [TypeCheck](#type-aliases/TypeCheck)
 
@@ -126,7 +127,7 @@ required: true;
 ***
 
 ```ts
-type AnyObject = Record<TypedKey, unknown>;
+type AnyObject = EmptyObject & Partial<Record<TypedKey, unknown>>;
 ```
 
 Any object, which means that it does not enforce the set of fields that it has.  Extending from AnyObject
@@ -139,7 +140,7 @@ will result in a type that includes the universal set of field names
 ***
 
 ```ts
-type AsOptionalTypeFunction<T> = <TType>(value) => undefined | TType;
+type AsOptionalTypeFunction<T> = <TType>(value) => TType | undefined;
 ```
 
 ## Type Parameters
@@ -162,7 +163,7 @@ type AsOptionalTypeFunction<T> = <TType>(value) => undefined | TType;
 
 ## Returns
 
-`undefined` \| `TType`
+`TType` \| `undefined`
 
   ### <a id="AsTypeFunction"></a>AsTypeFunction
 
@@ -172,12 +173,12 @@ type AsOptionalTypeFunction<T> = <TType>(value) => undefined | TType;
 
 ```ts
 type AsTypeFunction<T> = {
-<TType>  (value): undefined | TType;
+<TType>  (value): TType | undefined;
 <TType>  (value, config): TType;
-<TType>  (value, config): undefined | TType;
-<TType>  (value, assert): undefined | TType;
+<TType>  (value, config): TType | undefined;
+<TType>  (value, assert): TType | undefined;
 <TType>  (value, assert, config): TType;
-<TType>  (value, assert, config): undefined | TType;
+<TType>  (value, assert, config): TType | undefined;
 };
 ```
 
@@ -190,7 +191,7 @@ type AsTypeFunction<T> = {
 ## Call Signature
 
 ```ts
-<TType>(value): undefined | TType;
+<TType>(value): TType | undefined;
 ```
 
 ### Type Parameters
@@ -207,7 +208,7 @@ type AsTypeFunction<T> = {
 
 ### Returns
 
-`undefined` \| `TType`
+`TType` \| `undefined`
 
 ## Call Signature
 
@@ -238,7 +239,7 @@ type AsTypeFunction<T> = {
 ## Call Signature
 
 ```ts
-<TType>(value, config): undefined | TType;
+<TType>(value, config): TType | undefined;
 ```
 
 ### Type Parameters
@@ -259,12 +260,12 @@ type AsTypeFunction<T> = {
 
 ### Returns
 
-`undefined` \| `TType`
+`TType` \| `undefined`
 
 ## Call Signature
 
 ```ts
-<TType>(value, assert): undefined | TType;
+<TType>(value, assert): TType | undefined;
 ```
 
 ### Type Parameters
@@ -285,7 +286,7 @@ type AsTypeFunction<T> = {
 
 ### Returns
 
-`undefined` \| `TType`
+`TType` \| `undefined`
 
 ## Call Signature
 
@@ -326,7 +327,7 @@ type AsTypeFunction<T> = {
 <TType>(
    value, 
    assert, 
-   config): undefined | TType;
+   config): TType | undefined;
 ```
 
 ### Type Parameters
@@ -351,7 +352,7 @@ type AsTypeFunction<T> = {
 
 ### Returns
 
-`undefined` \| `TType`
+`TType` \| `undefined`
 
   ### <a id="Compare"></a>Compare
 
@@ -382,6 +383,25 @@ type Compare<T> = (a, b) => number;
 ## Returns
 
 `number`
+
+  ### <a id="EmptyObject"></a>EmptyObject
+
+[**@xylabs/object-model**](#../README)
+
+***
+
+```ts
+type EmptyObject<T> = Exclude<{ [K in keyof T]?: never }, unknown[] | (...args) => unknown | null>;
+```
+
+An empty object, which means that it does enforce the set of field names, defaulting to an empty set until
+extended from, which then adds only those additional fields
+
+## Type Parameters
+
+### T
+
+`T` *extends* `object` = `object`
 
   ### <a id="StringOrAlertFunction"></a>StringOrAlertFunction
 
@@ -469,7 +489,7 @@ type TypeCheck<T> = {
 
 ### config
 
-`undefined` | `number` | [`TypeCheckConfig`](#../interfaces/TypeCheckConfig)
+`number` | [`TypeCheckConfig`](#../interfaces/TypeCheckConfig) | `undefined`
 
 ### Returns
 

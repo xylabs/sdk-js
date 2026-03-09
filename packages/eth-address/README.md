@@ -23,44 +23,46 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Classes
 
-- [EthAddress](#classes/EthAddress)
+- [EthAddressWrapper](#classes/EthAddressWrapper)
 
 ## Functions
 
-- [isEthAddress](#functions/isEthAddress)
+- [isEthAddressWrapper](#functions/isEthAddressWrapper)
 - [ellipsize](#functions/ellipsize)
 - [padHex](#functions/padHex)
 
 ### classes
 
-  ### <a id="EthAddress"></a>EthAddress
+  ### <a id="EthAddressWrapper"></a>EthAddressWrapper
 
 [**@xylabs/eth-address**](#../README)
 
 ***
 
-## Properties
+## Constructors
 
-### type
-
-```ts
-readonly static type: "EthAddress" = 'EthAddress';
-```
-
-***
-
-### type
+### Constructor
 
 ```ts
-type: string = EthAddress.type;
+protected new EthAddressWrapper(address): EthAddressWrapper;
 ```
+
+### Parameters
+
+#### address
+
+`bigint`
+
+### Returns
+
+`EthAddressWrapper`
 
 ## Methods
 
 ### fromString()
 
 ```ts
-static fromString(value?, base?): undefined | EthAddress;
+static fromString(value?, base?): EthAddressWrapper | undefined;
 ```
 
 ### Parameters
@@ -75,14 +77,14 @@ static fromString(value?, base?): undefined | EthAddress;
 
 ### Returns
 
-`undefined` \| `EthAddress`
+`EthAddressWrapper` \| `undefined`
 
 ***
 
 ### parse()
 
 ```ts
-static parse(value, base?): undefined | EthAddress;
+static parse(value, base?): EthAddressWrapper | undefined;
 ```
 
 ### Parameters
@@ -97,7 +99,7 @@ static parse(value, base?): undefined | EthAddress;
 
 ### Returns
 
-`undefined` \| `EthAddress`
+`EthAddressWrapper` \| `undefined`
 
 ***
 
@@ -129,7 +131,7 @@ equals(address?): boolean;
 
 #### address?
 
-`null` | `string` | `EthAddress`
+`string` | `EthAddressWrapper` | `null`
 
 ### Returns
 
@@ -188,12 +190,12 @@ toLowerCaseString(): string;
 ### toShortString()
 
 ```ts
-toShortString(length): string;
+toShortString(length?): string;
 ```
 
 ### Parameters
 
-#### length
+#### length?
 
 `number` = `2`
 
@@ -244,7 +246,7 @@ validate(): boolean;
 ***
 
 ```ts
-function ellipsize(value, length): string;
+function ellipsize(value, length?): string;
 ```
 
 ## Parameters
@@ -253,7 +255,7 @@ function ellipsize(value, length): string;
 
 `string`
 
-### length
+### length?
 
 `number` = `2`
 
@@ -261,14 +263,14 @@ function ellipsize(value, length): string;
 
 `string`
 
-  ### <a id="isEthAddress"></a>isEthAddress
+  ### <a id="isEthAddressWrapper"></a>isEthAddressWrapper
 
 [**@xylabs/eth-address**](#../README)
 
 ***
 
 ```ts
-function isEthAddress(obj): boolean;
+function isEthAddressWrapper(obj): obj is { type: string } & EthAddressWrapper;
 ```
 
 ## Parameters
@@ -281,7 +283,7 @@ function isEthAddress(obj): boolean;
 
 ## Returns
 
-`boolean`
+`obj is { type: string } & EthAddressWrapper`
 
   ### <a id="padHex"></a>padHex
 
@@ -290,7 +292,7 @@ function isEthAddress(obj): boolean;
 ***
 
 ```ts
-function padHex(hex, byteCount): string;
+function padHex(hex, byteCount?): string;
 ```
 
 ## Parameters
@@ -299,7 +301,7 @@ function padHex(hex, byteCount): string;
 
 `string`
 
-### byteCount
+### byteCount?
 
 `number` = `0`
 

@@ -33,6 +33,7 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 - [Creatable](#interfaces/Creatable)
 - [CreatableWithFactory](#interfaces/CreatableWithFactory)
 - [CreatableInstance](#interfaces/CreatableInstance)
+- [RequiredCreatableParams](#interfaces/RequiredCreatableParams)
 - [CreatableParams](#interfaces/CreatableParams)
 - [CreatableStatusReporter](#interfaces/CreatableStatusReporter)
 - [Labels](#interfaces/Labels)
@@ -42,6 +43,7 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 ## Type Aliases
 
 - [CreatableName](#type-aliases/CreatableName)
+- [StandardCreatableStatus](#type-aliases/StandardCreatableStatus)
 - [CreatableStatus](#type-aliases/CreatableStatus)
 
 ## Functions
@@ -58,9 +60,13 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ***
 
+Base class for objects that follow an asynchronous creation and lifecycle pattern.
+Instances must be created via the static `create` method rather than direct construction.
+Provides start/stop lifecycle management with status tracking and telemetry support.
+
 ## Extends
 
-- `BaseEmitter`\<`Partial`\<`TParams`\>, `TEventData`\>
+- `BaseEmitter`\<`Partial`\<`TParams` & [`RequiredCreatableParams`](#../interfaces/RequiredCreatableParams)\>, `TEventData`\>
 
 ## Extended by
 
@@ -92,7 +98,7 @@ new AbstractCreatable<TParams, TEventData>(key, params): AbstractCreatable<TPara
 
 #### params
 
-`Partial`\<`TParams`\>
+`Partial`\<`TParams` & [`RequiredCreatableParams`](#../interfaces/RequiredCreatableParams)\>
 
 ### Returns
 
@@ -101,7 +107,7 @@ new AbstractCreatable<TParams, TEventData>(key, params): AbstractCreatable<TPara
 ### Overrides
 
 ```ts
-BaseEmitter<Partial<TParams>, TEventData>.constructor
+BaseEmitter<Partial<TParams & RequiredCreatableParams>, TEventData>.constructor
 ```
 
 ## Properties
@@ -148,24 +154,20 @@ BaseEmitter.globalInstancesCountHistory
 
 ***
 
-### uniqueName
-
-```ts
-readonly static uniqueName: string;
-```
-
-### Inherited from
-
-```ts
-BaseEmitter.uniqueName
-```
-
-***
-
 ### defaultLogger?
 
 ```ts
 optional defaultLogger: Logger;
+```
+
+Optional default logger for this instance.
+
+***
+
+### \_startPromise
+
+```ts
+protected _startPromise: Promisable<boolean> | undefined;
 ```
 
 ***
@@ -317,12 +319,12 @@ BaseEmitter.maxHistoryDepth
 ### Get Signature
 
 ```ts
-get logger(): undefined | Logger;
+get logger(): Logger | undefined;
 ```
 
 #### Returns
 
-`undefined` \| `Logger`
+`Logger` \| `undefined`
 
 ### Inherited from
 
@@ -337,12 +339,12 @@ BaseEmitter.logger
 ### Get Signature
 
 ```ts
-get meter(): undefined | Meter;
+get meter(): Meter | undefined;
 ```
 
 #### Returns
 
-`undefined` \| `Meter`
+`Meter` \| `undefined`
 
 ### Inherited from
 
@@ -357,12 +359,12 @@ BaseEmitter.meter
 ### Get Signature
 
 ```ts
-get tracer(): undefined | Tracer;
+get tracer(): Tracer | undefined;
 ```
 
 #### Returns
 
-`undefined` \| `Tracer`
+`Tracer` \| `undefined`
 
 ### Inherited from
 
@@ -377,12 +379,14 @@ BaseEmitter.tracer
 ### Get Signature
 
 ```ts
-get name(): string;
+get name(): CreatableName;
 ```
+
+The name identifier for this creatable instance.
 
 #### Returns
 
-`string`
+[`CreatableName`](#../type-aliases/CreatableName)
 
 ***
 
@@ -391,12 +395,14 @@ get name(): string;
 ### Get Signature
 
 ```ts
-get params(): TParams;
+get params(): TParams & RequiredCreatableParams<void>;
 ```
+
+The validated and merged parameters for this instance.
 
 #### Returns
 
-`TParams`
+`TParams` & [`RequiredCreatableParams`](#../interfaces/RequiredCreatableParams)\<`void`\>
 
 ### Overrides
 
@@ -406,20 +412,54 @@ BaseEmitter.params
 
 ***
 
+### startable
+
+### Get Signature
+
+```ts
+get startable(): boolean;
+```
+
+Whether this instance can be started (must be in 'created' or 'stopped' status).
+
+#### Returns
+
+`boolean`
+
+***
+
+### status
+
+### Get Signature
+
+```ts
+get status(): CreatableStatus | null;
+```
+
+The current lifecycle status of this instance, or null if not yet initialized.
+
+#### Returns
+
+[`CreatableStatus`](#../type-aliases/CreatableStatus) \| `null`
+
+***
+
 ### statusReporter
 
 ### Get Signature
 
 ```ts
 get statusReporter(): 
-  | undefined
-| CreatableStatusReporter<void>;
+  | CreatableStatusReporter<void>
+  | undefined;
 ```
+
+The status reporter used to broadcast lifecycle changes.
 
 #### Returns
 
-  \| `undefined`
   \| [`CreatableStatusReporter`](#../interfaces/CreatableStatusReporter)\<`void`\>
+  \| `undefined`
 
 ## Methods
 
@@ -457,7 +497,7 @@ static gc(className): void;
 
 ##### className
 
-`string`
+`BaseClassName`
 
 #### Returns
 
@@ -481,7 +521,7 @@ static instanceCount(className): number;
 
 #### className
 
-`string`
+`BaseClassName`
 
 ### Returns
 
@@ -552,8 +592,11 @@ BaseEmitter.stopHistory
 ### create()
 
 ```ts
-static create<T>(this, inParams): Promise<T>;
+static create<T>(this, inParams?): Promise<T>;
 ```
+
+Asynchronously creates a new instance by processing params, constructing,
+and running both static and instance createHandlers.
 
 ### Type Parameters
 
@@ -567,13 +610,17 @@ static create<T>(this, inParams): Promise<T>;
 
 [`Creatable`](#../interfaces/Creatable)\<`T`\>
 
-#### inParams
+#### inParams?
 
 `Partial`\<`T`\[`"params"`\]\> = `{}`
+
+Optional partial parameters to configure the instance
 
 ### Returns
 
 `Promise`\<`T`\>
+
+The fully initialized instance
 
 ***
 
@@ -582,6 +629,9 @@ static create<T>(this, inParams): Promise<T>;
 ```ts
 static createHandler<T>(this, instance): Promisable<T>;
 ```
+
+Static hook called during creation to perform additional initialization.
+Override in subclasses to customize post-construction setup.
 
 ### Type Parameters
 
@@ -599,17 +649,24 @@ static createHandler<T>(this, instance): Promisable<T>;
 
 `T`
 
+The newly constructed instance
+
 ### Returns
 
 `Promisable`\<`T`\>
+
+The instance, potentially modified
 
 ***
 
 ### paramsHandler()
 
 ```ts
-static paramsHandler<T>(this, params): Promisable<T["params"]>;
+static paramsHandler<T>(this, params?): Promisable<T["params"]>;
 ```
+
+Static hook called during creation to validate and transform params.
+Override in subclasses to add default values or validation.
 
 ### Type Parameters
 
@@ -623,13 +680,17 @@ static paramsHandler<T>(this, params): Promisable<T["params"]>;
 
 [`Creatable`](#../interfaces/Creatable)\<`T`\>
 
-#### params
+#### params?
 
 `Partial`\<`T`\[`"params"`\]\> = `{}`
+
+The raw partial params provided to `create`
 
 ### Returns
 
 `Promisable`\<`T`\[`"params"`\]\>
+
+The processed params ready for construction
 
 ***
 
@@ -638,6 +699,8 @@ static paramsHandler<T>(this, params): Promisable<T["params"]>;
 ```ts
 createHandler(): Promisable<void>;
 ```
+
+Instance-level creation hook. Override in subclasses to perform setup after construction.
 
 ### Returns
 
@@ -648,18 +711,102 @@ createHandler(): Promisable<void>;
 ### paramsValidator()
 
 ```ts
-paramsValidator(params): TParams;
+paramsValidator(params): TParams & RequiredCreatableParams<void>;
 ```
+
+Validates and returns the merged params, ensuring required fields are present.
+Override in subclasses to add custom validation logic.
 
 ### Parameters
 
 #### params
 
-`Partial`\<`TParams`\>
+`Partial`\<`TParams` & [`RequiredCreatableParams`](#../interfaces/RequiredCreatableParams)\>
+
+The raw partial params to validate
 
 ### Returns
 
-`TParams`
+`TParams` & [`RequiredCreatableParams`](#../interfaces/RequiredCreatableParams)\<`void`\>
+
+The validated params
+
+***
+
+### span()
+
+```ts
+span<T>(name, fn): T;
+```
+
+Executes a function within a telemetry span.
+
+### Type Parameters
+
+#### T
+
+`T`
+
+### Parameters
+
+#### name
+
+`string`
+
+The span name
+
+#### fn
+
+() => `T`
+
+The function to execute within the span
+
+### Returns
+
+`T`
+
+***
+
+### spanAsync()
+
+```ts
+spanAsync<T>(
+   name, 
+   fn, 
+config?): Promise<T>;
+```
+
+Executes an async function within a telemetry span.
+
+### Type Parameters
+
+#### T
+
+`T`
+
+### Parameters
+
+#### name
+
+`string`
+
+The span name
+
+#### fn
+
+() => `Promise`\<`T`\>
+
+The async function to execute within the span
+
+#### config?
+
+`SpanConfig` = `{}`
+
+Optional span configuration
+
+### Returns
+
+`Promise`\<`T`\>
 
 ***
 
@@ -669,9 +816,67 @@ paramsValidator(params): TParams;
 start(): Promise<boolean>;
 ```
 
+Starts the instance, transitioning through 'starting' to 'started' status.
+Thread-safe via mutex. Returns true if already started or started successfully.
+
 ### Returns
 
 `Promise`\<`boolean`\>
+
+***
+
+### started()
+
+```ts
+started(notStartedAction?): boolean;
+```
+
+Checks whether this instance is currently started.
+Takes an action if not started, based on the notStartedAction parameter.
+
+### Parameters
+
+#### notStartedAction?
+
+What to do if not started: 'error'/'throw' throws, 'warn'/'log' logs, 'none' is silent
+
+`"error"` | `"throw"` | `"warn"` | `"log"` | `"none"`
+
+### Returns
+
+`boolean`
+
+True if started, false otherwise
+
+***
+
+### startedAsync()
+
+```ts
+startedAsync(notStartedAction?, tryStart?): Promise<boolean>;
+```
+
+Async version of `started` that can optionally auto-start the instance.
+
+### Parameters
+
+#### notStartedAction?
+
+What to do if not started and auto-start is disabled
+
+`"error"` | `"throw"` | `"warn"` | `"log"` | `"none"`
+
+#### tryStart?
+
+`boolean` = `true`
+
+If true, attempts to start the instance automatically
+
+### Returns
+
+`Promise`\<`boolean`\>
+
+True if the instance is or becomes started
 
 ***
 
@@ -680,6 +885,9 @@ start(): Promise<boolean>;
 ```ts
 stop(): Promise<boolean>;
 ```
+
+Stops the instance, transitioning through 'stopping' to 'stopped' status.
+Thread-safe via mutex. Returns true if already stopped or stopped successfully.
 
 ### Returns
 
@@ -690,16 +898,67 @@ stop(): Promise<boolean>;
 ### \_noOverride()
 
 ```ts
-protected _noOverride(functionName): void;
+protected _noOverride(functionName?): void;
 ```
+
+Asserts that the given function has not been overridden in a subclass.
+Used to enforce the handler pattern (override `startHandler` not `start`).
 
 ### Parameters
 
-#### functionName
+#### functionName?
 
 `string` = `...`
 
 ### Returns
+
+`void`
+
+***
+
+### setStatus()
+
+### Call Signature
+
+```ts
+protected setStatus(value, progress?): void;
+```
+
+Sets the lifecycle status and reports it via the status reporter.
+
+#### Parameters
+
+##### value
+
+`"creating"` | `"created"` | `"starting"` | `"started"` | `"stopping"` | `"stopped"`
+
+##### progress?
+
+`number`
+
+#### Returns
+
+`void`
+
+### Call Signature
+
+```ts
+protected setStatus(value, error?): void;
+```
+
+Sets the lifecycle status and reports it via the status reporter.
+
+#### Parameters
+
+##### value
+
+`"error"`
+
+##### error?
+
+`Error`
+
+#### Returns
 
 `void`
 
@@ -710,6 +969,8 @@ protected _noOverride(functionName): void;
 ```ts
 protected startHandler(): Promisable<void>;
 ```
+
+Override in subclasses to define start behavior. Throw an error on failure.
 
 ### Returns
 
@@ -722,6 +983,8 @@ protected startHandler(): Promisable<void>;
 ```ts
 protected stopHandler(): Promisable<void>;
 ```
+
+Override in subclasses to define stop behavior. Throw an error on failure.
 
 ### Returns
 
@@ -1025,6 +1288,9 @@ BaseEmitter.once
 
 ***
 
+Extends AbstractCreatable with a static `factory` method for creating
+pre-configured CreatableFactory instances.
+
 ## Extends
 
 - [`AbstractCreatable`](#AbstractCreatable)\<`TParams`, `TEventData`\>
@@ -1055,7 +1321,7 @@ new AbstractCreatableWithFactory<TParams, TEventData>(key, params): AbstractCrea
 
 #### params
 
-`Partial`\<`TParams`\>
+`Partial`\<`TParams` & [`RequiredCreatableParams`](#../interfaces/RequiredCreatableParams)\>
 
 ### Returns
 
@@ -1103,27 +1369,29 @@ readonly static globalInstancesCountHistory: Record<BaseClassName, number[]>;
 
 ***
 
-### uniqueName
-
-```ts
-readonly static uniqueName: string;
-```
-
-### Inherited from
-
-[`AbstractCreatable`](#AbstractCreatable).[`uniqueName`](AbstractCreatable.md#uniquename)
-
-***
-
 ### defaultLogger?
 
 ```ts
 optional defaultLogger: Logger;
 ```
 
+Optional default logger for this instance.
+
 ### Inherited from
 
 [`AbstractCreatable`](#AbstractCreatable).[`defaultLogger`](AbstractCreatable.md#defaultlogger-1)
+
+***
+
+### \_startPromise
+
+```ts
+protected _startPromise: Promisable<boolean> | undefined;
+```
+
+### Inherited from
+
+[`AbstractCreatable`](#AbstractCreatable).[`_startPromise`](AbstractCreatable.md#_startpromise)
 
 ***
 
@@ -1264,12 +1532,12 @@ get static maxHistoryDepth(): number;
 ### Get Signature
 
 ```ts
-get logger(): undefined | Logger;
+get logger(): Logger | undefined;
 ```
 
 #### Returns
 
-`undefined` \| `Logger`
+`Logger` \| `undefined`
 
 ### Inherited from
 
@@ -1282,12 +1550,12 @@ get logger(): undefined | Logger;
 ### Get Signature
 
 ```ts
-get meter(): undefined | Meter;
+get meter(): Meter | undefined;
 ```
 
 #### Returns
 
-`undefined` \| `Meter`
+`Meter` \| `undefined`
 
 ### Inherited from
 
@@ -1300,12 +1568,12 @@ get meter(): undefined | Meter;
 ### Get Signature
 
 ```ts
-get tracer(): undefined | Tracer;
+get tracer(): Tracer | undefined;
 ```
 
 #### Returns
 
-`undefined` \| `Tracer`
+`Tracer` \| `undefined`
 
 ### Inherited from
 
@@ -1318,12 +1586,14 @@ get tracer(): undefined | Tracer;
 ### Get Signature
 
 ```ts
-get name(): string;
+get name(): CreatableName;
 ```
+
+The name identifier for this creatable instance.
 
 #### Returns
 
-`string`
+[`CreatableName`](#../type-aliases/CreatableName)
 
 ### Inherited from
 
@@ -1336,16 +1606,58 @@ get name(): string;
 ### Get Signature
 
 ```ts
-get params(): TParams;
+get params(): TParams & RequiredCreatableParams<void>;
 ```
+
+The validated and merged parameters for this instance.
 
 #### Returns
 
-`TParams`
+`TParams` & [`RequiredCreatableParams`](#../interfaces/RequiredCreatableParams)\<`void`\>
 
 ### Inherited from
 
 [`AbstractCreatable`](#AbstractCreatable).[`params`](AbstractCreatable.md#params)
+
+***
+
+### startable
+
+### Get Signature
+
+```ts
+get startable(): boolean;
+```
+
+Whether this instance can be started (must be in 'created' or 'stopped' status).
+
+#### Returns
+
+`boolean`
+
+### Inherited from
+
+[`AbstractCreatable`](#AbstractCreatable).[`startable`](AbstractCreatable.md#startable)
+
+***
+
+### status
+
+### Get Signature
+
+```ts
+get status(): CreatableStatus | null;
+```
+
+The current lifecycle status of this instance, or null if not yet initialized.
+
+#### Returns
+
+[`CreatableStatus`](#../type-aliases/CreatableStatus) \| `null`
+
+### Inherited from
+
+[`AbstractCreatable`](#AbstractCreatable).[`status`](AbstractCreatable.md#status)
 
 ***
 
@@ -1355,14 +1667,16 @@ get params(): TParams;
 
 ```ts
 get statusReporter(): 
-  | undefined
-| CreatableStatusReporter<void>;
+  | CreatableStatusReporter<void>
+  | undefined;
 ```
+
+The status reporter used to broadcast lifecycle changes.
 
 #### Returns
 
-  \| `undefined`
   \| [`CreatableStatusReporter`](#../interfaces/CreatableStatusReporter)\<`void`\>
+  \| `undefined`
 
 ### Inherited from
 
@@ -1402,7 +1716,7 @@ static gc(className): void;
 
 ##### className
 
-`string`
+`BaseClassName`
 
 #### Returns
 
@@ -1424,7 +1738,7 @@ static instanceCount(className): number;
 
 #### className
 
-`string`
+`BaseClassName`
 
 ### Returns
 
@@ -1487,8 +1801,11 @@ static stopHistory(): void;
 ### create()
 
 ```ts
-static create<T>(this, inParams): Promise<T>;
+static create<T>(this, inParams?): Promise<T>;
 ```
+
+Asynchronously creates a new instance by processing params, constructing,
+and running both static and instance createHandlers.
 
 ### Type Parameters
 
@@ -1502,13 +1819,17 @@ static create<T>(this, inParams): Promise<T>;
 
 [`Creatable`](#../interfaces/Creatable)\<`T`\>
 
-#### inParams
+#### inParams?
 
 `Partial`\<`T`\[`"params"`\]\> = `{}`
+
+Optional partial parameters to configure the instance
 
 ### Returns
 
 `Promise`\<`T`\>
+
+The fully initialized instance
 
 ### Inherited from
 
@@ -1521,6 +1842,9 @@ static create<T>(this, inParams): Promise<T>;
 ```ts
 static createHandler<T>(this, instance): Promisable<T>;
 ```
+
+Static hook called during creation to perform additional initialization.
+Override in subclasses to customize post-construction setup.
 
 ### Type Parameters
 
@@ -1538,9 +1862,13 @@ static createHandler<T>(this, instance): Promisable<T>;
 
 `T`
 
+The newly constructed instance
+
 ### Returns
 
 `Promisable`\<`T`\>
+
+The instance, potentially modified
 
 ### Inherited from
 
@@ -1551,8 +1879,11 @@ static createHandler<T>(this, instance): Promisable<T>;
 ### paramsHandler()
 
 ```ts
-static paramsHandler<T>(this, params): Promisable<T["params"]>;
+static paramsHandler<T>(this, params?): Promisable<T["params"]>;
 ```
+
+Static hook called during creation to validate and transform params.
+Override in subclasses to add default values or validation.
 
 ### Type Parameters
 
@@ -1566,13 +1897,17 @@ static paramsHandler<T>(this, params): Promisable<T["params"]>;
 
 [`Creatable`](#../interfaces/Creatable)\<`T`\>
 
-#### params
+#### params?
 
 `Partial`\<`T`\[`"params"`\]\> = `{}`
+
+The raw partial params provided to `create`
 
 ### Returns
 
 `Promisable`\<`T`\[`"params"`\]\>
+
+The processed params ready for construction
 
 ### Inherited from
 
@@ -1586,35 +1921,129 @@ static paramsHandler<T>(this, params): Promisable<T["params"]>;
 createHandler(): Promisable<void>;
 ```
 
+Instance-level creation hook. Override in subclasses to perform setup after construction.
+
 ### Returns
 
 `Promisable`\<`void`\>
 
 ### Inherited from
 
-[`AbstractCreatable`](#AbstractCreatable).[`createHandler`](AbstractCreatable.md#createhandler-2)
+[`AbstractCreatable`](#AbstractCreatable).[`createHandler`](AbstractCreatable.md#createhandler-1)
 
 ***
 
 ### paramsValidator()
 
 ```ts
-paramsValidator(params): TParams;
+paramsValidator(params): TParams & RequiredCreatableParams<void>;
 ```
+
+Validates and returns the merged params, ensuring required fields are present.
+Override in subclasses to add custom validation logic.
 
 ### Parameters
 
 #### params
 
-`Partial`\<`TParams`\>
+`Partial`\<`TParams` & [`RequiredCreatableParams`](#../interfaces/RequiredCreatableParams)\>
+
+The raw partial params to validate
 
 ### Returns
 
-`TParams`
+`TParams` & [`RequiredCreatableParams`](#../interfaces/RequiredCreatableParams)\<`void`\>
+
+The validated params
 
 ### Inherited from
 
 [`AbstractCreatable`](#AbstractCreatable).[`paramsValidator`](AbstractCreatable.md#paramsvalidator)
+
+***
+
+### span()
+
+```ts
+span<T>(name, fn): T;
+```
+
+Executes a function within a telemetry span.
+
+### Type Parameters
+
+#### T
+
+`T`
+
+### Parameters
+
+#### name
+
+`string`
+
+The span name
+
+#### fn
+
+() => `T`
+
+The function to execute within the span
+
+### Returns
+
+`T`
+
+### Inherited from
+
+[`AbstractCreatable`](#AbstractCreatable).[`span`](AbstractCreatable.md#span)
+
+***
+
+### spanAsync()
+
+```ts
+spanAsync<T>(
+   name, 
+   fn, 
+config?): Promise<T>;
+```
+
+Executes an async function within a telemetry span.
+
+### Type Parameters
+
+#### T
+
+`T`
+
+### Parameters
+
+#### name
+
+`string`
+
+The span name
+
+#### fn
+
+() => `Promise`\<`T`\>
+
+The async function to execute within the span
+
+#### config?
+
+`SpanConfig` = `{}`
+
+Optional span configuration
+
+### Returns
+
+`Promise`\<`T`\>
+
+### Inherited from
+
+[`AbstractCreatable`](#AbstractCreatable).[`spanAsync`](AbstractCreatable.md#spanasync)
 
 ***
 
@@ -1623,6 +2052,9 @@ paramsValidator(params): TParams;
 ```ts
 start(): Promise<boolean>;
 ```
+
+Starts the instance, transitioning through 'starting' to 'started' status.
+Thread-safe via mutex. Returns true if already started or started successfully.
 
 ### Returns
 
@@ -1634,11 +2066,77 @@ start(): Promise<boolean>;
 
 ***
 
+### started()
+
+```ts
+started(notStartedAction?): boolean;
+```
+
+Checks whether this instance is currently started.
+Takes an action if not started, based on the notStartedAction parameter.
+
+### Parameters
+
+#### notStartedAction?
+
+What to do if not started: 'error'/'throw' throws, 'warn'/'log' logs, 'none' is silent
+
+`"error"` | `"throw"` | `"warn"` | `"log"` | `"none"`
+
+### Returns
+
+`boolean`
+
+True if started, false otherwise
+
+### Inherited from
+
+[`AbstractCreatable`](#AbstractCreatable).[`started`](AbstractCreatable.md#started)
+
+***
+
+### startedAsync()
+
+```ts
+startedAsync(notStartedAction?, tryStart?): Promise<boolean>;
+```
+
+Async version of `started` that can optionally auto-start the instance.
+
+### Parameters
+
+#### notStartedAction?
+
+What to do if not started and auto-start is disabled
+
+`"error"` | `"throw"` | `"warn"` | `"log"` | `"none"`
+
+#### tryStart?
+
+`boolean` = `true`
+
+If true, attempts to start the instance automatically
+
+### Returns
+
+`Promise`\<`boolean`\>
+
+True if the instance is or becomes started
+
+### Inherited from
+
+[`AbstractCreatable`](#AbstractCreatable).[`startedAsync`](AbstractCreatable.md#startedasync)
+
+***
+
 ### stop()
 
 ```ts
 stop(): Promise<boolean>;
 ```
+
+Stops the instance, transitioning through 'stopping' to 'stopped' status.
+Thread-safe via mutex. Returns true if already stopped or stopped successfully.
 
 ### Returns
 
@@ -1653,12 +2151,15 @@ stop(): Promise<boolean>;
 ### \_noOverride()
 
 ```ts
-protected _noOverride(functionName): void;
+protected _noOverride(functionName?): void;
 ```
+
+Asserts that the given function has not been overridden in a subclass.
+Used to enforce the handler pattern (override `startHandler` not `start`).
 
 ### Parameters
 
-#### functionName
+#### functionName?
 
 `string` = `...`
 
@@ -1672,11 +2173,69 @@ protected _noOverride(functionName): void;
 
 ***
 
+### setStatus()
+
+### Call Signature
+
+```ts
+protected setStatus(value, progress?): void;
+```
+
+Sets the lifecycle status and reports it via the status reporter.
+
+#### Parameters
+
+##### value
+
+`"creating"` | `"created"` | `"starting"` | `"started"` | `"stopping"` | `"stopped"`
+
+##### progress?
+
+`number`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`AbstractCreatable`](#AbstractCreatable).[`setStatus`](AbstractCreatable.md#setstatus)
+
+### Call Signature
+
+```ts
+protected setStatus(value, error?): void;
+```
+
+Sets the lifecycle status and reports it via the status reporter.
+
+#### Parameters
+
+##### value
+
+`"error"`
+
+##### error?
+
+`Error`
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[`AbstractCreatable`](#AbstractCreatable).[`setStatus`](AbstractCreatable.md#setstatus)
+
+***
+
 ### startHandler()
 
 ```ts
 protected startHandler(): Promisable<void>;
 ```
+
+Override in subclasses to define start behavior. Throw an error on failure.
 
 ### Returns
 
@@ -1693,6 +2252,8 @@ protected startHandler(): Promisable<void>;
 ```ts
 protected stopHandler(): Promisable<void>;
 ```
+
+Override in subclasses to define stop behavior. Throw an error on failure.
 
 ### Returns
 
@@ -1713,6 +2274,8 @@ static factory<T>(
 labels?): CreatableFactory<T>;
 ```
 
+Creates a factory that produces instances of this class with pre-configured params and labels.
+
 ### Type Parameters
 
 #### T
@@ -1729,9 +2292,13 @@ labels?): CreatableFactory<T>;
 
 `Partial`\<`T`\[`"params"`\]\>
 
+Default parameters for instances created by the factory
+
 #### labels?
 
 [`Labels`](#../interfaces/Labels)
+
+Labels to assign to created instances
 
 ### Returns
 
@@ -2017,6 +2584,9 @@ once<TEventName>(eventName, listener): () => void;
 
 ***
 
+A concrete factory that wraps a Creatable class with default parameters and labels.
+Instances are created by merging caller-provided params over the factory defaults.
+
 ## Type Parameters
 
 ### T
@@ -2064,6 +2634,8 @@ labels?): Factory<T>;
 creatable: Creatable<T>;
 ```
 
+The Creatable class this factory delegates creation to.
+
 ***
 
 ### defaultParams?
@@ -2072,6 +2644,8 @@ creatable: Creatable<T>;
 optional defaultParams: Partial<T["params"]>;
 ```
 
+Default parameters merged into every `create` call.
+
 ***
 
 ### labels?
@@ -2079,6 +2653,8 @@ optional defaultParams: Partial<T["params"]>;
 ```ts
 optional labels: Labels;
 ```
+
+Labels identifying resources created by this factory.
 
 ## Methods
 
@@ -2090,6 +2666,8 @@ static withParams<T>(
    params?, 
 labels?): Factory<T>;
 ```
+
+Creates a new Factory instance with the given default params and labels.
 
 ### Type Parameters
 
@@ -2103,13 +2681,19 @@ labels?): Factory<T>;
 
 [`Creatable`](#../interfaces/Creatable)\<`T`\>
 
+The Creatable class to wrap
+
 #### params?
 
 `Partial`\<`T`\[`"params"`\]\>
 
+Default parameters for new instances
+
 #### labels?
 
 [`Labels`](#../interfaces/Labels) = `{}`
+
+Labels to assign to created instances
 
 ### Returns
 
@@ -2123,11 +2707,15 @@ labels?): Factory<T>;
 create(params?): Promise<T>;
 ```
 
+Creates a new instance, merging the provided params over the factory defaults.
+
 ### Parameters
 
 #### params?
 
 `Partial`\<`T`\[`"params"`\]\>
+
+Optional parameters to override the factory defaults
 
 ### Returns
 
@@ -2261,6 +2849,10 @@ True of the source object has all the labels from the required set
 
 ***
 
+Static interface for classes that support asynchronous creation.
+Provides the `create`, `createHandler`, and `paramsHandler` static methods
+used to construct instances through the creatable lifecycle.
+
 ## Extended by
 
 - [`CreatableWithFactory`](#CreatableWithFactory)
@@ -2278,6 +2870,8 @@ True of the source object has all the labels from the required set
 ```ts
 new Creatable(key, params): T & AbstractCreatable<T["params"], EventData>;
 ```
+
+Constructs a new raw instance. Should not be called directly; use `create` instead.
 
 ### Parameters
 
@@ -2301,6 +2895,8 @@ new Creatable(key, params): T & AbstractCreatable<T["params"], EventData>;
 optional defaultLogger: Logger;
 ```
 
+Optional default logger shared across instances created by this class.
+
 ## Methods
 
 ### create()
@@ -2308,6 +2904,8 @@ optional defaultLogger: Logger;
 ```ts
 create<T>(this, params?): Promise<T>;
 ```
+
+Asynchronously creates and initializes a new instance with the given params.
 
 ### Type Parameters
 
@@ -2337,6 +2935,8 @@ create<T>(this, params?): Promise<T>;
 createHandler<T>(this, instance): Promisable<T>;
 ```
 
+Hook called after construction to perform additional initialization on the instance.
+
 ### Type Parameters
 
 #### T
@@ -2362,8 +2962,10 @@ createHandler<T>(this, instance): Promisable<T>;
 ### paramsHandler()
 
 ```ts
-paramsHandler<T>(this, params?): Promisable<T["params"]>;
+paramsHandler<T>(this, params?): Promisable<T["params"] & RequiredCreatableParams<void>>;
 ```
+
+Hook called to validate and transform params before instance construction.
 
 ### Type Parameters
 
@@ -2383,13 +2985,16 @@ paramsHandler<T>(this, params?): Promisable<T["params"]>;
 
 ### Returns
 
-`Promisable`\<`T`\[`"params"`\]\>
+`Promisable`\<`T`\[`"params"`\] & [`RequiredCreatableParams`](#RequiredCreatableParams)\<`void`\>\>
 
   ### <a id="CreatableFactory"></a>CreatableFactory
 
 [**@xylabs/creatable**](#../README)
 
 ***
+
+A factory interface for creating instances of a Creatable with pre-configured parameters.
+Unlike the full Creatable, this only exposes the `create` method.
 
 ## Extends
 
@@ -2414,6 +3019,8 @@ paramsHandler<T>(this, params?): Promisable<T["params"]>;
 create(this, params?): Promise<T>;
 ```
 
+Creates a new instance, merging the provided params with the factory's defaults.
+
 ### Parameters
 
 #### this
@@ -2433,6 +3040,8 @@ create(this, params?): Promise<T>;
 [**@xylabs/creatable**](#../README)
 
 ***
+
+Represents a created instance with a managed lifecycle (start/stop) and event emission.
 
 ## Extends
 
@@ -2456,6 +3065,8 @@ create(this, params?): Promise<T>;
 eventData: TEventData;
 ```
 
+The event data type associated with this instance.
+
 ### Overrides
 
 ```ts
@@ -2467,8 +3078,10 @@ EventEmitter.eventData
 ### name
 
 ```ts
-name: string;
+name: CreatableName;
 ```
+
+The name identifier for this instance.
 
 ***
 
@@ -2477,6 +3090,36 @@ name: string;
 ```ts
 params: TParams;
 ```
+
+The parameters used to configure this instance.
+
+***
+
+### start()
+
+```ts
+start: () => Promise<boolean>;
+```
+
+Starts the instance. Resolves to true if started successfully.
+
+### Returns
+
+`Promise`\<`boolean`\>
+
+***
+
+### stop()
+
+```ts
+stop: () => Promise<boolean>;
+```
+
+Stops the instance. Resolves to true if stopped successfully.
+
+### Returns
+
+`Promise`\<`boolean`\>
 
 ## Methods
 
@@ -2750,9 +3393,408 @@ EventEmitter.once
 
 ***
 
+Parameters for creating a creatable instance, combining required params with emitter params.
+
+## Extends
+
+- [`RequiredCreatableParams`](#RequiredCreatableParams).`BaseEmitterParams`
+
+## Properties
+
+### logger?
+
+```ts
+optional logger: Logger;
+```
+
+### Inherited from
+
+[`RequiredCreatableParams`](#RequiredCreatableParams).[`logger`](RequiredCreatableParams.md#logger)
+
+***
+
+### meterProvider?
+
+```ts
+optional meterProvider: MeterProvider;
+```
+
+### Inherited from
+
+[`RequiredCreatableParams`](#RequiredCreatableParams).[`meterProvider`](RequiredCreatableParams.md#meterprovider)
+
+***
+
+### traceProvider?
+
+```ts
+optional traceProvider: TracerProvider;
+```
+
+### Inherited from
+
+[`RequiredCreatableParams`](#RequiredCreatableParams).[`traceProvider`](RequiredCreatableParams.md#traceprovider)
+
+***
+
+### name?
+
+```ts
+optional name: CreatableName;
+```
+
+Optional name identifying this creatable instance.
+
+### Inherited from
+
+[`RequiredCreatableParams`](#RequiredCreatableParams).[`name`](RequiredCreatableParams.md#name)
+
+***
+
+### statusReporter?
+
+```ts
+optional statusReporter: CreatableStatusReporter<void>;
+```
+
+Optional reporter for broadcasting status changes.
+
+### Inherited from
+
+[`RequiredCreatableParams`](#RequiredCreatableParams).[`statusReporter`](RequiredCreatableParams.md#statusreporter)
+
+  ### <a id="CreatableStatusReporter"></a>CreatableStatusReporter
+
+[**@xylabs/creatable**](#../README)
+
+***
+
+Reports status changes for a creatable, supporting progress tracking and error reporting.
+
+## Type Parameters
+
+### TAdditionalStatus
+
+`TAdditionalStatus` *extends* `void` \| `string` = `void`
+
+## Methods
+
+### report()
+
+### Call Signature
+
+```ts
+report(
+   name, 
+   status, 
+   progress): void;
+```
+
+Report a non-error status with a numeric progress value.
+
+#### Parameters
+
+##### name
+
+`BaseClassName`
+
+##### status
+
+`"creating"` | `"created"` | `"starting"` | `"started"` | `"stopping"` | `"stopped"` | `Exclude`\<`TAdditionalStatus` *extends* `void` ? [`StandardCreatableStatus`](#../type-aliases/StandardCreatableStatus) : `TAdditionalStatus`, `"error"`\>
+
+##### progress
+
+`number`
+
+#### Returns
+
+`void`
+
+### Call Signature
+
+```ts
+report(
+   name, 
+   status, 
+   error): void;
+```
+
+Report an error status with the associated Error.
+
+#### Parameters
+
+##### name
+
+`BaseClassName`
+
+##### status
+
+`"error"` | `Extract`\<`TAdditionalStatus` *extends* `void` ? [`StandardCreatableStatus`](#../type-aliases/StandardCreatableStatus) : `TAdditionalStatus`, `"error"`\>
+
+##### error
+
+`Error`
+
+#### Returns
+
+`void`
+
+### Call Signature
+
+```ts
+report(name, status): void;
+```
+
+Report a status change without progress or error details.
+
+#### Parameters
+
+##### name
+
+`BaseClassName`
+
+##### status
+
+[`CreatableStatus`](#../type-aliases/CreatableStatus)\<`TAdditionalStatus`\>
+
+#### Returns
+
+`void`
+
+  ### <a id="CreatableWithFactory"></a>CreatableWithFactory
+
+[**@xylabs/creatable**](#../README)
+
+***
+
+Extends Creatable with a `factory` method that produces pre-configured CreatableFactory instances.
+
+## Extends
+
+- [`Creatable`](#Creatable)\<`T`\>
+
+## Type Parameters
+
+### T
+
+`T` *extends* [`CreatableInstance`](#CreatableInstance) = [`CreatableInstance`](#CreatableInstance)
+
+## Constructors
+
+### Constructor
+
+```ts
+new CreatableWithFactory(key, params): T & AbstractCreatable<T["params"], EventData>;
+```
+
+Constructs a new raw instance. Should not be called directly; use `create` instead.
+
+### Parameters
+
+#### key
+
+`unknown`
+
+#### params
+
+`Partial`\<[`CreatableParams`](#CreatableParams)\>
+
+### Returns
+
+`T` & [`AbstractCreatable`](#../classes/AbstractCreatable)\<`T`\[`"params"`\], `EventData`\>
+
+### Inherited from
+
+[`Creatable`](#Creatable).[`constructor`](Creatable.md#constructor)
+
+## Properties
+
+### defaultLogger?
+
+```ts
+optional defaultLogger: Logger;
+```
+
+Optional default logger shared across instances created by this class.
+
+### Inherited from
+
+[`Creatable`](#Creatable).[`defaultLogger`](Creatable.md#defaultlogger)
+
+## Methods
+
+### create()
+
+```ts
+create<T>(this, params?): Promise<T>;
+```
+
+Asynchronously creates and initializes a new instance with the given params.
+
+### Type Parameters
+
+#### T
+
+`T` *extends* [`CreatableInstance`](#CreatableInstance)\<[`CreatableParams`](#CreatableParams), `EventData`\>
+
+### Parameters
+
+#### this
+
+[`Creatable`](#Creatable)\<`T`\>
+
+#### params?
+
+`Partial`\<`T`\[`"params"`\]\>
+
+### Returns
+
+`Promise`\<`T`\>
+
+### Inherited from
+
+[`Creatable`](#Creatable).[`create`](Creatable.md#create)
+
+***
+
+### createHandler()
+
+```ts
+createHandler<T>(this, instance): Promisable<T>;
+```
+
+Hook called after construction to perform additional initialization on the instance.
+
+### Type Parameters
+
+#### T
+
+`T` *extends* [`CreatableInstance`](#CreatableInstance)\<[`CreatableParams`](#CreatableParams), `EventData`\>
+
+### Parameters
+
+#### this
+
+[`Creatable`](#Creatable)\<`T`\>
+
+#### instance
+
+`T`
+
+### Returns
+
+`Promisable`\<`T`\>
+
+### Inherited from
+
+[`Creatable`](#Creatable).[`createHandler`](Creatable.md#createhandler)
+
+***
+
+### paramsHandler()
+
+```ts
+paramsHandler<T>(this, params?): Promisable<T["params"] & RequiredCreatableParams<void>>;
+```
+
+Hook called to validate and transform params before instance construction.
+
+### Type Parameters
+
+#### T
+
+`T` *extends* [`CreatableInstance`](#CreatableInstance)\<[`CreatableParams`](#CreatableParams), `EventData`\>
+
+### Parameters
+
+#### this
+
+[`Creatable`](#Creatable)\<`T`\>
+
+#### params?
+
+`Partial`\<`T`\[`"params"`\]\>
+
+### Returns
+
+`Promisable`\<`T`\[`"params"`\] & [`RequiredCreatableParams`](#RequiredCreatableParams)\<`void`\>\>
+
+### Inherited from
+
+[`Creatable`](#Creatable).[`paramsHandler`](Creatable.md#paramshandler)
+
+***
+
+### factory()
+
+```ts
+factory<T>(
+   this, 
+   params?, 
+labels?): CreatableFactory<T>;
+```
+
+Creates a factory with the given default params and labels.
+
+### Type Parameters
+
+#### T
+
+`T` *extends* [`CreatableInstance`](#CreatableInstance)\<[`CreatableParams`](#CreatableParams), `EventData`\>
+
+### Parameters
+
+#### this
+
+[`Creatable`](#Creatable)\<`T`\>
+
+#### params?
+
+`Partial`\<`T`\[`"params"`\]\>
+
+#### labels?
+
+[`Labels`](#Labels)
+
+### Returns
+
+[`CreatableFactory`](#CreatableFactory)\<`T`\>
+
+  ### <a id="Labels"></a>Labels
+
+[**@xylabs/creatable**](#../README)
+
+***
+
+Object used to represent labels identifying a resource.
+
+## Indexable
+
+```ts
+[key: string]: string | undefined
+```
+
+  ### <a id="RequiredCreatableParams"></a>RequiredCreatableParams
+
+[**@xylabs/creatable**](#../README)
+
+***
+
+The minimum required parameters for constructing a creatable.
+
 ## Extends
 
 - `BaseEmitterParams`
+
+## Extended by
+
+- [`CreatableParams`](#CreatableParams)
+
+## Type Parameters
+
+### TAdditionalStatus
+
+`TAdditionalStatus` *extends* [`CreatableStatus`](#../type-aliases/CreatableStatus) \| `void` = `void`
 
 ## Properties
 
@@ -2801,285 +3843,20 @@ BaseEmitterParams.traceProvider
 ### name?
 
 ```ts
-optional name: string;
+optional name: CreatableName;
 ```
+
+Optional name identifying this creatable instance.
 
 ***
 
 ### statusReporter?
 
 ```ts
-optional statusReporter: CreatableStatusReporter<void>;
+optional statusReporter: CreatableStatusReporter<TAdditionalStatus>;
 ```
 
-  ### <a id="CreatableStatusReporter"></a>CreatableStatusReporter
-
-[**@xylabs/creatable**](#../README)
-
-***
-
-## Type Parameters
-
-### T
-
-`T` *extends* `void` \| `string` = `void`
-
-## Methods
-
-### report()
-
-### Call Signature
-
-```ts
-report(
-   name, 
-   status, 
-   progress?): void;
-```
-
-#### Parameters
-
-##### name
-
-`string`
-
-##### status
-
-`Exclude`\<`T` *extends* `void` ? [`CreatableStatus`](#../type-aliases/CreatableStatus) : `T` \| [`CreatableStatus`](#../type-aliases/CreatableStatus), `"error"`\>
-
-##### progress?
-
-`number`
-
-#### Returns
-
-`void`
-
-### Call Signature
-
-```ts
-report(
-   name, 
-   status, 
-   error?): void;
-```
-
-#### Parameters
-
-##### name
-
-`string`
-
-##### status
-
-`Extract`\<`T` *extends* `void` ? [`CreatableStatus`](#../type-aliases/CreatableStatus) : `T` \| [`CreatableStatus`](#../type-aliases/CreatableStatus), `"error"`\>
-
-##### error?
-
-`Error`
-
-#### Returns
-
-`void`
-
-  ### <a id="CreatableWithFactory"></a>CreatableWithFactory
-
-[**@xylabs/creatable**](#../README)
-
-***
-
-## Extends
-
-- [`Creatable`](#Creatable)\<`T`\>
-
-## Type Parameters
-
-### T
-
-`T` *extends* [`CreatableInstance`](#CreatableInstance) = [`CreatableInstance`](#CreatableInstance)
-
-## Constructors
-
-### Constructor
-
-```ts
-new CreatableWithFactory(key, params): T & AbstractCreatable<T["params"], EventData>;
-```
-
-### Parameters
-
-#### key
-
-`unknown`
-
-#### params
-
-`Partial`\<[`CreatableParams`](#CreatableParams)\>
-
-### Returns
-
-`T` & [`AbstractCreatable`](#../classes/AbstractCreatable)\<`T`\[`"params"`\], `EventData`\>
-
-### Inherited from
-
-[`Creatable`](#Creatable).[`constructor`](Creatable.md#constructor)
-
-## Properties
-
-### defaultLogger?
-
-```ts
-optional defaultLogger: Logger;
-```
-
-### Inherited from
-
-[`Creatable`](#Creatable).[`defaultLogger`](Creatable.md#defaultlogger)
-
-## Methods
-
-### create()
-
-```ts
-create<T>(this, params?): Promise<T>;
-```
-
-### Type Parameters
-
-#### T
-
-`T` *extends* [`CreatableInstance`](#CreatableInstance)\<[`CreatableParams`](#CreatableParams), `EventData`\>
-
-### Parameters
-
-#### this
-
-[`Creatable`](#Creatable)\<`T`\>
-
-#### params?
-
-`Partial`\<`T`\[`"params"`\]\>
-
-### Returns
-
-`Promise`\<`T`\>
-
-### Inherited from
-
-[`Creatable`](#Creatable).[`create`](Creatable.md#create)
-
-***
-
-### createHandler()
-
-```ts
-createHandler<T>(this, instance): Promisable<T>;
-```
-
-### Type Parameters
-
-#### T
-
-`T` *extends* [`CreatableInstance`](#CreatableInstance)\<[`CreatableParams`](#CreatableParams), `EventData`\>
-
-### Parameters
-
-#### this
-
-[`Creatable`](#Creatable)\<`T`\>
-
-#### instance
-
-`T`
-
-### Returns
-
-`Promisable`\<`T`\>
-
-### Inherited from
-
-[`Creatable`](#Creatable).[`createHandler`](Creatable.md#createhandler)
-
-***
-
-### paramsHandler()
-
-```ts
-paramsHandler<T>(this, params?): Promisable<T["params"]>;
-```
-
-### Type Parameters
-
-#### T
-
-`T` *extends* [`CreatableInstance`](#CreatableInstance)\<[`CreatableParams`](#CreatableParams), `EventData`\>
-
-### Parameters
-
-#### this
-
-[`Creatable`](#Creatable)\<`T`\>
-
-#### params?
-
-`Partial`\<`T`\[`"params"`\]\>
-
-### Returns
-
-`Promisable`\<`T`\[`"params"`\]\>
-
-### Inherited from
-
-[`Creatable`](#Creatable).[`paramsHandler`](Creatable.md#paramshandler)
-
-***
-
-### factory()
-
-```ts
-factory<T>(
-   this, 
-   params?, 
-labels?): CreatableFactory<T>;
-```
-
-### Type Parameters
-
-#### T
-
-`T` *extends* [`CreatableInstance`](#CreatableInstance)\<[`CreatableParams`](#CreatableParams), `EventData`\>
-
-### Parameters
-
-#### this
-
-[`Creatable`](#Creatable)\<`T`\>
-
-#### params?
-
-`Partial`\<`T`\[`"params"`\]\>
-
-#### labels?
-
-[`Labels`](#Labels)
-
-### Returns
-
-[`CreatableFactory`](#CreatableFactory)\<`T`\>
-
-  ### <a id="Labels"></a>Labels
-
-[**@xylabs/creatable**](#../README)
-
-***
-
-Object used to represent labels identifying a resource.
-
-## Indexable
-
-```ts
-[key: string]: undefined | string
-```
+Optional reporter for broadcasting status changes.
 
   ### <a id="WithLabels"></a>WithLabels
 
@@ -3137,6 +3914,8 @@ optional labels: T;
 type CreatableName = Exclude<string, "creatable-name-reserved-32546239486"> & BaseClassName;
 ```
 
+A branded string type used as the name identifier for creatables.
+
   ### <a id="CreatableStatus"></a>CreatableStatus
 
 [**@xylabs/creatable**](#../README)
@@ -3144,7 +3923,27 @@ type CreatableName = Exclude<string, "creatable-name-reserved-32546239486"> & Ba
 ***
 
 ```ts
-type CreatableStatus = 
+type CreatableStatus<TAdditionalStatus> = 
+  | StandardCreatableStatus
+  | TAdditionalStatus extends void ? StandardCreatableStatus : TAdditionalStatus;
+```
+
+A creatable's status, optionally extended with additional custom status values.
+
+## Type Parameters
+
+### TAdditionalStatus
+
+`TAdditionalStatus` *extends* `void` \| `string` = `void`
+
+  ### <a id="StandardCreatableStatus"></a>StandardCreatableStatus
+
+[**@xylabs/creatable**](#../README)
+
+***
+
+```ts
+type StandardCreatableStatus = 
   | "creating"
   | "created"
   | "starting"
@@ -3153,6 +3952,8 @@ type CreatableStatus =
   | "stopped"
   | "error";
 ```
+
+The standard lifecycle statuses a creatable can transition through.
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

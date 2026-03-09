@@ -61,19 +61,43 @@ function equalArrayBuffers(a1, a2): boolean;
 
 ***
 
+## Call Signature
+
 ```ts
 function isArrayBuffer(value): value is ArrayBuffer;
 ```
 
-## Parameters
+### Parameters
 
 ### value
 
 `unknown`
 
-## Returns
+### Returns
 
 `value is ArrayBuffer`
+
+## Call Signature
+
+```ts
+function isArrayBuffer<T>(value): value is Extract<T, ArrayBuffer>;
+```
+
+### Type Parameters
+
+### T
+
+`T` *extends* `ArrayBuffer`
+
+### Parameters
+
+### value
+
+`T`
+
+### Returns
+
+`value is Extract<T, ArrayBuffer>`
 
   ### <a id="isArrayBufferLike"></a>isArrayBufferLike
 
@@ -81,19 +105,43 @@ function isArrayBuffer(value): value is ArrayBuffer;
 
 ***
 
+## Call Signature
+
 ```ts
 function isArrayBufferLike(value): value is ArrayBufferLike;
 ```
 
-## Parameters
+### Parameters
 
 ### value
 
 `unknown`
 
-## Returns
+### Returns
 
 `value is ArrayBufferLike`
+
+## Call Signature
+
+```ts
+function isArrayBufferLike<T>(value): value is Extract<T, ArrayBufferLike>;
+```
+
+### Type Parameters
+
+### T
+
+`T` *extends* `ArrayBufferLike`
+
+### Parameters
+
+### value
+
+`T`
+
+### Returns
+
+`value is Extract<T, ArrayBufferLike>`
 
   ### <a id="toArrayBuffer"></a>toArrayBuffer
 
@@ -161,14 +209,14 @@ function toArrayBuffer(
 function toArrayBuffer(
    value, 
    padLength?, 
-   base?): undefined | ArrayBufferLike;
+   base?): ArrayBufferLike | undefined;
 ```
 
 ### Parameters
 
 ### value
 
-`undefined` | `string` | `bigint` | `ArrayBufferLike`
+`string` | `bigint` | `ArrayBufferLike` | `undefined`
 
 ### padLength?
 
@@ -180,7 +228,7 @@ function toArrayBuffer(
 
 ### Returns
 
-`undefined` \| `ArrayBufferLike`
+`ArrayBufferLike` \| `undefined`
 
   ### <a id="toUint8Array"></a>toUint8Array
 
@@ -248,14 +296,14 @@ function toUint8Array(
 function toUint8Array(
    value, 
    padLength?, 
-base?): undefined | Uint8Array<ArrayBufferLike>;
+   base?): Uint8Array<ArrayBufferLike> | undefined;
 ```
 
 ### Parameters
 
 ### value
 
-`undefined` | `string` | `bigint` | `ArrayBufferLike`
+`string` | `bigint` | `ArrayBufferLike` | `undefined`
 
 ### padLength?
 
@@ -267,7 +315,7 @@ base?): undefined | Uint8Array<ArrayBufferLike>;
 
 ### Returns
 
-`undefined` \| `Uint8Array`\<`ArrayBufferLike`\>
+`Uint8Array`\<`ArrayBufferLike`\> \| `undefined`
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

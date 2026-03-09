@@ -59,7 +59,7 @@ The type of value to check
 
 Expression to be evaluated for being defined
 
-`undefined` | `T`
+`T` | `undefined`
 
 ### messageFunc?
 
@@ -118,7 +118,7 @@ The type of error to throw
 
 Expression to be evaluated for being defined
 
-`undefined` | `T`
+`T` | `undefined`
 
 ### errorFunc?
 
@@ -142,90 +142,6 @@ Custom error returned by errorFunc
 // Using with a custom error
 const user = assertDefinedEx(getUser(), () => new UserNotFoundError('User not found'))
 ```
-
-## Call Signature
-
-```ts
-function assertDefinedEx<T>(expr): T;
-```
-
-Asserts that a value is defined (not undefined) and returns the value.
-Throws an error if the value is undefined.
-
-### Type Parameters
-
-### T
-
-`T`
-
-The type of value to check
-
-### Parameters
-
-### expr
-
-Expression to be evaluated for being defined
-
-`undefined` | `T`
-
-### Returns
-
-`T`
-
-The value of the expression (guaranteed to be defined)
-
-### Deprecated
-
-Use overload with message function instead - passing a message will soon be required
-
-### Throws
-
-Error with a generic message
-
-## Call Signature
-
-```ts
-function assertDefinedEx<T>(expr, message?): T;
-```
-
-Asserts that a value is defined (not undefined) and returns the value.
-Throws an error with the provided message if the value is undefined.
-
-### Type Parameters
-
-### T
-
-`T`
-
-The type of value to check
-
-### Parameters
-
-### expr
-
-Expression to be evaluated for being defined
-
-`undefined` | `T`
-
-### message?
-
-`string`
-
-Error message if expression is undefined
-
-### Returns
-
-`T`
-
-The value of the expression (guaranteed to be defined)
-
-### Deprecated
-
-Replace string with () => string for consistency
-
-### Throws
-
-Error with the provided message
 
   ### <a id="assertEx"></a>assertEx
 
@@ -258,7 +174,7 @@ The type of value to check
 
 Expression to be evaluated for truthiness
 
-`undefined` | `null` | `T`
+`T` | `null` | `undefined`
 
 ### messageFunc?
 
@@ -317,7 +233,7 @@ The type of error to throw
 
 Expression to be evaluated for truthiness
 
-`undefined` | `null` | `T`
+`T` | `null` | `undefined`
 
 ### errorFunc?
 
@@ -341,90 +257,6 @@ Custom error returned by errorFunc
 // Using with a custom error
 const user = assertEx(getUser(), () => new UserNotFoundError('User not found'))
 ```
-
-## Call Signature
-
-```ts
-function assertEx<T>(expr): T;
-```
-
-Asserts that an expression is truthy and returns the value.
-Throws an error if the expression is falsy.
-
-### Type Parameters
-
-### T
-
-`T`
-
-The type of value to check
-
-### Parameters
-
-### expr
-
-Expression to be evaluated for truthiness
-
-`undefined` | `null` | `T`
-
-### Returns
-
-`T`
-
-The value of the expression (guaranteed to be truthy)
-
-### Deprecated
-
-Use overload with message function instead - passing a message will soon be required
-
-### Throws
-
-Error with a generic message
-
-## Call Signature
-
-```ts
-function assertEx<T>(expr, message?): T;
-```
-
-Asserts that an expression is truthy and returns the value.
-Throws an error with the provided message if the expression is falsy.
-
-### Type Parameters
-
-### T
-
-`T`
-
-The type of value to check
-
-### Parameters
-
-### expr
-
-Expression to be evaluated for truthiness
-
-`undefined` | `null` | `T`
-
-### message?
-
-`string`
-
-Error message if expression is falsy
-
-### Returns
-
-`T`
-
-The value of the expression (guaranteed to be truthy)
-
-### Deprecated
-
-Replace string with () => string for consistency
-
-### Throws
-
-Error with the provided message
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

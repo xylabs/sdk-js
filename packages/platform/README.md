@@ -17,7 +17,119 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Reference
 
-Reference generation failed.
+**@xylabs/platform**
+
+***
+
+## Modules
+
+- [index-browser](#index-browser/README)
+- [index-node](#index-node/README)
+
+### index-browser
+
+  ### functions
+
+    ### <a id="isBrowser"></a>isBrowser
+
+[**@xylabs/platform**](#../../README)
+
+***
+
+```ts
+function isBrowser(): boolean;
+```
+
+## Returns
+
+`boolean`
+
+    ### <a id="isNode"></a>isNode
+
+[**@xylabs/platform**](#../../README)
+
+***
+
+```ts
+function isNode(): boolean;
+```
+
+## Returns
+
+`boolean`
+
+    ### <a id="isWebworker"></a>isWebworker
+
+[**@xylabs/platform**](#../../README)
+
+***
+
+```ts
+function isWebworker(): boolean;
+```
+
+## Returns
+
+`boolean`
+
+  ### variables
+
+    ### <a id="subtle"></a>subtle
+
+[**@xylabs/platform**](#../../README)
+
+***
+
+```ts
+const subtle: SubtleCrypto;
+```
+
+### index-node
+
+  ### functions
+
+    ### <a id="isBrowser"></a>isBrowser
+
+[**@xylabs/platform**](#../../README)
+
+***
+
+```ts
+function isBrowser(): boolean;
+```
+
+## Returns
+
+`boolean`
+
+    ### <a id="isNode"></a>isNode
+
+[**@xylabs/platform**](#../../README)
+
+***
+
+```ts
+function isNode(): boolean;
+```
+
+## Returns
+
+`boolean`
+
+    ### <a id="isWebworker"></a>isWebworker
+
+[**@xylabs/platform**](#../../README)
+
+***
+
+```ts
+function isWebworker(): boolean;
+```
+
+## Returns
+
+`boolean`
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

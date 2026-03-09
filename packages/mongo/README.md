@@ -148,7 +148,7 @@ find(filter): Promise<FindCursor<WithId<T>>>;
 ### findOne()
 
 ```ts
-findOne(filter): Promise<null | WithId<T>>;
+findOne(filter): Promise<WithId<T> | null>;
 ```
 
 ### Parameters
@@ -159,7 +159,7 @@ findOne(filter): Promise<null | WithId<T>>;
 
 ### Returns
 
-`Promise`\<`null` \| `WithId`\<`T`\>\>
+`Promise`\<`WithId`\<`T`\> \| `null`\>
 
 ***
 

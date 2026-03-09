@@ -39,9 +39,41 @@ Base functionality used throughout XYO TypeScript/JavaScript libraries
 
 - [mergeDocumentHead](#functions/mergeDocumentHead)
 - [getMetaAsDict](#functions/getMetaAsDict)
+- [addMetaToHead](#functions/addMetaToHead)
 - [metaBuilder](#functions/metaBuilder)
 
 ### functions
+
+  ### <a id="addMetaToHead"></a>addMetaToHead
+
+[**@xylabs/sdk-meta**](#../README)
+
+***
+
+```ts
+function addMetaToHead(
+   $, 
+   name, 
+   value): void;
+```
+
+## Parameters
+
+### $
+
+`CheerioAPI`
+
+### name
+
+`string`
+
+### value
+
+`string` | `object`
+
+## Returns
+
+`void`
 
   ### <a id="getMetaAsDict"></a>getMetaAsDict
 

@@ -39,7 +39,7 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 ***
 
 ```ts
-function retry<T>(func, config?): Promise<undefined | T>;
+function retry<T>(func, config?): Promise<T | undefined>;
 ```
 
 ## Type Parameters
@@ -52,7 +52,7 @@ function retry<T>(func, config?): Promise<undefined | T>;
 
 ### func
 
-() => `Promisable`\<`undefined` \| `T`\>
+() => `Promisable`\<`T` \| `undefined`\>
 
 ### config?
 
@@ -60,7 +60,7 @@ function retry<T>(func, config?): Promise<undefined | T>;
 
 ## Returns
 
-`Promise`\<`undefined` \| `T`\>
+`Promise`\<`T` \| `undefined`\>
 
 ### interfaces
 

@@ -34,7 +34,6 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 - [PromiseExSubFunc](#type-aliases/PromiseExSubFunc)
 - [PromiseExFunc](#type-aliases/PromiseExFunc)
 - [PromiseExValueFunc](#type-aliases/PromiseExValueFunc)
-- [AnyNonPromise](#type-aliases/AnyNonPromise)
 - [Promisable](#type-aliases/Promisable)
 - [PromisableArray](#type-aliases/PromisableArray)
 - [OptionalPromisable](#type-aliases/OptionalPromisable)
@@ -42,14 +41,15 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 - [NullablePromisable](#type-aliases/NullablePromisable)
 - [NullablePromisableArray](#type-aliases/NullablePromisableArray)
 - [AsyncMutex](#type-aliases/AsyncMutex)
+- [AnyNonPromise](#type-aliases/AnyNonPromise)
 
 ## Functions
 
 - [fulfilled](#functions/fulfilled)
 - [fulfilledValues](#functions/fulfilledValues)
-- [isPromise](#functions/isPromise)
 - [rejected](#functions/rejected)
 - [toPromise](#functions/toPromise)
+- [isPromise](#functions/isPromise)
 
 ### classes
 
@@ -138,13 +138,13 @@ Attaches callbacks for the resolution and/or rejection of the Promise.
 
 The callback to execute when the Promise is resolved.
 
-`null` | (`value`) => `TResult1` \| `PromiseLike`\<`TResult1`\>
+(`value`) => `TResult1` \| `PromiseLike`\<`TResult1`\> | `null`
 
 #### onrejected?
 
 The callback to execute when the Promise is rejected.
 
-`null` | (`reason`) => `TResult2` \| `PromiseLike`\<`TResult2`\>
+(`reason`) => `TResult2` \| `PromiseLike`\<`TResult2`\> | `null`
 
 #### onvalue?
 
@@ -266,19 +266,43 @@ const results = settled.reduce<string[]>(fulfilledValues, [])
 
 ***
 
+## Call Signature
+
 ```ts
 function isPromise(value): value is Promise<unknown>;
 ```
 
-## Parameters
+### Parameters
 
 ### value
 
 `unknown`
 
-## Returns
+### Returns
 
 `value is Promise<unknown>`
+
+## Call Signature
+
+```ts
+function isPromise<T>(value): value is Extract<T, Promise<unknown>>;
+```
+
+### Type Parameters
+
+### T
+
+`T`
+
+### Parameters
+
+### value
+
+`T`
+
+### Returns
+
+`value is Extract<T, Promise<unknown>>`
 
   ### <a id="rejected"></a>rejected
 

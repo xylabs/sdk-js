@@ -181,7 +181,7 @@ The elements of an array that meet the condition specified in a callback functio
 ***
 
 ```ts
-function findAs<In, Out>(x, predicate): undefined | NonNullable<Out>;
+function findAs<In, Out>(x, predicate): NonNullable<Out> | undefined;
 ```
 
 ## Type Parameters
@@ -206,7 +206,7 @@ function findAs<In, Out>(x, predicate): undefined | NonNullable<Out>;
 
 ## Returns
 
-`undefined` \| `NonNullable`\<`Out`\>
+`NonNullable`\<`Out`\> \| `undefined`
 
   ### <a id="findLastAs"></a>findLastAs
 
@@ -215,7 +215,7 @@ function findAs<In, Out>(x, predicate): undefined | NonNullable<Out>;
 ***
 
 ```ts
-function findLastAs<In, Out>(x, predicate): undefined | NonNullable<Out>;
+function findLastAs<In, Out>(x, predicate): NonNullable<Out> | undefined;
 ```
 
 ## Type Parameters
@@ -240,7 +240,7 @@ function findLastAs<In, Out>(x, predicate): undefined | NonNullable<Out>;
 
 ## Returns
 
-`undefined` \| `NonNullable`\<`Out`\>
+`NonNullable`\<`Out`\> \| `undefined`
 
   ### <a id="flatten"></a>flatten
 

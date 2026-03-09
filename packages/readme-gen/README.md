@@ -1,4 +1,4 @@
-# @xylabs/set
+# @xylabs/readme-gen
 
 [![logo][]](https://xylabs.com)
 
@@ -17,107 +17,29 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Reference
 
-**@xylabs/set**
+**@xylabs/readme-gen**
 
 ***
 
 ## Functions
 
-- [difference](#functions/difference)
-- [intersection](#functions/intersection)
-- [union](#functions/union)
+- [generateReadmeFiles](#functions/generateReadmeFiles)
 
 ### functions
 
-  ### <a id="difference"></a>difference
+  ### <a id="generateReadmeFiles"></a>generateReadmeFiles
 
-[**@xylabs/set**](#../README)
-
-***
-
-```ts
-function difference<TKey>(a, b): Set<TKey>;
-```
-
-## Type Parameters
-
-### TKey
-
-`TKey`
-
-## Parameters
-
-### a
-
-`Set`\<`TKey`\>
-
-### b
-
-`Set`\<`TKey`\>
-
-## Returns
-
-`Set`\<`TKey`\>
-
-  ### <a id="intersection"></a>intersection
-
-[**@xylabs/set**](#../README)
+[**@xylabs/readme-gen**](#../README)
 
 ***
 
 ```ts
-function intersection<TKey>(a, b): Set<TKey>;
+function generateReadmeFiles(): Promise<void>;
 ```
-
-## Type Parameters
-
-### TKey
-
-`TKey`
-
-## Parameters
-
-### a
-
-`Set`\<`TKey`\>
-
-### b
-
-`Set`\<`TKey`\>
 
 ## Returns
 
-`Set`\<`TKey`\>
-
-  ### <a id="union"></a>union
-
-[**@xylabs/set**](#../README)
-
-***
-
-```ts
-function union<TKey>(a, b): Set<TKey>;
-```
-
-## Type Parameters
-
-### TKey
-
-`TKey`
-
-## Parameters
-
-### a
-
-`Set`\<`TKey`\>
-
-### b
-
-`Set`\<`TKey`\>
-
-## Returns
-
-`Set`\<`TKey`\>
+`Promise`\<`void`\>
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
@@ -141,8 +63,8 @@ Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 
 [main-build]: https://github.com/xylabs/sdk-js/actions/workflows/build.yml/badge.svg
 [main-build-link]: https://github.com/xylabs/sdk-js/actions/workflows/build.yml
-[npm-badge]: https://img.shields.io/npm/v/@xylabs/set.svg
-[npm-link]: https://www.npmjs.com/package/@xylabs/set
+[npm-badge]: https://img.shields.io/npm/v/@xylabs/readme-gen.svg
+[npm-link]: https://www.npmjs.com/package/@xylabs/readme-gen
 [codacy-badge]: https://app.codacy.com/project/badge/Grade/c8e15e14f37741c18cfb47ac7245c698
 [codacy-link]: https://www.codacy.com/gh/xylabs/sdk-js/dashboard?utm_source=github.com&utm_medium=referral&utm_content=xylabs/sdk-js&utm_campaign=Badge_Grade
 [codeclimate-badge]: https://api.codeclimate.com/v1/badges/c5eb068f806f0b047ea7/maintainability
@@ -150,11 +72,11 @@ Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 [snyk-badge]: https://snyk.io/test/github/xylabs/sdk-js/badge.svg?targetFile=package.json
 [snyk-link]: https://snyk.io/test/github/xylabs/sdk-js?targetFile=package.json
 
-[npm-downloads-badge]: https://img.shields.io/npm/dw/@xylabs/set
-[npm-license-badge]: https://img.shields.io/npm/l/@xylabs/set
+[npm-downloads-badge]: https://img.shields.io/npm/dw/@xylabs/readme-gen
+[npm-license-badge]: https://img.shields.io/npm/l/@xylabs/readme-gen
 
-[jsdelivr-badge]: https://data.jsdelivr.com/v1/package/npm/@xylabs/set/badge
-[jsdelivr-link]: https://www.jsdelivr.com/package/npm/@xylabs/set
+[jsdelivr-badge]: https://data.jsdelivr.com/v1/package/npm/@xylabs/readme-gen/badge
+[jsdelivr-link]: https://www.jsdelivr.com/package/npm/@xylabs/readme-gen
 
-[socket-badge]: https://socket.dev/api/badge/npm/package/@xylabs/set
-[socket-link]: https://socket.dev/npm/package/@xylabs/set
+[socket-badge]: https://socket.dev/api/badge/npm/package/@xylabs/readme-gen
+[socket-link]: https://socket.dev/npm/package/@xylabs/readme-gen

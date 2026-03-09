@@ -27,27 +27,60 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Type Aliases
 
+- [AddressTransformZodType](#type-aliases/AddressTransformZodType)
+- [AddressValidationZodType](#type-aliases/AddressValidationZodType)
 - [Address](#type-aliases/Address)
+- [EthAddress](#type-aliases/EthAddress)
 - [HashBitLength](#type-aliases/HashBitLength)
+- [BrandedHash](#type-aliases/BrandedHash)
 - [Hash](#type-aliases/Hash)
+- [BrandedHex](#type-aliases/BrandedHex)
 - [Hex](#type-aliases/Hex)
 
 ## Variables
 
+- [HexRegEx](#variables/HexRegEx)
+- [HexRegExWithPrefix](#variables/HexRegExWithPrefix)
+- [AddressTransformZod](#variables/AddressTransformZod)
+- [AddressValidationZod](#variables/AddressValidationZod)
 - [ZERO\_ADDRESS](#variables/ZERO_ADDRESS)
+- [ADDRESS\_LENGTH](#variables/ADDRESS_LENGTH)
+- [AddressRegEx](#variables/AddressRegEx)
+- [AddressZod](#variables/AddressZod)
+- [EthAddressRegEx](#variables/EthAddressRegEx)
+- [EthAddressToStringZod](#variables/EthAddressToStringZod)
+- [~~EthAddressToStringSchema~~](#variables/EthAddressToStringSchema)
+- [EthAddressFromStringZod](#variables/EthAddressFromStringZod)
+- [~~EthAddressFromStringSchema~~](#variables/EthAddressFromStringSchema)
+- [ETH\_ZERO\_ADDRESS](#variables/ETH_ZERO_ADDRESS)
+- [EthAddressZod](#variables/EthAddressZod)
+- [HASH\_LENGTH](#variables/HASH_LENGTH)
+- [HashRegEx](#variables/HashRegEx)
 - [ZERO\_HASH](#variables/ZERO_HASH)
 - [HashBitLength](#variables/HashBitLength)
-- [hexRegex](#variables/hexRegex)
-- [hexRegexWithPrefix](#variables/hexRegexWithPrefix)
+- [HashZod](#variables/HashZod)
+- [HashToJsonZod](#variables/HashToJsonZod)
+- [JsonToHashZod](#variables/JsonToHashZod)
+- [HexZod](#variables/HexZod)
+- [BigIntToJsonZod](#variables/BigIntToJsonZod)
+- [JsonToBigIntZod](#variables/JsonToBigIntZod)
 
 ## Functions
 
-- [toAddress](#functions/toAddress)
-- [isAddress](#functions/isAddress)
+- [HexRegExMinMax](#functions/HexRegExMinMax)
+- [HexRegExMinMaxMixedCaseWithPrefix](#functions/HexRegExMinMaxMixedCaseWithPrefix)
 - [asAddress](#functions/asAddress)
+- [asAddressV2](#functions/asAddressV2)
+- [isAddress](#functions/isAddress)
+- [isAddressV2](#functions/isAddressV2)
+- [toAddress](#functions/toAddress)
+- [toAddressV2](#functions/toAddressV2)
+- [toEthAddress](#functions/toEthAddress)
+- [isEthAddress](#functions/isEthAddress)
+- [asEthAddress](#functions/asEthAddress)
+- [asHash](#functions/asHash)
 - [isHashBitLength](#functions/isHashBitLength)
 - [isHash](#functions/isHash)
-- [asHash](#functions/asHash)
 - [asHex](#functions/asHex)
 - [hexFrom](#functions/hexFrom)
 - [hexFromArrayBuffer](#functions/hexFromArrayBuffer)
@@ -64,6 +97,54 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ### functions
 
+  ### <a id="HexRegExMinMax"></a>HexRegExMinMax
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+function HexRegExMinMax(minBytes?, maxBytes?): RegExp;
+```
+
+## Parameters
+
+### minBytes?
+
+`number` = `0`
+
+### maxBytes?
+
+`number` = `...`
+
+## Returns
+
+`RegExp`
+
+  ### <a id="HexRegExMinMaxMixedCaseWithPrefix"></a>HexRegExMinMaxMixedCaseWithPrefix
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+function HexRegExMinMaxMixedCaseWithPrefix(minBytes?, maxBytes?): RegExp;
+```
+
+## Parameters
+
+### minBytes?
+
+`number` = `0`
+
+### maxBytes?
+
+`number` = `...`
+
+## Returns
+
+`RegExp`
+
   ### <a id="asAddress"></a>asAddress
 
 [**@xylabs/hex**](#../README)
@@ -73,7 +154,7 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 ## Call Signature
 
 ```ts
-function asAddress(value): undefined | Lowercase<string>;
+function asAddress(value): BrandedAddress | undefined;
 ```
 
 ### Parameters
@@ -84,12 +165,12 @@ function asAddress(value): undefined | Lowercase<string>;
 
 ### Returns
 
-`undefined` \| `Lowercase`\<`string`\>
+`BrandedAddress` \| `undefined`
 
 ## Call Signature
 
 ```ts
-function asAddress(value, assert): Lowercase<string>;
+function asAddress(value, assert): BrandedAddress;
 ```
 
 ### Parameters
@@ -104,7 +185,75 @@ function asAddress(value, assert): Lowercase<string>;
 
 ### Returns
 
-`Lowercase`\<`string`\>
+`BrandedAddress`
+
+  ### <a id="asAddressV2"></a>asAddressV2
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+function asAddressV2(value, assert?): BrandedAddress | undefined;
+```
+
+**`Alpha`**
+
+## Parameters
+
+### value
+
+`unknown`
+
+### assert?
+
+`boolean` = `false`
+
+## Returns
+
+`BrandedAddress` \| `undefined`
+
+  ### <a id="asEthAddress"></a>asEthAddress
+
+[**@xylabs/hex**](#../README)
+
+***
+
+## Call Signature
+
+```ts
+function asEthAddress(value): EthAddress | undefined;
+```
+
+### Parameters
+
+### value
+
+`unknown`
+
+### Returns
+
+[`EthAddress`](#../type-aliases/EthAddress) \| `undefined`
+
+## Call Signature
+
+```ts
+function asEthAddress(value, assert): EthAddress;
+```
+
+### Parameters
+
+### value
+
+`unknown`
+
+### assert
+
+`AssertConfig`
+
+### Returns
+
+[`EthAddress`](#../type-aliases/EthAddress)
 
   ### <a id="asHash"></a>asHash
 
@@ -115,7 +264,7 @@ function asAddress(value, assert): Lowercase<string>;
 ## Call Signature
 
 ```ts
-function asHash(value): undefined | Lowercase<string>;
+function asHash(value): BrandedHash | undefined;
 ```
 
 ### Parameters
@@ -126,12 +275,12 @@ function asHash(value): undefined | Lowercase<string>;
 
 ### Returns
 
-`undefined` \| `Lowercase`\<`string`\>
+[`BrandedHash`](#../type-aliases/BrandedHash) \| `undefined`
 
 ## Call Signature
 
 ```ts
-function asHash(value, assert): Lowercase<string>;
+function asHash(value, assert): BrandedHash;
 ```
 
 ### Parameters
@@ -146,7 +295,7 @@ function asHash(value, assert): Lowercase<string>;
 
 ### Returns
 
-`Lowercase`\<`string`\>
+[`BrandedHash`](#../type-aliases/BrandedHash)
 
   ### <a id="asHex"></a>asHex
 
@@ -157,7 +306,7 @@ function asHash(value, assert): Lowercase<string>;
 ## Call Signature
 
 ```ts
-function asHex(value): undefined | Lowercase<string>;
+function asHex(value): BrandedHex | undefined;
 ```
 
 ### Parameters
@@ -168,12 +317,12 @@ function asHex(value): undefined | Lowercase<string>;
 
 ### Returns
 
-`undefined` \| `Lowercase`\<`string`\>
+[`BrandedHex`](#../type-aliases/BrandedHex) \| `undefined`
 
 ## Call Signature
 
 ```ts
-function asHex(value, assert): Lowercase<string>;
+function asHex(value, assert): BrandedHex;
 ```
 
 ### Parameters
@@ -188,7 +337,7 @@ function asHex(value, assert): Lowercase<string>;
 
 ### Returns
 
-`Lowercase`\<`string`\>
+[`BrandedHex`](#../type-aliases/BrandedHex)
 
   ### <a id="bitsToNibbles"></a>bitsToNibbles
 
@@ -217,7 +366,7 @@ function bitsToNibbles(value): number;
 ***
 
 ```ts
-function hexFrom(value, config?): Lowercase<string>;
+function hexFrom(value, config?): BrandedHex;
 ```
 
 Takes unknown value and tries our best to convert it to a hex string
@@ -238,7 +387,7 @@ Configuration of output format and validation
 
 ## Returns
 
-`Lowercase`\<`string`\>
+[`BrandedHex`](#../type-aliases/BrandedHex)
 
   ### <a id="hexFromArrayBuffer"></a>hexFromArrayBuffer
 
@@ -247,7 +396,7 @@ Configuration of output format and validation
 ***
 
 ```ts
-function hexFromArrayBuffer(buffer, config?): Lowercase<string>;
+function hexFromArrayBuffer(buffer, config?): BrandedHex;
 ```
 
 Convert an ArrayBuffer to a hex string
@@ -268,7 +417,7 @@ Configuration of output format and validation
 
 ## Returns
 
-`Lowercase`\<`string`\>
+[`BrandedHex`](#../type-aliases/BrandedHex)
 
   ### <a id="hexFromBigInt"></a>hexFromBigInt
 
@@ -277,7 +426,7 @@ Configuration of output format and validation
 ***
 
 ```ts
-function hexFromBigInt(value, config): Lowercase<string>;
+function hexFromBigInt(value, config?): BrandedHex;
 ```
 
 Convert a bigint to a hex string
@@ -290,7 +439,7 @@ Convert a bigint to a hex string
 
 The bigint to be converted
 
-### config
+### config?
 
 [`HexConfig`](#../interfaces/HexConfig) = `{}`
 
@@ -298,7 +447,7 @@ Configuration of output format and validation
 
 ## Returns
 
-`Lowercase`\<`string`\>
+[`BrandedHex`](#../type-aliases/BrandedHex)
 
   ### <a id="hexFromHexString"></a>hexFromHexString
 
@@ -307,7 +456,7 @@ Configuration of output format and validation
 ***
 
 ```ts
-function hexFromHexString(value, config): Lowercase<string>;
+function hexFromHexString(value, config?): BrandedHex;
 ```
 
 ## Parameters
@@ -316,13 +465,13 @@ function hexFromHexString(value, config): Lowercase<string>;
 
 `string`
 
-### config
+### config?
 
 [`HexConfig`](#../interfaces/HexConfig) = `{}`
 
 ## Returns
 
-`Lowercase`\<`string`\>
+[`BrandedHex`](#../type-aliases/BrandedHex)
 
   ### <a id="hexFromNumber"></a>hexFromNumber
 
@@ -331,7 +480,7 @@ function hexFromHexString(value, config): Lowercase<string>;
 ***
 
 ```ts
-function hexFromNumber(value, config?): Lowercase<string>;
+function hexFromNumber(value, config?): BrandedHex;
 ```
 
 ## Parameters
@@ -346,7 +495,7 @@ function hexFromNumber(value, config?): Lowercase<string>;
 
 ## Returns
 
-`Lowercase`\<`string`\>
+[`BrandedHex`](#../type-aliases/BrandedHex)
 
   ### <a id="hexToBigInt"></a>hexToBigInt
 
@@ -362,7 +511,7 @@ function hexToBigInt(hex): bigint;
 
 ### hex
 
-`Lowercase`\<`string`\>
+[`BrandedHex`](#../type-aliases/BrandedHex)
 
 ## Returns
 
@@ -375,7 +524,7 @@ function hexToBigInt(hex): bigint;
 ***
 
 ```ts
-function isAddress(value, config): value is Lowercase<string>;
+function isAddress(value, config?): value is BrandedAddress;
 ```
 
 ## Parameters
@@ -384,13 +533,59 @@ function isAddress(value, config): value is Lowercase<string>;
 
 `unknown`
 
-### config
+### config?
 
 [`HexConfig`](#../interfaces/HexConfig) = `{}`
 
 ## Returns
 
-`value is Lowercase<string>`
+`value is BrandedAddress`
+
+  ### <a id="isAddressV2"></a>isAddressV2
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+function isAddressV2(value): value is BrandedAddress;
+```
+
+**`Alpha`**
+
+## Parameters
+
+### value
+
+`unknown`
+
+## Returns
+
+`value is BrandedAddress`
+
+  ### <a id="isEthAddress"></a>isEthAddress
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+function isEthAddress(value, config?): value is EthAddress;
+```
+
+## Parameters
+
+### value
+
+`unknown`
+
+### config?
+
+[`HexConfig`](#../interfaces/HexConfig) = `{}`
+
+## Returns
+
+`value is EthAddress`
 
   ### <a id="isHash"></a>isHash
 
@@ -399,7 +594,7 @@ function isAddress(value, config): value is Lowercase<string>;
 ***
 
 ```ts
-function isHash(value, bitLength): value is Lowercase<string>;
+function isHash(value, bitLength?): value is BrandedHash;
 ```
 
 ## Parameters
@@ -408,13 +603,13 @@ function isHash(value, bitLength): value is Lowercase<string>;
 
 `unknown`
 
-### bitLength
+### bitLength?
 
 [`HashBitLength`](#../type-aliases/HashBitLength) = `256`
 
 ## Returns
 
-`value is Lowercase<string>`
+`value is BrandedHash`
 
   ### <a id="isHashBitLength"></a>isHashBitLength
 
@@ -443,7 +638,7 @@ function isHashBitLength(value): value is HashBitLength;
 ***
 
 ```ts
-function isHex(value, config?): value is Lowercase<string>;
+function isHex(value, config?): value is BrandedHex;
 ```
 
 ## Parameters
@@ -458,7 +653,7 @@ function isHex(value, config?): value is Lowercase<string>;
 
 ## Returns
 
-`value is Lowercase<string>`
+`value is BrandedHex`
 
   ### <a id="isHexZero"></a>isHexZero
 
@@ -467,7 +662,7 @@ function isHex(value, config?): value is Lowercase<string>;
 ***
 
 ```ts
-function isHexZero(value?): undefined | boolean;
+function isHexZero(value?): boolean | undefined;
 ```
 
 ## Parameters
@@ -478,7 +673,7 @@ function isHexZero(value?): undefined | boolean;
 
 ## Returns
 
-`undefined` \| `boolean`
+`boolean` \| `undefined`
 
   ### <a id="nibblesToBits"></a>nibblesToBits
 
@@ -507,7 +702,7 @@ function nibblesToBits(value): number;
 ***
 
 ```ts
-function toAddress(value, config): Lowercase<string>;
+function toAddress(value, config?): BrandedAddress;
 ```
 
 ## Parameters
@@ -516,13 +711,63 @@ function toAddress(value, config): Lowercase<string>;
 
 `string` | `number` | `bigint` | `ArrayBufferLike`
 
-### config
+### config?
 
 [`HexConfig`](#../interfaces/HexConfig) = `{}`
 
 ## Returns
 
-`Lowercase`\<`string`\>
+`BrandedAddress`
+
+  ### <a id="toAddressV2"></a>toAddressV2
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+function toAddressV2(value, assert?): BrandedAddress | undefined;
+```
+
+**`Alpha`**
+
+## Parameters
+
+### value
+
+`unknown`
+
+### assert?
+
+`boolean` = `false`
+
+## Returns
+
+`BrandedAddress` \| `undefined`
+
+  ### <a id="toEthAddress"></a>toEthAddress
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+function toEthAddress(value, config?): EthAddress;
+```
+
+## Parameters
+
+### value
+
+`string` | `number` | `bigint` | `ArrayBufferLike`
+
+### config?
+
+[`HexConfig`](#../interfaces/HexConfig) = `{}`
+
+## Returns
+
+[`EthAddress`](#../type-aliases/EthAddress)
 
   ### <a id="toHex"></a>toHex
 
@@ -531,7 +776,7 @@ function toAddress(value, config): Lowercase<string>;
 ***
 
 ```ts
-function toHex(value, config): Lowercase<string>;
+function toHex(value, config?): BrandedHex;
 ```
 
 takes any value and tries our best to convert it to a hex string
@@ -544,7 +789,7 @@ Supported types are string, number, bigint, and ArrayBuffer
 
 `string` | `number` | `bigint` | `ArrayBufferLike`
 
-### config
+### config?
 
 [`HexConfig`](#../interfaces/HexConfig) = `{}`
 
@@ -552,7 +797,7 @@ Configuration of output format and validation
 
 ## Returns
 
-`Lowercase`\<`string`\>
+[`BrandedHex`](#../type-aliases/BrandedHex)
 
   ### <a id="toHexLegacy"></a>toHexLegacy
 
@@ -617,7 +862,63 @@ optional prefix: boolean;
 ***
 
 ```ts
-type Address = Exclude<Hex, "reserved-address-value">;
+type Address = z.infer<typeof AddressZod>;
+```
+
+  ### <a id="AddressTransformZodType"></a>AddressTransformZodType
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+type AddressTransformZodType = z.infer<typeof AddressTransformZod>;
+```
+
+  ### <a id="AddressValidationZodType"></a>AddressValidationZodType
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+type AddressValidationZodType = z.infer<typeof AddressValidationZod>;
+```
+
+  ### <a id="BrandedHash"></a>BrandedHash
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+type BrandedHash = Brand<Hex, {
+  __hash: true;
+}>;
+```
+
+  ### <a id="BrandedHex"></a>BrandedHex
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+type BrandedHex = Brand<Lowercase<string>, {
+  __hex: true;
+}>;
+```
+
+  ### <a id="EthAddress"></a>EthAddress
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+type EthAddress = Brand<string, {
+  __eth_address: true;
+}>;
 ```
 
   ### <a id="Hash"></a>Hash
@@ -627,7 +928,7 @@ type Address = Exclude<Hex, "reserved-address-value">;
 ***
 
 ```ts
-type Hash = Exclude<Hex, "reserved-hash-value">;
+type Hash = z.infer<typeof HashZod>;
 ```
 
   ### <a id="HashBitLength"></a>HashBitLength
@@ -647,10 +948,158 @@ type HashBitLength = 32 | 64 | 128 | 256 | 512 | 1024 | 2048 | 4096;
 ***
 
 ```ts
-type Hex = Exclude<Lowercase<string>, "reserved-hex-value">;
+type Hex = z.infer<typeof HexZod>;
 ```
 
 ### variables
+
+  ### <a id="ADDRESS_LENGTH"></a>ADDRESS_LENGTH
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+const ADDRESS_LENGTH: 40;
+```
+
+  ### <a id="AddressRegEx"></a>AddressRegEx
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+const AddressRegEx: RegExp;
+```
+
+  ### <a id="AddressTransformZod"></a>AddressTransformZod
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+const AddressTransformZod: ZodPipe<ZodPipe<ZodUnion<readonly [ZodString, ZodBigInt, ZodNumber]>, ZodTransform<string, string | number | bigint>>, ZodTransform<BrandedAddress, string>>;
+```
+
+  ### <a id="AddressValidationZod"></a>AddressValidationZod
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+const AddressValidationZod: ZodPipe<ZodString, ZodTransform<BrandedAddress, string>>;
+```
+
+  ### <a id="AddressZod"></a>AddressZod
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+const AddressZod: ZodPipe<ZodString, ZodTransform<BrandedAddress, string>>;
+```
+
+  ### <a id="BigIntToJsonZod"></a>BigIntToJsonZod
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+const BigIntToJsonZod: ZodPipe<ZodBigInt, ZodTransform<BrandedHex, bigint>>;
+```
+
+  ### <a id="ETH_ZERO_ADDRESS"></a>ETH_ZERO_ADDRESS
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+const ETH_ZERO_ADDRESS: EthAddress;
+```
+
+  ### <a id="EthAddressFromStringSchema"></a>EthAddressFromStringSchema
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+const EthAddressFromStringSchema: ZodPipe<ZodString, ZodTransform<EthAddress, string>> = EthAddressFromStringZod;
+```
+
+## Deprecated
+
+use EthAddressFromStringZod
+
+  ### <a id="EthAddressFromStringZod"></a>EthAddressFromStringZod
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+const EthAddressFromStringZod: ZodPipe<ZodString, ZodTransform<EthAddress, string>>;
+```
+
+  ### <a id="EthAddressRegEx"></a>EthAddressRegEx
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+const EthAddressRegEx: RegExp;
+```
+
+  ### <a id="EthAddressToStringSchema"></a>EthAddressToStringSchema
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+const EthAddressToStringSchema: ZodString = EthAddressToStringZod;
+```
+
+## Deprecated
+
+use EthAddressToStringZod
+
+  ### <a id="EthAddressToStringZod"></a>EthAddressToStringZod
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+const EthAddressToStringZod: ZodString;
+```
+
+  ### <a id="EthAddressZod"></a>EthAddressZod
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+const EthAddressZod: ZodString & ZodType<EthAddress, string, $ZodTypeInternals<EthAddress, string>>;
+```
+
+  ### <a id="HASH_LENGTH"></a>HASH_LENGTH
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+const HASH_LENGTH: 32;
+```
 
   ### <a id="HashBitLength"></a>HashBitLength
 
@@ -662,6 +1111,86 @@ type Hex = Exclude<Lowercase<string>, "reserved-hex-value">;
 HashBitLength: HashBitLength[];
 ```
 
+  ### <a id="HashRegEx"></a>HashRegEx
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+const HashRegEx: RegExp;
+```
+
+  ### <a id="HashToJsonZod"></a>HashToJsonZod
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+const HashToJsonZod: ZodPipe<ZodPipe<ZodString, ZodTransform<BrandedHash, string>>, ZodTransform<string, BrandedHash>>;
+```
+
+  ### <a id="HashZod"></a>HashZod
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+const HashZod: ZodPipe<ZodString, ZodTransform<BrandedHash, string>>;
+```
+
+  ### <a id="HexRegEx"></a>HexRegEx
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+const HexRegEx: RegExp;
+```
+
+  ### <a id="HexRegExWithPrefix"></a>HexRegExWithPrefix
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+const HexRegExWithPrefix: RegExp;
+```
+
+  ### <a id="HexZod"></a>HexZod
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+const HexZod: ZodPipe<ZodString, ZodTransform<BrandedHex, string>>;
+```
+
+  ### <a id="JsonToBigIntZod"></a>JsonToBigIntZod
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+const JsonToBigIntZod: ZodPipe<ZodPipe<ZodString, ZodTransform<BrandedHex, string>>, ZodTransform<bigint, BrandedHex>>;
+```
+
+  ### <a id="JsonToHashZod"></a>JsonToHashZod
+
+[**@xylabs/hex**](#../README)
+
+***
+
+```ts
+const JsonToHashZod: ZodPipe<ZodString, ZodTransform<BrandedHash, string>>;
+```
+
   ### <a id="ZERO_ADDRESS"></a>ZERO_ADDRESS
 
 [**@xylabs/hex**](#../README)
@@ -669,7 +1198,7 @@ HashBitLength: HashBitLength[];
 ***
 
 ```ts
-const ZERO_ADDRESS: Address;
+const ZERO_ADDRESS: BrandedAddress;
 ```
 
   ### <a id="ZERO_HASH"></a>ZERO_HASH
@@ -679,27 +1208,7 @@ const ZERO_ADDRESS: Address;
 ***
 
 ```ts
-const ZERO_HASH: Hash;
-```
-
-  ### <a id="hexRegex"></a>hexRegex
-
-[**@xylabs/hex**](#../README)
-
-***
-
-```ts
-const hexRegex: RegExp;
-```
-
-  ### <a id="hexRegexWithPrefix"></a>hexRegexWithPrefix
-
-[**@xylabs/hex**](#../README)
-
-***
-
-```ts
-const hexRegexWithPrefix: RegExp;
+const ZERO_HASH: BrandedHash;
 ```
 
 

@@ -62,7 +62,7 @@ new ApiClient(token?, stage?): ApiClient;
 
 #### token?
 
-`null` | `string`
+`string` | `null`
 
 #### stage?
 
@@ -74,18 +74,18 @@ new ApiClient(token?, stage?): ApiClient;
 
 ## Properties
 
-### token?
-
-```ts
-protected optional token: null | string;
-```
-
-***
-
 ### stage?
 
 ```ts
 protected optional stage: ApiStage;
+```
+
+***
+
+### token?
+
+```ts
+protected optional token: string | null;
 ```
 
 ## Methods
@@ -141,12 +141,12 @@ new ApiEndpoint<T>(config, path): ApiEndpoint<T>;
 ### Get Signature
 
 ```ts
-get value(): undefined | T;
+get value(): T | undefined;
 ```
 
 #### Returns
 
-`undefined` \| `T`
+`T` \| `undefined`
 
 ## Methods
 

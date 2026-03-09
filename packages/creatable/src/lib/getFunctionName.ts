@@ -1,5 +1,10 @@
 import { isNumber } from '@xylabs/typeof'
 
+/**
+ * Extracts the function name from the call stack at the given depth.
+ * @param depth - The stack frame depth to inspect (default: 2)
+ * @returns The function name, or '\<unknown\>' if it cannot be determined
+ */
 export function getFunctionName(depth = 2) {
   const error = new Error('Stack')
   let newIndex: number | undefined

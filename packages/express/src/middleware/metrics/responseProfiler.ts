@@ -1,6 +1,6 @@
 import type {
   NextFunction, Request, Response,
-} from 'express'
+} from 'express-serve-static-core'
 
 /**
  * Connect middleware to enable profiling of response lifecycle timing. To effectively profile

@@ -1,7 +1,6 @@
 import type {
-  NextFunction, Request, RequestHandler, Response,
-} from 'express'
-import type { ParamsDictionary, Query } from 'express-serve-static-core'
+  NextFunction, ParamsDictionary, Query, Request, RequestHandler, Response,
+} from 'express-serve-static-core'
 
 export function asyncHandler<P = NoReqParams, ResBody = NoResBody, ReqBody = NoReqBody, ReqQuery = NoReqQuery, Locals extends NoLocals = NoLocals>(
   fn: RequestHandler<P, ResBody, ReqBody, ReqQuery, Locals>,

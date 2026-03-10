@@ -1,6 +1,6 @@
 import type {
   Application, NextFunction, Request, Response,
-} from 'express'
+} from 'express-serve-static-core'
 import {
   beforeEach, describe, expect, it, vi,
 } from 'vitest'

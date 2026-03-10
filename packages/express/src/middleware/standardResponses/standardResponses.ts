@@ -1,6 +1,6 @@
 import type {
   Request, RequestHandler, Response,
-} from 'express'
+} from 'express-serve-static-core'
 import mung from 'express-mung'
 
 import { getResponseMetadata } from './getResponseMetadata.js'

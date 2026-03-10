@@ -1,6 +1,6 @@
 import type {
   NextFunction, Request, Response,
-} from 'express'
+} from 'express-serve-static-core'
 import {
   describe, expect, it, vi,
 } from 'vitest'

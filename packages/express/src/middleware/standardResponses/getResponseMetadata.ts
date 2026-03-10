@@ -1,4 +1,4 @@
-import type { Response } from 'express'
+import type { Response } from 'express-serve-static-core'
 
 export const getResponseMetadata = (res: Response): Record<string, unknown> => {
   const meta: Record<string, unknown> = res.locals?.meta || {}

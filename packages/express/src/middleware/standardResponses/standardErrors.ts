@@ -1,7 +1,7 @@
 import { isError } from '@xylabs/typeof'
 import type {
   NextFunction, Request, Response,
-} from 'express'
+} from 'express-serve-static-core'
 
 import { getDefaultLogger } from '../../Logger/index.ts'
 import type { ExpressError } from '../../Model/index.ts'

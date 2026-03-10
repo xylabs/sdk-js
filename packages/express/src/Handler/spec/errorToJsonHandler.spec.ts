@@ -11,7 +11,7 @@ vi.mock('../../Logger/getDefaultLogger.ts', () => ({
 
 import type {
   NextFunction, Request, Response,
-} from 'express'
+} from 'express-serve-static-core'
 
 import type { ExpressError } from '../../Model/index.ts'
 import { errorToJsonHandler } from '../errorToJsonHandler.ts'

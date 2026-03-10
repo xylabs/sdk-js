@@ -1,4 +1,4 @@
-import type { Express } from 'express'
+import type { Express } from 'express-serve-static-core'
 import {
   describe, expect, it, vi,
 } from 'vitest'

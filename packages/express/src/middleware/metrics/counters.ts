@@ -1,6 +1,6 @@
 import type {
   Application, NextFunction, Request, Response,
-} from 'express'
+} from 'express-serve-static-core'
 
 import { Counters } from '../../Performance/index.ts'
 

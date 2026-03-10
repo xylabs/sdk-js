@@ -1,6 +1,6 @@
 import type {
   Express, Request, Response,
-} from 'express'
+} from 'express-serve-static-core'
 import {
   describe, expect, it, vi,
 } from 'vitest'

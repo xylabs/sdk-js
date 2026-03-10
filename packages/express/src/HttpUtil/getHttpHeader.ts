@@ -1,5 +1,5 @@
 import { isDefined } from '@xylabs/typeof'
-import type { Request } from 'express'
+import type { Request } from 'express-serve-static-core'
 
 /**
  * Since there can be multiple of certain HTTP headers or

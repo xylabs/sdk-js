@@ -1,6 +1,6 @@
 import type {
   Express, NextFunction, Request, Response,
-} from 'express'
+} from 'express-serve-static-core'
 
 const header = 'X-Powered-By'
 const setting = 'x-powered-by'

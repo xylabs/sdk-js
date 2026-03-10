@@ -2,7 +2,7 @@
 import { isDefined, isPromise } from '@xylabs/typeof'
 import type {
   NextFunction, Request, RequestHandler, Response,
-} from 'express'
+} from 'express-serve-static-core'
 import { ReasonPhrases, StatusCodes } from 'http-status-codes'
 import * as z from 'zod'
 

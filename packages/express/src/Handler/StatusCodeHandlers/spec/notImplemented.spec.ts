@@ -1,4 +1,4 @@
-import type { Request, Response } from 'express'
+import type { Request, Response } from 'express-serve-static-core'
 import { ReasonPhrases, StatusCodes } from 'http-status-codes'
 import {
   describe, expect, it, vi,

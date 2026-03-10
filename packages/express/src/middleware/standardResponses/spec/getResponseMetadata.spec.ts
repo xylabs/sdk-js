@@ -1,4 +1,4 @@
-import type { Response } from 'express'
+import type { Response } from 'express-serve-static-core'
 import {
   describe, expect, it,
 } from 'vitest'

@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/hex",
-  "version": "5.0.82",
+  "version": "5.0.83",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "hex",
@@ -42,13 +42,13 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/error": "~5.0.82",
-    "@xylabs/typeof": "~5.0.82"
+    "@xylabs/error": "~5.0.83",
+    "@xylabs/typeof": "~5.0.83"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.4.11",
     "@xylabs/tsconfig": "~7.4.11",
-    "@xylabs/vitest-extended": "~5.0.82",
+    "@xylabs/vitest-extended": "~5.0.83",
     "typescript": "~5.9.3",
     "vitest": "~4.0.18",
     "zod": "^4.3.6"

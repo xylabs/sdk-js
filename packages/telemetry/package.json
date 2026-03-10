@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/telemetry",
-  "version": "5.0.82",
+  "version": "5.0.83",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "hex",
@@ -43,8 +43,8 @@
   ],
   "dependencies": {
     "@opentelemetry/api": "^1.9.0",
-    "@xylabs/logger": "~5.0.82",
-    "@xylabs/typeof": "~5.0.82"
+    "@xylabs/logger": "~5.0.83",
+    "@xylabs/typeof": "~5.0.83"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.4.11",

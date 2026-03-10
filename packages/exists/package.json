@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/exists",
-  "version": "5.0.82",
+  "version": "5.0.83",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "exists",

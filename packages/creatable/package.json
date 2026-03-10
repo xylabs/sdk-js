@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/creatable",
-  "version": "5.0.82",
+  "version": "5.0.83",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -35,13 +35,13 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/assert": "~5.0.82",
-    "@xylabs/base": "~5.0.82",
-    "@xylabs/events": "~5.0.82",
-    "@xylabs/logger": "~5.0.82",
-    "@xylabs/promise": "~5.0.82",
-    "@xylabs/telemetry": "~5.0.82",
-    "@xylabs/typeof": "~5.0.82",
+    "@xylabs/assert": "~5.0.83",
+    "@xylabs/base": "~5.0.83",
+    "@xylabs/events": "~5.0.83",
+    "@xylabs/logger": "~5.0.83",
+    "@xylabs/promise": "~5.0.83",
+    "@xylabs/telemetry": "~5.0.83",
+    "@xylabs/typeof": "~5.0.83",
     "async-mutex": "~0.5.0"
   },
   "devDependencies": {

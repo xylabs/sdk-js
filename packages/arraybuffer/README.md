@@ -41,19 +41,27 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 function equalArrayBuffers(a1, a2): boolean;
 ```
 
+Compares two ArrayBuffers for byte-level equality.
+
 ## Parameters
 
 ### a1
 
 `ArrayBufferLike`
 
+First buffer
+
 ### a2
 
 `ArrayBufferLike`
 
+Second buffer
+
 ## Returns
 
 `boolean`
+
+True if the buffers have the same length and identical bytes
 
   ### <a id="isArrayBuffer"></a>isArrayBuffer
 
@@ -66,6 +74,8 @@ function equalArrayBuffers(a1, a2): boolean;
 ```ts
 function isArrayBuffer(value): value is ArrayBuffer;
 ```
+
+Type guard that checks if a value is an ArrayBuffer instance.
 
 ### Parameters
 
@@ -82,6 +92,8 @@ function isArrayBuffer(value): value is ArrayBuffer;
 ```ts
 function isArrayBuffer<T>(value): value is Extract<T, ArrayBuffer>;
 ```
+
+Type guard that checks if a value is an ArrayBuffer instance.
 
 ### Type Parameters
 
@@ -111,6 +123,8 @@ function isArrayBuffer<T>(value): value is Extract<T, ArrayBuffer>;
 function isArrayBufferLike(value): value is ArrayBufferLike;
 ```
 
+Type guard that checks if a value conforms to the ArrayBufferLike interface (has byteLength and slice).
+
 ### Parameters
 
 ### value
@@ -126,6 +140,8 @@ function isArrayBufferLike(value): value is ArrayBufferLike;
 ```ts
 function isArrayBufferLike<T>(value): value is Extract<T, ArrayBufferLike>;
 ```
+
+Type guard that checks if a value conforms to the ArrayBufferLike interface (has byteLength and slice).
 
 ### Type Parameters
 
@@ -158,23 +174,33 @@ function toArrayBuffer(
    base?): undefined;
 ```
 
+Converts a string, bigint, or ArrayBufferLike to an ArrayBufferLike, with optional zero-padding.
+
 ### Parameters
 
 ### value
 
 `undefined`
 
+The value to convert (hex string, bigint, or existing buffer)
+
 ### padLength?
 
 `number`
+
+Minimum byte length, left-padded with zeros if needed
 
 ### base?
 
 `number`
 
+Numeric base for string parsing (default 16)
+
 ### Returns
 
 `undefined`
+
+The resulting ArrayBufferLike, or undefined if value is undefined
 
 ## Call Signature
 
@@ -185,9 +211,13 @@ function toArrayBuffer(
    base?): ArrayBufferLike;
 ```
 
+Converts a string, bigint, or ArrayBufferLike to an ArrayBufferLike, with optional zero-padding.
+
 ### Parameters
 
 ### value
+
+The value to convert (hex string, bigint, or existing buffer)
 
 `string` | `bigint` | `ArrayBufferLike`
 
@@ -195,13 +225,19 @@ function toArrayBuffer(
 
 `number`
 
+Minimum byte length, left-padded with zeros if needed
+
 ### base?
 
 `number`
 
+Numeric base for string parsing (default 16)
+
 ### Returns
 
 `ArrayBufferLike`
+
+The resulting ArrayBufferLike, or undefined if value is undefined
 
 ## Call Signature
 
@@ -212,9 +248,13 @@ function toArrayBuffer(
    base?): ArrayBufferLike | undefined;
 ```
 
+Converts a string, bigint, or ArrayBufferLike to an ArrayBufferLike, with optional zero-padding.
+
 ### Parameters
 
 ### value
+
+The value to convert (hex string, bigint, or existing buffer)
 
 `string` | `bigint` | `ArrayBufferLike` | `undefined`
 
@@ -222,13 +262,19 @@ function toArrayBuffer(
 
 `number`
 
+Minimum byte length, left-padded with zeros if needed
+
 ### base?
 
 `number`
 
+Numeric base for string parsing (default 16)
+
 ### Returns
 
 `ArrayBufferLike` \| `undefined`
+
+The resulting ArrayBufferLike, or undefined if value is undefined
 
   ### <a id="toUint8Array"></a>toUint8Array
 
@@ -245,23 +291,33 @@ function toUint8Array(
    base?): undefined;
 ```
 
+Converts a string, bigint, or ArrayBufferLike to a Uint8Array, with optional zero-padding.
+
 ### Parameters
 
 ### value
 
 `undefined`
 
+The value to convert
+
 ### padLength?
 
 `number`
+
+Minimum byte length, left-padded with zeros if needed
 
 ### base?
 
 `number`
 
+Numeric base for string parsing (default 16)
+
 ### Returns
 
 `undefined`
+
+The resulting Uint8Array, or undefined if value is undefined
 
 ## Call Signature
 
@@ -272,9 +328,13 @@ function toUint8Array(
    base?): Uint8Array;
 ```
 
+Converts a string, bigint, or ArrayBufferLike to a Uint8Array, with optional zero-padding.
+
 ### Parameters
 
 ### value
+
+The value to convert
 
 `string` | `bigint` | `ArrayBufferLike`
 
@@ -282,13 +342,19 @@ function toUint8Array(
 
 `number`
 
+Minimum byte length, left-padded with zeros if needed
+
 ### base?
 
 `number`
 
+Numeric base for string parsing (default 16)
+
 ### Returns
 
 `Uint8Array`
+
+The resulting Uint8Array, or undefined if value is undefined
 
 ## Call Signature
 
@@ -299,9 +365,13 @@ function toUint8Array(
    base?): Uint8Array<ArrayBufferLike> | undefined;
 ```
 
+Converts a string, bigint, or ArrayBufferLike to a Uint8Array, with optional zero-padding.
+
 ### Parameters
 
 ### value
+
+The value to convert
 
 `string` | `bigint` | `ArrayBufferLike` | `undefined`
 
@@ -309,13 +379,19 @@ function toUint8Array(
 
 `number`
 
+Minimum byte length, left-padded with zeros if needed
+
 ### base?
 
 `number`
 
+Numeric base for string parsing (default 16)
+
 ### Returns
 
 `Uint8Array`\<`ArrayBufferLike`\> \| `undefined`
+
+The resulting Uint8Array, or undefined if value is undefined
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

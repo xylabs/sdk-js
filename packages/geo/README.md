@@ -65,6 +65,8 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ***
 
+Provides GeoJSON geometry and MapBox source generation from a quadkey.
+
 ## Constructors
 
 ### Constructor
@@ -91,15 +93,21 @@ new GeoJson(quadkey): GeoJson;
 static featureCollection(features): FeatureCollection;
 ```
 
+Creates a GeoJSON FeatureCollection from an array of features.
+
 ### Parameters
 
 #### features
 
 `Feature`\<`Geometry`, `GeoJsonProperties`\>[]
 
+The features to include
+
 ### Returns
 
 `FeatureCollection`
+
+A GeoJSON FeatureCollection
 
 ***
 
@@ -109,15 +117,21 @@ static featureCollection(features): FeatureCollection;
 static featuresSource(data): GeoJSONSourceSpecification;
 ```
 
+Creates a MapBox GeoJSON source specification from a FeatureCollection.
+
 ### Parameters
 
 #### data
 
 `FeatureCollection`
 
+The FeatureCollection to use as the source data
+
 ### Returns
 
 `GeoJSONSourceSpecification`
+
+A MapBox GeoJSON source specification
 
 ***
 
@@ -127,15 +141,21 @@ static featuresSource(data): GeoJSONSourceSpecification;
 static geometryFeature(geometry): Feature;
 ```
 
+Wraps a geometry object in a GeoJSON Feature.
+
 ### Parameters
 
 #### geometry
 
 `Geometry`
 
+The geometry to wrap
+
 ### Returns
 
 `Feature`
+
+A GeoJSON Feature containing the geometry
 
 ***
 
@@ -144,6 +164,8 @@ static geometryFeature(geometry): Feature;
 ```ts
 center(): LngLat;
 ```
+
+Computes and caches the center point of the quadkey's bounding box as a MapBox LngLat.
 
 ### Returns
 
@@ -157,6 +179,8 @@ center(): LngLat;
 point(): Point;
 ```
 
+Returns a GeoJSON Point geometry at the center of the quadkey's bounding box.
+
 ### Returns
 
 `Point`
@@ -168,6 +192,8 @@ point(): Point;
 ```ts
 pointFeature(): Feature;
 ```
+
+Returns a GeoJSON Feature containing the center point geometry.
 
 ### Returns
 
@@ -181,6 +207,8 @@ pointFeature(): Feature;
 pointFeatureCollection(): FeatureCollection;
 ```
 
+Returns a GeoJSON FeatureCollection containing the center point feature.
+
 ### Returns
 
 `FeatureCollection`
@@ -192,6 +220,8 @@ pointFeatureCollection(): FeatureCollection;
 ```ts
 pointSource(): GeoJSONSourceSpecification;
 ```
+
+Returns a MapBox GeoJSON source specification for the center point.
 
 ### Returns
 
@@ -205,6 +235,8 @@ pointSource(): GeoJSONSourceSpecification;
 polygon(): Polygon;
 ```
 
+Returns a GeoJSON Polygon geometry representing the quadkey's bounding box.
+
 ### Returns
 
 `Polygon`
@@ -216,6 +248,8 @@ polygon(): Polygon;
 ```ts
 polygonFeature(): Feature;
 ```
+
+Returns a GeoJSON Feature containing the polygon geometry.
 
 ### Returns
 
@@ -229,6 +263,8 @@ polygonFeature(): Feature;
 polygonFeatureCollection(): FeatureCollection;
 ```
 
+Returns a GeoJSON FeatureCollection containing the polygon feature.
+
 ### Returns
 
 `FeatureCollection`
@@ -240,6 +276,8 @@ polygonFeatureCollection(): FeatureCollection;
 ```ts
 polygonSource(): GeoJSONSourceSpecification;
 ```
+
+Returns a MapBox GeoJSON source specification for the polygon.
 
 ### Returns
 
@@ -253,6 +291,8 @@ polygonSource(): GeoJSONSourceSpecification;
 zoom(): number;
 ```
 
+Returns the zoom level derived from the quadkey length.
+
 ### Returns
 
 `number`
@@ -262,6 +302,8 @@ zoom(): number;
 [**@xylabs/geo**](#../README)
 
 ***
+
+Abstract base class for managing MapBox map layers with add/remove lifecycle.
 
 ## Type Parameters
 
@@ -315,15 +357,21 @@ source: string;
 update(map, show?): void;
 ```
 
+Removes and re-adds the layer on the map, optionally hiding it.
+
 ### Parameters
 
 #### map
 
 `Map$1`
 
+The MapBox map instance
+
 #### show?
 
 `boolean` = `true`
+
+Whether to show the layer after updating (default true)
 
 ### Returns
 
@@ -337,6 +385,8 @@ update(map, show?): void;
 abstract buildLayer(): T;
 ```
 
+Builds the MapBox layer configuration object.
+
 ### Returns
 
 `T`
@@ -346,6 +396,8 @@ abstract buildLayer(): T;
 [**@xylabs/geo**](#../README)
 
 ***
+
+A Mercator bounding box extending MapBox LngLatBounds.
 
 ## Extends
 
@@ -384,6 +436,8 @@ MapBox.LngLatBounds.constructor
 [**@xylabs/geo**](#../README)
 
 ***
+
+A Mercator coordinate extending MapBox LngLat.
 
 ## Extends
 
@@ -429,15 +483,21 @@ MapBox.LngLat.constructor
 function boundingBoxToBoundary(box): MercatorBoundary;
 ```
 
+Converts a bounding box to an ordered boundary polygon (closed ring of corner points).
+
 ## Parameters
 
 ### box
 
 [`MercatorBoundingBox`](#../classes/MercatorBoundingBox)
 
+The bounding box to convert
+
 ## Returns
 
 [`MercatorBoundary`](#../type-aliases/MercatorBoundary)
+
+An array of corner points forming a closed boundary
 
   ### <a id="boundingBoxToCenter"></a>boundingBoxToCenter
 
@@ -449,19 +509,27 @@ function boundingBoxToBoundary(box): MercatorBoundary;
 function boundingBoxToCenter(boundingBox, decimal?): number[];
 ```
 
+Computes the center point of a bounding box as [lng, lat], rounded to the specified decimal places.
+
 ## Parameters
 
 ### boundingBox
 
 [`MercatorBoundingBox`](#../classes/MercatorBoundingBox)
 
+The bounding box to find the center of
+
 ### decimal?
 
 `number` = `6`
 
+Number of decimal places for rounding (default 6)
+
 ## Returns
 
 `number`[]
+
+A [longitude, latitude] tuple representing the center
 
   ### <a id="boundingBoxToPolygon"></a>boundingBoxToPolygon
 
@@ -473,15 +541,21 @@ function boundingBoxToCenter(boundingBox, decimal?): number[];
 function boundingBoxToPolygon(box): Polygon;
 ```
 
+Converts a bounding box to a GeoJSON Polygon geometry.
+
 ## Parameters
 
 ### box
 
 [`MercatorBoundingBox`](#../classes/MercatorBoundingBox)
 
+The bounding box to convert
+
 ## Returns
 
 `Polygon`
+
+A GeoJSON Polygon representing the bounding box
 
   ### <a id="hasSiblings"></a>hasSiblings
 
@@ -493,19 +567,27 @@ function boundingBoxToPolygon(box): Polygon;
 function hasSiblings(tiles, tile): boolean;
 ```
 
+Checks whether all four siblings of the given tile exist in the tile array.
+
 ## Parameters
 
 ### tiles
 
 [`MercatorTile`](#../type-aliases/MercatorTile)[]
 
+The array of tiles to search
+
 ### tile
 
 [`MercatorTile`](#../type-aliases/MercatorTile)
 
+The tile whose siblings to check for
+
 ## Returns
 
 `boolean`
+
+True if all siblings are present in the array
 
   ### <a id="tileFromPoint"></a>tileFromPoint
 
@@ -517,19 +599,27 @@ function hasSiblings(tiles, tile): boolean;
 function tileFromPoint(point, z): MercatorTile;
 ```
 
+Converts a geographic point to the integer Mercator tile containing it at the given zoom level.
+
 ## Parameters
 
 ### point
 
 [`MercatorLngLat`](#../classes/MercatorLngLat)
 
+The geographic coordinate
+
 ### z
 
 `number`
 
+The zoom level
+
 ## Returns
 
 [`MercatorTile`](#../type-aliases/MercatorTile)
+
+The tile as [x, y, zoom]
 
   ### <a id="tileFromQuadkey"></a>tileFromQuadkey
 
@@ -541,15 +631,21 @@ function tileFromPoint(point, z): MercatorTile;
 function tileFromQuadkey(quadkey): MercatorTile;
 ```
 
+Converts a quadkey string to a Mercator tile [x, y, zoom].
+
 ## Parameters
 
 ### quadkey
 
 `string`
 
+The quadkey string to decode
+
 ## Returns
 
 [`MercatorTile`](#../type-aliases/MercatorTile)
+
+The tile as [x, y, zoom]
 
   ### <a id="tileToBoundingBox"></a>tileToBoundingBox
 
@@ -561,15 +657,21 @@ function tileFromQuadkey(quadkey): MercatorTile;
 function tileToBoundingBox(tile): MercatorBoundingBox;
 ```
 
+Converts a Mercator tile to its geographic bounding box.
+
 ## Parameters
 
 ### tile
 
 [`MercatorTile`](#../type-aliases/MercatorTile)
 
+The tile as [x, y, zoom]
+
 ## Returns
 
 [`MercatorBoundingBox`](#../classes/MercatorBoundingBox)
+
+The bounding box covering the tile's geographic extent
 
   ### <a id="tileToChildren"></a>tileToChildren
 
@@ -581,15 +683,21 @@ function tileToBoundingBox(tile): MercatorBoundingBox;
 function tileToChildren(tile): MercatorTile[];
 ```
 
+Returns the four child tiles at one zoom level higher.
+
 ## Parameters
 
 ### tile
 
 [`MercatorTile`](#../type-aliases/MercatorTile)
 
+The parent tile as [x, y, zoom]
+
 ## Returns
 
 [`MercatorTile`](#../type-aliases/MercatorTile)[]
+
+An array of four child tiles at zoom + 1
 
   ### <a id="tileToGeoJson"></a>tileToGeoJson
 
@@ -601,15 +709,21 @@ function tileToChildren(tile): MercatorTile[];
 function tileToGeoJson(tile): Polygon;
 ```
 
+Converts a Mercator tile to a GeoJSON Polygon geometry.
+
 ## Parameters
 
 ### tile
 
 [`MercatorTile`](#../type-aliases/MercatorTile)
 
+The tile as [x, y, zoom]
+
 ## Returns
 
 `Polygon`
+
+A GeoJSON Polygon representing the tile's geographic extent
 
   ### <a id="tileToParent"></a>tileToParent
 
@@ -621,15 +735,21 @@ function tileToGeoJson(tile): Polygon;
 function tileToParent(tile): MercatorTile;
 ```
 
+Returns the parent tile at one zoom level lower.
+
 ## Parameters
 
 ### tile
 
 [`MercatorTile`](#../type-aliases/MercatorTile)
 
+The tile as [x, y, zoom]
+
 ## Returns
 
 [`MercatorTile`](#../type-aliases/MercatorTile)
+
+The parent tile at zoom - 1
 
   ### <a id="tileToPoint"></a>tileToPoint
 
@@ -641,15 +761,21 @@ function tileToParent(tile): MercatorTile;
 function tileToPoint(tile): MercatorLngLat;
 ```
 
+Returns the center point of a Mercator tile.
+
 ## Parameters
 
 ### tile
 
 [`MercatorTile`](#../type-aliases/MercatorTile)
 
+The tile as [x, y, zoom]
+
 ## Returns
 
 [`MercatorLngLat`](#../classes/MercatorLngLat)
+
+The center coordinate as a MercatorLngLat
 
   ### <a id="tileToQuadkey"></a>tileToQuadkey
 
@@ -658,18 +784,24 @@ function tileToPoint(tile): MercatorLngLat;
 ***
 
 ```ts
-function tileToQuadkey(__namedParameters): string;
+function tileToQuadkey(param0): string;
 ```
+
+Converts a Mercator tile to its quadkey string representation.
 
 ## Parameters
 
-### \_\_namedParameters
+### param0
 
 [`MercatorTile`](#../type-aliases/MercatorTile)
+
+The tile as [tileX, tileY, tileZoom]
 
 ## Returns
 
 `string`
+
+The quadkey string encoding the tile's position and zoom
 
   ### <a id="tileToSiblings"></a>tileToSiblings
 
@@ -681,15 +813,21 @@ function tileToQuadkey(__namedParameters): string;
 function tileToSiblings(tile): MercatorTile[];
 ```
 
+Returns the four sibling tiles (children of the parent tile) for the given tile.
+
 ## Parameters
 
 ### tile
 
 [`MercatorTile`](#../type-aliases/MercatorTile)
 
+The tile as [x, y, zoom]
+
 ## Returns
 
 [`MercatorTile`](#../type-aliases/MercatorTile)[]
+
+An array of four sibling tiles at the same zoom level
 
   ### <a id="tilesEqual"></a>tilesEqual
 
@@ -698,22 +836,30 @@ function tileToSiblings(tile): MercatorTile[];
 ***
 
 ```ts
-function tilesEqual(__namedParameters, __namedParameters): boolean;
+function tilesEqual(param0, param1): boolean;
 ```
+
+Checks whether two Mercator tiles are equal by comparing their x, y, and zoom values.
 
 ## Parameters
 
-### \_\_namedParameters
+### param0
 
 [`MercatorTile`](#../type-aliases/MercatorTile)
 
-### \_\_namedParameters
+The first tile as [x, y, zoom]
+
+### param1
 
 [`MercatorTile`](#../type-aliases/MercatorTile)
+
+The second tile as [x, y, zoom]
 
 ## Returns
 
 `boolean`
+
+True if both tiles have identical coordinates and zoom
 
   ### <a id="tilesFromBoundingBox"></a>tilesFromBoundingBox
 
@@ -725,19 +871,27 @@ function tilesEqual(__namedParameters, __namedParameters): boolean;
 function tilesFromBoundingBox(box, zoom): MercatorTile[];
 ```
 
+Returns all Mercator tiles that intersect the given bounding box at the specified zoom level.
+
 ## Parameters
 
 ### box
 
 [`MercatorBoundingBox`](#../classes/MercatorBoundingBox)
 
+The geographic bounding box
+
 ### zoom
 
 `number`
 
+The zoom level
+
 ## Returns
 
 [`MercatorTile`](#../type-aliases/MercatorTile)[]
+
+An array of tiles covering the bounding box
 
   ### <a id="tilesHasTile"></a>tilesHasTile
 
@@ -749,19 +903,27 @@ function tilesFromBoundingBox(box, zoom): MercatorTile[];
 function tilesHasTile(tiles, tile): boolean;
 ```
 
+Checks whether a specific tile exists in the given tile array.
+
 ## Parameters
 
 ### tiles
 
 [`MercatorTile`](#../type-aliases/MercatorTile)[]
 
+The array of tiles to search
+
 ### tile
 
 [`MercatorTile`](#../type-aliases/MercatorTile)
 
+The tile to look for
+
 ## Returns
 
 `boolean`
+
+True if the tile is found in the array
 
 ### type-aliases
 
@@ -775,6 +937,8 @@ function tilesHasTile(tiles, tile): boolean;
 type MercatorBoundary = MercatorLngLat[];
 ```
 
+An ordered array of MercatorLngLat points forming a boundary.
+
   ### <a id="MercatorTile"></a>MercatorTile
 
 [**@xylabs/geo**](#../README)
@@ -784,6 +948,8 @@ type MercatorBoundary = MercatorLngLat[];
 ```ts
 type MercatorTile = readonly [number, number, number];
 ```
+
+A Mercator tile represented as [x, y, zoom].
 
 ### variables
 
@@ -797,6 +963,8 @@ type MercatorTile = readonly [number, number, number];
 const d2r: number;
 ```
 
+Conversion factor from degrees to radians.
+
   ### <a id="r2d"></a>r2d
 
 [**@xylabs/geo**](#../README)
@@ -806,6 +974,8 @@ const d2r: number;
 ```ts
 const r2d: number;
 ```
+
+Conversion factor from radians to degrees.
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

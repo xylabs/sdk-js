@@ -37,15 +37,21 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 function delay(ms): Promise<unknown>;
 ```
 
+Returns a promise that resolves after the specified number of milliseconds.
+
 ## Parameters
 
 ### ms
 
 `number`
 
+The number of milliseconds to delay.
+
 ## Returns
 
 `Promise`\<`unknown`\>
+
+A promise that resolves after the delay.
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

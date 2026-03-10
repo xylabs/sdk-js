@@ -37,15 +37,21 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 function functionName(depth?): string;
 ```
 
+Returns the name of the calling function by inspecting the stack trace.
+
 ## Parameters
 
 ### depth?
 
 `number` = `2`
 
+The stack frame depth to read the function name from (default: 2).
+
 ## Returns
 
 `string`
+
+The function name, or '<unknown>' if it cannot be determined.
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

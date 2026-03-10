@@ -45,6 +45,8 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 function containsAll<T>(source, target): boolean;
 ```
 
+Checks whether the source array contains every element in the target array.
+
 ## Type Parameters
 
 ### T
@@ -57,13 +59,19 @@ function containsAll<T>(source, target): boolean;
 
 `T`[]
 
+The array to search within
+
 ### target
 
 `T`[]
 
+The elements that must all be present
+
 ## Returns
 
 `boolean`
+
+True if every target element exists in source
 
   ### <a id="distinct"></a>distinct
 
@@ -77,6 +85,9 @@ function distinct<T>(
    index, 
    array): boolean;
 ```
+
+Array filter callback that removes duplicate values, with correct NaN handling.
+Use with `array.filter(distinct)`.
 
 ## Type Parameters
 
@@ -112,6 +123,8 @@ function distinct<T>(
 function filterAs<In, Out>(x, predicate): NonNullable<Out>[];
 ```
 
+Maps each element using the predicate and filters out nullish results.
+
 ## Type Parameters
 
 ### In
@@ -128,13 +141,19 @@ function filterAs<In, Out>(x, predicate): NonNullable<Out>[];
 
 `In`[]
 
+The input array
+
 ### predicate
 
 (`a`) => `Out`
 
+Transform function applied to each element
+
 ## Returns
 
 `NonNullable`\<`Out`\>[]
+
+Array of non-nullish transformed values
 
   ### <a id="filterAsync"></a>filterAsync
 
@@ -184,6 +203,8 @@ The elements of an array that meet the condition specified in a callback functio
 function findAs<In, Out>(x, predicate): NonNullable<Out> | undefined;
 ```
 
+Maps each element using the predicate and returns the first non-nullish result.
+
 ## Type Parameters
 
 ### In
@@ -200,13 +221,19 @@ function findAs<In, Out>(x, predicate): NonNullable<Out> | undefined;
 
 `In`[]
 
+The input array
+
 ### predicate
 
 (`a`) => `Out`
 
+Transform function applied to each element
+
 ## Returns
 
 `NonNullable`\<`Out`\> \| `undefined`
+
+The first non-nullish transformed value, or undefined
 
   ### <a id="findLastAs"></a>findLastAs
 
@@ -218,6 +245,8 @@ function findAs<In, Out>(x, predicate): NonNullable<Out> | undefined;
 function findLastAs<In, Out>(x, predicate): NonNullable<Out> | undefined;
 ```
 
+Maps each element using the predicate and returns the last non-nullish result.
+
 ## Type Parameters
 
 ### In
@@ -234,13 +263,19 @@ function findLastAs<In, Out>(x, predicate): NonNullable<Out> | undefined;
 
 `In`[]
 
+The input array
+
 ### predicate
 
 (`a`) => `Out`
 
+Transform function applied to each element
+
 ## Returns
 
 `NonNullable`\<`Out`\> \| `undefined`
+
+The last non-nullish transformed value, or undefined
 
   ### <a id="flatten"></a>flatten
 
@@ -252,6 +287,8 @@ function findLastAs<In, Out>(x, predicate): NonNullable<Out> | undefined;
 function flatten<T>(a?, b?): T[];
 ```
 
+Concatenates two values or arrays into a single flat array, filtering out nullish entries.
+
 ## Type Parameters
 
 ### T
@@ -262,15 +299,21 @@ function flatten<T>(a?, b?): T[];
 
 ### a?
 
+First value or array
+
 `T` | `ConcatArray`\<`T`\>
 
 ### b?
+
+Second value or array
 
 `T` | `ConcatArray`\<`T`\>
 
 ## Returns
 
 `T`[]
+
+A flat array of non-nullish elements
 
   ### <a id="uniq"></a>uniq
 
@@ -281,6 +324,8 @@ function flatten<T>(a?, b?): T[];
 ```ts
 function uniq<T>(arr): T[];
 ```
+
+Returns a new array with duplicate values removed.
 
 ## Type Parameters
 
@@ -294,9 +339,13 @@ function uniq<T>(arr): T[];
 
 `T`[]
 
+The input array
+
 ## Returns
 
 `T`[]
+
+A deduplicated array
 
   ### <a id="uniqBy"></a>uniqBy
 
@@ -307,6 +356,8 @@ function uniq<T>(arr): T[];
 ```ts
 function uniqBy<T, I>(arr, iteratee): T[];
 ```
+
+Returns a new array with duplicates removed, using a key function for comparison.
 
 ## Type Parameters
 
@@ -324,13 +375,19 @@ function uniqBy<T, I>(arr, iteratee): T[];
 
 `T`[]
 
+The input array
+
 ### iteratee
 
 (`item`) => `I`
 
+Function that returns the key to compare by
+
 ## Returns
 
 `T`[]
+
+A deduplicated array keeping the first occurrence of each key
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

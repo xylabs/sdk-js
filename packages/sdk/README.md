@@ -487,6 +487,8 @@ protected _startPromise: Promisable<boolean> | undefined;
 eventData: TEventData;
 ```
 
+Type-level reference to the event data shape for external type queries.
+
 ### Inherited from
 
 [`BaseEmitter`](#BaseEmitter).[`eventData`](BaseEmitter.md#eventdata)
@@ -1277,15 +1279,21 @@ Override in subclasses to define stop behavior. Throw an error on failure.
 clearListeners(eventNames): this;
 ```
 
+Removes all listeners for the specified event name(s).
+
 ### Parameters
 
 #### eventNames
+
+One or more event names to clear listeners for.
 
 keyof `TEventData` | keyof `TEventData`[]
 
 ### Returns
 
 `this`
+
+This instance for chaining.
 
 ### Inherited from
 
@@ -1298,6 +1306,8 @@ keyof `TEventData` | keyof `TEventData`[]
 ```ts
 emit<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 ```
+
+Emits an event, invoking all registered listeners concurrently.
 
 ### Type Parameters
 
@@ -1315,9 +1325,13 @@ emit<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 
 `TEventName`
 
+The event to emit.
+
 #### eventArgs
 
 `TEventArgs`
+
+The data to pass to listeners.
 
 ### Returns
 
@@ -1335,6 +1349,8 @@ emit<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 emitSerial<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 ```
 
+Emits an event, invoking all registered listeners sequentially in order.
+
 ### Type Parameters
 
 #### TEventName
@@ -1351,9 +1367,13 @@ emitSerial<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 
 `TEventName`
 
+The event to emit.
+
 #### eventArgs
 
 `TEventArgs`
+
+The data to pass to listeners.
 
 ### Returns
 
@@ -1371,15 +1391,21 @@ emitSerial<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 listenerCount(eventNames): number;
 ```
 
+Returns the total number of listeners registered for the specified event name(s).
+
 ### Parameters
 
 #### eventNames
+
+One or more event names to count listeners for.
 
 keyof `TEventData` | keyof `TEventData`[]
 
 ### Returns
 
 `number`
+
+The total listener count.
 
 ### Inherited from
 
@@ -1393,6 +1419,8 @@ keyof `TEventData` | keyof `TEventData`[]
 off<TEventName>(eventNames, listener): void;
 ```
 
+Removes a specific listener from the specified event name(s).
+
 ### Type Parameters
 
 #### TEventName
@@ -1403,11 +1431,15 @@ off<TEventName>(eventNames, listener): void;
 
 #### eventNames
 
+One or more event names to unsubscribe from.
+
 `TEventName` | `TEventName`[]
 
 #### listener
 
 [`EventListener`](#../type-aliases/EventListener)\<`TEventData`\[`TEventName`\]\>
+
+The listener to remove.
 
 ### Returns
 
@@ -1425,11 +1457,15 @@ off<TEventName>(eventNames, listener): void;
 offAny(listener): void;
 ```
 
+Removes a wildcard listener that was receiving all events.
+
 ### Parameters
 
 #### listener
 
 [`EventAnyListener`](#../type-aliases/EventAnyListener)
+
+The wildcard listener to remove.
 
 ### Returns
 
@@ -1447,6 +1483,8 @@ offAny(listener): void;
 on<TEventName>(eventNames, listener): () => void;
 ```
 
+Subscribes a listener to the specified event name(s).
+
 ### Type Parameters
 
 #### TEventName
@@ -1457,13 +1495,19 @@ on<TEventName>(eventNames, listener): () => void;
 
 #### eventNames
 
+One or more event names to listen for.
+
 `TEventName` | `TEventName`[]
 
 #### listener
 
 [`EventListener`](#../type-aliases/EventListener)\<`TEventData`\[`TEventName`\]\>
 
+The callback to invoke when the event fires.
+
 ### Returns
+
+An unsubscribe function.
 
 ```ts
 (): void;
@@ -1485,13 +1529,19 @@ on<TEventName>(eventNames, listener): () => void;
 onAny(listener): () => void;
 ```
 
+Subscribes a wildcard listener that receives all events.
+
 ### Parameters
 
 #### listener
 
 [`EventAnyListener`](#../type-aliases/EventAnyListener)
 
+The callback to invoke for any event.
+
 ### Returns
+
+An unsubscribe function.
 
 ```ts
 (): void;
@@ -1513,6 +1563,8 @@ onAny(listener): () => void;
 once<TEventName>(eventName, listener): () => void;
 ```
 
+Subscribes a listener that will be invoked only once for the specified event, then automatically removed.
+
 ### Type Parameters
 
 #### TEventName
@@ -1525,11 +1577,17 @@ once<TEventName>(eventName, listener): () => void;
 
 `TEventName`
 
+The event to listen for.
+
 #### listener
 
 [`EventListener`](#../type-aliases/EventListener)\<`TEventData`\[`TEventName`\]\>
 
+The callback to invoke once.
+
 ### Returns
+
+An unsubscribe function.
 
 ```ts
 (): void;
@@ -1661,6 +1719,8 @@ protected _startPromise: Promisable<boolean> | undefined;
 ```ts
 eventData: TEventData;
 ```
+
+Type-level reference to the event data shape for external type queries.
 
 ### Inherited from
 
@@ -2573,15 +2633,21 @@ Labels to assign to created instances
 clearListeners(eventNames): this;
 ```
 
+Removes all listeners for the specified event name(s).
+
 ### Parameters
 
 #### eventNames
+
+One or more event names to clear listeners for.
 
 keyof `TEventData` | keyof `TEventData`[]
 
 ### Returns
 
 `this`
+
+This instance for chaining.
 
 ### Inherited from
 
@@ -2594,6 +2660,8 @@ keyof `TEventData` | keyof `TEventData`[]
 ```ts
 emit<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 ```
+
+Emits an event, invoking all registered listeners concurrently.
 
 ### Type Parameters
 
@@ -2611,9 +2679,13 @@ emit<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 
 `TEventName`
 
+The event to emit.
+
 #### eventArgs
 
 `TEventArgs`
+
+The data to pass to listeners.
 
 ### Returns
 
@@ -2631,6 +2703,8 @@ emit<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 emitSerial<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 ```
 
+Emits an event, invoking all registered listeners sequentially in order.
+
 ### Type Parameters
 
 #### TEventName
@@ -2647,9 +2721,13 @@ emitSerial<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 
 `TEventName`
 
+The event to emit.
+
 #### eventArgs
 
 `TEventArgs`
+
+The data to pass to listeners.
 
 ### Returns
 
@@ -2667,15 +2745,21 @@ emitSerial<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 listenerCount(eventNames): number;
 ```
 
+Returns the total number of listeners registered for the specified event name(s).
+
 ### Parameters
 
 #### eventNames
+
+One or more event names to count listeners for.
 
 keyof `TEventData` | keyof `TEventData`[]
 
 ### Returns
 
 `number`
+
+The total listener count.
 
 ### Inherited from
 
@@ -2689,6 +2773,8 @@ keyof `TEventData` | keyof `TEventData`[]
 off<TEventName>(eventNames, listener): void;
 ```
 
+Removes a specific listener from the specified event name(s).
+
 ### Type Parameters
 
 #### TEventName
@@ -2699,11 +2785,15 @@ off<TEventName>(eventNames, listener): void;
 
 #### eventNames
 
+One or more event names to unsubscribe from.
+
 `TEventName` | `TEventName`[]
 
 #### listener
 
 [`EventListener`](#../type-aliases/EventListener)\<`TEventData`\[`TEventName`\]\>
+
+The listener to remove.
 
 ### Returns
 
@@ -2721,11 +2811,15 @@ off<TEventName>(eventNames, listener): void;
 offAny(listener): void;
 ```
 
+Removes a wildcard listener that was receiving all events.
+
 ### Parameters
 
 #### listener
 
 [`EventAnyListener`](#../type-aliases/EventAnyListener)
+
+The wildcard listener to remove.
 
 ### Returns
 
@@ -2743,6 +2837,8 @@ offAny(listener): void;
 on<TEventName>(eventNames, listener): () => void;
 ```
 
+Subscribes a listener to the specified event name(s).
+
 ### Type Parameters
 
 #### TEventName
@@ -2753,13 +2849,19 @@ on<TEventName>(eventNames, listener): () => void;
 
 #### eventNames
 
+One or more event names to listen for.
+
 `TEventName` | `TEventName`[]
 
 #### listener
 
 [`EventListener`](#../type-aliases/EventListener)\<`TEventData`\[`TEventName`\]\>
 
+The callback to invoke when the event fires.
+
 ### Returns
+
+An unsubscribe function.
 
 ```ts
 (): void;
@@ -2781,13 +2883,19 @@ on<TEventName>(eventNames, listener): () => void;
 onAny(listener): () => void;
 ```
 
+Subscribes a wildcard listener that receives all events.
+
 ### Parameters
 
 #### listener
 
 [`EventAnyListener`](#../type-aliases/EventAnyListener)
 
+The callback to invoke for any event.
+
 ### Returns
+
+An unsubscribe function.
 
 ```ts
 (): void;
@@ -2809,6 +2917,8 @@ onAny(listener): () => void;
 once<TEventName>(eventName, listener): () => void;
 ```
 
+Subscribes a listener that will be invoked only once for the specified event, then automatically removed.
+
 ### Type Parameters
 
 #### TEventName
@@ -2821,11 +2931,17 @@ once<TEventName>(eventName, listener): () => void;
 
 `TEventName`
 
+The event to listen for.
+
 #### listener
 
 [`EventListener`](#../type-aliases/EventListener)\<`TEventData`\[`TEventName`\]\>
 
+The callback to invoke once.
+
 ### Returns
+
+An unsubscribe function.
 
 ```ts
 (): void;
@@ -2844,6 +2960,8 @@ once<TEventName>(eventName, listener): () => void;
 [**@xylabs/sdk-js**](#../README)
 
 ***
+
+Abstract base class for API clients that provides stage and token configuration.
 
 ## Constructors
 
@@ -2901,11 +3019,15 @@ abstract endPoint(): string;
 
 ***
 
+Generic REST API endpoint wrapper that supports fetching and inserting typed data.
+
 ## Type Parameters
 
 ### T
 
 `T`
+
+The type of data returned by the endpoint
 
 ## Constructors
 
@@ -3065,6 +3187,8 @@ static create(config?): Axios;
 
 ***
 
+Abstract base class providing logging, telemetry, and global instance tracking with WeakRef-based GC.
+
 ## Extended by
 
 - [`UniqueBase`](#UniqueBase)
@@ -3076,6 +3200,8 @@ static create(config?): Axios;
 ### TParams
 
 `TParams` *extends* [`BaseParams`](#../type-aliases/BaseParams) = [`BaseParams`](#../type-aliases/BaseParams)
+
+The parameter type, extending BaseParams
 
 ## Constructors
 
@@ -3375,6 +3501,9 @@ static stopHistory(): void;
 
 ***
 
+Base class that combines the Base utility class with typed event emission capabilities.
+Delegates all event operations to an internal Events instance.
+
 ## Extends
 
 - [`Base`](#Base)\<`TParams`\>
@@ -3462,6 +3591,8 @@ readonly static globalInstancesCountHistory: Record<BaseClassName, number[]>;
 ```ts
 eventData: TEventData;
 ```
+
+Type-level reference to the event data shape for external type queries.
 
 ### Implementation of
 
@@ -3781,15 +3912,21 @@ static stopHistory(): void;
 clearListeners(eventNames): this;
 ```
 
+Removes all listeners for the specified event name(s).
+
 ### Parameters
 
 #### eventNames
+
+One or more event names to clear listeners for.
 
 keyof `TEventData` | keyof `TEventData`[]
 
 ### Returns
 
 `this`
+
+This instance for chaining.
 
 ### Implementation of
 
@@ -3802,6 +3939,8 @@ keyof `TEventData` | keyof `TEventData`[]
 ```ts
 emit<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 ```
+
+Emits an event, invoking all registered listeners concurrently.
 
 ### Type Parameters
 
@@ -3819,9 +3958,13 @@ emit<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 
 `TEventName`
 
+The event to emit.
+
 #### eventArgs
 
 `TEventArgs`
+
+The data to pass to listeners.
 
 ### Returns
 
@@ -3839,6 +3982,8 @@ emit<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 emitSerial<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 ```
 
+Emits an event, invoking all registered listeners sequentially in order.
+
 ### Type Parameters
 
 #### TEventName
@@ -3855,9 +4000,13 @@ emitSerial<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 
 `TEventName`
 
+The event to emit.
+
 #### eventArgs
 
 `TEventArgs`
+
+The data to pass to listeners.
 
 ### Returns
 
@@ -3875,15 +4024,21 @@ emitSerial<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 listenerCount(eventNames): number;
 ```
 
+Returns the total number of listeners registered for the specified event name(s).
+
 ### Parameters
 
 #### eventNames
+
+One or more event names to count listeners for.
 
 keyof `TEventData` | keyof `TEventData`[]
 
 ### Returns
 
 `number`
+
+The total listener count.
 
 ### Implementation of
 
@@ -3897,6 +4052,8 @@ keyof `TEventData` | keyof `TEventData`[]
 off<TEventName>(eventNames, listener): void;
 ```
 
+Removes a specific listener from the specified event name(s).
+
 ### Type Parameters
 
 #### TEventName
@@ -3907,11 +4064,15 @@ off<TEventName>(eventNames, listener): void;
 
 #### eventNames
 
+One or more event names to unsubscribe from.
+
 `TEventName` | `TEventName`[]
 
 #### listener
 
 [`EventListener`](#../type-aliases/EventListener)\<`TEventData`\[`TEventName`\]\>
+
+The listener to remove.
 
 ### Returns
 
@@ -3929,11 +4090,15 @@ off<TEventName>(eventNames, listener): void;
 offAny(listener): void;
 ```
 
+Removes a wildcard listener that was receiving all events.
+
 ### Parameters
 
 #### listener
 
 [`EventAnyListener`](#../type-aliases/EventAnyListener)
+
+The wildcard listener to remove.
 
 ### Returns
 
@@ -3951,6 +4116,8 @@ offAny(listener): void;
 on<TEventName>(eventNames, listener): () => void;
 ```
 
+Subscribes a listener to the specified event name(s).
+
 ### Type Parameters
 
 #### TEventName
@@ -3961,13 +4128,19 @@ on<TEventName>(eventNames, listener): () => void;
 
 #### eventNames
 
+One or more event names to listen for.
+
 `TEventName` | `TEventName`[]
 
 #### listener
 
 [`EventListener`](#../type-aliases/EventListener)\<`TEventData`\[`TEventName`\]\>
 
+The callback to invoke when the event fires.
+
 ### Returns
+
+An unsubscribe function.
 
 ```ts
 (): void;
@@ -3989,13 +4162,19 @@ on<TEventName>(eventNames, listener): () => void;
 onAny(listener): () => void;
 ```
 
+Subscribes a wildcard listener that receives all events.
+
 ### Parameters
 
 #### listener
 
 [`EventAnyListener`](#../type-aliases/EventAnyListener)
 
+The callback to invoke for any event.
+
 ### Returns
+
+An unsubscribe function.
 
 ```ts
 (): void;
@@ -4017,6 +4196,8 @@ onAny(listener): () => void;
 once<TEventName>(eventName, listener): () => void;
 ```
 
+Subscribes a listener that will be invoked only once for the specified event, then automatically removed.
+
 ### Type Parameters
 
 #### TEventName
@@ -4029,11 +4210,17 @@ once<TEventName>(eventName, listener): () => void;
 
 `TEventName`
 
+The event to listen for.
+
 #### listener
 
 [`EventListener`](#../type-aliases/EventListener)\<`TEventData`\[`TEventName`\]\>
 
+The callback to invoke once.
+
 ### Returns
+
+An unsubscribe function.
 
 ```ts
 (): void;
@@ -4053,8 +4240,7 @@ once<TEventName>(eventName, listener): () => void;
 
 ***
 
-Interface to handle overlap between Winston &
-`console` with as much congruency as possible.
+A LevelLogger that delegates to the global `console` object.
 
 ## Extends
 
@@ -4219,6 +4405,8 @@ get warn(): LogFunction;
 [**@xylabs/sdk-js**](#../README)
 
 ***
+
+Wrapper around an Ethereum address providing parsing, formatting, validation, and checksum support.
 
 ## Constructors
 
@@ -4424,6 +4612,9 @@ validate(): boolean;
 
 ***
 
+Core typed event emitter implementation supporting named events, wildcard listeners,
+serial and concurrent emission, listener filtering, and debug logging.
+
 ## Extends
 
 - [`Base`](#Base)\<[`EventsParams`](#../type-aliases/EventsParams)\>
@@ -4519,6 +4710,8 @@ protected static eventsMap: WeakMap<object, Map<PropertyKey, Set<EventListenerIn
 ```ts
 eventData: TEventData;
 ```
+
+Type-level reference to the event data shape for external type queries.
 
 ### Implementation of
 
@@ -4726,6 +4919,8 @@ get tracer(): Tracer | undefined;
 get static isDebugEnabled(): boolean;
 ```
 
+Whether debug mode is enabled globally or via the DEBUG environment variable.
+
 #### Returns
 
 `boolean`
@@ -4755,6 +4950,8 @@ set static isDebugEnabled(newValue): void;
 ```ts
 get debug(): DebugOptions | undefined;
 ```
+
+The debug configuration for this instance, if provided.
 
 #### Returns
 
@@ -4882,9 +5079,13 @@ static stopHistory(): void;
 clearListeners(eventNames): void;
 ```
 
+Removes all listeners for the specified event name(s).
+
 ### Parameters
 
 #### eventNames
+
+One or more event names to clear listeners for.
 
 keyof `TEventData` | keyof `TEventData`[]
 
@@ -4904,6 +5105,8 @@ keyof `TEventData` | keyof `TEventData`[]
 emit<TEventName>(eventName, eventArgs): Promise<void>;
 ```
 
+Emits an event, invoking all registered listeners concurrently.
+
 ### Type Parameters
 
 #### TEventName
@@ -4916,9 +5119,13 @@ emit<TEventName>(eventName, eventArgs): Promise<void>;
 
 `TEventName`
 
+The event to emit.
+
 #### eventArgs
 
 `TEventData`\[`TEventName`\]
+
+The data to pass to listeners.
 
 ### Returns
 
@@ -4936,6 +5143,8 @@ emit<TEventName>(eventName, eventArgs): Promise<void>;
 emitMetaEvent<TEventName>(eventName, eventArgs): Promise<boolean | undefined>;
 ```
 
+Emits an internal meta event (listenerAdded or listenerRemoved).
+
 ### Type Parameters
 
 #### TEventName
@@ -4948,13 +5157,19 @@ emitMetaEvent<TEventName>(eventName, eventArgs): Promise<boolean | undefined>;
 
 `TEventName`
 
+The meta event name.
+
 #### eventArgs
 
 [`MetaEventData`](#../type-aliases/MetaEventData)\<`TEventData`\>\[`TEventName`\]
 
+The meta event data containing listener and event information.
+
 ### Returns
 
 `Promise`\<`boolean` \| `undefined`\>
+
+True if the meta event was emitted successfully.
 
 ***
 
@@ -4963,6 +5178,8 @@ emitMetaEvent<TEventName>(eventName, eventArgs): Promise<boolean | undefined>;
 ```ts
 emitSerial<TEventName>(eventName, eventArgs): Promise<void>;
 ```
+
+Emits an event, invoking all registered listeners sequentially in order.
 
 ### Type Parameters
 
@@ -4976,9 +5193,13 @@ emitSerial<TEventName>(eventName, eventArgs): Promise<void>;
 
 `TEventName`
 
+The event to emit.
+
 #### eventArgs
 
 `TEventData`\[`TEventName`\]
+
+The data to pass to listeners.
 
 ### Returns
 
@@ -4996,15 +5217,21 @@ emitSerial<TEventName>(eventName, eventArgs): Promise<void>;
 listenerCount(eventNames?): number;
 ```
 
+Returns the total number of listeners registered for the specified event name(s).
+
 ### Parameters
 
 #### eventNames?
+
+One or more event names to count listeners for.
 
 keyof `TEventData` | keyof `TEventData`[]
 
 ### Returns
 
 `number`
+
+The total listener count.
 
 ### Implementation of
 
@@ -5021,6 +5248,8 @@ logIfDebugEnabled<TEventName>(
    eventArgs?): void;
 ```
 
+Logs debug information if debug mode is enabled.
+
 ### Type Parameters
 
 #### TEventName
@@ -5033,13 +5262,19 @@ logIfDebugEnabled<TEventName>(
 
 `string`
 
+The type of operation being logged.
+
 #### eventName?
 
 `TEventName`
 
+The event name, if applicable.
+
 #### eventArgs?
 
 [`EventArgs`](#../type-aliases/EventArgs)
+
+The event data, if applicable.
 
 ### Returns
 
@@ -5052,6 +5287,8 @@ logIfDebugEnabled<TEventName>(
 ```ts
 off<TEventName, TEventListener>(eventNames, listener): void;
 ```
+
+Removes a specific listener from the specified event name(s).
 
 ### Type Parameters
 
@@ -5067,11 +5304,15 @@ off<TEventName, TEventListener>(eventNames, listener): void;
 
 #### eventNames
 
+One or more event names to unsubscribe from.
+
 `TEventName` | `TEventName`[]
 
 #### listener
 
 `TEventListener`
+
+The listener to remove.
 
 ### Returns
 
@@ -5089,11 +5330,15 @@ off<TEventName, TEventListener>(eventNames, listener): void;
 offAny(listener): void;
 ```
 
+Removes a wildcard listener that was receiving all events.
+
 ### Parameters
 
 #### listener
 
 [`EventAnyListener`](#../type-aliases/EventAnyListener)
+
+The wildcard listener to remove.
 
 ### Returns
 
@@ -5114,6 +5359,8 @@ on<TEventName>(
    filter?): () => void;
 ```
 
+Subscribes a listener to the specified event name(s).
+
 ### Type Parameters
 
 #### TEventName
@@ -5124,17 +5371,25 @@ on<TEventName>(
 
 #### eventNames
 
+One or more event names to listen for.
+
 `TEventName` | `TEventName`[]
 
 #### listener
 
 [`EventListener`](#../type-aliases/EventListener)\<`TEventData`\[`TEventName`\]\>
 
+The callback to invoke when the event fires.
+
 #### filter?
 
 `TEventData`\[`TEventName`\]
 
+Optional filter to selectively invoke the listener based on event data.
+
 ### Returns
+
+An unsubscribe function.
 
 ```ts
 (): void;
@@ -5156,13 +5411,19 @@ on<TEventName>(
 onAny(listener): () => void;
 ```
 
+Subscribes a wildcard listener that receives all events.
+
 ### Parameters
 
 #### listener
 
 [`EventAnyListener`](#../type-aliases/EventAnyListener)
 
+The callback to invoke for any event.
+
 ### Returns
+
+An unsubscribe function.
 
 ```ts
 (): void;
@@ -5184,6 +5445,8 @@ onAny(listener): () => void;
 once<TEventName>(eventName, listener): () => void;
 ```
 
+Subscribes a listener that will be invoked only once for the specified event, then automatically removed.
+
 ### Type Parameters
 
 #### TEventName
@@ -5196,11 +5459,17 @@ once<TEventName>(eventName, listener): () => void;
 
 `TEventName`
 
+The event to listen for.
+
 #### listener
 
 [`EventListener`](#../type-aliases/EventListener)\<`TEventData`\[`TEventName`\]\>
 
+The callback to invoke once.
+
 ### Returns
+
+An unsubscribe function.
 
 ```ts
 (): void;
@@ -5367,6 +5636,8 @@ Optional parameters to override the factory defaults
 
 ***
 
+Node.js extension of ForgetPromise that can terminate the process on exceptions or timeouts.
+
 ## Extends
 
 - `ForgetPromise`
@@ -5397,6 +5668,8 @@ ForgetPromise.constructor
 static activeForgets: number;
 ```
 
+Number of currently active (unresolved) forgotten promises.
+
 ### Inherited from
 
 ```ts
@@ -5411,6 +5684,8 @@ ForgetPromise.activeForgets
 static exceptedForgets: number;
 ```
 
+Number of forgotten promises that threw exceptions.
+
 ### Inherited from
 
 ```ts
@@ -5424,6 +5699,8 @@ ForgetPromise.exceptedForgets
 ```ts
 static logger: Logger;
 ```
+
+Logger instance used for error and warning output.
 
 ### Inherited from
 
@@ -5440,6 +5717,8 @@ ForgetPromise.logger
 ```ts
 get static active(): boolean;
 ```
+
+Whether any forgotten promises are still active.
 
 #### Returns
 
@@ -5459,19 +5738,27 @@ ForgetPromise.active
 static awaitInactive(interval?, timeout?): Promise<number>;
 ```
 
+Waits until all forgotten promises have completed.
+
 ### Parameters
 
 #### interval?
 
 `number`
 
+Polling interval in milliseconds.
+
 #### timeout?
 
 `number`
 
+Optional maximum wait time in milliseconds.
+
 ### Returns
 
 `Promise`\<`number`\>
+
+The number of remaining active forgets (0 if all completed).
 
 ### Inherited from
 
@@ -5489,6 +5776,8 @@ static exceptionHandler(
    config, 
    externalStackTrace?): void;
 ```
+
+Handles exceptions, optionally terminating the process based on config.
 
 ### Parameters
 
@@ -5522,7 +5811,7 @@ ForgetPromise.exceptionHandler
 static forget<T>(promise, config?): void;
 ```
 
-Used to explicitly launch an async function (or Promise) with awaiting it
+Forgets a promise using Node.js-specific configuration with process termination support.
 
 ### Type Parameters
 
@@ -5536,13 +5825,9 @@ Used to explicitly launch an async function (or Promise) with awaiting it
 
 [`Promisable`](#../type-aliases/Promisable)\<`T`\>
 
-The promise to forget
-
 #### config?
 
 [`ForgetNodeConfig`](#../interfaces/ForgetNodeConfig)\<`T`\>
-
-Configuration of forget settings
 
 ### Returns
 
@@ -5564,6 +5849,8 @@ static timeoutHandler(
    config, 
    externalStackTrace?): void;
 ```
+
+Handles timeouts, optionally terminating the process based on config.
 
 ### Parameters
 
@@ -5595,8 +5882,8 @@ ForgetPromise.timeoutHandler
 
 ***
 
-Interface to handle overlap between Winston &
-`console` with as much congruency as possible.
+A logger wrapper that prefixes every log message with a bracketed identifier.
+Useful for distinguishing log output from different components or instances.
 
 ## Implements
 
@@ -5794,6 +6081,8 @@ Logger.warn
 
 ***
 
+Factory class for creating type-guard functions that validate objects against a given shape and optional additional checks.
+
 ## Type Parameters
 
 ### T
@@ -5820,19 +6109,27 @@ new IsObjectFactory<T>(): IsObjectFactory<T>;
 create(shape?, additionalChecks?): TypeCheck<T>;
 ```
 
+Creates a type-guard function that validates an object matches the given shape and passes additional checks.
+
 ### Parameters
 
 #### shape?
 
 [`ObjectTypeShape`](#../type-aliases/ObjectTypeShape)
 
+An optional map of property names to expected types.
+
 #### additionalChecks?
 
 [`TypeCheck`](#../type-aliases/TypeCheck)\<[`TypedObject`](#../type-aliases/TypedObject)\>[]
 
+Optional extra type-check functions to run after shape validation.
+
 ### Returns
 
 [`TypeCheck`](#../type-aliases/TypeCheck)\<`T`\>
+
+A type-guard function for type T.
 
   ### <a id="LevelLogger"></a>LevelLogger
 
@@ -5840,8 +6137,8 @@ create(shape?, additionalChecks?): TypeCheck<T>;
 
 ***
 
-Interface to handle overlap between Winston &
-`console` with as much congruency as possible.
+A logger that filters messages based on a configured log level.
+Methods for levels above the configured threshold return a no-op function.
 
 ## Extended by
 
@@ -6003,6 +6300,8 @@ get warn(): LogFunction;
 
 ***
 
+Abstract base class that wraps an object and provides typed access to it.
+
 ## Extended by
 
 - [`ValidatorBase`](#ValidatorBase)
@@ -6059,6 +6358,9 @@ get protected stringKeyObj(): StringKeyObject;
 
 ***
 
+An extended Promise that carries an optional attached value and supports cancellation.
+The value can be inspected via the `then` or `value` methods to conditionally cancel.
+
 ## Extends
 
 - `Promise`\<`T`\>
@@ -6108,6 +6410,8 @@ Promise<T>.constructor
 ```ts
 optional cancelled: boolean;
 ```
+
+Whether the promise has been cancelled via a value callback.
 
 ## Methods
 
@@ -6170,15 +6474,21 @@ Promise.then
 value(onvalue?): this;
 ```
 
+Inspects the attached value via the callback; if it returns true, marks the promise as cancelled.
+
 ### Parameters
 
 #### onvalue?
 
 (`value?`) => `boolean`
 
+A callback that receives the attached value and returns whether to cancel.
+
 ### Returns
 
 `this`
+
+This instance for chaining.
 
   ### <a id="SilentLogger"></a>SilentLogger
 
@@ -6345,6 +6655,8 @@ readonly warn: (..._data) => undefined;
 [**@xylabs/sdk-js**](#../README)
 
 ***
+
+Base class that registers itself as globally unique, preventing duplicate module instances.
 
 ## Extends
 
@@ -6750,6 +7062,8 @@ static stopHistory(): void;
 
 ***
 
+Abstract base class for validators that wraps a partial object and provides a validation method.
+
 ## Extends
 
 - [`ObjectWrapper`](#ObjectWrapper)\<`Partial`\<`T`\>\>
@@ -6844,6 +7158,9 @@ abstract validate(payload): Promisable<Error[]>;
 
 ***
 
+A console span exporter that formats spans with color-coded durations using chalk.
+Spans are filtered by a configurable log level based on their duration.
+
 ## Extends
 
 - `ConsoleSpanExporter`
@@ -6884,6 +7201,8 @@ ConsoleSpanExporter.constructor
 readonly static durationToLogLevel: number[];
 ```
 
+Duration thresholds (in ms) that map to increasing log levels.
+
 ***
 
 ### logLevelToChalkColor
@@ -6891,6 +7210,8 @@ readonly static durationToLogLevel: number[];
 ```ts
 readonly static logLevelToChalkColor: ChalkInstance[];
 ```
+
+Chalk color functions corresponding to each log level.
 
 ***
 
@@ -6909,6 +7230,8 @@ logger: Logger;
 ```ts
 get logLevel(): number;
 ```
+
+The minimum log level required for a span to be exported.
 
 #### Returns
 
@@ -6948,15 +7271,21 @@ ConsoleSpanExporter.export
 logColor(level): ChalkInstance;
 ```
 
+Returns the chalk color function for the given log level.
+
 ### Parameters
 
 #### level
 
 `number`
 
+The log level index.
+
 ### Returns
 
 `ChalkInstance`
+
+A chalk color function.
 
 ***
 
@@ -6966,15 +7295,21 @@ logColor(level): ChalkInstance;
 spanLevel(span): number;
 ```
 
+Determines the log level of a span based on its duration.
+
 ### Parameters
 
 #### span
 
 `ReadableSpan`
 
+The span to evaluate.
+
 ### Returns
 
 `number`
+
+The numeric log level (index into durationToLogLevel).
 
 ### functions
 
@@ -6990,15 +7325,21 @@ spanLevel(span): number;
 function asAddress(value): BrandedAddress | undefined;
 ```
 
+Attempts to coerce a value into an Address type, returning undefined or throwing based on the assert config.
+
 ### Parameters
 
 ### value
 
 `unknown`
 
+The value to coerce (must be a string)
+
 ### Returns
 
 `BrandedAddress` \| `undefined`
+
+The value as Address, or undefined if coercion fails and assert is not set
 
 ## Call Signature
 
@@ -7006,19 +7347,27 @@ function asAddress(value): BrandedAddress | undefined;
 function asAddress(value, assert): BrandedAddress;
 ```
 
+Attempts to coerce a value into an Address type, returning undefined or throwing based on the assert config.
+
 ### Parameters
 
 ### value
 
 `unknown`
 
+The value to coerce (must be a string)
+
 ### assert
 
 [`AssertConfig`](#../type-aliases/AssertConfig)
 
+If provided, throws on failure instead of returning undefined
+
 ### Returns
 
 `BrandedAddress`
+
+The value as Address, or undefined if coercion fails and assert is not set
 
   ### <a id="asAddressV2"></a>asAddressV2
 
@@ -7058,15 +7407,21 @@ function asAddressV2(value, assert?): BrandedAddress | undefined;
 function asEthAddress(value): EthAddress | undefined;
 ```
 
+Attempts to coerce a value into an EthAddress, returning undefined or throwing based on the assert config.
+
 ### Parameters
 
 ### value
 
 `unknown`
 
+The value to coerce (must be a string)
+
 ### Returns
 
 [`EthAddress`](#../type-aliases/EthAddress) \| `undefined`
+
+The value as EthAddress, or undefined if coercion fails and assert is not set
 
 ## Call Signature
 
@@ -7074,19 +7429,27 @@ function asEthAddress(value): EthAddress | undefined;
 function asEthAddress(value, assert): EthAddress;
 ```
 
+Attempts to coerce a value into an EthAddress, returning undefined or throwing based on the assert config.
+
 ### Parameters
 
 ### value
 
 `unknown`
 
+The value to coerce (must be a string)
+
 ### assert
 
 [`AssertConfig`](#../type-aliases/AssertConfig)
 
+If provided, throws on failure instead of returning undefined
+
 ### Returns
 
 [`EthAddress`](#../type-aliases/EthAddress)
+
+The value as EthAddress, or undefined if coercion fails and assert is not set
 
   ### <a id="asHash"></a>asHash
 
@@ -7100,15 +7463,21 @@ function asEthAddress(value, assert): EthAddress;
 function asHash(value): BrandedHash | undefined;
 ```
 
+Attempts to coerce a value into a Hash type, returning undefined or throwing based on the assert config.
+
 ### Parameters
 
 ### value
 
 `unknown`
 
+The value to coerce (must be a string)
+
 ### Returns
 
 [`BrandedHash`](#../type-aliases/BrandedHash) \| `undefined`
+
+The value as Hash, or undefined if coercion fails and assert is not set
 
 ## Call Signature
 
@@ -7116,19 +7485,27 @@ function asHash(value): BrandedHash | undefined;
 function asHash(value, assert): BrandedHash;
 ```
 
+Attempts to coerce a value into a Hash type, returning undefined or throwing based on the assert config.
+
 ### Parameters
 
 ### value
 
 `unknown`
 
+The value to coerce (must be a string)
+
 ### assert
 
 [`AssertConfig`](#../type-aliases/AssertConfig)
 
+If provided, throws on failure instead of returning undefined
+
 ### Returns
 
 [`BrandedHash`](#../type-aliases/BrandedHash)
+
+The value as Hash, or undefined if coercion fails and assert is not set
 
   ### <a id="asHex"></a>asHex
 
@@ -7142,15 +7519,21 @@ function asHash(value, assert): BrandedHash;
 function asHex(value): BrandedHex | undefined;
 ```
 
+Attempts to coerce a value into a Hex type, returning undefined or throwing based on the assert config.
+
 ### Parameters
 
 ### value
 
 `unknown`
 
+The value to coerce (must be a string)
+
 ### Returns
 
 [`BrandedHex`](#../type-aliases/BrandedHex) \| `undefined`
+
+The value as Hex, or undefined if coercion fails and assert is not set
 
 ## Call Signature
 
@@ -7158,19 +7541,27 @@ function asHex(value): BrandedHex | undefined;
 function asHex(value, assert): BrandedHex;
 ```
 
+Attempts to coerce a value into a Hex type, returning undefined or throwing based on the assert config.
+
 ### Parameters
 
 ### value
 
 `unknown`
 
+The value to coerce (must be a string)
+
 ### assert
 
 [`AssertConfig`](#../type-aliases/AssertConfig)
 
+If provided, throws on failure instead of returning undefined
+
 ### Returns
 
 [`BrandedHex`](#../type-aliases/BrandedHex)
+
+The value as Hex, or undefined if coercion fails and assert is not set
 
   ### <a id="assertDefinedEx"></a>assertDefinedEx
 
@@ -7405,18 +7796,25 @@ const user = assertEx(getUser(), () => new UserNotFoundError('User not found'))
 ***
 
 ```ts
-function axiosJsonConfig(__namedParameters?): RawAxiosJsonRequestConfig;
+function axiosJsonConfig(config?): RawAxiosJsonRequestConfig;
 ```
+
+Creates an Axios config preconfigured for JSON requests with optional gzip compression.
+Request bodies exceeding `compressLength` (default 1024 bytes) are automatically gzip-compressed.
 
 ## Parameters
 
-### \_\_namedParameters?
+### config?
 
 `RawAxiosJsonRequestConfig`\<`any`\>
+
+Base Axios config, optionally including a `compressLength` threshold
 
 ## Returns
 
 `RawAxiosJsonRequestConfig`
+
+A fully configured Axios request config with JSON transforms
 
   ### <a id="cloneContextWithoutSpan"></a>cloneContextWithoutSpan
 
@@ -7428,19 +7826,27 @@ function axiosJsonConfig(__namedParameters?): RawAxiosJsonRequestConfig;
 function cloneContextWithoutSpan(activeCtx, configKeys?): Context;
 ```
 
+Creates a new OpenTelemetry context that preserves baggage and custom keys but has no active span.
+
 ## Parameters
 
 ### activeCtx
 
 `Context`
 
+The context to clone from.
+
 ### configKeys?
 
 `symbol`[]
 
+Additional context keys to copy.
+
 ## Returns
 
 `Context`
+
+A new context with baggage but no parent span.
 
   ### <a id="creatable"></a>creatable
 
@@ -7578,15 +7984,21 @@ A deep merge function configured for the specified options.
 function hexToBigInt(hex): bigint;
 ```
 
+Converts a Hex string to a BigInt.
+
 ## Parameters
 
 ### hex
 
 [`BrandedHex`](#../type-aliases/BrandedHex)
 
+The hex string to convert
+
 ## Returns
 
 `bigint`
+
+The BigInt representation of the hex value
 
   ### <a id="isAddressV2"></a>isAddressV2
 
@@ -7622,6 +8034,8 @@ function isAddressV2(value): value is BrandedAddress;
 function isArray(value): value is readonly unknown[];
 ```
 
+Type guard that checks whether a value is an array.
+
 ### Parameters
 
 ### value
@@ -7637,6 +8051,8 @@ function isArray(value): value is readonly unknown[];
 ```ts
 function isArray<T>(value): value is Extract<T, readonly unknown[]>;
 ```
+
+Type guard that checks whether a value is an array.
 
 ### Type Parameters
 
@@ -7666,6 +8082,8 @@ function isArray<T>(value): value is Extract<T, readonly unknown[]>;
 function isArrayBuffer(value): value is ArrayBuffer;
 ```
 
+Type guard that checks if a value is an ArrayBuffer instance.
+
 ### Parameters
 
 ### value
@@ -7681,6 +8099,8 @@ function isArrayBuffer(value): value is ArrayBuffer;
 ```ts
 function isArrayBuffer<T>(value): value is Extract<T, ArrayBuffer>;
 ```
+
+Type guard that checks if a value is an ArrayBuffer instance.
 
 ### Type Parameters
 
@@ -7710,6 +8130,8 @@ function isArrayBuffer<T>(value): value is Extract<T, ArrayBuffer>;
 function isArrayBufferLike(value): value is ArrayBufferLike;
 ```
 
+Type guard that checks if a value conforms to the ArrayBufferLike interface (has byteLength and slice).
+
 ### Parameters
 
 ### value
@@ -7725,6 +8147,8 @@ function isArrayBufferLike(value): value is ArrayBufferLike;
 ```ts
 function isArrayBufferLike<T>(value): value is Extract<T, ArrayBufferLike>;
 ```
+
+Type guard that checks if a value conforms to the ArrayBufferLike interface (has byteLength and slice).
 
 ### Type Parameters
 
@@ -7754,6 +8178,8 @@ function isArrayBufferLike<T>(value): value is Extract<T, ArrayBufferLike>;
 function isArrayBufferView(value): value is ArrayBufferView<ArrayBufferLike>;
 ```
 
+Type guard that checks whether a value is an ArrayBufferView (e.g., TypedArray or DataView).
+
 ### Parameters
 
 ### value
@@ -7769,6 +8195,8 @@ function isArrayBufferView(value): value is ArrayBufferView<ArrayBufferLike>;
 ```ts
 function isArrayBufferView<T>(value): value is Extract<T, ArrayBufferView<ArrayBufferLike>>;
 ```
+
+Type guard that checks whether a value is an ArrayBufferView (e.g., TypedArray or DataView).
 
 ### Type Parameters
 
@@ -7798,6 +8226,8 @@ function isArrayBufferView<T>(value): value is Extract<T, ArrayBufferView<ArrayB
 function isBigInt(value): value is bigint;
 ```
 
+Type guard that checks whether a value is a bigint.
+
 ### Parameters
 
 ### value
@@ -7813,6 +8243,8 @@ function isBigInt(value): value is bigint;
 ```ts
 function isBigInt<T>(value): value is Extract<T, bigint>;
 ```
+
+Type guard that checks whether a value is a bigint.
 
 ### Type Parameters
 
@@ -7842,6 +8274,8 @@ function isBigInt<T>(value): value is Extract<T, bigint>;
 function isBlob(value): value is Blob;
 ```
 
+Type guard that checks whether a value is a Blob instance.
+
 ### Parameters
 
 ### value
@@ -7857,6 +8291,8 @@ function isBlob(value): value is Blob;
 ```ts
 function isBlob<T>(value): value is Extract<T, Blob>;
 ```
+
+Type guard that checks whether a value is a Blob instance.
 
 ### Type Parameters
 
@@ -7886,6 +8322,8 @@ function isBlob<T>(value): value is Extract<T, Blob>;
 function isBoolean(value): value is boolean;
 ```
 
+Type guard that checks whether a value is a boolean.
+
 ### Parameters
 
 ### value
@@ -7901,6 +8339,8 @@ function isBoolean(value): value is boolean;
 ```ts
 function isBoolean<T>(value): value is Extract<T, boolean>;
 ```
+
+Type guard that checks whether a value is a boolean.
 
 ### Type Parameters
 
@@ -7930,6 +8370,8 @@ function isBoolean<T>(value): value is Extract<T, boolean>;
 function isDataView(value): value is DataView<ArrayBufferLike>;
 ```
 
+Type guard that checks whether a value is a DataView instance.
+
 ### Parameters
 
 ### value
@@ -7945,6 +8387,8 @@ function isDataView(value): value is DataView<ArrayBufferLike>;
 ```ts
 function isDataView<T>(value): value is Extract<T, DataView<ArrayBufferLike>>;
 ```
+
+Type guard that checks whether a value is a DataView instance.
 
 ### Type Parameters
 
@@ -7974,6 +8418,8 @@ function isDataView<T>(value): value is Extract<T, DataView<ArrayBufferLike>>;
 function isDate(value): value is Date;
 ```
 
+Type guard that checks whether a value is a Date instance.
+
 ### Parameters
 
 ### value
@@ -7989,6 +8435,8 @@ function isDate(value): value is Date;
 ```ts
 function isDate<T>(value): value is Extract<T, Date>;
 ```
+
+Type guard that checks whether a value is a Date instance.
 
 ### Type Parameters
 
@@ -8018,6 +8466,8 @@ function isDate<T>(value): value is Extract<T, Date>;
 function isDateString(value): value is string;
 ```
 
+Type guard that checks whether a value is a string that can be parsed as a valid date.
+
 ### Parameters
 
 ### value
@@ -8033,6 +8483,8 @@ function isDateString(value): value is string;
 ```ts
 function isDateString<T>(value): value is Extract<T, string>;
 ```
+
+Type guard that checks whether a value is a string that can be parsed as a valid date.
 
 ### Type Parameters
 
@@ -8060,6 +8512,8 @@ function isDateString<T>(value): value is Extract<T, string>;
 function isDefined<T>(value): value is Exclude<T, undefined>;
 ```
 
+Type guard that checks whether a value is not undefined.
+
 ## Type Parameters
 
 ### T
@@ -8085,6 +8539,8 @@ function isDefined<T>(value): value is Exclude<T, undefined>;
 ```ts
 function isDefinedNotNull<T>(value): value is Exclude<T, null | undefined>;
 ```
+
+Type guard that checks whether a value is neither undefined nor null.
 
 ## Type Parameters
 
@@ -8114,6 +8570,8 @@ value is Exclude\<T, null \| undefined\>
 function isEmpty<T>(value): value is T;
 ```
 
+Type guard that checks whether a value is empty (empty string, empty array, or empty object).
+
 ### Type Parameters
 
 ### T
@@ -8135,6 +8593,8 @@ function isEmpty<T>(value): value is T;
 ```ts
 function isEmpty<K, V, T>(value): value is Extract<T, Record<K, never>>;
 ```
+
+Type guard that checks whether a value is empty (empty string, empty array, or empty object).
 
 ### Type Parameters
 
@@ -8166,6 +8626,8 @@ function isEmpty<K, V, T>(value): value is Extract<T, Record<K, never>>;
 function isEmpty<T>(value): value is Extract<T, never[]>;
 ```
 
+Type guard that checks whether a value is empty (empty string, empty array, or empty object).
+
 ### Type Parameters
 
 ### T
@@ -8194,6 +8656,8 @@ function isEmpty<T>(value): value is Extract<T, never[]>;
 function isEmptyArray(value): value is [];
 ```
 
+Type guard that checks whether a value is an empty array.
+
 ### Parameters
 
 ### value
@@ -8209,6 +8673,8 @@ function isEmptyArray(value): value is [];
 ```ts
 function isEmptyArray<T>(value): value is Extract<T, unknown[]>;
 ```
+
+Type guard that checks whether a value is an empty array.
 
 ### Type Parameters
 
@@ -8238,6 +8704,8 @@ function isEmptyArray<T>(value): value is Extract<T, unknown[]>;
 function isEmptyObject(value): value is {};
 ```
 
+Type guard that checks whether a value is an object with no own keys.
+
 ### Parameters
 
 ### value
@@ -8253,6 +8721,8 @@ function isEmptyObject(value): value is {};
 ```ts
 function isEmptyObject<K, V, T>(value): value is Extract<T, Record<K, never>>;
 ```
+
+Type guard that checks whether a value is an object with no own keys.
 
 ### Type Parameters
 
@@ -8290,6 +8760,8 @@ function isEmptyObject<K, V, T>(value): value is Extract<T, Record<K, never>>;
 function isEmptyString(value): value is "";
 ```
 
+Type guard that checks whether a value is an empty string.
+
 ### Parameters
 
 ### value
@@ -8305,6 +8777,8 @@ function isEmptyString(value): value is "";
 ```ts
 function isEmptyString<T>(value): value is Extract<T, "">;
 ```
+
+Type guard that checks whether a value is an empty string.
 
 ### Type Parameters
 
@@ -8334,6 +8808,8 @@ function isEmptyString<T>(value): value is Extract<T, "">;
 function isError(value): value is Error;
 ```
 
+Type guard that checks whether a value is an Error instance.
+
 ### Parameters
 
 ### value
@@ -8349,6 +8825,8 @@ function isError(value): value is Error;
 ```ts
 function isError<T>(value): value is Extract<T, Error>;
 ```
+
+Type guard that checks whether a value is an Error instance.
 
 ### Type Parameters
 
@@ -8378,6 +8856,8 @@ function isError<T>(value): value is Extract<T, Error>;
 function isFalsy<T>(value): value is Extract<T, false | "" | 0 | 0n | null | undefined>;
 ```
 
+Type guard that checks whether a value is falsy (0, null, undefined, false, '', or 0n).
+
 ### Type Parameters
 
 ### T
@@ -8399,6 +8879,8 @@ value is Extract\<T, false \| "" \| 0 \| 0n \| null \| undefined\>
 ```ts
 function isFalsy<T>(value): value is Extract<T, false>;
 ```
+
+Type guard that checks whether a value is falsy (0, null, undefined, false, '', or 0n).
 
 ### Type Parameters
 
@@ -8422,6 +8904,8 @@ function isFalsy<T>(value): value is Extract<T, false>;
 function isFalsy<T>(value): value is Extract<T, 0>;
 ```
 
+Type guard that checks whether a value is falsy (0, null, undefined, false, '', or 0n).
+
 ### Type Parameters
 
 ### T
@@ -8443,6 +8927,8 @@ function isFalsy<T>(value): value is Extract<T, 0>;
 ```ts
 function isFalsy<T>(value): value is Extract<T, 0n>;
 ```
+
+Type guard that checks whether a value is falsy (0, null, undefined, false, '', or 0n).
 
 ### Type Parameters
 
@@ -8466,6 +8952,8 @@ function isFalsy<T>(value): value is Extract<T, 0n>;
 function isFalsy<T>(value): value is Extract<T, null>;
 ```
 
+Type guard that checks whether a value is falsy (0, null, undefined, false, '', or 0n).
+
 ### Type Parameters
 
 ### T
@@ -8488,6 +8976,8 @@ function isFalsy<T>(value): value is Extract<T, null>;
 function isFalsy<T>(value): value is Extract<T, undefined>;
 ```
 
+Type guard that checks whether a value is falsy (0, null, undefined, false, '', or 0n).
+
 ### Type Parameters
 
 ### T
@@ -8509,6 +8999,8 @@ function isFalsy<T>(value): value is Extract<T, undefined>;
 ```ts
 function isFalsy<T>(value): value is Extract<T, "">;
 ```
+
+Type guard that checks whether a value is falsy (0, null, undefined, false, '', or 0n).
 
 ### Type Parameters
 
@@ -8538,6 +9030,8 @@ function isFalsy<T>(value): value is Extract<T, "">;
 function isFile(value): value is File;
 ```
 
+Type guard that checks whether a value is a File instance.
+
 ### Parameters
 
 ### value
@@ -8553,6 +9047,8 @@ function isFile(value): value is File;
 ```ts
 function isFile<T>(value): value is Extract<T, File>;
 ```
+
+Type guard that checks whether a value is a File instance.
 
 ### Type Parameters
 
@@ -8582,6 +9078,8 @@ function isFile<T>(value): value is Extract<T, File>;
 function isFunction(value): value is AnyFunction;
 ```
 
+Type guard that checks whether a value is a function.
+
 ### Parameters
 
 ### value
@@ -8597,6 +9095,8 @@ function isFunction(value): value is AnyFunction;
 ```ts
 function isFunction<T>(value): value is Extract<T, AnyFunction>;
 ```
+
+Type guard that checks whether a value is a function.
 
 ### Type Parameters
 
@@ -8626,6 +9126,8 @@ function isFunction<T>(value): value is Extract<T, AnyFunction>;
 function isMap(value): value is Map<unknown, unknown>;
 ```
 
+Type guard that checks whether a value is a Map instance.
+
 ### Parameters
 
 ### value
@@ -8641,6 +9143,8 @@ function isMap(value): value is Map<unknown, unknown>;
 ```ts
 function isMap<K, V, T>(value): value is Extract<T, Map<K, V>>;
 ```
+
+Type guard that checks whether a value is a Map instance.
 
 ### Type Parameters
 
@@ -8678,6 +9182,8 @@ function isMap<K, V, T>(value): value is Extract<T, Map<K, V>>;
 function isNull(value): value is null;
 ```
 
+Type guard that checks whether a value is null.
+
 ### Parameters
 
 ### value
@@ -8693,6 +9199,8 @@ function isNull(value): value is null;
 ```ts
 function isNull<T>(value): value is Extract<T, null>;
 ```
+
+Type guard that checks whether a value is null.
 
 ### Type Parameters
 
@@ -8722,6 +9230,8 @@ function isNull<T>(value): value is Extract<T, null>;
 function isNumber(value): value is number;
 ```
 
+Type guard that checks whether a value is a number.
+
 ### Parameters
 
 ### value
@@ -8737,6 +9247,8 @@ function isNumber(value): value is number;
 ```ts
 function isNumber<T>(value): value is Extract<T, number>;
 ```
+
+Type guard that checks whether a value is a number.
 
 ### Type Parameters
 
@@ -8766,6 +9278,8 @@ function isNumber<T>(value): value is Extract<T, number>;
 function isObject(value): value is object;
 ```
 
+Type guard that checks whether a value is a plain object (not null and not an array).
+
 ### Parameters
 
 ### value
@@ -8781,6 +9295,8 @@ function isObject(value): value is object;
 ```ts
 function isObject<T>(value): value is Extract<T, object>;
 ```
+
+Type guard that checks whether a value is a plain object (not null and not an array).
 
 ### Type Parameters
 
@@ -8810,6 +9326,8 @@ function isObject<T>(value): value is Extract<T, object>;
 function isPopulatedArray(value): value is readonly unknown[];
 ```
 
+Type guard that checks whether a value is a non-empty array.
+
 ### Parameters
 
 ### value
@@ -8825,6 +9343,8 @@ function isPopulatedArray(value): value is readonly unknown[];
 ```ts
 function isPopulatedArray<T>(value): value is Extract<T, readonly unknown[]>;
 ```
+
+Type guard that checks whether a value is a non-empty array.
 
 ### Type Parameters
 
@@ -8854,6 +9374,8 @@ function isPopulatedArray<T>(value): value is Extract<T, readonly unknown[]>;
 function isPromise(value): value is Promise<unknown>;
 ```
 
+Type guard that checks whether a value is a Promise instance.
+
 ### Parameters
 
 ### value
@@ -8869,6 +9391,8 @@ function isPromise(value): value is Promise<unknown>;
 ```ts
 function isPromise<T>(value): value is Extract<T, Promise<unknown>>;
 ```
+
+Type guard that checks whether a value is a Promise instance.
 
 ### Type Parameters
 
@@ -8898,6 +9422,8 @@ function isPromise<T>(value): value is Extract<T, Promise<unknown>>;
 function isPromiseLike(value): value is Promise<unknown>;
 ```
 
+Type guard that checks whether a value is promise-like (has a `then` method).
+
 ### Parameters
 
 ### value
@@ -8913,6 +9439,8 @@ function isPromiseLike(value): value is Promise<unknown>;
 ```ts
 function isPromiseLike<T>(value): value is Extract<T, Promise<unknown>>;
 ```
+
+Type guard that checks whether a value is promise-like (has a `then` method).
 
 ### Type Parameters
 
@@ -8942,6 +9470,8 @@ function isPromiseLike<T>(value): value is Extract<T, Promise<unknown>>;
 function isRegExp(value): value is RegExp;
 ```
 
+Type guard that checks whether a value is a RegExp instance.
+
 ### Parameters
 
 ### value
@@ -8957,6 +9487,8 @@ function isRegExp(value): value is RegExp;
 ```ts
 function isRegExp<T>(value): value is Extract<T, RegExp>;
 ```
+
+Type guard that checks whether a value is a RegExp instance.
 
 ### Type Parameters
 
@@ -8986,6 +9518,8 @@ function isRegExp<T>(value): value is Extract<T, RegExp>;
 function isSet(value): value is Set<unknown>;
 ```
 
+Type guard that checks whether a value is a Set instance.
+
 ### Parameters
 
 ### value
@@ -9001,6 +9535,8 @@ function isSet(value): value is Set<unknown>;
 ```ts
 function isSet<T>(value): value is Extract<T, Set<unknown>>;
 ```
+
+Type guard that checks whether a value is a Set instance.
 
 ### Type Parameters
 
@@ -9030,6 +9566,8 @@ function isSet<T>(value): value is Extract<T, Set<unknown>>;
 function isString(value): value is string;
 ```
 
+Type guard that checks whether a value is a string.
+
 ### Parameters
 
 ### value
@@ -9045,6 +9583,8 @@ function isString(value): value is string;
 ```ts
 function isString<T>(value): value is Extract<T, string>;
 ```
+
+Type guard that checks whether a value is a string.
 
 ### Type Parameters
 
@@ -9074,6 +9614,8 @@ function isString<T>(value): value is Extract<T, string>;
 function isSymbol(value): value is symbol;
 ```
 
+Type guard that checks whether a value is a symbol.
+
 ### Parameters
 
 ### value
@@ -9089,6 +9631,8 @@ function isSymbol(value): value is symbol;
 ```ts
 function isSymbol<T>(value): value is Extract<T, symbol>;
 ```
+
+Type guard that checks whether a value is a symbol.
 
 ### Type Parameters
 
@@ -9118,6 +9662,8 @@ function isSymbol<T>(value): value is Extract<T, symbol>;
 function isTruthy<T>(value): value is Exclude<T, false | "" | 0 | 0n | null | undefined>;
 ```
 
+Type guard that checks whether a value is truthy (not 0, null, undefined, false, '', or 0n).
+
 ### Type Parameters
 
 ### T
@@ -9139,6 +9685,8 @@ value is Exclude\<T, false \| "" \| 0 \| 0n \| null \| undefined\>
 ```ts
 function isTruthy<T>(value): value is Extract<T, true>;
 ```
+
+Type guard that checks whether a value is truthy (not 0, null, undefined, false, '', or 0n).
 
 ### Type Parameters
 
@@ -9162,6 +9710,8 @@ function isTruthy<T>(value): value is Extract<T, true>;
 function isTruthy<T>(value): value is Extract<T, number>;
 ```
 
+Type guard that checks whether a value is truthy (not 0, null, undefined, false, '', or 0n).
+
 ### Type Parameters
 
 ### T
@@ -9183,6 +9733,8 @@ function isTruthy<T>(value): value is Extract<T, number>;
 ```ts
 function isTruthy<T>(value): value is Extract<T, bigint>;
 ```
+
+Type guard that checks whether a value is truthy (not 0, null, undefined, false, '', or 0n).
 
 ### Type Parameters
 
@@ -9206,6 +9758,8 @@ function isTruthy<T>(value): value is Extract<T, bigint>;
 function isTruthy<T>(value): value is Extract<T, null>;
 ```
 
+Type guard that checks whether a value is truthy (not 0, null, undefined, false, '', or 0n).
+
 ### Type Parameters
 
 ### T
@@ -9228,6 +9782,8 @@ function isTruthy<T>(value): value is Extract<T, null>;
 function isTruthy<T>(value): value is Extract<T, undefined>;
 ```
 
+Type guard that checks whether a value is truthy (not 0, null, undefined, false, '', or 0n).
+
 ### Type Parameters
 
 ### T
@@ -9249,6 +9805,8 @@ function isTruthy<T>(value): value is Extract<T, undefined>;
 ```ts
 function isTruthy<T>(value): value is Extract<T, string>;
 ```
+
+Type guard that checks whether a value is truthy (not 0, null, undefined, false, '', or 0n).
 
 ### Type Parameters
 
@@ -9278,6 +9836,8 @@ function isTruthy<T>(value): value is Extract<T, string>;
 function isUndefined(value): value is undefined;
 ```
 
+Type guard that checks whether a value is undefined.
+
 ### Parameters
 
 ### value
@@ -9293,6 +9853,8 @@ function isUndefined(value): value is undefined;
 ```ts
 function isUndefined<T>(value): value is Extract<T, undefined>;
 ```
+
+Type guard that checks whether a value is undefined.
 
 ### Type Parameters
 
@@ -9322,6 +9884,8 @@ function isUndefined<T>(value): value is Extract<T, undefined>;
 function isUndefinedOrNull(value): value is null | undefined;
 ```
 
+Type guard that checks whether a value is undefined or null.
+
 ### Parameters
 
 ### value
@@ -9337,6 +9901,8 @@ value is null \| undefined
 ```ts
 function isUndefinedOrNull<T>(value): value is Extract<T, null | undefined>;
 ```
+
+Type guard that checks whether a value is undefined or null.
 
 ### Type Parameters
 
@@ -9366,6 +9932,8 @@ value is Extract\<T, null \| undefined\>
 function isWeakMap(value): value is WeakMap<WeakKey, unknown>;
 ```
 
+Type guard that checks whether a value is a WeakMap instance.
+
 ### Parameters
 
 ### value
@@ -9381,6 +9949,8 @@ function isWeakMap(value): value is WeakMap<WeakKey, unknown>;
 ```ts
 function isWeakMap<K, V, T>(value): value is Extract<T, WeakMap<K, V>>;
 ```
+
+Type guard that checks whether a value is a WeakMap instance.
 
 ### Type Parameters
 
@@ -9418,6 +9988,8 @@ function isWeakMap<K, V, T>(value): value is Extract<T, WeakMap<K, V>>;
 function isWeakSet(value): value is WeakSet<WeakKey>;
 ```
 
+Type guard that checks whether a value is a WeakSet instance.
+
 ### Parameters
 
 ### value
@@ -9433,6 +10005,8 @@ function isWeakSet(value): value is WeakSet<WeakKey>;
 ```ts
 function isWeakSet<K, T>(value): value is Extract<T, WeakSet<K>>;
 ```
+
+Type guard that checks whether a value is a WeakSet instance.
 
 ### Type Parameters
 
@@ -9467,6 +10041,8 @@ function span<T>(
    tracer?): T;
 ```
 
+Executes a synchronous function within an OpenTelemetry span, recording status and exceptions.
+
 ## Type Parameters
 
 ### T
@@ -9479,17 +10055,25 @@ function span<T>(
 
 `string`
 
+The span name.
+
 ### fn
 
 () => `T`
+
+The function to execute.
 
 ### tracer?
 
 `Tracer`
 
+Optional tracer to use.
+
 ## Returns
 
 `T`
+
+The return value of `fn`.
 
   ### <a id="spanAsync"></a>spanAsync
 
@@ -9501,8 +10085,10 @@ function span<T>(
 function spanAsync<T>(
    name, 
    fn, 
-__namedParameters?): Promise<T>;
+config?): Promise<T>;
 ```
+
+Executes an async function within an OpenTelemetry span, with optional time budget monitoring.
 
 ## Type Parameters
 
@@ -9516,17 +10102,25 @@ __namedParameters?): Promise<T>;
 
 `string`
 
+The span name.
+
 ### fn
 
 () => `Promise`\<`T`\>
 
-### \_\_namedParameters?
+The async function to execute.
+
+### config?
 
 [`SpanConfig`](#../interfaces/SpanConfig)
+
+Optional span configuration (tracer, logger, time budget).
 
 ## Returns
 
 `Promise`\<`T`\>
+
+The resolved value of `fn`.
 
   ### <a id="spanDurationInMillis"></a>spanDurationInMillis
 
@@ -9538,15 +10132,21 @@ __namedParameters?): Promise<T>;
 function spanDurationInMillis(span): number;
 ```
 
+Calculates the duration of a span in milliseconds from its high-resolution time tuple.
+
 ## Parameters
 
 ### span
 
 `ReadableSpan`
 
+The span to measure.
+
 ## Returns
 
 `number`
+
+The span duration in milliseconds.
 
   ### <a id="spanRoot"></a>spanRoot
 
@@ -9561,6 +10161,8 @@ function spanRoot<T>(
    tracer?): T;
 ```
 
+Executes a synchronous function within a new root span that has no parent, even if a span is already active.
+
 ## Type Parameters
 
 ### T
@@ -9573,17 +10175,25 @@ function spanRoot<T>(
 
 `string`
 
+The span name.
+
 ### fn
 
 () => `T`
+
+The function to execute.
 
 ### tracer?
 
 `Tracer`
 
+Optional tracer to use.
+
 ## Returns
 
 `T`
+
+The return value of `fn`.
 
   ### <a id="spanRootAsync"></a>spanRootAsync
 
@@ -9595,8 +10205,10 @@ function spanRoot<T>(
 function spanRootAsync<T>(
    name, 
    fn, 
-__namedParameters?): Promise<T>;
+config?): Promise<T>;
 ```
+
+Executes an async function within a new root span (no parent), with optional time budget monitoring.
 
 ## Type Parameters
 
@@ -9610,17 +10222,25 @@ __namedParameters?): Promise<T>;
 
 `string`
 
+The span name.
+
 ### fn
 
 () => `Promise`\<`T`\>
 
-### \_\_namedParameters?
+The async function to execute.
+
+### config?
 
 [`SpanConfig`](#../interfaces/SpanConfig)
+
+Optional span configuration (tracer, logger, time budget).
 
 ## Returns
 
 `Promise`\<`T`\>
+
+The resolved value of `fn`.
 
   ### <a id="staticImplements"></a>staticImplements
 
@@ -9680,6 +10300,8 @@ function timeBudget<TResult>(
 status?): Promise<TResult>;
 ```
 
+Executes an async function and logs a warning if it exceeds the given time budget.
+
 ## Type Parameters
 
 ### TResult
@@ -9692,7 +10314,11 @@ status?): Promise<TResult>;
 
 `string`
 
+A label for the function, used in warning messages.
+
 ### logger
+
+The logger to use for budget-exceeded warnings.
 
 [`Logger`](#../interfaces/Logger) | `undefined`
 
@@ -9700,17 +10326,25 @@ status?): Promise<TResult>;
 
 () => `Promise`\<`TResult`\>
 
+The async function to execute.
+
 ### budget
 
 `number`
+
+The time budget in milliseconds.
 
 ### status?
 
 `boolean`
 
+If true, logs periodic warnings while the function is still running.
+
 ## Returns
 
 `Promise`\<`TResult`\>
+
+The result of the executed function.
 
   ### <a id="toAddressV2"></a>toAddressV2
 
@@ -9753,23 +10387,33 @@ function toArrayBuffer(
    base?): undefined;
 ```
 
+Converts a string, bigint, or ArrayBufferLike to an ArrayBufferLike, with optional zero-padding.
+
 ### Parameters
 
 ### value
 
 `undefined`
 
+The value to convert (hex string, bigint, or existing buffer)
+
 ### padLength?
 
 `number`
+
+Minimum byte length, left-padded with zeros if needed
 
 ### base?
 
 `number`
 
+Numeric base for string parsing (default 16)
+
 ### Returns
 
 `undefined`
+
+The resulting ArrayBufferLike, or undefined if value is undefined
 
 ## Call Signature
 
@@ -9780,9 +10424,13 @@ function toArrayBuffer(
    base?): ArrayBufferLike;
 ```
 
+Converts a string, bigint, or ArrayBufferLike to an ArrayBufferLike, with optional zero-padding.
+
 ### Parameters
 
 ### value
+
+The value to convert (hex string, bigint, or existing buffer)
 
 `string` | `bigint` | `ArrayBufferLike`
 
@@ -9790,13 +10438,19 @@ function toArrayBuffer(
 
 `number`
 
+Minimum byte length, left-padded with zeros if needed
+
 ### base?
 
 `number`
 
+Numeric base for string parsing (default 16)
+
 ### Returns
 
 `ArrayBufferLike`
+
+The resulting ArrayBufferLike, or undefined if value is undefined
 
 ## Call Signature
 
@@ -9807,9 +10461,13 @@ function toArrayBuffer(
    base?): ArrayBufferLike | undefined;
 ```
 
+Converts a string, bigint, or ArrayBufferLike to an ArrayBufferLike, with optional zero-padding.
+
 ### Parameters
 
 ### value
+
+The value to convert (hex string, bigint, or existing buffer)
 
 `string` | `bigint` | `ArrayBufferLike` | `undefined`
 
@@ -9817,13 +10475,19 @@ function toArrayBuffer(
 
 `number`
 
+Minimum byte length, left-padded with zeros if needed
+
 ### base?
 
 `number`
 
+Numeric base for string parsing (default 16)
+
 ### Returns
 
 `ArrayBufferLike` \| `undefined`
+
+The resulting ArrayBufferLike, or undefined if value is undefined
 
   ### <a id="toPromise"></a>toPromise
 
@@ -9834,6 +10498,8 @@ function toArrayBuffer(
 ```ts
 function toPromise<T>(value): Promise<T>;
 ```
+
+Wraps a value in a Promise if it is not already one.
 
 ## Type Parameters
 
@@ -9847,9 +10513,13 @@ function toPromise<T>(value): Promise<T>;
 
 [`Promisable`](#../type-aliases/Promisable)\<`T`\>
 
+A value that may or may not be a Promise.
+
 ## Returns
 
 `Promise`\<`T`\>
+
+A Promise resolving to the value.
 
   ### <a id="toUint8Array"></a>toUint8Array
 
@@ -9866,23 +10536,33 @@ function toUint8Array(
    base?): undefined;
 ```
 
+Converts a string, bigint, or ArrayBufferLike to a Uint8Array, with optional zero-padding.
+
 ### Parameters
 
 ### value
 
 `undefined`
 
+The value to convert
+
 ### padLength?
 
 `number`
+
+Minimum byte length, left-padded with zeros if needed
 
 ### base?
 
 `number`
 
+Numeric base for string parsing (default 16)
+
 ### Returns
 
 `undefined`
+
+The resulting Uint8Array, or undefined if value is undefined
 
 ## Call Signature
 
@@ -9893,9 +10573,13 @@ function toUint8Array(
    base?): Uint8Array;
 ```
 
+Converts a string, bigint, or ArrayBufferLike to a Uint8Array, with optional zero-padding.
+
 ### Parameters
 
 ### value
+
+The value to convert
 
 `string` | `bigint` | `ArrayBufferLike`
 
@@ -9903,13 +10587,19 @@ function toUint8Array(
 
 `number`
 
+Minimum byte length, left-padded with zeros if needed
+
 ### base?
 
 `number`
 
+Numeric base for string parsing (default 16)
+
 ### Returns
 
 `Uint8Array`
+
+The resulting Uint8Array, or undefined if value is undefined
 
 ## Call Signature
 
@@ -9920,9 +10610,13 @@ function toUint8Array(
    base?): Uint8Array<ArrayBufferLike> | undefined;
 ```
 
+Converts a string, bigint, or ArrayBufferLike to a Uint8Array, with optional zero-padding.
+
 ### Parameters
 
 ### value
+
+The value to convert
 
 `string` | `bigint` | `ArrayBufferLike` | `undefined`
 
@@ -9930,13 +10624,19 @@ function toUint8Array(
 
 `number`
 
+Minimum byte length, left-padded with zeros if needed
+
 ### base?
 
 `number`
 
+Numeric base for string parsing (default 16)
+
 ### Returns
 
 `Uint8Array`\<`ArrayBufferLike`\> \| `undefined`
+
+The resulting Uint8Array, or undefined if value is undefined
 
   ### <a id="zodAllFactory"></a>zodAllFactory
 
@@ -9949,6 +10649,8 @@ function zodAllFactory<T, TName>(zod, name): object;
 ```
 
 **`Alpha`**
+
+Creates a bundle of `is`, `as`, and `to` factory functions for a given zod schema.
 
 ## Type Parameters
 
@@ -9966,13 +10668,19 @@ function zodAllFactory<T, TName>(zod, name): object;
 
 `ZodType`\<`T`\>
 
+The zod schema to validate against
+
 ### name
 
 `TName`
 
+The name used to suffix the generated function names (e.g. 'Address' produces `isAddress`, `asAddress`, `toAddress`)
+
 ## Returns
 
 `object`
+
+An object containing `is<Name>`, `as<Name>`, and `to<Name>` functions
 
   ### <a id="zodAsAsyncFactory"></a>zodAsAsyncFactory
 
@@ -9987,6 +10695,9 @@ function zodAsAsyncFactory<TZod>(zod, name): {
 };
 ```
 
+Creates an async function that validates a value against a zod schema and returns it with a narrowed type.
+Uses `safeParseAsync` for schemas with async refinements. When called without an assert config, returns undefined on failure.
+
 ## Type Parameters
 
 ### TZod
@@ -9999,11 +10710,17 @@ function zodAsAsyncFactory<TZod>(zod, name): {
 
 `ZodType`\<`TZod`\>
 
+The zod schema to validate against
+
 ### name
 
 `string`
 
+A name used in error messages for identification
+
 ## Returns
+
+An async function that validates and narrows the type of a value
 
 ```ts
 <T>(value): Promise<T & TZod | undefined>;
@@ -10062,6 +10779,9 @@ function zodAsFactory<TZod>(zod, name): {
 };
 ```
 
+Creates a function that validates a value against a zod schema and returns it with a narrowed type.
+When called without an assert config, returns undefined on failure. When called with an assert config, throws on failure.
+
 ## Type Parameters
 
 ### TZod
@@ -10074,11 +10794,17 @@ function zodAsFactory<TZod>(zod, name): {
 
 `ZodType`\<`TZod`\>
 
+The zod schema to validate against
+
 ### name
 
 `string`
 
+A name used in error messages for identification
+
 ## Returns
+
+A function that validates and narrows the type of a value
 
 ```ts
 <T>(value): T & TZod | undefined;
@@ -10134,6 +10860,8 @@ function zodAsFactory<TZod>(zod, name): {
 function zodIsFactory<TZod>(zod): <T>(value) => value is T & TZod;
 ```
 
+Creates a type guard function that checks if a value matches a zod schema.
+
 ## Type Parameters
 
 ### TZod
@@ -10146,7 +10874,11 @@ function zodIsFactory<TZod>(zod): <T>(value) => value is T & TZod;
 
 `ZodType`\<`TZod`\>
 
+The zod schema to validate against
+
 ## Returns
+
+A type guard function that returns true if the value passes validation
 
 ```ts
 <T>(value): value is T & TZod;
@@ -10181,6 +10913,9 @@ function zodToAsyncFactory<TZod>(zod, name): {
 };
 ```
 
+Creates an async function that converts a value to the zod schema type, delegating to `zodAsAsyncFactory` internally.
+Provides overloads for optional assertion: without assert config resolves to undefined on failure, with assert config throws on failure.
+
 ## Type Parameters
 
 ### TZod
@@ -10193,11 +10928,17 @@ function zodToAsyncFactory<TZod>(zod, name): {
 
 `ZodType`\<`TZod`\>
 
+The zod schema to validate against
+
 ### name
 
 `string`
 
+A name used in error messages for identification
+
 ## Returns
+
+An async function that validates and converts a value to the schema type
 
 ```ts
 <T>(value): Promise<T & TZod | undefined>;
@@ -10256,6 +10997,9 @@ function zodToFactory<TZod>(zod, name): {
 };
 ```
 
+Creates a function that converts a value to the zod schema type, delegating to `zodAsFactory` internally.
+Provides overloads for optional assertion: without assert config returns undefined on failure, with assert config throws on failure.
+
 ## Type Parameters
 
 ### TZod
@@ -10268,11 +11012,17 @@ function zodToFactory<TZod>(zod, name): {
 
 `ZodType`\<`TZod`\>
 
+The zod schema to validate against
+
 ### name
 
 `string`
 
+A name used in error messages for identification
+
 ## Returns
+
+A function that validates and converts a value to the schema type
 
 ```ts
 <T>(value): T & TZod | undefined;
@@ -10326,6 +11076,8 @@ function zodToFactory<TZod>(zod, name): {
 
 ***
 
+Configuration for connecting to an API, including domain, authentication, and user identification.
+
 ## Properties
 
 ### apiDomain
@@ -10363,6 +11115,8 @@ optional userid: string;
 [**@xylabs/sdk-js**](#../README)
 
 ***
+
+Fields specific to BaseEmitter configuration parameters.
 
   ### <a id="Creatable"></a>Creatable
 
@@ -10648,6 +11402,8 @@ Stops the instance. Resolves to true if stopped successfully.
 clearListeners(eventNames): void;
 ```
 
+Removes all listeners for the specified event name(s).
+
 ### Parameters
 
 #### eventNames
@@ -10669,6 +11425,8 @@ keyof `TEventData` | keyof `TEventData`[]
 ```ts
 emit<TEventName>(eventName, eventArgs): Promise<void>;
 ```
+
+Emits an event, invoking all registered listeners concurrently.
 
 ### Type Parameters
 
@@ -10702,6 +11460,8 @@ emit<TEventName>(eventName, eventArgs): Promise<void>;
 emitSerial<TEventName>(eventName, eventArgs): Promise<void>;
 ```
 
+Emits an event, invoking all registered listeners sequentially in order.
+
 ### Type Parameters
 
 #### TEventName
@@ -10734,6 +11494,8 @@ emitSerial<TEventName>(eventName, eventArgs): Promise<void>;
 listenerCount(eventNames): number;
 ```
 
+Returns the total number of listeners registered for the specified event name(s).
+
 ### Parameters
 
 #### eventNames
@@ -10755,6 +11517,8 @@ keyof `TEventData` | keyof `TEventData`[]
 ```ts
 off<TEventName>(eventNames, listener): void;
 ```
+
+Removes a specific listener from the specified event name(s).
 
 ### Type Parameters
 
@@ -10788,6 +11552,8 @@ off<TEventName>(eventNames, listener): void;
 offAny(listener): void;
 ```
 
+Removes a wildcard listener that was receiving all events.
+
 ### Parameters
 
 #### listener
@@ -10809,6 +11575,8 @@ offAny(listener): void;
 ```ts
 on<TEventName>(eventNames, listener): EventUnsubscribeFunction;
 ```
+
+Subscribes a listener to the specified event name(s) and returns an unsubscribe function.
 
 ### Type Parameters
 
@@ -10842,6 +11610,8 @@ on<TEventName>(eventNames, listener): EventUnsubscribeFunction;
 onAny(listener): EventUnsubscribeFunction;
 ```
 
+Subscribes a wildcard listener that receives all events and returns an unsubscribe function.
+
 ### Parameters
 
 #### listener
@@ -10863,6 +11633,8 @@ onAny(listener): EventUnsubscribeFunction;
 ```ts
 once<TEventName>(eventName, listener): EventUnsubscribeFunction;
 ```
+
+Subscribes a listener that will be invoked only once for the specified event, then automatically removed.
 
 ### Type Parameters
 
@@ -11267,6 +12039,8 @@ Creates a factory with the given default params and labels.
 
 ***
 
+Interface for a typed event emitter that supports subscribing, unsubscribing, and emitting events.
+
 ## Extended by
 
 - [`CreatableInstance`](#CreatableInstance)
@@ -11285,6 +12059,8 @@ Creates a factory with the given default params and labels.
 eventData: T;
 ```
 
+Type-level reference to the event data shape for external type queries.
+
 ## Methods
 
 ### clearListeners()
@@ -11292,6 +12068,8 @@ eventData: T;
 ```ts
 clearListeners(eventNames): void;
 ```
+
+Removes all listeners for the specified event name(s).
 
 ### Parameters
 
@@ -11310,6 +12088,8 @@ keyof `T` | keyof `T`[]
 ```ts
 emit<TEventName>(eventName, eventArgs): Promise<void>;
 ```
+
+Emits an event, invoking all registered listeners concurrently.
 
 ### Type Parameters
 
@@ -11339,6 +12119,8 @@ emit<TEventName>(eventName, eventArgs): Promise<void>;
 emitSerial<TEventName>(eventName, eventArgs): Promise<void>;
 ```
 
+Emits an event, invoking all registered listeners sequentially in order.
+
 ### Type Parameters
 
 #### TEventName
@@ -11367,6 +12149,8 @@ emitSerial<TEventName>(eventName, eventArgs): Promise<void>;
 listenerCount(eventNames): number;
 ```
 
+Returns the total number of listeners registered for the specified event name(s).
+
 ### Parameters
 
 #### eventNames
@@ -11384,6 +12168,8 @@ keyof `T` | keyof `T`[]
 ```ts
 off<TEventName>(eventNames, listener): void;
 ```
+
+Removes a specific listener from the specified event name(s).
 
 ### Type Parameters
 
@@ -11413,6 +12199,8 @@ off<TEventName>(eventNames, listener): void;
 offAny(listener): void;
 ```
 
+Removes a wildcard listener that was receiving all events.
+
 ### Parameters
 
 #### listener
@@ -11430,6 +12218,8 @@ offAny(listener): void;
 ```ts
 on<TEventName>(eventNames, listener): EventUnsubscribeFunction;
 ```
+
+Subscribes a listener to the specified event name(s) and returns an unsubscribe function.
 
 ### Type Parameters
 
@@ -11459,6 +12249,8 @@ on<TEventName>(eventNames, listener): EventUnsubscribeFunction;
 onAny(listener): EventUnsubscribeFunction;
 ```
 
+Subscribes a wildcard listener that receives all events and returns an unsubscribe function.
+
 ### Parameters
 
 #### listener
@@ -11476,6 +12268,8 @@ onAny(listener): EventUnsubscribeFunction;
 ```ts
 once<TEventName>(eventName, listener): EventUnsubscribeFunction;
 ```
+
+Subscribes a listener that will be invoked only once for the specified event, then automatically removed.
 
 ### Type Parameters
 
@@ -11503,6 +12297,8 @@ once<TEventName>(eventName, listener): EventUnsubscribeFunction;
 
 ***
 
+Node.js-specific forget configuration that extends ForgetConfig with process termination options.
+
 ## Extends
 
 - `ForgetConfig`\<`T`\>
@@ -11521,6 +12317,8 @@ once<TEventName>(eventName, listener): EventUnsubscribeFunction;
 optional name: string;
 ```
 
+Optional name for identifying the forgotten promise in logs.
+
 ### Inherited from
 
 ```ts
@@ -11534,6 +12332,8 @@ ForgetConfig.name
 ```ts
 optional onCancel: () => void;
 ```
+
+Called when the promise is cancelled due to timeout.
 
 ### Returns
 
@@ -11552,6 +12352,8 @@ ForgetConfig.onCancel
 ```ts
 optional onComplete: (result) => void;
 ```
+
+Called when the promise completes, with a tuple of [result, error].
 
 ### Parameters
 
@@ -11577,6 +12379,8 @@ ForgetConfig.onComplete
 optional onException: (error) => void;
 ```
 
+Called when an exception occurs outside the promise itself.
+
 ### Parameters
 
 #### error
@@ -11601,6 +12405,8 @@ ForgetConfig.onException
 optional timeout: number;
 ```
 
+Timeout in milliseconds after which the promise is considered timed out.
+
 ### Inherited from
 
 ```ts
@@ -11615,6 +12421,8 @@ ForgetConfig.timeout
 optional terminateOnException: boolean;
 ```
 
+Terminate the process on an exception that happens outside of the promise being forgotten.
+
 ***
 
 ### terminateOnTimeout?
@@ -11622,6 +12430,8 @@ optional terminateOnException: boolean;
 ```ts
 optional terminateOnTimeout: boolean;
 ```
+
+Terminate the process if the promise times out.
 
   ### <a id="HexConfig"></a>HexConfig
 
@@ -11729,6 +12539,8 @@ The keys an array of keys.
 optional clear(): Promisable<void>;
 ```
 
+Removes all entries from the store.
+
 ### Returns
 
 [`Promisable`](#../type-aliases/Promisable)\<`void`\>
@@ -11741,11 +12553,15 @@ optional clear(): Promisable<void>;
 delete(key): Promisable<void>;
 ```
 
+Deletes the entry with the given key.
+
 ### Parameters
 
 #### key
 
 `TKey`
+
+The key of the entry to delete
 
 ### Returns
 
@@ -11759,15 +12575,21 @@ delete(key): Promisable<void>;
 set(key, value): Promisable<void>;
 ```
 
+Sets a value for the given key, creating or updating the entry.
+
 ### Parameters
 
 #### key
 
 `TKey`
 
+The key to set
+
 #### value
 
 `TValue`
+
+The value to store
 
 ### Returns
 
@@ -11850,6 +12672,8 @@ warn: LogFunction;
 
 ***
 
+Configuration options for object type checking.
+
 ## Extends
 
 - [`TypeCheckConfig`](#TypeCheckConfig)
@@ -11871,6 +12695,8 @@ optional log: boolean | Logger;
 [**@xylabs/sdk-js**](#../README)
 
 ***
+
+An interface representing any thenable (promise-like) object.
 
 ## Properties
 
@@ -12032,6 +12858,8 @@ Optional reporter for broadcasting status changes.
 
 ***
 
+Configuration for retry behavior.
+
 ## Extended by
 
 - [`RetryConfigWithComplete`](#RetryConfigWithComplete)
@@ -12044,6 +12872,8 @@ Optional reporter for broadcasting status changes.
 optional backoff: number;
 ```
 
+Multiplier applied to the interval after each retry. Defaults to 2.
+
 ***
 
 ### interval?
@@ -12051,6 +12881,8 @@ optional backoff: number;
 ```ts
 optional interval: number;
 ```
+
+Initial delay in milliseconds between retries. Defaults to 100.
 
 ***
 
@@ -12060,11 +12892,15 @@ optional interval: number;
 optional retries: number;
 ```
 
+Maximum number of retry attempts. Defaults to 0 (no retries).
+
   ### <a id="RetryConfigWithComplete"></a>RetryConfigWithComplete
 
 [**@xylabs/sdk-js**](#../README)
 
 ***
+
+Retry configuration extended with a custom completion check.
 
 ## Extends
 
@@ -12084,6 +12920,8 @@ optional retries: number;
 optional backoff: number;
 ```
 
+Multiplier applied to the interval after each retry. Defaults to 2.
+
 ### Inherited from
 
 [`RetryConfig`](#RetryConfig).[`backoff`](RetryConfig.md#backoff)
@@ -12095,6 +12933,8 @@ optional backoff: number;
 ```ts
 optional interval: number;
 ```
+
+Initial delay in milliseconds between retries. Defaults to 100.
 
 ### Inherited from
 
@@ -12108,6 +12948,8 @@ optional interval: number;
 optional retries: number;
 ```
 
+Maximum number of retry attempts. Defaults to 0 (no retries).
+
 ### Inherited from
 
 [`RetryConfig`](#RetryConfig).[`retries`](RetryConfig.md#retries)
@@ -12119,6 +12961,8 @@ optional retries: number;
 ```ts
 optional complete: (result?) => boolean;
 ```
+
+Determines whether the result is considered complete. Defaults to checking for a defined value.
 
 ### Parameters
 
@@ -12136,6 +12980,8 @@ optional complete: (result?) => boolean;
 
 ***
 
+Configuration options for span creation and execution.
+
 ## Properties
 
 ### logger?
@@ -12143,6 +12989,8 @@ optional complete: (result?) => boolean;
 ```ts
 optional logger: Logger | null;
 ```
+
+Optional logger for time budget warnings. Falls back to console if not provided.
 
 ***
 
@@ -12152,6 +13000,8 @@ optional logger: Logger | null;
 optional timeBudgetLimit: number;
 ```
 
+Maximum allowed execution time in milliseconds before logging a warning.
+
 ***
 
 ### tracer?
@@ -12160,11 +13010,15 @@ optional timeBudgetLimit: number;
 optional tracer: Tracer;
 ```
 
+OpenTelemetry tracer to use. Defaults to a tracer named after the span.
+
   ### <a id="TypeCheckConfig"></a>TypeCheckConfig
 
 [**@xylabs/sdk-js**](#../README)
 
 ***
+
+Configuration options for type check functions, with optional logging.
 
 ## Extended by
 
@@ -12185,6 +13039,8 @@ optional log: boolean | Logger;
 [**@xylabs/sdk-js**](#../README)
 
 ***
+
+Type check configuration that marks the value as optional, returning undefined on failure.
 
 ## Extends
 
@@ -12216,6 +13072,8 @@ required: false;
 
 ***
 
+Type check configuration that marks the value as required, causing assertions on failure.
+
 ## Extends
 
 - [`TypeCheckConfig`](#TypeCheckConfig)
@@ -12245,6 +13103,8 @@ required: true;
 [**@xylabs/sdk-js**](#../README)
 
 ***
+
+Interface for validating objects and returning any errors found.
 
 ## Type Parameters
 
@@ -12320,6 +13180,8 @@ optional labels: T;
 
 ***
 
+Configuration object for zod factory functions, providing a name for error messages.
+
 ## Properties
 
 ### name
@@ -12340,6 +13202,8 @@ name: string;
 type Address = z.infer<typeof AddressZod>;
 ```
 
+A validated 20-byte address string type, inferred from the AddressZod schema.
+
   ### <a id="AddressTransformZodType"></a>AddressTransformZodType
 
 [**@xylabs/sdk-js**](#../README)
@@ -12350,6 +13214,8 @@ type Address = z.infer<typeof AddressZod>;
 type AddressTransformZodType = z.infer<typeof AddressTransformZod>;
 ```
 
+The output type of AddressTransformZod after parsing and transformation.
+
   ### <a id="AddressValidationZodType"></a>AddressValidationZodType
 
 [**@xylabs/sdk-js**](#../README)
@@ -12359,6 +13225,8 @@ type AddressTransformZodType = z.infer<typeof AddressTransformZod>;
 ```ts
 type AddressValidationZodType = z.infer<typeof AddressValidationZod>;
 ```
+
+The output type of AddressValidationZod after parsing.
 
   ### <a id="AllZodFactories"></a>AllZodFactories
 
@@ -12392,6 +13260,8 @@ type AllZodFactories<TType, TName> = { [K in `is${TName}`]: ReturnType<typeof zo
 type AnyFunction = (...args) => unknown;
 ```
 
+A function type that accepts any arguments and returns unknown.
+
 ## Parameters
 
 ### args
@@ -12411,6 +13281,8 @@ type AnyFunction = (...args) => unknown;
 ```ts
 type AnyNonPromise = Exclude<TypedValue, PromiseType>;
 ```
+
+Any non-promise typed value, excluding thenables.
 
   ### <a id="AnyObject"></a>AnyObject
 
@@ -12435,6 +13307,8 @@ will result in a type that includes the universal set of field names
 type ApiStage = EnumValue<typeof ApiStage>;
 ```
 
+A valid API stage value ('prod', 'beta', or 'local').
+
   ### <a id="AsOptionalTypeFunction"></a>AsOptionalTypeFunction
 
 [**@xylabs/sdk-js**](#../README)
@@ -12444,6 +13318,8 @@ type ApiStage = EnumValue<typeof ApiStage>;
 ```ts
 type AsOptionalTypeFunction<T> = <TType>(value) => TType | undefined;
 ```
+
+A simplified type-narrowing function that returns T or undefined, without assertion support.
 
 ## Type Parameters
 
@@ -12483,6 +13359,8 @@ type AsTypeFunction<T> = {
 <TType>  (value, assert, config): TType | undefined;
 };
 ```
+
+A type-narrowing function that attempts to cast a value to T, with optional assertion and configuration overloads.
 
 ## Type Parameters
 
@@ -12666,6 +13544,8 @@ type AsTypeFunction<T> = {
 type AssertConfig = string | AssertCallback | boolean;
 ```
 
+Configuration for assertion behavior: a static message string, a boolean toggle, or a callback.
+
   ### <a id="AsyncMutex"></a>AsyncMutex
 
 [**@xylabs/sdk-js**](#../README)
@@ -12696,6 +13576,8 @@ Used to document promises that are being used as Mutexes
 type BaseClassName = string & object;
 ```
 
+Branded string type representing a class name used for global instance tracking.
+
 ## Type Declaration
 
 ### \_\_baseClassName
@@ -12714,6 +13596,8 @@ __baseClassName: true;
 type BaseEmitterParams<T> = BaseParams<T & BaseEmitterParamsFields & T>;
 ```
 
+Parameters type for configuring a BaseEmitter instance.
+
 ## Type Parameters
 
 ### T
@@ -12730,6 +13614,8 @@ type BaseEmitterParams<T> = BaseParams<T & BaseEmitterParamsFields & T>;
 type BaseParams<TAdditionalParams> = TAdditionalParams & BaseParamsFields;
 ```
 
+Parameters for constructing a Base instance, combining BaseParamsFields with optional additional params.
+
 ## Type Parameters
 
 ### TAdditionalParams
@@ -12745,6 +13631,8 @@ type BaseParams<TAdditionalParams> = TAdditionalParams & BaseParamsFields;
 ```ts
 type BaseParamsFields = object;
 ```
+
+Common parameter fields available to all Base instances (logger, meter, tracer).
 
 ## Properties
 
@@ -12780,6 +13668,8 @@ optional traceProvider: TracerProvider;
 type Brand<T, B> = T & { [K in keyof B]: B[K] };
 ```
 
+Creates a branded type by intersecting base type T with brand type B, enabling nominal typing in TypeScript.
+
 ## Type Parameters
 
 ### T
@@ -12802,6 +13692,8 @@ type BrandedHash = Brand<Hex, {
 }>;
 ```
 
+Branded type representing a validated hash hex string.
+
   ### <a id="BrandedHex"></a>BrandedHex
 
 [**@xylabs/sdk-js**](#../README)
@@ -12814,6 +13706,8 @@ type BrandedHex = Brand<Lowercase<string>, {
 }>;
 ```
 
+Branded type representing a validated lowercase hex string.
+
   ### <a id="Compare"></a>Compare
 
 [**@xylabs/sdk-js**](#../README)
@@ -12823,6 +13717,8 @@ type BrandedHex = Brand<Lowercase<string>, {
 ```ts
 type Compare<T> = (a, b) => number;
 ```
+
+A comparator function that returns a negative number if a < b, zero if a == b, and a positive number if a > b.
 
 ## Type Parameters
 
@@ -12961,6 +13857,8 @@ readonly name: string;
 type DeepOmitStartsWith<T, Prefix> = T extends infer U[] ? DeepOmitStartsWith<U, Prefix>[] : T extends object ? { [K in keyof T as K extends string ? K extends `${Prefix}${string}` ? never : K : K]: DeepOmitStartsWith<T[K], Prefix> } : T;
 ```
 
+Recursively omits keys that start with the given prefix, including in nested objects and arrays.
+
 ## Type Parameters
 
 ### T
@@ -12980,6 +13878,8 @@ type DeepOmitStartsWith<T, Prefix> = T extends infer U[] ? DeepOmitStartsWith<U,
 ```ts
 type DeepPickStartsWith<T, Prefix> = T extends infer U[] ? DeepPickStartsWith<U, Prefix>[] : T extends object ? { [K in keyof T as K extends string ? K extends `${Prefix}${string}` ? K : never : K]: DeepPickStartsWith<T[K], Prefix> } : T;
 ```
+
+Recursively picks only the keys that start with the given prefix, including in nested objects and arrays.
 
 ## Type Parameters
 
@@ -13001,6 +13901,8 @@ type DeepPickStartsWith<T, Prefix> = T extends infer U[] ? DeepPickStartsWith<U,
 type DeepRestrictToJson<T> = { [K in keyof T as K extends string ? K : never]: T[K] extends (infer U)[] ? DeepRestrictToJson<U>[] : T[K] extends object ? DeepRestrictToJson<T[K]> : T[K] extends JsonValue ? T[K] : never };
 ```
 
+Recursively restricts an object type to only JSON-compatible values, excluding non-serializable types.
+
 ## Type Parameters
 
 ### T
@@ -13016,6 +13918,8 @@ type DeepRestrictToJson<T> = { [K in keyof T as K extends string ? K : never]: T
 ```ts
 type DeepRestrictToStringKeys<T> = { [K in keyof T as K extends string ? K : never]: T[K] extends (infer U)[] ? DeepRestrictToStringKeys<U>[] : T[K] extends object ? DeepRestrictToStringKeys<T[K]> : T[K] };
 ```
+
+Recursively removes all non-string keys from an object type, including in nested objects and arrays.
 
 ## Type Parameters
 
@@ -13142,6 +14046,8 @@ type EthAddress = Brand<string, {
 }>;
 ```
 
+Branded type representing a validated Ethereum address with 0x prefix.
+
   ### <a id="EventAnyListener"></a>EventAnyListener
 
 [**@xylabs/sdk-js**](#../README)
@@ -13151,6 +14057,8 @@ type EthAddress = Brand<string, {
 ```ts
 type EventAnyListener<TEventArgs> = (eventName, eventData) => Promisable<void>;
 ```
+
+A listener that receives all events regardless of name.
 
 ## Type Parameters
 
@@ -13164,9 +14072,13 @@ type EventAnyListener<TEventArgs> = (eventName, eventData) => Promisable<void>;
 
 [`EventName`](#EventName)
 
+The name of the emitted event.
+
 ### eventData
 
 `TEventArgs`
+
+The data associated with the event.
 
 ## Returns
 
@@ -13182,6 +14094,8 @@ type EventAnyListener<TEventArgs> = (eventName, eventData) => Promisable<void>;
 type EventArgs = string | number | object;
 ```
 
+The allowed types for event argument payloads.
+
   ### <a id="EventData"></a>EventData
 
 [**@xylabs/sdk-js**](#../README)
@@ -13191,6 +14105,8 @@ type EventArgs = string | number | object;
 ```ts
 type EventData = object;
 ```
+
+A mapping of event names to their corresponding event argument types.
 
 ## Index Signature
 
@@ -13208,6 +14124,8 @@ type EventData = object;
 type EventListener<TEventArgs> = (eventData) => Promisable<void>;
 ```
 
+A listener for a specific event type.
+
 ## Type Parameters
 
 ### TEventArgs
@@ -13219,6 +14137,8 @@ type EventListener<TEventArgs> = (eventData) => Promisable<void>;
 ### eventData
 
 `TEventArgs`
+
+The data associated with the event.
 
 ## Returns
 
@@ -13233,6 +14153,8 @@ type EventListener<TEventArgs> = (eventData) => Promisable<void>;
 ```ts
 type EventListenerInfo<TEventArgs> = object;
 ```
+
+Information about a registered event listener, including an optional filter for selective invocation.
 
 ## Type Parameters
 
@@ -13266,6 +14188,8 @@ listener: EventListener<TEventArgs>;
 type EventName = PropertyKey;
 ```
 
+A valid event name, which can be any property key (string, number, or symbol).
+
   ### <a id="EventUnsubscribeFunction"></a>EventUnsubscribeFunction
 
 [**@xylabs/sdk-js**](#../README)
@@ -13275,6 +14199,8 @@ type EventName = PropertyKey;
 ```ts
 type EventUnsubscribeFunction = () => void;
 ```
+
+A function returned by event subscription methods that unsubscribes the listener when called.
 
 ## Returns
 
@@ -13291,6 +14217,8 @@ type EventsParams = BaseParams<{
   debug?: DebugOptions;
 }>;
 ```
+
+Parameters for constructing an Events instance, with optional debug configuration.
 
   ### <a id="FieldType"></a>FieldType
 
@@ -13310,6 +14238,8 @@ type FieldType =
   | "function";
 ```
 
+Union of string literals representing the possible types of an object field.
+
   ### <a id="Hash"></a>Hash
 
 [**@xylabs/sdk-js**](#../README)
@@ -13319,6 +14249,8 @@ type FieldType =
 ```ts
 type Hash = z.infer<typeof HashZod>;
 ```
+
+A validated hash string type, inferred from the HashZod schema.
 
   ### <a id="HashBitLength"></a>HashBitLength
 
@@ -13330,6 +14262,8 @@ type Hash = z.infer<typeof HashZod>;
 type HashBitLength = 32 | 64 | 128 | 256 | 512 | 1024 | 2048 | 4096;
 ```
 
+Valid bit lengths for hash values.
+
   ### <a id="Hex"></a>Hex
 
 [**@xylabs/sdk-js**](#../README)
@@ -13340,6 +14274,8 @@ type HashBitLength = 32 | 64 | 128 | 256 | 512 | 1024 | 2048 | 4096;
 type Hex = z.infer<typeof HexZod>;
 ```
 
+A validated hex string type, inferred from the HexZod schema.
+
   ### <a id="IdentityFunction"></a>IdentityFunction
 
 [**@xylabs/sdk-js**](#../README)
@@ -13349,6 +14285,8 @@ type Hex = z.infer<typeof HexZod>;
 ```ts
 type IdentityFunction<T> = (value) => value is T;
 ```
+
+A type guard function that narrows an unknown value to type T.
 
 ## Type Parameters
 
@@ -13376,6 +14314,8 @@ type IdentityFunction<T> = (value) => value is T;
 type JsonArray = z.infer<typeof JsonArrayZod>;
 ```
 
+A JSON array containing JSON values.
+
   ### <a id="JsonObject"></a>JsonObject
 
 [**@xylabs/sdk-js**](#../README)
@@ -13385,6 +14325,8 @@ type JsonArray = z.infer<typeof JsonArrayZod>;
 ```ts
 type JsonObject = z.infer<typeof JsonObjectZod>;
 ```
+
+A JSON object with string keys and JSON values.
 
   ### <a id="JsonValue"></a>JsonValue
 
@@ -13396,6 +14338,8 @@ type JsonObject = z.infer<typeof JsonObjectZod>;
 type JsonValue = z.infer<typeof JsonValueZod>;
 ```
 
+A recursive JSON value: string, number, boolean, null, array, or object.
+
   ### <a id="LogFunction"></a>LogFunction
 
 [**@xylabs/sdk-js**](#../README)
@@ -13405,6 +14349,8 @@ type JsonValue = z.infer<typeof JsonValueZod>;
 ```ts
 type LogFunction = (...data) => void;
 ```
+
+A generic logging function that accepts any number of arguments.
 
 ## Parameters
 
@@ -13426,6 +14372,8 @@ type LogFunction = (...data) => void;
 type LogLevelKey = EnumKey<typeof LogLevel>;
 ```
 
+String key for a log level (e.g. 'error', 'warn', 'info').
+
   ### <a id="LogLevelValue"></a>LogLevelValue
 
 [**@xylabs/sdk-js**](#../README)
@@ -13435,6 +14383,8 @@ type LogLevelKey = EnumKey<typeof LogLevel>;
 ```ts
 type LogLevelValue = EnumValue<typeof LogLevel>;
 ```
+
+Numeric value of a log level (1 through 6).
 
   ### <a id="LogVerbosity"></a>LogVerbosity
 
@@ -13446,6 +14396,8 @@ type LogLevelValue = EnumValue<typeof LogLevel>;
 type LogVerbosity = LogLevelKey;
 ```
 
+Alias for LogLevelKey, representing the verbosity setting as a string.
+
   ### <a id="MetaEventData"></a>MetaEventData
 
 [**@xylabs/sdk-js**](#../README)
@@ -13455,6 +14407,8 @@ type LogVerbosity = LogLevelKey;
 ```ts
 type MetaEventData<TEventData> = object;
 ```
+
+Data shape for internal meta events that fire when listeners are added or removed.
 
 ## Type Parameters
 
@@ -13516,6 +14470,8 @@ listener:
 type NullablePromisable<T, V> = Promisable<T | null, V>;
 ```
 
+A Promisable that may resolve to null.
+
 ## Type Parameters
 
 ### T
@@ -13535,6 +14491,8 @@ type NullablePromisable<T, V> = Promisable<T | null, V>;
 ```ts
 type NullablePromisableArray<T, V> = PromisableArray<T | null, V>;
 ```
+
+A Promisable array where elements may be null.
 
 ## Type Parameters
 
@@ -13556,6 +14514,8 @@ type NullablePromisableArray<T, V> = PromisableArray<T | null, V>;
 type ObjectTypeShape = Record<string | number | symbol, FieldType>;
 ```
 
+Describes the expected shape of an object by mapping each key to its expected field type.
+
   ### <a id="OmitByPredicate"></a>OmitByPredicate
 
 [**@xylabs/sdk-js**](#../README)
@@ -13565,6 +14525,8 @@ type ObjectTypeShape = Record<string | number | symbol, FieldType>;
 ```ts
 type OmitByPredicate<T> = (value, key) => boolean;
 ```
+
+A predicate function used to determine which properties to omit from an object.
 
 ## Type Parameters
 
@@ -13596,6 +14558,8 @@ keyof `T`
 type OmitStartsWith<T, Prefix> = { [K in keyof T as K extends `${Prefix}${string}` ? never : K]: T[K] };
 ```
 
+Omits the keys of T that start with the given prefix.
+
 ## Type Parameters
 
 ### T
@@ -13615,6 +14579,8 @@ type OmitStartsWith<T, Prefix> = { [K in keyof T as K extends `${Prefix}${string
 ```ts
 type Optional<T, F> = Omit<T, F> & Partial<Pick<T, F>>;
 ```
+
+Makes the specified fields of T optional while keeping the rest required.
 
 ## Type Parameters
 
@@ -13636,6 +14602,8 @@ type Optional<T, F> = Omit<T, F> & Partial<Pick<T, F>>;
 type OptionalPromisable<T, V> = Promisable<T | undefined, V>;
 ```
 
+A Promisable that may resolve to undefined.
+
 ## Type Parameters
 
 ### T
@@ -13656,6 +14624,8 @@ type OptionalPromisable<T, V> = Promisable<T | undefined, V>;
 type OptionalPromisableArray<T, V> = PromisableArray<T | undefined, V>;
 ```
 
+A Promisable array where elements may be undefined.
+
 ## Type Parameters
 
 ### T
@@ -13675,6 +14645,8 @@ type OptionalPromisableArray<T, V> = PromisableArray<T | undefined, V>;
 ```ts
 type Override<T1, T2> = Omit<T1, keyof T2> & T2;
 ```
+
+Overrides properties of T1 with those from T2.
 
 ## Type Parameters
 
@@ -13720,6 +14692,8 @@ use Partial<Record<>> instead
 type PickByPredicate<T> = (value, key) => boolean;
 ```
 
+A predicate function used to determine which properties to pick from an object.
+
 ## Type Parameters
 
 ### T
@@ -13750,6 +14724,8 @@ keyof `T`
 type PickStartsWith<T, Prefix> = { [K in keyof T as K extends `${Prefix}${string}` ? K : never]: T[K] };
 ```
 
+Picks only the keys of T that start with the given prefix.
+
 ## Type Parameters
 
 ### T
@@ -13770,6 +14746,8 @@ type PickStartsWith<T, Prefix> = { [K in keyof T as K extends `${Prefix}${string
 type Profiler = Record<string, number[]>;
 ```
 
+A record of named timing entries, where each key maps to an array of timestamps.
+
   ### <a id="Promisable"></a>Promisable
 
 [**@xylabs/sdk-js**](#../README)
@@ -13779,6 +14757,8 @@ type Profiler = Record<string, number[]>;
 ```ts
 type Promisable<T, V> = PromiseEx<T, V> | Promise<T> | T;
 ```
+
+A value that may be a Promise, PromiseEx, or a plain synchronous value.
 
 ## Type Parameters
 
@@ -13800,6 +14780,8 @@ type Promisable<T, V> = PromiseEx<T, V> | Promise<T> | T;
 type PromisableArray<T, V> = Promisable<T[], V>;
 ```
 
+A Promisable that resolves to an array.
+
 ## Type Parameters
 
 ### T
@@ -13819,6 +14801,8 @@ type PromisableArray<T, V> = Promisable<T[], V>;
 ```ts
 type PromiseExFunc<T> = (resolve?, reject?) => void;
 ```
+
+The executor function passed to the PromiseEx constructor.
 
 ## Type Parameters
 
@@ -13850,6 +14834,8 @@ type PromiseExFunc<T> = (resolve?, reject?) => void;
 type PromiseExSubFunc<T, TResult> = (value) => TResult;
 ```
 
+A resolve/reject callback used within PromiseEx.
+
 ## Type Parameters
 
 ### T
@@ -13880,6 +14866,8 @@ type PromiseExSubFunc<T, TResult> = (value) => TResult;
 type PromiseExValueFunc<V> = (value?) => boolean;
 ```
 
+A callback that inspects the attached value and returns whether to cancel the promise.
+
 ## Type Parameters
 
 ### V
@@ -13906,6 +14894,8 @@ type PromiseExValueFunc<V> = (value?) => boolean;
 type RecordKey = string | number | symbol;
 ```
 
+A union of valid object key types.
+
   ### <a id="Simplify"></a>Simplify
 
 [**@xylabs/sdk-js**](#../README)
@@ -13915,6 +14905,8 @@ type RecordKey = string | number | symbol;
 ```ts
 type Simplify<T> = { [K in keyof T]: T[K] } & object;
 ```
+
+Flattens an intersection or complex mapped type into a single object type for better readability.
 
 ## Type Parameters
 
@@ -13951,6 +14943,8 @@ The standard lifecycle statuses a creatable can transition through.
 type StringKeyObject<T> = object;
 ```
 
+An object type with string keys and values of type T.
+
 ## Type Parameters
 
 ### T
@@ -13973,6 +14967,8 @@ type StringKeyObject<T> = object;
 type StringOrAlertFunction<T> = string | AssertExMessageFunc<T>;
 ```
 
+A string message or function that produces an assertion error message for a failed type check.
+
 ## Type Parameters
 
 ### T
@@ -13992,6 +14988,8 @@ type TypeCheck<T> = {
   (obj, config): obj is T;
 };
 ```
+
+A type guard function that checks whether a value conforms to type T, with optional configuration.
 
 ## Type Parameters
 
@@ -14076,6 +15074,8 @@ type TypeOfTypes =
   | "symbol";
 ```
 
+Union of string literals representing the possible results of the extended `typeOf` function.
+
   ### <a id="TypedArray"></a>TypedArray
 
 [**@xylabs/sdk-js**](#../README)
@@ -14086,6 +15086,8 @@ type TypeOfTypes =
 type TypedArray = TypedValue[];
 ```
 
+An array of TypedValue elements.
+
   ### <a id="TypedKey"></a>TypedKey
 
 [**@xylabs/sdk-js**](#../README)
@@ -14095,6 +15097,8 @@ type TypedArray = TypedValue[];
 ```ts
 type TypedKey<T> = T extends string ? T : string | number | symbol;
 ```
+
+A valid key for a typed object. Defaults to string | number | symbol unless narrowed by T.
 
 ## Type Parameters
 
@@ -14116,6 +15120,8 @@ type TypedObject =
   | object;
 ```
 
+An object whose keys are TypedKey and whose values are TypedValue.
+
   ### <a id="TypedValue"></a>TypedValue
 
 [**@xylabs/sdk-js**](#../README)
@@ -14136,6 +15142,8 @@ type TypedValue =
   | undefined;
 ```
 
+A value that can appear in a typed object tree (primitives, objects, arrays, functions, and symbols).
+
   ### <a id="WithAdditional"></a>WithAdditional
 
 [**@xylabs/sdk-js**](#../README)
@@ -14145,6 +15153,8 @@ type TypedValue =
 ```ts
 type WithAdditional<T, TAdditional> = TAdditional extends EmptyObject ? T & TAdditional : T;
 ```
+
+Intersects T with TAdditional if TAdditional is an object, otherwise returns T unchanged.
 
 ## Type Parameters
 
@@ -14168,6 +15178,8 @@ type ZodFactoryConfig =
   | ZodFactoryConfigObject;
 ```
 
+Configuration for zod factory assertion behavior, either an AssertConfig or a named config object.
+
 ### variables
 
   ### <a id="ADDRESS_LENGTH"></a>ADDRESS_LENGTH
@@ -14180,6 +15192,8 @@ type ZodFactoryConfig =
 const ADDRESS_LENGTH: 40;
 ```
 
+The character length of an address hex string (40 hex characters / 20 bytes).
+
   ### <a id="AddressRegEx"></a>AddressRegEx
 
 [**@xylabs/sdk-js**](#../README)
@@ -14189,6 +15203,8 @@ const ADDRESS_LENGTH: 40;
 ```ts
 const AddressRegEx: RegExp;
 ```
+
+Regular expression matching a 20-byte (40 hex character) address string.
 
   ### <a id="AddressTransformZod"></a>AddressTransformZod
 
@@ -14200,6 +15216,8 @@ const AddressRegEx: RegExp;
 const AddressTransformZod: z.ZodPipe<z.ZodPipe<z.ZodUnion<readonly [z.ZodString, z.ZodBigInt, z.ZodNumber]>, z.ZodTransform<string, string | number | bigint>>, z.ZodTransform<Lowercase<string> & object & object, string>>;
 ```
 
+Zod schema that accepts a string, bigint, or number and transforms it into a validated Address.
+
   ### <a id="AddressValidationZod"></a>AddressValidationZod
 
 [**@xylabs/sdk-js**](#../README)
@@ -14210,6 +15228,8 @@ const AddressTransformZod: z.ZodPipe<z.ZodPipe<z.ZodUnion<readonly [z.ZodString,
 const AddressValidationZod: z.ZodPipe<z.ZodString, z.ZodTransform<Lowercase<string> & object & object, string>>;
 ```
 
+Zod schema that validates a string is a properly formatted 40-character hex address.
+
   ### <a id="AddressZod"></a>AddressZod
 
 [**@xylabs/sdk-js**](#../README)
@@ -14219,6 +15239,8 @@ const AddressValidationZod: z.ZodPipe<z.ZodString, z.ZodTransform<Lowercase<stri
 ```ts
 const AddressZod: z.ZodPipe<z.ZodString, z.ZodTransform<BrandedAddress, string>>;
 ```
+
+Zod schema that validates and transforms a string into a branded Address type.
 
   ### <a id="ApiStage"></a>ApiStage
 
@@ -14234,6 +15256,8 @@ const ApiStage: Enum<{
 }>;
 ```
 
+Deployment stage identifiers for API environments.
+
   ### <a id="AsObjectFactory"></a>AsObjectFactory
 
 [**@xylabs/sdk-js**](#../README)
@@ -14243,6 +15267,8 @@ const ApiStage: Enum<{
 ```ts
 const AsObjectFactory: object;
 ```
+
+Factory for creating type-narrowing functions for TypedObject types.
 
 ## Type Declaration
 
@@ -14312,6 +15338,9 @@ createOptional: <T>(typeCheck) => (value) => T | undefined;
 const AsTypeFactory: object;
 ```
 
+Factory for creating type-narrowing 'as' functions that cast a value to T or return undefined.
+Supports optional assertion messages and configuration for required/optional behavior.
+
 ## Type Declaration
 
 ### create()
@@ -14380,6 +15409,8 @@ createOptional: <T>(typeCheck) => (value) => T | undefined;
 const BigIntToJsonZod: z.ZodPipe<z.ZodBigInt, z.ZodTransform<BrandedHex, bigint>>;
 ```
 
+Zod schema that transforms a non-negative BigInt into a hex string for JSON serialization.
+
   ### <a id="Buffer"></a>Buffer
 
 [**@xylabs/sdk-js**](#../README)
@@ -14399,6 +15430,8 @@ const Buffer: BufferConstructor;
 ```ts
 const ETH_ZERO_ADDRESS: EthAddress;
 ```
+
+The zero Ethereum address constant (0x followed by 40 zero characters).
 
   ### <a id="Enum"></a>Enum
 
@@ -14499,6 +15532,8 @@ use EthAddressFromStringZod
 const EthAddressFromStringZod: z.ZodPipe<z.ZodString, z.ZodTransform<EthAddress, string>>;
 ```
 
+Zod schema that validates and transforms a string into an EthAddress type.
+
   ### <a id="EthAddressRegEx"></a>EthAddressRegEx
 
 [**@xylabs/sdk-js**](#../README)
@@ -14508,6 +15543,8 @@ const EthAddressFromStringZod: z.ZodPipe<z.ZodString, z.ZodTransform<EthAddress,
 ```ts
 const EthAddressRegEx: RegExp;
 ```
+
+Regular expression matching a 20-byte Ethereum address with 0x prefix (mixed case).
 
   ### <a id="EthAddressToStringSchema"></a>EthAddressToStringSchema
 
@@ -14533,6 +15570,8 @@ use EthAddressToStringZod
 const EthAddressToStringZod: z.ZodString;
 ```
 
+Zod schema that validates a string is a properly formatted Ethereum address.
+
   ### <a id="EthAddressZod"></a>EthAddressZod
 
 [**@xylabs/sdk-js**](#../README)
@@ -14542,6 +15581,8 @@ const EthAddressToStringZod: z.ZodString;
 ```ts
 const EthAddressZod: z.ZodString & z.ZodType<EthAddress, string, z.core.$ZodTypeInternals<EthAddress, string>>;
 ```
+
+Zod schema that validates a string as a properly formatted Ethereum address using regex and type guard.
 
   ### <a id="HASH_LENGTH"></a>HASH_LENGTH
 
@@ -14553,6 +15594,8 @@ const EthAddressZod: z.ZodString & z.ZodType<EthAddress, string, z.core.$ZodType
 const HASH_LENGTH: 32;
 ```
 
+The byte length of a standard hash (32 bytes / 256 bits).
+
   ### <a id="HashBitLength"></a>HashBitLength
 
 [**@xylabs/sdk-js**](#../README)
@@ -14562,6 +15605,8 @@ const HASH_LENGTH: 32;
 ```ts
 HashBitLength: HashBitLength[];
 ```
+
+Array of all valid hash bit lengths for runtime validation.
 
   ### <a id="HashRegEx"></a>HashRegEx
 
@@ -14573,6 +15618,8 @@ HashBitLength: HashBitLength[];
 const HashRegEx: RegExp;
 ```
 
+Regular expression matching a 32-byte (64 hex character) hash string.
+
   ### <a id="HashToJsonZod"></a>HashToJsonZod
 
 [**@xylabs/sdk-js**](#../README)
@@ -14582,6 +15629,8 @@ const HashRegEx: RegExp;
 ```ts
 const HashToJsonZod: z.ZodPipe<z.ZodPipe<z.ZodString, z.ZodTransform<BrandedHash, string>>, z.ZodTransform<string, BrandedHash>>;
 ```
+
+Zod schema that transforms a Hash to a plain string for JSON serialization.
 
   ### <a id="HashZod"></a>HashZod
 
@@ -14593,6 +15642,8 @@ const HashToJsonZod: z.ZodPipe<z.ZodPipe<z.ZodString, z.ZodTransform<BrandedHash
 const HashZod: z.ZodPipe<z.ZodString, z.ZodTransform<BrandedHash, string>>;
 ```
 
+Zod schema that validates and transforms a string into a branded Hash type.
+
   ### <a id="HexRegEx"></a>HexRegEx
 
 [**@xylabs/sdk-js**](#../README)
@@ -14602,6 +15653,8 @@ const HashZod: z.ZodPipe<z.ZodString, z.ZodTransform<BrandedHash, string>>;
 ```ts
 const HexRegEx: RegExp;
 ```
+
+Regular expression matching a lowercase hex string without prefix.
 
   ### <a id="HexRegExMinMax"></a>HexRegExMinMax
 
@@ -14613,19 +15666,27 @@ const HexRegEx: RegExp;
 const HexRegExMinMax: (minBytes?, maxBytes?) => RegExp;
 ```
 
+Creates a RegExp matching lowercase hex strings with a byte length in the given range.
+
 ## Parameters
 
 ### minBytes?
 
 `number`
 
+Minimum number of bytes (default 0)
+
 ### maxBytes?
 
 `number`
 
+Maximum number of bytes
+
 ## Returns
 
 `RegExp`
+
+A RegExp for validating hex strings within the byte range
 
   ### <a id="HexRegExMinMaxMixedCaseWithPrefix"></a>HexRegExMinMaxMixedCaseWithPrefix
 
@@ -14637,19 +15698,27 @@ const HexRegExMinMax: (minBytes?, maxBytes?) => RegExp;
 const HexRegExMinMaxMixedCaseWithPrefix: (minBytes?, maxBytes?) => RegExp;
 ```
 
+Creates a RegExp matching mixed-case hex strings with a 0x prefix and a byte length in the given range.
+
 ## Parameters
 
 ### minBytes?
 
 `number`
 
+Minimum number of bytes (default 0)
+
 ### maxBytes?
 
 `number`
 
+Maximum number of bytes
+
 ## Returns
 
 `RegExp`
+
+A RegExp for validating prefixed hex strings within the byte range
 
   ### <a id="HexRegExWithPrefix"></a>HexRegExWithPrefix
 
@@ -14661,6 +15730,8 @@ const HexRegExMinMaxMixedCaseWithPrefix: (minBytes?, maxBytes?) => RegExp;
 const HexRegExWithPrefix: RegExp;
 ```
 
+Regular expression matching a lowercase hex string with a 0x prefix.
+
   ### <a id="HexZod"></a>HexZod
 
 [**@xylabs/sdk-js**](#../README)
@@ -14670,6 +15741,8 @@ const HexRegExWithPrefix: RegExp;
 ```ts
 const HexZod: z.ZodPipe<z.ZodString, z.ZodTransform<BrandedHex, string>>;
 ```
+
+Zod schema that validates and transforms a string into a branded Hex type.
 
   ### <a id="JsonObjectZod"></a>JsonObjectZod
 
@@ -14681,6 +15754,8 @@ const HexZod: z.ZodPipe<z.ZodString, z.ZodTransform<BrandedHex, string>>;
 const JsonObjectZod: z.ZodRecord<z.ZodString, z.ZodType<unknown, unknown, z.core.$ZodTypeInternals<unknown, unknown>>>;
 ```
 
+Zod schema for a JSON object with string keys and recursive JSON values.
+
   ### <a id="JsonToBigIntZod"></a>JsonToBigIntZod
 
 [**@xylabs/sdk-js**](#../README)
@@ -14691,6 +15766,8 @@ const JsonObjectZod: z.ZodRecord<z.ZodString, z.ZodType<unknown, unknown, z.core
 const JsonToBigIntZod: z.ZodPipe<z.ZodPipe<z.ZodString, z.ZodTransform<BrandedHex, string>>, z.ZodTransform<bigint, BrandedHex>>;
 ```
 
+Zod schema that parses a JSON hex string into a BigInt.
+
   ### <a id="JsonToHashZod"></a>JsonToHashZod
 
 [**@xylabs/sdk-js**](#../README)
@@ -14700,6 +15777,8 @@ const JsonToBigIntZod: z.ZodPipe<z.ZodPipe<z.ZodString, z.ZodTransform<BrandedHe
 ```ts
 const JsonToHashZod: z.ZodPipe<z.ZodString, z.ZodTransform<BrandedHash, string>>;
 ```
+
+Zod schema that parses a JSON string into a validated Hash, throwing on invalid input.
 
   ### <a id="LogLevel"></a>LogLevel
 
@@ -14718,6 +15797,8 @@ const LogLevel: Enum<{
 }>;
 ```
 
+Numeric log level values, from least verbose (error=1) to most verbose (trace=6).
+
   ### <a id="NoOpLogFunction"></a>NoOpLogFunction
 
 [**@xylabs/sdk-js**](#../README)
@@ -14727,6 +15808,8 @@ const LogLevel: Enum<{
 ```ts
 const NoOpLogFunction: (..._data) => undefined;
 ```
+
+A log function that silently discards all arguments.
 
 ## Parameters
 
@@ -14754,6 +15837,8 @@ const URL: {
   revokeObjectURL: void;
 };
 ```
+
+Node.js-specific URL class, imported from the `node:url` module.
 
 ## Type Declaration
 
@@ -14859,6 +15944,8 @@ revokeObjectURL(id): void;
 const ZERO_ADDRESS: Address;
 ```
 
+A 160-bit zero address constant.
+
   ### <a id="ZERO_HASH"></a>ZERO_HASH
 
 [**@xylabs/sdk-js**](#../README)
@@ -14869,6 +15956,8 @@ const ZERO_ADDRESS: Address;
 const ZERO_HASH: Hash;
 ```
 
+A 256-bit zero hash constant.
+
   ### <a id="asAnyObject"></a>asAnyObject
 
 [**@xylabs/sdk-js**](#../README)
@@ -14878,6 +15967,8 @@ const ZERO_HASH: Hash;
 ```ts
 const asAnyObject: AsTypeFunction;
 ```
+
+Type-narrowing function that casts a value to AnyObject if it is a plain object, or returns undefined.
 
   ### <a id="asJsonArray"></a>asJsonArray
 
@@ -14891,6 +15982,8 @@ const asJsonArray: {
 <T>  (value, assert): T & unknown[];
 };
 ```
+
+Casts a value to JsonArray or returns undefined if it does not conform.
 
 ## Call Signature
 
@@ -14953,6 +16046,8 @@ const asJsonObject: {
 };
 ```
 
+Casts a value to JsonObject or returns undefined if it does not conform.
+
 ## Call Signature
 
 ```ts
@@ -15014,6 +16109,8 @@ const asJsonValue: {
 };
 ```
 
+Casts a value to JsonValue or returns undefined if it does not conform.
+
 ## Call Signature
 
 ```ts
@@ -15072,19 +16169,27 @@ const asJsonValue: {
 const assertError: (value, assert, defaultMessage) => undefined;
 ```
 
+Throws an Error based on the assert configuration when a value fails validation.
+
 ## Parameters
 
 ### value
 
 `unknown`
 
+The value being validated
+
 ### assert
+
+Assertion config controlling the error message
 
 [`AssertConfig`](#../type-aliases/AssertConfig) | `undefined`
 
 ### defaultMessage
 
 `string`
+
+Fallback message if no custom message is provided
 
 ## Returns
 
@@ -15124,15 +16229,21 @@ const axiosJson: Axios;
 const bitsToNibbles: (value) => number;
 ```
 
+Converts a bit count to the equivalent number of hex nibbles (4 bits each).
+
 ## Parameters
 
 ### value
 
 `number`
 
+The number of bits (must be a multiple of 4)
+
 ## Returns
 
 `number`
+
+The number of nibbles
 
   ### <a id="bufferPolyfill"></a>bufferPolyfill
 
@@ -15158,11 +16269,15 @@ const bufferPolyfill: () => void;
 const clearTimeoutEx: (id) => void;
 ```
 
+Cancels a timeout previously created with setTimeoutEx.
+
 ## Parameters
 
 ### id
 
 `string`
+
+The timeout ID returned by setTimeoutEx.
 
 ## Returns
 
@@ -15178,6 +16293,8 @@ const clearTimeoutEx: (id) => void;
 const containsAll: <T>(source, target) => boolean;
 ```
 
+Checks whether the source array contains every element in the target array.
+
 ## Type Parameters
 
 ### T
@@ -15190,13 +16307,19 @@ const containsAll: <T>(source, target) => boolean;
 
 `T`[]
 
+The array to search within
+
 ### target
 
 `T`[]
 
+The elements that must all be present
+
 ## Returns
 
 `boolean`
+
+True if every target element exists in source
 
   ### <a id="createProfiler"></a>createProfiler
 
@@ -15207,6 +16330,8 @@ const containsAll: <T>(source, target) => boolean;
 ```ts
 const createProfiler: () => Profiler;
 ```
+
+Creates a new empty profiler instance.
 
 ## Returns
 
@@ -15261,6 +16386,8 @@ A new object with the merged properties.
 const defaultForgetNodeConfig: ForgetNodeConfig<unknown>;
 ```
 
+Default Node.js forget configuration with termination disabled.
+
   ### <a id="delay"></a>delay
 
 [**@xylabs/sdk-js**](#../README)
@@ -15271,15 +16398,21 @@ const defaultForgetNodeConfig: ForgetNodeConfig<unknown>;
 const delay: (ms) => Promise<unknown>;
 ```
 
+Returns a promise that resolves after the specified number of milliseconds.
+
 ## Parameters
 
 ### ms
 
 `number`
 
+The number of milliseconds to delay.
+
 ## Returns
 
 `Promise`\<`unknown`\>
+
+A promise that resolves after the delay.
 
   ### <a id="difference"></a>difference
 
@@ -15290,6 +16423,8 @@ const delay: (ms) => Promise<unknown>;
 ```ts
 const difference: <TKey>(a, b) => Set<TKey>;
 ```
+
+Returns a new set containing elements in `a` that are not in `b`.
 
 ## Type Parameters
 
@@ -15303,13 +16438,19 @@ const difference: <TKey>(a, b) => Set<TKey>;
 
 `Set`\<`TKey`\>
 
+The source set
+
 ### b
 
 `Set`\<`TKey`\>
 
+The set of elements to exclude
+
 ## Returns
 
 `Set`\<`TKey`\>
+
+A new set representing the difference of `a` and `b`
 
   ### <a id="disableGloballyUnique"></a>disableGloballyUnique
 
@@ -15320,6 +16461,8 @@ const difference: <TKey>(a, b) => Set<TKey>;
 ```ts
 const disableGloballyUnique: () => void;
 ```
+
+Disables global uniqueness checks, allowing duplicate registrations without throwing.
 
 ## Returns
 
@@ -15334,6 +16477,9 @@ const disableGloballyUnique: () => void;
 ```ts
 const distinct: <T>(value, index, array) => boolean;
 ```
+
+Array filter callback that removes duplicate values, with correct NaN handling.
+Use with `array.filter(distinct)`.
 
 ## Type Parameters
 
@@ -15369,19 +16515,27 @@ const distinct: <T>(value, index, array) => boolean;
 const ellipsize: (value, length?) => string;
 ```
 
+Truncates a string to show the first and last `length` characters separated by an ellipsis.
+
 ## Parameters
 
 ### value
 
 `string`
 
+The string to ellipsize
+
 ### length?
 
 `number`
 
+Number of characters to keep at each end (default 2)
+
 ## Returns
 
 `string`
+
+The ellipsized string
 
   ### <a id="equalArrayBuffers"></a>equalArrayBuffers
 
@@ -15393,19 +16547,27 @@ const ellipsize: (value, length?) => string;
 const equalArrayBuffers: (a1, a2) => boolean;
 ```
 
+Compares two ArrayBuffers for byte-level equality.
+
 ## Parameters
 
 ### a1
 
 `ArrayBufferLike`
 
+First buffer
+
 ### a2
 
 `ArrayBufferLike`
 
+Second buffer
+
 ## Returns
 
 `boolean`
+
+True if the buffers have the same length and identical bytes
 
   ### <a id="exists"></a>exists
 
@@ -15456,6 +16618,8 @@ const payloads: XyoPayload[] = boundWitness._payloads?.filter(exists) || []
 const filterAs: <In, Out>(x, predicate) => NonNullable<Out>[];
 ```
 
+Maps each element using the predicate and filters out nullish results.
+
 ## Type Parameters
 
 ### In
@@ -15472,13 +16636,19 @@ const filterAs: <In, Out>(x, predicate) => NonNullable<Out>[];
 
 `In`[]
 
+The input array
+
 ### predicate
 
 (`a`) => `Out`
 
+Transform function applied to each element
+
 ## Returns
 
 `NonNullable`\<`Out`\>[]
+
+Array of non-nullish transformed values
 
   ### <a id="filterAsync"></a>filterAsync
 
@@ -15528,6 +16698,8 @@ The elements of an array that meet the condition specified in a callback functio
 const findAs: <In, Out>(x, predicate) => NonNullable<Out> | undefined;
 ```
 
+Maps each element using the predicate and returns the first non-nullish result.
+
 ## Type Parameters
 
 ### In
@@ -15544,13 +16716,19 @@ const findAs: <In, Out>(x, predicate) => NonNullable<Out> | undefined;
 
 `In`[]
 
+The input array
+
 ### predicate
 
 (`a`) => `Out`
 
+Transform function applied to each element
+
 ## Returns
 
 `NonNullable`\<`Out`\> \| `undefined`
+
+The first non-nullish transformed value, or undefined
 
   ### <a id="findLastAs"></a>findLastAs
 
@@ -15562,6 +16740,8 @@ const findAs: <In, Out>(x, predicate) => NonNullable<Out> | undefined;
 const findLastAs: <In, Out>(x, predicate) => NonNullable<Out> | undefined;
 ```
 
+Maps each element using the predicate and returns the last non-nullish result.
+
 ## Type Parameters
 
 ### In
@@ -15578,13 +16758,19 @@ const findLastAs: <In, Out>(x, predicate) => NonNullable<Out> | undefined;
 
 `In`[]
 
+The input array
+
 ### predicate
 
 (`a`) => `Out`
 
+Transform function applied to each element
+
 ## Returns
 
 `NonNullable`\<`Out`\> \| `undefined`
+
+The last non-nullish transformed value, or undefined
 
   ### <a id="flatten"></a>flatten
 
@@ -15596,6 +16782,8 @@ const findLastAs: <In, Out>(x, predicate) => NonNullable<Out> | undefined;
 const flatten: <T>(a?, b?) => T[];
 ```
 
+Concatenates two values or arrays into a single flat array, filtering out nullish entries.
+
 ## Type Parameters
 
 ### T
@@ -15606,15 +16794,21 @@ const flatten: <T>(a?, b?) => T[];
 
 ### a?
 
+First value or array
+
 `T` | `ConcatArray`\<`T`\>
 
 ### b?
+
+Second value or array
 
 `T` | `ConcatArray`\<`T`\>
 
 ## Returns
 
 `T`[]
+
+A flat array of non-nullish elements
 
   ### <a id="forget"></a>forget
 
@@ -15625,6 +16819,8 @@ const flatten: <T>(a?, b?) => T[];
 ```ts
 const forget: <T>(promise, config?) => void;
 ```
+
+Node.js variant of forget that can optionally terminate the process on exceptions or timeouts.
 
 ## Type Parameters
 
@@ -15638,9 +16834,13 @@ const forget: <T>(promise, config?) => void;
 
 [`Promisable`](#../type-aliases/Promisable)\<`T`\>
 
+The promise or promisable value to forget.
+
 ### config?
 
 [`ForgetNodeConfig`](#../interfaces/ForgetNodeConfig)\<`T`\>
+
+Optional Node.js-specific configuration including process termination options.
 
 ## Returns
 
@@ -15656,19 +16856,27 @@ const forget: <T>(promise, config?) => void;
 const fromFixedPoint: (value, places?) => bigint;
 ```
 
+Converts a fixed-point bigint back to a whole-number bigint by dividing out the decimal places.
+
 ## Parameters
 
 ### value
 
 `bigint`
 
+The fixed-point bigint value to convert
+
 ### places?
 
 `number`
 
+Number of decimal places (default 18)
+
 ## Returns
 
 `bigint`
+
+The whole-number bigint result
 
   ### <a id="fulfilled"></a>fulfilled
 
@@ -15758,15 +16966,21 @@ const results = settled.reduce<string[]>(fulfilledValues, [])
 const functionName: (depth?) => string;
 ```
 
+Returns the name of the calling function by inspecting the stack trace.
+
 ## Parameters
 
 ### depth?
 
 `number`
 
+The stack frame depth to read the function name from (default: 2).
+
 ## Returns
 
 `string`
+
+The function name, or '<unknown>' if it cannot be determined.
 
   ### <a id="getApiStage"></a>getApiStage
 
@@ -15778,15 +16992,21 @@ const functionName: (depth?) => string;
 const getApiStage: (hostname) => "beta" | "local" | "prod";
 ```
 
+Determines the API stage based on the hostname.
+
 ## Parameters
 
 ### hostname
 
 `string`
 
+The hostname to evaluate
+
 ## Returns
 
 `"beta"` \| `"local"` \| `"prod"`
+
+The corresponding ApiStage (Local, Beta, or Prod)
 
   ### <a id="getFunctionName"></a>getFunctionName
 
@@ -15798,15 +17018,21 @@ const getApiStage: (hostname) => "beta" | "local" | "prod";
 const getFunctionName: (depth?) => string;
 ```
 
+Retrieves the name of the calling function by inspecting the stack trace.
+
 ## Parameters
 
 ### depth?
 
 `number`
 
+The stack frame depth to inspect (default: 2, the caller's caller).
+
 ## Returns
 
 `string`
+
+The function name, or '<unknown>' if it cannot be determined.
 
   ### <a id="globallyUnique"></a>globallyUnique
 
@@ -15818,9 +17044,14 @@ const getFunctionName: (depth?) => string;
 const globallyUnique: (name, value, domain?) => string;
 ```
 
+Registers a value as globally unique under the given name and domain.
+Throws if a different value is already registered under the same key.
+
 ## Parameters
 
 ### name
+
+The unique name or symbol
 
 `string` | `symbol`
 
@@ -15828,13 +17059,19 @@ const globallyUnique: (name, value, domain?) => string;
 
 `unknown`
 
+The value to register
+
 ### domain?
 
 `string`
 
+The namespace domain (default 'global')
+
 ## Returns
 
 `string`
+
+The fully qualified unique name
 
   ### <a id="handleError"></a>handleError
 
@@ -15846,6 +17083,8 @@ const globallyUnique: (name, value, domain?) => string;
 const handleError: <T>(error, handler) => T;
 ```
 
+Invokes the handler if the value is an Error, otherwise re-throws it.
+
 ## Type Parameters
 
 ### T
@@ -15858,13 +17097,19 @@ const handleError: <T>(error, handler) => T;
 
 `any`
 
+The caught value to inspect
+
 ### handler
 
 (`error`) => `T`
 
+Callback invoked with the Error if it is one
+
 ## Returns
 
 `T`
+
+The handler's return value
 
   ### <a id="handleErrorAsync"></a>handleErrorAsync
 
@@ -15876,6 +17121,8 @@ const handleError: <T>(error, handler) => T;
 const handleErrorAsync: <T>(error, handler) => Promise<T>;
 ```
 
+Async version of handleError. Invokes the async handler if the value is an Error, otherwise re-throws it.
+
 ## Type Parameters
 
 ### T
@@ -15888,13 +17135,19 @@ const handleErrorAsync: <T>(error, handler) => Promise<T>;
 
 `any`
 
+The caught value to inspect
+
 ### handler
 
 (`error`) => `Promise`\<`T`\>
 
+Async callback invoked with the Error if it is one
+
 ## Returns
 
 `Promise`\<`T`\>
+
+The handler's resolved return value
 
   ### <a id="hasAllLabels"></a>hasAllLabels
 
@@ -16016,19 +17269,27 @@ Convert a bigint to a hex string
 const hexFromHexString: (value, config?) => Hex;
 ```
 
+Normalizes a hex string by stripping an optional 0x prefix, lowercasing, and padding to byte/bit boundaries.
+
 ## Parameters
 
 ### value
 
 `string`
 
+The hex string to normalize (with or without 0x prefix)
+
 ### config?
 
 [`HexConfig`](#../interfaces/HexConfig)
 
+Configuration for prefix, byteSize, and bitLength padding
+
 ## Returns
 
 [`Hex`](#../type-aliases/Hex)
+
+The normalized Hex string
 
   ### <a id="hexFromNumber"></a>hexFromNumber
 
@@ -16040,19 +17301,27 @@ const hexFromHexString: (value, config?) => Hex;
 const hexFromNumber: (value, config?) => Hex;
 ```
 
+Converts a number to a hex string by converting to BigInt first.
+
 ## Parameters
 
 ### value
 
 `number`
 
+The number to convert
+
 ### config?
 
 [`HexConfig`](#../interfaces/HexConfig)
 
+Optional hex output configuration
+
 ## Returns
 
 [`Hex`](#../type-aliases/Hex)
+
+The hex string representation
 
   ### <a id="ifDefined"></a>ifDefined
 
@@ -16063,6 +17332,8 @@ const hexFromNumber: (value, config?) => Hex;
 ```ts
 const ifDefined: <T>(value, func) => T | undefined;
 ```
+
+Invokes the callback only if the value is neither null nor undefined.
 
 ## Type Parameters
 
@@ -16076,13 +17347,19 @@ const ifDefined: <T>(value, func) => T | undefined;
 
 `T`
 
+The value to check.
+
 ### func
 
 (`value`) => `void`
 
+The callback to invoke with the value if it is defined.
+
 ## Returns
 
 `T` \| `undefined`
+
+The value if defined, or undefined otherwise.
 
   ### <a id="ifTypeOf"></a>ifTypeOf
 
@@ -16093,6 +17370,8 @@ const ifDefined: <T>(value, func) => T | undefined;
 ```ts
 const ifTypeOf: <T, R>(typeName, value, trueFunc, isFunc?) => R | undefined;
 ```
+
+Invokes the callback if the value matches the specified type, with an optional additional predicate.
 
 ## Type Parameters
 
@@ -16110,21 +17389,31 @@ const ifTypeOf: <T, R>(typeName, value, trueFunc, isFunc?) => R | undefined;
 
 [`TypeOfTypes`](#../type-aliases/TypeOfTypes)
 
+The expected type name to match against.
+
 ### value
 
 `unknown`
+
+The value to check.
 
 ### trueFunc
 
 (`value`) => `R`
 
+The callback to invoke if the type matches.
+
 ### isFunc?
 
 (`value`) => `boolean`
 
+Optional additional predicate that must also return true.
+
 ## Returns
 
 `R` \| `undefined`
+
+The result of trueFunc if the type matches (and isFunc passes), or undefined.
 
   ### <a id="intersection"></a>intersection
 
@@ -16135,6 +17424,8 @@ const ifTypeOf: <T, R>(typeName, value, trueFunc, isFunc?) => R | undefined;
 ```ts
 const intersection: <TKey>(a, b) => Set<TKey>;
 ```
+
+Returns a new set containing only elements present in both `a` and `b`.
 
 ## Type Parameters
 
@@ -16148,13 +17439,19 @@ const intersection: <TKey>(a, b) => Set<TKey>;
 
 `Set`\<`TKey`\>
 
+The first set
+
 ### b
 
 `Set`\<`TKey`\>
 
+The second set
+
 ## Returns
 
 `Set`\<`TKey`\>
+
+A new set representing the intersection of `a` and `b`
 
   ### <a id="isAddress"></a>isAddress
 
@@ -16166,19 +17463,27 @@ const intersection: <TKey>(a, b) => Set<TKey>;
 const isAddress: (value, config?) => value is Address;
 ```
 
+Type guard that checks whether a value is a valid 160-bit address.
+
 ## Parameters
 
 ### value
 
 `unknown`
 
+The value to check
+
 ### config?
 
 [`HexConfig`](#../interfaces/HexConfig)
 
+Optional hex config (defaults to 160-bit, no prefix)
+
 ## Returns
 
 `value is Address`
+
+True if the value is a valid Address
 
   ### <a id="isBrowser"></a>isBrowser
 
@@ -16189,6 +17494,8 @@ const isAddress: (value, config?) => value is Address;
 ```ts
 const isBrowser: () => boolean;
 ```
+
+Returns whether the current environment is a browser. Always returns false in Node.js.
 
 ## Returns
 
@@ -16204,19 +17511,27 @@ const isBrowser: () => boolean;
 const isEthAddress: (value, config?) => value is EthAddress;
 ```
 
+Type guard that checks whether a value is a valid 0x-prefixed Ethereum address.
+
 ## Parameters
 
 ### value
 
 `unknown`
 
+The value to check
+
 ### config?
 
 [`HexConfig`](#../interfaces/HexConfig)
 
+Optional hex config (defaults to 160-bit with prefix)
+
 ## Returns
 
 `value is EthAddress`
+
+True if the value is a valid EthAddress
 
   ### <a id="isEthAddressWrapper"></a>isEthAddressWrapper
 
@@ -16227,6 +17542,8 @@ const isEthAddress: (value, config?) => value is EthAddress;
 ```ts
 const isEthAddressWrapper: (obj) => obj is { type: string } & EthAddressWrapper;
 ```
+
+Type guard that checks if the given object is an instance of EthAddressWrapper.
 
 ## Parameters
 
@@ -16250,19 +17567,27 @@ const isEthAddressWrapper: (obj) => obj is { type: string } & EthAddressWrapper;
 const isHash: (value, bitLength?) => value is Hash;
 ```
 
+Type guard that checks whether a value is a valid hash of the specified bit length.
+
 ## Parameters
 
 ### value
 
 `unknown`
 
+The value to check
+
 ### bitLength?
 
 [`HashBitLength`](#../type-aliases/HashBitLength)
 
+The expected bit length of the hash (defaults to 256)
+
 ## Returns
 
 `value is Hash`
+
+True if the value is a valid Hash
 
   ### <a id="isHashBitLength"></a>isHashBitLength
 
@@ -16274,15 +17599,21 @@ const isHash: (value, bitLength?) => value is Hash;
 const isHashBitLength: (value) => value is HashBitLength;
 ```
 
+Type guard that checks whether a value is a valid hash bit length.
+
 ## Parameters
 
 ### value
 
 `unknown`
 
+The value to check
+
 ## Returns
 
 `value is HashBitLength`
+
+True if the value is one of the supported HashBitLength values
 
   ### <a id="isHex"></a>isHex
 
@@ -16294,19 +17625,27 @@ const isHashBitLength: (value) => value is HashBitLength;
 const isHex: (value, config?) => value is Hex;
 ```
 
+Type guard that checks whether a value is a valid hex string.
+
 ## Parameters
 
 ### value
 
 `unknown`
 
+The value to check
+
 ### config?
 
 [`HexConfig`](#../interfaces/HexConfig)
 
+Optional configuration for prefix and bit length validation
+
 ## Returns
 
 `value is Hex`
+
+True if the value is a valid Hex string
 
   ### <a id="isHexZero"></a>isHexZero
 
@@ -16318,15 +17657,21 @@ const isHex: (value, config?) => value is Hex;
 const isHexZero: (value?) => boolean | undefined;
 ```
 
+Checks whether a hex string represents a zero value.
+
 ## Parameters
 
 ### value?
 
 `string`
 
+The hex string to check
+
 ## Returns
 
 `boolean` \| `undefined`
+
+True if zero, false if non-zero, or undefined if the input is not a string
 
   ### <a id="isJsonArray"></a>isJsonArray
 
@@ -16337,6 +17682,8 @@ const isHexZero: (value?) => boolean | undefined;
 ```ts
 const isJsonArray: <T>(value) => value is T & unknown[];
 ```
+
+Type guard that checks if a value is a valid JSON array.
 
 ## Type Parameters
 
@@ -16364,6 +17711,8 @@ const isJsonArray: <T>(value) => value is T & unknown[];
 const isJsonObject: <T>(value) => value is T & Record<string, unknown>;
 ```
 
+Type guard that checks if a value is a valid JSON object.
+
 ## Type Parameters
 
 ### T
@@ -16389,6 +17738,8 @@ const isJsonObject: <T>(value) => value is T & Record<string, unknown>;
 ```ts
 const isJsonValue: <T>(value) => value is T;
 ```
+
+Type guard that checks if a value is a valid JSON value.
 
 ## Type Parameters
 
@@ -16416,15 +17767,21 @@ const isJsonValue: <T>(value) => value is T;
 const isLocalhost: (hostname) => boolean;
 ```
 
+Checks whether a hostname refers to the local machine (localhost, 127.0.0.1, ::1, or *.localhost).
+
 ## Parameters
 
 ### hostname
 
 `string`
 
+The hostname to check
+
 ## Returns
 
 `boolean`
+
+`true` if the hostname is a localhost address
 
   ### <a id="isNode"></a>isNode
 
@@ -16435,6 +17792,8 @@ const isLocalhost: (hostname) => boolean;
 ```ts
 const isNode: () => boolean;
 ```
+
+Returns whether the current environment is Node.js. Always returns true in this entry point.
 
 ## Returns
 
@@ -16450,19 +17809,27 @@ const isNode: () => boolean;
 const isType: (value, expectedType) => boolean;
 ```
 
+Checks whether a value matches the expected field type, with correct handling for arrays and nulls.
+
 ## Parameters
 
 ### value
 
 `unknown`
 
+The value to check.
+
 ### expectedType
 
 [`FieldType`](#../type-aliases/FieldType)
 
+The expected type string.
+
 ## Returns
 
 `boolean`
+
+True if the value matches the expected type.
 
   ### <a id="isTypedArray"></a>isTypedArray
 
@@ -16474,15 +17841,21 @@ const isType: (value, expectedType) => boolean;
 const isTypedArray: (value) => value is TypedArray;
 ```
 
+Type guard that checks whether a value is a TypedArray (an array where every element is a TypedValue).
+
 ## Parameters
 
 ### value
 
 `unknown`
 
+The value to check.
+
 ## Returns
 
 `value is TypedArray`
+
+True if the value is an array of TypedValue elements.
 
   ### <a id="isTypedKey"></a>isTypedKey
 
@@ -16494,15 +17867,21 @@ const isTypedArray: (value) => value is TypedArray;
 const isTypedKey: (value) => value is TypedKey;
 ```
 
+Type guard that checks whether a value is a valid TypedKey (string, bigint, number, or symbol).
+
 ## Parameters
 
 ### value
 
 `unknown`
 
+The value to check.
+
 ## Returns
 
 `value is TypedKey`
+
+True if the value is a valid TypedKey.
 
   ### <a id="isTypedObject"></a>isTypedObject
 
@@ -16514,15 +17893,21 @@ const isTypedKey: (value) => value is TypedKey;
 const isTypedObject: (value) => value is TypedObject;
 ```
 
+Type guard that checks whether a value is a TypedObject (an object with TypedKey keys and TypedValue values).
+
 ## Parameters
 
 ### value
 
 `unknown`
 
+The value to check.
+
 ## Returns
 
 `value is TypedObject`
+
+True if the value is a valid TypedObject.
 
   ### <a id="isTypedValue"></a>isTypedValue
 
@@ -16534,15 +17919,21 @@ const isTypedObject: (value) => value is TypedObject;
 const isTypedValue: (value) => value is TypedValue;
 ```
 
+Type guard that checks whether a value is a valid TypedValue.
+
 ## Parameters
 
 ### value
 
 `unknown`
 
+The value to check.
+
 ## Returns
 
 `value is TypedValue`
+
+True if the value is a string, number, boolean, null, TypedObject, or TypedArray.
 
   ### <a id="isValidTypedFieldPair"></a>isValidTypedFieldPair
 
@@ -16554,15 +17945,21 @@ const isTypedValue: (value) => value is TypedValue;
 const isValidTypedFieldPair: (pair) => pair is [key: TypedKey, value: TypedValue];
 ```
 
+Type guard that checks whether a key-value pair has a valid TypedKey and TypedValue.
+
 ## Parameters
 
 ### pair
 
 \[`unknown`, `unknown`\]
 
+A tuple of [key, value] to validate.
+
 ## Returns
 
 `pair is [key: TypedKey, value: TypedValue]`
+
+True if the key is a TypedKey and the value is a TypedValue.
 
   ### <a id="isWebworker"></a>isWebworker
 
@@ -16573,6 +17970,8 @@ const isValidTypedFieldPair: (pair) => pair is [key: TypedKey, value: TypedValue
 ```ts
 const isWebworker: () => boolean;
 ```
+
+Returns whether the current environment is a web worker. Always returns false in Node.js.
 
 ## Returns
 
@@ -16588,15 +17987,21 @@ const isWebworker: () => boolean;
 const nibblesToBits: (value) => number;
 ```
 
+Converts a nibble count to the equivalent number of bits.
+
 ## Parameters
 
 ### value
 
 `number`
 
+The number of nibbles
+
 ## Returns
 
 `number`
+
+The number of bits
 
   ### <a id="omitBy"></a>omitBy
 
@@ -16607,6 +18012,8 @@ const nibblesToBits: (value) => number;
 ```ts
 const omitBy: <T>(obj, predicate, maxDepth?) => Partial<T>;
 ```
+
+Creates a new object excluding properties that satisfy the predicate, with optional recursive depth.
 
 ## Type Parameters
 
@@ -16620,17 +18027,25 @@ const omitBy: <T>(obj, predicate, maxDepth?) => Partial<T>;
 
 `T`
 
+The source object to omit properties from.
+
 ### predicate
 
 [`OmitByPredicate`](#../type-aliases/OmitByPredicate)
+
+A function that returns true for properties to exclude.
 
 ### maxDepth?
 
 `number`
 
+Maximum recursion depth for nested objects.
+
 ## Returns
 
 `Partial`\<`T`\>
+
+A partial copy of the object without matching properties.
 
   ### <a id="omitByPrefix"></a>omitByPrefix
 
@@ -16641,6 +18056,8 @@ const omitBy: <T>(obj, predicate, maxDepth?) => Partial<T>;
 ```ts
 const omitByPrefix: <T, P>(payload, prefix, maxDepth?) => DeepOmitStartsWith<T, P>;
 ```
+
+Omits all properties whose keys start with the given prefix, recursively through nested objects.
 
 ## Type Parameters
 
@@ -16658,17 +18075,25 @@ const omitByPrefix: <T, P>(payload, prefix, maxDepth?) => DeepOmitStartsWith<T, 
 
 `T`
 
+The source object.
+
 ### prefix
 
 `P`
+
+The string prefix to match keys against.
 
 ### maxDepth?
 
 `number`
 
+Maximum recursion depth.
+
 ## Returns
 
 [`DeepOmitStartsWith`](#../type-aliases/DeepOmitStartsWith)\<`T`, `P`\>
+
+A new object without properties that have matching prefixed keys.
 
   ### <a id="padHex"></a>padHex
 
@@ -16704,6 +18129,8 @@ const padHex: (hex, byteCount?) => string;
 const pickBy: <T>(obj, predicate, maxDepth?) => Partial<T>;
 ```
 
+Creates a new object containing only the properties that satisfy the predicate, with optional recursive depth.
+
 ## Type Parameters
 
 ### T
@@ -16716,17 +18143,25 @@ const pickBy: <T>(obj, predicate, maxDepth?) => Partial<T>;
 
 `T`
 
+The source object to pick properties from.
+
 ### predicate
 
 [`PickByPredicate`](#../type-aliases/PickByPredicate)
+
+A function that returns true for properties to include.
 
 ### maxDepth?
 
 `number`
 
+Maximum recursion depth for nested objects.
+
 ## Returns
 
 `Partial`\<`T`\>
+
+A partial copy of the object with only matching properties.
 
   ### <a id="pickByPrefix"></a>pickByPrefix
 
@@ -16737,6 +18172,8 @@ const pickBy: <T>(obj, predicate, maxDepth?) => Partial<T>;
 ```ts
 const pickByPrefix: <T, P>(payload, prefix, maxDepth?) => DeepPickStartsWith<T, P>;
 ```
+
+Picks all properties whose keys start with the given prefix, recursively through nested objects.
 
 ## Type Parameters
 
@@ -16754,17 +18191,25 @@ const pickByPrefix: <T, P>(payload, prefix, maxDepth?) => DeepPickStartsWith<T, 
 
 `T`
 
+The source object.
+
 ### prefix
 
 `P`
+
+The string prefix to match keys against.
 
 ### maxDepth?
 
 `number`
 
+Maximum recursion depth.
+
 ## Returns
 
 [`DeepPickStartsWith`](#../type-aliases/DeepPickStartsWith)\<`T`, `P`\>
+
+A new object containing only properties with matching prefixed keys.
 
   ### <a id="profile"></a>profile
 
@@ -16776,15 +18221,21 @@ const pickByPrefix: <T, P>(payload, prefix, maxDepth?) => DeepPickStartsWith<T, 
 const profile: (profiler, name) => void;
 ```
 
+Records a timestamp for the given profile name.
+
 ## Parameters
 
 ### profiler
 
 [`Profiler`](#../type-aliases/Profiler)
 
+The profiler instance to record into.
+
 ### name
 
 `string`
+
+The name of the timing entry.
 
 ## Returns
 
@@ -16800,15 +18251,21 @@ const profile: (profiler, name) => void;
 const profileReport: (profiler) => Record<string, number>;
 ```
 
+Generates a report of elapsed times for each profiled entry.
+
 ## Parameters
 
 ### profiler
 
 [`Profiler`](#../type-aliases/Profiler)
 
+The profiler instance to report on.
+
 ## Returns
 
 `Record`\<`string`, `number`\>
+
+A record mapping each profile name to its elapsed time in milliseconds, plus a '-all-' total.
 
   ### <a id="rejected"></a>rejected
 
@@ -16848,6 +18305,8 @@ For use with Promise.allSettled to filter only rejected results
 const removeFields: <T, K>(obj, fields) => Omit<T, K>;
 ```
 
+Returns a shallow copy of the object with the specified fields removed.
+
 ## Type Parameters
 
 ### T
@@ -16864,13 +18323,19 @@ const removeFields: <T, K>(obj, fields) => Omit<T, K>;
 
 `T`
 
+The source object.
+
 ### fields
 
 `K`[]
 
+An array of keys to remove.
+
 ## Returns
 
 `Omit`\<`T`, `K`\>
+
+A new object without the specified fields.
 
   ### <a id="retry"></a>retry
 
@@ -16881,6 +18346,8 @@ const removeFields: <T, K>(obj, fields) => Omit<T, K>;
 ```ts
 const retry: <T>(func, config?) => Promise<T | undefined>;
 ```
+
+Retries an async function with exponential backoff until it completes or retries are exhausted.
 
 ## Type Parameters
 
@@ -16894,13 +18361,19 @@ const retry: <T>(func, config?) => Promise<T | undefined>;
 
 () => [`Promisable`](#../type-aliases/Promisable)\<`T` \| `undefined`\>
 
+The function to retry.
+
 ### config?
 
 [`RetryConfigWithComplete`](#../interfaces/RetryConfigWithComplete)\<`T`\>
 
+Optional retry configuration including backoff, interval, retries, and completion check.
+
 ## Returns
 
 `Promise`\<`T` \| `undefined`\>
+
+The result of the function, or undefined if all retries were exhausted.
 
   ### <a id="setTimeoutEx"></a>setTimeoutEx
 
@@ -16912,19 +18385,27 @@ const retry: <T>(func, config?) => Promise<T | undefined>;
 const setTimeoutEx: (func, delay) => string;
 ```
 
+Sets a timeout using an optimized internal timer that coalesces multiple timeouts into a single native timer.
+
 ## Parameters
 
 ### func
 
 `Function`
 
+The function to call after the delay.
+
 ### delay
 
 `number`
 
+The delay in milliseconds (must be >= 0).
+
 ## Returns
 
 `string`
+
+A unique string ID that can be used with clearTimeoutEx to cancel the timeout.
 
   ### <a id="toAddress"></a>toAddress
 
@@ -16936,9 +18417,13 @@ const setTimeoutEx: (func, delay) => string;
 const toAddress: (value, config?) => Address;
 ```
 
+Converts a value to a 160-bit Address hex string.
+
 ## Parameters
 
 ### value
+
+The value to convert (string, number, bigint, or ArrayBuffer)
 
 `string` | `number` | `bigint` | `ArrayBufferLike`
 
@@ -16946,9 +18431,13 @@ const toAddress: (value, config?) => Address;
 
 [`HexConfig`](#../interfaces/HexConfig)
 
+Optional hex config (defaults to 160-bit, no prefix)
+
 ## Returns
 
 [`Address`](#../type-aliases/Address)
+
+The value as an Address
 
   ### <a id="toDecimalPrecision"></a>toDecimalPrecision
 
@@ -16960,19 +18449,27 @@ const toAddress: (value, config?) => Address;
 const toDecimalPrecision: (value, digits) => string;
 ```
 
+Formats a number to the specified number of significant digits, returning a string with minimal trailing zeros.
+
 ## Parameters
 
 ### value
 
 `number`
 
+The number to format
+
 ### digits
 
 `number`
 
+The number of significant digits
+
 ## Returns
 
 `string`
+
+A string representation of the number with the specified precision
 
   ### <a id="toEthAddress"></a>toEthAddress
 
@@ -16984,9 +18481,13 @@ const toDecimalPrecision: (value, digits) => string;
 const toEthAddress: (value, config?) => EthAddress;
 ```
 
+Converts a value to a 0x-prefixed Ethereum address string.
+
 ## Parameters
 
 ### value
+
+The value to convert (string, number, bigint, or ArrayBuffer)
 
 `string` | `number` | `bigint` | `ArrayBufferLike`
 
@@ -16994,9 +18495,13 @@ const toEthAddress: (value, config?) => EthAddress;
 
 [`HexConfig`](#../interfaces/HexConfig)
 
+Optional hex config (defaults to 160-bit, no inner prefix)
+
 ## Returns
 
 [`EthAddress`](#../type-aliases/EthAddress)
+
+The value as an EthAddress
 
   ### <a id="toFixedPoint"></a>toFixedPoint
 
@@ -17008,9 +18513,13 @@ const toEthAddress: (value, config?) => EthAddress;
 const toFixedPoint: (value, places?) => bigint;
 ```
 
+Converts a bigint or decimal string to a fixed-point bigint representation.
+
 ## Parameters
 
 ### value
+
+The value to convert (bigint or string with optional decimal point)
 
 `bigint` | `string`
 
@@ -17018,9 +18527,13 @@ const toFixedPoint: (value, places?) => bigint;
 
 `number`
 
+Number of decimal places (default 18)
+
 ## Returns
 
 `bigint`
+
+A bigint representing the value scaled by 10^places
 
   ### <a id="toHex"></a>toHex
 
@@ -17058,15 +18571,21 @@ takes any value and tries our best to convert it to a hex string
 const toHexLegacy: (buffer) => string;
 ```
 
+Converts an ArrayBuffer to a hex string without padding or normalization.
+
 ## Parameters
 
 ### buffer
 
 `ArrayBuffer`
 
+The ArrayBuffer to convert
+
 ## Returns
 
 `string`
+
+A lowercase hex string representation of the buffer
 
   ### <a id="toJsonArray"></a>toJsonArray
 
@@ -17080,6 +18599,8 @@ const toJsonArray: {
 <T>  (value, assert): T & unknown[];
 };
 ```
+
+Parses a value into a JsonArray, throwing if it does not conform.
 
 ## Call Signature
 
@@ -17142,6 +18663,8 @@ const toJsonObject: {
 };
 ```
 
+Parses a value into a JsonObject, throwing if it does not conform.
+
 ## Call Signature
 
 ```ts
@@ -17203,6 +18726,8 @@ const toJsonValue: {
 };
 ```
 
+Parses a value into a JsonValue, throwing if it does not conform.
+
 ## Call Signature
 
 ```ts
@@ -17261,19 +18786,27 @@ const toJsonValue: {
 const toSafeJson: (value, maxDepth?) => JsonValue;
 ```
 
+Converts a value to a JSON-safe representation, handling circular references and non-serializable types.
+
 ## Parameters
 
 ### value
 
 `unknown`
 
+The value to convert.
+
 ### maxDepth?
 
 `number`
 
+Maximum recursion depth.
+
 ## Returns
 
 [`JsonValue`](#../type-aliases/JsonValue)
+
+A JSON-safe value.
 
   ### <a id="toSafeJsonArray"></a>toSafeJsonArray
 
@@ -17285,23 +18818,33 @@ const toSafeJson: (value, maxDepth?) => JsonValue;
 const toSafeJsonArray: (value, cycleList?, maxDepth?) => any[];
 ```
 
+Converts an array to a JSON-safe array, handling circular references and depth limits.
+
 ## Parameters
 
 ### value
 
 `unknown`[]
 
+The array to convert.
+
 ### cycleList?
 
 `unknown`[]
+
+Tracks visited objects to detect circular references.
 
 ### maxDepth?
 
 `number`
 
+Maximum recursion depth before truncating.
+
 ## Returns
 
 `any`[]
+
+A JSON-safe array representation.
 
   ### <a id="toSafeJsonObject"></a>toSafeJsonObject
 
@@ -17313,23 +18856,33 @@ const toSafeJsonArray: (value, cycleList?, maxDepth?) => any[];
 const toSafeJsonObject: (value, cycleList?, maxDepth?) => JsonObject;
 ```
 
+Converts an object to a JSON-safe object, handling circular references and depth limits.
+
 ## Parameters
 
 ### value
 
 `object`
 
+The object to convert.
+
 ### cycleList?
 
 `unknown`[]
+
+Tracks visited objects to detect circular references.
 
 ### maxDepth?
 
 `number`
 
+Maximum recursion depth before truncating.
+
 ## Returns
 
 [`JsonObject`](#../type-aliases/JsonObject)
+
+A JSON-safe object representation.
 
   ### <a id="toSafeJsonString"></a>toSafeJsonString
 
@@ -17341,19 +18894,27 @@ const toSafeJsonObject: (value, cycleList?, maxDepth?) => JsonObject;
 const toSafeJsonString: (value, maxDepth?) => string;
 ```
 
+Converts a value to a pretty-printed JSON string, safely handling circular references and non-JSON types.
+
 ## Parameters
 
 ### value
 
 `unknown`
 
+The value to serialize.
+
 ### maxDepth?
 
 `number`
 
+Maximum recursion depth.
+
 ## Returns
 
 `string`
+
+A formatted JSON string.
 
   ### <a id="toSafeJsonValue"></a>toSafeJsonValue
 
@@ -17365,23 +18926,34 @@ const toSafeJsonString: (value, maxDepth?) => string;
 const toSafeJsonValue: (value, cycleList?, maxDepth?) => JsonValue;
 ```
 
+Converts an unknown value to a JSON-safe value, replacing circular references with '[Circular]' and
+non-JSON types with descriptive placeholder strings.
+
 ## Parameters
 
 ### value
 
 `unknown`
 
+The value to convert.
+
 ### cycleList?
 
 `unknown`[]
+
+Tracks visited objects to detect circular references.
 
 ### maxDepth?
 
 `number`
 
+Maximum recursion depth before truncating with '[MaxDepth]'.
+
 ## Returns
 
 [`JsonValue`](#../type-aliases/JsonValue)
+
+A JSON-safe representation of the value.
 
   ### <a id="typeOf"></a>typeOf
 
@@ -17392,6 +18964,8 @@ const toSafeJsonValue: (value, cycleList?, maxDepth?) => JsonValue;
 ```ts
 const typeOf: <T>(item) => TypeOfTypes;
 ```
+
+Extended typeof that distinguishes arrays from objects (unlike native `typeof`).
 
 ## Type Parameters
 
@@ -17405,9 +18979,13 @@ const typeOf: <T>(item) => TypeOfTypes;
 
 `T`
 
+The value to check.
+
 ## Returns
 
 [`TypeOfTypes`](#../type-aliases/TypeOfTypes)
+
+The type of the item as a TypeOfTypes string.
 
   ### <a id="union"></a>union
 
@@ -17418,6 +18996,8 @@ const typeOf: <T>(item) => TypeOfTypes;
 ```ts
 const union: <TKey>(a, b) => Set<TKey>;
 ```
+
+Returns a new set containing all elements from both `a` and `b`.
 
 ## Type Parameters
 
@@ -17431,13 +19011,19 @@ const union: <TKey>(a, b) => Set<TKey>;
 
 `Set`\<`TKey`\>
 
+The first set
+
 ### b
 
 `Set`\<`TKey`\>
 
+The second set
+
 ## Returns
 
 `Set`\<`TKey`\>
+
+A new set representing the union of `a` and `b`
 
   ### <a id="uniq"></a>uniq
 
@@ -17448,6 +19034,8 @@ const union: <TKey>(a, b) => Set<TKey>;
 ```ts
 const uniq: <T>(arr) => T[];
 ```
+
+Returns a new array with duplicate values removed.
 
 ## Type Parameters
 
@@ -17461,9 +19049,13 @@ const uniq: <T>(arr) => T[];
 
 `T`[]
 
+The input array
+
 ## Returns
 
 `T`[]
+
+A deduplicated array
 
   ### <a id="uniqBy"></a>uniqBy
 
@@ -17474,6 +19066,8 @@ const uniq: <T>(arr) => T[];
 ```ts
 const uniqBy: <T, I>(arr, iteratee) => T[];
 ```
+
+Returns a new array with duplicates removed, using a key function for comparison.
 
 ## Type Parameters
 
@@ -17491,13 +19085,19 @@ const uniqBy: <T, I>(arr, iteratee) => T[];
 
 `T`[]
 
+The input array
+
 ### iteratee
 
 (`item`) => `I`
 
+Function that returns the key to compare by
+
 ## Returns
 
 `T`[]
+
+A deduplicated array keeping the first occurrence of each key
 
   ### <a id="validateType"></a>validateType
 
@@ -17508,6 +19108,8 @@ const uniqBy: <T, I>(arr, iteratee) => T[];
 ```ts
 const validateType: <T>(typeName, value, optional?) => [T | undefined, Error[]];
 ```
+
+Validates that a value matches the expected type, returning the value and any errors.
 
 ## Type Parameters
 
@@ -17521,17 +19123,25 @@ const validateType: <T>(typeName, value, optional?) => [T | undefined, Error[]];
 
 [`TypeOfTypes`](#../type-aliases/TypeOfTypes)
 
+The expected type name.
+
 ### value
 
 `T`
+
+The value to validate.
 
 ### optional?
 
 `boolean`
 
+If true, undefined values are accepted without error.
+
 ## Returns
 
 \[`T` \| `undefined`, `Error`[]\]
+
+A tuple of [value or undefined, array of errors].
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

@@ -39,19 +39,27 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 function fromFixedPoint(value, places?): bigint;
 ```
 
+Converts a fixed-point bigint back to a whole-number bigint by dividing out the decimal places.
+
 ## Parameters
 
 ### value
 
 `bigint`
 
+The fixed-point bigint value to convert
+
 ### places?
 
 `number` = `18`
 
+Number of decimal places (default 18)
+
 ## Returns
 
 `bigint`
+
+The whole-number bigint result
 
   ### <a id="toDecimalPrecision"></a>toDecimalPrecision
 
@@ -63,19 +71,27 @@ function fromFixedPoint(value, places?): bigint;
 function toDecimalPrecision(value, digits): string;
 ```
 
+Formats a number to the specified number of significant digits, returning a string with minimal trailing zeros.
+
 ## Parameters
 
 ### value
 
 `number`
 
+The number to format
+
 ### digits
 
 `number`
 
+The number of significant digits
+
 ## Returns
 
 `string`
+
+A string representation of the number with the specified precision
 
   ### <a id="toFixedPoint"></a>toFixedPoint
 
@@ -87,9 +103,13 @@ function toDecimalPrecision(value, digits): string;
 function toFixedPoint(value, places?): bigint;
 ```
 
+Converts a bigint or decimal string to a fixed-point bigint representation.
+
 ## Parameters
 
 ### value
+
+The value to convert (bigint or string with optional decimal point)
 
 `string` | `bigint`
 
@@ -97,9 +117,13 @@ function toFixedPoint(value, places?): bigint;
 
 `number` = `18`
 
+Number of decimal places (default 18)
+
 ## Returns
 
 `bigint`
+
+A bigint representing the value scaled by 10^places
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

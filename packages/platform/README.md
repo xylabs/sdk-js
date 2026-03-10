@@ -40,6 +40,8 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 function isBrowser(): boolean;
 ```
 
+Returns whether the current environment is a browser window (not a web worker).
+
 ## Returns
 
 `boolean`
@@ -54,6 +56,8 @@ function isBrowser(): boolean;
 function isNode(): boolean;
 ```
 
+Returns whether the current environment is Node.js. Always returns false in the browser entry point.
+
 ## Returns
 
 `boolean`
@@ -67,6 +71,8 @@ function isNode(): boolean;
 ```ts
 function isWebworker(): boolean;
 ```
+
+Returns whether the current environment is a dedicated web worker.
 
 ## Returns
 
@@ -84,6 +90,8 @@ function isWebworker(): boolean;
 const subtle: SubtleCrypto;
 ```
 
+The Web Crypto API's SubtleCrypto interface, sourced from the browser's globalThis.crypto.
+
 ### index-node
 
   ### functions
@@ -97,6 +105,8 @@ const subtle: SubtleCrypto;
 ```ts
 function isBrowser(): boolean;
 ```
+
+Returns whether the current environment is a browser. Always returns false in Node.js.
 
 ## Returns
 
@@ -112,6 +122,8 @@ function isBrowser(): boolean;
 function isNode(): boolean;
 ```
 
+Returns whether the current environment is Node.js. Always returns true in this entry point.
+
 ## Returns
 
 `boolean`
@@ -125,6 +137,8 @@ function isNode(): boolean;
 ```ts
 function isWebworker(): boolean;
 ```
+
+Returns whether the current environment is a web worker. Always returns false in Node.js.
 
 ## Returns
 

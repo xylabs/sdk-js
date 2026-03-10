@@ -37,6 +37,8 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ***
 
+Result returned by a custom matcher function.
+
 ## Properties
 
 ### actual?
@@ -44,6 +46,8 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 ```ts
 optional actual: unknown;
 ```
+
+The actual value received by the matcher.
 
 ***
 
@@ -53,6 +57,8 @@ optional actual: unknown;
 optional expected: unknown;
 ```
 
+The expected value the matcher compared against.
+
 ***
 
 ### message()
@@ -60,6 +66,8 @@ optional expected: unknown;
 ```ts
 message: () => string;
 ```
+
+Returns a human-readable failure or negation message.
 
 ### Returns
 
@@ -73,6 +81,8 @@ message: () => string;
 pass: boolean;
 ```
 
+Whether the matcher assertion passed.
+
 ### variables
 
   ### <a id="matchers"></a>matchers
@@ -85,6 +95,8 @@ pass: boolean;
 const matchers: object;
 ```
 
+Collection of custom Vitest matchers extending the built-in `expect` assertions.
+
 ## Type Declaration
 
 ### toBeArrayOfSize()
@@ -93,15 +105,21 @@ const matchers: object;
 toBeArrayOfSize(received, expectedSize): ExpectationResult;
 ```
 
+Asserts the received value is an array with the specified length.
+
 ### Parameters
 
 #### received
 
 `unknown`
 
+The value to check.
+
 #### expectedSize
 
 `number`
+
+The expected array length.
 
 ### Returns
 
@@ -113,11 +131,15 @@ toBeArrayOfSize(received, expectedSize): ExpectationResult;
 toBeArray(received): ExpectationResult;
 ```
 
+Asserts the received value is an array.
+
 ### Parameters
 
 #### received
 
 `unknown`
+
+The value to check.
 
 ### Returns
 
@@ -129,15 +151,21 @@ toBeArray(received): ExpectationResult;
 toBeOneOf(received, expected): ExpectationResult;
 ```
 
+Asserts the received value is one of the values in the expected array.
+
 ### Parameters
 
 #### received
 
 `unknown`
 
+The value to check.
+
 #### expected
 
 `unknown`[]
+
+The array of acceptable values.
 
 ### Returns
 
@@ -149,11 +177,15 @@ toBeOneOf(received, expected): ExpectationResult;
 toBeNegative(received): ExpectationResult;
 ```
 
+Asserts the received number is negative (less than zero).
+
 ### Parameters
 
 #### received
 
 `number`
+
+The number to check.
 
 ### Returns
 
@@ -165,11 +197,15 @@ toBeNegative(received): ExpectationResult;
 toBePositive(received): ExpectationResult;
 ```
 
+Asserts the received number is positive (greater than zero).
+
 ### Parameters
 
 #### received
 
 `number`
+
+The number to check.
 
 ### Returns
 
@@ -181,11 +217,15 @@ toBePositive(received): ExpectationResult;
 toBeNumber: (received) => ExpectationResult;
 ```
 
+Asserts the received value is of type `number` and not NaN.
+
 ### Parameters
 
 #### received
 
 `unknown`
+
+The value to check.
 
 ### Returns
 
@@ -197,11 +237,15 @@ toBeNumber: (received) => ExpectationResult;
 toBeFunction: (received) => ExpectationResult;
 ```
 
+Asserts the received value is of type `function`.
+
 ### Parameters
 
 #### received
 
 `unknown`
+
+The value to check.
 
 ### Returns
 
@@ -213,11 +257,15 @@ toBeFunction: (received) => ExpectationResult;
 toBeString: (received) => ExpectationResult;
 ```
 
+Asserts the received value is of type `string`.
+
 ### Parameters
 
 #### received
 
 `unknown`
+
+The value to check.
 
 ### Returns
 
@@ -229,11 +277,15 @@ toBeString: (received) => ExpectationResult;
 toBeObject(received): ExpectationResult;
 ```
 
+Asserts the received value is a plain object (not an array or null).
+
 ### Parameters
 
 #### received
 
 `unknown`
+
+The value to check.
 
 ### Returns
 
@@ -245,11 +297,15 @@ toBeObject(received): ExpectationResult;
 toBeInteger(received): ExpectationResult;
 ```
 
+Asserts the received number is an integer.
+
 ### Parameters
 
 #### received
 
 `number`
+
+The number to check.
 
 ### Returns
 
@@ -261,11 +317,15 @@ toBeInteger(received): ExpectationResult;
 toBeFalse(received): ExpectationResult;
 ```
 
+Asserts the received value is strictly `false`.
+
 ### Parameters
 
 #### received
 
 `unknown`
+
+The value to check.
 
 ### Returns
 
@@ -277,11 +337,15 @@ toBeFalse(received): ExpectationResult;
 toBeTrue(received): ExpectationResult;
 ```
 
+Asserts the received value is strictly `true`.
+
 ### Parameters
 
 #### received
 
 `unknown`
+
+The value to check.
 
 ### Returns
 
@@ -293,15 +357,21 @@ toBeTrue(received): ExpectationResult;
 toContainAllValues(received, expectedValues): object;
 ```
 
+Asserts that all expected values are present in the received array or object values.
+
 ### Parameters
 
 #### received
 
 `unknown`
 
+The array or object to check.
+
 #### expectedValues
 
 `unknown`[]
+
+The values that must all be present.
 
 ### Returns
 
@@ -329,15 +399,21 @@ message: () => string;
 toContainKey(received, key): object;
 ```
 
+Asserts that the received object contains the specified key.
+
 ### Parameters
 
 #### received
 
 `object`
 
+The object to check.
+
 #### key
 
 `string`
+
+The key that should be present.
 
 ### Returns
 
@@ -365,15 +441,21 @@ message: () => string;
 toInclude(received, value): object;
 ```
 
+Asserts that the received array, string, or object values include the specified value.
+
 ### Parameters
 
 #### received
 
 `unknown`
 
+The array, string, or object to search within.
+
 #### value
 
 `any`
+
+The value to look for.
 
 ### Returns
 
@@ -401,15 +483,21 @@ message: () => string;
 toIncludeAllMembers(received, expected): ExpectationResult;
 ```
 
+Asserts that the received array includes all members of the expected array.
+
 ### Parameters
 
 #### received
 
 `unknown`[]
 
+The array to check.
+
 #### expected
 
 `unknown`[]
+
+The members that must all be present.
 
 ### Returns
 
@@ -421,15 +509,21 @@ toIncludeAllMembers(received, expected): ExpectationResult;
 toContainAllKeys(received, expectedKeys): ExpectationResult;
 ```
 
+Asserts that the received object contains all of the specified keys.
+
 ### Parameters
 
 #### received
 
 `object`
 
+The object to check.
+
 #### expectedKeys
 
 `string`[]
+
+The keys that must all be present.
 
 ### Returns
 
@@ -441,15 +535,21 @@ toContainAllKeys(received, expectedKeys): ExpectationResult;
 toContainValues(received, expectedValues): ExpectationResult;
 ```
 
+Asserts that the received object contains all of the specified values (using deep equality).
+
 ### Parameters
 
 #### received
 
 `object`
 
+The object to check.
+
 #### expectedValues
 
 `unknown`[]
+
+The values that must all be present.
 
 ### Returns
 
@@ -461,11 +561,15 @@ toContainValues(received, expectedValues): ExpectationResult;
 toBeEmpty(received): ExpectationResult;
 ```
 
+Asserts the received value is empty (zero-length array/string, empty object, or empty Map/Set).
+
 ### Parameters
 
 #### received
 
 `unknown`
+
+The value to check.
 
 ### Returns
 
@@ -477,11 +581,15 @@ toBeEmpty(received): ExpectationResult;
 toBeValidDate(received): object;
 ```
 
+Asserts the received value is a valid Date instance (not an invalid date).
+
 ### Parameters
 
 #### received
 
 `unknown`
+
+The value to check.
 
 ### Returns
 

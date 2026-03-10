@@ -123,9 +123,13 @@ unless the receiving thread transfers it back again!
 function isWorkerRuntime(): boolean;
 ```
 
+Check whether the current code is running inside a web worker context.
+
 ## Returns
 
 `boolean`
+
+True if running in a worker, false otherwise.
 
     ### <a id="registerSerializer"></a>registerSerializer
 
@@ -137,11 +141,15 @@ function isWorkerRuntime(): boolean;
 function registerSerializer(serializer): void;
 ```
 
+Register a custom serializer to extend the default serialization behavior for worker messages.
+
 ## Parameters
 
 ### serializer
 
 [`SerializerImplementation`](#../interfaces/SerializerImplementation)\<[`JsonSerializable`](#../type-aliases/JsonSerializable)\>
+
+The serializer implementation to register.
 
 ## Returns
 
@@ -397,6 +405,8 @@ Queued tasks can be cancelled until the pool starts running them on a worker thr
 
 ***
 
+A serializer that can convert between a message format and an input type.
+
 ## Type Parameters
 
 ### Msg
@@ -448,6 +458,8 @@ serialize(input): Msg;
 [**@xylabs/threads**](#../../README)
 
 ***
+
+A serializer implementation that receives a fallback (default) serializer for chaining.
 
 ## Type Parameters
 
@@ -508,6 +520,8 @@ serialize(input, defaultSerialize): Msg;
 [**@xylabs/threads**](#../../README)
 
 ***
+
+Descriptor wrapping a value with its associated transferable objects for zero-copy messaging.
 
 ## Type Parameters
 
@@ -595,6 +609,8 @@ Separate class to spawn workers from source code blobs or strings.
 type ExposedAs<Exposed> = Exposed extends ArbitraryWorkerInterface ? ArbitraryThreadType : Exposed extends WorkerFunction ? FunctionThread<Parameters<Exposed>, StripAsync<ReturnType<Exposed>>> : Exposed extends WorkerModule<any> ? ModuleThread<Exposed> : never;
 ```
 
+Maps a worker's exposed API type to its corresponding thread type (`FunctionThread` or `ModuleThread`).
+
 ## Type Parameters
 
 ### Exposed
@@ -610,6 +626,8 @@ type ExposedAs<Exposed> = Exposed extends ArbitraryWorkerInterface ? ArbitraryTh
 ```ts
 type FunctionThread<Args, ReturnType> = ProxyableFunction<Args, ReturnType> & PrivateThreadProps;
 ```
+
+A thread wrapping a single exposed function.
 
 ## Type Parameters
 
@@ -635,6 +653,8 @@ type JsonSerializable =
   | JsonSerializableObject[];
 ```
 
+A JSON-compatible value that can be serialized for worker message passing.
+
     ### <a id="ModuleThread"></a>ModuleThread
 
 [**@xylabs/threads**](#../../README)
@@ -644,6 +664,8 @@ type JsonSerializable =
 ```ts
 type ModuleThread<Methods> = ModuleProxy<Methods> & PrivateThreadProps;
 ```
+
+A thread wrapping an exposed module of functions.
 
 ## Type Parameters
 
@@ -661,7 +683,7 @@ type ModuleThread<Methods> = ModuleProxy<Methods> & PrivateThreadProps;
 type Thread = ThreadType;
 ```
 
-Thread utility functions. Use them to manage or inspect a `spawn()`-ed thread.
+Re-exported Thread type from the master types module.
 
     ### <a id="Worker"></a>Worker
 
@@ -698,6 +720,8 @@ Separate class to spawn workers from source code blobs or strings.
 ```ts
 const DefaultSerializer: Serializer<JsonSerializable>;
 ```
+
+Default serializer that handles Error instances and passes other values through.
 
     ### <a id="Pool"></a>Pool
 
@@ -831,9 +855,13 @@ Worker implementation. Either web worker or a node.js Worker class.
 function isWorkerRuntime(): boolean;
 ```
 
+Check whether the current code is running inside a Node.js worker thread.
+
 ## Returns
 
 `boolean`
+
+True if running in a worker thread (not the main thread), false otherwise.
 
   ### type-aliases
 

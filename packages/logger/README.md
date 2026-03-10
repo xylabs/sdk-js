@@ -56,8 +56,7 @@ XYLabs Logger Library
 
 ***
 
-Interface to handle overlap between Winston &
-`console` with as much congruency as possible.
+A LevelLogger that delegates to the global `console` object.
 
 ## Extends
 
@@ -223,8 +222,8 @@ get warn(): LogFunction;
 
 ***
 
-Interface to handle overlap between Winston &
-`console` with as much congruency as possible.
+A logger wrapper that prefixes every log message with a bracketed identifier.
+Useful for distinguishing log output from different components or instances.
 
 ## Implements
 
@@ -422,8 +421,8 @@ Logger.warn
 
 ***
 
-Interface to handle overlap between Winston &
-`console` with as much congruency as possible.
+A logger that filters messages based on a configured log level.
+Methods for levels above the configured threshold return a no-op function.
 
 ## Extended by
 
@@ -615,6 +614,8 @@ new SilentLogger(): SilentLogger;
 readonly debug: (..._data) => undefined = NoOpLogFunction;
 ```
 
+A log function that silently discards all arguments.
+
 ### Parameters
 
 #### \_data
@@ -636,6 +637,8 @@ readonly debug: (..._data) => undefined = NoOpLogFunction;
 ```ts
 readonly error: (..._data) => undefined = NoOpLogFunction;
 ```
+
+A log function that silently discards all arguments.
 
 ### Parameters
 
@@ -659,6 +662,8 @@ readonly error: (..._data) => undefined = NoOpLogFunction;
 readonly info: (..._data) => undefined = NoOpLogFunction;
 ```
 
+A log function that silently discards all arguments.
+
 ### Parameters
 
 #### \_data
@@ -680,6 +685,8 @@ readonly info: (..._data) => undefined = NoOpLogFunction;
 ```ts
 readonly log: (..._data) => undefined = NoOpLogFunction;
 ```
+
+A log function that silently discards all arguments.
 
 ### Parameters
 
@@ -703,6 +710,8 @@ readonly log: (..._data) => undefined = NoOpLogFunction;
 readonly trace: (..._data) => undefined = NoOpLogFunction;
 ```
 
+A log function that silently discards all arguments.
+
 ### Parameters
 
 #### \_data
@@ -724,6 +733,8 @@ readonly trace: (..._data) => undefined = NoOpLogFunction;
 ```ts
 readonly warn: (..._data) => undefined = NoOpLogFunction;
 ```
+
+A log function that silently discards all arguments.
 
 ### Parameters
 
@@ -751,6 +762,8 @@ readonly warn: (..._data) => undefined = NoOpLogFunction;
 function NoOpLogFunction(..._data): undefined;
 ```
 
+A log function that silently discards all arguments.
+
 ## Parameters
 
 ### \_data
@@ -771,15 +784,21 @@ function NoOpLogFunction(..._data): undefined;
 function getFunctionName(depth?): string;
 ```
 
+Retrieves the name of the calling function by inspecting the stack trace.
+
 ## Parameters
 
 ### depth?
 
 `number` = `2`
 
+The stack frame depth to inspect (default: 2, the caller's caller).
+
 ## Returns
 
 `string`
+
+The function name, or '<unknown>' if it cannot be determined.
 
 ### interfaces
 
@@ -852,6 +871,8 @@ warn: LogFunction;
 type LogFunction = (...data) => void;
 ```
 
+A generic logging function that accepts any number of arguments.
+
 ## Parameters
 
 ### data
@@ -872,6 +893,8 @@ type LogFunction = (...data) => void;
 type LogLevelKey = EnumKey<typeof LogLevel>;
 ```
 
+String key for a log level (e.g. 'error', 'warn', 'info').
+
   ### <a id="LogLevelValue"></a>LogLevelValue
 
 [**@xylabs/logger**](#../README)
@@ -882,6 +905,8 @@ type LogLevelKey = EnumKey<typeof LogLevel>;
 type LogLevelValue = EnumValue<typeof LogLevel>;
 ```
 
+Numeric value of a log level (1 through 6).
+
   ### <a id="LogVerbosity"></a>LogVerbosity
 
 [**@xylabs/logger**](#../README)
@@ -891,6 +916,8 @@ type LogLevelValue = EnumValue<typeof LogLevel>;
 ```ts
 type LogVerbosity = LogLevelKey;
 ```
+
+Alias for LogLevelKey, representing the verbosity setting as a string.
 
 ### variables
 
@@ -910,6 +937,8 @@ const LogLevel: Enum<{
   trace: 6;
 }>;
 ```
+
+Numeric log level values, from least verbose (error=1) to most verbose (trace=6).
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

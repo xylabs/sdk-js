@@ -47,19 +47,27 @@ function assertError(
    defaultMessage): undefined;
 ```
 
+Throws an Error based on the assert configuration when a value fails validation.
+
 ## Parameters
 
 ### value
 
 `unknown`
 
+The value being validated
+
 ### assert
+
+Assertion config controlling the error message
 
 [`AssertConfig`](#../type-aliases/AssertConfig) | `undefined`
 
 ### defaultMessage
 
 `string`
+
+Fallback message if no custom message is provided
 
 ## Returns
 
@@ -75,6 +83,8 @@ function assertError(
 function handleError<T>(error, handler): T;
 ```
 
+Invokes the handler if the value is an Error, otherwise re-throws it.
+
 ## Type Parameters
 
 ### T
@@ -87,13 +97,19 @@ function handleError<T>(error, handler): T;
 
 `any`
 
+The caught value to inspect
+
 ### handler
 
 (`error`) => `T`
 
+Callback invoked with the Error if it is one
+
 ## Returns
 
 `T`
+
+The handler's return value
 
   ### <a id="handleErrorAsync"></a>handleErrorAsync
 
@@ -105,6 +121,8 @@ function handleError<T>(error, handler): T;
 function handleErrorAsync<T>(error, handler): Promise<T>;
 ```
 
+Async version of handleError. Invokes the async handler if the value is an Error, otherwise re-throws it.
+
 ## Type Parameters
 
 ### T
@@ -117,13 +135,19 @@ function handleErrorAsync<T>(error, handler): Promise<T>;
 
 `any`
 
+The caught value to inspect
+
 ### handler
 
 (`error`) => `Promise`\<`T`\>
 
+Async callback invoked with the Error if it is one
+
 ## Returns
 
 `Promise`\<`T`\>
+
+The handler's resolved return value
 
   ### <a id="isError"></a>isError
 
@@ -136,6 +160,8 @@ function handleErrorAsync<T>(error, handler): Promise<T>;
 ```ts
 function isError(value): value is Error;
 ```
+
+Type guard that checks whether a value is an Error instance.
 
 ### Parameters
 
@@ -152,6 +178,8 @@ function isError(value): value is Error;
 ```ts
 function isError<T>(value): value is Extract<T, Error>;
 ```
+
+Type guard that checks whether a value is an Error instance.
 
 ### Type Parameters
 
@@ -180,6 +208,8 @@ function isError<T>(value): value is Extract<T, Error>;
 ```ts
 type AssertConfig = string | AssertCallback | boolean;
 ```
+
+Configuration for assertion behavior: a static message string, a boolean toggle, or a callback.
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

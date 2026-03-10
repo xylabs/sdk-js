@@ -37,6 +37,9 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ***
 
+A console span exporter that formats spans with color-coded durations using chalk.
+Spans are filtered by a configurable log level based on their duration.
+
 ## Extends
 
 - `ConsoleSpanExporter`
@@ -77,6 +80,8 @@ ConsoleSpanExporter.constructor
 readonly static durationToLogLevel: number[];
 ```
 
+Duration thresholds (in ms) that map to increasing log levels.
+
 ***
 
 ### logLevelToChalkColor
@@ -84,6 +89,8 @@ readonly static durationToLogLevel: number[];
 ```ts
 readonly static logLevelToChalkColor: ChalkInstance[];
 ```
+
+Chalk color functions corresponding to each log level.
 
 ***
 
@@ -102,6 +109,8 @@ logger: Logger;
 ```ts
 get logLevel(): number;
 ```
+
+The minimum log level required for a span to be exported.
 
 #### Returns
 
@@ -141,15 +150,21 @@ ConsoleSpanExporter.export
 logColor(level): ChalkInstance;
 ```
 
+Returns the chalk color function for the given log level.
+
 ### Parameters
 
 #### level
 
 `number`
 
+The log level index.
+
 ### Returns
 
 `ChalkInstance`
+
+A chalk color function.
 
 ***
 
@@ -159,15 +174,21 @@ logColor(level): ChalkInstance;
 spanLevel(span): number;
 ```
 
+Determines the log level of a span based on its duration.
+
 ### Parameters
 
 #### span
 
 `ReadableSpan`
 
+The span to evaluate.
+
 ### Returns
 
 `number`
+
+The numeric log level (index into durationToLogLevel).
 
 ### functions
 
@@ -181,15 +202,21 @@ spanLevel(span): number;
 function spanDurationInMillis(span): number;
 ```
 
+Calculates the duration of a span in milliseconds from its high-resolution time tuple.
+
 ## Parameters
 
 ### span
 
 `ReadableSpan`
 
+The span to measure.
+
 ## Returns
 
 `number`
+
+The span duration in milliseconds.
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

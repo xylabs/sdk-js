@@ -53,6 +53,8 @@ function zodAllFactory<T, TName>(zod, name): object;
 
 **`Alpha`**
 
+Creates a bundle of `is`, `as`, and `to` factory functions for a given zod schema.
+
 ## Type Parameters
 
 ### T
@@ -69,13 +71,19 @@ function zodAllFactory<T, TName>(zod, name): object;
 
 `ZodType`\<`T`\>
 
+The zod schema to validate against
+
 ### name
 
 `TName`
 
+The name used to suffix the generated function names (e.g. 'Address' produces `isAddress`, `asAddress`, `toAddress`)
+
 ## Returns
 
 `object`
+
+An object containing `is<Name>`, `as<Name>`, and `to<Name>` functions
 
   ### <a id="zodAsAsyncFactory"></a>zodAsAsyncFactory
 
@@ -90,6 +98,9 @@ function zodAsAsyncFactory<TZod>(zod, name): {
 };
 ```
 
+Creates an async function that validates a value against a zod schema and returns it with a narrowed type.
+Uses `safeParseAsync` for schemas with async refinements. When called without an assert config, returns undefined on failure.
+
 ## Type Parameters
 
 ### TZod
@@ -102,11 +113,17 @@ function zodAsAsyncFactory<TZod>(zod, name): {
 
 `ZodType`\<`TZod`\>
 
+The zod schema to validate against
+
 ### name
 
 `string`
 
+A name used in error messages for identification
+
 ## Returns
+
+An async function that validates and narrows the type of a value
 
 ```ts
 <T>(value): Promise<T & TZod | undefined>;
@@ -165,6 +182,9 @@ function zodAsFactory<TZod>(zod, name): {
 };
 ```
 
+Creates a function that validates a value against a zod schema and returns it with a narrowed type.
+When called without an assert config, returns undefined on failure. When called with an assert config, throws on failure.
+
 ## Type Parameters
 
 ### TZod
@@ -177,11 +197,17 @@ function zodAsFactory<TZod>(zod, name): {
 
 `ZodType`\<`TZod`\>
 
+The zod schema to validate against
+
 ### name
 
 `string`
 
+A name used in error messages for identification
+
 ## Returns
+
+A function that validates and narrows the type of a value
 
 ```ts
 <T>(value): T & TZod | undefined;
@@ -237,6 +263,8 @@ function zodAsFactory<TZod>(zod, name): {
 function zodIsFactory<TZod>(zod): <T>(value) => value is T & TZod;
 ```
 
+Creates a type guard function that checks if a value matches a zod schema.
+
 ## Type Parameters
 
 ### TZod
@@ -249,7 +277,11 @@ function zodIsFactory<TZod>(zod): <T>(value) => value is T & TZod;
 
 `ZodType`\<`TZod`\>
 
+The zod schema to validate against
+
 ## Returns
+
+A type guard function that returns true if the value passes validation
 
 ```ts
 <T>(value): value is T & TZod;
@@ -284,6 +316,9 @@ function zodToAsyncFactory<TZod>(zod, name): {
 };
 ```
 
+Creates an async function that converts a value to the zod schema type, delegating to `zodAsAsyncFactory` internally.
+Provides overloads for optional assertion: without assert config resolves to undefined on failure, with assert config throws on failure.
+
 ## Type Parameters
 
 ### TZod
@@ -296,11 +331,17 @@ function zodToAsyncFactory<TZod>(zod, name): {
 
 `ZodType`\<`TZod`\>
 
+The zod schema to validate against
+
 ### name
 
 `string`
 
+A name used in error messages for identification
+
 ## Returns
+
+An async function that validates and converts a value to the schema type
 
 ```ts
 <T>(value): Promise<T & TZod | undefined>;
@@ -359,6 +400,9 @@ function zodToFactory<TZod>(zod, name): {
 };
 ```
 
+Creates a function that converts a value to the zod schema type, delegating to `zodAsFactory` internally.
+Provides overloads for optional assertion: without assert config returns undefined on failure, with assert config throws on failure.
+
 ## Type Parameters
 
 ### TZod
@@ -371,11 +415,17 @@ function zodToFactory<TZod>(zod, name): {
 
 `ZodType`\<`TZod`\>
 
+The zod schema to validate against
+
 ### name
 
 `string`
 
+A name used in error messages for identification
+
 ## Returns
+
+A function that validates and converts a value to the schema type
 
 ```ts
 <T>(value): T & TZod | undefined;
@@ -429,6 +479,8 @@ function zodToFactory<TZod>(zod, name): {
 
 ***
 
+Configuration object for zod factory functions, providing a name for error messages.
+
 ## Properties
 
 ### name
@@ -472,6 +524,8 @@ type ZodFactoryConfig =
   | AssertConfig
   | ZodFactoryConfigObject;
 ```
+
+Configuration for zod factory assertion behavior, either an AssertConfig or a named config object.
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

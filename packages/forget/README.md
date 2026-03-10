@@ -45,6 +45,8 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ***
 
+Node.js extension of ForgetPromise that can terminate the process on exceptions or timeouts.
+
 ## Extends
 
 - `ForgetPromise`
@@ -75,6 +77,8 @@ ForgetPromise.constructor
 static activeForgets: number = 0;
 ```
 
+Number of currently active (unresolved) forgotten promises.
+
 ### Inherited from
 
 ```ts
@@ -89,6 +93,8 @@ ForgetPromise.activeForgets
 static exceptedForgets: number = 0;
 ```
 
+Number of forgotten promises that threw exceptions.
+
 ### Inherited from
 
 ```ts
@@ -102,6 +108,8 @@ ForgetPromise.exceptedForgets
 ```ts
 static logger: Logger = console;
 ```
+
+Logger instance used for error and warning output.
 
 ### Inherited from
 
@@ -118,6 +126,8 @@ ForgetPromise.logger
 ```ts
 get static active(): boolean;
 ```
+
+Whether any forgotten promises are still active.
 
 #### Returns
 
@@ -137,19 +147,27 @@ ForgetPromise.active
 static awaitInactive(interval?, timeout?): Promise<number>;
 ```
 
+Waits until all forgotten promises have completed.
+
 ### Parameters
 
 #### interval?
 
 `number` = `100`
 
+Polling interval in milliseconds.
+
 #### timeout?
 
 `number`
 
+Optional maximum wait time in milliseconds.
+
 ### Returns
 
 `Promise`\<`number`\>
+
+The number of remaining active forgets (0 if all completed).
 
 ### Inherited from
 
@@ -167,6 +185,8 @@ static exceptionHandler(
    config, 
    externalStackTrace?): void;
 ```
+
+Handles exceptions, optionally terminating the process based on config.
 
 ### Parameters
 
@@ -200,7 +220,7 @@ ForgetPromise.exceptionHandler
 static forget<T>(promise, config?): void;
 ```
 
-Used to explicitly launch an async function (or Promise) with awaiting it
+Forgets a promise using Node.js-specific configuration with process termination support.
 
 ### Type Parameters
 
@@ -214,13 +234,9 @@ Used to explicitly launch an async function (or Promise) with awaiting it
 
 `Promisable`\<`T`\>
 
-The promise to forget
-
 #### config?
 
 [`ForgetNodeConfig`](#../interfaces/ForgetNodeConfig)\<`T`\>
-
-Configuration of forget settings
 
 ### Returns
 
@@ -242,6 +258,8 @@ static timeoutHandler(
    config, 
    externalStackTrace?): void;
 ```
+
+Handles timeouts, optionally terminating the process based on config.
 
 ### Parameters
 
@@ -279,6 +297,8 @@ ForgetPromise.timeoutHandler
 function forget<T>(promise, config?): void;
 ```
 
+Node.js variant of forget that can optionally terminate the process on exceptions or timeouts.
+
 ## Type Parameters
 
 ### T
@@ -291,9 +311,13 @@ function forget<T>(promise, config?): void;
 
 `Promisable`\<`T`\>
 
+The promise or promisable value to forget.
+
 ### config?
 
 [`ForgetNodeConfig`](#../interfaces/ForgetNodeConfig)\<`T`\>
+
+Optional Node.js-specific configuration including process termination options.
 
 ## Returns
 
@@ -306,6 +330,8 @@ function forget<T>(promise, config?): void;
 [**@xylabs/forget**](#../README)
 
 ***
+
+Node.js-specific forget configuration that extends ForgetConfig with process termination options.
 
 ## Extends
 
@@ -325,6 +351,8 @@ function forget<T>(promise, config?): void;
 optional name: string;
 ```
 
+Optional name for identifying the forgotten promise in logs.
+
 ### Inherited from
 
 ```ts
@@ -338,6 +366,8 @@ ForgetConfig.name
 ```ts
 optional onCancel: () => void;
 ```
+
+Called when the promise is cancelled due to timeout.
 
 ### Returns
 
@@ -356,6 +386,8 @@ ForgetConfig.onCancel
 ```ts
 optional onComplete: (result) => void;
 ```
+
+Called when the promise completes, with a tuple of [result, error].
 
 ### Parameters
 
@@ -381,6 +413,8 @@ ForgetConfig.onComplete
 optional onException: (error) => void;
 ```
 
+Called when an exception occurs outside the promise itself.
+
 ### Parameters
 
 #### error
@@ -405,6 +439,8 @@ ForgetConfig.onException
 optional timeout: number;
 ```
 
+Timeout in milliseconds after which the promise is considered timed out.
+
 ### Inherited from
 
 ```ts
@@ -419,6 +455,8 @@ ForgetConfig.timeout
 optional terminateOnException: boolean;
 ```
 
+Terminate the process on an exception that happens outside of the promise being forgotten.
+
 ***
 
 ### terminateOnTimeout?
@@ -426,6 +464,8 @@ optional terminateOnException: boolean;
 ```ts
 optional terminateOnTimeout: boolean;
 ```
+
+Terminate the process if the promise times out.
 
 ### variables
 
@@ -438,6 +478,8 @@ optional terminateOnTimeout: boolean;
 ```ts
 const defaultForgetNodeConfig: ForgetNodeConfig<unknown>;
 ```
+
+Default Node.js forget configuration with termination disabled.
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

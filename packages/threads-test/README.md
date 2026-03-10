@@ -37,6 +37,8 @@ Web workers & worker threads as simple as a function call
 const x: 1 = 1;
 ```
 
+Placeholder export for the threads-test package.
+
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

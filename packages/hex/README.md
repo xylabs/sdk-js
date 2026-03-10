@@ -107,19 +107,27 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 function HexRegExMinMax(minBytes?, maxBytes?): RegExp;
 ```
 
+Creates a RegExp matching lowercase hex strings with a byte length in the given range.
+
 ## Parameters
 
 ### minBytes?
 
 `number` = `0`
 
+Minimum number of bytes (default 0)
+
 ### maxBytes?
 
 `number` = `...`
 
+Maximum number of bytes
+
 ## Returns
 
 `RegExp`
+
+A RegExp for validating hex strings within the byte range
 
   ### <a id="HexRegExMinMaxMixedCaseWithPrefix"></a>HexRegExMinMaxMixedCaseWithPrefix
 
@@ -131,19 +139,27 @@ function HexRegExMinMax(minBytes?, maxBytes?): RegExp;
 function HexRegExMinMaxMixedCaseWithPrefix(minBytes?, maxBytes?): RegExp;
 ```
 
+Creates a RegExp matching mixed-case hex strings with a 0x prefix and a byte length in the given range.
+
 ## Parameters
 
 ### minBytes?
 
 `number` = `0`
 
+Minimum number of bytes (default 0)
+
 ### maxBytes?
 
 `number` = `...`
 
+Maximum number of bytes
+
 ## Returns
 
 `RegExp`
+
+A RegExp for validating prefixed hex strings within the byte range
 
   ### <a id="asAddress"></a>asAddress
 
@@ -157,15 +173,21 @@ function HexRegExMinMaxMixedCaseWithPrefix(minBytes?, maxBytes?): RegExp;
 function asAddress(value): BrandedAddress | undefined;
 ```
 
+Attempts to coerce a value into an Address type, returning undefined or throwing based on the assert config.
+
 ### Parameters
 
 ### value
 
 `unknown`
 
+The value to coerce (must be a string)
+
 ### Returns
 
 `BrandedAddress` \| `undefined`
+
+The value as Address, or undefined if coercion fails and assert is not set
 
 ## Call Signature
 
@@ -173,19 +195,27 @@ function asAddress(value): BrandedAddress | undefined;
 function asAddress(value, assert): BrandedAddress;
 ```
 
+Attempts to coerce a value into an Address type, returning undefined or throwing based on the assert config.
+
 ### Parameters
 
 ### value
 
 `unknown`
 
+The value to coerce (must be a string)
+
 ### assert
 
 `AssertConfig`
 
+If provided, throws on failure instead of returning undefined
+
 ### Returns
 
 `BrandedAddress`
+
+The value as Address, or undefined if coercion fails and assert is not set
 
   ### <a id="asAddressV2"></a>asAddressV2
 
@@ -225,15 +255,21 @@ function asAddressV2(value, assert?): BrandedAddress | undefined;
 function asEthAddress(value): EthAddress | undefined;
 ```
 
+Attempts to coerce a value into an EthAddress, returning undefined or throwing based on the assert config.
+
 ### Parameters
 
 ### value
 
 `unknown`
 
+The value to coerce (must be a string)
+
 ### Returns
 
 [`EthAddress`](#../type-aliases/EthAddress) \| `undefined`
+
+The value as EthAddress, or undefined if coercion fails and assert is not set
 
 ## Call Signature
 
@@ -241,19 +277,27 @@ function asEthAddress(value): EthAddress | undefined;
 function asEthAddress(value, assert): EthAddress;
 ```
 
+Attempts to coerce a value into an EthAddress, returning undefined or throwing based on the assert config.
+
 ### Parameters
 
 ### value
 
 `unknown`
 
+The value to coerce (must be a string)
+
 ### assert
 
 `AssertConfig`
 
+If provided, throws on failure instead of returning undefined
+
 ### Returns
 
 [`EthAddress`](#../type-aliases/EthAddress)
+
+The value as EthAddress, or undefined if coercion fails and assert is not set
 
   ### <a id="asHash"></a>asHash
 
@@ -267,15 +311,21 @@ function asEthAddress(value, assert): EthAddress;
 function asHash(value): BrandedHash | undefined;
 ```
 
+Attempts to coerce a value into a Hash type, returning undefined or throwing based on the assert config.
+
 ### Parameters
 
 ### value
 
 `unknown`
 
+The value to coerce (must be a string)
+
 ### Returns
 
 [`BrandedHash`](#../type-aliases/BrandedHash) \| `undefined`
+
+The value as Hash, or undefined if coercion fails and assert is not set
 
 ## Call Signature
 
@@ -283,19 +333,27 @@ function asHash(value): BrandedHash | undefined;
 function asHash(value, assert): BrandedHash;
 ```
 
+Attempts to coerce a value into a Hash type, returning undefined or throwing based on the assert config.
+
 ### Parameters
 
 ### value
 
 `unknown`
 
+The value to coerce (must be a string)
+
 ### assert
 
 `AssertConfig`
 
+If provided, throws on failure instead of returning undefined
+
 ### Returns
 
 [`BrandedHash`](#../type-aliases/BrandedHash)
+
+The value as Hash, or undefined if coercion fails and assert is not set
 
   ### <a id="asHex"></a>asHex
 
@@ -309,15 +367,21 @@ function asHash(value, assert): BrandedHash;
 function asHex(value): BrandedHex | undefined;
 ```
 
+Attempts to coerce a value into a Hex type, returning undefined or throwing based on the assert config.
+
 ### Parameters
 
 ### value
 
 `unknown`
 
+The value to coerce (must be a string)
+
 ### Returns
 
 [`BrandedHex`](#../type-aliases/BrandedHex) \| `undefined`
+
+The value as Hex, or undefined if coercion fails and assert is not set
 
 ## Call Signature
 
@@ -325,19 +389,27 @@ function asHex(value): BrandedHex | undefined;
 function asHex(value, assert): BrandedHex;
 ```
 
+Attempts to coerce a value into a Hex type, returning undefined or throwing based on the assert config.
+
 ### Parameters
 
 ### value
 
 `unknown`
 
+The value to coerce (must be a string)
+
 ### assert
 
 `AssertConfig`
 
+If provided, throws on failure instead of returning undefined
+
 ### Returns
 
 [`BrandedHex`](#../type-aliases/BrandedHex)
+
+The value as Hex, or undefined if coercion fails and assert is not set
 
   ### <a id="bitsToNibbles"></a>bitsToNibbles
 
@@ -349,15 +421,21 @@ function asHex(value, assert): BrandedHex;
 function bitsToNibbles(value): number;
 ```
 
+Converts a bit count to the equivalent number of hex nibbles (4 bits each).
+
 ## Parameters
 
 ### value
 
 `number`
 
+The number of bits (must be a multiple of 4)
+
 ## Returns
 
 `number`
+
+The number of nibbles
 
   ### <a id="hexFrom"></a>hexFrom
 
@@ -459,19 +537,27 @@ Configuration of output format and validation
 function hexFromHexString(value, config?): BrandedHex;
 ```
 
+Normalizes a hex string by stripping an optional 0x prefix, lowercasing, and padding to byte/bit boundaries.
+
 ## Parameters
 
 ### value
 
 `string`
 
+The hex string to normalize (with or without 0x prefix)
+
 ### config?
 
 [`HexConfig`](#../interfaces/HexConfig) = `{}`
 
+Configuration for prefix, byteSize, and bitLength padding
+
 ## Returns
 
 [`BrandedHex`](#../type-aliases/BrandedHex)
+
+The normalized Hex string
 
   ### <a id="hexFromNumber"></a>hexFromNumber
 
@@ -483,19 +569,27 @@ function hexFromHexString(value, config?): BrandedHex;
 function hexFromNumber(value, config?): BrandedHex;
 ```
 
+Converts a number to a hex string by converting to BigInt first.
+
 ## Parameters
 
 ### value
 
 `number`
 
+The number to convert
+
 ### config?
 
 [`HexConfig`](#../interfaces/HexConfig)
 
+Optional hex output configuration
+
 ## Returns
 
 [`BrandedHex`](#../type-aliases/BrandedHex)
+
+The hex string representation
 
   ### <a id="hexToBigInt"></a>hexToBigInt
 
@@ -507,15 +601,21 @@ function hexFromNumber(value, config?): BrandedHex;
 function hexToBigInt(hex): bigint;
 ```
 
+Converts a Hex string to a BigInt.
+
 ## Parameters
 
 ### hex
 
 [`BrandedHex`](#../type-aliases/BrandedHex)
 
+The hex string to convert
+
 ## Returns
 
 `bigint`
+
+The BigInt representation of the hex value
 
   ### <a id="isAddress"></a>isAddress
 
@@ -527,19 +627,27 @@ function hexToBigInt(hex): bigint;
 function isAddress(value, config?): value is BrandedAddress;
 ```
 
+Type guard that checks whether a value is a valid 160-bit address.
+
 ## Parameters
 
 ### value
 
 `unknown`
 
+The value to check
+
 ### config?
 
 [`HexConfig`](#../interfaces/HexConfig) = `{}`
 
+Optional hex config (defaults to 160-bit, no prefix)
+
 ## Returns
 
 `value is BrandedAddress`
+
+True if the value is a valid Address
 
   ### <a id="isAddressV2"></a>isAddressV2
 
@@ -573,19 +681,27 @@ function isAddressV2(value): value is BrandedAddress;
 function isEthAddress(value, config?): value is EthAddress;
 ```
 
+Type guard that checks whether a value is a valid 0x-prefixed Ethereum address.
+
 ## Parameters
 
 ### value
 
 `unknown`
 
+The value to check
+
 ### config?
 
 [`HexConfig`](#../interfaces/HexConfig) = `{}`
 
+Optional hex config (defaults to 160-bit with prefix)
+
 ## Returns
 
 `value is EthAddress`
+
+True if the value is a valid EthAddress
 
   ### <a id="isHash"></a>isHash
 
@@ -597,19 +713,27 @@ function isEthAddress(value, config?): value is EthAddress;
 function isHash(value, bitLength?): value is BrandedHash;
 ```
 
+Type guard that checks whether a value is a valid hash of the specified bit length.
+
 ## Parameters
 
 ### value
 
 `unknown`
 
+The value to check
+
 ### bitLength?
 
 [`HashBitLength`](#../type-aliases/HashBitLength) = `256`
 
+The expected bit length of the hash (defaults to 256)
+
 ## Returns
 
 `value is BrandedHash`
+
+True if the value is a valid Hash
 
   ### <a id="isHashBitLength"></a>isHashBitLength
 
@@ -621,15 +745,21 @@ function isHash(value, bitLength?): value is BrandedHash;
 function isHashBitLength(value): value is HashBitLength;
 ```
 
+Type guard that checks whether a value is a valid hash bit length.
+
 ## Parameters
 
 ### value
 
 `unknown`
 
+The value to check
+
 ## Returns
 
 `value is HashBitLength`
+
+True if the value is one of the supported HashBitLength values
 
   ### <a id="isHex"></a>isHex
 
@@ -641,19 +771,27 @@ function isHashBitLength(value): value is HashBitLength;
 function isHex(value, config?): value is BrandedHex;
 ```
 
+Type guard that checks whether a value is a valid hex string.
+
 ## Parameters
 
 ### value
 
 `unknown`
 
+The value to check
+
 ### config?
 
 [`HexConfig`](#../interfaces/HexConfig)
 
+Optional configuration for prefix and bit length validation
+
 ## Returns
 
 `value is BrandedHex`
+
+True if the value is a valid Hex string
 
   ### <a id="isHexZero"></a>isHexZero
 
@@ -665,15 +803,21 @@ function isHex(value, config?): value is BrandedHex;
 function isHexZero(value?): boolean | undefined;
 ```
 
+Checks whether a hex string represents a zero value.
+
 ## Parameters
 
 ### value?
 
 `string`
 
+The hex string to check
+
 ## Returns
 
 `boolean` \| `undefined`
+
+True if zero, false if non-zero, or undefined if the input is not a string
 
   ### <a id="nibblesToBits"></a>nibblesToBits
 
@@ -685,15 +829,21 @@ function isHexZero(value?): boolean | undefined;
 function nibblesToBits(value): number;
 ```
 
+Converts a nibble count to the equivalent number of bits.
+
 ## Parameters
 
 ### value
 
 `number`
 
+The number of nibbles
+
 ## Returns
 
 `number`
+
+The number of bits
 
   ### <a id="toAddress"></a>toAddress
 
@@ -705,9 +855,13 @@ function nibblesToBits(value): number;
 function toAddress(value, config?): BrandedAddress;
 ```
 
+Converts a value to a 160-bit Address hex string.
+
 ## Parameters
 
 ### value
+
+The value to convert (string, number, bigint, or ArrayBuffer)
 
 `string` | `number` | `bigint` | `ArrayBufferLike`
 
@@ -715,9 +869,13 @@ function toAddress(value, config?): BrandedAddress;
 
 [`HexConfig`](#../interfaces/HexConfig) = `{}`
 
+Optional hex config (defaults to 160-bit, no prefix)
+
 ## Returns
 
 `BrandedAddress`
+
+The value as an Address
 
   ### <a id="toAddressV2"></a>toAddressV2
 
@@ -755,9 +913,13 @@ function toAddressV2(value, assert?): BrandedAddress | undefined;
 function toEthAddress(value, config?): EthAddress;
 ```
 
+Converts a value to a 0x-prefixed Ethereum address string.
+
 ## Parameters
 
 ### value
+
+The value to convert (string, number, bigint, or ArrayBuffer)
 
 `string` | `number` | `bigint` | `ArrayBufferLike`
 
@@ -765,9 +927,13 @@ function toEthAddress(value, config?): EthAddress;
 
 [`HexConfig`](#../interfaces/HexConfig) = `{}`
 
+Optional hex config (defaults to 160-bit, no inner prefix)
+
 ## Returns
 
 [`EthAddress`](#../type-aliases/EthAddress)
+
+The value as an EthAddress
 
   ### <a id="toHex"></a>toHex
 
@@ -809,15 +975,21 @@ Configuration of output format and validation
 function toHexLegacy(buffer): string;
 ```
 
+Converts an ArrayBuffer to a hex string without padding or normalization.
+
 ## Parameters
 
 ### buffer
 
 `ArrayBuffer`
 
+The ArrayBuffer to convert
+
 ## Returns
 
 `string`
+
+A lowercase hex string representation of the buffer
 
 ### interfaces
 
@@ -865,6 +1037,8 @@ optional prefix: boolean;
 type Address = z.infer<typeof AddressZod>;
 ```
 
+A validated 20-byte address string type, inferred from the AddressZod schema.
+
   ### <a id="AddressTransformZodType"></a>AddressTransformZodType
 
 [**@xylabs/hex**](#../README)
@@ -875,6 +1049,8 @@ type Address = z.infer<typeof AddressZod>;
 type AddressTransformZodType = z.infer<typeof AddressTransformZod>;
 ```
 
+The output type of AddressTransformZod after parsing and transformation.
+
   ### <a id="AddressValidationZodType"></a>AddressValidationZodType
 
 [**@xylabs/hex**](#../README)
@@ -884,6 +1060,8 @@ type AddressTransformZodType = z.infer<typeof AddressTransformZod>;
 ```ts
 type AddressValidationZodType = z.infer<typeof AddressValidationZod>;
 ```
+
+The output type of AddressValidationZod after parsing.
 
   ### <a id="BrandedHash"></a>BrandedHash
 
@@ -897,6 +1075,8 @@ type BrandedHash = Brand<Hex, {
 }>;
 ```
 
+Branded type representing a validated hash hex string.
+
   ### <a id="BrandedHex"></a>BrandedHex
 
 [**@xylabs/hex**](#../README)
@@ -908,6 +1088,8 @@ type BrandedHex = Brand<Lowercase<string>, {
   __hex: true;
 }>;
 ```
+
+Branded type representing a validated lowercase hex string.
 
   ### <a id="EthAddress"></a>EthAddress
 
@@ -921,6 +1103,8 @@ type EthAddress = Brand<string, {
 }>;
 ```
 
+Branded type representing a validated Ethereum address with 0x prefix.
+
   ### <a id="Hash"></a>Hash
 
 [**@xylabs/hex**](#../README)
@@ -930,6 +1114,8 @@ type EthAddress = Brand<string, {
 ```ts
 type Hash = z.infer<typeof HashZod>;
 ```
+
+A validated hash string type, inferred from the HashZod schema.
 
   ### <a id="HashBitLength"></a>HashBitLength
 
@@ -941,6 +1127,8 @@ type Hash = z.infer<typeof HashZod>;
 type HashBitLength = 32 | 64 | 128 | 256 | 512 | 1024 | 2048 | 4096;
 ```
 
+Valid bit lengths for hash values.
+
   ### <a id="Hex"></a>Hex
 
 [**@xylabs/hex**](#../README)
@@ -950,6 +1138,8 @@ type HashBitLength = 32 | 64 | 128 | 256 | 512 | 1024 | 2048 | 4096;
 ```ts
 type Hex = z.infer<typeof HexZod>;
 ```
+
+A validated hex string type, inferred from the HexZod schema.
 
 ### variables
 
@@ -963,6 +1153,8 @@ type Hex = z.infer<typeof HexZod>;
 const ADDRESS_LENGTH: 40;
 ```
 
+The character length of an address hex string (40 hex characters / 20 bytes).
+
   ### <a id="AddressRegEx"></a>AddressRegEx
 
 [**@xylabs/hex**](#../README)
@@ -972,6 +1164,8 @@ const ADDRESS_LENGTH: 40;
 ```ts
 const AddressRegEx: RegExp;
 ```
+
+Regular expression matching a 20-byte (40 hex character) address string.
 
   ### <a id="AddressTransformZod"></a>AddressTransformZod
 
@@ -983,6 +1177,8 @@ const AddressRegEx: RegExp;
 const AddressTransformZod: ZodPipe<ZodPipe<ZodUnion<readonly [ZodString, ZodBigInt, ZodNumber]>, ZodTransform<string, string | number | bigint>>, ZodTransform<BrandedAddress, string>>;
 ```
 
+Zod schema that accepts a string, bigint, or number and transforms it into a validated Address.
+
   ### <a id="AddressValidationZod"></a>AddressValidationZod
 
 [**@xylabs/hex**](#../README)
@@ -992,6 +1188,8 @@ const AddressTransformZod: ZodPipe<ZodPipe<ZodUnion<readonly [ZodString, ZodBigI
 ```ts
 const AddressValidationZod: ZodPipe<ZodString, ZodTransform<BrandedAddress, string>>;
 ```
+
+Zod schema that validates a string is a properly formatted 40-character hex address.
 
   ### <a id="AddressZod"></a>AddressZod
 
@@ -1003,6 +1201,8 @@ const AddressValidationZod: ZodPipe<ZodString, ZodTransform<BrandedAddress, stri
 const AddressZod: ZodPipe<ZodString, ZodTransform<BrandedAddress, string>>;
 ```
 
+Zod schema that validates and transforms a string into a branded Address type.
+
   ### <a id="BigIntToJsonZod"></a>BigIntToJsonZod
 
 [**@xylabs/hex**](#../README)
@@ -1013,6 +1213,8 @@ const AddressZod: ZodPipe<ZodString, ZodTransform<BrandedAddress, string>>;
 const BigIntToJsonZod: ZodPipe<ZodBigInt, ZodTransform<BrandedHex, bigint>>;
 ```
 
+Zod schema that transforms a non-negative BigInt into a hex string for JSON serialization.
+
   ### <a id="ETH_ZERO_ADDRESS"></a>ETH_ZERO_ADDRESS
 
 [**@xylabs/hex**](#../README)
@@ -1022,6 +1224,8 @@ const BigIntToJsonZod: ZodPipe<ZodBigInt, ZodTransform<BrandedHex, bigint>>;
 ```ts
 const ETH_ZERO_ADDRESS: EthAddress;
 ```
+
+The zero Ethereum address constant (0x followed by 40 zero characters).
 
   ### <a id="EthAddressFromStringSchema"></a>EthAddressFromStringSchema
 
@@ -1047,6 +1251,8 @@ use EthAddressFromStringZod
 const EthAddressFromStringZod: ZodPipe<ZodString, ZodTransform<EthAddress, string>>;
 ```
 
+Zod schema that validates and transforms a string into an EthAddress type.
+
   ### <a id="EthAddressRegEx"></a>EthAddressRegEx
 
 [**@xylabs/hex**](#../README)
@@ -1056,6 +1262,8 @@ const EthAddressFromStringZod: ZodPipe<ZodString, ZodTransform<EthAddress, strin
 ```ts
 const EthAddressRegEx: RegExp;
 ```
+
+Regular expression matching a 20-byte Ethereum address with 0x prefix (mixed case).
 
   ### <a id="EthAddressToStringSchema"></a>EthAddressToStringSchema
 
@@ -1081,6 +1289,8 @@ use EthAddressToStringZod
 const EthAddressToStringZod: ZodString;
 ```
 
+Zod schema that validates a string is a properly formatted Ethereum address.
+
   ### <a id="EthAddressZod"></a>EthAddressZod
 
 [**@xylabs/hex**](#../README)
@@ -1090,6 +1300,8 @@ const EthAddressToStringZod: ZodString;
 ```ts
 const EthAddressZod: ZodString & ZodType<EthAddress, string, $ZodTypeInternals<EthAddress, string>>;
 ```
+
+Zod schema that validates a string as a properly formatted Ethereum address using regex and type guard.
 
   ### <a id="HASH_LENGTH"></a>HASH_LENGTH
 
@@ -1101,6 +1313,8 @@ const EthAddressZod: ZodString & ZodType<EthAddress, string, $ZodTypeInternals<E
 const HASH_LENGTH: 32;
 ```
 
+The byte length of a standard hash (32 bytes / 256 bits).
+
   ### <a id="HashBitLength"></a>HashBitLength
 
 [**@xylabs/hex**](#../README)
@@ -1110,6 +1324,8 @@ const HASH_LENGTH: 32;
 ```ts
 HashBitLength: HashBitLength[];
 ```
+
+Array of all valid hash bit lengths for runtime validation.
 
   ### <a id="HashRegEx"></a>HashRegEx
 
@@ -1121,6 +1337,8 @@ HashBitLength: HashBitLength[];
 const HashRegEx: RegExp;
 ```
 
+Regular expression matching a 32-byte (64 hex character) hash string.
+
   ### <a id="HashToJsonZod"></a>HashToJsonZod
 
 [**@xylabs/hex**](#../README)
@@ -1130,6 +1348,8 @@ const HashRegEx: RegExp;
 ```ts
 const HashToJsonZod: ZodPipe<ZodPipe<ZodString, ZodTransform<BrandedHash, string>>, ZodTransform<string, BrandedHash>>;
 ```
+
+Zod schema that transforms a Hash to a plain string for JSON serialization.
 
   ### <a id="HashZod"></a>HashZod
 
@@ -1141,6 +1361,8 @@ const HashToJsonZod: ZodPipe<ZodPipe<ZodString, ZodTransform<BrandedHash, string
 const HashZod: ZodPipe<ZodString, ZodTransform<BrandedHash, string>>;
 ```
 
+Zod schema that validates and transforms a string into a branded Hash type.
+
   ### <a id="HexRegEx"></a>HexRegEx
 
 [**@xylabs/hex**](#../README)
@@ -1150,6 +1372,8 @@ const HashZod: ZodPipe<ZodString, ZodTransform<BrandedHash, string>>;
 ```ts
 const HexRegEx: RegExp;
 ```
+
+Regular expression matching a lowercase hex string without prefix.
 
   ### <a id="HexRegExWithPrefix"></a>HexRegExWithPrefix
 
@@ -1161,6 +1385,8 @@ const HexRegEx: RegExp;
 const HexRegExWithPrefix: RegExp;
 ```
 
+Regular expression matching a lowercase hex string with a 0x prefix.
+
   ### <a id="HexZod"></a>HexZod
 
 [**@xylabs/hex**](#../README)
@@ -1170,6 +1396,8 @@ const HexRegExWithPrefix: RegExp;
 ```ts
 const HexZod: ZodPipe<ZodString, ZodTransform<BrandedHex, string>>;
 ```
+
+Zod schema that validates and transforms a string into a branded Hex type.
 
   ### <a id="JsonToBigIntZod"></a>JsonToBigIntZod
 
@@ -1181,6 +1409,8 @@ const HexZod: ZodPipe<ZodString, ZodTransform<BrandedHex, string>>;
 const JsonToBigIntZod: ZodPipe<ZodPipe<ZodString, ZodTransform<BrandedHex, string>>, ZodTransform<bigint, BrandedHex>>;
 ```
 
+Zod schema that parses a JSON hex string into a BigInt.
+
   ### <a id="JsonToHashZod"></a>JsonToHashZod
 
 [**@xylabs/hex**](#../README)
@@ -1190,6 +1420,8 @@ const JsonToBigIntZod: ZodPipe<ZodPipe<ZodString, ZodTransform<BrandedHex, strin
 ```ts
 const JsonToHashZod: ZodPipe<ZodString, ZodTransform<BrandedHash, string>>;
 ```
+
+Zod schema that parses a JSON string into a validated Hash, throwing on invalid input.
 
   ### <a id="ZERO_ADDRESS"></a>ZERO_ADDRESS
 
@@ -1201,6 +1433,8 @@ const JsonToHashZod: ZodPipe<ZodString, ZodTransform<BrandedHash, string>>;
 const ZERO_ADDRESS: BrandedAddress;
 ```
 
+A 160-bit zero address constant.
+
   ### <a id="ZERO_HASH"></a>ZERO_HASH
 
 [**@xylabs/hex**](#../README)
@@ -1210,6 +1444,8 @@ const ZERO_ADDRESS: BrandedAddress;
 ```ts
 const ZERO_HASH: BrandedHash;
 ```
+
+A 256-bit zero hash constant.
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

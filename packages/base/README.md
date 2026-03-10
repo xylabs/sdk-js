@@ -45,6 +45,8 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ***
 
+Abstract base class providing logging, telemetry, and global instance tracking with WeakRef-based GC.
+
 ## Extended by
 
 - [`UniqueBase`](#UniqueBase)
@@ -54,6 +56,8 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 ### TParams
 
 `TParams` *extends* [`BaseParams`](#../type-aliases/BaseParams) = [`BaseParams`](#../type-aliases/BaseParams)
+
+The parameter type, extending BaseParams
 
 ## Constructors
 
@@ -352,6 +356,8 @@ static stopHistory(): void;
 [**@xylabs/base**](#../README)
 
 ***
+
+Base class that registers itself as globally unique, preventing duplicate module instances.
 
 ## Extends
 
@@ -763,6 +769,8 @@ static stopHistory(): void;
 function disableGloballyUnique(): void;
 ```
 
+Disables global uniqueness checks, allowing duplicate registrations without throwing.
+
 ## Returns
 
 `void`
@@ -780,9 +788,14 @@ function globallyUnique(
    domain?): string;
 ```
 
+Registers a value as globally unique under the given name and domain.
+Throws if a different value is already registered under the same key.
+
 ## Parameters
 
 ### name
+
+The unique name or symbol
 
 `string` | `symbol`
 
@@ -790,13 +803,19 @@ function globallyUnique(
 
 `unknown`
 
+The value to register
+
 ### domain?
 
 `string` = `'global'`
 
+The namespace domain (default 'global')
+
 ## Returns
 
 `string`
+
+The fully qualified unique name
 
 ### type-aliases
 
@@ -809,6 +828,8 @@ function globallyUnique(
 ```ts
 type BaseClassName = string & object;
 ```
+
+Branded string type representing a class name used for global instance tracking.
 
 ## Type Declaration
 
@@ -828,6 +849,8 @@ __baseClassName: true;
 type BaseParams<TAdditionalParams> = TAdditionalParams & BaseParamsFields;
 ```
 
+Parameters for constructing a Base instance, combining BaseParamsFields with optional additional params.
+
 ## Type Parameters
 
 ### TAdditionalParams
@@ -843,6 +866,8 @@ type BaseParams<TAdditionalParams> = TAdditionalParams & BaseParamsFields;
 ```ts
 type BaseParamsFields = object;
 ```
+
+Common parameter fields available to all Base instances (logger, meter, tracer).
 
 ## Properties
 

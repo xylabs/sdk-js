@@ -39,6 +39,8 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ***
 
+Factory class for creating type-guard functions that validate objects against a given shape and optional additional checks.
+
 ## Type Parameters
 
 ### T
@@ -65,25 +67,35 @@ new IsObjectFactory<T>(): IsObjectFactory<T>;
 create(shape?, additionalChecks?): TypeCheck<T>;
 ```
 
+Creates a type-guard function that validates an object matches the given shape and passes additional checks.
+
 ### Parameters
 
 #### shape?
 
 `ObjectTypeShape`
 
+An optional map of property names to expected types.
+
 #### additionalChecks?
 
 [`TypeCheck`](#../type-aliases/TypeCheck)\<`TypedObject`\>[]
 
+Optional extra type-check functions to run after shape validation.
+
 ### Returns
 
 [`TypeCheck`](#../type-aliases/TypeCheck)\<`T`\>
+
+A type-guard function for type T.
 
     ### <a id="ObjectWrapper"></a>ObjectWrapper
 
 [**@xylabs/object**](#../../README)
 
 ***
+
+Abstract base class that wraps an object and provides typed access to it.
 
 ## Extended by
 
@@ -140,6 +152,8 @@ get protected stringKeyObj(): StringKeyObject;
 [**@xylabs/object**](#../../README)
 
 ***
+
+Abstract base class for validators that wraps a partial object and provides a validation method.
 
 ## Extends
 
@@ -287,6 +301,8 @@ A deep merge function configured for the specified options.
 function isObject(value): value is object;
 ```
 
+Type guard that checks whether a value is a plain object (not null and not an array).
+
 ### Parameters
 
 ### value
@@ -302,6 +318,8 @@ function isObject(value): value is object;
 ```ts
 function isObject<T>(value): value is Extract<T, object>;
 ```
+
+Type guard that checks whether a value is a plain object (not null and not an array).
 
 ### Type Parameters
 
@@ -360,6 +378,8 @@ function omitBy<T>(
 maxDepth?): Partial<T>;
 ```
 
+Creates a new object excluding properties that satisfy the predicate, with optional recursive depth.
+
 ## Type Parameters
 
 ### T
@@ -372,17 +392,25 @@ maxDepth?): Partial<T>;
 
 `T`
 
+The source object to omit properties from.
+
 ### predicate
 
 [`OmitByPredicate`](#../type-aliases/OmitByPredicate)
+
+A function that returns true for properties to exclude.
 
 ### maxDepth?
 
 `number` = `1`
 
+Maximum recursion depth for nested objects.
+
 ## Returns
 
 `Partial`\<`T`\>
+
+A partial copy of the object without matching properties.
 
     ### <a id="omitByPrefix"></a>omitByPrefix
 
@@ -397,6 +425,8 @@ function omitByPrefix<T, P>(
 maxDepth?): DeepOmitStartsWith<T, P>;
 ```
 
+Omits all properties whose keys start with the given prefix, recursively through nested objects.
+
 ## Type Parameters
 
 ### T
@@ -413,17 +443,25 @@ maxDepth?): DeepOmitStartsWith<T, P>;
 
 `T`
 
+The source object.
+
 ### prefix
 
 `P`
+
+The string prefix to match keys against.
 
 ### maxDepth?
 
 `number` = `100`
 
+Maximum recursion depth.
+
 ## Returns
 
 [`DeepOmitStartsWith`](#../type-aliases/DeepOmitStartsWith)\<`T`, `P`\>
+
+A new object without properties that have matching prefixed keys.
 
     ### <a id="pickBy"></a>pickBy
 
@@ -438,6 +476,8 @@ function pickBy<T>(
 maxDepth?): Partial<T>;
 ```
 
+Creates a new object containing only the properties that satisfy the predicate, with optional recursive depth.
+
 ## Type Parameters
 
 ### T
@@ -450,17 +490,25 @@ maxDepth?): Partial<T>;
 
 `T`
 
+The source object to pick properties from.
+
 ### predicate
 
 [`PickByPredicate`](#../type-aliases/PickByPredicate)
+
+A function that returns true for properties to include.
 
 ### maxDepth?
 
 `number` = `1`
 
+Maximum recursion depth for nested objects.
+
 ## Returns
 
 `Partial`\<`T`\>
+
+A partial copy of the object with only matching properties.
 
     ### <a id="pickByPrefix"></a>pickByPrefix
 
@@ -474,6 +522,8 @@ function pickByPrefix<T, P>(
    prefix, 
 maxDepth?): DeepPickStartsWith<T, P>;
 ```
+
+Picks all properties whose keys start with the given prefix, recursively through nested objects.
 
 ## Type Parameters
 
@@ -491,17 +541,25 @@ maxDepth?): DeepPickStartsWith<T, P>;
 
 `T`
 
+The source object.
+
 ### prefix
 
 `P`
+
+The string prefix to match keys against.
 
 ### maxDepth?
 
 `number` = `100`
 
+Maximum recursion depth.
+
 ## Returns
 
 [`DeepPickStartsWith`](#../type-aliases/DeepPickStartsWith)\<`T`, `P`\>
+
+A new object containing only properties with matching prefixed keys.
 
     ### <a id="removeFields"></a>removeFields
 
@@ -512,6 +570,8 @@ maxDepth?): DeepPickStartsWith<T, P>;
 ```ts
 function removeFields<T, K>(obj, fields): Omit<T, K>;
 ```
+
+Returns a shallow copy of the object with the specified fields removed.
 
 ## Type Parameters
 
@@ -529,13 +589,19 @@ function removeFields<T, K>(obj, fields): Omit<T, K>;
 
 `T`
 
+The source object.
+
 ### fields
 
 `K`[]
 
+An array of keys to remove.
+
 ## Returns
 
 `Omit`\<`T`, `K`\>
+
+A new object without the specified fields.
 
     ### <a id="toSafeJson"></a>toSafeJson
 
@@ -547,19 +613,27 @@ function removeFields<T, K>(obj, fields): Omit<T, K>;
 function toSafeJson(value, maxDepth?): unknown;
 ```
 
+Converts a value to a JSON-safe representation, handling circular references and non-serializable types.
+
 ## Parameters
 
 ### value
 
 `unknown`
 
+The value to convert.
+
 ### maxDepth?
 
 `number` = `3`
 
+Maximum recursion depth.
+
 ## Returns
 
 `unknown`
+
+A JSON-safe value.
 
     ### <a id="toSafeJsonArray"></a>toSafeJsonArray
 
@@ -574,23 +648,33 @@ function toSafeJsonArray(
    maxDepth?): unknown[];
 ```
 
+Converts an array to a JSON-safe array, handling circular references and depth limits.
+
 ## Parameters
 
 ### value
 
 `unknown`[]
 
+The array to convert.
+
 ### cycleList?
 
 `unknown`[]
+
+Tracks visited objects to detect circular references.
 
 ### maxDepth?
 
 `number` = `3`
 
+Maximum recursion depth before truncating.
+
 ## Returns
 
 `unknown`[]
+
+A JSON-safe array representation.
 
     ### <a id="toSafeJsonObject"></a>toSafeJsonObject
 
@@ -605,23 +689,33 @@ function toSafeJsonObject(
    maxDepth?): JsonObject;
 ```
 
+Converts an object to a JSON-safe object, handling circular references and depth limits.
+
 ## Parameters
 
 ### value
 
 `object`
 
+The object to convert.
+
 ### cycleList?
 
 `unknown`[]
+
+Tracks visited objects to detect circular references.
 
 ### maxDepth?
 
 `number` = `3`
 
+Maximum recursion depth before truncating.
+
 ## Returns
 
 [`JsonObject`](#../type-aliases/JsonObject)
+
+A JSON-safe object representation.
 
     ### <a id="toSafeJsonString"></a>toSafeJsonString
 
@@ -633,19 +727,27 @@ function toSafeJsonObject(
 function toSafeJsonString(value, maxDepth?): string;
 ```
 
+Converts a value to a pretty-printed JSON string, safely handling circular references and non-JSON types.
+
 ## Parameters
 
 ### value
 
 `unknown`
 
+The value to serialize.
+
 ### maxDepth?
 
 `number` = `3`
 
+Maximum recursion depth.
+
 ## Returns
 
 `string`
+
+A formatted JSON string.
 
     ### <a id="toSafeJsonValue"></a>toSafeJsonValue
 
@@ -660,23 +762,34 @@ function toSafeJsonValue(
    maxDepth?): unknown;
 ```
 
+Converts an unknown value to a JSON-safe value, replacing circular references with '[Circular]' and
+non-JSON types with descriptive placeholder strings.
+
 ## Parameters
 
 ### value
 
 `unknown`
 
+The value to convert.
+
 ### cycleList?
 
 `unknown`[]
+
+Tracks visited objects to detect circular references.
 
 ### maxDepth?
 
 `number` = `3`
 
+Maximum recursion depth before truncating with '[MaxDepth]'.
+
 ## Returns
 
 `unknown`
+
+A JSON-safe representation of the value.
 
   ### interfaces
 
@@ -685,6 +798,8 @@ function toSafeJsonValue(
 [**@xylabs/object**](#../../README)
 
 ***
+
+Configuration options for object type checking.
 
 ## Extends
 
@@ -708,6 +823,8 @@ optional log: boolean | Logger;
 
 ***
 
+Configuration options for type check functions, with optional logging.
+
 ## Extended by
 
 - [`ObjectTypeConfig`](#ObjectTypeConfig)
@@ -727,6 +844,8 @@ optional log: boolean | Logger;
 [**@xylabs/object**](#../../README)
 
 ***
+
+Type check configuration that marks the value as optional, returning undefined on failure.
 
 ## Extends
 
@@ -758,6 +877,8 @@ required: false;
 
 ***
 
+Type check configuration that marks the value as required, causing assertions on failure.
+
 ## Extends
 
 - [`TypeCheckConfig`](#TypeCheckConfig)
@@ -787,6 +908,8 @@ required: true;
 [**@xylabs/object**](#../../README)
 
 ***
+
+Interface for validating objects and returning any errors found.
 
 ## Type Parameters
 
@@ -837,6 +960,8 @@ will result in a type that includes the universal set of field names
 type AsOptionalTypeFunction<T> = <TType>(value) => TType | undefined;
 ```
 
+A simplified type-narrowing function that returns T or undefined, without assertion support.
+
 ## Type Parameters
 
 ### T
@@ -875,6 +1000,8 @@ type AsTypeFunction<T> = {
 <TType>  (value, assert, config): TType | undefined;
 };
 ```
+
+A type-narrowing function that attempts to cast a value to T, with optional assertion and configuration overloads.
 
 ## Type Parameters
 
@@ -1058,6 +1185,8 @@ type AsTypeFunction<T> = {
 type Compare<T> = (a, b) => number;
 ```
 
+A comparator function that returns a negative number if a < b, zero if a == b, and a positive number if a > b.
+
 ## Type Parameters
 
 ### T
@@ -1088,6 +1217,8 @@ type Compare<T> = (a, b) => number;
 type DeepOmitStartsWith<T, Prefix> = T extends infer U[] ? DeepOmitStartsWith<U, Prefix>[] : T extends object ? { [K in keyof T as K extends string ? K extends `${Prefix}${string}` ? never : K : K]: DeepOmitStartsWith<T[K], Prefix> } : T;
 ```
 
+Recursively omits keys that start with the given prefix, including in nested objects and arrays.
+
 ## Type Parameters
 
 ### T
@@ -1107,6 +1238,8 @@ type DeepOmitStartsWith<T, Prefix> = T extends infer U[] ? DeepOmitStartsWith<U,
 ```ts
 type DeepPickStartsWith<T, Prefix> = T extends infer U[] ? DeepPickStartsWith<U, Prefix>[] : T extends object ? { [K in keyof T as K extends string ? K extends `${Prefix}${string}` ? K : never : K]: DeepPickStartsWith<T[K], Prefix> } : T;
 ```
+
+Recursively picks only the keys that start with the given prefix, including in nested objects and arrays.
 
 ## Type Parameters
 
@@ -1128,6 +1261,8 @@ type DeepPickStartsWith<T, Prefix> = T extends infer U[] ? DeepPickStartsWith<U,
 type DeepRestrictToJson<T> = { [K in keyof T as K extends string ? K : never]: T[K] extends (infer U)[] ? DeepRestrictToJson<U>[] : T[K] extends object ? DeepRestrictToJson<T[K]> : T[K] extends JsonValue ? T[K] : never };
 ```
 
+Recursively restricts an object type to only JSON-compatible values, excluding non-serializable types.
+
 ## Type Parameters
 
 ### T
@@ -1143,6 +1278,8 @@ type DeepRestrictToJson<T> = { [K in keyof T as K extends string ? K : never]: T
 ```ts
 type DeepRestrictToStringKeys<T> = { [K in keyof T as K extends string ? K : never]: T[K] extends (infer U)[] ? DeepRestrictToStringKeys<U>[] : T[K] extends object ? DeepRestrictToStringKeys<T[K]> : T[K] };
 ```
+
+Recursively removes all non-string keys from an object type, including in nested objects and arrays.
 
 ## Type Parameters
 
@@ -1179,6 +1316,8 @@ extended from, which then adds only those additional fields
 type JsonArray = z.infer<typeof JsonArrayZod>;
 ```
 
+A JSON array containing JSON values.
+
     ### <a id="JsonObject"></a>JsonObject
 
 [**@xylabs/object**](#../../README)
@@ -1188,6 +1327,8 @@ type JsonArray = z.infer<typeof JsonArrayZod>;
 ```ts
 type JsonObject = z.infer<typeof JsonObjectZod>;
 ```
+
+A JSON object with string keys and JSON values.
 
     ### <a id="JsonValue"></a>JsonValue
 
@@ -1199,6 +1340,8 @@ type JsonObject = z.infer<typeof JsonObjectZod>;
 type JsonValue = z.infer<typeof JsonValueZod>;
 ```
 
+A recursive JSON value: string, number, boolean, null, array, or object.
+
     ### <a id="OmitByPredicate"></a>OmitByPredicate
 
 [**@xylabs/object**](#../../README)
@@ -1208,6 +1351,8 @@ type JsonValue = z.infer<typeof JsonValueZod>;
 ```ts
 type OmitByPredicate<T> = (value, key) => boolean;
 ```
+
+A predicate function used to determine which properties to omit from an object.
 
 ## Type Parameters
 
@@ -1239,6 +1384,8 @@ keyof `T`
 type OmitStartsWith<T, Prefix> = { [K in keyof T as K extends `${Prefix}${string}` ? never : K]: T[K] };
 ```
 
+Omits the keys of T that start with the given prefix.
+
 ## Type Parameters
 
 ### T
@@ -1259,6 +1406,8 @@ type OmitStartsWith<T, Prefix> = { [K in keyof T as K extends `${Prefix}${string
 type Optional<T, F> = Omit<T, F> & Partial<Pick<T, F>>;
 ```
 
+Makes the specified fields of T optional while keeping the rest required.
+
 ## Type Parameters
 
 ### T
@@ -1278,6 +1427,8 @@ type Optional<T, F> = Omit<T, F> & Partial<Pick<T, F>>;
 ```ts
 type Override<T1, T2> = Omit<T1, keyof T2> & T2;
 ```
+
+Overrides properties of T1 with those from T2.
 
 ## Type Parameters
 
@@ -1323,6 +1474,8 @@ use Partial<Record<>> instead
 type PickByPredicate<T> = (value, key) => boolean;
 ```
 
+A predicate function used to determine which properties to pick from an object.
+
 ## Type Parameters
 
 ### T
@@ -1353,6 +1506,8 @@ keyof `T`
 type PickStartsWith<T, Prefix> = { [K in keyof T as K extends `${Prefix}${string}` ? K : never]: T[K] };
 ```
 
+Picks only the keys of T that start with the given prefix.
+
 ## Type Parameters
 
 ### T
@@ -1373,6 +1528,8 @@ type PickStartsWith<T, Prefix> = { [K in keyof T as K extends `${Prefix}${string
 type Simplify<T> = { [K in keyof T]: T[K] } & object;
 ```
 
+Flattens an intersection or complex mapped type into a single object type for better readability.
+
 ## Type Parameters
 
 ### T
@@ -1388,6 +1545,8 @@ type Simplify<T> = { [K in keyof T]: T[K] } & object;
 ```ts
 type StringKeyObject<T> = object;
 ```
+
+An object type with string keys and values of type T.
 
 ## Type Parameters
 
@@ -1411,6 +1570,8 @@ type StringKeyObject<T> = object;
 type StringOrAlertFunction<T> = string | AssertExMessageFunc<T>;
 ```
 
+A string message or function that produces an assertion error message for a failed type check.
+
 ## Type Parameters
 
 ### T
@@ -1430,6 +1591,8 @@ type TypeCheck<T> = {
   (obj, config): obj is T;
 };
 ```
+
+A type guard function that checks whether a value conforms to type T, with optional configuration.
 
 ## Type Parameters
 
@@ -1503,6 +1666,8 @@ type TypeCheck<T> = {
 type WithAdditional<T, TAdditional> = TAdditional extends EmptyObject ? T & TAdditional : T;
 ```
 
+Intersects T with TAdditional if TAdditional is an object, otherwise returns T unchanged.
+
 ## Type Parameters
 
 ### T
@@ -1524,6 +1689,8 @@ type WithAdditional<T, TAdditional> = TAdditional extends EmptyObject ? T & TAdd
 ```ts
 const AsObjectFactory: object;
 ```
+
+Factory for creating type-narrowing functions for TypedObject types.
 
 ## Type Declaration
 
@@ -1593,6 +1760,9 @@ createOptional: <T>(typeCheck) => (value) => T | undefined;
 const AsTypeFactory: object;
 ```
 
+Factory for creating type-narrowing 'as' functions that cast a value to T or return undefined.
+Supports optional assertion messages and configuration for required/optional behavior.
+
 ## Type Declaration
 
 ### create()
@@ -1661,6 +1831,8 @@ createOptional: <T>(typeCheck) => (value) => T | undefined;
 const JsonObjectZod: ZodRecord<ZodString, ZodType<unknown, unknown, $ZodTypeInternals<unknown, unknown>>>;
 ```
 
+Zod schema for a JSON object with string keys and recursive JSON values.
+
     ### <a id="asAnyObject"></a>asAnyObject
 
 [**@xylabs/object**](#../../README)
@@ -1670,6 +1842,8 @@ const JsonObjectZod: ZodRecord<ZodString, ZodType<unknown, unknown, $ZodTypeInte
 ```ts
 const asAnyObject: AsTypeFunction<AnyObject>;
 ```
+
+Type-narrowing function that casts a value to AnyObject if it is a plain object, or returns undefined.
 
     ### <a id="asJsonArray"></a>asJsonArray
 
@@ -1683,6 +1857,8 @@ const asJsonArray: {
 <T>  (value, assert): T & unknown[];
 };
 ```
+
+Casts a value to JsonArray or returns undefined if it does not conform.
 
 ## Call Signature
 
@@ -1745,6 +1921,8 @@ const asJsonObject: {
 };
 ```
 
+Casts a value to JsonObject or returns undefined if it does not conform.
+
 ## Call Signature
 
 ```ts
@@ -1805,6 +1983,8 @@ const asJsonValue: {
 <T>  (value, assert): T;
 };
 ```
+
+Casts a value to JsonValue or returns undefined if it does not conform.
 
 ## Call Signature
 
@@ -1903,6 +2083,8 @@ A new object with the merged properties.
 const isJsonArray: <T>(value) => value is T & unknown[];
 ```
 
+Type guard that checks if a value is a valid JSON array.
+
 ## Type Parameters
 
 ### T
@@ -1929,6 +2111,8 @@ const isJsonArray: <T>(value) => value is T & unknown[];
 const isJsonObject: <T>(value) => value is T & Record<string, unknown>;
 ```
 
+Type guard that checks if a value is a valid JSON object.
+
 ## Type Parameters
 
 ### T
@@ -1954,6 +2138,8 @@ const isJsonObject: <T>(value) => value is T & Record<string, unknown>;
 ```ts
 const isJsonValue: <T>(value) => value is T;
 ```
+
+Type guard that checks if a value is a valid JSON value.
 
 ## Type Parameters
 
@@ -1983,6 +2169,8 @@ const toJsonArray: {
 <T>  (value, assert): T & unknown[];
 };
 ```
+
+Parses a value into a JsonArray, throwing if it does not conform.
 
 ## Call Signature
 
@@ -2045,6 +2233,8 @@ const toJsonObject: {
 };
 ```
 
+Parses a value into a JsonObject, throwing if it does not conform.
+
 ## Call Signature
 
 ```ts
@@ -2105,6 +2295,8 @@ const toJsonValue: {
 <T>  (value, assert): T;
 };
 ```
+
+Parses a value into a JsonValue, throwing if it does not conform.
 
 ## Call Signature
 

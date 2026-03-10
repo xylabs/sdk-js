@@ -113,6 +113,8 @@ SDK for base code for Api repos that use express and deploy on AWS ECS
 
 ***
 
+Static counter registry for tracking named numeric metrics.
+
 ## Constructors
 
 ### Constructor
@@ -204,6 +206,8 @@ static min(name, count): void;
 [**@xylabs/express**](#../README)
 
 ***
+
+Measures and records the execution duration of async operations by name.
 
 ## Constructors
 
@@ -388,15 +392,21 @@ Logger.warn
 function addRouteDefinitions(app, routeDefinitions): void;
 ```
 
+Registers an array of route definitions on an Express application.
+
 ## Parameters
 
 ### app
 
 `Express`
 
+The Express application to register routes on.
+
 ### routeDefinitions
 
 [`RouteDefinition`](#../interfaces/RouteDefinition)\<`RequestHandler`\<`ParamsDictionary`, `any`, `any`, `ParsedQs`, `Record`\<`string`, `any`\>\>\>[]
+
+The route definitions to register.
 
 ## Returns
 
@@ -411,6 +421,8 @@ function addRouteDefinitions(app, routeDefinitions): void;
 ```ts
 function asyncHandler<P, ResBody, ReqBody, ReqQuery, Locals>(fn): (req, res, next) => Promise<unknown>;
 ```
+
+Wraps an async Express request handler to forward rejected promises to the error handler.
 
 ## Type Parameters
 
@@ -440,7 +452,11 @@ function asyncHandler<P, ResBody, ReqBody, ReqQuery, Locals>(fn): (req, res, nex
 
 `RequestHandler`\<`P`, `ResBody`, `ReqBody`, `ReqQuery`, `Locals`\>
 
+The async request handler to wrap.
+
 ## Returns
+
+A request handler that catches async errors and passes them to next().
 
 ```ts
 (
@@ -502,6 +518,8 @@ The response to set to the standard response format
 function compactObject<T>(obj): T;
 ```
 
+Returns a shallow copy of the object with all null and undefined values removed.
+
 ## Type Parameters
 
 ### T
@@ -514,9 +532,13 @@ function compactObject<T>(obj): T;
 
 `T`
 
+The object to compact.
+
 ## Returns
 
 `T`
+
+A new object with only defined, non-null properties.
 
   ### <a id="customPoweredByHeader"></a>customPoweredByHeader
 
@@ -530,6 +552,8 @@ function customPoweredByHeader(
    res, 
    next): void;
 ```
+
+Express middleware that sets the X-Powered-By header to 'XYO'.
 
 ## Parameters
 
@@ -663,23 +687,33 @@ function errorToJsonHandler(
    next): void;
 ```
 
+Express error handler that logs the error and sends a JSON response with the error message and status code.
+
 ## Parameters
 
 ### error
 
 [`ExpressError`](#../interfaces/ExpressError)
 
+The Express error to handle.
+
 ### req
 
 `Request`
+
+The incoming request.
 
 ### res
 
 `Response`
 
+The outgoing response.
+
 ### next
 
 `NextFunction`
+
+The next middleware function.
 
 ## Returns
 
@@ -695,9 +729,13 @@ function errorToJsonHandler(
 function getDefaultLogger(): Logger;
 ```
 
+Returns the singleton default logger instance, creating one if it does not exist.
+
 ## Returns
 
 `Logger`
+
+The default logger.
 
   ### <a id="getHttpHeader"></a>getHttpHeader
 
@@ -798,15 +836,21 @@ precedence over the default
 function getLogger(minVerbosity?): Logger;
 ```
 
+Returns a cached Winston-backed logger at the specified verbosity level.
+
 ## Parameters
 
 ### minVerbosity?
 
 [`LoggerVerbosity`](#../type-aliases/LoggerVerbosity) = `'info'`
 
+The minimum log level to output. Defaults to 'info'.
+
 ## Returns
 
 `Logger`
+
+A logger instance configured for the given verbosity.
 
   ### <a id="getResponseMetadata"></a>getResponseMetadata
 
@@ -818,15 +862,21 @@ function getLogger(minVerbosity?): Logger;
 function getResponseMetadata(res): Record<string, unknown>;
 ```
 
+Extracts response metadata from res.locals, computing profile duration if profiling was started.
+
 ## Parameters
 
 ### res
 
 `Response`
 
+The Express response to extract metadata from.
+
 ## Returns
 
 `Record`\<`string`, `unknown`\>
+
+The metadata record including any profiling information.
 
   ### <a id="isRawResponseFormatSet"></a>isRawResponseFormatSet
 
@@ -1011,9 +1061,13 @@ function standardErrors(
    next): void;
 ```
 
+Express error handler that logs the error and sends a JSON:API-compliant error response.
+
 ## Parameters
 
 ### err
+
+The error to handle, or undefined if no error.
 
 [`ExpressError`](#../interfaces/ExpressError) | `undefined`
 
@@ -1021,13 +1075,19 @@ function standardErrors(
 
 `Request`
 
+The incoming request.
+
 ### res
 
 `Response`
 
+The outgoing response.
+
 ### next
 
 `NextFunction`
+
+The next middleware function.
 
 ## Returns
 
@@ -1077,11 +1137,15 @@ use zod instead
 function useRequestCounters(app): void;
 ```
 
+Registers middleware that increments per-path request counters and exposes a /stats endpoint.
+
 ## Parameters
 
 ### app
 
 `Application`
+
+The Express application to attach counters to.
 
 ## Returns
 
@@ -1094,6 +1158,8 @@ function useRequestCounters(app): void;
 [**@xylabs/express**](#../README)
 
 ***
+
+A successful JSON:API response containing primary data and optional included resources.
 
 ## Extends
 
@@ -1250,6 +1316,8 @@ A short, human-readable summary of the problem that SHOULD NOT change from occur
 
 ***
 
+A JSON:API error response containing one or more error objects.
+
 ## Extends
 
 - [`ApiResponseBase`](#ApiResponseBase)
@@ -1338,8 +1406,7 @@ The values of type members MUST adhere to the same constraints as member names.
 
 ***
 
-Within a given API, each resource object's type and id pair MUST identify a single, unique resource.
-(The set of URIs controlled by a server, or multiple servers acting as one, constitute an API.)
+A JSON:API resource object with optional attributes, links, meta, and relationships.
 
 ## Extends
 
@@ -1420,6 +1487,8 @@ A relationships object describing relationships between the resource and other J
 
 ***
 
+Base interface for all JSON:API responses, including optional links and metadata.
+
 ## Extended by
 
 - [`ApiDataResponse`](#ApiDataResponse)
@@ -1455,11 +1524,15 @@ optional meta: Record<string, unknown>;
 
 ***
 
+Empty object type used as a default for request/response body generics.
+
   ### <a id="ExpressError"></a>ExpressError
 
 [**@xylabs/express**](#../README)
 
 ***
+
+An Error with an optional HTTP status code for Express error handling.
 
 ## Extends
 
@@ -1478,6 +1551,8 @@ optional statusCode: number;
 [**@xylabs/express**](#../README)
 
 ***
+
+A link with an href and associated metadata.
 
 ## Properties
 
@@ -1501,6 +1576,8 @@ meta: Record<string, unknown>;
 
 ***
 
+Contains the resource linkage data for a JSON:API relationship.
+
 ## Properties
 
 ### data
@@ -1514,6 +1591,8 @@ data: ResourceLinkage;
 [**@xylabs/express**](#../README)
 
 ***
+
+Contains the links for a JSON:API relationship.
 
 ## Properties
 
@@ -1531,6 +1610,8 @@ links:
 
 ***
 
+A relationship link pointing to a related resource.
+
 ## Properties
 
 ### related
@@ -1546,6 +1627,8 @@ A related resource link
 [**@xylabs/express**](#../README)
 
 ***
+
+A relationship link pointing to the relationship itself.
 
 ## Properties
 
@@ -1564,6 +1647,8 @@ deleting the people resource itself. When fetched successfully, this link return
 [**@xylabs/express**](#../README)
 
 ***
+
+JSON:API version and metadata descriptor.
 
 ## Properties
 
@@ -1587,6 +1672,8 @@ optional version: "1.0" | "1.1";
 
 ***
 
+Configuration options for creating a logger instance.
+
 ## Properties
 
 ### defaultMeta?
@@ -1608,6 +1695,8 @@ optional level: LoggerVerbosity;
 [**@xylabs/express**](#../README)
 
 ***
+
+Defines an Express route with its HTTP method, path, and handler(s).
 
 ## Type Parameters
 
@@ -1680,6 +1769,8 @@ or "/data/attributes/title" for a specific attribute].
 type ApiLink = string | HrefWithMeta;
 ```
 
+A JSON:API link, either a simple URL string or an object with href and metadata.
+
   ### <a id="ApiLinks"></a>ApiLinks
 
 [**@xylabs/express**](#../README)
@@ -1689,6 +1780,8 @@ type ApiLink = string | HrefWithMeta;
 ```ts
 type ApiLinks = Record<string, ApiLink>;
 ```
+
+A collection of named JSON:API links.
 
   ### <a id="ApiResponse"></a>ApiResponse
 
@@ -1701,6 +1794,8 @@ type ApiResponse<T> =
   | ApiDataResponse<T>
   | ApiErrorResponse;
 ```
+
+A JSON:API response, either a data response or an error response.
 
 ## Type Parameters
 
@@ -1717,6 +1812,8 @@ type ApiResponse<T> =
 ```ts
 type HttpMethod = "get" | "post" | "put" | "patch" | "delete" | "options" | "head";
 ```
+
+Supported HTTP methods for route definitions.
 
   ### <a id="LogFunction"></a>LogFunction
 
@@ -1756,6 +1853,8 @@ use from @xylabs/logger instead
 type LoggerMeta = Record<string, string | number>;
 ```
 
+Metadata key-value pairs attached to log entries.
+
   ### <a id="LoggerVerbosity"></a>LoggerVerbosity
 
 [**@xylabs/express**](#../README)
@@ -1765,6 +1864,8 @@ type LoggerMeta = Record<string, string | number>;
 ```ts
 type LoggerVerbosity = "error" | "warn" | "info" | "debug" | "all";
 ```
+
+Application-level log verbosity levels.
 
   ### <a id="NoLocals"></a>NoLocals
 
@@ -1776,6 +1877,8 @@ type LoggerVerbosity = "error" | "warn" | "info" | "debug" | "all";
 type NoLocals = Record<string, any>;
 ```
 
+Default type for response locals.
+
   ### <a id="NoReqBody"></a>NoReqBody
 
 [**@xylabs/express**](#../README)
@@ -1785,6 +1888,8 @@ type NoLocals = Record<string, any>;
 ```ts
 type NoReqBody = Empty;
 ```
+
+Default type for request body when none is specified.
 
   ### <a id="NoReqParams"></a>NoReqParams
 
@@ -1796,6 +1901,8 @@ type NoReqBody = Empty;
 type NoReqParams = ParamsDictionary;
 ```
 
+Default type for request route parameters.
+
   ### <a id="NoReqQuery"></a>NoReqQuery
 
 [**@xylabs/express**](#../README)
@@ -1805,6 +1912,8 @@ type NoReqParams = ParamsDictionary;
 ```ts
 type NoReqQuery = Query;
 ```
+
+Default type for request query parameters.
 
   ### <a id="NoResBody"></a>NoResBody
 
@@ -1816,6 +1925,8 @@ type NoReqQuery = Query;
 type NoResBody = Empty;
 ```
 
+Default type for response body when none is specified.
+
   ### <a id="ParseFunc"></a>ParseFunc
 
 [**@xylabs/express**](#../README)
@@ -1825,6 +1936,8 @@ type NoResBody = Empty;
 ```ts
 type ParseFunc<T> = (value) => T;
 ```
+
+A function that parses a string value into the target type.
 
 ## Type Parameters
 
@@ -1868,6 +1981,8 @@ Relationships may be to-one or to-many.
 ```ts
 type RelationshipMeta = Record<string, unknown>;
 ```
+
+Non-standard metadata associated with a JSON:API relationship.
 
   ### <a id="ResourceLinkage"></a>ResourceLinkage
 
@@ -2015,6 +2130,8 @@ A JSON Body Parser middleware handler initialized with the default options
 ```ts
 const notImplemented: RequestHandler;
 ```
+
+Express request handler that responds with a 501 Not Implemented error.
 
   ### <a id="standardResponses"></a>standardResponses
 

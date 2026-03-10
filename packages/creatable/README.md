@@ -178,6 +178,8 @@ protected _startPromise: Promisable<boolean> | undefined;
 eventData: TEventData;
 ```
 
+Type-level reference to the event data shape for external type queries.
+
 ### Inherited from
 
 ```ts
@@ -998,15 +1000,21 @@ Override in subclasses to define stop behavior. Throw an error on failure.
 clearListeners(eventNames): this;
 ```
 
+Removes all listeners for the specified event name(s).
+
 ### Parameters
 
 #### eventNames
+
+One or more event names to clear listeners for.
 
 keyof `TEventData` | keyof `TEventData`[]
 
 ### Returns
 
 `this`
+
+This instance for chaining.
 
 ### Inherited from
 
@@ -1021,6 +1029,8 @@ BaseEmitter.clearListeners
 ```ts
 emit<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 ```
+
+Emits an event, invoking all registered listeners concurrently.
 
 ### Type Parameters
 
@@ -1038,9 +1048,13 @@ emit<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 
 `TEventName`
 
+The event to emit.
+
 #### eventArgs
 
 `TEventArgs`
+
+The data to pass to listeners.
 
 ### Returns
 
@@ -1060,6 +1074,8 @@ BaseEmitter.emit
 emitSerial<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 ```
 
+Emits an event, invoking all registered listeners sequentially in order.
+
 ### Type Parameters
 
 #### TEventName
@@ -1076,9 +1092,13 @@ emitSerial<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 
 `TEventName`
 
+The event to emit.
+
 #### eventArgs
 
 `TEventArgs`
+
+The data to pass to listeners.
 
 ### Returns
 
@@ -1098,15 +1118,21 @@ BaseEmitter.emitSerial
 listenerCount(eventNames): number;
 ```
 
+Returns the total number of listeners registered for the specified event name(s).
+
 ### Parameters
 
 #### eventNames
+
+One or more event names to count listeners for.
 
 keyof `TEventData` | keyof `TEventData`[]
 
 ### Returns
 
 `number`
+
+The total listener count.
 
 ### Inherited from
 
@@ -1122,6 +1148,8 @@ BaseEmitter.listenerCount
 off<TEventName>(eventNames, listener): void;
 ```
 
+Removes a specific listener from the specified event name(s).
+
 ### Type Parameters
 
 #### TEventName
@@ -1132,11 +1160,15 @@ off<TEventName>(eventNames, listener): void;
 
 #### eventNames
 
+One or more event names to unsubscribe from.
+
 `TEventName` | `TEventName`[]
 
 #### listener
 
 `EventListener`\<`TEventData`\[`TEventName`\]\>
+
+The listener to remove.
 
 ### Returns
 
@@ -1156,11 +1188,15 @@ BaseEmitter.off
 offAny(listener): void;
 ```
 
+Removes a wildcard listener that was receiving all events.
+
 ### Parameters
 
 #### listener
 
 `EventAnyListener`
+
+The wildcard listener to remove.
 
 ### Returns
 
@@ -1180,6 +1216,8 @@ BaseEmitter.offAny
 on<TEventName>(eventNames, listener): () => void;
 ```
 
+Subscribes a listener to the specified event name(s).
+
 ### Type Parameters
 
 #### TEventName
@@ -1190,13 +1228,19 @@ on<TEventName>(eventNames, listener): () => void;
 
 #### eventNames
 
+One or more event names to listen for.
+
 `TEventName` | `TEventName`[]
 
 #### listener
 
 `EventListener`\<`TEventData`\[`TEventName`\]\>
 
+The callback to invoke when the event fires.
+
 ### Returns
+
+An unsubscribe function.
 
 ```ts
 (): void;
@@ -1220,13 +1264,19 @@ BaseEmitter.on
 onAny(listener): () => void;
 ```
 
+Subscribes a wildcard listener that receives all events.
+
 ### Parameters
 
 #### listener
 
 `EventAnyListener`
 
+The callback to invoke for any event.
+
 ### Returns
+
+An unsubscribe function.
 
 ```ts
 (): void;
@@ -1250,6 +1300,8 @@ BaseEmitter.onAny
 once<TEventName>(eventName, listener): () => void;
 ```
 
+Subscribes a listener that will be invoked only once for the specified event, then automatically removed.
+
 ### Type Parameters
 
 #### TEventName
@@ -1262,11 +1314,17 @@ once<TEventName>(eventName, listener): () => void;
 
 `TEventName`
 
+The event to listen for.
+
 #### listener
 
 `EventListener`\<`TEventData`\[`TEventName`\]\>
 
+The callback to invoke once.
+
 ### Returns
+
+An unsubscribe function.
 
 ```ts
 (): void;
@@ -1400,6 +1458,8 @@ protected _startPromise: Promisable<boolean> | undefined;
 ```ts
 eventData: TEventData;
 ```
+
+Type-level reference to the event data shape for external type queries.
 
 ### Inherited from
 
@@ -2312,15 +2372,21 @@ Labels to assign to created instances
 clearListeners(eventNames): this;
 ```
 
+Removes all listeners for the specified event name(s).
+
 ### Parameters
 
 #### eventNames
+
+One or more event names to clear listeners for.
 
 keyof `TEventData` | keyof `TEventData`[]
 
 ### Returns
 
 `this`
+
+This instance for chaining.
 
 ### Inherited from
 
@@ -2333,6 +2399,8 @@ keyof `TEventData` | keyof `TEventData`[]
 ```ts
 emit<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 ```
+
+Emits an event, invoking all registered listeners concurrently.
 
 ### Type Parameters
 
@@ -2350,9 +2418,13 @@ emit<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 
 `TEventName`
 
+The event to emit.
+
 #### eventArgs
 
 `TEventArgs`
+
+The data to pass to listeners.
 
 ### Returns
 
@@ -2370,6 +2442,8 @@ emit<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 emitSerial<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 ```
 
+Emits an event, invoking all registered listeners sequentially in order.
+
 ### Type Parameters
 
 #### TEventName
@@ -2386,9 +2460,13 @@ emitSerial<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 
 `TEventName`
 
+The event to emit.
+
 #### eventArgs
 
 `TEventArgs`
+
+The data to pass to listeners.
 
 ### Returns
 
@@ -2406,15 +2484,21 @@ emitSerial<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 listenerCount(eventNames): number;
 ```
 
+Returns the total number of listeners registered for the specified event name(s).
+
 ### Parameters
 
 #### eventNames
+
+One or more event names to count listeners for.
 
 keyof `TEventData` | keyof `TEventData`[]
 
 ### Returns
 
 `number`
+
+The total listener count.
 
 ### Inherited from
 
@@ -2428,6 +2512,8 @@ keyof `TEventData` | keyof `TEventData`[]
 off<TEventName>(eventNames, listener): void;
 ```
 
+Removes a specific listener from the specified event name(s).
+
 ### Type Parameters
 
 #### TEventName
@@ -2438,11 +2524,15 @@ off<TEventName>(eventNames, listener): void;
 
 #### eventNames
 
+One or more event names to unsubscribe from.
+
 `TEventName` | `TEventName`[]
 
 #### listener
 
 `EventListener`\<`TEventData`\[`TEventName`\]\>
+
+The listener to remove.
 
 ### Returns
 
@@ -2460,11 +2550,15 @@ off<TEventName>(eventNames, listener): void;
 offAny(listener): void;
 ```
 
+Removes a wildcard listener that was receiving all events.
+
 ### Parameters
 
 #### listener
 
 `EventAnyListener`
+
+The wildcard listener to remove.
 
 ### Returns
 
@@ -2482,6 +2576,8 @@ offAny(listener): void;
 on<TEventName>(eventNames, listener): () => void;
 ```
 
+Subscribes a listener to the specified event name(s).
+
 ### Type Parameters
 
 #### TEventName
@@ -2492,13 +2588,19 @@ on<TEventName>(eventNames, listener): () => void;
 
 #### eventNames
 
+One or more event names to listen for.
+
 `TEventName` | `TEventName`[]
 
 #### listener
 
 `EventListener`\<`TEventData`\[`TEventName`\]\>
 
+The callback to invoke when the event fires.
+
 ### Returns
+
+An unsubscribe function.
 
 ```ts
 (): void;
@@ -2520,13 +2622,19 @@ on<TEventName>(eventNames, listener): () => void;
 onAny(listener): () => void;
 ```
 
+Subscribes a wildcard listener that receives all events.
+
 ### Parameters
 
 #### listener
 
 `EventAnyListener`
 
+The callback to invoke for any event.
+
 ### Returns
+
+An unsubscribe function.
 
 ```ts
 (): void;
@@ -2548,6 +2656,8 @@ onAny(listener): () => void;
 once<TEventName>(eventName, listener): () => void;
 ```
 
+Subscribes a listener that will be invoked only once for the specified event, then automatically removed.
+
 ### Type Parameters
 
 #### TEventName
@@ -2560,11 +2670,17 @@ once<TEventName>(eventName, listener): () => void;
 
 `TEventName`
 
+The event to listen for.
+
 #### listener
 
 `EventListener`\<`TEventData`\[`TEventName`\]\>
 
+The callback to invoke once.
+
 ### Returns
+
+An unsubscribe function.
 
 ```ts
 (): void;
@@ -3129,6 +3245,8 @@ Stops the instance. Resolves to true if stopped successfully.
 clearListeners(eventNames): void;
 ```
 
+Removes all listeners for the specified event name(s).
+
 ### Parameters
 
 #### eventNames
@@ -3152,6 +3270,8 @@ EventEmitter.clearListeners
 ```ts
 emit<TEventName>(eventName, eventArgs): Promise<void>;
 ```
+
+Emits an event, invoking all registered listeners concurrently.
 
 ### Type Parameters
 
@@ -3187,6 +3307,8 @@ EventEmitter.emit
 emitSerial<TEventName>(eventName, eventArgs): Promise<void>;
 ```
 
+Emits an event, invoking all registered listeners sequentially in order.
+
 ### Type Parameters
 
 #### TEventName
@@ -3221,6 +3343,8 @@ EventEmitter.emitSerial
 listenerCount(eventNames): number;
 ```
 
+Returns the total number of listeners registered for the specified event name(s).
+
 ### Parameters
 
 #### eventNames
@@ -3244,6 +3368,8 @@ EventEmitter.listenerCount
 ```ts
 off<TEventName>(eventNames, listener): void;
 ```
+
+Removes a specific listener from the specified event name(s).
 
 ### Type Parameters
 
@@ -3279,6 +3405,8 @@ EventEmitter.off
 offAny(listener): void;
 ```
 
+Removes a wildcard listener that was receiving all events.
+
 ### Parameters
 
 #### listener
@@ -3302,6 +3430,8 @@ EventEmitter.offAny
 ```ts
 on<TEventName>(eventNames, listener): EventUnsubscribeFunction;
 ```
+
+Subscribes a listener to the specified event name(s) and returns an unsubscribe function.
 
 ### Type Parameters
 
@@ -3337,6 +3467,8 @@ EventEmitter.on
 onAny(listener): EventUnsubscribeFunction;
 ```
 
+Subscribes a wildcard listener that receives all events and returns an unsubscribe function.
+
 ### Parameters
 
 #### listener
@@ -3360,6 +3492,8 @@ EventEmitter.onAny
 ```ts
 once<TEventName>(eventName, listener): EventUnsubscribeFunction;
 ```
+
+Subscribes a listener that will be invoked only once for the specified event, then automatically removed.
 
 ### Type Parameters
 

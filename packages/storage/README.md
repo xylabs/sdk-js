@@ -102,6 +102,8 @@ The keys an array of keys.
 optional clear(): Promisable<void>;
 ```
 
+Removes all entries from the store.
+
 ### Returns
 
 `Promisable`\<`void`\>
@@ -114,11 +116,15 @@ optional clear(): Promisable<void>;
 delete(key): Promisable<void>;
 ```
 
+Deletes the entry with the given key.
+
 ### Parameters
 
 #### key
 
 `TKey`
+
+The key of the entry to delete
 
 ### Returns
 
@@ -132,15 +138,21 @@ delete(key): Promisable<void>;
 set(key, value): Promisable<void>;
 ```
 
+Sets a value for the given key, creating or updating the entry.
+
 ### Parameters
 
 #### key
 
 `TKey`
 
+The key to set
+
 #### value
 
 `TValue`
+
+The value to store
 
 ### Returns
 

@@ -41,15 +41,21 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 function isLocalhost(hostname): boolean;
 ```
 
+Checks whether a hostname refers to the local machine (localhost, 127.0.0.1, ::1, or *.localhost).
+
 ## Parameters
 
 ### hostname
 
 `string`
 
+The hostname to check
+
 ## Returns
 
 `boolean`
+
+`true` if the hostname is a localhost address
 
   ### variables
 
@@ -62,6 +68,8 @@ function isLocalhost(hostname): boolean;
 ```ts
 const URL: (url, base?) => URL;
 ```
+
+Browser-specific URL class, aliased from the global `URL`.
 
 ## Parameters
 
@@ -91,6 +99,8 @@ const URL: (url, base?) => URL;
 const URL: (url, base?) => URL;
 ```
 
+Platform-neutral URL class, aliased from the global `URL`.
+
 ## Parameters
 
 ### url
@@ -118,6 +128,8 @@ const URL: (url, base?) => URL;
 ```ts
 const URL: (url, base?) => URL;
 ```
+
+Node.js-specific URL class, imported from the `node:url` module.
 
 ## Parameters
 

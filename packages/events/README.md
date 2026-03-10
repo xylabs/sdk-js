@@ -54,6 +54,9 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ***
 
+Base class that combines the Base utility class with typed event emission capabilities.
+Delegates all event operations to an internal Events instance.
+
 ## Extends
 
 - `Base`\<`TParams`\>
@@ -145,6 +148,8 @@ Base.globalInstancesCountHistory
 ```ts
 eventData: TEventData;
 ```
+
+Type-level reference to the event data shape for external type queries.
 
 ### Implementation of
 
@@ -492,15 +497,21 @@ Base.stopHistory
 clearListeners(eventNames): BaseEmitter<TParams, TEventData>;
 ```
 
+Removes all listeners for the specified event name(s).
+
 ### Parameters
 
 #### eventNames
+
+One or more event names to clear listeners for.
 
 keyof `TEventData` | keyof `TEventData`[]
 
 ### Returns
 
 `BaseEmitter`\<`TParams`, `TEventData`\>
+
+This instance for chaining.
 
 ### Implementation of
 
@@ -513,6 +524,8 @@ keyof `TEventData` | keyof `TEventData`[]
 ```ts
 emit<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 ```
+
+Emits an event, invoking all registered listeners concurrently.
 
 ### Type Parameters
 
@@ -530,9 +543,13 @@ emit<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 
 `TEventName`
 
+The event to emit.
+
 #### eventArgs
 
 `TEventArgs`
+
+The data to pass to listeners.
 
 ### Returns
 
@@ -550,6 +567,8 @@ emit<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 emitSerial<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 ```
 
+Emits an event, invoking all registered listeners sequentially in order.
+
 ### Type Parameters
 
 #### TEventName
@@ -566,9 +585,13 @@ emitSerial<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 
 `TEventName`
 
+The event to emit.
+
 #### eventArgs
 
 `TEventArgs`
+
+The data to pass to listeners.
 
 ### Returns
 
@@ -586,15 +609,21 @@ emitSerial<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
 listenerCount(eventNames): number;
 ```
 
+Returns the total number of listeners registered for the specified event name(s).
+
 ### Parameters
 
 #### eventNames
+
+One or more event names to count listeners for.
 
 keyof `TEventData` | keyof `TEventData`[]
 
 ### Returns
 
 `number`
+
+The total listener count.
 
 ### Implementation of
 
@@ -608,6 +637,8 @@ keyof `TEventData` | keyof `TEventData`[]
 off<TEventName>(eventNames, listener): void;
 ```
 
+Removes a specific listener from the specified event name(s).
+
 ### Type Parameters
 
 #### TEventName
@@ -618,11 +649,15 @@ off<TEventName>(eventNames, listener): void;
 
 #### eventNames
 
+One or more event names to unsubscribe from.
+
 `TEventName` | `TEventName`[]
 
 #### listener
 
 [`EventListener`](#../type-aliases/EventListener)\<`TEventData`\[`TEventName`\]\>
+
+The listener to remove.
 
 ### Returns
 
@@ -640,11 +675,15 @@ off<TEventName>(eventNames, listener): void;
 offAny(listener): void;
 ```
 
+Removes a wildcard listener that was receiving all events.
+
 ### Parameters
 
 #### listener
 
 [`EventAnyListener`](#../type-aliases/EventAnyListener)
+
+The wildcard listener to remove.
 
 ### Returns
 
@@ -662,6 +701,8 @@ offAny(listener): void;
 on<TEventName>(eventNames, listener): (...args) => void;
 ```
 
+Subscribes a listener to the specified event name(s).
+
 ### Type Parameters
 
 #### TEventName
@@ -672,13 +713,19 @@ on<TEventName>(eventNames, listener): (...args) => void;
 
 #### eventNames
 
+One or more event names to listen for.
+
 `TEventName` | `TEventName`[]
 
 #### listener
 
 [`EventListener`](#../type-aliases/EventListener)\<`TEventData`\[`TEventName`\]\>
 
+The callback to invoke when the event fires.
+
 ### Returns
+
+An unsubscribe function.
 
 ```ts
 (...args): void;
@@ -706,13 +753,19 @@ on<TEventName>(eventNames, listener): (...args) => void;
 onAny(listener): (...args) => void;
 ```
 
+Subscribes a wildcard listener that receives all events.
+
 ### Parameters
 
 #### listener
 
 [`EventAnyListener`](#../type-aliases/EventAnyListener)
 
+The callback to invoke for any event.
+
 ### Returns
+
+An unsubscribe function.
 
 ```ts
 (...args): void;
@@ -740,6 +793,8 @@ onAny(listener): (...args) => void;
 once<TEventName>(eventName, listener): (...args) => void;
 ```
 
+Subscribes a listener that will be invoked only once for the specified event, then automatically removed.
+
 ### Type Parameters
 
 #### TEventName
@@ -752,11 +807,17 @@ once<TEventName>(eventName, listener): (...args) => void;
 
 `TEventName`
 
+The event to listen for.
+
 #### listener
 
 [`EventListener`](#../type-aliases/EventListener)\<`TEventData`\[`TEventName`\]\>
 
+The callback to invoke once.
+
 ### Returns
+
+An unsubscribe function.
 
 ```ts
 (...args): void;
@@ -781,6 +842,9 @@ once<TEventName>(eventName, listener): (...args) => void;
 [**@xylabs/events**](#../README)
 
 ***
+
+Core typed event emitter implementation supporting named events, wildcard listeners,
+serial and concurrent emission, listener filtering, and debug logging.
 
 ## Extends
 
@@ -885,6 +949,8 @@ protected static eventsMap: WeakMap<object, Map<PropertyKey, Set<EventListenerIn
 ```ts
 eventData: TEventData;
 ```
+
+Type-level reference to the event data shape for external type queries.
 
 ### Implementation of
 
@@ -1108,6 +1174,8 @@ Base.tracer
 get static isDebugEnabled(): boolean;
 ```
 
+Whether debug mode is enabled globally or via the DEBUG environment variable.
+
 #### Returns
 
 `boolean`
@@ -1137,6 +1205,8 @@ set static isDebugEnabled(newValue): void;
 ```ts
 get debug(): DebugOptions | undefined;
 ```
+
+The debug configuration for this instance, if provided.
 
 #### Returns
 
@@ -1276,9 +1346,13 @@ Base.stopHistory
 clearListeners(eventNames): void;
 ```
 
+Removes all listeners for the specified event name(s).
+
 ### Parameters
 
 #### eventNames
+
+One or more event names to clear listeners for.
 
 keyof `TEventData` | keyof `TEventData`[]
 
@@ -1298,6 +1372,8 @@ keyof `TEventData` | keyof `TEventData`[]
 emit<TEventName>(eventName, eventArgs): Promise<void>;
 ```
 
+Emits an event, invoking all registered listeners concurrently.
+
 ### Type Parameters
 
 #### TEventName
@@ -1310,9 +1386,13 @@ emit<TEventName>(eventName, eventArgs): Promise<void>;
 
 `TEventName`
 
+The event to emit.
+
 #### eventArgs
 
 `TEventData`\[`TEventName`\]
+
+The data to pass to listeners.
 
 ### Returns
 
@@ -1330,6 +1410,8 @@ emit<TEventName>(eventName, eventArgs): Promise<void>;
 emitMetaEvent<TEventName>(eventName, eventArgs): Promise<boolean | undefined>;
 ```
 
+Emits an internal meta event (listenerAdded or listenerRemoved).
+
 ### Type Parameters
 
 #### TEventName
@@ -1342,13 +1424,19 @@ emitMetaEvent<TEventName>(eventName, eventArgs): Promise<boolean | undefined>;
 
 `TEventName`
 
+The meta event name.
+
 #### eventArgs
 
 [`MetaEventData`](#../type-aliases/MetaEventData)\<`TEventData`\>\[`TEventName`\]
 
+The meta event data containing listener and event information.
+
 ### Returns
 
 `Promise`\<`boolean` \| `undefined`\>
+
+True if the meta event was emitted successfully.
 
 ***
 
@@ -1357,6 +1445,8 @@ emitMetaEvent<TEventName>(eventName, eventArgs): Promise<boolean | undefined>;
 ```ts
 emitSerial<TEventName>(eventName, eventArgs): Promise<void>;
 ```
+
+Emits an event, invoking all registered listeners sequentially in order.
 
 ### Type Parameters
 
@@ -1370,9 +1460,13 @@ emitSerial<TEventName>(eventName, eventArgs): Promise<void>;
 
 `TEventName`
 
+The event to emit.
+
 #### eventArgs
 
 `TEventData`\[`TEventName`\]
+
+The data to pass to listeners.
 
 ### Returns
 
@@ -1390,15 +1484,21 @@ emitSerial<TEventName>(eventName, eventArgs): Promise<void>;
 listenerCount(eventNames?): number;
 ```
 
+Returns the total number of listeners registered for the specified event name(s).
+
 ### Parameters
 
 #### eventNames?
+
+One or more event names to count listeners for.
 
 keyof `TEventData` | keyof `TEventData`[]
 
 ### Returns
 
 `number`
+
+The total listener count.
 
 ### Implementation of
 
@@ -1415,6 +1515,8 @@ logIfDebugEnabled<TEventName>(
    eventArgs?): void;
 ```
 
+Logs debug information if debug mode is enabled.
+
 ### Type Parameters
 
 #### TEventName
@@ -1427,13 +1529,19 @@ logIfDebugEnabled<TEventName>(
 
 `string`
 
+The type of operation being logged.
+
 #### eventName?
 
 `TEventName`
 
+The event name, if applicable.
+
 #### eventArgs?
 
 [`EventArgs`](#../type-aliases/EventArgs)
+
+The event data, if applicable.
 
 ### Returns
 
@@ -1446,6 +1554,8 @@ logIfDebugEnabled<TEventName>(
 ```ts
 off<TEventName, TEventListener>(eventNames, listener): void;
 ```
+
+Removes a specific listener from the specified event name(s).
 
 ### Type Parameters
 
@@ -1461,11 +1571,15 @@ off<TEventName, TEventListener>(eventNames, listener): void;
 
 #### eventNames
 
+One or more event names to unsubscribe from.
+
 `TEventName` | `TEventName`[]
 
 #### listener
 
 `TEventListener`
+
+The listener to remove.
 
 ### Returns
 
@@ -1483,11 +1597,15 @@ off<TEventName, TEventListener>(eventNames, listener): void;
 offAny(listener): void;
 ```
 
+Removes a wildcard listener that was receiving all events.
+
 ### Parameters
 
 #### listener
 
 [`EventAnyListener`](#../type-aliases/EventAnyListener)
+
+The wildcard listener to remove.
 
 ### Returns
 
@@ -1508,6 +1626,8 @@ on<TEventName>(
    filter?): (...args) => void;
 ```
 
+Subscribes a listener to the specified event name(s).
+
 ### Type Parameters
 
 #### TEventName
@@ -1518,17 +1638,25 @@ on<TEventName>(
 
 #### eventNames
 
+One or more event names to listen for.
+
 `TEventName` | `TEventName`[]
 
 #### listener
 
 [`EventListener`](#../type-aliases/EventListener)\<`TEventData`\[`TEventName`\]\>
 
+The callback to invoke when the event fires.
+
 #### filter?
 
 `TEventData`\[`TEventName`\]
 
+Optional filter to selectively invoke the listener based on event data.
+
 ### Returns
+
+An unsubscribe function.
 
 ```ts
 (...args): void;
@@ -1556,13 +1684,19 @@ on<TEventName>(
 onAny(listener): (...args) => void;
 ```
 
+Subscribes a wildcard listener that receives all events.
+
 ### Parameters
 
 #### listener
 
 [`EventAnyListener`](#../type-aliases/EventAnyListener)
 
+The callback to invoke for any event.
+
 ### Returns
+
+An unsubscribe function.
 
 ```ts
 (...args): void;
@@ -1590,6 +1724,8 @@ onAny(listener): (...args) => void;
 once<TEventName>(eventName, listener): (...args) => void;
 ```
 
+Subscribes a listener that will be invoked only once for the specified event, then automatically removed.
+
 ### Type Parameters
 
 #### TEventName
@@ -1602,11 +1738,17 @@ once<TEventName>(eventName, listener): (...args) => void;
 
 `TEventName`
 
+The event to listen for.
+
 #### listener
 
 [`EventListener`](#../type-aliases/EventListener)\<`TEventData`\[`TEventName`\]\>
 
+The callback to invoke once.
+
 ### Returns
+
+An unsubscribe function.
 
 ```ts
 (...args): void;
@@ -1634,11 +1776,15 @@ once<TEventName>(eventName, listener): (...args) => void;
 
 ***
 
+Fields specific to BaseEmitter configuration parameters.
+
   ### <a id="EventEmitter"></a>EventEmitter
 
 [**@xylabs/events**](#../README)
 
 ***
+
+Interface for a typed event emitter that supports subscribing, unsubscribing, and emitting events.
 
 ## Type Parameters
 
@@ -1654,6 +1800,8 @@ once<TEventName>(eventName, listener): (...args) => void;
 eventData: T;
 ```
 
+Type-level reference to the event data shape for external type queries.
+
 ## Methods
 
 ### clearListeners()
@@ -1661,6 +1809,8 @@ eventData: T;
 ```ts
 clearListeners(eventNames): void;
 ```
+
+Removes all listeners for the specified event name(s).
 
 ### Parameters
 
@@ -1679,6 +1829,8 @@ keyof `T` | keyof `T`[]
 ```ts
 emit<TEventName>(eventName, eventArgs): Promise<void>;
 ```
+
+Emits an event, invoking all registered listeners concurrently.
 
 ### Type Parameters
 
@@ -1707,6 +1859,8 @@ emit<TEventName>(eventName, eventArgs): Promise<void>;
 ```ts
 emitSerial<TEventName>(eventName, eventArgs): Promise<void>;
 ```
+
+Emits an event, invoking all registered listeners sequentially in order.
 
 ### Type Parameters
 
@@ -1736,6 +1890,8 @@ emitSerial<TEventName>(eventName, eventArgs): Promise<void>;
 listenerCount(eventNames): number;
 ```
 
+Returns the total number of listeners registered for the specified event name(s).
+
 ### Parameters
 
 #### eventNames
@@ -1753,6 +1909,8 @@ keyof `T` | keyof `T`[]
 ```ts
 off<TEventName>(eventNames, listener): void;
 ```
+
+Removes a specific listener from the specified event name(s).
 
 ### Type Parameters
 
@@ -1782,6 +1940,8 @@ off<TEventName>(eventNames, listener): void;
 offAny(listener): void;
 ```
 
+Removes a wildcard listener that was receiving all events.
+
 ### Parameters
 
 #### listener
@@ -1799,6 +1959,8 @@ offAny(listener): void;
 ```ts
 on<TEventName>(eventNames, listener): EventUnsubscribeFunction;
 ```
+
+Subscribes a listener to the specified event name(s) and returns an unsubscribe function.
 
 ### Type Parameters
 
@@ -1828,6 +1990,8 @@ on<TEventName>(eventNames, listener): EventUnsubscribeFunction;
 onAny(listener): EventUnsubscribeFunction;
 ```
 
+Subscribes a wildcard listener that receives all events and returns an unsubscribe function.
+
 ### Parameters
 
 #### listener
@@ -1845,6 +2009,8 @@ onAny(listener): EventUnsubscribeFunction;
 ```ts
 once<TEventName>(eventName, listener): EventUnsubscribeFunction;
 ```
+
+Subscribes a listener that will be invoked only once for the specified event, then automatically removed.
 
 ### Type Parameters
 
@@ -1877,6 +2043,8 @@ once<TEventName>(eventName, listener): EventUnsubscribeFunction;
 ```ts
 type BaseEmitterParams<T> = BaseParams<T & BaseEmitterParamsFields & T>;
 ```
+
+Parameters type for configuring a BaseEmitter instance.
 
 ## Type Parameters
 
@@ -1969,6 +2137,8 @@ readonly name: string;
 type EventAnyListener<TEventArgs> = (eventName, eventData) => Promisable<void>;
 ```
 
+A listener that receives all events regardless of name.
+
 ## Type Parameters
 
 ### TEventArgs
@@ -1981,9 +2151,13 @@ type EventAnyListener<TEventArgs> = (eventName, eventData) => Promisable<void>;
 
 [`EventName`](#EventName)
 
+The name of the emitted event.
+
 ### eventData
 
 `TEventArgs`
+
+The data associated with the event.
 
 ## Returns
 
@@ -1999,6 +2173,8 @@ type EventAnyListener<TEventArgs> = (eventName, eventData) => Promisable<void>;
 type EventArgs = string | number | object;
 ```
 
+The allowed types for event argument payloads.
+
   ### <a id="EventData"></a>EventData
 
 [**@xylabs/events**](#../README)
@@ -2008,6 +2184,8 @@ type EventArgs = string | number | object;
 ```ts
 type EventData = object;
 ```
+
+A mapping of event names to their corresponding event argument types.
 
 ## Index Signature
 
@@ -2025,6 +2203,8 @@ type EventData = object;
 type EventListener<TEventArgs> = (eventData) => Promisable<void>;
 ```
 
+A listener for a specific event type.
+
 ## Type Parameters
 
 ### TEventArgs
@@ -2036,6 +2216,8 @@ type EventListener<TEventArgs> = (eventData) => Promisable<void>;
 ### eventData
 
 `TEventArgs`
+
+The data associated with the event.
 
 ## Returns
 
@@ -2050,6 +2232,8 @@ type EventListener<TEventArgs> = (eventData) => Promisable<void>;
 ```ts
 type EventListenerInfo<TEventArgs> = object;
 ```
+
+Information about a registered event listener, including an optional filter for selective invocation.
 
 ## Type Parameters
 
@@ -2083,6 +2267,8 @@ listener: EventListener<TEventArgs>;
 type EventName = PropertyKey;
 ```
 
+A valid event name, which can be any property key (string, number, or symbol).
+
   ### <a id="EventUnsubscribeFunction"></a>EventUnsubscribeFunction
 
 [**@xylabs/events**](#../README)
@@ -2092,6 +2278,8 @@ type EventName = PropertyKey;
 ```ts
 type EventUnsubscribeFunction = () => void;
 ```
+
+A function returned by event subscription methods that unsubscribes the listener when called.
 
 ## Returns
 
@@ -2109,6 +2297,8 @@ type EventsParams = BaseParams<{
 }>;
 ```
 
+Parameters for constructing an Events instance, with optional debug configuration.
+
   ### <a id="MetaEventData"></a>MetaEventData
 
 [**@xylabs/events**](#../README)
@@ -2118,6 +2308,8 @@ type EventsParams = BaseParams<{
 ```ts
 type MetaEventData<TEventData> = object;
 ```
+
+Data shape for internal meta events that fire when listeners are added or removed.
 
 ## Type Parameters
 

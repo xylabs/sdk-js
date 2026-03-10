@@ -50,6 +50,8 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ***
 
+Abstract base class for API clients that provides stage and token configuration.
+
 ## Constructors
 
 ### Constructor
@@ -106,11 +108,15 @@ abstract endPoint(): string;
 
 ***
 
+Generic REST API endpoint wrapper that supports fetching and inserting typed data.
+
 ## Type Parameters
 
 ### T
 
 `T`
+
+The type of data returned by the endpoint
 
 ## Constructors
 
@@ -202,15 +208,21 @@ insert(value): Promise<T>;
 function getApiStage(hostname): "beta" | "local" | "prod";
 ```
 
+Determines the API stage based on the hostname.
+
 ## Parameters
 
 ### hostname
 
 `string`
 
+The hostname to evaluate
+
 ## Returns
 
 `"beta"` \| `"local"` \| `"prod"`
+
+The corresponding ApiStage (Local, Beta, or Prod)
 
 ### interfaces
 
@@ -219,6 +231,8 @@ function getApiStage(hostname): "beta" | "local" | "prod";
 [**@xylabs/api**](#../README)
 
 ***
+
+Configuration for connecting to an API, including domain, authentication, and user identification.
 
 ## Properties
 
@@ -264,6 +278,8 @@ optional userid: string;
 type ApiStage = EnumValue<typeof ApiStage>;
 ```
 
+A valid API stage value ('prod', 'beta', or 'local').
+
 ### variables
 
   ### <a id="ApiStage"></a>ApiStage
@@ -279,6 +295,8 @@ const ApiStage: Enum<{
   Prod: "prod";
 }>;
 ```
+
+Deployment stage identifiers for API environments.
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

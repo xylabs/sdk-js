@@ -59,6 +59,9 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ***
 
+An extended Promise that carries an optional attached value and supports cancellation.
+The value can be inspected via the `then` or `value` methods to conditionally cancel.
+
 ## Extends
 
 - `Promise`\<`T`\>
@@ -108,6 +111,8 @@ Promise<T>.constructor
 ```ts
 optional cancelled: boolean;
 ```
+
+Whether the promise has been cancelled via a value callback.
 
 ## Methods
 
@@ -170,15 +175,21 @@ Promise.then
 value(onvalue?): PromiseEx<T, V>;
 ```
 
+Inspects the attached value via the callback; if it returns true, marks the promise as cancelled.
+
 ### Parameters
 
 #### onvalue?
 
 (`value?`) => `boolean`
 
+A callback that receives the attached value and returns whether to cancel.
+
 ### Returns
 
 `PromiseEx`\<`T`, `V`\>
+
+This instance for chaining.
 
 ### functions
 
@@ -272,6 +283,8 @@ const results = settled.reduce<string[]>(fulfilledValues, [])
 function isPromise(value): value is Promise<unknown>;
 ```
 
+Type guard that checks whether a value is a Promise instance.
+
 ### Parameters
 
 ### value
@@ -287,6 +300,8 @@ function isPromise(value): value is Promise<unknown>;
 ```ts
 function isPromise<T>(value): value is Extract<T, Promise<unknown>>;
 ```
+
+Type guard that checks whether a value is a Promise instance.
 
 ### Type Parameters
 
@@ -342,6 +357,8 @@ For use with Promise.allSettled to filter only rejected results
 function toPromise<T>(value): Promise<T>;
 ```
 
+Wraps a value in a Promise if it is not already one.
+
 ## Type Parameters
 
 ### T
@@ -354,9 +371,13 @@ function toPromise<T>(value): Promise<T>;
 
 [`Promisable`](#../type-aliases/Promisable)\<`T`\>
 
+A value that may or may not be a Promise.
+
 ## Returns
 
 `Promise`\<`T`\>
+
+A Promise resolving to the value.
 
 ### interfaces
 
@@ -365,6 +386,8 @@ function toPromise<T>(value): Promise<T>;
 [**@xylabs/promise**](#../README)
 
 ***
+
+An interface representing any thenable (promise-like) object.
 
 ## Properties
 
@@ -389,6 +412,8 @@ then: () => unknown;
 ```ts
 type AnyNonPromise = Exclude<TypedValue, PromiseType>;
 ```
+
+Any non-promise typed value, excluding thenables.
 
   ### <a id="AsyncMutex"></a>AsyncMutex
 
@@ -420,6 +445,8 @@ Used to document promises that are being used as Mutexes
 type NullablePromisable<T, V> = Promisable<T | null, V>;
 ```
 
+A Promisable that may resolve to null.
+
 ## Type Parameters
 
 ### T
@@ -439,6 +466,8 @@ type NullablePromisable<T, V> = Promisable<T | null, V>;
 ```ts
 type NullablePromisableArray<T, V> = PromisableArray<T | null, V>;
 ```
+
+A Promisable array where elements may be null.
 
 ## Type Parameters
 
@@ -460,6 +489,8 @@ type NullablePromisableArray<T, V> = PromisableArray<T | null, V>;
 type OptionalPromisable<T, V> = Promisable<T | undefined, V>;
 ```
 
+A Promisable that may resolve to undefined.
+
 ## Type Parameters
 
 ### T
@@ -479,6 +510,8 @@ type OptionalPromisable<T, V> = Promisable<T | undefined, V>;
 ```ts
 type OptionalPromisableArray<T, V> = PromisableArray<T | undefined, V>;
 ```
+
+A Promisable array where elements may be undefined.
 
 ## Type Parameters
 
@@ -500,6 +533,8 @@ type OptionalPromisableArray<T, V> = PromisableArray<T | undefined, V>;
 type Promisable<T, V> = PromiseEx<T, V> | Promise<T> | T;
 ```
 
+A value that may be a Promise, PromiseEx, or a plain synchronous value.
+
 ## Type Parameters
 
 ### T
@@ -520,6 +555,8 @@ type Promisable<T, V> = PromiseEx<T, V> | Promise<T> | T;
 type PromisableArray<T, V> = Promisable<T[], V>;
 ```
 
+A Promisable that resolves to an array.
+
 ## Type Parameters
 
 ### T
@@ -539,6 +576,8 @@ type PromisableArray<T, V> = Promisable<T[], V>;
 ```ts
 type PromiseExFunc<T> = (resolve?, reject?) => void;
 ```
+
+The executor function passed to the PromiseEx constructor.
 
 ## Type Parameters
 
@@ -570,6 +609,8 @@ type PromiseExFunc<T> = (resolve?, reject?) => void;
 type PromiseExSubFunc<T, TResult> = (value) => TResult;
 ```
 
+A resolve/reject callback used within PromiseEx.
+
 ## Type Parameters
 
 ### T
@@ -599,6 +640,8 @@ type PromiseExSubFunc<T, TResult> = (value) => TResult;
 ```ts
 type PromiseExValueFunc<V> = (value?) => boolean;
 ```
+
+A callback that inspects the attached value and returns whether to cancel the promise.
 
 ## Type Parameters
 

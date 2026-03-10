@@ -42,6 +42,8 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 function retry<T>(func, config?): Promise<T | undefined>;
 ```
 
+Retries an async function with exponential backoff until it completes or retries are exhausted.
+
 ## Type Parameters
 
 ### T
@@ -54,13 +56,19 @@ function retry<T>(func, config?): Promise<T | undefined>;
 
 () => `Promisable`\<`T` \| `undefined`\>
 
+The function to retry.
+
 ### config?
 
 [`RetryConfigWithComplete`](#../interfaces/RetryConfigWithComplete)\<`T`\>
 
+Optional retry configuration including backoff, interval, retries, and completion check.
+
 ## Returns
 
 `Promise`\<`T` \| `undefined`\>
+
+The result of the function, or undefined if all retries were exhausted.
 
 ### interfaces
 
@@ -69,6 +77,8 @@ function retry<T>(func, config?): Promise<T | undefined>;
 [**@xylabs/retry**](#../README)
 
 ***
+
+Configuration for retry behavior.
 
 ## Extended by
 
@@ -82,6 +92,8 @@ function retry<T>(func, config?): Promise<T | undefined>;
 optional backoff: number;
 ```
 
+Multiplier applied to the interval after each retry. Defaults to 2.
+
 ***
 
 ### interval?
@@ -89,6 +101,8 @@ optional backoff: number;
 ```ts
 optional interval: number;
 ```
+
+Initial delay in milliseconds between retries. Defaults to 100.
 
 ***
 
@@ -98,11 +112,15 @@ optional interval: number;
 optional retries: number;
 ```
 
+Maximum number of retry attempts. Defaults to 0 (no retries).
+
   ### <a id="RetryConfigWithComplete"></a>RetryConfigWithComplete
 
 [**@xylabs/retry**](#../README)
 
 ***
+
+Retry configuration extended with a custom completion check.
 
 ## Extends
 
@@ -122,6 +140,8 @@ optional retries: number;
 optional backoff: number;
 ```
 
+Multiplier applied to the interval after each retry. Defaults to 2.
+
 ### Inherited from
 
 [`RetryConfig`](#RetryConfig).[`backoff`](RetryConfig.md#backoff)
@@ -133,6 +153,8 @@ optional backoff: number;
 ```ts
 optional interval: number;
 ```
+
+Initial delay in milliseconds between retries. Defaults to 100.
 
 ### Inherited from
 
@@ -146,6 +168,8 @@ optional interval: number;
 optional retries: number;
 ```
 
+Maximum number of retry attempts. Defaults to 0 (no retries).
+
 ### Inherited from
 
 [`RetryConfig`](#RetryConfig).[`retries`](RetryConfig.md#retries)
@@ -157,6 +181,8 @@ optional retries: number;
 ```ts
 optional complete: (result?) => boolean;
 ```
+
+Determines whether the result is considered complete. Defaults to checking for a defined value.
 
 ### Parameters
 

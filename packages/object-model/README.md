@@ -45,6 +45,8 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ***
 
+Configuration options for type check functions, with optional logging.
+
 ## Extended by
 
 - [`TypeCheckRequiredConfig`](#TypeCheckRequiredConfig)
@@ -63,6 +65,8 @@ optional log: boolean | Logger;
 [**@xylabs/object-model**](#../README)
 
 ***
+
+Type check configuration that marks the value as optional, returning undefined on failure.
 
 ## Extends
 
@@ -93,6 +97,8 @@ required: false;
 [**@xylabs/object-model**](#../README)
 
 ***
+
+Type check configuration that marks the value as required, causing assertions on failure.
 
 ## Extends
 
@@ -143,6 +149,8 @@ will result in a type that includes the universal set of field names
 type AsOptionalTypeFunction<T> = <TType>(value) => TType | undefined;
 ```
 
+A simplified type-narrowing function that returns T or undefined, without assertion support.
+
 ## Type Parameters
 
 ### T
@@ -181,6 +189,8 @@ type AsTypeFunction<T> = {
 <TType>  (value, assert, config): TType | undefined;
 };
 ```
+
+A type-narrowing function that attempts to cast a value to T, with optional assertion and configuration overloads.
 
 ## Type Parameters
 
@@ -364,6 +374,8 @@ type AsTypeFunction<T> = {
 type Compare<T> = (a, b) => number;
 ```
 
+A comparator function that returns a negative number if a < b, zero if a == b, and a positive number if a > b.
+
 ## Type Parameters
 
 ### T
@@ -413,6 +425,8 @@ extended from, which then adds only those additional fields
 type StringOrAlertFunction<T> = string | AssertExMessageFunc<T>;
 ```
 
+A string message or function that produces an assertion error message for a failed type check.
+
 ## Type Parameters
 
 ### T
@@ -432,6 +446,8 @@ type TypeCheck<T> = {
   (obj, config): obj is T;
 };
 ```
+
+A type guard function that checks whether a value conforms to type T, with optional configuration.
 
 ## Type Parameters
 

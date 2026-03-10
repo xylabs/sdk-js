@@ -104,6 +104,8 @@ new IndexedDbKeyValueStore<T, S>(dbName, storeName): IndexedDbKeyValueStore<T, S
 readonly dbName: string;
 ```
 
+The name of the IndexedDB database.
+
 ***
 
 ### storeName
@@ -112,6 +114,8 @@ readonly dbName: string;
 readonly storeName: S;
 ```
 
+The name of the object store within the database.
+
 ## Methods
 
 ### clear()?
@@ -119,6 +123,8 @@ readonly storeName: S;
 ```ts
 optional clear(): Promise<void>;
 ```
+
+Removes all entries from the store.
 
 ### Returns
 
@@ -138,11 +144,15 @@ KeyValueStore.clear
 delete(key): Promise<void>;
 ```
 
+Deletes the entry with the given key.
+
 ### Parameters
 
 #### key
 
 `StoreKey`\<`T`, `S`\>
+
+The key of the entry to delete
 
 ### Returns
 
@@ -162,7 +172,7 @@ KeyValueStore.delete
 get(key): Promise<StoreValue<T, S> | undefined>;
 ```
 
-Returns a promise that resolves to the value for the given key.
+Retrieves the value associated with the given key.
 
 ### Parameters
 
@@ -170,11 +180,13 @@ Returns a promise that resolves to the value for the given key.
 
 `StoreKey`\<`T`, `S`\>
 
-The key to get the value for.
+The key to look up
 
 ### Returns
 
 `Promise`\<`StoreValue`\<`T`, `S`\> \| `undefined`\>
+
+The value, or undefined if not found
 
 ### Implementation of
 
@@ -190,7 +202,7 @@ KeyValueStore.get
 optional keys(): Promise<StoreKey<T, S>[]>;
 ```
 
-The keys an array of keys.
+Returns all keys in the store.
 
 ### Returns
 
@@ -210,15 +222,21 @@ KeyValueStore.keys
 set(key, value): Promise<void>;
 ```
 
+Sets a value for the given key, creating or updating the entry.
+
 ### Parameters
 
 #### key
 
 `StoreKey`\<`T`, `S`\>
 
+The key to set
+
 #### value
 
 `StoreValue`\<`T`, `S`\>
+
+The value to store
 
 ### Returns
 
@@ -238,6 +256,8 @@ KeyValueStore.set
 withDb<R>(callback): Promise<R>;
 ```
 
+Opens the underlying IndexedDB database and passes it to the callback.
+
 ### Type Parameters
 
 #### R
@@ -250,9 +270,13 @@ withDb<R>(callback): Promise<R>;
 
 (`db`) => `R` \| `Promise`\<`R`\>
 
+Function to execute with the database
+
 ### Returns
 
 `Promise`\<`R`\>
+
+The result of the callback
 
 ### functions
 
@@ -296,23 +320,33 @@ function checkDbNeedsUpgrade(
 logger?): Promise<number>;
 ```
 
+Checks whether any store in the database needs an upgrade and returns the appropriate version number.
+
 ## Parameters
 
 ### dbName
 
 `string`
 
+The name of the database to check
+
 ### stores
 
 `Record`\<`string`, [`IndexDescription`](#../type-aliases/IndexDescription)[]\>
+
+Map of store names to their expected index descriptions
 
 ### logger?
 
 `Logger`
 
+Optional logger for diagnostics
+
 ## Returns
 
 `Promise`\<`number`\>
+
+The version to open (current version + 1 if upgrade needed, otherwise current version)
 
   ### <a id="createStoreDuringUpgrade"></a>createStoreDuringUpgrade
 
@@ -328,6 +362,8 @@ function createStoreDuringUpgrade<DBTypes>(
    logger?): void;
 ```
 
+Creates an object store with the specified indexes during a version upgrade transaction.
+
 ## Type Parameters
 
 ### DBTypes
@@ -340,17 +376,25 @@ function createStoreDuringUpgrade<DBTypes>(
 
 `IDBPDatabase`\<`DBTypes`\>
 
+The IndexedDB database instance (during upgrade)
+
 ### storeName
 
 `StoreNames`\<`DBTypes`\>
+
+The name of the store to create
 
 ### indexes
 
 [`IndexDescription`](#../type-aliases/IndexDescription)[]
 
+The index descriptions to create on the store
+
 ### logger?
 
 `Logger`
+
+Optional logger for diagnostics
 
 ## Returns
 
@@ -369,6 +413,8 @@ function getExistingIndexes<T>(
 logger?): Promise<IndexDescription[] | null>;
 ```
 
+Retrieves the existing index descriptions for a store. Accepts either a database instance or a database name.
+
 ## Type Parameters
 
 ### T
@@ -379,19 +425,27 @@ logger?): Promise<IndexDescription[] | null>;
 
 ### db
 
+The IndexedDB database instance or database name
+
 `string` | `IDBPDatabase`\<[`ObjectStore`](#../interfaces/ObjectStore)\<`T`\>\>
 
 ### storeName
 
 `StoreNames`\<[`ObjectStore`](#../interfaces/ObjectStore)\<`T`\>\>
 
+The name of the store to inspect
+
 ### logger?
 
 `Logger`
 
+Optional logger for diagnostics
+
 ## Returns
 
 `Promise`\<[`IndexDescription`](#../type-aliases/IndexDescription)[] \| `null`\>
+
+An array of index descriptions, or null if the store does not exist
 
   ### <a id="withDb"></a>withDb
 
@@ -407,6 +461,9 @@ function withDb<DBTypes, R>(
    logger?, 
 lock?): Promise<R>;
 ```
+
+Opens an IndexedDB database, automatically upgrading if needed, and passes it to the callback.
+Uses a mutex to serialize access to the same database by default.
 
 ## Type Parameters
 
@@ -424,25 +481,37 @@ lock?): Promise<R>;
 
 `string`
 
+The name of the database to open
+
 ### callback
 
 (`db`) => `R` \| `Promise`\<`R`\>
+
+Function to execute with the opened database
 
 ### expectedIndexes?
 
 `Record`\<`string`, [`IndexDescription`](#../type-aliases/IndexDescription)[]\>
 
+Optional map of store names to their expected indexes (triggers upgrade check)
+
 ### logger?
 
 `Logger`
+
+Optional logger for diagnostics
 
 ### lock?
 
 `boolean` = `true`
 
+Whether to use a mutex to serialize access (defaults to true)
+
 ## Returns
 
 `Promise`\<`R`\>
+
+The result of the callback
 
   ### <a id="withDbByVersion"></a>withDbByVersion
 
@@ -460,6 +529,9 @@ function withDbByVersion<DBTypes, R>(
 lock?): Promise<R>;
 ```
 
+Opens an IndexedDB database at a specific version, handling upgrade events, and passes it to the callback.
+The database is automatically closed after the callback completes.
+
 ## Type Parameters
 
 ### DBTypes
@@ -476,29 +548,43 @@ lock?): Promise<R>;
 
 `string`
 
+The name of the database to open
+
 ### callback
 
 (`db`) => `R` \| `Promise`\<`R`\>
+
+Function to execute with the opened database
 
 ### version?
 
 `number`
 
+Optional specific version to open (undefined for latest)
+
 ### expectedIndexes?
 
 `Record`\<`string`, [`IndexDescription`](#../type-aliases/IndexDescription)[]\>
+
+Optional map of store names to indexes to create during upgrade
 
 ### logger?
 
 `Logger`
 
+Optional logger for diagnostics
+
 ### lock?
 
 `boolean` = `true`
 
+Whether to use a mutex to serialize access (defaults to true)
+
 ## Returns
 
 `Promise`\<`R`\>
+
+The result of the callback
 
   ### <a id="withReadOnlyStore"></a>withReadOnlyStore
 
@@ -514,6 +600,8 @@ function withReadOnlyStore<T, R>(
 logger?): Promise<R>;
 ```
 
+Opens a read-only transaction on the specified store and passes it to the callback.
+
 ## Type Parameters
 
 ### T
@@ -530,21 +618,31 @@ logger?): Promise<R>;
 
 `IDBPDatabase`\<[`ObjectStore`](#../interfaces/ObjectStore)\<`T`\>\>
 
+The IndexedDB database instance
+
 ### storeName
 
 `StoreNames`\<[`ObjectStore`](#../interfaces/ObjectStore)\<`T`\>\>
+
+The name of the object store to open
 
 ### callback
 
 (`store`) => `R` \| `Promise`\<`R`\>
 
+Function to execute with the read-only store
+
 ### logger?
 
 `Logger`
 
+Optional logger for diagnostics
+
 ## Returns
 
 `Promise`\<`R`\>
+
+The result of the callback
 
   ### <a id="withReadWriteStore"></a>withReadWriteStore
 
@@ -560,6 +658,8 @@ function withReadWriteStore<T, R>(
 logger?): Promise<R>;
 ```
 
+Opens a read-write transaction on the specified store and passes it to the callback.
+
 ## Type Parameters
 
 ### T
@@ -576,21 +676,31 @@ logger?): Promise<R>;
 
 `IDBPDatabase`\<[`ObjectStore`](#../interfaces/ObjectStore)\<`T`\>\>
 
+The IndexedDB database instance
+
 ### storeName
 
 `StoreNames`\<[`ObjectStore`](#../interfaces/ObjectStore)\<`T`\>\>
+
+The name of the object store to open
 
 ### callback
 
 (`store`) => `R` \| `Promise`\<`R`\>
 
+Function to execute with the read-write store
+
 ### logger?
 
 `Logger`
 
+Optional logger for diagnostics
+
 ## Returns
 
 `Promise`\<`R`\>
+
+The result of the callback
 
   ### <a id="withStore"></a>withStore
 
@@ -606,6 +716,9 @@ function withStore<T, R, M>(
    mode, 
 logger?): Promise<R>;
 ```
+
+Opens a transaction on the specified store with the given mode and passes the store to the callback.
+If the store does not exist, the callback receives null.
 
 ## Type Parameters
 
@@ -627,25 +740,37 @@ logger?): Promise<R>;
 
 `IDBPDatabase`\<[`ObjectStore`](#../interfaces/ObjectStore)\<`T`\>\>
 
+The IndexedDB database instance
+
 ### storeName
 
 `StoreNames`\<[`ObjectStore`](#../interfaces/ObjectStore)\<`T`\>\>
+
+The name of the object store to open
 
 ### callback
 
 (`store`) => `R` \| `Promise`\<`R`\>
 
+Function to execute with the store (or null if it doesn't exist)
+
 ### mode
 
 `M`
+
+The transaction mode ('readonly' or 'readwrite')
 
 ### logger?
 
 `Logger`
 
+Optional logger for diagnostics
+
 ## Returns
 
 `Promise`\<`R`\>
+
+The result of the callback
 
 ### interfaces
 
@@ -654,6 +779,8 @@ logger?): Promise<R>;
 [**@xylabs/indexed-db**](#../README)
 
 ***
+
+Generic IndexedDB schema type that maps store names to their value types.
 
 ## Type Parameters
 
@@ -734,6 +861,8 @@ The index direction (1 for ascending, -1 for descending)
 ```ts
 const IndexSeparator: "-" = '-';
 ```
+
+Separator used between key names when building standard index names.
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

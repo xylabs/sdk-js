@@ -39,6 +39,8 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 function difference<TKey>(a, b): Set<TKey>;
 ```
 
+Returns a new set containing elements in `a` that are not in `b`.
+
 ## Type Parameters
 
 ### TKey
@@ -51,13 +53,19 @@ function difference<TKey>(a, b): Set<TKey>;
 
 `Set`\<`TKey`\>
 
+The source set
+
 ### b
 
 `Set`\<`TKey`\>
 
+The set of elements to exclude
+
 ## Returns
 
 `Set`\<`TKey`\>
+
+A new set representing the difference of `a` and `b`
 
   ### <a id="intersection"></a>intersection
 
@@ -69,6 +77,8 @@ function difference<TKey>(a, b): Set<TKey>;
 function intersection<TKey>(a, b): Set<TKey>;
 ```
 
+Returns a new set containing only elements present in both `a` and `b`.
+
 ## Type Parameters
 
 ### TKey
@@ -81,13 +91,19 @@ function intersection<TKey>(a, b): Set<TKey>;
 
 `Set`\<`TKey`\>
 
+The first set
+
 ### b
 
 `Set`\<`TKey`\>
 
+The second set
+
 ## Returns
 
 `Set`\<`TKey`\>
+
+A new set representing the intersection of `a` and `b`
 
   ### <a id="union"></a>union
 
@@ -99,6 +115,8 @@ function intersection<TKey>(a, b): Set<TKey>;
 function union<TKey>(a, b): Set<TKey>;
 ```
 
+Returns a new set containing all elements from both `a` and `b`.
+
 ## Type Parameters
 
 ### TKey
@@ -111,13 +129,19 @@ function union<TKey>(a, b): Set<TKey>;
 
 `Set`\<`TKey`\>
 
+The first set
+
 ### b
 
 `Set`\<`TKey`\>
 
+The second set
+
 ## Returns
 
 `Set`\<`TKey`\>
+
+A new set representing the union of `a` and `b`
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

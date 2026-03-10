@@ -57,17 +57,25 @@ function addMetaToHead(
    value): void;
 ```
 
+Adds or replaces a meta tag in the document head.
+
 ## Parameters
 
 ### $
 
 `CheerioAPI`
 
+The Cheerio API instance for the document.
+
 ### name
 
 `string`
 
+The meta property name.
+
 ### value
+
+The meta content value (string, array, or nested object).
 
 `string` | `object`
 
@@ -85,19 +93,27 @@ function addMetaToHead(
 function getMetaAsDict(obj, parentKey?): Record<string, string>;
 ```
 
+Recursively flattens a nested meta object into a flat dictionary with colon-delimited keys.
+
 ## Parameters
 
 ### obj
 
 [`StringIndexable`](#../type-aliases/StringIndexable)
 
+The nested object to flatten.
+
 ### parentKey?
 
 `string`
 
+The accumulated key prefix from parent levels.
+
 ## Returns
 
 `Record`\<`string`, `string`\>
+
+A flat record mapping colon-delimited property names to string values.
 
   ### <a id="mergeDocumentHead"></a>mergeDocumentHead
 
@@ -109,19 +125,28 @@ function getMetaAsDict(obj, parentKey?): Record<string, string>;
 function mergeDocumentHead(destination, source): string;
 ```
 
+Merges meta tags from the source HTML head into the destination HTML head.
+Existing meta tags with matching property attributes are replaced; others are appended.
+
 ## Parameters
 
 ### destination
 
 `string`
 
+The base HTML string to merge into.
+
 ### source
 
 `string`
 
+The HTML string whose head meta tags will be merged.
+
 ## Returns
 
 `string`
+
+The merged HTML string.
 
   ### <a id="metaBuilder"></a>metaBuilder
 
@@ -136,23 +161,33 @@ function metaBuilder(
    handler?): string;
 ```
 
+Injects meta properties, title, and description into an HTML string.
+
 ## Parameters
 
 ### html
 
 `string`
 
+The base HTML string to modify.
+
 ### meta
 
 [`Meta`](#../interfaces/Meta)
+
+The metadata to inject.
 
 ### handler?
 
 `string`
 
+Optional meta-handler property value to include.
+
 ## Returns
 
 `string`
+
+The modified HTML string with injected metadata.
 
 ### interfaces
 
@@ -161,6 +196,8 @@ function metaBuilder(
 [**@xylabs/sdk-meta**](#../README)
 
 ***
+
+Represents page metadata including Open Graph and Twitter card properties.
 
 ## Properties
 
@@ -199,6 +236,8 @@ optional twitter: TwitterMeta;
 [**@xylabs/sdk-meta**](#../README)
 
 ***
+
+Open Graph protocol metadata for rich link previews.
 
 ## Properties
 
@@ -286,6 +325,8 @@ optional video: OpenGraphStructuredProperty;
 
 ***
 
+Structured properties for an Open Graph media object (image, video, or audio).
+
 ## Properties
 
 ### ?
@@ -347,6 +388,8 @@ optional width: number;
 [**@xylabs/sdk-meta**](#../README)
 
 ***
+
+Twitter App Card metadata containing app store identifiers, names, and URLs per platform.
 
 ## Properties
 
@@ -639,6 +682,8 @@ type OpenGraphStructuredProperty =
   | (string | OpenGraphStructured)[];
 ```
 
+A structured Open Graph property value: a URL string, a structured object, or an array of either.
+
   ### <a id="StringIndexable"></a>StringIndexable
 
 [**@xylabs/sdk-meta**](#../README)
@@ -648,6 +693,8 @@ type OpenGraphStructuredProperty =
 ```ts
 type StringIndexable = object;
 ```
+
+An object with string keys and arbitrary values, used for recursive meta flattening.
 
 ## Index Signature
 

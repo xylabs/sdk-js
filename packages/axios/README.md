@@ -119,18 +119,25 @@ static create(config?): Axios;
 ***
 
 ```ts
-function axiosJsonConfig(__namedParameters?): RawAxiosJsonRequestConfig;
+function axiosJsonConfig(config?): RawAxiosJsonRequestConfig;
 ```
+
+Creates an Axios config preconfigured for JSON requests with optional gzip compression.
+Request bodies exceeding `compressLength` (default 1024 bytes) are automatically gzip-compressed.
 
 ## Parameters
 
-### \_\_namedParameters?
+### config?
 
 `RawAxiosJsonRequestConfig` = `{}`
+
+Base Axios config, optionally including a `compressLength` threshold
 
 ## Returns
 
 `RawAxiosJsonRequestConfig`
+
+A fully configured Axios request config with JSON transforms
 
 ### variables
 

@@ -38,11 +38,15 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 function clearTimeoutEx(id): void;
 ```
 
+Cancels a timeout previously created with setTimeoutEx.
+
 ## Parameters
 
 ### id
 
 `string`
+
+The timeout ID returned by setTimeoutEx.
 
 ## Returns
 
@@ -58,19 +62,27 @@ function clearTimeoutEx(id): void;
 function setTimeoutEx(func, delay): string;
 ```
 
+Sets a timeout using an optimized internal timer that coalesces multiple timeouts into a single native timer.
+
 ## Parameters
 
 ### func
 
 `Function`
 
+The function to call after the delay.
+
 ### delay
 
 `number`
 
+The delay in milliseconds (must be >= 0).
+
 ## Returns
 
 `string`
+
+A unique string ID that can be used with clearTimeoutEx to cancel the timeout.
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

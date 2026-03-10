@@ -1,6 +1,7 @@
 import { isString } from '@xylabs/typeof'
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 /** An object with string keys and arbitrary values, used for recursive meta flattening. */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type StringIndexable = { [key: string]: any }
 
 const propertyDelimiter = ':'

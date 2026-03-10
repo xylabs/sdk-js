@@ -40,6 +40,8 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 function cryptoPolyfill(): void;
 ```
 
+Polyfills `globalThis.Crypto` with the crypto-js implementation for browser environments.
+
 ## Returns
 
 `void`
@@ -57,6 +59,8 @@ function cryptoPolyfill(): void;
 ```ts
 function cryptoPolyfill(): void;
 ```
+
+No-op polyfill for Node.js, where the crypto module is already available globally.
 
 ## Returns
 

@@ -50,6 +50,8 @@ const Buffer: typeof Buffer;
 const bufferPolyfill: () => void;
 ```
 
+Polyfills `globalThis.Buffer` with the browser-compatible Buffer implementation if not already defined.
+
 ## Returns
 
 `void`
@@ -77,6 +79,8 @@ const Buffer: BufferConstructor;
 ```ts
 const bufferPolyfill: () => void;
 ```
+
+No-op polyfill for Node.js, where Buffer is already available globally.
 
 ## Returns
 

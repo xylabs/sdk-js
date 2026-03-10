@@ -37,6 +37,9 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 function generateReadmeFiles(): Promise<void>;
 ```
 
+Generates README.md files for all workspace packages using a shared template.
+Fills each README with package metadata, an optional body, and auto-generated TypeDoc reference.
+
 ## Returns
 
 `Promise`\<`void`\>

@@ -54,6 +54,8 @@ Event Client for xylabs ESB
 
 ***
 
+HTTP client for sending tracking events to the XY Labs pixel API.
+
 ## Constructors
 
 ### Constructor
@@ -80,21 +82,29 @@ new PixelApi(baseUri?): PixelApi;
 trackEvents(events): Promise<any>;
 ```
 
+Sends an array of user events to the tracking API.
+
 ### Parameters
 
 #### events
 
 [`UserEvent`](#../interfaces/UserEvent)[]
 
+The events to submit
+
 ### Returns
 
 `Promise`\<`any`\>
+
+The response data from the API
 
   ### <a id="Referrer"></a>Referrer
 
 [**@xylabs/pixel**](#../README)
 
 ***
+
+Tracks and persists the document referrer in both session and local storage.
 
 ## Constructors
 
@@ -137,6 +147,8 @@ toJson():
   | undefined;
 ```
 
+Returns the referrer data as a JSON object, or undefined if both values are empty.
+
 ### Returns
 
   \| \{
@@ -145,11 +157,15 @@ toJson():
 \}
   \| `undefined`
 
+An object with local and session referrer strings, or undefined
+
   ### <a id="UniqueUserId"></a>UniqueUserId
 
 [**@xylabs/pixel**](#../README)
 
 ***
+
+Generates and persists a unique user identifier in localStorage.
 
 ## Constructors
 
@@ -179,6 +195,8 @@ id: string;
 toString(): string;
 ```
 
+Returns the unique user ID as a string.
+
 ### Returns
 
 `string`
@@ -188,6 +206,8 @@ toString(): string;
 [**@xylabs/pixel**](#../README)
 
 ***
+
+Abstract base class for handling user tracking events.
 
 ## Extended by
 
@@ -219,6 +239,8 @@ new UserEventHandler<TData>(): UserEventHandler<TData>;
 abstract funnelStarted<T>(fields): Promisable<void>;
 ```
 
+Tracks a funnel-started event.
+
 ### Type Parameters
 
 #### T
@@ -242,6 +264,8 @@ abstract funnelStarted<T>(fields): Promisable<void>;
 ```ts
 abstract testStarted<T>(fields): Promisable<void>;
 ```
+
+Tracks a test-started event.
 
 ### Type Parameters
 
@@ -267,6 +291,8 @@ abstract testStarted<T>(fields): Promisable<void>;
 abstract userClick<T>(fields): Promisable<void>;
 ```
 
+Tracks a user click event.
+
 ### Type Parameters
 
 #### T
@@ -291,6 +317,8 @@ abstract userClick<T>(fields): Promisable<void>;
 abstract viewContent<T>(fields): Promisable<void>;
 ```
 
+Tracks a view-content event.
+
 ### Type Parameters
 
 #### T
@@ -312,6 +340,8 @@ abstract viewContent<T>(fields): Promisable<void>;
 [**@xylabs/pixel**](#../README)
 
 ***
+
+Tracks UTM campaign parameters from query strings, persisting history in localStorage.
 
 ## Constructors
 
@@ -341,9 +371,13 @@ fields: Record<string, string>[] = [];
 getUtmRecord(): Record<string, string> | null;
 ```
 
+Parses UTM parameters from the current URL query string.
+
 ### Returns
 
 `Record`\<`string`, `string`\> \| `null`
+
+A record of UTM key-value pairs, or null if none are present
 
 ***
 
@@ -352,6 +386,8 @@ getUtmRecord(): Record<string, string> | null;
 ```ts
 toString(): string;
 ```
+
+Returns the UTM fields history as a JSON string.
 
 ### Returns
 
@@ -365,15 +401,21 @@ toString(): string;
 update(): Record<string, string>[];
 ```
 
+Checks the query string for new UTM values and appends them to the history if changed.
+
 ### Returns
 
 `Record`\<`string`, `string`\>[]
+
+The current UTM fields array, or undefined if empty
 
   ### <a id="XyPixel"></a>XyPixel
 
 [**@xylabs/pixel**](#../README)
 
 ***
+
+Singleton pixel tracker that queues and sends user events to the XY Labs tracking API.
 
 ## Properties
 
@@ -441,6 +483,8 @@ queue: UserEvent[] = [];
 get static instance(): XyPixel;
 ```
 
+Returns the singleton XyPixel instance, throwing if not yet initialized.
+
 #### Returns
 
 `XyPixel`
@@ -453,15 +497,21 @@ get static instance(): XyPixel;
 static init(pixelId): XyPixel;
 ```
 
+Initializes the XyPixel singleton with the given pixel ID.
+
 ### Parameters
 
 #### pixelId
 
 `string`
 
+The pixel identifier for this tracking instance
+
 ### Returns
 
 `XyPixel`
+
+The newly created XyPixel instance
 
 ***
 
@@ -471,11 +521,15 @@ static init(pixelId): XyPixel;
 static selectApi(api): void;
 ```
 
+Replaces the default PixelApi instance used for sending events.
+
 ### Parameters
 
 #### api
 
 [`PixelApi`](#PixelApi)
+
+The PixelApi instance to use
 
 ### Returns
 
@@ -489,11 +543,15 @@ static selectApi(api): void;
 identify(email?): void;
 ```
 
+Associates an email address with this pixel instance, hashing it for privacy.
+
 ### Parameters
 
 #### email?
 
 `string`
+
+The email address to identify the user with
 
 ### Returns
 
@@ -510,6 +568,8 @@ send<T>(
 eventId?): Promise<void>;
 ```
 
+Queues a tracking event and attempts to flush the queue to the API.
+
 ### Type Parameters
 
 #### T
@@ -522,13 +582,19 @@ eventId?): Promise<void>;
 
 `string`
 
+The event name
+
 #### fields?
 
 `T`
 
+Optional event-specific fields
+
 #### eventId?
 
 `string`
+
+Optional unique event identifier
 
 ### Returns
 
@@ -539,6 +605,8 @@ eventId?): Promise<void>;
 [**@xylabs/pixel**](#../README)
 
 ***
+
+Concrete event handler that sends tracking events through the XyPixel singleton.
 
 ## Extends
 
@@ -574,6 +642,8 @@ new XyUserEventHandler<T>(): XyUserEventHandler<T>;
 funnelStarted(fields): Promise<void>;
 ```
 
+Sends a funnel-started event via the pixel API.
+
 ### Parameters
 
 #### fields
@@ -596,6 +666,8 @@ funnelStarted(fields): Promise<void>;
 purchase(fields): Promise<void>;
 ```
 
+Sends a purchase event via the pixel API.
+
 ### Parameters
 
 #### fields
@@ -613,6 +685,8 @@ purchase(fields): Promise<void>;
 ```ts
 testStarted(fields): Promise<void>;
 ```
+
+Sends a test-started event via the pixel API.
 
 ### Parameters
 
@@ -636,6 +710,8 @@ testStarted(fields): Promise<void>;
 userClick(fields): Promise<void>;
 ```
 
+Sends a user click event via the pixel API.
+
 ### Parameters
 
 #### fields
@@ -658,6 +734,8 @@ userClick(fields): Promise<void>;
 viewContent(fields): Promise<void>;
 ```
 
+Sends a view-content event via the pixel API.
+
 ### Parameters
 
 #### fields
@@ -679,6 +757,8 @@ viewContent(fields): Promise<void>;
 [**@xylabs/pixel**](#../README)
 
 ***
+
+Common fields shared across all tracking event types.
 
 ## Extended by
 
@@ -709,6 +789,8 @@ optional testData: string;
 [**@xylabs/pixel**](#../README)
 
 ***
+
+Fields for a funnel-started tracking event.
 
 ## Extends
 
@@ -751,6 +833,8 @@ name: string;
 [**@xylabs/pixel**](#../README)
 
 ***
+
+Fields for a purchase tracking event.
 
 ## Extends
 
@@ -818,6 +902,8 @@ optional value: number;
 
 ***
 
+Fields for a test-started tracking event (e.g. A/B test).
+
 ## Extends
 
 - [`CommonFields`](#CommonFields)
@@ -859,6 +945,8 @@ name: string;
 [**@xylabs/pixel**](#../README)
 
 ***
+
+Fields for a user click tracking event.
 
 ## Extends
 
@@ -925,6 +1013,8 @@ optional placement: string;
 [**@xylabs/pixel**](#../README)
 
 ***
+
+Represents a single user tracking event to be sent to the pixel API.
 
 ## Properties
 
@@ -1080,6 +1170,8 @@ optional utm: Record<string, string>[] | Record<string, string[]>;
 
 ***
 
+Fields for a view-content tracking event.
+
 ## Extends
 
 - [`CommonFields`](#CommonFields)
@@ -1129,6 +1221,8 @@ path: string;
 [**@xylabs/pixel**](#../README)
 
 ***
+
+JSON structure for an XY Labs tracking event as stored or transmitted.
 
 ## Properties
 
@@ -1285,6 +1379,8 @@ optional utm: Record<string, string>[] | Record<string, string[]>;
 ```ts
 type UserEventSystem = Bowser.Parser.ParsedResult;
 ```
+
+Parsed browser/OS/engine information from the user agent string.
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

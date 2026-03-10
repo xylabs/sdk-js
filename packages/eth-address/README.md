@@ -39,6 +39,8 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ***
 
+Wrapper around an Ethereum address providing parsing, formatting, validation, and checksum support.
+
 ## Constructors
 
 ### Constructor
@@ -249,19 +251,27 @@ validate(): boolean;
 function ellipsize(value, length?): string;
 ```
 
+Truncates a string to show the first and last `length` characters separated by an ellipsis.
+
 ## Parameters
 
 ### value
 
 `string`
 
+The string to ellipsize
+
 ### length?
 
 `number` = `2`
 
+Number of characters to keep at each end (default 2)
+
 ## Returns
 
 `string`
+
+The ellipsized string
 
   ### <a id="isEthAddressWrapper"></a>isEthAddressWrapper
 
@@ -272,6 +282,8 @@ function ellipsize(value, length?): string;
 ```ts
 function isEthAddressWrapper(obj): obj is { type: string } & EthAddressWrapper;
 ```
+
+Type guard that checks if the given object is an instance of EthAddressWrapper.
 
 ## Parameters
 

@@ -43,6 +43,8 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 function createProfiler(): Profiler;
 ```
 
+Creates a new empty profiler instance.
+
 ## Returns
 
 [`Profiler`](#../type-aliases/Profiler)
@@ -57,15 +59,21 @@ function createProfiler(): Profiler;
 function profile(profiler, name): void;
 ```
 
+Records a timestamp for the given profile name.
+
 ## Parameters
 
 ### profiler
 
 [`Profiler`](#../type-aliases/Profiler)
 
+The profiler instance to record into.
+
 ### name
 
 `string`
+
+The name of the timing entry.
 
 ## Returns
 
@@ -81,15 +89,21 @@ function profile(profiler, name): void;
 function profileReport(profiler): Record<string, number>;
 ```
 
+Generates a report of elapsed times for each profiled entry.
+
 ## Parameters
 
 ### profiler
 
 [`Profiler`](#../type-aliases/Profiler)
 
+The profiler instance to report on.
+
 ## Returns
 
 `Record`\<`string`, `number`\>
+
+A record mapping each profile name to its elapsed time in milliseconds, plus a '-all-' total.
 
 ### type-aliases
 
@@ -102,6 +116,8 @@ function profileReport(profiler): Record<string, number>;
 ```ts
 type Profiler = Record<string, number[]>;
 ```
+
+A record of named timing entries, where each key maps to an array of timestamps.
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

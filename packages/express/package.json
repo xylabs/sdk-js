@@ -50,8 +50,6 @@
     "coverage": "vitest --coverage"
   },
   "dependencies": {
-    "@types/connect": "~3.4.38",
-    "@types/express-serve-static-core": "~5.1.1",
     "@xylabs/assert": "~5.0.82",
     "@xylabs/logger": "~5.0.82",
     "@xylabs/typeof": "~5.0.82",
@@ -65,8 +63,10 @@
   },
   "devDependencies": {
     "@types/body-parser": "~1.19.6",
+    "@types/connect": "~3.4.38",
     "@types/express": "~5.0.6",
     "@types/express-mung": "~0.5.5",
+    "@types/express-serve-static-core": "~5.1.1",
     "@types/node": "~25.4.0",
     "@xylabs/ts-scripts-yarn3": "~7.4.11",
     "@xylabs/tsconfig": "~7.4.11",

@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/buffer",
-  "version": "5.0.83",
+  "version": "5.0.84",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "buffer",

@@ -41,12 +41,12 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/exists": "~5.0.82",
-    "@xylabs/vitest-extended": "~5.0.82"
+    "@xylabs/exists": "~5.0.82"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.4.11",
     "@xylabs/tsconfig": "~7.4.11",
+    "@xylabs/vitest-extended": "~5.0.82",
     "typescript": "~5.9.3",
     "vitest": "~4.0.18"
   },

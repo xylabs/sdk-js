@@ -13,6 +13,7 @@ import type {
 // eslint-disable-next-line import-x/no-internal-modules
 } from '../types/master.ts'
 
+/** Default thread pool size based on the number of CPU cores. */
 export const defaultPoolSize = cpus().length
 
 function resolveScriptPath(scriptPath: string, baseURL?: string | undefined) {
@@ -89,6 +90,10 @@ function initWorkerThreadsWorker(): ImplementationExport {
 
 let implementation: ImplementationExport
 
+/**
+ * Get the Node.js-specific worker implementation using `worker_threads`, lazily initializing it on first call.
+ * @returns The platform-specific worker implementation export.
+ */
 export function getWorkerImplementation(): ImplementationExport {
   if (!implementation) {
     implementation = initWorkerThreadsWorker()
@@ -96,6 +101,10 @@ export function getWorkerImplementation(): ImplementationExport {
   return implementation
 }
 
+/**
+ * Check whether the current code is running inside a Node.js worker thread.
+ * @returns True if running in a worker thread (not the main thread), false otherwise.
+ */
 export function isWorkerRuntime() {
   return !isMainThread
 }

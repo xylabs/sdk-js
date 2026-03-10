@@ -3,6 +3,7 @@ import type { OpenGraphStructuredProperty } from './OpenGraphStructuredProperty.
 // TODO: There is slightly different fields for video/image/audio and we should create
 // separate interfaces for each
 
+/** Open Graph protocol metadata for rich link previews. */
 export interface OpenGraphMeta {
   audio?: OpenGraphStructuredProperty
   description?: string

@@ -53,6 +53,12 @@ const timerFunc = () => {
   }
 }
 
+/**
+ * Sets a timeout using an optimized internal timer that coalesces multiple timeouts into a single native timer.
+ * @param func - The function to call after the delay.
+ * @param delay - The delay in milliseconds (must be >= 0).
+ * @returns A unique string ID that can be used with clearTimeoutEx to cancel the timeout.
+ */
 // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 export const setTimeoutEx = (func: Function, delay: number) => {
   assertEx(delay >= 0, () => 'delay must be >= 0')
@@ -64,6 +70,10 @@ export const setTimeoutEx = (func: Function, delay: number) => {
   return id
 }
 
+/**
+ * Cancels a timeout previously created with setTimeoutEx.
+ * @param id - The timeout ID returned by setTimeoutEx.
+ */
 export const clearTimeoutEx = (id: string) => {
   timeouts = timeouts.filter(timeout => timeout.id !== id)
   update(timeouts)

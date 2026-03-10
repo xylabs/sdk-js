@@ -10,6 +10,7 @@ function fail(message: string): never {
   throw new Error(message)
 }
 
+/** Re-exported Thread type from the master types module. */
 export type Thread = ThreadType
 
 /** Thread utility functions. Use them to manage or inspect a `spawn()`-ed thread. */

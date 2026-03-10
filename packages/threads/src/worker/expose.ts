@@ -29,6 +29,12 @@ import type { WorkerGlobalScope } from './WorkerGlobalScope.ts'
 
 const isErrorEvent = (value: Event): value is ErrorEvent => value && (value as ErrorEvent).error
 
+/**
+ * Create an `expose()` function bound to a specific worker API implementation and global scope.
+ * @param implementation - The abstracted worker API for communicating with the master thread.
+ * @param self - The worker's global scope for subscribing to error events.
+ * @returns The `expose()` function that workers call to register their API.
+ */
 export function createExpose(implementation: AbstractedWorkerAPI, self: WorkerGlobalScope) {
   let exposeCalled = false
 

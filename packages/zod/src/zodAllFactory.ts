@@ -13,7 +13,13 @@ export type AllZodFactories<TType, TName extends string> = {
   [K in `to${TName}`]: ReturnType<typeof zodToFactory<TType>>
 }
 
-/** @alpha */
+/**
+ * Creates a bundle of `is`, `as`, and `to` factory functions for a given zod schema.
+ * @alpha
+ * @param zod - The zod schema to validate against
+ * @param name - The name used to suffix the generated function names (e.g. 'Address' produces `isAddress`, `asAddress`, `toAddress`)
+ * @returns An object containing `is<Name>`, `as<Name>`, and `to<Name>` functions
+ */
 export function zodAllFactory<T, TName extends string>(zod: z.ZodType<T>, name: TName) {
   return {
     [`is${name}`]: zodIsFactory<T>(zod),

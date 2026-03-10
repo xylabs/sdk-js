@@ -12,16 +12,23 @@ const MAX_GC_FREQUENCY = 1000 * 60
 const MIN_GC_FREQUENCY = 1000
 const MIN_HISTORY_INTERVAL = 1000
 
+/** Branded string type representing a class name used for global instance tracking. */
 export type BaseClassName = string & { __baseClassName: true }
 
+/** Common parameter fields available to all Base instances (logger, meter, tracer). */
 export type BaseParamsFields = {
   logger?: Logger
   meterProvider?: MeterProvider
   traceProvider?: TracerProvider
 }
 
+/** Parameters for constructing a Base instance, combining BaseParamsFields with optional additional params. */
 export type BaseParams<TAdditionalParams extends EmptyObject = EmptyObject> = TAdditionalParams & BaseParamsFields
 
+/**
+ * Abstract base class providing logging, telemetry, and global instance tracking with WeakRef-based GC.
+ * @typeParam TParams - The parameter type, extending BaseParams
+ */
 export abstract class Base<TParams extends BaseParams = BaseParams> {
   static defaultLogger?: Logger
   static readonly globalInstances: Record<BaseClassName, WeakRef<Base>[]> = {}

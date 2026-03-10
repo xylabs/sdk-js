@@ -42,8 +42,8 @@
     "!**/*.test.*"
   ],
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.4.11",
-    "@xylabs/tsconfig": "~7.4.11",
+    "@xylabs/ts-scripts-yarn3": "~7.4.13",
+    "@xylabs/tsconfig": "~7.4.13",
     "typescript": "~5.9.3",
     "vitest": "~4.0.18"
   },

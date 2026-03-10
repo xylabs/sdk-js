@@ -7,6 +7,12 @@ import type { Address } from './address.ts'
 import { AddressValidationZod } from './AddressValidationZod.ts'
 import { isAddress } from './is.ts'
 
+/**
+ * Attempts to coerce a value into an Address type, returning undefined or throwing based on the assert config.
+ * @param value - The value to coerce (must be a string)
+ * @param assert - If provided, throws on failure instead of returning undefined
+ * @returns The value as Address, or undefined if coercion fails and assert is not set
+ */
 export function asAddress(value: unknown): Address | undefined
 export function asAddress(value: unknown, assert: AssertConfig): Address
 export function asAddress(value: unknown, assert?: AssertConfig): Address | undefined {

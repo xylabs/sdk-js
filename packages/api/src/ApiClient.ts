@@ -1,5 +1,6 @@
 import { ApiStage } from './ApiStage.ts'
 
+/** Abstract base class for API clients that provides stage and token configuration. */
 abstract class ApiClient {
   protected stage?: ApiStage
   protected token?: string | null

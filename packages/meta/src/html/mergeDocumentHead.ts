@@ -4,6 +4,13 @@ import { load } from 'cheerio'
 const opts = {}
 // const opts = { decodeEntities: false }
 
+/**
+ * Merges meta tags from the source HTML head into the destination HTML head.
+ * Existing meta tags with matching property attributes are replaced; others are appended.
+ * @param destination - The base HTML string to merge into.
+ * @param source - The HTML string whose head meta tags will be merged.
+ * @returns The merged HTML string.
+ */
 export const mergeDocumentHead = (destination: string, source: string) => {
   const $destination = load(destination, opts)
   const $source = load(source, opts)

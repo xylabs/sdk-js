@@ -1,6 +1,12 @@
 import { d2r } from '../../constants.ts'
 import type { MercatorLngLat, MercatorTile } from '../../types.ts'
 
+/**
+ * Converts a geographic point to fractional tile coordinates at the given zoom level.
+ * @param point - The geographic coordinate
+ * @param z - The zoom level
+ * @returns A tile with fractional x and y values
+ */
 const pointToTileFraction = (point: MercatorLngLat, z: number): MercatorTile => {
   const sin = Math.sin(point.lat * d2r)
   const z2 = Math.pow(2, z)
@@ -13,6 +19,12 @@ const pointToTileFraction = (point: MercatorLngLat, z: number): MercatorTile => 
   return [x, y, z]
 }
 
+/**
+ * Converts a geographic point to the integer Mercator tile containing it at the given zoom level.
+ * @param point - The geographic coordinate
+ * @param z - The zoom level
+ * @returns The tile as [x, y, zoom]
+ */
 const tileFromPoint = (point: MercatorLngLat, z: number): MercatorTile => {
   const [tileX, tileY, tileZoom] = pointToTileFraction(point, z)
   const x = Math.max(Math.floor(tileX), 0)

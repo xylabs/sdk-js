@@ -3,6 +3,7 @@ import { Enum } from '@xylabs/enum'
 
 import { NoOpLogFunction } from './NoOpLogFunction.ts'
 
+/** A generic logging function that accepts any number of arguments. */
 export type LogFunction = (...data: unknown[]) => void
 
 /**
@@ -18,6 +19,7 @@ export interface Logger {
   warn: LogFunction
 }
 
+/** Numeric log level values, from least verbose (error=1) to most verbose (trace=6). */
 export const LogLevel = Enum({
   error: 1,
   warn: 2,
@@ -27,11 +29,19 @@ export const LogLevel = Enum({
   trace: 6,
 })
 
+/** String key for a log level (e.g. 'error', 'warn', 'info'). */
 export type LogLevelKey = EnumKey<typeof LogLevel>
+
+/** Alias for LogLevelKey, representing the verbosity setting as a string. */
 export type LogVerbosity = LogLevelKey
 
+/** Numeric value of a log level (1 through 6). */
 export type LogLevelValue = EnumValue<typeof LogLevel>
 
+/**
+ * A logger that filters messages based on a configured log level.
+ * Methods for levels above the configured threshold return a no-op function.
+ */
 export class LevelLogger implements Logger {
   readonly level: LogLevelValue
   readonly logger: Logger

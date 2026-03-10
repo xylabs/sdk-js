@@ -5,6 +5,7 @@
 import type { ImplementationExport, ThreadsWorkerOptions } from '../types/master.ts'
 import { getBundleURL } from './get-bundle-url.browser.ts'
 
+/** Default thread pool size based on available hardware concurrency, falling back to 4. */
 export const defaultPoolSize = typeof navigator !== 'undefined' && navigator.hardwareConcurrency ? navigator.hardwareConcurrency : 4
 
 const isAbsoluteURL = (value: string) => /^[A-Za-z][\d+.A-Za-z\-]*:/.test(value)
@@ -69,6 +70,10 @@ function selectWorkerImplementation(): ImplementationExport {
 
 let implementation: ImplementationExport
 
+/**
+ * Get the browser-specific worker implementation, lazily initializing it on first call.
+ * @returns The platform-specific worker implementation export.
+ */
 export function getWorkerImplementation(): ImplementationExport {
   if (!implementation) {
     implementation = selectWorkerImplementation()
@@ -76,6 +81,10 @@ export function getWorkerImplementation(): ImplementationExport {
   return implementation
 }
 
+/**
+ * Check whether the current code is running inside a web worker context.
+ * @returns True if running in a worker, false otherwise.
+ */
 export function isWorkerRuntime() {
   const isWindowContext = typeof globalThis !== 'undefined' && typeof Window !== 'undefined' && globalThis instanceof Window
   return typeof globalThis !== 'undefined' && self['postMessage'] && !isWindowContext ? true : false

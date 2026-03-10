@@ -30,6 +30,13 @@ function stringToArrayBuffer(value: string, base = 16): Uint8Array {
   }
 }
 
+/**
+ * Converts a string, bigint, or ArrayBufferLike to an ArrayBufferLike, with optional zero-padding.
+ * @param value - The value to convert (hex string, bigint, or existing buffer)
+ * @param padLength - Minimum byte length, left-padded with zeros if needed
+ * @param base - Numeric base for string parsing (default 16)
+ * @returns The resulting ArrayBufferLike, or undefined if value is undefined
+ */
 export function toArrayBuffer(value: undefined, padLength?: number, base?: number): undefined
 export function toArrayBuffer(value: ArrayBufferLike | bigint | string, padLength?: number, base?: number): ArrayBufferLike
 export function toArrayBuffer(value: ArrayBufferLike | bigint | string | undefined, padLength?: number, base?: number): ArrayBufferLike | undefined

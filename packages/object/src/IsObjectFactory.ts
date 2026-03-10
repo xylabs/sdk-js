@@ -5,9 +5,17 @@ import {
 } from '@xylabs/typeof'
 import { isType } from '@xylabs/typeof'
 
+/** Configuration options for object type checking. */
 export interface ObjectTypeConfig extends TypeCheckConfig {}
 
+/** Factory class for creating type-guard functions that validate objects against a given shape and optional additional checks. */
 export class IsObjectFactory<T extends TypedObject> {
+  /**
+   * Creates a type-guard function that validates an object matches the given shape and passes additional checks.
+   * @param shape - An optional map of property names to expected types.
+   * @param additionalChecks - Optional extra type-check functions to run after shape validation.
+   * @returns A type-guard function for type T.
+   */
   create(shape?: ObjectTypeShape, additionalChecks?: TypeCheck<TypedObject>[]): TypeCheck<T> {
     return (obj: unknown, config?: TypeCheckConfig | number): obj is T => {
       if (!isObject(obj)) {

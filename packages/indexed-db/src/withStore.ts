@@ -6,6 +6,16 @@ import type {
 
 import type { ObjectStore } from './ObjectStore.ts'
 
+/**
+ * Opens a transaction on the specified store with the given mode and passes the store to the callback.
+ * If the store does not exist, the callback receives null.
+ * @param db The IndexedDB database instance
+ * @param storeName The name of the object store to open
+ * @param callback Function to execute with the store (or null if it doesn't exist)
+ * @param mode The transaction mode ('readonly' or 'readwrite')
+ * @param logger Optional logger for diagnostics
+ * @returns The result of the callback
+ */
 export async function withStore<T extends EmptyObject = EmptyObject, R = T, M extends 'readonly' | 'readwrite' = 'readonly'>(
   db: IDBPDatabase<ObjectStore<T>>,
   storeName: StoreNames<ObjectStore<T>>,

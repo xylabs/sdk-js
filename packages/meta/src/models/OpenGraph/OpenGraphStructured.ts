@@ -1,3 +1,4 @@
+/** Structured properties for an Open Graph media object (image, video, or audio). */
 export interface OpenGraphStructured {
   ''?: string
   'alt'?: string

@@ -1,6 +1,7 @@
 import type { ExIds } from '../ExIds.ts'
 import type { UserEventSystem } from './UserEventSystem.ts'
 
+/** Represents a single user tracking event to be sent to the pixel API. */
 export interface UserEvent {
   cid: string
   create_time?: number

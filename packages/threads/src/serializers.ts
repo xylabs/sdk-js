@@ -2,16 +2,24 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { SerializedError } from './types/messages.ts'
 
+/** A serializer that can convert between a message format and an input type. */
 export interface Serializer<Msg = JsonSerializable, Input = any> {
   deserialize(message: Msg): Input
   serialize(input: Input): Msg
 }
 
+/** A serializer implementation that receives a fallback (default) serializer for chaining. */
 export interface SerializerImplementation<Msg = JsonSerializable, Input = any> {
   deserialize(message: Msg, defaultDeserialize: (msg: Msg) => Input): Input
   serialize(input: Input, defaultSerialize: (inp: Input) => Msg): Msg
 }
 
+/**
+ * Extend a base serializer with an additional serializer implementation, creating a chain.
+ * @param extend - The base serializer to extend.
+ * @param implementation - The new serializer implementation that wraps the base.
+ * @returns A new serializer combining both behaviors.
+ */
 export function extendSerializer<MessageType, InputType = any>(
   extend: Serializer<MessageType, InputType>,
   implementation: SerializerImplementation<MessageType, InputType>,
@@ -36,6 +44,7 @@ type JsonSerializableObject = {
   [key: string]: JsonSerializablePrimitive | JsonSerializablePrimitive[] | JsonSerializableObject | JsonSerializableObject[] | undefined
 }
 
+/** A JSON-compatible value that can be serialized for worker message passing. */
 export type JsonSerializable = JsonSerializablePrimitive | JsonSerializablePrimitive[] | JsonSerializableObject | JsonSerializableObject[]
 
 const DefaultErrorSerializer: Serializer<SerializedError, Error> = {
@@ -58,6 +67,7 @@ const DefaultErrorSerializer: Serializer<SerializedError, Error> = {
 const isSerializedError = (thing: any): thing is SerializedError =>
   thing && typeof thing === 'object' && '__error_marker' in thing && thing.__error_marker === '$$error'
 
+/** Default serializer that handles Error instances and passes other values through. */
 export const DefaultSerializer: Serializer<JsonSerializable> = {
   deserialize(message: JsonSerializable): any {
     return isSerializedError(message) ? DefaultErrorSerializer.deserialize(message) : message

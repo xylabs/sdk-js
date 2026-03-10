@@ -2,6 +2,7 @@ import type { RawAxiosRequestConfig } from 'axios'
 import { AxiosHeaders } from 'axios'
 import { gzip } from 'pako'
 
+/** Axios request config extended with an optional gzip compression threshold. */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type RawAxiosJsonRequestConfig<D = any> = RawAxiosRequestConfig<D> & { compressLength?: number }
 
@@ -13,6 +14,12 @@ function buildHeaders(headers: RawAxiosJsonRequestConfig['headers']) {
   return axiosHeaders
 }
 
+/**
+ * Creates an Axios config preconfigured for JSON requests with optional gzip compression.
+ * Request bodies exceeding `compressLength` (default 1024 bytes) are automatically gzip-compressed.
+ * @param config - Base Axios config, optionally including a `compressLength` threshold
+ * @returns A fully configured Axios request config with JSON transforms
+ */
 export function axiosJsonConfig({
   compressLength, headers, ...config
 }: RawAxiosJsonRequestConfig = {}): RawAxiosJsonRequestConfig {

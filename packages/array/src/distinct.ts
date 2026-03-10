@@ -1,3 +1,7 @@
+/**
+ * Array filter callback that removes duplicate values, with correct NaN handling.
+ * Use with `array.filter(distinct)`.
+ */
 export const distinct = <T>(value: T, index: number, array: T[]): boolean => {
   // Special case for NaN
   if (Number.isNaN(value)) {

@@ -2,6 +2,7 @@ import type { BaseParams } from './Base.ts'
 import { Base } from './Base.ts'
 import { globallyUnique } from './globallyUnique.ts'
 
+/** Base class that registers itself as globally unique, preventing duplicate module instances. */
 export abstract class UniqueBase<TParams extends BaseParams = BaseParams> extends Base<TParams> {
   static readonly uniqueDomain = 'xy'
   static readonly uniqueName = globallyUnique(this.name, this, this.uniqueDomain)

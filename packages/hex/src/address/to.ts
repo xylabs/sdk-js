@@ -3,6 +3,12 @@ import { hexFrom } from '../hex/index.ts'
 import type { Address } from './address.ts'
 import { AddressTransformZod } from './AddressTransformZod.ts'
 
+/**
+ * Converts a value to a 160-bit Address hex string.
+ * @param value - The value to convert (string, number, bigint, or ArrayBuffer)
+ * @param config - Optional hex config (defaults to 160-bit, no prefix)
+ * @returns The value as an Address
+ */
 export const toAddress = (value: string | number | bigint | ArrayBufferLike, config: HexConfig = {}): Address => {
   const { bitLength = 160, prefix = false } = config
   return hexFrom(value, {

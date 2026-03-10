@@ -28,17 +28,21 @@ export class Subject<T> extends Observable<T> implements ObservableLike<T> {
     this[$observers] = []
   }
 
+  /** Signal completion to all subscribers. */
   complete() {
     for (const observer of this[$observers]) observer.complete()
   }
 
+  /** Signal an error to all subscribers. */
   error(error: any) {
     for (const observer of this[$observers]) observer.error(error)
   }
 
+  /** Emit a new value to all subscribers. */
   next(value: T) {
     for (const observer of this[$observers]) observer.next(value)
   }
 }
 
+/** Re-export of the Observable class from the `observable-fns` library. */
 export { Observable } from 'observable-fns'

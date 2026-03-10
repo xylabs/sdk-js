@@ -7,6 +7,12 @@ import type { Meta } from '../models/index.ts'
 
 /* test change */
 
+/**
+ * Adds or replaces a meta tag in the document head.
+ * @param $ - The Cheerio API instance for the document.
+ * @param name - The meta property name.
+ * @param value - The meta content value (string, array, or nested object).
+ */
 export const addMetaToHead = ($: CheerioAPI, name: string, value: string | object) => {
   if (typeof value === 'string') {
     const newMeta = `<meta property="${name}" content="${value}" />`
@@ -31,6 +37,13 @@ export const addMetaToHead = ($: CheerioAPI, name: string, value: string | objec
   }
 }
 
+/**
+ * Injects meta properties, title, and description into an HTML string.
+ * @param html - The base HTML string to modify.
+ * @param meta - The metadata to inject.
+ * @param handler - Optional meta-handler property value to include.
+ * @returns The modified HTML string with injected metadata.
+ */
 export const metaBuilder = (html: string, meta: Meta, handler?: string) => {
   const $ = load(html)
   // NOTE: This assumes unique meta properties (no duplicates)

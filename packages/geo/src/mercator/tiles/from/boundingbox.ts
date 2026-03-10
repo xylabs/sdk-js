@@ -1,6 +1,12 @@
 import { tileFromPoint } from '../../tile/index.ts'
 import type { MercatorBoundingBox, MercatorTile } from '../../types.ts'
 
+/**
+ * Returns all Mercator tiles that intersect the given bounding box at the specified zoom level.
+ * @param box - The geographic bounding box
+ * @param zoom - The zoom level
+ * @returns An array of tiles covering the bounding box
+ */
 const tilesFromBoundingBox = (box: MercatorBoundingBox, zoom: number): MercatorTile[] => {
   const nw = tileFromPoint(box.getNorthWest(), zoom)
   const se = tileFromPoint(box.getSouthEast(), zoom)

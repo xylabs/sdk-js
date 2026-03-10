@@ -10,12 +10,22 @@ import { isDefined } from '@xylabs/typeof'
 
 import { timeBudget } from './timeBudget.ts'
 
+/** Configuration options for span creation and execution. */
 export interface SpanConfig {
+  /** Optional logger for time budget warnings. Falls back to console if not provided. */
   logger?: Logger | null
+  /** Maximum allowed execution time in milliseconds before logging a warning. */
   timeBudgetLimit?: number
+  /** OpenTelemetry tracer to use. Defaults to a tracer named after the span. */
   tracer?: Tracer
 }
 
+/**
+ * Creates a new OpenTelemetry context that preserves baggage and custom keys but has no active span.
+ * @param activeCtx - The context to clone from.
+ * @param configKeys - Additional context keys to copy.
+ * @returns A new context with baggage but no parent span.
+ */
 export function cloneContextWithoutSpan(activeCtx: Context, configKeys: symbol[] = []): Context {
   // Start from root to ensure no span is propagated
   let newCtx = ROOT_CONTEXT
@@ -37,6 +47,13 @@ export function cloneContextWithoutSpan(activeCtx: Context, configKeys: symbol[]
   return newCtx
 }
 
+/**
+ * Executes a synchronous function within an OpenTelemetry span, recording status and exceptions.
+ * @param name - The span name.
+ * @param fn - The function to execute.
+ * @param tracer - Optional tracer to use.
+ * @returns The return value of `fn`.
+ */
 export function span<T>(name: string, fn: () => T, tracer?: Tracer): T {
   const activeTracer = tracer ?? TRACE_API.getTracer(name)
   if (isDefined(activeTracer)) {
@@ -60,6 +77,13 @@ export function span<T>(name: string, fn: () => T, tracer?: Tracer): T {
   }
 }
 
+/**
+ * Executes a synchronous function within a new root span that has no parent, even if a span is already active.
+ * @param name - The span name.
+ * @param fn - The function to execute.
+ * @param tracer - Optional tracer to use.
+ * @returns The return value of `fn`.
+ */
 export function spanRoot<T>(name: string, fn: () => T, tracer?: Tracer): T {
   const activeTracer = tracer ?? TRACE_API.getTracer(name)
   if (isDefined(activeTracer)) {
@@ -92,6 +116,13 @@ export function spanRoot<T>(name: string, fn: () => T, tracer?: Tracer): T {
   }
 }
 
+/**
+ * Executes an async function within an OpenTelemetry span, with optional time budget monitoring.
+ * @param name - The span name.
+ * @param fn - The async function to execute.
+ * @param config - Optional span configuration (tracer, logger, time budget).
+ * @returns The resolved value of `fn`.
+ */
 export async function spanAsync<T>(
   name: string,
   fn: () => Promise<T>,
@@ -122,6 +153,13 @@ export async function spanAsync<T>(
   }
 }
 
+/**
+ * Executes an async function within a new root span (no parent), with optional time budget monitoring.
+ * @param name - The span name.
+ * @param fn - The async function to execute.
+ * @param config - Optional span configuration (tracer, logger, time budget).
+ * @returns The resolved value of `fn`.
+ */
 export async function spanRootAsync<T>(
   name: string,
   fn: () => Promise<T>,

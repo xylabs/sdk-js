@@ -9,6 +9,13 @@ import {
   type IndexDescription,
 } from './IndexDescription.ts'
 
+/**
+ * Creates an object store with the specified indexes during a version upgrade transaction.
+ * @param db The IndexedDB database instance (during upgrade)
+ * @param storeName The name of the store to create
+ * @param indexes The index descriptions to create on the store
+ * @param logger Optional logger for diagnostics
+ */
 export function createStoreDuringUpgrade<DBTypes extends DBSchema | unknown = unknown>(
   db: IDBPDatabase<DBTypes>,
   storeName: StoreNames<DBTypes>,

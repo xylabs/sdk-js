@@ -119,9 +119,9 @@
   },
   "devDependencies": {
     "@types/debug": "~4.1.12",
-    "@xylabs/eslint-config-flat": "~7.4.11",
-    "@xylabs/ts-scripts-yarn3": "~7.4.11",
-    "@xylabs/tsconfig": "~7.4.11",
+    "@xylabs/eslint-config-flat": "~7.4.13",
+    "@xylabs/ts-scripts-yarn3": "~7.4.13",
+    "@xylabs/tsconfig": "~7.4.13",
     "eslint": "~9.39.4",
     "tsup": "~8.5.1",
     "typescript": "~5.9.3",

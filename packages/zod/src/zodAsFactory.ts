@@ -4,6 +4,13 @@ import type * as z from 'zod'
 
 import type { ZodFactoryConfig } from './Config.ts'
 
+/**
+ * Creates a function that validates a value against a zod schema and returns it with a narrowed type.
+ * When called without an assert config, returns undefined on failure. When called with an assert config, throws on failure.
+ * @param zod - The zod schema to validate against
+ * @param name - A name used in error messages for identification
+ * @returns A function that validates and narrows the type of a value
+ */
 export function zodAsFactory<TZod>(zod: z.ZodType<TZod>, name: string) {
   function asFunc<T>(value: T): (T & TZod) | undefined
   function asFunc<T>(value: T, assert: ZodFactoryConfig): (T & TZod)

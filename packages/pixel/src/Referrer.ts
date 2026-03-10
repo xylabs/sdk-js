@@ -1,3 +1,4 @@
+/** Tracks and persists the document referrer in both session and local storage. */
 export class Referrer {
   private static storageId = '_coin_referrer'
   local: string
@@ -9,6 +10,10 @@ export class Referrer {
     globalThis.localStorage.setItem(Referrer.storageId, this.local)
   }
 
+  /**
+   * Returns the referrer data as a JSON object, or undefined if both values are empty.
+   * @returns An object with local and session referrer strings, or undefined
+   */
   toJson() {
     if ((this.local.length > 0) || (this.session.length > 0)) {
       return {

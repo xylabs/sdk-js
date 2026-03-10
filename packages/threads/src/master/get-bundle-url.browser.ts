@@ -29,4 +29,5 @@ function getBaseURL(url: string): string {
   return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/'
 }
 
+/** Returns the cached bundle URL of the current script, used to resolve relative worker paths in browser environments. */
 export { getBundleURLCached as getBundleURL }

@@ -1,5 +1,10 @@
 import type { MercatorTile } from '../../types.ts'
 
+/**
+ * Converts a quadkey string to a Mercator tile [x, y, zoom].
+ * @param quadkey - The quadkey string to decode
+ * @returns The tile as [x, y, zoom]
+ */
 const tileFromQuadkey = (quadkey: string): MercatorTile => {
   let x = 0
   let y = 0

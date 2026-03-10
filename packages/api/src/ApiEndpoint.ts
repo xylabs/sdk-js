@@ -3,6 +3,10 @@ import axios from 'axios'
 
 import type { ApiConfig } from './ApiConfig.ts'
 
+/**
+ * Generic REST API endpoint wrapper that supports fetching and inserting typed data.
+ * @typeParam T - The type of data returned by the endpoint
+ */
 class ApiEndpoint<T> {
   private _value?: T
   private config: ApiConfig

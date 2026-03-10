@@ -1,5 +1,6 @@
 import type { ApiResourceIdentifierObject } from './resourceIdentifier.ts'
 
+/** A relationship link pointing to the relationship itself. */
 export interface IRelationshipSelfLink {
   /**
    * A link for the relationship itself (a "relationship link"). This link allows the client to directly manipulate the relationship.
@@ -9,6 +10,7 @@ export interface IRelationshipSelfLink {
   self: string
 }
 
+/** A relationship link pointing to a related resource. */
 export interface IRelationshipRelatedLink {
   /**
    * A related resource link
@@ -16,6 +18,7 @@ export interface IRelationshipRelatedLink {
   related: string
 }
 
+/** Contains the links for a JSON:API relationship. */
 export interface IRelationshipLinks {
   links: IRelationshipRelatedLink | IRelationshipSelfLink
 }
@@ -29,10 +32,12 @@ export interface IRelationshipLinks {
  *    • an array of resource identifier objects for non-empty to-many relationships.
  */
 export type ResourceLinkage = null | [] | ApiResourceIdentifierObject | ApiResourceIdentifierObject[]
+/** Contains the resource linkage data for a JSON:API relationship. */
 export interface IRelationshipData {
   data: ResourceLinkage
 }
 
+/** Non-standard metadata associated with a JSON:API relationship. */
 export type RelationshipMeta = Record<string, unknown>
 
 /**

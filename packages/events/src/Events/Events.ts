@@ -19,6 +19,7 @@ See API for more information on how debugging works.
 */
 export type DebugLogger = (type: string, debugName: string, eventName?: EventName, eventData?: EventArgs) => void
 
+/** Information about a registered event listener, including an optional filter for selective invocation. */
 export type EventListenerInfo<TEventArgs extends EventArgs = EventArgs> = {
   filter?: TEventArgs
   listener: EventListener<TEventArgs>
@@ -38,6 +39,7 @@ export type DebugOptions = {
 
 const resolvedPromise = Promise.resolve()
 
+/** Data shape for internal meta events that fire when listeners are added or removed. */
 export type MetaEventData<TEventData extends EventData> = {
   listenerAdded: {
     eventName?: keyof TEventData
@@ -51,8 +53,13 @@ export type MetaEventData<TEventData extends EventData> = {
 
 const isMetaEvent = (eventName: EventName) => eventName === 'listenerAdded' || eventName === 'listenerRemoved'
 
+/** Parameters for constructing an Events instance, with optional debug configuration. */
 export type EventsParams = BaseParams<{ readonly debug?: DebugOptions }>
 
+/**
+ * Core typed event emitter implementation supporting named events, wildcard listeners,
+ * serial and concurrent emission, listener filtering, and debug logging.
+ */
 export class Events<TEventData extends EventData = EventData> extends Base<EventsParams> implements EventEmitter<TEventData> {
   protected static anyMap = new WeakMap<object, Set<EventAnyListener>>()
   protected static eventsMap = new WeakMap<object, Map<EventName, Set<EventListenerInfo>>>()
@@ -89,6 +96,7 @@ export class Events<TEventData extends EventData = EventData> extends Base<Event
     Events.eventsMap.set(this, new Map<keyof TEventData, Set<EventListenerInfo>>())
   }
 
+  /** Whether debug mode is enabled globally or via the DEBUG environment variable. */
   static get isDebugEnabled() {
     // In a browser environment, `globalThis.process` can potentially reference a DOM Element with a `#process` ID,
     // so instead of just type checking `globalThis.process`, we need to make sure that `globalThis.process.env` exists.
@@ -105,10 +113,15 @@ export class Events<TEventData extends EventData = EventData> extends Base<Event
     this.isGlobalDebugEnabled = newValue
   }
 
+  /** The debug configuration for this instance, if provided. */
   get debug() {
     return this.params.debug
   }
 
+  /**
+   * Removes all listeners for the specified event name(s).
+   * @param eventNames - One or more event names to clear listeners for.
+   */
   clearListeners(eventNames: keyof TEventData | (keyof TEventData)[]) {
     const eventNamesArray = Array.isArray(eventNames) ? eventNames : [eventNames]
 
@@ -131,10 +144,21 @@ export class Events<TEventData extends EventData = EventData> extends Base<Event
     }
   }
 
+  /**
+   * Emits an event, invoking all registered listeners concurrently.
+   * @param eventName - The event to emit.
+   * @param eventArgs - The data to pass to listeners.
+   */
   async emit<TEventName extends keyof TEventData>(eventName: TEventName, eventArgs: TEventData[TEventName]) {
     return await this.emitInternal(eventName, eventArgs)
   }
 
+  /**
+   * Emits an internal meta event (listenerAdded or listenerRemoved).
+   * @param eventName - The meta event name.
+   * @param eventArgs - The meta event data containing listener and event information.
+   * @returns True if the meta event was emitted successfully.
+   */
   async emitMetaEvent<TEventName extends keyof MetaEventData<TEventData>>(eventName: TEventName, eventArgs: MetaEventData<TEventData>[TEventName]) {
     if (isMetaEvent(eventName)) {
       try {
@@ -148,6 +172,11 @@ export class Events<TEventData extends EventData = EventData> extends Base<Event
     }
   }
 
+  /**
+   * Emits an event, invoking all registered listeners sequentially in order.
+   * @param eventName - The event to emit.
+   * @param eventArgs - The data to pass to listeners.
+   */
   async emitSerial<TEventName extends keyof TEventData>(eventName: TEventName, eventArgs: TEventData[TEventName]) {
     if (isMetaEvent(eventName) && !this._canEmitMetaEvents) {
       throw new TypeError(NO_META_EVENT_ERROR_MESSAGE)
@@ -186,6 +215,11 @@ export class Events<TEventData extends EventData = EventData> extends Base<Event
     }
   }
 
+  /**
+   * Returns the total number of listeners registered for the specified event name(s).
+   * @param eventNames - One or more event names to count listeners for.
+   * @returns The total listener count.
+   */
   // TODO: Make test for this
   listenerCount(eventNames?: keyof TEventData | (keyof TEventData)[]) {
     const eventNamesArray = Array.isArray(eventNames) ? eventNames : [eventNames]
@@ -208,12 +242,23 @@ export class Events<TEventData extends EventData = EventData> extends Base<Event
     return count
   }
 
+  /**
+   * Logs debug information if debug mode is enabled.
+   * @param type - The type of operation being logged.
+   * @param eventName - The event name, if applicable.
+   * @param eventArgs - The event data, if applicable.
+   */
   logIfDebugEnabled<TEventName extends EventName>(type: string, eventName?: TEventName, eventArgs?: EventArgs) {
     if (Events.isDebugEnabled || this.debug?.enabled) {
       this.debug?.logger?.(type, this.debug.name, eventName, eventArgs)
     }
   }
 
+  /**
+   * Removes a specific listener from the specified event name(s).
+   * @param eventNames - One or more event names to unsubscribe from.
+   * @param listener - The listener to remove.
+   */
   off<TEventName extends keyof TEventData, TEventListener = EventListener<TEventData[TEventName]>>(
     eventNames: TEventName | TEventName[],
     listener: TEventListener,
@@ -238,6 +283,10 @@ export class Events<TEventData extends EventData = EventData> extends Base<Event
     }
   }
 
+  /**
+   * Removes a wildcard listener that was receiving all events.
+   * @param listener - The wildcard listener to remove.
+   */
   offAny(listener: EventAnyListener) {
     this.logIfDebugEnabled('unsubscribeAny')
 
@@ -246,6 +295,13 @@ export class Events<TEventData extends EventData = EventData> extends Base<Event
     forget(this.emitMetaEvent('listenerRemoved', { listener: listener as EventAnyListener }))
   }
 
+  /**
+   * Subscribes a listener to the specified event name(s).
+   * @param eventNames - One or more event names to listen for.
+   * @param listener - The callback to invoke when the event fires.
+   * @param filter - Optional filter to selectively invoke the listener based on event data.
+   * @returns An unsubscribe function.
+   */
   on<TEventName extends keyof TEventData = keyof TEventData>(
     eventNames: TEventName | TEventName[],
     listener: EventListener<TEventData[TEventName]>,
@@ -272,6 +328,11 @@ export class Events<TEventData extends EventData = EventData> extends Base<Event
     return this.off.bind(this, eventNames, listener as EventListener)
   }
 
+  /**
+   * Subscribes a wildcard listener that receives all events.
+   * @param listener - The callback to invoke for any event.
+   * @returns An unsubscribe function.
+   */
   onAny(listener: EventAnyListener) {
     this.logIfDebugEnabled('subscribeAny')
 
@@ -280,6 +341,12 @@ export class Events<TEventData extends EventData = EventData> extends Base<Event
     return this.offAny.bind(this, listener as EventAnyListener)
   }
 
+  /**
+   * Subscribes a listener that will be invoked only once for the specified event, then automatically removed.
+   * @param eventName - The event to listen for.
+   * @param listener - The callback to invoke once.
+   * @returns An unsubscribe function.
+   */
   once<TEventName extends keyof TEventData>(eventName: TEventName, listener: EventListener<TEventData[TEventName]>) {
     const subListener = async (args: TEventData[TEventName]) => {
       this.off(eventName, subListener)

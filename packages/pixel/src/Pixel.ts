@@ -14,6 +14,7 @@ import { UtmFields } from './UtmFields.ts'
 
 const emailHashLocalStorageName = 'xy_email_hash'
 
+/** Singleton pixel tracker that queues and sends user events to the XY Labs tracking API. */
 export class XyPixel {
   static api = new PixelApi()
 
@@ -35,15 +36,25 @@ export class XyPixel {
     this.email_hash = localStorage.getItem(emailHashLocalStorageName)
   }
 
+  /** Returns the singleton XyPixel instance, throwing if not yet initialized. */
   static get instance(): XyPixel {
     return assertEx(this._instance, () => 'XyPixel uninitialized')
   }
 
+  /**
+   * Initializes the XyPixel singleton with the given pixel ID.
+   * @param pixelId - The pixel identifier for this tracking instance
+   * @returns The newly created XyPixel instance
+   */
   static init(pixelId: string) {
     this._instance = new XyPixel(pixelId)
     return this._instance
   }
 
+  /**
+   * Replaces the default PixelApi instance used for sending events.
+   * @param api - The PixelApi instance to use
+   */
   static selectApi(api: PixelApi) {
     this.api = api
   }
@@ -55,6 +66,10 @@ export class XyPixel {
     return this.utmFieldsObj
   }
 
+  /**
+   * Associates an email address with this pixel instance, hashing it for privacy.
+   * @param email - The email address to identify the user with
+   */
   identify(email?: string) {
     this.email = email
     this.email_hash = (email !== undefined && email.length > 0) ? md5.hash(email, true) : undefined
@@ -63,6 +78,12 @@ export class XyPixel {
     }
   }
 
+  /**
+   * Queues a tracking event and attempts to flush the queue to the API.
+   * @param event - The event name
+   * @param fields - Optional event-specific fields
+   * @param eventId - Optional unique event identifier
+   */
   async send<T extends JsonObject>(event: string, fields?: T, eventId?: string) {
     this.updateFbId()
     const utm = XyPixel.utmFields().update()

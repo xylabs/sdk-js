@@ -7,6 +7,14 @@ import type {
 import type { ObjectStore } from './ObjectStore.ts'
 import { withStore } from './withStore.ts'
 
+/**
+ * Opens a read-only transaction on the specified store and passes it to the callback.
+ * @param db The IndexedDB database instance
+ * @param storeName The name of the object store to open
+ * @param callback Function to execute with the read-only store
+ * @param logger Optional logger for diagnostics
+ * @returns The result of the callback
+ */
 export async function withReadOnlyStore<T extends EmptyObject = EmptyObject, R = T>(
   db: IDBPDatabase<ObjectStore<T>>,
   storeName: StoreNames<ObjectStore<T>>,

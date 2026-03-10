@@ -1,6 +1,11 @@
 import { handleError } from '@xylabs/error'
 import { isNumber } from '@xylabs/typeof'
 
+/**
+ * Retrieves the name of the calling function by inspecting the stack trace.
+ * @param depth - The stack frame depth to inspect (default: 2, the caller's caller).
+ * @returns The function name, or '<unknown>' if it cannot be determined.
+ */
 export const getFunctionName = (depth = 2) => {
   try {
     throw new Error('Getting function name')

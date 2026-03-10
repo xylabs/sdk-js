@@ -4,6 +4,13 @@ import type * as z from 'zod'
 
 import type { ZodFactoryConfig } from './Config.ts'
 
+/**
+ * Creates an async function that validates a value against a zod schema and returns it with a narrowed type.
+ * Uses `safeParseAsync` for schemas with async refinements. When called without an assert config, returns undefined on failure.
+ * @param zod - The zod schema to validate against
+ * @param name - A name used in error messages for identification
+ * @returns An async function that validates and narrows the type of a value
+ */
 export function zodAsAsyncFactory<TZod>(zod: z.ZodType<TZod>, name: string) {
   function asFunc<T>(value: T): Promise<(T & TZod) | undefined>
   function asFunc<T>(value: T, assert: ZodFactoryConfig): Promise<(T & TZod)>

@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { $transferable } from './symbols.ts'
 
+/** Descriptor wrapping a value with its associated transferable objects for zero-copy messaging. */
 export interface TransferDescriptor<T = any> {
   [$transferable]: true
   send: T
@@ -15,6 +16,11 @@ function isTransferable(thing: any): thing is Transferable {
   return true
 }
 
+/**
+ * Check whether a value is a `TransferDescriptor` created by `Transfer()`.
+ * @param thing - The value to check.
+ * @returns True if the value is a transfer descriptor.
+ */
 export function isTransferDescriptor(thing: any): thing is TransferDescriptor {
   return thing && typeof thing === 'object' && thing[$transferable]
 }

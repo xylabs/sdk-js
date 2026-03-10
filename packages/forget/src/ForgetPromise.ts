@@ -6,18 +6,32 @@ import { isNumber } from '@xylabs/typeof'
 
 import { defaultForgetConfig, type ForgetConfig } from './ForgetConfig.ts'
 
+/** A function that returns a promisable value. */
 type PromisableFunction<T> = () => Promisable<T>
 
+/**
+ * Manages fire-and-forget promises with tracking, timeouts, and error handling.
+ */
 // eslint-disable-next-line unicorn/no-static-only-class
 export class ForgetPromise {
+  /** Number of currently active (unresolved) forgotten promises. */
   static activeForgets = 0
+  /** Number of forgotten promises that threw exceptions. */
   static exceptedForgets = 0
+  /** Logger instance used for error and warning output. */
   static logger: Logger = console
 
+  /** Whether any forgotten promises are still active. */
   static get active() {
     return this.activeForgets > 0
   }
 
+  /**
+   * Waits until all forgotten promises have completed.
+   * @param interval - Polling interval in milliseconds.
+   * @param timeout - Optional maximum wait time in milliseconds.
+   * @returns The number of remaining active forgets (0 if all completed).
+   */
   static async awaitInactive(interval = 100, timeout?: number) {
     let timeoutRemaining = timeout
     while (this.active) {
@@ -32,6 +46,7 @@ export class ForgetPromise {
     return 0
   }
 
+  /** Handles exceptions from forgotten promises by logging error details. */
   static exceptionHandler(error: Error, { name }: ForgetConfig, externalStackTrace?: string) {
     this.logger.error(`forget promise handler excepted [${name}]: ${error.message}`, error)
     if (externalStackTrace !== undefined) {
@@ -107,6 +122,7 @@ export class ForgetPromise {
     }
   }
 
+  /** Handles timeout events for forgotten promises by logging timeout details. */
   static timeoutHandler(time: number, { name = 'unknown' }: ForgetConfig, externalStackTrace?: string) {
     this.logger.error(`forget promise timeout out after ${time}ms [Cancelling] [${name}]`)
     if (externalStackTrace !== undefined) {

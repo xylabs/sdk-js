@@ -1,3 +1,9 @@
+/**
+ * Converts a bigint or decimal string to a fixed-point bigint representation.
+ * @param value - The value to convert (bigint or string with optional decimal point)
+ * @param places - Number of decimal places (default 18)
+ * @returns A bigint representing the value scaled by 10^places
+ */
 export const toFixedPoint = (value: bigint | string, places = 18): bigint => {
   if (!Number.isInteger(places)) throw new Error(`places (${places}) must be an Integer`)
   if (typeof value === 'string') {

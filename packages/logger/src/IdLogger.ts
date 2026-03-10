@@ -1,5 +1,9 @@
 import type { Logger } from './LevelLogger.ts'
 
+/**
+ * A logger wrapper that prefixes every log message with a bracketed identifier.
+ * Useful for distinguishing log output from different components or instances.
+ */
 export class IdLogger implements Logger {
   private _id?: () => string
   private _logger: Logger

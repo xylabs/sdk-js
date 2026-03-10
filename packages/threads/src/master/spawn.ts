@@ -28,6 +28,7 @@ import { createProxyFunction, createProxyModule } from './invocation-proxy.ts'
 type ArbitraryWorkerInterface = WorkerFunction & WorkerModule<string> & { somekeythatisneverusedinproductioncode123: 'magicmarker123' }
 type ArbitraryThreadType = FunctionThread<any, any> & ModuleThread<any>
 
+/** Maps a worker's exposed API type to its corresponding thread type (`FunctionThread` or `ModuleThread`). */
 export type ExposedToThreadType<Exposed extends WorkerFunction | WorkerModule<any>> =
   Exposed extends ArbitraryWorkerInterface ? ArbitraryThreadType
     : Exposed extends WorkerFunction ? FunctionThread<Parameters<Exposed>, StripAsync<ReturnType<Exposed>>>

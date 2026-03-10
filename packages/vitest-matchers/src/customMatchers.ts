@@ -1,10 +1,21 @@
+/** Result returned by a custom matcher function. */
 export interface ExpectationResult {
+  /** The actual value received by the matcher. */
   actual?: unknown
+  /** The expected value the matcher compared against. */
   expected?: unknown
+  /** Returns a human-readable failure or negation message. */
   message: () => string
+  /** Whether the matcher assertion passed. */
   pass: boolean
 }
 
+/**
+ * Checks whether the received value matches the expected JavaScript type and is not NaN.
+ * @param received - The value to check.
+ * @param expectedType - The expected `typeof` string (e.g. 'number', 'string').
+ * @returns An ExpectationResult indicating pass or fail.
+ */
 function toBeType(received: unknown, expectedType: string): ExpectationResult {
   const pass = typeof received === expectedType && !Number.isNaN(received)
   return pass
@@ -18,7 +29,13 @@ function toBeType(received: unknown, expectedType: string): ExpectationResult {
       }
 }
 
+/** Collection of custom Vitest matchers extending the built-in `expect` assertions. */
 export const matchers = {
+  /**
+   * Asserts the received value is an array with the specified length.
+   * @param received - The value to check.
+   * @param expectedSize - The expected array length.
+   */
   toBeArrayOfSize(received: unknown, expectedSize: number): ExpectationResult {
     const pass = Array.isArray(received) && received.length === expectedSize
     return pass
@@ -33,6 +50,10 @@ export const matchers = {
           pass: false,
         }
   },
+  /**
+   * Asserts the received value is an array.
+   * @param received - The value to check.
+   */
   toBeArray(received: unknown): ExpectationResult {
     const pass = Array.isArray(received)
     return pass
@@ -45,6 +66,11 @@ export const matchers = {
           pass: false,
         }
   },
+  /**
+   * Asserts the received value is one of the values in the expected array.
+   * @param received - The value to check.
+   * @param expected - The array of acceptable values.
+   */
   toBeOneOf(received: unknown, expected: unknown[]): ExpectationResult {
     const pass = expected.includes(received)
     return pass
@@ -59,6 +85,10 @@ export const matchers = {
             `expected ${received} to be one of ${JSON.stringify(expected)}`,
         }
   },
+  /**
+   * Asserts the received number is negative (less than zero).
+   * @param received - The number to check.
+   */
   toBeNegative(received: number): ExpectationResult {
     if (typeof received !== 'number') {
       throw new TypeError(`Expected a number, but received ${typeof received}`)
@@ -77,6 +107,10 @@ export const matchers = {
             `expected ${received} to be negative`,
         }
   },
+  /**
+   * Asserts the received number is positive (greater than zero).
+   * @param received - The number to check.
+   */
   toBePositive(received: number): ExpectationResult {
     if (typeof received !== 'number') {
       throw new TypeError(`Expected a number, but received ${typeof received}`)
@@ -95,9 +129,25 @@ export const matchers = {
             `expected ${received} to be positive`,
         }
   },
+  /**
+   * Asserts the received value is of type `number` and not NaN.
+   * @param received - The value to check.
+   */
   toBeNumber: (received: unknown) => toBeType(received, 'number'),
+  /**
+   * Asserts the received value is of type `function`.
+   * @param received - The value to check.
+   */
   toBeFunction: (received: unknown) => toBeType(received, 'function'),
+  /**
+   * Asserts the received value is of type `string`.
+   * @param received - The value to check.
+   */
   toBeString: (received: unknown) => toBeType(received, 'string'),
+  /**
+   * Asserts the received value is a plain object (not an array or null).
+   * @param received - The value to check.
+   */
   toBeObject(received: unknown): ExpectationResult {
     const pass = typeof received === 'object' && !Array.isArray(received) && received !== null
     return pass
@@ -110,6 +160,10 @@ export const matchers = {
           pass: false,
         }
   },
+  /**
+   * Asserts the received number is an integer.
+   * @param received - The number to check.
+   */
   toBeInteger(received: number): ExpectationResult {
     if (typeof received !== 'number') {
       throw new TypeError(`Expected a number, but received ${typeof received}`)
@@ -128,6 +182,10 @@ export const matchers = {
             `expected ${received} to be an integer`,
         }
   },
+  /**
+   * Asserts the received value is strictly `false`.
+   * @param received - The value to check.
+   */
   toBeFalse(received: unknown): ExpectationResult {
     const pass = received === false
     return pass
@@ -140,6 +198,10 @@ export const matchers = {
           pass: false,
         }
   },
+  /**
+   * Asserts the received value is strictly `true`.
+   * @param received - The value to check.
+   */
   toBeTrue(received: unknown): ExpectationResult {
     const pass = received === true
     return pass
@@ -152,6 +214,11 @@ export const matchers = {
           pass: false,
         }
   },
+  /**
+   * Asserts that all expected values are present in the received array or object values.
+   * @param received - The array or object to check.
+   * @param expectedValues - The values that must all be present.
+   */
   toContainAllValues(received: unknown, expectedValues: unknown[]) {
     let receivedValues: unknown[]
 
@@ -178,6 +245,11 @@ export const matchers = {
           : `Expected ${JSON.stringify(received)} to contain all values ${JSON.stringify(expectedValues)}, but it does not.`,
     }
   },
+  /**
+   * Asserts that the received object contains the specified key.
+   * @param received - The object to check.
+   * @param key - The key that should be present.
+   */
   toContainKey(received: object, key: string) {
     const pass = Object.prototype.hasOwnProperty.call(received, key)
     return pass
@@ -190,6 +262,11 @@ export const matchers = {
           message: () => `Expected object to contain key "${key}", but it does not.`,
         }
   },
+  /**
+   * Asserts that the received array, string, or object values include the specified value.
+   * @param received - The array, string, or object to search within.
+   * @param value - The value to look for.
+   */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   toInclude(received: unknown, value: any) {
     let pass: boolean
@@ -212,6 +289,11 @@ export const matchers = {
           : `Expected ${JSON.stringify(received)} to include ${JSON.stringify(value)}, but it does not.`,
     }
   },
+  /**
+   * Asserts that the received array includes all members of the expected array.
+   * @param received - The array to check.
+   * @param expected - The members that must all be present.
+   */
   toIncludeAllMembers(received: unknown[], expected: unknown[]): ExpectationResult {
     if (!Array.isArray(received) || !Array.isArray(expected)) {
       return {
@@ -236,6 +318,11 @@ export const matchers = {
             )}.`,
         }
   },
+  /**
+   * Asserts that the received object contains all of the specified keys.
+   * @param received - The object to check.
+   * @param expectedKeys - The keys that must all be present.
+   */
   toContainAllKeys(received: object, expectedKeys: string[]): ExpectationResult {
     if (typeof received !== 'object' || received === null) {
       return {
@@ -267,6 +354,11 @@ export const matchers = {
             )}.`,
         }
   },
+  /**
+   * Asserts that the received object contains all of the specified values (using deep equality).
+   * @param received - The object to check.
+   * @param expectedValues - The values that must all be present.
+   */
   toContainValues(received: object, expectedValues: unknown[]): ExpectationResult {
     if (typeof received !== 'object' || received === null) {
       return {
@@ -315,6 +407,10 @@ export const matchers = {
             )}.`,
         }
   },
+  /**
+   * Asserts the received value is empty (zero-length array/string, empty object, or empty Map/Set).
+   * @param received - The value to check.
+   */
   toBeEmpty(received: unknown): ExpectationResult {
     let isEmpty = false
 
@@ -344,6 +440,10 @@ export const matchers = {
             'Expected value to be empty, but it was not.',
         }
   },
+  /**
+   * Asserts the received value is a valid Date instance (not an invalid date).
+   * @param received - The value to check.
+   */
   toBeValidDate(
     received: unknown,
   ) {

@@ -14,6 +14,10 @@ declare global {
   }
 }
 
+/**
+ * Returns the singleton default logger instance, creating one if it does not exist.
+ * @returns The default logger.
+ */
 export const getDefaultLogger = (): Logger => {
   if (globalThis.xy === undefined) globalThis.xy = {}
   if (globalThis.xy.defaultLogger) return globalThis.xy.defaultLogger

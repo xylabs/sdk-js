@@ -1,8 +1,18 @@
+/** A resolve/reject callback used within PromiseEx. */
 export type PromiseExSubFunc<T, TResult = T> = (value: T) => TResult
+
+/** The executor function passed to the PromiseEx constructor. */
 export type PromiseExFunc<T> = (resolve?: PromiseExSubFunc<T, void>, reject?: PromiseExSubFunc<T, void>) => void
+
+/** A callback that inspects the attached value and returns whether to cancel the promise. */
 export type PromiseExValueFunc<V> = (value?: V) => boolean
 
+/**
+ * An extended Promise that carries an optional attached value and supports cancellation.
+ * The value can be inspected via the `then` or `value` methods to conditionally cancel.
+ */
 export class PromiseEx<T, V = void> extends Promise<T> {
+  /** Whether the promise has been cancelled via a value callback. */
   cancelled?: boolean
   private _value?: V
 
@@ -23,6 +33,11 @@ export class PromiseEx<T, V = void> extends Promise<T> {
     return super.then(onfulfilled, onrejected)
   }
 
+  /**
+   * Inspects the attached value via the callback; if it returns true, marks the promise as cancelled.
+   * @param onvalue - A callback that receives the attached value and returns whether to cancel.
+   * @returns This instance for chaining.
+   */
   value(onvalue?: (value?: V) => boolean) {
     if (onvalue?.(this._value)) {
       this.cancelled = true

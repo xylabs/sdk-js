@@ -4,8 +4,10 @@ import { getAddress } from 'ethers'
 import { ellipsize } from './ellipsize.ts'
 import { padHex } from './padHex.ts'
 
+/** Type guard that checks if the given object is an instance of EthAddressWrapper. */
 export const isEthAddressWrapper = (obj: { type: string }) => obj instanceof EthAddressWrapper
 
+/** Wrapper around an Ethereum address providing parsing, formatting, validation, and checksum support. */
 export class EthAddressWrapper {
   private address: bigint
 

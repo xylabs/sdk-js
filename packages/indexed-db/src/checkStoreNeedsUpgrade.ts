@@ -6,6 +6,14 @@ import { getExistingIndexes } from './getExistingIndexes.ts'
 import { buildStandardIndexName, type IndexDescription } from './IndexDescription.ts'
 import type { ObjectStore } from './ObjectStore.ts'
 
+/**
+ * Checks whether a store needs an upgrade by comparing its existing indexes against expected indexes.
+ * @param db The IndexedDB database instance
+ * @param storeName The name of the store to check
+ * @param indexes The expected index descriptions
+ * @param logger Optional logger for diagnostics
+ * @returns True if the store is missing or has missing indexes
+ */
 export async function checkStoreNeedsUpgrade(db: IDBPDatabase<ObjectStore<object>>, storeName: string, indexes: IndexDescription[], logger?: Logger) {
   logger?.log('checkStoreNeedsUpgrade', storeName, indexes)
   const existingIndexes = await getExistingIndexes(db, storeName, logger)

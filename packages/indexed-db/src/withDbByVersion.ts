@@ -11,6 +11,17 @@ import { buildStandardIndexName, type IndexDescription } from './IndexDescriptio
 
 const dbMutexes: Record<string, Mutex> = {}
 
+/**
+ * Opens an IndexedDB database at a specific version, handling upgrade events, and passes it to the callback.
+ * The database is automatically closed after the callback completes.
+ * @param dbName The name of the database to open
+ * @param callback Function to execute with the opened database
+ * @param version Optional specific version to open (undefined for latest)
+ * @param expectedIndexes Optional map of store names to indexes to create during upgrade
+ * @param logger Optional logger for diagnostics
+ * @param lock Whether to use a mutex to serialize access (defaults to true)
+ * @returns The result of the callback
+ */
 export async function withDbByVersion<DBTypes extends DBSchema | unknown = unknown, R = EmptyObject>(
   dbName: string,
   callback: (db: IDBPDatabase<DBTypes>) => Promise<R> | R,

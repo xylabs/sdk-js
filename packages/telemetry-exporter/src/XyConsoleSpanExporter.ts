@@ -3,11 +3,21 @@ import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-base'
 import type { Logger } from '@xylabs/logger'
 import chalk from 'chalk'
 
+/**
+ * Calculates the duration of a span in milliseconds from its high-resolution time tuple.
+ * @param span - The span to measure.
+ * @returns The span duration in milliseconds.
+ */
 export function spanDurationInMillis(span: ReadableSpan) {
   return span.duration[0] * 1000 + span.duration[1] / 1e6
 }
 
+/**
+ * A console span exporter that formats spans with color-coded durations using chalk.
+ * Spans are filtered by a configurable log level based on their duration.
+ */
 export class XyConsoleSpanExporter extends ConsoleSpanExporter {
+  /** Duration thresholds (in ms) that map to increasing log levels. */
   static readonly durationToLogLevel = [
     0,
     1,
@@ -16,6 +26,7 @@ export class XyConsoleSpanExporter extends ConsoleSpanExporter {
     1000,
   ]
 
+  /** Chalk color functions corresponding to each log level. */
   static readonly logLevelToChalkColor = [
     chalk.grey,
     chalk.white,
@@ -33,6 +44,7 @@ export class XyConsoleSpanExporter extends ConsoleSpanExporter {
     this.logger = logger
   }
 
+  /** The minimum log level required for a span to be exported. */
   get logLevel() {
     return this._logLevel
   }
@@ -52,10 +64,20 @@ export class XyConsoleSpanExporter extends ConsoleSpanExporter {
     }
   }
 
+  /**
+   * Returns the chalk color function for the given log level.
+   * @param level - The log level index.
+   * @returns A chalk color function.
+   */
   logColor(level: number) {
     return XyConsoleSpanExporter.logLevelToChalkColor[level] ?? chalk.magenta
   }
 
+  /**
+   * Determines the log level of a span based on its duration.
+   * @param span - The span to evaluate.
+   * @returns The numeric log level (index into durationToLogLevel).
+   */
   spanLevel(span: ReadableSpan) {
     let logLevel = 0
     const duration = spanDurationInMillis(span)

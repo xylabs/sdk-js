@@ -21,6 +21,7 @@ export type IndexDescription = {
   unique?: boolean
 }
 
+/** Separator used between key names when building standard index names. */
 export const IndexSeparator = '-'
 
 /**

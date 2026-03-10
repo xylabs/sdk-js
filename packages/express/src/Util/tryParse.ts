@@ -1,5 +1,6 @@
 import { isDefined } from '@xylabs/typeof'
 
+/** A function that parses a string value into the target type. */
 export type ParseFunc<T = number> = (value: string) => T
 
 /**

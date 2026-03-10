@@ -9,6 +9,10 @@ import type {
   TypeCheckRequiredConfig,
 } from './types.ts'
 
+/**
+ * Factory for creating type-narrowing 'as' functions that cast a value to T or return undefined.
+ * Supports optional assertion messages and configuration for required/optional behavior.
+ */
 export const AsTypeFactory = {
   create: <T extends AnyNonPromise>(typeCheck: TypeCheck<T>): AsTypeFunction<T> => {
     const func = (

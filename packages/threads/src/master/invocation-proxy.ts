@@ -119,6 +119,12 @@ function prepareArguments(rawArgs: any[]): { args: any[]; transferables: Transfe
   }
 }
 
+/**
+ * Create a proxy function that forwards calls to a worker thread via postMessage.
+ * @param worker - The worker to send messages to.
+ * @param method - Optional method name for module-style workers.
+ * @returns A proxied function that returns an `ObservablePromise`.
+ */
 export function createProxyFunction<Args extends any[], ReturnType>(worker: WorkerType, method?: string) {
   return ((...rawArgs: Args) => {
     const uid = nextJobUID++
@@ -142,6 +148,12 @@ export function createProxyFunction<Args extends any[], ReturnType>(worker: Work
   }) as any as ProxyableFunction<Args, ReturnType>
 }
 
+/**
+ * Create a proxy module that maps method names to proxy functions forwarding calls to a worker.
+ * @param worker - The worker to send messages to.
+ * @param methodNames - The method names exposed by the worker module.
+ * @returns A proxy object with methods matching the worker module's API.
+ */
 export function createProxyModule<Methods extends ModuleMethods>(worker: WorkerType, methodNames: string[]): ModuleProxy<Methods> {
   const proxy: any = {}
 

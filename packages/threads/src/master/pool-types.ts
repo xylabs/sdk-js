@@ -14,6 +14,7 @@ export enum PoolEventType {
   terminated = 'terminated',
 }
 
+/** A function that runs a task on a worker thread and returns a promise of the result. */
 export type TaskRunFunction<ThreadType extends Thread, Return> = (worker: ThreadType) => Promise<Return>
 
 /** Pool event. Subscribe to those events using `pool.events()`. Useful for debugging. */
@@ -55,6 +56,7 @@ export type PoolEvent<ThreadType extends Thread> =
     remainingQueue: Array<QueuedTask<ThreadType, any>>
   }
 
+/** Descriptor for a worker in a pool, tracking its initialization and running tasks. */
 export interface WorkerDescriptor<ThreadType extends Thread> {
   init: Promise<ThreadType>
   runningTasks: Array<Promise<any>>

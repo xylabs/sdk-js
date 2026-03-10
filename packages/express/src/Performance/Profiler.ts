@@ -1,3 +1,4 @@
+/** Measures and records the execution duration of async operations by name. */
 export class Profiler {
   stats: Record<string, number> = {}
 

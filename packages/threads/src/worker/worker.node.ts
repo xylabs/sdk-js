@@ -19,14 +19,17 @@ function assertMessagePort(port: MessagePort | null | undefined): MessagePort {
   return port
 }
 
+/** Check if the current code is running inside a Node.js worker thread. */
 const isWorkerRuntime: AbstractedWorkerAPI['isWorkerRuntime'] = function isWorkerRuntime() {
   return true // isMainThread
 }
 
+/** Post a message from this worker to the master thread via the parent port. */
 const postMessageToMaster: AbstractedWorkerAPI['postMessageToMaster'] = function postMessageToMaster(data, transferList) {
   assertMessagePort(parentPort).postMessage(data, transferList as TransferListItem[])
 }
 
+/** Subscribe to messages from the master thread on the parent port. */
 const subscribeToMasterMessages: AbstractedWorkerAPI['subscribeToMasterMessages'] = function subscribeToMasterMessages(onMessage) {
   if (!parentPort) {
     throw new Error('Invariant violation: MessagePort to parent is not available.')
@@ -41,8 +44,11 @@ const subscribeToMasterMessages: AbstractedWorkerAPI['subscribeToMasterMessages'
   return unsubscribe
 }
 
+/** Bound `on` method from the parent port for adding event listeners. */
 const addEventListener = parentPort?.on.bind(parentPort)
+/** Bound `postMessage` method from the parent port. */
 const postMessage = parentPort?.postMessage.bind(parentPort)
+/** Bound `off` method from the parent port for removing event listeners. */
 const removeEventListener = parentPort?.off.bind(parentPort)
 
 export {

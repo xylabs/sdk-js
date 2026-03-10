@@ -4,6 +4,7 @@ import Transport from 'winston-transport'
 
 import { logFormatRollbar } from '../../LogFormats/index.ts'
 
+/** Winston transport that forwards error-level log messages to Rollbar. */
 export class RollbarTransport extends Transport {
   protected readonly rollbar?: Rollbar
   constructor(

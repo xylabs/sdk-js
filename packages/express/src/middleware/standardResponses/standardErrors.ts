@@ -7,6 +7,13 @@ import { getDefaultLogger } from '../../Logger/index.ts'
 import type { ExpressError } from '../../Model/index.ts'
 import type { ApiError } from './jsonApi/index.ts'
 
+/**
+ * Express error handler that logs the error and sends a JSON:API-compliant error response.
+ * @param err The error to handle, or undefined if no error.
+ * @param req The incoming request.
+ * @param res The outgoing response.
+ * @param next The next middleware function.
+ */
 export const standardErrors = (err: ExpressError | undefined, req: Request, res: Response, next: NextFunction) => {
   if (!isError(err)) {
     next(err)

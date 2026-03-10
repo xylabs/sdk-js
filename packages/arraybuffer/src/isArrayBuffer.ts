@@ -1,9 +1,11 @@
+/** Type guard that checks if a value is an ArrayBuffer instance. */
 export function isArrayBuffer(value: unknown): value is ArrayBuffer
 export function isArrayBuffer<T extends ArrayBuffer>(value: T): value is Extract<T, ArrayBuffer>
 export function isArrayBuffer(value: unknown): value is ArrayBuffer {
   return value instanceof ArrayBuffer
 }
 
+/** Type guard that checks if a value conforms to the ArrayBufferLike interface (has byteLength and slice). */
 export function isArrayBufferLike(value: unknown): value is ArrayBufferLike
 export function isArrayBufferLike<T extends ArrayBufferLike>(value: T): value is Extract<T, ArrayBufferLike>
 export function isArrayBufferLike(value: unknown): value is ArrayBufferLike {

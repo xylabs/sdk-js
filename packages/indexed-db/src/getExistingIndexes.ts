@@ -39,6 +39,13 @@ async function getExistingIndexesInternal<T extends EmptyObject = EmptyObject>(
   }, logger)
 }
 
+/**
+ * Retrieves the existing index descriptions for a store. Accepts either a database instance or a database name.
+ * @param db The IndexedDB database instance or database name
+ * @param storeName The name of the store to inspect
+ * @param logger Optional logger for diagnostics
+ * @returns An array of index descriptions, or null if the store does not exist
+ */
 export async function getExistingIndexes<T extends EmptyObject = EmptyObject>(
   db: IDBPDatabase<ObjectStore<T>> | string,
   storeName: StoreNames<ObjectStore<T>>,

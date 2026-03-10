@@ -36,6 +36,11 @@ const loggers: Record<WinstonVerbosity, Logger | undefined> = {
   warn: undefined,
 }
 
+/**
+ * Returns a cached Winston-backed logger at the specified verbosity level.
+ * @param minVerbosity The minimum log level to output. Defaults to 'info'.
+ * @returns A logger instance configured for the given verbosity.
+ */
 export const getLogger = (minVerbosity: LoggerVerbosity = 'info'): Logger => {
   const level = toWinstonVerbosity(minVerbosity)
   const existing = loggers[level]

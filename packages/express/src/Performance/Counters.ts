@@ -1,3 +1,4 @@
+/** Static counter registry for tracking named numeric metrics. */
 export class Counters {
   static counters: Record<string, number> = {}
 

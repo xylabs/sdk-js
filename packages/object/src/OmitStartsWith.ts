@@ -1,9 +1,11 @@
 import type { JsonValue } from './JsonObject.ts'
 
+/** Omits the keys of T that start with the given prefix. */
 export type OmitStartsWith<T, Prefix extends string> = {
   [K in keyof T as K extends `${Prefix}${string}` ? never : K]: T[K];
 }
 
+/** Recursively omits keys that start with the given prefix, including in nested objects and arrays. */
 export type DeepOmitStartsWith<T, Prefix extends string> = T extends (infer U)[]
   ? DeepOmitStartsWith<U, Prefix>[] // Special handling for arrays
   : T extends object
@@ -16,6 +18,7 @@ export type DeepOmitStartsWith<T, Prefix extends string> = T extends (infer U)[]
       }
     : T
 
+/** Recursively removes all non-string keys from an object type, including in nested objects and arrays. */
 export type DeepRestrictToStringKeys<T> = {
   [K in keyof T as K extends string ? K : never]: T[K] extends (infer U)[]
     ? DeepRestrictToStringKeys<U>[] // Handle arrays recursively
@@ -24,6 +27,7 @@ export type DeepRestrictToStringKeys<T> = {
       : T[K]; // Leave other types untouched
 }
 
+/** Recursively restricts an object type to only JSON-compatible values, excluding non-serializable types. */
 export type DeepRestrictToJson<T> = {
   [K in keyof T as K extends string ? K : never]: T[K] extends (infer U)[]
     ? DeepRestrictToJson<U>[] // Handle arrays recursively

@@ -9,6 +9,7 @@ const apiBaseUri: Record<string, string> = {
   prod: 'https://pixel.xylabs.com',
 }
 
+/** HTTP client for sending tracking events to the XY Labs pixel API. */
 export class PixelApi {
   private endPoint: string
 
@@ -17,6 +18,11 @@ export class PixelApi {
     this.endPoint = isUndefined(apiBaseUri[baseUri]) ? baseUri : `${apiBaseUri[baseUri]}/t/event/queue`
   }
 
+  /**
+   * Sends an array of user events to the tracking API.
+   * @param events - The events to submit
+   * @returns The response data from the API
+   */
   async trackEvents(events: UserEvent[]) {
     return (await axios.post(this.endPoint, events)).data
   }

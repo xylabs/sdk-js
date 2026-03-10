@@ -1,3 +1,4 @@
+/** JSON structure for an XY Labs tracking event as stored or transmitted. */
 export interface XyLabsTrackingEventJson {
   cid: string
   create_time?: number

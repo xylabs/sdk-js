@@ -4,6 +4,10 @@ import type {
 
 import { Counters } from '../../Performance/index.ts'
 
+/**
+ * Registers middleware that increments per-path request counters and exposes a /stats endpoint.
+ * @param app The Express application to attach counters to.
+ */
 export const useRequestCounters = (app: Application): void => {
   // Configure Global counters
   app.use((req: Request, res: Response, next: NextFunction) => {

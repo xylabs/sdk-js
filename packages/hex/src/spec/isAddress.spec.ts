@@ -114,7 +114,7 @@ describe('asAddress', () => {
   it('returns undefined for non-string values', () => {
     expect(asAddress(123)).toBeUndefined()
     expect(asAddress(null)).toBeUndefined()
-    expect(asAddress(undefined)).toBeUndefined()
+    expect(asAddress()).toBeUndefined()
   })
 })
 
@@ -144,6 +144,6 @@ describe('asAddressV2', () => {
   it('returns undefined for non-string values', () => {
     expect(asAddressV2(123)).toBeUndefined()
     expect(asAddressV2(null)).toBeUndefined()
-    expect(asAddressV2(undefined)).toBeUndefined()
+    expect(asAddressV2()).toBeUndefined()
   })
 })

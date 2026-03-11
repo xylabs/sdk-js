@@ -50,7 +50,7 @@ export const toEthAddress = (value: string | number | bigint | ArrayBufferLike, 
  * @param config - Optional hex config (defaults to 160-bit with prefix)
  * @returns True if the value is a valid EthAddress
  */
-export const isEthAddress = (value: unknown, config: HexConfig = {}): value is EthAddress => {
+export const isEthAddress = (value?: unknown, config: HexConfig = {}): value is EthAddress => {
   const { bitLength = 160, prefix = true } = config
   const loweredValue = typeof value === 'string' ? value.toLowerCase() : value
   return isHex(loweredValue, { bitLength, prefix })

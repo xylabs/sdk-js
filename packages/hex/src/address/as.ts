@@ -13,9 +13,9 @@ import { isAddress } from './is.ts'
  * @param assert - If provided, throws on failure instead of returning undefined
  * @returns The value as Address, or undefined if coercion fails and assert is not set
  */
-export function asAddress(value: unknown): Address | undefined
+export function asAddress(value?: unknown): Address | undefined
 export function asAddress(value: unknown, assert: AssertConfig): Address
-export function asAddress(value: unknown, assert?: AssertConfig): Address | undefined {
+export function asAddress(value?: unknown, assert?: AssertConfig): Address | undefined {
   try {
     let stringValue: string | undefined = undefined
 
@@ -36,7 +36,7 @@ export function asAddress(value: unknown, assert?: AssertConfig): Address | unde
 }
 
 /** @alpha */
-export function asAddressV2(value: unknown, assert: boolean = false): Address | undefined {
+export function asAddressV2(value?: unknown, assert: boolean = false): Address | undefined {
   return assert
     ? AddressValidationZod.parse(value)
     : AddressValidationZod.safeParse(value).data

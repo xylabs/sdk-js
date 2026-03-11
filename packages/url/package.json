@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/url",
-  "version": "5.0.84",
+  "version": "5.0.85",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "url",
@@ -53,8 +53,8 @@
   ],
   "devDependencies": {
     "@types/node": "~25.4.0",
-    "@xylabs/ts-scripts-yarn3": "~7.4.15",
-    "@xylabs/tsconfig": "~7.4.15",
+    "@xylabs/ts-scripts-yarn3": "~7.4.16",
+    "@xylabs/tsconfig": "~7.4.16",
     "typescript": "~5.9.3",
     "vitest": "~4.0.18"
   },

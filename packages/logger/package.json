@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/logger",
-  "version": "5.0.84",
+  "version": "5.0.85",
   "description": "XYLabs Logger Library",
   "keywords": [
     "logger",
@@ -42,14 +42,14 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/enum": "~5.0.84",
-    "@xylabs/error": "~5.0.84",
-    "@xylabs/typeof": "~5.0.84"
+    "@xylabs/enum": "~5.0.85",
+    "@xylabs/error": "~5.0.85",
+    "@xylabs/typeof": "~5.0.85"
   },
   "devDependencies": {
     "@types/node": "~25.4.0",
-    "@xylabs/ts-scripts-yarn3": "~7.4.15",
-    "@xylabs/tsconfig": "~7.4.15",
+    "@xylabs/ts-scripts-yarn3": "~7.4.16",
+    "@xylabs/tsconfig": "~7.4.16",
     "typescript": "~5.9.3",
     "vitest": "~4.0.18"
   },

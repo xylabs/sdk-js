@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/indexed-db",
-  "version": "5.0.84",
+  "version": "5.0.85",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "hex",
@@ -52,17 +52,17 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/exists": "~5.0.84",
-    "@xylabs/logger": "~5.0.84",
-    "@xylabs/object": "~5.0.84",
-    "@xylabs/storage": "~5.0.84",
+    "@xylabs/exists": "~5.0.85",
+    "@xylabs/logger": "~5.0.85",
+    "@xylabs/object": "~5.0.85",
+    "@xylabs/storage": "~5.0.85",
     "async-mutex": "~0.5.0",
     "idb": "~8.0.3"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.4.15",
-    "@xylabs/tsconfig": "~7.4.15",
-    "@xylabs/tsconfig-dom": "~7.4.15",
+    "@xylabs/ts-scripts-yarn3": "~7.4.16",
+    "@xylabs/tsconfig": "~7.4.16",
+    "@xylabs/tsconfig-dom": "~7.4.16",
     "fake-indexeddb": "~6.2.5",
     "jsdom": "~28.1.0",
     "typescript": "~5.9.3",

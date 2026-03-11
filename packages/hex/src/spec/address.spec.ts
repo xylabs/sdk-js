@@ -127,10 +127,7 @@ describe('isAddressV2', () => {
   })
 
   it('returns false for invalid hex characters with correct length', () => {
-    // Note: AddressValidationZod refine uses HexZod.safeParse which returns a result object
-    // (always truthy), so only length is actually validated. This tests the current behavior.
-    // INVALID_HEX_CHARS has correct length but invalid chars - V2 currently accepts it.
-    expect(isAddressV2(INVALID_HEX_CHARS)).toBeTrue()
+    expect(isAddressV2(INVALID_HEX_CHARS)).toBeFalse()
   })
 
   it('returns false for 0x-prefixed address', () => {

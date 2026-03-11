@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/bignumber",
-  "version": "5.0.85",
+  "version": "5.0.86",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "bignumber",

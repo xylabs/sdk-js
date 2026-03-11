@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/vitest-extended",
-  "version": "5.0.85",
+  "version": "5.0.86",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "log",
@@ -43,7 +43,7 @@
     "types.d.ts"
   ],
   "dependencies": {
-    "@xylabs/vitest-matchers": "~5.0.85"
+    "@xylabs/vitest-matchers": "~5.0.86"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.4.16",

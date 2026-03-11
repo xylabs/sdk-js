@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/function-name",
-  "version": "5.0.85",
+  "version": "5.0.86",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "function",
@@ -43,8 +43,8 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/error": "~5.0.85",
-    "@xylabs/typeof": "~5.0.85"
+    "@xylabs/error": "~5.0.86",
+    "@xylabs/typeof": "~5.0.86"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.4.16",

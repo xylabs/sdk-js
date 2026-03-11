@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/axios",
-  "version": "5.0.85",
+  "version": "5.0.86",
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
     "axios",
@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@types/pako": "~2.0.4",
-    "@xylabs/logger": "~5.0.85",
+    "@xylabs/logger": "~5.0.86",
     "@xylabs/ts-scripts-yarn3": "~7.4.16",
     "@xylabs/tsconfig": "~7.4.16",
     "axios": "^1.13.6",

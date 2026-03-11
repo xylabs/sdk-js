@@ -1,6 +1,6 @@
 {
   "name": "@xylabs/sdk-js-build",
-  "version": "5.0.85",
+  "version": "5.0.86",
   "private": true,
   "description": "Base functionality used throughout XY Labs TypeScript/JavaScript libraries",
   "keywords": [
@@ -58,7 +58,7 @@
     "@vitest/browser-playwright": "~4.0.18",
     "@vitest/coverage-v8": "~4.0.18",
     "@xylabs/eslint-config-flat": "~7.4.16",
-    "@xylabs/readme-gen": "^5.0.85",
+    "@xylabs/readme-gen": "^5.0.86",
     "@xylabs/ts-scripts-yarn3": "~7.4.16",
     "@xylabs/tsconfig": "~7.4.16",
     "dotenv": "~17.3.1",

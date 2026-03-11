@@ -21,7 +21,7 @@ export function asAddress(value: unknown, assert?: AssertConfig): Address | unde
 
     switch (typeof value) {
       case 'string': {
-        stringValue = hexFromHexString(value, { prefix: false })
+        stringValue = hexFromHexString(value, { prefix: false, byteSize: 4 })
         break
       }
       default: {

@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/telemetry-exporter**
@@ -23,11 +25,15 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Classes
 
-- [XyConsoleSpanExporter](#classes/XyConsoleSpanExporter)
+| Class | Description |
+| ------ | ------ |
+| [XyConsoleSpanExporter](#classes/XyConsoleSpanExporter) | A console span exporter that formats spans with color-coded durations using chalk. Spans are filtered by a configurable log level based on their duration. |
 
 ## Functions
 
-- [spanDurationInMillis](#functions/spanDurationInMillis)
+| Function | Description |
+| ------ | ------ |
+| [spanDurationInMillis](#functions/spanDurationInMillis) | Calculates the duration of a span in milliseconds from its high-resolution time tuple. |
 
 ### classes
 
@@ -49,18 +55,15 @@ Spans are filtered by a configurable log level based on their duration.
 ### Constructor
 
 ```ts
-new XyConsoleSpanExporter(logLevel?, logger?): XyConsoleSpanExporter;
+new XyConsoleSpanExporter(logLevel?: number, logger?: Logger): XyConsoleSpanExporter;
 ```
 
 ### Parameters
 
-#### logLevel?
-
-`number` = `0`
-
-#### logger?
-
-`Logger` = `console`
+| Parameter | Type | Default value |
+| ------ | ------ | ------ |
+| `logLevel` | `number` | `0` |
+| `logger` | `Logger` | `console` |
 
 ### Returns
 
@@ -74,31 +77,11 @@ ConsoleSpanExporter.constructor
 
 ## Properties
 
-### durationToLogLevel
-
-```ts
-readonly static durationToLogLevel: number[];
-```
-
-Duration thresholds (in ms) that map to increasing log levels.
-
-***
-
-### logLevelToChalkColor
-
-```ts
-readonly static logLevelToChalkColor: ChalkInstance[];
-```
-
-Chalk color functions corresponding to each log level.
-
-***
-
-### logger
-
-```ts
-logger: Logger;
-```
+| Property | Modifier | Type | Description |
+| ------ | ------ | ------ | ------ |
+| <a id="durationtologlevel"></a> `durationToLogLevel` | `readonly` | `number`[] | Duration thresholds (in ms) that map to increasing log levels. |
+| <a id="logleveltochalkcolor"></a> `logLevelToChalkColor` | `readonly` | `ChalkInstance`[] | Chalk color functions corresponding to each log level. |
+| <a id="logger"></a> `logger` | `public` | `Logger` | - |
 
 ## Accessors
 
@@ -121,16 +104,16 @@ The minimum log level required for a span to be exported.
 ### export()
 
 ```ts
-export(spans): void;
+export(spans: ReadableSpan[]): void;
 ```
 
 Export spans.
 
 ### Parameters
 
-#### spans
-
-`ReadableSpan`[]
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `spans` | `ReadableSpan`[] | - |
 
 ### Returns
 
@@ -147,18 +130,16 @@ ConsoleSpanExporter.export
 ### logColor()
 
 ```ts
-logColor(level): ChalkInstance;
+logColor(level: number): ChalkInstance;
 ```
 
 Returns the chalk color function for the given log level.
 
 ### Parameters
 
-#### level
-
-`number`
-
-The log level index.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `level` | `number` | The log level index. |
 
 ### Returns
 
@@ -171,18 +152,16 @@ A chalk color function.
 ### spanLevel()
 
 ```ts
-spanLevel(span): number;
+spanLevel(span: ReadableSpan): number;
 ```
 
 Determines the log level of a span based on its duration.
 
 ### Parameters
 
-#### span
-
-`ReadableSpan`
-
-The span to evaluate.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `span` | `ReadableSpan` | The span to evaluate. |
 
 ### Returns
 
@@ -199,18 +178,16 @@ The numeric log level (index into durationToLogLevel).
 ***
 
 ```ts
-function spanDurationInMillis(span): number;
+function spanDurationInMillis(span: ReadableSpan): number;
 ```
 
 Calculates the duration of a span in milliseconds from its high-resolution time tuple.
 
 ## Parameters
 
-### span
-
-`ReadableSpan`
-
-The span to measure.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `span` | `ReadableSpan` | The span to measure. |
 
 ## Returns
 

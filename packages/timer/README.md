@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/timer**
@@ -23,8 +25,10 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Functions
 
-- [setTimeoutEx](#functions/setTimeoutEx)
-- [clearTimeoutEx](#functions/clearTimeoutEx)
+| Function | Description |
+| ------ | ------ |
+| [setTimeoutEx](#functions/setTimeoutEx) | Sets a timeout using an optimized internal timer that coalesces multiple timeouts into a single native timer. |
+| [clearTimeoutEx](#functions/clearTimeoutEx) | Cancels a timeout previously created with setTimeoutEx. |
 
 ### functions
 
@@ -35,18 +39,16 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 ***
 
 ```ts
-function clearTimeoutEx(id): void;
+function clearTimeoutEx(id: string): void;
 ```
 
 Cancels a timeout previously created with setTimeoutEx.
 
 ## Parameters
 
-### id
-
-`string`
-
-The timeout ID returned by setTimeoutEx.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `id` | `string` | The timeout ID returned by setTimeoutEx. |
 
 ## Returns
 
@@ -59,24 +61,17 @@ The timeout ID returned by setTimeoutEx.
 ***
 
 ```ts
-function setTimeoutEx(func, delay): string;
+function setTimeoutEx(func: Function, delay: number): string;
 ```
 
 Sets a timeout using an optimized internal timer that coalesces multiple timeouts into a single native timer.
 
 ## Parameters
 
-### func
-
-`Function`
-
-The function to call after the delay.
-
-### delay
-
-`number`
-
-The delay in milliseconds (must be >= 0).
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `func` | `Function` | The function to call after the delay. |
+| `delay` | `number` | The delay in milliseconds (must be >= 0). |
 
 ## Returns
 

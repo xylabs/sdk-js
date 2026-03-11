@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/events**
@@ -23,28 +25,34 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Classes
 
-- [BaseEmitter](#classes/BaseEmitter)
-- [Events](#classes/Events)
+| Class | Description |
+| ------ | ------ |
+| [BaseEmitter](#classes/BaseEmitter) | Base class that combines the Base utility class with typed event emission capabilities. Delegates all event operations to an internal Events instance. |
+| [Events](#classes/Events) | Core typed event emitter implementation supporting named events, wildcard listeners, serial and concurrent emission, listener filtering, and debug logging. |
 
 ## Interfaces
 
-- [BaseEmitterParamsFields](#interfaces/BaseEmitterParamsFields)
-- [EventEmitter](#interfaces/EventEmitter)
+| Interface | Description |
+| ------ | ------ |
+| [BaseEmitterParamsFields](#interfaces/BaseEmitterParamsFields) | Fields specific to BaseEmitter configuration parameters. |
+| [EventEmitter](#interfaces/EventEmitter) | Interface for a typed event emitter that supports subscribing, unsubscribing, and emitting events. |
 
 ## Type Aliases
 
-- [BaseEmitterParams](#type-aliases/BaseEmitterParams)
-- [DebugLogger](#type-aliases/DebugLogger)
-- [EventListenerInfo](#type-aliases/EventListenerInfo)
-- [DebugOptions](#type-aliases/DebugOptions)
-- [MetaEventData](#type-aliases/MetaEventData)
-- [EventsParams](#type-aliases/EventsParams)
-- [EventName](#type-aliases/EventName)
-- [EventArgs](#type-aliases/EventArgs)
-- [EventData](#type-aliases/EventData)
-- [EventUnsubscribeFunction](#type-aliases/EventUnsubscribeFunction)
-- [EventAnyListener](#type-aliases/EventAnyListener)
-- [EventListener](#type-aliases/EventListener)
+| Type Alias | Description |
+| ------ | ------ |
+| [BaseEmitterParams](#type-aliases/BaseEmitterParams) | Parameters type for configuring a BaseEmitter instance. |
+| [DebugLogger](#type-aliases/DebugLogger) | Emittery can collect and log debug information. |
+| [EventListenerInfo](#type-aliases/EventListenerInfo) | Information about a registered event listener, including an optional filter for selective invocation. |
+| [DebugOptions](#type-aliases/DebugOptions) | Configure debug options of an instance. |
+| [MetaEventData](#type-aliases/MetaEventData) | Data shape for internal meta events that fire when listeners are added or removed. |
+| [EventsParams](#type-aliases/EventsParams) | Parameters for constructing an Events instance, with optional debug configuration. |
+| [EventName](#type-aliases/EventName) | A valid event name, which can be any property key (string, number, or symbol). |
+| [EventArgs](#type-aliases/EventArgs) | The allowed types for event argument payloads. |
+| [EventData](#type-aliases/EventData) | A mapping of event names to their corresponding event argument types. |
+| [EventUnsubscribeFunction](#type-aliases/EventUnsubscribeFunction) | A function returned by event subscription methods that unsubscribes the listener when called. |
+| [EventAnyListener](#type-aliases/EventAnyListener) | A listener that receives all events regardless of name. |
+| [EventListener](#type-aliases/EventListener) | A listener for a specific event type. |
 
 ### classes
 
@@ -63,13 +71,10 @@ Delegates all event operations to an internal Events instance.
 
 ## Type Parameters
 
-### TParams
-
-`TParams` *extends* `BaseParams` = `BaseParams`
-
-### TEventData
-
-`TEventData` *extends* [`EventData`](#../type-aliases/EventData) = [`EventData`](#../type-aliases/EventData)
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TParams` *extends* `BaseParams` | `BaseParams` |
+| `TEventData` *extends* [`EventData`](#../type-aliases/EventData) | [`EventData`](#../type-aliases/EventData) |
 
 ## Implements
 
@@ -80,14 +85,14 @@ Delegates all event operations to an internal Events instance.
 ### Constructor
 
 ```ts
-new BaseEmitter<TParams, TEventData>(params): BaseEmitter<TParams, TEventData>;
+new BaseEmitter<TParams, TEventData>(params: BaseParams<TParams>): BaseEmitter<TParams, TEventData>;
 ```
 
 ### Parameters
 
-#### params
-
-`BaseParams`\<`TParams`\>
+| Parameter | Type |
+| ------ | ------ |
+| `params` | `BaseParams`\<`TParams`\> |
 
 ### Returns
 
@@ -101,59 +106,12 @@ Base<TParams>.constructor
 
 ## Properties
 
-### defaultLogger?
-
-```ts
-static optional defaultLogger: Logger;
-```
-
-### Inherited from
-
-```ts
-Base.defaultLogger
-```
-
-***
-
-### globalInstances
-
-```ts
-readonly static globalInstances: Record<BaseClassName, WeakRef<Base>[]>;
-```
-
-### Inherited from
-
-```ts
-Base.globalInstances
-```
-
-***
-
-### globalInstancesCountHistory
-
-```ts
-readonly static globalInstancesCountHistory: Record<BaseClassName, number[]>;
-```
-
-### Inherited from
-
-```ts
-Base.globalInstancesCountHistory
-```
-
-***
-
-### eventData
-
-```ts
-eventData: TEventData;
-```
-
-Type-level reference to the event data shape for external type queries.
-
-### Implementation of
-
-[`EventEmitter`](#../interfaces/EventEmitter).[`eventData`](../interfaces/EventEmitter.md#eventdata)
+| Property | Modifier | Type | Description | Inherited from |
+| ------ | ------ | ------ | ------ | ------ |
+| <a id="defaultlogger"></a> `defaultLogger?` | `static` | `Logger` | - | `Base.defaultLogger` |
+| <a id="globalinstances"></a> `globalInstances` | `readonly` | `Record`\<`BaseClassName`, `WeakRef`\<`Base`\>[]\> | - | `Base.globalInstances` |
+| <a id="globalinstancescounthistory"></a> `globalInstancesCountHistory` | `readonly` | `Record`\<`BaseClassName`, `number`[]\> | - | `Base.globalInstancesCountHistory` |
+| <a id="eventdata"></a> `eventData` | `public` | `TEventData` | Type-level reference to the event data shape for external type queries. | - |
 
 ## Accessors
 
@@ -172,14 +130,14 @@ get static historyInterval(): number;
 ### Set Signature
 
 ```ts
-set static historyInterval(value): void;
+set static historyInterval(value: number): void;
 ```
 
 #### Parameters
 
-##### value
-
-`number`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `number` |
 
 #### Returns
 
@@ -208,14 +166,14 @@ get static historyTime(): number;
 ### Set Signature
 
 ```ts
-set static historyTime(value): void;
+set static historyTime(value: number): void;
 ```
 
 #### Parameters
 
-##### value
-
-`number`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `number` |
 
 #### Returns
 
@@ -244,14 +202,14 @@ get static maxGcFrequency(): number;
 ### Set Signature
 
 ```ts
-set static maxGcFrequency(value): void;
+set static maxGcFrequency(value: number): void;
 ```
 
 #### Parameters
 
-##### value
-
-`number`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `number` |
 
 #### Returns
 
@@ -370,14 +328,14 @@ Base.tracer
 ### Call Signature
 
 ```ts
-static gc(force?): void;
+static gc(force?: boolean): void;
 ```
 
 #### Parameters
 
-##### force?
-
-`boolean`
+| Parameter | Type |
+| ------ | ------ |
+| `force?` | `boolean` |
 
 #### Returns
 
@@ -392,14 +350,14 @@ Base.gc
 ### Call Signature
 
 ```ts
-static gc(className): void;
+static gc(className: BaseClassName): void;
 ```
 
 #### Parameters
 
-##### className
-
-`BaseClassName`
+| Parameter | Type |
+| ------ | ------ |
+| `className` | `BaseClassName` |
 
 #### Returns
 
@@ -416,14 +374,14 @@ Base.gc
 ### instanceCount()
 
 ```ts
-static instanceCount(className): number;
+static instanceCount(className: BaseClassName): number;
 ```
 
 ### Parameters
 
-#### className
-
-`BaseClassName`
+| Parameter | Type |
+| ------ | ------ |
+| `className` | `BaseClassName` |
 
 ### Returns
 
@@ -494,18 +452,16 @@ Base.stopHistory
 ### clearListeners()
 
 ```ts
-clearListeners(eventNames): BaseEmitter<TParams, TEventData>;
+clearListeners(eventNames: keyof TEventData | keyof TEventData[]): BaseEmitter<TParams, TEventData>;
 ```
 
 Removes all listeners for the specified event name(s).
 
 ### Parameters
 
-#### eventNames
-
-One or more event names to clear listeners for.
-
-keyof `TEventData` | keyof `TEventData`[]
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventNames` | keyof `TEventData` \| keyof `TEventData`[] | One or more event names to clear listeners for. |
 
 ### Returns
 
@@ -522,34 +478,24 @@ This instance for chaining.
 ### emit()
 
 ```ts
-emit<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
+emit<TEventName, TEventArgs>(eventName: TEventName, eventArgs: TEventArgs): Promise<void>;
 ```
 
 Emits an event, invoking all registered listeners concurrently.
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* `string` \| `number` \| `symbol` = keyof `TEventData`
-
-#### TEventArgs
-
-`TEventArgs` *extends* [`EventArgs`](#../type-aliases/EventArgs) = `TEventData`\[`TEventName`\]
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TEventName` *extends* `string` \| `number` \| `symbol` | keyof `TEventData` |
+| `TEventArgs` *extends* [`EventArgs`](#../type-aliases/EventArgs) | `TEventData`\[`TEventName`\] |
 
 ### Parameters
 
-#### eventName
-
-`TEventName`
-
-The event to emit.
-
-#### eventArgs
-
-`TEventArgs`
-
-The data to pass to listeners.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventName` | `TEventName` | The event to emit. |
+| `eventArgs` | `TEventArgs` | The data to pass to listeners. |
 
 ### Returns
 
@@ -564,34 +510,24 @@ The data to pass to listeners.
 ### emitSerial()
 
 ```ts
-emitSerial<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
+emitSerial<TEventName, TEventArgs>(eventName: TEventName, eventArgs: TEventArgs): Promise<void>;
 ```
 
 Emits an event, invoking all registered listeners sequentially in order.
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* `string` \| `number` \| `symbol` = keyof `TEventData`
-
-#### TEventArgs
-
-`TEventArgs` *extends* [`EventArgs`](#../type-aliases/EventArgs) = `TEventData`\[`TEventName`\]
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TEventName` *extends* `string` \| `number` \| `symbol` | keyof `TEventData` |
+| `TEventArgs` *extends* [`EventArgs`](#../type-aliases/EventArgs) | `TEventData`\[`TEventName`\] |
 
 ### Parameters
 
-#### eventName
-
-`TEventName`
-
-The event to emit.
-
-#### eventArgs
-
-`TEventArgs`
-
-The data to pass to listeners.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventName` | `TEventName` | The event to emit. |
+| `eventArgs` | `TEventArgs` | The data to pass to listeners. |
 
 ### Returns
 
@@ -606,18 +542,16 @@ The data to pass to listeners.
 ### listenerCount()
 
 ```ts
-listenerCount(eventNames): number;
+listenerCount(eventNames: keyof TEventData | keyof TEventData[]): number;
 ```
 
 Returns the total number of listeners registered for the specified event name(s).
 
 ### Parameters
 
-#### eventNames
-
-One or more event names to count listeners for.
-
-keyof `TEventData` | keyof `TEventData`[]
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventNames` | keyof `TEventData` \| keyof `TEventData`[] | One or more event names to count listeners for. |
 
 ### Returns
 
@@ -634,30 +568,23 @@ The total listener count.
 ### off()
 
 ```ts
-off<TEventName>(eventNames, listener): void;
+off<TEventName>(eventNames: TEventName | TEventName[], listener: EventListener<TEventData[TEventName]>): void;
 ```
 
 Removes a specific listener from the specified event name(s).
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* `string` \| `number` \| `symbol`
+| Type Parameter |
+| ------ |
+| `TEventName` *extends* `string` \| `number` \| `symbol` |
 
 ### Parameters
 
-#### eventNames
-
-One or more event names to unsubscribe from.
-
-`TEventName` | `TEventName`[]
-
-#### listener
-
-[`EventListener`](#../type-aliases/EventListener)\<`TEventData`\[`TEventName`\]\>
-
-The listener to remove.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventNames` | `TEventName` \| `TEventName`[] | One or more event names to unsubscribe from. |
+| `listener` | [`EventListener`](#../type-aliases/EventListener)\<`TEventData`\[`TEventName`\]\> | The listener to remove. |
 
 ### Returns
 
@@ -672,18 +599,16 @@ The listener to remove.
 ### offAny()
 
 ```ts
-offAny(listener): void;
+offAny(listener: EventAnyListener): void;
 ```
 
 Removes a wildcard listener that was receiving all events.
 
 ### Parameters
 
-#### listener
-
-[`EventAnyListener`](#../type-aliases/EventAnyListener)
-
-The wildcard listener to remove.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `listener` | [`EventAnyListener`](#../type-aliases/EventAnyListener) | The wildcard listener to remove. |
 
 ### Returns
 
@@ -698,44 +623,37 @@ The wildcard listener to remove.
 ### on()
 
 ```ts
-on<TEventName>(eventNames, listener): (...args) => void;
+on<TEventName>(eventNames: TEventName | TEventName[], listener: EventListener<TEventData[TEventName]>): (...args: []) => void;
 ```
 
 Subscribes a listener to the specified event name(s).
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* `string` \| `number` \| `symbol`
+| Type Parameter |
+| ------ |
+| `TEventName` *extends* `string` \| `number` \| `symbol` |
 
 ### Parameters
 
-#### eventNames
-
-One or more event names to listen for.
-
-`TEventName` | `TEventName`[]
-
-#### listener
-
-[`EventListener`](#../type-aliases/EventListener)\<`TEventData`\[`TEventName`\]\>
-
-The callback to invoke when the event fires.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventNames` | `TEventName` \| `TEventName`[] | One or more event names to listen for. |
+| `listener` | [`EventListener`](#../type-aliases/EventListener)\<`TEventData`\[`TEventName`\]\> | The callback to invoke when the event fires. |
 
 ### Returns
 
 An unsubscribe function.
 
 ```ts
-(...args): void;
+(...args: []): void;
 ```
 
 #### Parameters
 
-##### args
-
-...\[\]
+| Parameter | Type |
+| ------ | ------ |
+| ...`args` | \[\] |
 
 #### Returns
 
@@ -750,32 +668,30 @@ An unsubscribe function.
 ### onAny()
 
 ```ts
-onAny(listener): (...args) => void;
+onAny(listener: EventAnyListener): (...args: []) => void;
 ```
 
 Subscribes a wildcard listener that receives all events.
 
 ### Parameters
 
-#### listener
-
-[`EventAnyListener`](#../type-aliases/EventAnyListener)
-
-The callback to invoke for any event.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `listener` | [`EventAnyListener`](#../type-aliases/EventAnyListener) | The callback to invoke for any event. |
 
 ### Returns
 
 An unsubscribe function.
 
 ```ts
-(...args): void;
+(...args: []): void;
 ```
 
 #### Parameters
 
-##### args
-
-...\[\]
+| Parameter | Type |
+| ------ | ------ |
+| ...`args` | \[\] |
 
 #### Returns
 
@@ -790,44 +706,37 @@ An unsubscribe function.
 ### once()
 
 ```ts
-once<TEventName>(eventName, listener): (...args) => void;
+once<TEventName>(eventName: TEventName, listener: EventListener<TEventData[TEventName]>): (...args: []) => void;
 ```
 
 Subscribes a listener that will be invoked only once for the specified event, then automatically removed.
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* `string` \| `number` \| `symbol`
+| Type Parameter |
+| ------ |
+| `TEventName` *extends* `string` \| `number` \| `symbol` |
 
 ### Parameters
 
-#### eventName
-
-`TEventName`
-
-The event to listen for.
-
-#### listener
-
-[`EventListener`](#../type-aliases/EventListener)\<`TEventData`\[`TEventName`\]\>
-
-The callback to invoke once.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventName` | `TEventName` | The event to listen for. |
+| `listener` | [`EventListener`](#../type-aliases/EventListener)\<`TEventData`\[`TEventName`\]\> | The callback to invoke once. |
 
 ### Returns
 
 An unsubscribe function.
 
 ```ts
-(...args): void;
+(...args: []): void;
 ```
 
 #### Parameters
 
-##### args
-
-...\[\]
+| Parameter | Type |
+| ------ | ------ |
+| ...`args` | \[\] |
 
 #### Returns
 
@@ -852,9 +761,9 @@ serial and concurrent emission, listener filtering, and debug logging.
 
 ## Type Parameters
 
-### TEventData
-
-`TEventData` *extends* [`EventData`](#../type-aliases/EventData) = [`EventData`](#../type-aliases/EventData)
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TEventData` *extends* [`EventData`](#../type-aliases/EventData) | [`EventData`](#../type-aliases/EventData) |
 
 ## Implements
 
@@ -865,14 +774,14 @@ serial and concurrent emission, listener filtering, and debug logging.
 ### Constructor
 
 ```ts
-new Events<TEventData>(params?): Events<TEventData>;
+new Events<TEventData>(params?: EventsParams): Events<TEventData>;
 ```
 
 ### Parameters
 
-#### params?
-
-[`EventsParams`](#../type-aliases/EventsParams) = `{}`
+| Parameter | Type |
+| ------ | ------ |
+| `params` | [`EventsParams`](#../type-aliases/EventsParams) |
 
 ### Returns
 
@@ -886,75 +795,14 @@ Base<EventsParams>.constructor
 
 ## Properties
 
-### defaultLogger?
-
-```ts
-static optional defaultLogger: Logger;
-```
-
-### Inherited from
-
-```ts
-Base.defaultLogger
-```
-
-***
-
-### globalInstances
-
-```ts
-readonly static globalInstances: Record<BaseClassName, WeakRef<Base>[]>;
-```
-
-### Inherited from
-
-```ts
-Base.globalInstances
-```
-
-***
-
-### globalInstancesCountHistory
-
-```ts
-readonly static globalInstancesCountHistory: Record<BaseClassName, number[]>;
-```
-
-### Inherited from
-
-```ts
-Base.globalInstancesCountHistory
-```
-
-***
-
-### anyMap
-
-```ts
-protected static anyMap: WeakMap<object, Set<EventAnyListener>>;
-```
-
-***
-
-### eventsMap
-
-```ts
-protected static eventsMap: WeakMap<object, Map<PropertyKey, Set<EventListenerInfo<EventArgs>>>>;
-```
-
-***
-
-### eventData
-
-```ts
-eventData: TEventData;
-```
-
-Type-level reference to the event data shape for external type queries.
-
-### Implementation of
-
-[`EventEmitter`](#../interfaces/EventEmitter).[`eventData`](../interfaces/EventEmitter.md#eventdata)
+| Property | Modifier | Type | Description | Inherited from |
+| ------ | ------ | ------ | ------ | ------ |
+| <a id="defaultlogger"></a> `defaultLogger?` | `static` | `Logger` | - | `Base.defaultLogger` |
+| <a id="globalinstances"></a> `globalInstances` | `readonly` | `Record`\<`BaseClassName`, `WeakRef`\<`Base`\>[]\> | - | `Base.globalInstances` |
+| <a id="globalinstancescounthistory"></a> `globalInstancesCountHistory` | `readonly` | `Record`\<`BaseClassName`, `number`[]\> | - | `Base.globalInstancesCountHistory` |
+| <a id="anymap"></a> `anyMap` | `static` | `WeakMap`\<`object`, `Set`\<[`EventAnyListener`](#../type-aliases/EventAnyListener)\>\> | - | - |
+| <a id="eventsmap"></a> `eventsMap` | `static` | `WeakMap`\<`object`, `Map`\<`PropertyKey`, `Set`\<[`EventListenerInfo`](#../type-aliases/EventListenerInfo)\<[`EventArgs`](#../type-aliases/EventArgs)\>\>\>\> | - | - |
+| <a id="eventdata"></a> `eventData` | `public` | `TEventData` | Type-level reference to the event data shape for external type queries. | - |
 
 ## Accessors
 
@@ -973,14 +821,14 @@ get static historyInterval(): number;
 ### Set Signature
 
 ```ts
-set static historyInterval(value): void;
+set static historyInterval(value: number): void;
 ```
 
 #### Parameters
 
-##### value
-
-`number`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `number` |
 
 #### Returns
 
@@ -1009,14 +857,14 @@ get static historyTime(): number;
 ### Set Signature
 
 ```ts
-set static historyTime(value): void;
+set static historyTime(value: number): void;
 ```
 
 #### Parameters
 
-##### value
-
-`number`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `number` |
 
 #### Returns
 
@@ -1045,14 +893,14 @@ get static maxGcFrequency(): number;
 ### Set Signature
 
 ```ts
-set static maxGcFrequency(value): void;
+set static maxGcFrequency(value: number): void;
 ```
 
 #### Parameters
 
-##### value
-
-`number`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `number` |
 
 #### Returns
 
@@ -1183,14 +1031,14 @@ Whether debug mode is enabled globally or via the DEBUG environment variable.
 ### Set Signature
 
 ```ts
-set static isDebugEnabled(newValue): void;
+set static isDebugEnabled(newValue: boolean): void;
 ```
 
 #### Parameters
 
-##### newValue
-
-`boolean`
+| Parameter | Type |
+| ------ | ------ |
+| `newValue` | `boolean` |
 
 #### Returns
 
@@ -1219,14 +1067,14 @@ The debug configuration for this instance, if provided.
 ### Call Signature
 
 ```ts
-static gc(force?): void;
+static gc(force?: boolean): void;
 ```
 
 #### Parameters
 
-##### force?
-
-`boolean`
+| Parameter | Type |
+| ------ | ------ |
+| `force?` | `boolean` |
 
 #### Returns
 
@@ -1241,14 +1089,14 @@ Base.gc
 ### Call Signature
 
 ```ts
-static gc(className): void;
+static gc(className: BaseClassName): void;
 ```
 
 #### Parameters
 
-##### className
-
-`BaseClassName`
+| Parameter | Type |
+| ------ | ------ |
+| `className` | `BaseClassName` |
 
 #### Returns
 
@@ -1265,14 +1113,14 @@ Base.gc
 ### instanceCount()
 
 ```ts
-static instanceCount(className): number;
+static instanceCount(className: BaseClassName): number;
 ```
 
 ### Parameters
 
-#### className
-
-`BaseClassName`
+| Parameter | Type |
+| ------ | ------ |
+| `className` | `BaseClassName` |
 
 ### Returns
 
@@ -1343,18 +1191,16 @@ Base.stopHistory
 ### clearListeners()
 
 ```ts
-clearListeners(eventNames): void;
+clearListeners(eventNames: keyof TEventData | keyof TEventData[]): void;
 ```
 
 Removes all listeners for the specified event name(s).
 
 ### Parameters
 
-#### eventNames
-
-One or more event names to clear listeners for.
-
-keyof `TEventData` | keyof `TEventData`[]
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventNames` | keyof `TEventData` \| keyof `TEventData`[] | One or more event names to clear listeners for. |
 
 ### Returns
 
@@ -1369,30 +1215,23 @@ keyof `TEventData` | keyof `TEventData`[]
 ### emit()
 
 ```ts
-emit<TEventName>(eventName, eventArgs): Promise<void>;
+emit<TEventName>(eventName: TEventName, eventArgs: TEventData[TEventName]): Promise<void>;
 ```
 
 Emits an event, invoking all registered listeners concurrently.
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* `string` \| `number` \| `symbol`
+| Type Parameter |
+| ------ |
+| `TEventName` *extends* `string` \| `number` \| `symbol` |
 
 ### Parameters
 
-#### eventName
-
-`TEventName`
-
-The event to emit.
-
-#### eventArgs
-
-`TEventData`\[`TEventName`\]
-
-The data to pass to listeners.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventName` | `TEventName` | The event to emit. |
+| `eventArgs` | `TEventData`\[`TEventName`\] | The data to pass to listeners. |
 
 ### Returns
 
@@ -1407,30 +1246,23 @@ The data to pass to listeners.
 ### emitMetaEvent()
 
 ```ts
-emitMetaEvent<TEventName>(eventName, eventArgs): Promise<boolean | undefined>;
+emitMetaEvent<TEventName>(eventName: TEventName, eventArgs: MetaEventData<TEventData>[TEventName]): Promise<boolean | undefined>;
 ```
 
 Emits an internal meta event (listenerAdded or listenerRemoved).
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* keyof [`MetaEventData`](#../type-aliases/MetaEventData)\<`TEventData`\>
+| Type Parameter |
+| ------ |
+| `TEventName` *extends* keyof [`MetaEventData`](#../type-aliases/MetaEventData)\<`TEventData`\> |
 
 ### Parameters
 
-#### eventName
-
-`TEventName`
-
-The meta event name.
-
-#### eventArgs
-
-[`MetaEventData`](#../type-aliases/MetaEventData)\<`TEventData`\>\[`TEventName`\]
-
-The meta event data containing listener and event information.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventName` | `TEventName` | The meta event name. |
+| `eventArgs` | [`MetaEventData`](#../type-aliases/MetaEventData)\<`TEventData`\>\[`TEventName`\] | The meta event data containing listener and event information. |
 
 ### Returns
 
@@ -1443,30 +1275,23 @@ True if the meta event was emitted successfully.
 ### emitSerial()
 
 ```ts
-emitSerial<TEventName>(eventName, eventArgs): Promise<void>;
+emitSerial<TEventName>(eventName: TEventName, eventArgs: TEventData[TEventName]): Promise<void>;
 ```
 
 Emits an event, invoking all registered listeners sequentially in order.
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* `string` \| `number` \| `symbol`
+| Type Parameter |
+| ------ |
+| `TEventName` *extends* `string` \| `number` \| `symbol` |
 
 ### Parameters
 
-#### eventName
-
-`TEventName`
-
-The event to emit.
-
-#### eventArgs
-
-`TEventData`\[`TEventName`\]
-
-The data to pass to listeners.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventName` | `TEventName` | The event to emit. |
+| `eventArgs` | `TEventData`\[`TEventName`\] | The data to pass to listeners. |
 
 ### Returns
 
@@ -1481,18 +1306,16 @@ The data to pass to listeners.
 ### listenerCount()
 
 ```ts
-listenerCount(eventNames?): number;
+listenerCount(eventNames?: keyof TEventData | keyof TEventData[]): number;
 ```
 
 Returns the total number of listeners registered for the specified event name(s).
 
 ### Parameters
 
-#### eventNames?
-
-One or more event names to count listeners for.
-
-keyof `TEventData` | keyof `TEventData`[]
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventNames?` | keyof `TEventData` \| keyof `TEventData`[] | One or more event names to count listeners for. |
 
 ### Returns
 
@@ -1510,38 +1333,26 @@ The total listener count.
 
 ```ts
 logIfDebugEnabled<TEventName>(
-   type, 
-   eventName?, 
-   eventArgs?): void;
+   type: string, 
+   eventName?: TEventName, 
+   eventArgs?: EventArgs): void;
 ```
 
 Logs debug information if debug mode is enabled.
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* `PropertyKey`
+| Type Parameter |
+| ------ |
+| `TEventName` *extends* `PropertyKey` |
 
 ### Parameters
 
-#### type
-
-`string`
-
-The type of operation being logged.
-
-#### eventName?
-
-`TEventName`
-
-The event name, if applicable.
-
-#### eventArgs?
-
-[`EventArgs`](#../type-aliases/EventArgs)
-
-The event data, if applicable.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `type` | `string` | The type of operation being logged. |
+| `eventName?` | `TEventName` | The event name, if applicable. |
+| `eventArgs?` | [`EventArgs`](#../type-aliases/EventArgs) | The event data, if applicable. |
 
 ### Returns
 
@@ -1552,34 +1363,24 @@ The event data, if applicable.
 ### off()
 
 ```ts
-off<TEventName, TEventListener>(eventNames, listener): void;
+off<TEventName, TEventListener>(eventNames: TEventName | TEventName[], listener: TEventListener): void;
 ```
 
 Removes a specific listener from the specified event name(s).
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* `string` \| `number` \| `symbol`
-
-#### TEventListener
-
-`TEventListener` = [`EventListener`](#../type-aliases/EventListener)\<`TEventData`\[`TEventName`\]\>
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TEventName` *extends* `string` \| `number` \| `symbol` | - |
+| `TEventListener` | [`EventListener`](#../type-aliases/EventListener)\<`TEventData`\[`TEventName`\]\> |
 
 ### Parameters
 
-#### eventNames
-
-One or more event names to unsubscribe from.
-
-`TEventName` | `TEventName`[]
-
-#### listener
-
-`TEventListener`
-
-The listener to remove.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventNames` | `TEventName` \| `TEventName`[] | One or more event names to unsubscribe from. |
+| `listener` | `TEventListener` | The listener to remove. |
 
 ### Returns
 
@@ -1594,18 +1395,16 @@ The listener to remove.
 ### offAny()
 
 ```ts
-offAny(listener): void;
+offAny(listener: EventAnyListener): void;
 ```
 
 Removes a wildcard listener that was receiving all events.
 
 ### Parameters
 
-#### listener
-
-[`EventAnyListener`](#../type-aliases/EventAnyListener)
-
-The wildcard listener to remove.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `listener` | [`EventAnyListener`](#../type-aliases/EventAnyListener) | The wildcard listener to remove. |
 
 ### Returns
 
@@ -1621,52 +1420,40 @@ The wildcard listener to remove.
 
 ```ts
 on<TEventName>(
-   eventNames, 
-   listener, 
-   filter?): (...args) => void;
+   eventNames: TEventName | TEventName[], 
+   listener: EventListener<TEventData[TEventName]>, 
+   filter?: TEventData[TEventName]): (...args: []) => void;
 ```
 
 Subscribes a listener to the specified event name(s).
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* `string` \| `number` \| `symbol` = keyof `TEventData`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TEventName` *extends* `string` \| `number` \| `symbol` | keyof `TEventData` |
 
 ### Parameters
 
-#### eventNames
-
-One or more event names to listen for.
-
-`TEventName` | `TEventName`[]
-
-#### listener
-
-[`EventListener`](#../type-aliases/EventListener)\<`TEventData`\[`TEventName`\]\>
-
-The callback to invoke when the event fires.
-
-#### filter?
-
-`TEventData`\[`TEventName`\]
-
-Optional filter to selectively invoke the listener based on event data.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventNames` | `TEventName` \| `TEventName`[] | One or more event names to listen for. |
+| `listener` | [`EventListener`](#../type-aliases/EventListener)\<`TEventData`\[`TEventName`\]\> | The callback to invoke when the event fires. |
+| `filter?` | `TEventData`\[`TEventName`\] | Optional filter to selectively invoke the listener based on event data. |
 
 ### Returns
 
 An unsubscribe function.
 
 ```ts
-(...args): void;
+(...args: []): void;
 ```
 
 #### Parameters
 
-##### args
-
-...\[\]
+| Parameter | Type |
+| ------ | ------ |
+| ...`args` | \[\] |
 
 #### Returns
 
@@ -1681,32 +1468,30 @@ An unsubscribe function.
 ### onAny()
 
 ```ts
-onAny(listener): (...args) => void;
+onAny(listener: EventAnyListener): (...args: []) => void;
 ```
 
 Subscribes a wildcard listener that receives all events.
 
 ### Parameters
 
-#### listener
-
-[`EventAnyListener`](#../type-aliases/EventAnyListener)
-
-The callback to invoke for any event.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `listener` | [`EventAnyListener`](#../type-aliases/EventAnyListener) | The callback to invoke for any event. |
 
 ### Returns
 
 An unsubscribe function.
 
 ```ts
-(...args): void;
+(...args: []): void;
 ```
 
 #### Parameters
 
-##### args
-
-...\[\]
+| Parameter | Type |
+| ------ | ------ |
+| ...`args` | \[\] |
 
 #### Returns
 
@@ -1721,44 +1506,37 @@ An unsubscribe function.
 ### once()
 
 ```ts
-once<TEventName>(eventName, listener): (...args) => void;
+once<TEventName>(eventName: TEventName, listener: EventListener<TEventData[TEventName]>): (...args: []) => void;
 ```
 
 Subscribes a listener that will be invoked only once for the specified event, then automatically removed.
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* `string` \| `number` \| `symbol`
+| Type Parameter |
+| ------ |
+| `TEventName` *extends* `string` \| `number` \| `symbol` |
 
 ### Parameters
 
-#### eventName
-
-`TEventName`
-
-The event to listen for.
-
-#### listener
-
-[`EventListener`](#../type-aliases/EventListener)\<`TEventData`\[`TEventName`\]\>
-
-The callback to invoke once.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventName` | `TEventName` | The event to listen for. |
+| `listener` | [`EventListener`](#../type-aliases/EventListener)\<`TEventData`\[`TEventName`\]\> | The callback to invoke once. |
 
 ### Returns
 
 An unsubscribe function.
 
 ```ts
-(...args): void;
+(...args: []): void;
 ```
 
 #### Parameters
 
-##### args
-
-...\[\]
+| Parameter | Type |
+| ------ | ------ |
+| ...`args` | \[\] |
 
 #### Returns
 
@@ -1788,35 +1566,31 @@ Interface for a typed event emitter that supports subscribing, unsubscribing, an
 
 ## Type Parameters
 
-### T
-
-`T` *extends* [`EventData`](#../type-aliases/EventData)
+| Type Parameter |
+| ------ |
+| `T` *extends* [`EventData`](#../type-aliases/EventData) |
 
 ## Properties
 
-### eventData
-
-```ts
-eventData: T;
-```
-
-Type-level reference to the event data shape for external type queries.
+| Property | Type | Description |
+| ------ | ------ | ------ |
+| <a id="eventdata"></a> `eventData` | `T` | Type-level reference to the event data shape for external type queries. |
 
 ## Methods
 
 ### clearListeners()
 
 ```ts
-clearListeners(eventNames): void;
+clearListeners(eventNames: keyof T | keyof T[]): void;
 ```
 
 Removes all listeners for the specified event name(s).
 
 ### Parameters
 
-#### eventNames
-
-keyof `T` | keyof `T`[]
+| Parameter | Type |
+| ------ | ------ |
+| `eventNames` | keyof `T` \| keyof `T`[] |
 
 ### Returns
 
@@ -1827,26 +1601,23 @@ keyof `T` | keyof `T`[]
 ### emit()
 
 ```ts
-emit<TEventName>(eventName, eventArgs): Promise<void>;
+emit<TEventName>(eventName: TEventName, eventArgs: T[TEventName]): Promise<void>;
 ```
 
 Emits an event, invoking all registered listeners concurrently.
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* `string` \| `number` \| `symbol`
+| Type Parameter |
+| ------ |
+| `TEventName` *extends* `string` \| `number` \| `symbol` |
 
 ### Parameters
 
-#### eventName
-
-`TEventName`
-
-#### eventArgs
-
-`T`\[`TEventName`\]
+| Parameter | Type |
+| ------ | ------ |
+| `eventName` | `TEventName` |
+| `eventArgs` | `T`\[`TEventName`\] |
 
 ### Returns
 
@@ -1857,26 +1628,23 @@ Emits an event, invoking all registered listeners concurrently.
 ### emitSerial()
 
 ```ts
-emitSerial<TEventName>(eventName, eventArgs): Promise<void>;
+emitSerial<TEventName>(eventName: TEventName, eventArgs: T[TEventName]): Promise<void>;
 ```
 
 Emits an event, invoking all registered listeners sequentially in order.
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* `string` \| `number` \| `symbol`
+| Type Parameter |
+| ------ |
+| `TEventName` *extends* `string` \| `number` \| `symbol` |
 
 ### Parameters
 
-#### eventName
-
-`TEventName`
-
-#### eventArgs
-
-`T`\[`TEventName`\]
+| Parameter | Type |
+| ------ | ------ |
+| `eventName` | `TEventName` |
+| `eventArgs` | `T`\[`TEventName`\] |
 
 ### Returns
 
@@ -1887,16 +1655,16 @@ Emits an event, invoking all registered listeners sequentially in order.
 ### listenerCount()
 
 ```ts
-listenerCount(eventNames): number;
+listenerCount(eventNames: keyof T | keyof T[]): number;
 ```
 
 Returns the total number of listeners registered for the specified event name(s).
 
 ### Parameters
 
-#### eventNames
-
-keyof `T` | keyof `T`[]
+| Parameter | Type |
+| ------ | ------ |
+| `eventNames` | keyof `T` \| keyof `T`[] |
 
 ### Returns
 
@@ -1907,26 +1675,23 @@ keyof `T` | keyof `T`[]
 ### off()
 
 ```ts
-off<TEventName>(eventNames, listener): void;
+off<TEventName>(eventNames: TEventName | TEventName[], listener: EventListener<T[TEventName]>): void;
 ```
 
 Removes a specific listener from the specified event name(s).
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* `string` \| `number` \| `symbol`
+| Type Parameter |
+| ------ |
+| `TEventName` *extends* `string` \| `number` \| `symbol` |
 
 ### Parameters
 
-#### eventNames
-
-`TEventName` | `TEventName`[]
-
-#### listener
-
-[`EventListener`](#../type-aliases/EventListener)\<`T`\[`TEventName`\]\>
+| Parameter | Type |
+| ------ | ------ |
+| `eventNames` | `TEventName` \| `TEventName`[] |
+| `listener` | [`EventListener`](#../type-aliases/EventListener)\<`T`\[`TEventName`\]\> |
 
 ### Returns
 
@@ -1937,16 +1702,18 @@ Removes a specific listener from the specified event name(s).
 ### offAny()
 
 ```ts
-offAny(listener): void;
+offAny(listener: 
+  | Promise<void>
+  | EventAnyListener): void;
 ```
 
 Removes a wildcard listener that was receiving all events.
 
 ### Parameters
 
-#### listener
-
-`Promise`\<`void`\> | [`EventAnyListener`](#../type-aliases/EventAnyListener)
+| Parameter | Type |
+| ------ | ------ |
+| `listener` | \| `Promise`\<`void`\> \| [`EventAnyListener`](#../type-aliases/EventAnyListener) |
 
 ### Returns
 
@@ -1957,26 +1724,23 @@ Removes a wildcard listener that was receiving all events.
 ### on()
 
 ```ts
-on<TEventName>(eventNames, listener): EventUnsubscribeFunction;
+on<TEventName>(eventNames: TEventName | TEventName[], listener: EventListener<T[TEventName]>): EventUnsubscribeFunction;
 ```
 
 Subscribes a listener to the specified event name(s) and returns an unsubscribe function.
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* `string` \| `number` \| `symbol`
+| Type Parameter |
+| ------ |
+| `TEventName` *extends* `string` \| `number` \| `symbol` |
 
 ### Parameters
 
-#### eventNames
-
-`TEventName` | `TEventName`[]
-
-#### listener
-
-[`EventListener`](#../type-aliases/EventListener)\<`T`\[`TEventName`\]\>
+| Parameter | Type |
+| ------ | ------ |
+| `eventNames` | `TEventName` \| `TEventName`[] |
+| `listener` | [`EventListener`](#../type-aliases/EventListener)\<`T`\[`TEventName`\]\> |
 
 ### Returns
 
@@ -1987,16 +1751,16 @@ Subscribes a listener to the specified event name(s) and returns an unsubscribe 
 ### onAny()
 
 ```ts
-onAny(listener): EventUnsubscribeFunction;
+onAny(listener: EventAnyListener): EventUnsubscribeFunction;
 ```
 
 Subscribes a wildcard listener that receives all events and returns an unsubscribe function.
 
 ### Parameters
 
-#### listener
-
-[`EventAnyListener`](#../type-aliases/EventAnyListener)
+| Parameter | Type |
+| ------ | ------ |
+| `listener` | [`EventAnyListener`](#../type-aliases/EventAnyListener) |
 
 ### Returns
 
@@ -2007,26 +1771,23 @@ Subscribes a wildcard listener that receives all events and returns an unsubscri
 ### once()
 
 ```ts
-once<TEventName>(eventName, listener): EventUnsubscribeFunction;
+once<TEventName>(eventName: TEventName, listener: EventListener<T[TEventName]>): EventUnsubscribeFunction;
 ```
 
 Subscribes a listener that will be invoked only once for the specified event, then automatically removed.
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* `string` \| `number` \| `symbol`
+| Type Parameter |
+| ------ |
+| `TEventName` *extends* `string` \| `number` \| `symbol` |
 
 ### Parameters
 
-#### eventName
-
-`TEventName`
-
-#### listener
-
-[`EventListener`](#../type-aliases/EventListener)\<`T`\[`TEventName`\]\>
+| Parameter | Type |
+| ------ | ------ |
+| `eventName` | `TEventName` |
+| `listener` | [`EventListener`](#../type-aliases/EventListener)\<`T`\[`TEventName`\]\> |
 
 ### Returns
 
@@ -2048,9 +1809,9 @@ Parameters type for configuring a BaseEmitter instance.
 
 ## Type Parameters
 
-### T
-
-`T` *extends* `EmptyObject` = `EmptyObject`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` *extends* `EmptyObject` | `EmptyObject` |
 
   ### <a id="DebugLogger"></a>DebugLogger
 
@@ -2059,7 +1820,7 @@ Parameters type for configuring a BaseEmitter instance.
 ***
 
 ```ts
-type DebugLogger = (type, debugName, eventName?, eventData?) => void;
+type DebugLogger = (type: string, debugName: string, eventName?: EventName, eventData?: EventArgs) => void;
 ```
 
 Emittery can collect and log debug information.
@@ -2071,21 +1832,12 @@ See API for more information on how debugging works.
 
 ## Parameters
 
-### type
-
-`string`
-
-### debugName
-
-`string`
-
-### eventName?
-
-[`EventName`](#EventName)
-
-### eventData?
-
-[`EventArgs`](#EventArgs)
+| Parameter | Type |
+| ------ | ------ |
+| `type` | `string` |
+| `debugName` | `string` |
+| `eventName?` | [`EventName`](#EventName) |
+| `eventData?` | [`EventArgs`](#EventArgs) |
 
 ## Returns
 
@@ -2098,34 +1850,22 @@ See API for more information on how debugging works.
 ***
 
 ```ts
-type DebugOptions = object;
+type DebugOptions = {
+  enabled?: boolean;
+  logger?: DebugLogger;
+  name: string;
+};
 ```
 
 Configure debug options of an instance.
 
 ## Properties
 
-### enabled?
-
-```ts
-optional enabled: boolean;
-```
-
-***
-
-### logger?
-
-```ts
-optional logger: DebugLogger;
-```
-
-***
-
-### name
-
-```ts
-readonly name: string;
-```
+| Property | Modifier | Type |
+| ------ | ------ | ------ |
+| <a id="enabled"></a> `enabled?` | `public` | `boolean` |
+| <a id="logger"></a> `logger?` | `public` | [`DebugLogger`](#DebugLogger) |
+| <a id="name"></a> `name` | `readonly` | `string` |
 
   ### <a id="EventAnyListener"></a>EventAnyListener
 
@@ -2134,30 +1874,23 @@ readonly name: string;
 ***
 
 ```ts
-type EventAnyListener<TEventArgs> = (eventName, eventData) => Promisable<void>;
+type EventAnyListener<TEventArgs> = (eventName: EventName, eventData: TEventArgs) => Promisable<void>;
 ```
 
 A listener that receives all events regardless of name.
 
 ## Type Parameters
 
-### TEventArgs
-
-`TEventArgs` *extends* [`EventArgs`](#EventArgs) = [`EventArgs`](#EventArgs)
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TEventArgs` *extends* [`EventArgs`](#EventArgs) | [`EventArgs`](#EventArgs) |
 
 ## Parameters
 
-### eventName
-
-[`EventName`](#EventName)
-
-The name of the emitted event.
-
-### eventData
-
-`TEventArgs`
-
-The data associated with the event.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventName` | [`EventName`](#EventName) | The name of the emitted event. |
+| `eventData` | `TEventArgs` | The data associated with the event. |
 
 ## Returns
 
@@ -2182,7 +1915,9 @@ The allowed types for event argument payloads.
 ***
 
 ```ts
-type EventData = object;
+type EventData = {
+[key: string | number | symbol]: EventArgs;
+};
 ```
 
 A mapping of event names to their corresponding event argument types.
@@ -2200,24 +1935,22 @@ A mapping of event names to their corresponding event argument types.
 ***
 
 ```ts
-type EventListener<TEventArgs> = (eventData) => Promisable<void>;
+type EventListener<TEventArgs> = (eventData: TEventArgs) => Promisable<void>;
 ```
 
 A listener for a specific event type.
 
 ## Type Parameters
 
-### TEventArgs
-
-`TEventArgs` *extends* [`EventArgs`](#EventArgs) = [`EventArgs`](#EventArgs)
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TEventArgs` *extends* [`EventArgs`](#EventArgs) | [`EventArgs`](#EventArgs) |
 
 ## Parameters
 
-### eventData
-
-`TEventArgs`
-
-The data associated with the event.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventData` | `TEventArgs` | The data associated with the event. |
 
 ## Returns
 
@@ -2230,32 +1963,26 @@ The data associated with the event.
 ***
 
 ```ts
-type EventListenerInfo<TEventArgs> = object;
+type EventListenerInfo<TEventArgs> = {
+  filter?: TEventArgs;
+  listener: EventListener<TEventArgs>;
+};
 ```
 
 Information about a registered event listener, including an optional filter for selective invocation.
 
 ## Type Parameters
 
-### TEventArgs
-
-`TEventArgs` *extends* [`EventArgs`](#EventArgs) = [`EventArgs`](#EventArgs)
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TEventArgs` *extends* [`EventArgs`](#EventArgs) | [`EventArgs`](#EventArgs) |
 
 ## Properties
 
-### filter?
-
-```ts
-optional filter: TEventArgs;
-```
-
-***
-
-### listener
-
-```ts
-listener: EventListener<TEventArgs>;
-```
+| Property | Type |
+| ------ | ------ |
+| <a id="filter"></a> `filter?` | `TEventArgs` |
+| <a id="listener"></a> `listener` | [`EventListener`](#EventListener)\<`TEventArgs`\> |
 
   ### <a id="EventName"></a>EventName
 
@@ -2306,60 +2033,38 @@ Parameters for constructing an Events instance, with optional debug configuratio
 ***
 
 ```ts
-type MetaEventData<TEventData> = object;
+type MetaEventData<TEventData> = {
+  listenerAdded: {
+     eventName?: keyof TEventData;
+     listener:   | EventListener<TEventData[keyof TEventData]>
+        | EventAnyListener<TEventData[keyof TEventData]>;
+  };
+  listenerRemoved: {
+     eventName?: keyof TEventData;
+     listener:   | EventListener<TEventData[keyof TEventData]>
+        | EventAnyListener<TEventData[keyof TEventData]>;
+  };
+};
 ```
 
 Data shape for internal meta events that fire when listeners are added or removed.
 
 ## Type Parameters
 
-### TEventData
-
-`TEventData` *extends* [`EventData`](#EventData)
+| Type Parameter |
+| ------ |
+| `TEventData` *extends* [`EventData`](#EventData) |
 
 ## Properties
 
-### listenerAdded
-
-```ts
-listenerAdded: object;
-```
-
-### eventName?
-
-```ts
-optional eventName: keyof TEventData;
-```
-
-### listener
-
-```ts
-listener: 
-  | EventListener<TEventData[keyof TEventData]>
-| EventAnyListener<TEventData[keyof TEventData]>;
-```
-
-***
-
-### listenerRemoved
-
-```ts
-listenerRemoved: object;
-```
-
-### eventName?
-
-```ts
-optional eventName: keyof TEventData;
-```
-
-### listener
-
-```ts
-listener: 
-  | EventListener<TEventData[keyof TEventData]>
-| EventAnyListener<TEventData[keyof TEventData]>;
-```
+| Property | Type |
+| ------ | ------ |
+| <a id="listeneradded"></a> `listenerAdded` | \{ `eventName?`: keyof `TEventData`; `listener`: \| [`EventListener`](#EventListener)\<`TEventData`\[keyof `TEventData`\]\> \| [`EventAnyListener`](#EventAnyListener)\<`TEventData`\[keyof `TEventData`\]\>; \} |
+| `listenerAdded.eventName?` | keyof `TEventData` |
+| `listenerAdded.listener` | \| [`EventListener`](#EventListener)\<`TEventData`\[keyof `TEventData`\]\> \| [`EventAnyListener`](#EventAnyListener)\<`TEventData`\[keyof `TEventData`\]\> |
+| <a id="listenerremoved"></a> `listenerRemoved` | \{ `eventName?`: keyof `TEventData`; `listener`: \| [`EventListener`](#EventListener)\<`TEventData`\[keyof `TEventData`\]\> \| [`EventAnyListener`](#EventAnyListener)\<`TEventData`\[keyof `TEventData`\]\>; \} |
+| `listenerRemoved.eventName?` | keyof `TEventData` |
+| `listenerRemoved.listener` | \| [`EventListener`](#EventListener)\<`TEventData`\[keyof `TEventData`\]\> \| [`EventAnyListener`](#EventAnyListener)\<`TEventData`\[keyof `TEventData`\]\> |
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

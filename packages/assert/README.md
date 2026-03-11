@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/assert**
@@ -23,8 +25,10 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Functions
 
-- [assertDefinedEx](#functions/assertDefinedEx)
-- [assertEx](#functions/assertEx)
+| Function | Description |
+| ------ | ------ |
+| [assertDefinedEx](#functions/assertDefinedEx) | Implementation of assertDefinedEx that handles all overloads. |
+| [assertEx](#functions/assertEx) | Implementation of assertEx that handles all overloads. |
 
 ### functions
 
@@ -39,7 +43,7 @@ Implementation of assertDefinedEx that handles all overloads.
 ## Call Signature
 
 ```ts
-function assertDefinedEx<T>(expr, messageFunc?): T;
+function assertDefinedEx<T>(expr: T | undefined, messageFunc?: AssertExMessageFunc<T>): T;
 ```
 
 Asserts that a value is defined (not undefined) and returns the value.
@@ -47,25 +51,16 @@ Throws an error if the value is undefined.
 
 ### Type Parameters
 
-### T
-
-`T`
-
-The type of value to check
+| Type Parameter | Description |
+| ------ | ------ |
+| `T` | The type of value to check |
 
 ### Parameters
 
-### expr
-
-Expression to be evaluated for being defined
-
-`T` | `undefined`
-
-### messageFunc?
-
-`AssertExMessageFunc`\<`T`\>
-
-Function that returns a message for the error if expression is undefined
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `expr` | `T` \| `undefined` | Expression to be evaluated for being defined |
+| `messageFunc?` | `AssertExMessageFunc`\<`T`\> | Function that returns a message for the error if expression is undefined |
 
 ### Returns
 
@@ -92,7 +87,7 @@ const safeConfig = assertDefinedEx(config, () => 'Config failed to load')
 ## Call Signature
 
 ```ts
-function assertDefinedEx<T, R>(expr, errorFunc?): T;
+function assertDefinedEx<T, R>(expr: T | undefined, errorFunc?: AssertExErrorFunc<T, R>): T;
 ```
 
 Asserts that a value is defined (not undefined) and returns the value.
@@ -100,31 +95,17 @@ Throws a custom error if the value is undefined.
 
 ### Type Parameters
 
-### T
-
-`T`
-
-The type of value to check
-
-### R
-
-`R` *extends* `Error`
-
-The type of error to throw
+| Type Parameter | Description |
+| ------ | ------ |
+| `T` | The type of value to check |
+| `R` *extends* `Error` | The type of error to throw |
 
 ### Parameters
 
-### expr
-
-Expression to be evaluated for being defined
-
-`T` | `undefined`
-
-### errorFunc?
-
-`AssertExErrorFunc`\<`T`, `R`\>
-
-Function that returns a custom error instance if expression is undefined
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `expr` | `T` \| `undefined` | Expression to be evaluated for being defined |
+| `errorFunc?` | `AssertExErrorFunc`\<`T`, `R`\> | Function that returns a custom error instance if expression is undefined |
 
 ### Returns
 
@@ -154,7 +135,7 @@ Implementation of assertEx that handles all overloads.
 ## Call Signature
 
 ```ts
-function assertEx<T>(expr, messageFunc?): T;
+function assertEx<T>(expr: T | null | undefined, messageFunc?: AssertExMessageFunc<T>): T;
 ```
 
 Asserts that an expression is truthy and returns the value.
@@ -162,25 +143,16 @@ Throws an error if the expression is falsy.
 
 ### Type Parameters
 
-### T
-
-`T`
-
-The type of value to check
+| Type Parameter | Description |
+| ------ | ------ |
+| `T` | The type of value to check |
 
 ### Parameters
 
-### expr
-
-Expression to be evaluated for truthiness
-
-`T` | `null` | `undefined`
-
-### messageFunc?
-
-`AssertExMessageFunc`\<`T`\>
-
-Function that returns a message for the error if expression is falsy
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `expr` | `T` \| `null` \| `undefined` | Expression to be evaluated for truthiness |
+| `messageFunc?` | `AssertExMessageFunc`\<`T`\> | Function that returns a message for the error if expression is falsy |
 
 ### Returns
 
@@ -207,7 +179,7 @@ const safeConfig = assertEx(config, () => 'Config failed to load')
 ## Call Signature
 
 ```ts
-function assertEx<T, R>(expr, errorFunc?): T;
+function assertEx<T, R>(expr: T | null | undefined, errorFunc?: AssertExErrorFunc<T, R>): T;
 ```
 
 Asserts that an expression is truthy and returns the value.
@@ -215,31 +187,17 @@ Throws a custom error if the expression is falsy.
 
 ### Type Parameters
 
-### T
-
-`T`
-
-The type of value to check
-
-### R
-
-`R` *extends* `Error`
-
-The type of error to throw
+| Type Parameter | Description |
+| ------ | ------ |
+| `T` | The type of value to check |
+| `R` *extends* `Error` | The type of error to throw |
 
 ### Parameters
 
-### expr
-
-Expression to be evaluated for truthiness
-
-`T` | `null` | `undefined`
-
-### errorFunc?
-
-`AssertExErrorFunc`\<`T`, `R`\>
-
-Function that returns a custom error instance if expression is falsy
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `expr` | `T` \| `null` \| `undefined` | Expression to be evaluated for truthiness |
+| `errorFunc?` | `AssertExErrorFunc`\<`T`, `R`\> | Function that returns a custom error instance if expression is falsy |
 
 ### Returns
 

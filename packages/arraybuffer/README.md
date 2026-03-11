@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/arraybuffer**
@@ -23,11 +25,13 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Functions
 
-- [equalArrayBuffers](#functions/equalArrayBuffers)
-- [isArrayBuffer](#functions/isArrayBuffer)
-- [isArrayBufferLike](#functions/isArrayBufferLike)
-- [toArrayBuffer](#functions/toArrayBuffer)
-- [toUint8Array](#functions/toUint8Array)
+| Function | Description |
+| ------ | ------ |
+| [equalArrayBuffers](#functions/equalArrayBuffers) | Compares two ArrayBuffers for byte-level equality. |
+| [isArrayBuffer](#functions/isArrayBuffer) | Type guard that checks if a value is an ArrayBuffer instance. |
+| [isArrayBufferLike](#functions/isArrayBufferLike) | Type guard that checks if a value conforms to the ArrayBufferLike interface (has byteLength and slice). |
+| [toArrayBuffer](#functions/toArrayBuffer) | Converts a string, bigint, or ArrayBufferLike to an ArrayBufferLike, with optional zero-padding. |
+| [toUint8Array](#functions/toUint8Array) | Converts a string, bigint, or ArrayBufferLike to a Uint8Array, with optional zero-padding. |
 
 ### functions
 
@@ -38,24 +42,17 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 ***
 
 ```ts
-function equalArrayBuffers(a1, a2): boolean;
+function equalArrayBuffers(a1: ArrayBufferLike, a2: ArrayBufferLike): boolean;
 ```
 
 Compares two ArrayBuffers for byte-level equality.
 
 ## Parameters
 
-### a1
-
-`ArrayBufferLike`
-
-First buffer
-
-### a2
-
-`ArrayBufferLike`
-
-Second buffer
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `a1` | `ArrayBufferLike` | First buffer |
+| `a2` | `ArrayBufferLike` | Second buffer |
 
 ## Returns
 
@@ -72,16 +69,16 @@ True if the buffers have the same length and identical bytes
 ## Call Signature
 
 ```ts
-function isArrayBuffer(value): value is ArrayBuffer;
+function isArrayBuffer(value: unknown): value is ArrayBuffer;
 ```
 
 Type guard that checks if a value is an ArrayBuffer instance.
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -90,22 +87,22 @@ Type guard that checks if a value is an ArrayBuffer instance.
 ## Call Signature
 
 ```ts
-function isArrayBuffer<T>(value): value is Extract<T, ArrayBuffer>;
+function isArrayBuffer<T>(value: T): value is Extract<T, ArrayBuffer>;
 ```
 
 Type guard that checks if a value is an ArrayBuffer instance.
 
 ### Type Parameters
 
-### T
-
-`T` *extends* `ArrayBuffer`
+| Type Parameter |
+| ------ |
+| `T` *extends* `ArrayBuffer` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -120,16 +117,16 @@ Type guard that checks if a value is an ArrayBuffer instance.
 ## Call Signature
 
 ```ts
-function isArrayBufferLike(value): value is ArrayBufferLike;
+function isArrayBufferLike(value: unknown): value is ArrayBufferLike;
 ```
 
 Type guard that checks if a value conforms to the ArrayBufferLike interface (has byteLength and slice).
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -138,22 +135,22 @@ Type guard that checks if a value conforms to the ArrayBufferLike interface (has
 ## Call Signature
 
 ```ts
-function isArrayBufferLike<T>(value): value is Extract<T, ArrayBufferLike>;
+function isArrayBufferLike<T>(value: T): value is Extract<T, ArrayBufferLike>;
 ```
 
 Type guard that checks if a value conforms to the ArrayBufferLike interface (has byteLength and slice).
 
 ### Type Parameters
 
-### T
-
-`T` *extends* `ArrayBufferLike`
+| Type Parameter |
+| ------ |
+| `T` *extends* `ArrayBufferLike` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -169,32 +166,20 @@ Type guard that checks if a value conforms to the ArrayBufferLike interface (has
 
 ```ts
 function toArrayBuffer(
-   value, 
-   padLength?, 
-   base?): undefined;
+   value: undefined, 
+   padLength?: number, 
+   base?: number): undefined;
 ```
 
 Converts a string, bigint, or ArrayBufferLike to an ArrayBufferLike, with optional zero-padding.
 
 ### Parameters
 
-### value
-
-`undefined`
-
-The value to convert (hex string, bigint, or existing buffer)
-
-### padLength?
-
-`number`
-
-Minimum byte length, left-padded with zeros if needed
-
-### base?
-
-`number`
-
-Numeric base for string parsing (default 16)
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `undefined` | The value to convert (hex string, bigint, or existing buffer) |
+| `padLength?` | `number` | Minimum byte length, left-padded with zeros if needed |
+| `base?` | `number` | Numeric base for string parsing (default 16) |
 
 ### Returns
 
@@ -206,32 +191,20 @@ The resulting ArrayBufferLike, or undefined if value is undefined
 
 ```ts
 function toArrayBuffer(
-   value, 
-   padLength?, 
-   base?): ArrayBufferLike;
+   value: string | bigint | ArrayBufferLike, 
+   padLength?: number, 
+   base?: number): ArrayBufferLike;
 ```
 
 Converts a string, bigint, or ArrayBufferLike to an ArrayBufferLike, with optional zero-padding.
 
 ### Parameters
 
-### value
-
-The value to convert (hex string, bigint, or existing buffer)
-
-`string` | `bigint` | `ArrayBufferLike`
-
-### padLength?
-
-`number`
-
-Minimum byte length, left-padded with zeros if needed
-
-### base?
-
-`number`
-
-Numeric base for string parsing (default 16)
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `string` \| `bigint` \| `ArrayBufferLike` | The value to convert (hex string, bigint, or existing buffer) |
+| `padLength?` | `number` | Minimum byte length, left-padded with zeros if needed |
+| `base?` | `number` | Numeric base for string parsing (default 16) |
 
 ### Returns
 
@@ -243,32 +216,20 @@ The resulting ArrayBufferLike, or undefined if value is undefined
 
 ```ts
 function toArrayBuffer(
-   value, 
-   padLength?, 
-   base?): ArrayBufferLike | undefined;
+   value: string | bigint | ArrayBufferLike | undefined, 
+   padLength?: number, 
+   base?: number): ArrayBufferLike | undefined;
 ```
 
 Converts a string, bigint, or ArrayBufferLike to an ArrayBufferLike, with optional zero-padding.
 
 ### Parameters
 
-### value
-
-The value to convert (hex string, bigint, or existing buffer)
-
-`string` | `bigint` | `ArrayBufferLike` | `undefined`
-
-### padLength?
-
-`number`
-
-Minimum byte length, left-padded with zeros if needed
-
-### base?
-
-`number`
-
-Numeric base for string parsing (default 16)
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `string` \| `bigint` \| `ArrayBufferLike` \| `undefined` | The value to convert (hex string, bigint, or existing buffer) |
+| `padLength?` | `number` | Minimum byte length, left-padded with zeros if needed |
+| `base?` | `number` | Numeric base for string parsing (default 16) |
 
 ### Returns
 
@@ -286,32 +247,20 @@ The resulting ArrayBufferLike, or undefined if value is undefined
 
 ```ts
 function toUint8Array(
-   value, 
-   padLength?, 
-   base?): undefined;
+   value: undefined, 
+   padLength?: number, 
+   base?: number): undefined;
 ```
 
 Converts a string, bigint, or ArrayBufferLike to a Uint8Array, with optional zero-padding.
 
 ### Parameters
 
-### value
-
-`undefined`
-
-The value to convert
-
-### padLength?
-
-`number`
-
-Minimum byte length, left-padded with zeros if needed
-
-### base?
-
-`number`
-
-Numeric base for string parsing (default 16)
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `undefined` | The value to convert |
+| `padLength?` | `number` | Minimum byte length, left-padded with zeros if needed |
+| `base?` | `number` | Numeric base for string parsing (default 16) |
 
 ### Returns
 
@@ -323,32 +272,20 @@ The resulting Uint8Array, or undefined if value is undefined
 
 ```ts
 function toUint8Array(
-   value, 
-   padLength?, 
-   base?): Uint8Array;
+   value: string | bigint | ArrayBufferLike, 
+   padLength?: number, 
+   base?: number): Uint8Array;
 ```
 
 Converts a string, bigint, or ArrayBufferLike to a Uint8Array, with optional zero-padding.
 
 ### Parameters
 
-### value
-
-The value to convert
-
-`string` | `bigint` | `ArrayBufferLike`
-
-### padLength?
-
-`number`
-
-Minimum byte length, left-padded with zeros if needed
-
-### base?
-
-`number`
-
-Numeric base for string parsing (default 16)
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `string` \| `bigint` \| `ArrayBufferLike` | The value to convert |
+| `padLength?` | `number` | Minimum byte length, left-padded with zeros if needed |
+| `base?` | `number` | Numeric base for string parsing (default 16) |
 
 ### Returns
 
@@ -360,32 +297,20 @@ The resulting Uint8Array, or undefined if value is undefined
 
 ```ts
 function toUint8Array(
-   value, 
-   padLength?, 
-   base?): Uint8Array<ArrayBufferLike> | undefined;
+   value: string | bigint | ArrayBufferLike | undefined, 
+   padLength?: number, 
+   base?: number): Uint8Array<ArrayBufferLike> | undefined;
 ```
 
 Converts a string, bigint, or ArrayBufferLike to a Uint8Array, with optional zero-padding.
 
 ### Parameters
 
-### value
-
-The value to convert
-
-`string` | `bigint` | `ArrayBufferLike` | `undefined`
-
-### padLength?
-
-`number`
-
-Minimum byte length, left-padded with zeros if needed
-
-### base?
-
-`number`
-
-Numeric base for string parsing (default 16)
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `string` \| `bigint` \| `ArrayBufferLike` \| `undefined` | The value to convert |
+| `padLength?` | `number` | Minimum byte length, left-padded with zeros if needed |
+| `base?` | `number` | Numeric base for string parsing (default 16) |
 
 ### Returns
 

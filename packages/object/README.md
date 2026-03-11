@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/object**
@@ -23,9 +25,11 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Modules
 
-- [index-deprecated](#index-deprecated/README)
-- [index-un-deprecated](#index-un-deprecated/README)
-- [index](#index/README)
+| Module | Description |
+| ------ | ------ |
+| [index-deprecated](#index-deprecated/README) | - |
+| [index-un-deprecated](#index-un-deprecated/README) | - |
+| [index](#index/README) | - |
 
 ### index
 
@@ -43,9 +47,9 @@ Factory class for creating type-guard functions that validate objects against a 
 
 ## Type Parameters
 
-### T
-
-`T` *extends* `TypedObject`
+| Type Parameter |
+| ------ |
+| `T` *extends* `TypedObject` |
 
 ## Constructors
 
@@ -64,24 +68,17 @@ new IsObjectFactory<T>(): IsObjectFactory<T>;
 ### create()
 
 ```ts
-create(shape?, additionalChecks?): TypeCheck<T>;
+create(shape?: ObjectTypeShape, additionalChecks?: TypeCheck<TypedObject>[]): TypeCheck<T>;
 ```
 
 Creates a type-guard function that validates an object matches the given shape and passes additional checks.
 
 ### Parameters
 
-#### shape?
-
-`ObjectTypeShape`
-
-An optional map of property names to expected types.
-
-#### additionalChecks?
-
-[`TypeCheck`](#../type-aliases/TypeCheck)\<`TypedObject`\>[]
-
-Optional extra type-check functions to run after shape validation.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `shape?` | `ObjectTypeShape` | An optional map of property names to expected types. |
+| `additionalChecks?` | [`TypeCheck`](#../type-aliases/TypeCheck)\<`TypedObject`\>[] | Optional extra type-check functions to run after shape validation. |
 
 ### Returns
 
@@ -103,23 +100,23 @@ Abstract base class that wraps an object and provides typed access to it.
 
 ## Type Parameters
 
-### T
-
-`T` *extends* [`EmptyObject`](#../type-aliases/EmptyObject) = [`EmptyObject`](#../type-aliases/EmptyObject)
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` *extends* [`EmptyObject`](#../type-aliases/EmptyObject) | [`EmptyObject`](#../type-aliases/EmptyObject) |
 
 ## Constructors
 
 ### Constructor
 
 ```ts
-new ObjectWrapper<T>(obj): ObjectWrapper<T>;
+new ObjectWrapper<T>(obj: T): ObjectWrapper<T>;
 ```
 
 ### Parameters
 
-#### obj
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `obj` | `T` |
 
 ### Returns
 
@@ -127,11 +124,9 @@ new ObjectWrapper<T>(obj): ObjectWrapper<T>;
 
 ## Properties
 
-### obj
-
-```ts
-readonly obj: T;
-```
+| Property | Modifier | Type |
+| ------ | ------ | ------ |
+| <a id="obj"></a> `obj` | `readonly` | `T` |
 
 ## Accessors
 
@@ -161,9 +156,9 @@ Abstract base class for validators that wraps a partial object and provides a va
 
 ## Type Parameters
 
-### T
-
-`T` *extends* [`EmptyObject`](#../type-aliases/EmptyObject) = [`AnyObject`](#../type-aliases/AnyObject)
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` *extends* [`EmptyObject`](#../type-aliases/EmptyObject) | [`AnyObject`](#../type-aliases/AnyObject) |
 
 ## Implements
 
@@ -174,14 +169,14 @@ Abstract base class for validators that wraps a partial object and provides a va
 ### Constructor
 
 ```ts
-new ValidatorBase<T>(obj): ValidatorBase<T>;
+new ValidatorBase<T>(obj: T): ValidatorBase<T>;
 ```
 
 ### Parameters
 
-#### obj
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `obj` | `T` |
 
 ### Returns
 
@@ -193,15 +188,9 @@ new ValidatorBase<T>(obj): ValidatorBase<T>;
 
 ## Properties
 
-### obj
-
-```ts
-readonly obj: T;
-```
-
-### Inherited from
-
-[`ObjectWrapper`](#ObjectWrapper).[`obj`](ObjectWrapper.md#obj)
+| Property | Modifier | Type | Inherited from |
+| ------ | ------ | ------ | ------ |
+| <a id="obj"></a> `obj` | `readonly` | `T` | [`ObjectWrapper`](#ObjectWrapper).[`obj`](ObjectWrapper.md#obj) |
 
 ## Accessors
 
@@ -226,14 +215,14 @@ get protected stringKeyObj(): StringKeyObject;
 ### validate()
 
 ```ts
-abstract validate(payload): Promisable<Error[]>;
+abstract validate(payload: T): Promisable<Error[]>;
 ```
 
 ### Parameters
 
-#### payload
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `payload` | `T` |
 
 ### Returns
 
@@ -252,38 +241,36 @@ abstract validate(payload): Promisable<Error[]>;
 ***
 
 ```ts
-function createDeepMerge(options): <T>(...objects) => MergeAll<T>;
+function createDeepMerge(options: MergeOptions): <T>(...objects: T) => MergeAll<T>;
 ```
 
 Creates a deep merge function with the specified options.
 
 ## Parameters
 
-### options
-
-`MergeOptions`
-
-Options for merging.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `options` | `MergeOptions` | Options for merging. |
 
 ## Returns
 
 A deep merge function configured for the specified options.
 
 ```ts
-<T>(...objects): MergeAll<T>;
+<T>(...objects: T): MergeAll<T>;
 ```
 
 ### Type Parameters
 
-### T
-
-`T` *extends* [`AnyObject`](#../type-aliases/AnyObject)[]
+| Type Parameter |
+| ------ |
+| `T` *extends* [`AnyObject`](#../type-aliases/AnyObject)[] |
 
 ### Parameters
 
-### objects
-
-...`T`
+| Parameter | Type |
+| ------ | ------ |
+| ...`objects` | `T` |
 
 ### Returns
 
@@ -298,16 +285,16 @@ A deep merge function configured for the specified options.
 ## Call Signature
 
 ```ts
-function isObject(value): value is object;
+function isObject(value: unknown): value is object;
 ```
 
 Type guard that checks whether a value is a plain object (not null and not an array).
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -316,22 +303,22 @@ Type guard that checks whether a value is a plain object (not null and not an ar
 ## Call Signature
 
 ```ts
-function isObject<T>(value): value is Extract<T, object>;
+function isObject<T>(value: T): value is Extract<T, object>;
 ```
 
 Type guard that checks whether a value is a plain object (not null and not an array).
 
 ### Type Parameters
 
-### T
-
-`T` *extends* `object`
+| Type Parameter |
+| ------ |
+| `T` *extends* `object` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -344,18 +331,15 @@ Type guard that checks whether a value is a plain object (not null and not an ar
 ***
 
 ```ts
-function isType(value, expectedType): boolean;
+function isType(value: unknown, expectedType: FieldType): boolean;
 ```
 
 ## Parameters
 
-### value
-
-`unknown`
-
-### expectedType
-
-`FieldType`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
+| `expectedType` | `FieldType` |
 
 ## Returns
 
@@ -373,38 +357,26 @@ use from @xylabs/typeof instead
 
 ```ts
 function omitBy<T>(
-   obj, 
-   predicate, 
-maxDepth?): Partial<T>;
+   obj: T, 
+   predicate: OmitByPredicate, 
+maxDepth?: number): Partial<T>;
 ```
 
 Creates a new object excluding properties that satisfy the predicate, with optional recursive depth.
 
 ## Type Parameters
 
-### T
-
-`T` *extends* `object`
+| Type Parameter |
+| ------ |
+| `T` *extends* `object` |
 
 ## Parameters
 
-### obj
-
-`T`
-
-The source object to omit properties from.
-
-### predicate
-
-[`OmitByPredicate`](#../type-aliases/OmitByPredicate)
-
-A function that returns true for properties to exclude.
-
-### maxDepth?
-
-`number` = `1`
-
-Maximum recursion depth for nested objects.
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `obj` | `T` | `undefined` | The source object to omit properties from. |
+| `predicate` | [`OmitByPredicate`](#../type-aliases/OmitByPredicate) | `undefined` | A function that returns true for properties to exclude. |
+| `maxDepth` | `number` | `1` | Maximum recursion depth for nested objects. |
 
 ## Returns
 
@@ -420,42 +392,27 @@ A partial copy of the object without matching properties.
 
 ```ts
 function omitByPrefix<T, P>(
-   payload, 
-   prefix, 
-maxDepth?): DeepOmitStartsWith<T, P>;
+   payload: T, 
+   prefix: P, 
+maxDepth?: number): DeepOmitStartsWith<T, P>;
 ```
 
 Omits all properties whose keys start with the given prefix, recursively through nested objects.
 
 ## Type Parameters
 
-### T
-
-`T` *extends* `object`
-
-### P
-
-`P` *extends* `string`
+| Type Parameter |
+| ------ |
+| `T` *extends* `object` |
+| `P` *extends* `string` |
 
 ## Parameters
 
-### payload
-
-`T`
-
-The source object.
-
-### prefix
-
-`P`
-
-The string prefix to match keys against.
-
-### maxDepth?
-
-`number` = `100`
-
-Maximum recursion depth.
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `payload` | `T` | `undefined` | The source object. |
+| `prefix` | `P` | `undefined` | The string prefix to match keys against. |
+| `maxDepth` | `number` | `100` | Maximum recursion depth. |
 
 ## Returns
 
@@ -471,38 +428,26 @@ A new object without properties that have matching prefixed keys.
 
 ```ts
 function pickBy<T>(
-   obj, 
-   predicate, 
-maxDepth?): Partial<T>;
+   obj: T, 
+   predicate: PickByPredicate, 
+maxDepth?: number): Partial<T>;
 ```
 
 Creates a new object containing only the properties that satisfy the predicate, with optional recursive depth.
 
 ## Type Parameters
 
-### T
-
-`T` *extends* `object`
+| Type Parameter |
+| ------ |
+| `T` *extends* `object` |
 
 ## Parameters
 
-### obj
-
-`T`
-
-The source object to pick properties from.
-
-### predicate
-
-[`PickByPredicate`](#../type-aliases/PickByPredicate)
-
-A function that returns true for properties to include.
-
-### maxDepth?
-
-`number` = `1`
-
-Maximum recursion depth for nested objects.
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `obj` | `T` | `undefined` | The source object to pick properties from. |
+| `predicate` | [`PickByPredicate`](#../type-aliases/PickByPredicate) | `undefined` | A function that returns true for properties to include. |
+| `maxDepth` | `number` | `1` | Maximum recursion depth for nested objects. |
 
 ## Returns
 
@@ -518,42 +463,27 @@ A partial copy of the object with only matching properties.
 
 ```ts
 function pickByPrefix<T, P>(
-   payload, 
-   prefix, 
-maxDepth?): DeepPickStartsWith<T, P>;
+   payload: T, 
+   prefix: P, 
+maxDepth?: number): DeepPickStartsWith<T, P>;
 ```
 
 Picks all properties whose keys start with the given prefix, recursively through nested objects.
 
 ## Type Parameters
 
-### T
-
-`T` *extends* `object`
-
-### P
-
-`P` *extends* `string`
+| Type Parameter |
+| ------ |
+| `T` *extends* `object` |
+| `P` *extends* `string` |
 
 ## Parameters
 
-### payload
-
-`T`
-
-The source object.
-
-### prefix
-
-`P`
-
-The string prefix to match keys against.
-
-### maxDepth?
-
-`number` = `100`
-
-Maximum recursion depth.
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `payload` | `T` | `undefined` | The source object. |
+| `prefix` | `P` | `undefined` | The string prefix to match keys against. |
+| `maxDepth` | `number` | `100` | Maximum recursion depth. |
 
 ## Returns
 
@@ -568,34 +498,24 @@ A new object containing only properties with matching prefixed keys.
 ***
 
 ```ts
-function removeFields<T, K>(obj, fields): Omit<T, K>;
+function removeFields<T, K>(obj: T, fields: K[]): Omit<T, K>;
 ```
 
 Returns a shallow copy of the object with the specified fields removed.
 
 ## Type Parameters
 
-### T
-
-`T` *extends* `object`
-
-### K
-
-`K` *extends* `string` \| `number` \| `symbol`
+| Type Parameter |
+| ------ |
+| `T` *extends* `object` |
+| `K` *extends* `string` \| `number` \| `symbol` |
 
 ## Parameters
 
-### obj
-
-`T`
-
-The source object.
-
-### fields
-
-`K`[]
-
-An array of keys to remove.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `obj` | `T` | The source object. |
+| `fields` | `K`[] | An array of keys to remove. |
 
 ## Returns
 
@@ -610,24 +530,17 @@ A new object without the specified fields.
 ***
 
 ```ts
-function toSafeJson(value, maxDepth?): unknown;
+function toSafeJson(value: unknown, maxDepth?: number): unknown;
 ```
 
 Converts a value to a JSON-safe representation, handling circular references and non-serializable types.
 
 ## Parameters
 
-### value
-
-`unknown`
-
-The value to convert.
-
-### maxDepth?
-
-`number` = `3`
-
-Maximum recursion depth.
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `value` | `unknown` | `undefined` | The value to convert. |
+| `maxDepth` | `number` | `3` | Maximum recursion depth. |
 
 ## Returns
 
@@ -643,32 +556,20 @@ A JSON-safe value.
 
 ```ts
 function toSafeJsonArray(
-   value, 
-   cycleList?, 
-   maxDepth?): unknown[];
+   value: unknown[], 
+   cycleList?: unknown[], 
+   maxDepth?: number): unknown[];
 ```
 
 Converts an array to a JSON-safe array, handling circular references and depth limits.
 
 ## Parameters
 
-### value
-
-`unknown`[]
-
-The array to convert.
-
-### cycleList?
-
-`unknown`[]
-
-Tracks visited objects to detect circular references.
-
-### maxDepth?
-
-`number` = `3`
-
-Maximum recursion depth before truncating.
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `value` | `unknown`[] | `undefined` | The array to convert. |
+| `cycleList?` | `unknown`[] | `undefined` | Tracks visited objects to detect circular references. |
+| `maxDepth?` | `number` | `3` | Maximum recursion depth before truncating. |
 
 ## Returns
 
@@ -684,32 +585,20 @@ A JSON-safe array representation.
 
 ```ts
 function toSafeJsonObject(
-   value, 
-   cycleList?, 
-   maxDepth?): JsonObject;
+   value: object, 
+   cycleList?: unknown[], 
+   maxDepth?: number): JsonObject;
 ```
 
 Converts an object to a JSON-safe object, handling circular references and depth limits.
 
 ## Parameters
 
-### value
-
-`object`
-
-The object to convert.
-
-### cycleList?
-
-`unknown`[]
-
-Tracks visited objects to detect circular references.
-
-### maxDepth?
-
-`number` = `3`
-
-Maximum recursion depth before truncating.
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `value` | `object` | `undefined` | The object to convert. |
+| `cycleList?` | `unknown`[] | `undefined` | Tracks visited objects to detect circular references. |
+| `maxDepth?` | `number` | `3` | Maximum recursion depth before truncating. |
 
 ## Returns
 
@@ -724,24 +613,17 @@ A JSON-safe object representation.
 ***
 
 ```ts
-function toSafeJsonString(value, maxDepth?): string;
+function toSafeJsonString(value: unknown, maxDepth?: number): string;
 ```
 
 Converts a value to a pretty-printed JSON string, safely handling circular references and non-JSON types.
 
 ## Parameters
 
-### value
-
-`unknown`
-
-The value to serialize.
-
-### maxDepth?
-
-`number` = `3`
-
-Maximum recursion depth.
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `value` | `unknown` | `undefined` | The value to serialize. |
+| `maxDepth` | `number` | `3` | Maximum recursion depth. |
 
 ## Returns
 
@@ -757,9 +639,9 @@ A formatted JSON string.
 
 ```ts
 function toSafeJsonValue(
-   value, 
-   cycleList?, 
-   maxDepth?): unknown;
+   value: unknown, 
+   cycleList?: unknown[], 
+   maxDepth?: number): unknown;
 ```
 
 Converts an unknown value to a JSON-safe value, replacing circular references with '[Circular]' and
@@ -767,23 +649,11 @@ non-JSON types with descriptive placeholder strings.
 
 ## Parameters
 
-### value
-
-`unknown`
-
-The value to convert.
-
-### cycleList?
-
-`unknown`[]
-
-Tracks visited objects to detect circular references.
-
-### maxDepth?
-
-`number` = `3`
-
-Maximum recursion depth before truncating with '[MaxDepth]'.
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `value` | `unknown` | `undefined` | The value to convert. |
+| `cycleList?` | `unknown`[] | `undefined` | Tracks visited objects to detect circular references. |
+| `maxDepth?` | `number` | `3` | Maximum recursion depth before truncating with '[MaxDepth]'. |
 
 ## Returns
 
@@ -807,15 +677,9 @@ Configuration options for object type checking.
 
 ## Properties
 
-### log?
-
-```ts
-optional log: boolean | Logger;
-```
-
-### Inherited from
-
-[`TypeCheckConfig`](#TypeCheckConfig).[`log`](TypeCheckConfig.md#log)
+| Property | Type | Inherited from |
+| ------ | ------ | ------ |
+| <a id="log"></a> `log?` | `boolean` \| `Logger` | [`TypeCheckConfig`](#TypeCheckConfig).[`log`](TypeCheckConfig.md#log) |
 
     ### <a id="TypeCheckConfig"></a>TypeCheckConfig
 
@@ -833,11 +697,9 @@ Configuration options for type check functions, with optional logging.
 
 ## Properties
 
-### log?
-
-```ts
-optional log: boolean | Logger;
-```
+| Property | Type |
+| ------ | ------ |
+| <a id="log"></a> `log?` | `boolean` \| `Logger` |
 
     ### <a id="TypeCheckOptionalConfig"></a>TypeCheckOptionalConfig
 
@@ -853,23 +715,10 @@ Type check configuration that marks the value as optional, returning undefined o
 
 ## Properties
 
-### log?
-
-```ts
-optional log: boolean | Logger;
-```
-
-### Inherited from
-
-[`TypeCheckConfig`](#TypeCheckConfig).[`log`](TypeCheckConfig.md#log)
-
-***
-
-### required
-
-```ts
-required: false;
-```
+| Property | Type | Inherited from |
+| ------ | ------ | ------ |
+| <a id="log"></a> `log?` | `boolean` \| `Logger` | [`TypeCheckConfig`](#TypeCheckConfig).[`log`](TypeCheckConfig.md#log) |
+| <a id="required"></a> `required` | `false` | - |
 
     ### <a id="TypeCheckRequiredConfig"></a>TypeCheckRequiredConfig
 
@@ -885,23 +734,10 @@ Type check configuration that marks the value as required, causing assertions on
 
 ## Properties
 
-### log?
-
-```ts
-optional log: boolean | Logger;
-```
-
-### Inherited from
-
-[`TypeCheckConfig`](#TypeCheckConfig).[`log`](TypeCheckConfig.md#log)
-
-***
-
-### required
-
-```ts
-required: true;
-```
+| Property | Type | Inherited from |
+| ------ | ------ | ------ |
+| <a id="log"></a> `log?` | `boolean` \| `Logger` | [`TypeCheckConfig`](#TypeCheckConfig).[`log`](TypeCheckConfig.md#log) |
+| <a id="required"></a> `required` | `true` | - |
 
     ### <a id="Validator"></a>Validator
 
@@ -913,23 +749,23 @@ Interface for validating objects and returning any errors found.
 
 ## Type Parameters
 
-### T
-
-`T` *extends* [`EmptyObject`](#../type-aliases/EmptyObject) = [`AnyObject`](#../type-aliases/AnyObject)
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` *extends* [`EmptyObject`](#../type-aliases/EmptyObject) | [`AnyObject`](#../type-aliases/AnyObject) |
 
 ## Methods
 
 ### validate()
 
 ```ts
-validate(payload): Promisable<Error[]>;
+validate(payload: T): Promisable<Error[]>;
 ```
 
 ### Parameters
 
-#### payload
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `payload` | `T` |
 
 ### Returns
 
@@ -957,28 +793,28 @@ will result in a type that includes the universal set of field names
 ***
 
 ```ts
-type AsOptionalTypeFunction<T> = <TType>(value) => TType | undefined;
+type AsOptionalTypeFunction<T> = <TType>(value: AnyNonPromise) => TType | undefined;
 ```
 
 A simplified type-narrowing function that returns T or undefined, without assertion support.
 
 ## Type Parameters
 
-### T
-
-`T` *extends* `AnyNonPromise` = `AnyNonPromise`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` *extends* `AnyNonPromise` | `AnyNonPromise` |
 
 ## Type Parameters
 
-### TType
-
-`TType` *extends* `AnyNonPromise`
+| Type Parameter |
+| ------ |
+| `TType` *extends* `AnyNonPromise` |
 
 ## Parameters
 
-### value
-
-`AnyNonPromise`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `AnyNonPromise` |
 
 ## Returns
 
@@ -992,12 +828,16 @@ A simplified type-narrowing function that returns T or undefined, without assert
 
 ```ts
 type AsTypeFunction<T> = {
-<TType>  (value): TType | undefined;
-<TType>  (value, config): TType;
-<TType>  (value, config): TType | undefined;
-<TType>  (value, assert): TType | undefined;
-<TType>  (value, assert, config): TType;
-<TType>  (value, assert, config): TType | undefined;
+<TType>  (value: AnyNonPromise): TType | undefined;
+<TType>  (value: AnyNonPromise, config: TypeCheckRequiredConfig): TType;
+<TType>  (value: AnyNonPromise, config: 
+  | TypeCheckConfig
+  | TypeCheckOptionalConfig): TType | undefined;
+<TType>  (value: AnyNonPromise, assert: StringOrAlertFunction<TType>): TType | undefined;
+<TType>  (value: AnyNonPromise, assert: StringOrAlertFunction<TType>, config: TypeCheckRequiredConfig): TType;
+<TType>  (value: AnyNonPromise, assert: StringOrAlertFunction<TType>, config: 
+  | TypeCheckConfig
+  | TypeCheckOptionalConfig): TType | undefined;
 };
 ```
 
@@ -1005,27 +845,27 @@ A type-narrowing function that attempts to cast a value to T, with optional asse
 
 ## Type Parameters
 
-### T
-
-`T` *extends* `AnyNonPromise` = `AnyNonPromise`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` *extends* `AnyNonPromise` | `AnyNonPromise` |
 
 ## Call Signature
 
 ```ts
-<TType>(value): TType | undefined;
+<TType>(value: AnyNonPromise): TType | undefined;
 ```
 
 ### Type Parameters
 
-### TType
-
-`TType` *extends* `AnyNonPromise`
+| Type Parameter |
+| ------ |
+| `TType` *extends* `AnyNonPromise` |
 
 ### Parameters
 
-### value
-
-`AnyNonPromise`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `AnyNonPromise` |
 
 ### Returns
 
@@ -1034,24 +874,21 @@ A type-narrowing function that attempts to cast a value to T, with optional asse
 ## Call Signature
 
 ```ts
-<TType>(value, config): TType;
+<TType>(value: AnyNonPromise, config: TypeCheckRequiredConfig): TType;
 ```
 
 ### Type Parameters
 
-### TType
-
-`TType` *extends* `AnyNonPromise`
+| Type Parameter |
+| ------ |
+| `TType` *extends* `AnyNonPromise` |
 
 ### Parameters
 
-### value
-
-`AnyNonPromise`
-
-### config
-
-[`TypeCheckRequiredConfig`](#../interfaces/TypeCheckRequiredConfig)
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `AnyNonPromise` |
+| `config` | [`TypeCheckRequiredConfig`](#../interfaces/TypeCheckRequiredConfig) |
 
 ### Returns
 
@@ -1060,24 +897,23 @@ A type-narrowing function that attempts to cast a value to T, with optional asse
 ## Call Signature
 
 ```ts
-<TType>(value, config): TType | undefined;
+<TType>(value: AnyNonPromise, config: 
+  | TypeCheckConfig
+  | TypeCheckOptionalConfig): TType | undefined;
 ```
 
 ### Type Parameters
 
-### TType
-
-`TType` *extends* `AnyNonPromise`
+| Type Parameter |
+| ------ |
+| `TType` *extends* `AnyNonPromise` |
 
 ### Parameters
 
-### value
-
-`AnyNonPromise`
-
-### config
-
-[`TypeCheckConfig`](#../interfaces/TypeCheckConfig) | [`TypeCheckOptionalConfig`](#../interfaces/TypeCheckOptionalConfig)
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `AnyNonPromise` |
+| `config` | \| [`TypeCheckConfig`](#../interfaces/TypeCheckConfig) \| [`TypeCheckOptionalConfig`](#../interfaces/TypeCheckOptionalConfig) |
 
 ### Returns
 
@@ -1086,24 +922,21 @@ A type-narrowing function that attempts to cast a value to T, with optional asse
 ## Call Signature
 
 ```ts
-<TType>(value, assert): TType | undefined;
+<TType>(value: AnyNonPromise, assert: StringOrAlertFunction<TType>): TType | undefined;
 ```
 
 ### Type Parameters
 
-### TType
-
-`TType` *extends* `AnyNonPromise`
+| Type Parameter |
+| ------ |
+| `TType` *extends* `AnyNonPromise` |
 
 ### Parameters
 
-### value
-
-`AnyNonPromise`
-
-### assert
-
-[`StringOrAlertFunction`](#StringOrAlertFunction)\<`TType`\>
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `AnyNonPromise` |
+| `assert` | [`StringOrAlertFunction`](#StringOrAlertFunction)\<`TType`\> |
 
 ### Returns
 
@@ -1113,30 +946,24 @@ A type-narrowing function that attempts to cast a value to T, with optional asse
 
 ```ts
 <TType>(
-   value, 
-   assert, 
-   config): TType;
+   value: AnyNonPromise, 
+   assert: StringOrAlertFunction<TType>, 
+   config: TypeCheckRequiredConfig): TType;
 ```
 
 ### Type Parameters
 
-### TType
-
-`TType` *extends* `AnyNonPromise`
+| Type Parameter |
+| ------ |
+| `TType` *extends* `AnyNonPromise` |
 
 ### Parameters
 
-### value
-
-`AnyNonPromise`
-
-### assert
-
-[`StringOrAlertFunction`](#StringOrAlertFunction)\<`TType`\>
-
-### config
-
-[`TypeCheckRequiredConfig`](#../interfaces/TypeCheckRequiredConfig)
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `AnyNonPromise` |
+| `assert` | [`StringOrAlertFunction`](#StringOrAlertFunction)\<`TType`\> |
+| `config` | [`TypeCheckRequiredConfig`](#../interfaces/TypeCheckRequiredConfig) |
 
 ### Returns
 
@@ -1146,30 +973,26 @@ A type-narrowing function that attempts to cast a value to T, with optional asse
 
 ```ts
 <TType>(
-   value, 
-   assert, 
-   config): TType | undefined;
+   value: AnyNonPromise, 
+   assert: StringOrAlertFunction<TType>, 
+   config: 
+  | TypeCheckConfig
+  | TypeCheckOptionalConfig): TType | undefined;
 ```
 
 ### Type Parameters
 
-### TType
-
-`TType` *extends* `AnyNonPromise`
+| Type Parameter |
+| ------ |
+| `TType` *extends* `AnyNonPromise` |
 
 ### Parameters
 
-### value
-
-`AnyNonPromise`
-
-### assert
-
-[`StringOrAlertFunction`](#StringOrAlertFunction)\<`TType`\>
-
-### config
-
-[`TypeCheckConfig`](#../interfaces/TypeCheckConfig) | [`TypeCheckOptionalConfig`](#../interfaces/TypeCheckOptionalConfig)
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `AnyNonPromise` |
+| `assert` | [`StringOrAlertFunction`](#StringOrAlertFunction)\<`TType`\> |
+| `config` | \| [`TypeCheckConfig`](#../interfaces/TypeCheckConfig) \| [`TypeCheckOptionalConfig`](#../interfaces/TypeCheckOptionalConfig) |
 
 ### Returns
 
@@ -1182,26 +1005,23 @@ A type-narrowing function that attempts to cast a value to T, with optional asse
 ***
 
 ```ts
-type Compare<T> = (a, b) => number;
+type Compare<T> = (a: T, b: T) => number;
 ```
 
 A comparator function that returns a negative number if a < b, zero if a == b, and a positive number if a > b.
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Parameters
 
-### a
-
-`T`
-
-### b
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `a` | `T` |
+| `b` | `T` |
 
 ## Returns
 
@@ -1221,13 +1041,10 @@ Recursively omits keys that start with the given prefix, including in nested obj
 
 ## Type Parameters
 
-### T
-
-`T`
-
-### Prefix
-
-`Prefix` *extends* `string`
+| Type Parameter |
+| ------ |
+| `T` |
+| `Prefix` *extends* `string` |
 
     ### <a id="DeepPickStartsWith"></a>DeepPickStartsWith
 
@@ -1243,13 +1060,10 @@ Recursively picks only the keys that start with the given prefix, including in n
 
 ## Type Parameters
 
-### T
-
-`T`
-
-### Prefix
-
-`Prefix` *extends* `string`
+| Type Parameter |
+| ------ |
+| `T` |
+| `Prefix` *extends* `string` |
 
     ### <a id="DeepRestrictToJson"></a>DeepRestrictToJson
 
@@ -1265,9 +1079,9 @@ Recursively restricts an object type to only JSON-compatible values, excluding n
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
     ### <a id="DeepRestrictToStringKeys"></a>DeepRestrictToStringKeys
 
@@ -1283,9 +1097,9 @@ Recursively removes all non-string keys from an object type, including in nested
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
     ### <a id="EmptyObject"></a>EmptyObject
 
@@ -1294,7 +1108,7 @@ Recursively removes all non-string keys from an object type, including in nested
 ***
 
 ```ts
-type EmptyObject<T> = Exclude<{ [K in keyof T]?: never }, unknown[] | (...args) => unknown | null>;
+type EmptyObject<T> = Exclude<{ [K in keyof T]?: never }, unknown[] | (...args: unknown[]) => unknown | null>;
 ```
 
 An empty object, which means that it does enforce the set of field names, defaulting to an empty set until
@@ -1302,9 +1116,9 @@ extended from, which then adds only those additional fields
 
 ## Type Parameters
 
-### T
-
-`T` *extends* `object` = `object`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` *extends* `object` | `object` |
 
     ### <a id="JsonArray"></a>JsonArray
 
@@ -1349,26 +1163,23 @@ A recursive JSON value: string, number, boolean, null, array, or object.
 ***
 
 ```ts
-type OmitByPredicate<T> = (value, key) => boolean;
+type OmitByPredicate<T> = (value: T[keyof T], key: keyof T) => boolean;
 ```
 
 A predicate function used to determine which properties to omit from an object.
 
 ## Type Parameters
 
-### T
-
-`T` *extends* [`EmptyObject`](#EmptyObject) = `Record`\<`string`, `unknown`\>
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` *extends* [`EmptyObject`](#EmptyObject) | `Record`\<`string`, `unknown`\> |
 
 ## Parameters
 
-### value
-
-`T`\[keyof `T`\]
-
-### key
-
-keyof `T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T`\[keyof `T`\] |
+| `key` | keyof `T` |
 
 ## Returns
 
@@ -1388,13 +1199,10 @@ Omits the keys of T that start with the given prefix.
 
 ## Type Parameters
 
-### T
-
-`T`
-
-### Prefix
-
-`Prefix` *extends* `string`
+| Type Parameter |
+| ------ |
+| `T` |
+| `Prefix` *extends* `string` |
 
     ### <a id="Optional"></a>Optional
 
@@ -1410,13 +1218,10 @@ Makes the specified fields of T optional while keeping the rest required.
 
 ## Type Parameters
 
-### T
-
-`T` *extends* `object`
-
-### F
-
-`F` *extends* keyof `T`
+| Type Parameter |
+| ------ |
+| `T` *extends* `object` |
+| `F` *extends* keyof `T` |
 
     ### <a id="Override"></a>Override
 
@@ -1432,13 +1237,10 @@ Overrides properties of T1 with those from T2.
 
 ## Type Parameters
 
-### T1
-
-`T1`
-
-### T2
-
-`T2`
+| Type Parameter |
+| ------ |
+| `T1` |
+| `T2` |
 
     ### <a id="PartialRecord"></a>PartialRecord
 
@@ -1452,13 +1254,10 @@ type PartialRecord<K, T> = { [P in K]?: T };
 
 ## Type Parameters
 
-### K
-
-`K` *extends* keyof `any`
-
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `K` *extends* keyof `any` |
+| `T` |
 
 ## Deprecated
 
@@ -1471,26 +1270,23 @@ use Partial<Record<>> instead
 ***
 
 ```ts
-type PickByPredicate<T> = (value, key) => boolean;
+type PickByPredicate<T> = (value: T[keyof T], key: keyof T) => boolean;
 ```
 
 A predicate function used to determine which properties to pick from an object.
 
 ## Type Parameters
 
-### T
-
-`T` *extends* [`EmptyObject`](#EmptyObject) = `Record`\<`string`, `unknown`\>
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` *extends* [`EmptyObject`](#EmptyObject) | `Record`\<`string`, `unknown`\> |
 
 ## Parameters
 
-### value
-
-`T`\[keyof `T`\]
-
-### key
-
-keyof `T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T`\[keyof `T`\] |
+| `key` | keyof `T` |
 
 ## Returns
 
@@ -1510,13 +1306,10 @@ Picks only the keys of T that start with the given prefix.
 
 ## Type Parameters
 
-### T
-
-`T`
-
-### Prefix
-
-`Prefix` *extends* `string`
+| Type Parameter |
+| ------ |
+| `T` |
+| `Prefix` *extends* `string` |
 
     ### <a id="Simplify"></a>Simplify
 
@@ -1525,16 +1318,17 @@ Picks only the keys of T that start with the given prefix.
 ***
 
 ```ts
-type Simplify<T> = { [K in keyof T]: T[K] } & object;
+type Simplify<T> = { [K in keyof T]: T[K] } & {
+};
 ```
 
 Flattens an intersection or complex mapped type into a single object type for better readability.
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
     ### <a id="StringKeyObject"></a>StringKeyObject
 
@@ -1543,16 +1337,18 @@ Flattens an intersection or complex mapped type into a single object type for be
 ***
 
 ```ts
-type StringKeyObject<T> = object;
+type StringKeyObject<T> = {
+[key: string]: T;
+};
 ```
 
 An object type with string keys and values of type T.
 
 ## Type Parameters
 
-### T
-
-`T` = `unknown`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` | `unknown` |
 
 ## Index Signature
 
@@ -1574,9 +1370,9 @@ A string message or function that produces an assertion error message for a fail
 
 ## Type Parameters
 
-### T
-
-`T` *extends* `AnyNonPromise`
+| Type Parameter |
+| ------ |
+| `T` *extends* `AnyNonPromise` |
 
     ### <a id="TypeCheck"></a>TypeCheck
 
@@ -1586,9 +1382,12 @@ A string message or function that produces an assertion error message for a fail
 
 ```ts
 type TypeCheck<T> = {
-  (obj): obj is T;
-  (obj, config): obj is T;
-  (obj, config): obj is T;
+  (obj: AnyNonPromise): obj is T;
+  (obj: AnyNonPromise, config: TypeCheckConfig): obj is T;
+  (obj: AnyNonPromise, config: 
+  | number
+  | TypeCheckConfig
+  | undefined): obj is T;
 };
 ```
 
@@ -1596,21 +1395,21 @@ A type guard function that checks whether a value conforms to type T, with optio
 
 ## Type Parameters
 
-### T
-
-`T` *extends* `TypedValue`
+| Type Parameter |
+| ------ |
+| `T` *extends* `TypedValue` |
 
 ## Call Signature
 
 ```ts
-(obj): obj is T;
+(obj: AnyNonPromise): obj is T;
 ```
 
 ### Parameters
 
-### obj
-
-`AnyNonPromise`
+| Parameter | Type |
+| ------ | ------ |
+| `obj` | `AnyNonPromise` |
 
 ### Returns
 
@@ -1619,18 +1418,15 @@ A type guard function that checks whether a value conforms to type T, with optio
 ## Call Signature
 
 ```ts
-(obj, config): obj is T;
+(obj: AnyNonPromise, config: TypeCheckConfig): obj is T;
 ```
 
 ### Parameters
 
-### obj
-
-`AnyNonPromise`
-
-### config
-
-[`TypeCheckConfig`](#../interfaces/TypeCheckConfig)
+| Parameter | Type |
+| ------ | ------ |
+| `obj` | `AnyNonPromise` |
+| `config` | [`TypeCheckConfig`](#../interfaces/TypeCheckConfig) |
 
 ### Returns
 
@@ -1639,18 +1435,18 @@ A type guard function that checks whether a value conforms to type T, with optio
 ## Call Signature
 
 ```ts
-(obj, config): obj is T;
+(obj: AnyNonPromise, config: 
+  | number
+  | TypeCheckConfig
+  | undefined): obj is T;
 ```
 
 ### Parameters
 
-### obj
-
-`AnyNonPromise`
-
-### config
-
-`number` | [`TypeCheckConfig`](#../interfaces/TypeCheckConfig) | `undefined`
+| Parameter | Type |
+| ------ | ------ |
+| `obj` | `AnyNonPromise` |
+| `config` | \| `number` \| [`TypeCheckConfig`](#../interfaces/TypeCheckConfig) \| `undefined` |
 
 ### Returns
 
@@ -1670,13 +1466,10 @@ Intersects T with TAdditional if TAdditional is an object, otherwise returns T u
 
 ## Type Parameters
 
-### T
-
-`T` *extends* [`EmptyObject`](#EmptyObject) \| `void`
-
-### TAdditional
-
-`TAdditional` *extends* [`EmptyObject`](#EmptyObject) \| `void` = `void`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` *extends* [`EmptyObject`](#EmptyObject) \| `void` | - |
+| `TAdditional` *extends* [`EmptyObject`](#EmptyObject) \| `void` | `void` |
 
   ### variables
 
@@ -1687,68 +1480,20 @@ Intersects T with TAdditional if TAdditional is an object, otherwise returns T u
 ***
 
 ```ts
-const AsObjectFactory: object;
+const AsObjectFactory: {
+  create: <T>(typeCheck: TypeCheck<T>) => AsTypeFunction<T>;
+  createOptional: <T>(typeCheck: TypeCheck<T>) => (value: AnyNonPromise) => T | undefined;
+};
 ```
 
 Factory for creating type-narrowing functions for TypedObject types.
 
 ## Type Declaration
 
-### create()
-
-```ts
-create: <T>(typeCheck) => AsTypeFunction<T>;
-```
-
-### Type Parameters
-
-#### T
-
-`T` *extends* `TypedObject`
-
-### Parameters
-
-#### typeCheck
-
-[`TypeCheck`](#../type-aliases/TypeCheck)\<`T`\>
-
-### Returns
-
-[`AsTypeFunction`](#../type-aliases/AsTypeFunction)\<`T`\>
-
-### createOptional()
-
-```ts
-createOptional: <T>(typeCheck) => (value) => T | undefined;
-```
-
-### Type Parameters
-
-#### T
-
-`T` *extends* `TypedObject`
-
-### Parameters
-
-#### typeCheck
-
-[`TypeCheck`](#../type-aliases/TypeCheck)\<`T`\>
-
-### Returns
-
-```ts
-(value): T | undefined;
-```
-
-#### Parameters
-
-##### value
-
-`AnyNonPromise`
-
-#### Returns
-
-`T` \| `undefined`
+| Name | Type |
+| ------ | ------ |
+| <a id="property-create"></a> `create()` | \<`T`\>(`typeCheck`: [`TypeCheck`](#../type-aliases/TypeCheck)\<`T`\>) => [`AsTypeFunction`](#../type-aliases/AsTypeFunction)\<`T`\> |
+| <a id="property-createoptional"></a> `createOptional()` | \<`T`\>(`typeCheck`: [`TypeCheck`](#../type-aliases/TypeCheck)\<`T`\>) => (`value`: `AnyNonPromise`) => `T` \| `undefined` |
 
     ### <a id="AsTypeFactory"></a>AsTypeFactory
 
@@ -1757,7 +1502,10 @@ createOptional: <T>(typeCheck) => (value) => T | undefined;
 ***
 
 ```ts
-const AsTypeFactory: object;
+const AsTypeFactory: {
+  create: <T>(typeCheck: TypeCheck<T>) => AsTypeFunction<T>;
+  createOptional: <T>(typeCheck: TypeCheck<T>) => (value: AnyNonPromise) => T | undefined;
+};
 ```
 
 Factory for creating type-narrowing 'as' functions that cast a value to T or return undefined.
@@ -1765,61 +1513,10 @@ Supports optional assertion messages and configuration for required/optional beh
 
 ## Type Declaration
 
-### create()
-
-```ts
-create: <T>(typeCheck) => AsTypeFunction<T>;
-```
-
-### Type Parameters
-
-#### T
-
-`T` *extends* `AnyNonPromise`
-
-### Parameters
-
-#### typeCheck
-
-[`TypeCheck`](#../type-aliases/TypeCheck)\<`T`\>
-
-### Returns
-
-[`AsTypeFunction`](#../type-aliases/AsTypeFunction)\<`T`\>
-
-### createOptional()
-
-```ts
-createOptional: <T>(typeCheck) => (value) => T | undefined;
-```
-
-### Type Parameters
-
-#### T
-
-`T` *extends* `AnyNonPromise`
-
-### Parameters
-
-#### typeCheck
-
-[`TypeCheck`](#../type-aliases/TypeCheck)\<`T`\>
-
-### Returns
-
-```ts
-(value): T | undefined;
-```
-
-#### Parameters
-
-##### value
-
-`AnyNonPromise`
-
-#### Returns
-
-`T` \| `undefined`
+| Name | Type |
+| ------ | ------ |
+| <a id="property-create"></a> `create()` | \<`T`\>(`typeCheck`: [`TypeCheck`](#../type-aliases/TypeCheck)\<`T`\>) => [`AsTypeFunction`](#../type-aliases/AsTypeFunction)\<`T`\> |
+| <a id="property-createoptional"></a> `createOptional()` | \<`T`\>(`typeCheck`: [`TypeCheck`](#../type-aliases/TypeCheck)\<`T`\>) => (`value`: `AnyNonPromise`) => `T` \| `undefined` |
 
     ### <a id="JsonObjectZod"></a>JsonObjectZod
 
@@ -1853,8 +1550,8 @@ Type-narrowing function that casts a value to AnyObject if it is a plain object,
 
 ```ts
 const asJsonArray: {
-<T>  (value): T & unknown[] | undefined;
-<T>  (value, assert): T & unknown[];
+<T>  (value: T): T & unknown[] | undefined;
+<T>  (value: T, assert: ZodFactoryConfig): T & unknown[];
 };
 ```
 
@@ -1863,20 +1560,20 @@ Casts a value to JsonArray or returns undefined if it does not conform.
 ## Call Signature
 
 ```ts
-<T>(value): T & unknown[] | undefined;
+<T>(value: T): T & unknown[] | undefined;
 ```
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -1885,24 +1582,21 @@ Casts a value to JsonArray or returns undefined if it does not conform.
 ## Call Signature
 
 ```ts
-<T>(value, assert): T & unknown[];
+<T>(value: T, assert: ZodFactoryConfig): T & unknown[];
 ```
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
-
-### assert
-
-`ZodFactoryConfig`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
+| `assert` | `ZodFactoryConfig` |
 
 ### Returns
 
@@ -1916,8 +1610,8 @@ Casts a value to JsonArray or returns undefined if it does not conform.
 
 ```ts
 const asJsonObject: {
-<T>  (value): T & Record<string, unknown> | undefined;
-<T>  (value, assert): T & Record<string, unknown>;
+<T>  (value: T): T & Record<string, unknown> | undefined;
+<T>  (value: T, assert: ZodFactoryConfig): T & Record<string, unknown>;
 };
 ```
 
@@ -1926,20 +1620,20 @@ Casts a value to JsonObject or returns undefined if it does not conform.
 ## Call Signature
 
 ```ts
-<T>(value): T & Record<string, unknown> | undefined;
+<T>(value: T): T & Record<string, unknown> | undefined;
 ```
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -1948,24 +1642,21 @@ Casts a value to JsonObject or returns undefined if it does not conform.
 ## Call Signature
 
 ```ts
-<T>(value, assert): T & Record<string, unknown>;
+<T>(value: T, assert: ZodFactoryConfig): T & Record<string, unknown>;
 ```
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
-
-### assert
-
-`ZodFactoryConfig`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
+| `assert` | `ZodFactoryConfig` |
 
 ### Returns
 
@@ -1979,8 +1670,8 @@ Casts a value to JsonObject or returns undefined if it does not conform.
 
 ```ts
 const asJsonValue: {
-<T>  (value): T | undefined;
-<T>  (value, assert): T;
+<T>  (value: T): T | undefined;
+<T>  (value: T, assert: ZodFactoryConfig): T;
 };
 ```
 
@@ -1989,20 +1680,20 @@ Casts a value to JsonValue or returns undefined if it does not conform.
 ## Call Signature
 
 ```ts
-<T>(value): T | undefined;
+<T>(value: T): T | undefined;
 ```
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -2011,24 +1702,21 @@ Casts a value to JsonValue or returns undefined if it does not conform.
 ## Call Signature
 
 ```ts
-<T>(value, assert): T;
+<T>(value: T, assert: ZodFactoryConfig): T;
 ```
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
-
-### assert
-
-`ZodFactoryConfig`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
+| `assert` | `ZodFactoryConfig` |
 
 ### Returns
 
@@ -2041,31 +1729,22 @@ Casts a value to JsonValue or returns undefined if it does not conform.
 ***
 
 ```ts
-const deepMerge: <T>(...objects) => MergeAll<T>;
+const deepMerge: <T>(...objects: T) => MergeAll<T>;
 ```
 
 Deeply merges multiple objects into a new object.
 
 ## Type Parameters
 
-### T
-
-`T` *extends* [`AnyObject`](#../type-aliases/AnyObject)[]
+| Type Parameter |
+| ------ |
+| `T` *extends* [`AnyObject`](#../type-aliases/AnyObject)[] |
 
 ## Parameters
 
-### objects
-
-...`T`
-
-Multiple objects to merge deeply.
-The function merges properties from all objects into a new object.
-If a property exists in multiple objects, the last object's value will be used.
-If a property is an object, it will be merged recursively.
-If a property is an array, it will be overwritten by the last object's value.
-If a property is a primitive value, it will be overwritten by the last object's value.
-If a property is undefined in the source, it will be skipped.
-If a property is a symbol, it will be merged as well.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| ...`objects` | `T` | Multiple objects to merge deeply. The function merges properties from all objects into a new object. If a property exists in multiple objects, the last object's value will be used. If a property is an object, it will be merged recursively. If a property is an array, it will be overwritten by the last object's value. If a property is a primitive value, it will be overwritten by the last object's value. If a property is undefined in the source, it will be skipped. If a property is a symbol, it will be merged as well. |
 
 ## Returns
 
@@ -2080,22 +1759,22 @@ A new object with the merged properties.
 ***
 
 ```ts
-const isJsonArray: <T>(value) => value is T & unknown[];
+const isJsonArray: <T>(value: T) => value is T & unknown[];
 ```
 
 Type guard that checks if a value is a valid JSON array.
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ## Returns
 
@@ -2108,22 +1787,22 @@ Type guard that checks if a value is a valid JSON array.
 ***
 
 ```ts
-const isJsonObject: <T>(value) => value is T & Record<string, unknown>;
+const isJsonObject: <T>(value: T) => value is T & Record<string, unknown>;
 ```
 
 Type guard that checks if a value is a valid JSON object.
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ## Returns
 
@@ -2136,22 +1815,22 @@ Type guard that checks if a value is a valid JSON object.
 ***
 
 ```ts
-const isJsonValue: <T>(value) => value is T;
+const isJsonValue: <T>(value: T) => value is T;
 ```
 
 Type guard that checks if a value is a valid JSON value.
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ## Returns
 
@@ -2165,8 +1844,8 @@ Type guard that checks if a value is a valid JSON value.
 
 ```ts
 const toJsonArray: {
-<T>  (value): T & unknown[] | undefined;
-<T>  (value, assert): T & unknown[];
+<T>  (value: T): T & unknown[] | undefined;
+<T>  (value: T, assert: ZodFactoryConfig): T & unknown[];
 };
 ```
 
@@ -2175,20 +1854,20 @@ Parses a value into a JsonArray, throwing if it does not conform.
 ## Call Signature
 
 ```ts
-<T>(value): T & unknown[] | undefined;
+<T>(value: T): T & unknown[] | undefined;
 ```
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -2197,24 +1876,21 @@ Parses a value into a JsonArray, throwing if it does not conform.
 ## Call Signature
 
 ```ts
-<T>(value, assert): T & unknown[];
+<T>(value: T, assert: ZodFactoryConfig): T & unknown[];
 ```
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
-
-### assert
-
-`ZodFactoryConfig`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
+| `assert` | `ZodFactoryConfig` |
 
 ### Returns
 
@@ -2228,8 +1904,8 @@ Parses a value into a JsonArray, throwing if it does not conform.
 
 ```ts
 const toJsonObject: {
-<T>  (value): T & Record<string, unknown> | undefined;
-<T>  (value, assert): T & Record<string, unknown>;
+<T>  (value: T): T & Record<string, unknown> | undefined;
+<T>  (value: T, assert: ZodFactoryConfig): T & Record<string, unknown>;
 };
 ```
 
@@ -2238,20 +1914,20 @@ Parses a value into a JsonObject, throwing if it does not conform.
 ## Call Signature
 
 ```ts
-<T>(value): T & Record<string, unknown> | undefined;
+<T>(value: T): T & Record<string, unknown> | undefined;
 ```
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -2260,24 +1936,21 @@ Parses a value into a JsonObject, throwing if it does not conform.
 ## Call Signature
 
 ```ts
-<T>(value, assert): T & Record<string, unknown>;
+<T>(value: T, assert: ZodFactoryConfig): T & Record<string, unknown>;
 ```
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
-
-### assert
-
-`ZodFactoryConfig`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
+| `assert` | `ZodFactoryConfig` |
 
 ### Returns
 
@@ -2291,8 +1964,8 @@ Parses a value into a JsonObject, throwing if it does not conform.
 
 ```ts
 const toJsonValue: {
-<T>  (value): T | undefined;
-<T>  (value, assert): T;
+<T>  (value: T): T | undefined;
+<T>  (value: T, assert: ZodFactoryConfig): T;
 };
 ```
 
@@ -2301,20 +1974,20 @@ Parses a value into a JsonValue, throwing if it does not conform.
 ## Call Signature
 
 ```ts
-<T>(value): T | undefined;
+<T>(value: T): T | undefined;
 ```
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -2323,24 +1996,21 @@ Parses a value into a JsonValue, throwing if it does not conform.
 ## Call Signature
 
 ```ts
-<T>(value, assert): T;
+<T>(value: T, assert: ZodFactoryConfig): T;
 ```
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
-
-### assert
-
-`ZodFactoryConfig`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
+| `assert` | `ZodFactoryConfig` |
 
 ### Returns
 

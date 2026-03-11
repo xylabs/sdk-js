@@ -15,6 +15,8 @@
 
 Event Client for xylabs ESB
 
+
+
 ## Reference
 
 **@xylabs/pixel**
@@ -23,28 +25,34 @@ Event Client for xylabs ESB
 
 ## Classes
 
-- [PixelApi](#classes/PixelApi)
-- [XyPixel](#classes/XyPixel)
-- [Referrer](#classes/Referrer)
-- [UniqueUserId](#classes/UniqueUserId)
-- [UserEventHandler](#classes/UserEventHandler)
-- [UtmFields](#classes/UtmFields)
-- [XyUserEventHandler](#classes/XyUserEventHandler)
+| Class | Description |
+| ------ | ------ |
+| [PixelApi](#classes/PixelApi) | HTTP client for sending tracking events to the XY Labs pixel API. |
+| [XyPixel](#classes/XyPixel) | Singleton pixel tracker that queues and sends user events to the XY Labs tracking API. |
+| [Referrer](#classes/Referrer) | Tracks and persists the document referrer in both session and local storage. |
+| [UniqueUserId](#classes/UniqueUserId) | Generates and persists a unique user identifier in localStorage. |
+| [UserEventHandler](#classes/UserEventHandler) | Abstract base class for handling user tracking events. |
+| [UtmFields](#classes/UtmFields) | Tracks UTM campaign parameters from query strings, persisting history in localStorage. |
+| [XyUserEventHandler](#classes/XyUserEventHandler) | Concrete event handler that sends tracking events through the XyPixel singleton. |
 
 ## Interfaces
 
-- [UserEvent](#interfaces/UserEvent)
-- [CommonFields](#interfaces/CommonFields)
-- [FunnelStartedFields](#interfaces/FunnelStartedFields)
-- [PurchaseFields](#interfaces/PurchaseFields)
-- [TestStartedFields](#interfaces/TestStartedFields)
-- [UserClickFields](#interfaces/UserClickFields)
-- [ViewContentFields](#interfaces/ViewContentFields)
-- [XyLabsTrackingEventJson](#interfaces/XyLabsTrackingEventJson)
+| Interface | Description |
+| ------ | ------ |
+| [UserEvent](#interfaces/UserEvent) | Represents a single user tracking event to be sent to the pixel API. |
+| [CommonFields](#interfaces/CommonFields) | Common fields shared across all tracking event types. |
+| [FunnelStartedFields](#interfaces/FunnelStartedFields) | Fields for a funnel-started tracking event. |
+| [PurchaseFields](#interfaces/PurchaseFields) | Fields for a purchase tracking event. |
+| [TestStartedFields](#interfaces/TestStartedFields) | Fields for a test-started tracking event (e.g. A/B test). |
+| [UserClickFields](#interfaces/UserClickFields) | Fields for a user click tracking event. |
+| [ViewContentFields](#interfaces/ViewContentFields) | Fields for a view-content tracking event. |
+| [XyLabsTrackingEventJson](#interfaces/XyLabsTrackingEventJson) | JSON structure for an XY Labs tracking event as stored or transmitted. |
 
 ## Type Aliases
 
-- [UserEventSystem](#type-aliases/UserEventSystem)
+| Type Alias | Description |
+| ------ | ------ |
+| [UserEventSystem](#type-aliases/UserEventSystem) | Parsed browser/OS/engine information from the user agent string. |
 
 ### classes
 
@@ -61,14 +69,14 @@ HTTP client for sending tracking events to the XY Labs pixel API.
 ### Constructor
 
 ```ts
-new PixelApi(baseUri?): PixelApi;
+new PixelApi(baseUri?: string): PixelApi;
 ```
 
 ### Parameters
 
-#### baseUri?
-
-`string` = `'prod'`
+| Parameter | Type | Default value |
+| ------ | ------ | ------ |
+| `baseUri` | `string` | `'prod'` |
 
 ### Returns
 
@@ -79,18 +87,16 @@ new PixelApi(baseUri?): PixelApi;
 ### trackEvents()
 
 ```ts
-trackEvents(events): Promise<any>;
+trackEvents(events: UserEvent[]): Promise<any>;
 ```
 
 Sends an array of user events to the tracking API.
 
 ### Parameters
 
-#### events
-
-[`UserEvent`](#../interfaces/UserEvent)[]
-
-The events to submit
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `events` | [`UserEvent`](#../interfaces/UserEvent)[] | The events to submit |
 
 ### Returns
 
@@ -120,19 +126,10 @@ new Referrer(): Referrer;
 
 ## Properties
 
-### local
-
-```ts
-local: string;
-```
-
-***
-
-### session
-
-```ts
-session: string;
-```
+| Property | Type |
+| ------ | ------ |
+| <a id="local"></a> `local` | `string` |
+| <a id="session"></a> `session` | `string` |
 
 ## Methods
 
@@ -181,11 +178,9 @@ new UniqueUserId(): UniqueUserId;
 
 ## Properties
 
-### id
-
-```ts
-id: string;
-```
+| Property | Type |
+| ------ | ------ |
+| <a id="id"></a> `id` | `string` |
 
 ## Methods
 
@@ -215,9 +210,9 @@ Abstract base class for handling user tracking events.
 
 ## Type Parameters
 
-### TData
-
-`TData` *extends* `EmptyObject`
+| Type Parameter |
+| ------ |
+| `TData` *extends* `EmptyObject` |
 
 ## Constructors
 
@@ -236,22 +231,22 @@ new UserEventHandler<TData>(): UserEventHandler<TData>;
 ### funnelStarted()
 
 ```ts
-abstract funnelStarted<T>(fields): Promisable<void>;
+abstract funnelStarted<T>(fields: FunnelStartedFields | T): Promisable<void>;
 ```
 
 Tracks a funnel-started event.
 
 ### Type Parameters
 
-#### T
-
-`T` *extends* `object`
+| Type Parameter |
+| ------ |
+| `T` *extends* `object` |
 
 ### Parameters
 
-#### fields
-
-[`FunnelStartedFields`](#../interfaces/FunnelStartedFields) | `T`
+| Parameter | Type |
+| ------ | ------ |
+| `fields` | [`FunnelStartedFields`](#../interfaces/FunnelStartedFields) \| `T` |
 
 ### Returns
 
@@ -262,22 +257,22 @@ Tracks a funnel-started event.
 ### testStarted()
 
 ```ts
-abstract testStarted<T>(fields): Promisable<void>;
+abstract testStarted<T>(fields: TestStartedFields | T): Promisable<void>;
 ```
 
 Tracks a test-started event.
 
 ### Type Parameters
 
-#### T
-
-`T` *extends* `object`
+| Type Parameter |
+| ------ |
+| `T` *extends* `object` |
 
 ### Parameters
 
-#### fields
-
-[`TestStartedFields`](#../interfaces/TestStartedFields) | `T`
+| Parameter | Type |
+| ------ | ------ |
+| `fields` | [`TestStartedFields`](#../interfaces/TestStartedFields) \| `T` |
 
 ### Returns
 
@@ -288,22 +283,22 @@ Tracks a test-started event.
 ### userClick()
 
 ```ts
-abstract userClick<T>(fields): Promisable<void>;
+abstract userClick<T>(fields: UserClickFields | T): Promisable<void>;
 ```
 
 Tracks a user click event.
 
 ### Type Parameters
 
-#### T
-
-`T` *extends* `object`
+| Type Parameter |
+| ------ |
+| `T` *extends* `object` |
 
 ### Parameters
 
-#### fields
-
-[`UserClickFields`](#../interfaces/UserClickFields) | `T`
+| Parameter | Type |
+| ------ | ------ |
+| `fields` | [`UserClickFields`](#../interfaces/UserClickFields) \| `T` |
 
 ### Returns
 
@@ -314,22 +309,22 @@ Tracks a user click event.
 ### viewContent()
 
 ```ts
-abstract viewContent<T>(fields): Promisable<void>;
+abstract viewContent<T>(fields: T | ViewContentFields): Promisable<void>;
 ```
 
 Tracks a view-content event.
 
 ### Type Parameters
 
-#### T
-
-`T` *extends* `object`
+| Type Parameter |
+| ------ |
+| `T` *extends* `object` |
 
 ### Parameters
 
-#### fields
-
-`T` | [`ViewContentFields`](#../interfaces/ViewContentFields)
+| Parameter | Type |
+| ------ | ------ |
+| `fields` | `T` \| [`ViewContentFields`](#../interfaces/ViewContentFields) |
 
 ### Returns
 
@@ -357,11 +352,9 @@ new UtmFields(): UtmFields;
 
 ## Properties
 
-### fields
-
-```ts
-fields: Record<string, string>[] = [];
-```
+| Property | Type | Default value |
+| ------ | ------ | ------ |
+| <a id="fields"></a> `fields` | `Record`\<`string`, `string`\>[] | `[]` |
 
 ## Methods
 
@@ -419,59 +412,15 @@ Singleton pixel tracker that queues and sends user events to the XY Labs trackin
 
 ## Properties
 
-### api
-
-```ts
-static api: PixelApi;
-```
-
-***
-
-### cid
-
-```ts
-cid: string;
-```
-
-***
-
-### email?
-
-```ts
-optional email: string;
-```
-
-***
-
-### email\_hash?
-
-```ts
-optional email_hash: string | null;
-```
-
-***
-
-### exids?
-
-```ts
-optional exids: ExIds;
-```
-
-***
-
-### pixelId?
-
-```ts
-optional pixelId: string;
-```
-
-***
-
-### queue
-
-```ts
-queue: UserEvent[] = [];
-```
+| Property | Modifier | Type | Default value |
+| ------ | ------ | ------ | ------ |
+| <a id="api"></a> `api` | `static` | [`PixelApi`](#PixelApi) | `undefined` |
+| <a id="cid"></a> `cid` | `public` | `string` | `undefined` |
+| <a id="email"></a> `email?` | `public` | `string` | `undefined` |
+| <a id="email_hash"></a> `email_hash?` | `public` | `string` \| `null` | `undefined` |
+| <a id="exids"></a> `exids?` | `public` | `ExIds` | `undefined` |
+| <a id="pixelid"></a> `pixelId?` | `public` | `string` | `undefined` |
+| <a id="queue"></a> `queue` | `public` | [`UserEvent`](#../interfaces/UserEvent)[] | `[]` |
 
 ## Accessors
 
@@ -494,18 +443,16 @@ Returns the singleton XyPixel instance, throwing if not yet initialized.
 ### init()
 
 ```ts
-static init(pixelId): XyPixel;
+static init(pixelId: string): XyPixel;
 ```
 
 Initializes the XyPixel singleton with the given pixel ID.
 
 ### Parameters
 
-#### pixelId
-
-`string`
-
-The pixel identifier for this tracking instance
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `pixelId` | `string` | The pixel identifier for this tracking instance |
 
 ### Returns
 
@@ -518,18 +465,16 @@ The newly created XyPixel instance
 ### selectApi()
 
 ```ts
-static selectApi(api): void;
+static selectApi(api: PixelApi): void;
 ```
 
 Replaces the default PixelApi instance used for sending events.
 
 ### Parameters
 
-#### api
-
-[`PixelApi`](#PixelApi)
-
-The PixelApi instance to use
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `api` | [`PixelApi`](#PixelApi) | The PixelApi instance to use |
 
 ### Returns
 
@@ -540,18 +485,16 @@ The PixelApi instance to use
 ### identify()
 
 ```ts
-identify(email?): void;
+identify(email?: string): void;
 ```
 
 Associates an email address with this pixel instance, hashing it for privacy.
 
 ### Parameters
 
-#### email?
-
-`string`
-
-The email address to identify the user with
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `email?` | `string` | The email address to identify the user with |
 
 ### Returns
 
@@ -563,38 +506,26 @@ The email address to identify the user with
 
 ```ts
 send<T>(
-   event, 
-   fields?, 
-eventId?): Promise<void>;
+   event: string, 
+   fields?: T, 
+eventId?: string): Promise<void>;
 ```
 
 Queues a tracking event and attempts to flush the queue to the API.
 
 ### Type Parameters
 
-#### T
-
-`T` *extends* `Record`\<`string`, `unknown`\>
+| Type Parameter |
+| ------ |
+| `T` *extends* `Record`\<`string`, `unknown`\> |
 
 ### Parameters
 
-#### event
-
-`string`
-
-The event name
-
-#### fields?
-
-`T`
-
-Optional event-specific fields
-
-#### eventId?
-
-`string`
-
-Optional unique event identifier
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `event` | `string` | The event name |
+| `fields?` | `T` | Optional event-specific fields |
+| `eventId?` | `string` | Optional unique event identifier |
 
 ### Returns
 
@@ -614,9 +545,9 @@ Concrete event handler that sends tracking events through the XyPixel singleton.
 
 ## Type Parameters
 
-### T
-
-`T` *extends* `EmptyObject` = `EmptyObject`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` *extends* `EmptyObject` | `EmptyObject` |
 
 ## Constructors
 
@@ -639,16 +570,16 @@ new XyUserEventHandler<T>(): XyUserEventHandler<T>;
 ### funnelStarted()
 
 ```ts
-funnelStarted(fields): Promise<void>;
+funnelStarted(fields: FunnelStartedFields | T): Promise<void>;
 ```
 
 Sends a funnel-started event via the pixel API.
 
 ### Parameters
 
-#### fields
-
-[`FunnelStartedFields`](#../interfaces/FunnelStartedFields) | `T`
+| Parameter | Type |
+| ------ | ------ |
+| `fields` | [`FunnelStartedFields`](#../interfaces/FunnelStartedFields) \| `T` |
 
 ### Returns
 
@@ -663,16 +594,16 @@ Sends a funnel-started event via the pixel API.
 ### purchase()
 
 ```ts
-purchase(fields): Promise<void>;
+purchase(fields: PurchaseFields | T): Promise<void>;
 ```
 
 Sends a purchase event via the pixel API.
 
 ### Parameters
 
-#### fields
-
-[`PurchaseFields`](#../interfaces/PurchaseFields) | `T`
+| Parameter | Type |
+| ------ | ------ |
+| `fields` | [`PurchaseFields`](#../interfaces/PurchaseFields) \| `T` |
 
 ### Returns
 
@@ -683,16 +614,16 @@ Sends a purchase event via the pixel API.
 ### testStarted()
 
 ```ts
-testStarted(fields): Promise<void>;
+testStarted(fields: TestStartedFields | T): Promise<void>;
 ```
 
 Sends a test-started event via the pixel API.
 
 ### Parameters
 
-#### fields
-
-[`TestStartedFields`](#../interfaces/TestStartedFields) | `T`
+| Parameter | Type |
+| ------ | ------ |
+| `fields` | [`TestStartedFields`](#../interfaces/TestStartedFields) \| `T` |
 
 ### Returns
 
@@ -707,16 +638,16 @@ Sends a test-started event via the pixel API.
 ### userClick()
 
 ```ts
-userClick(fields): Promise<void>;
+userClick(fields: UserClickFields | T): Promise<void>;
 ```
 
 Sends a user click event via the pixel API.
 
 ### Parameters
 
-#### fields
-
-[`UserClickFields`](#../interfaces/UserClickFields) | `T`
+| Parameter | Type |
+| ------ | ------ |
+| `fields` | [`UserClickFields`](#../interfaces/UserClickFields) \| `T` |
 
 ### Returns
 
@@ -731,16 +662,16 @@ Sends a user click event via the pixel API.
 ### viewContent()
 
 ```ts
-viewContent(fields): Promise<void>;
+viewContent(fields: ViewContentFields | T): Promise<void>;
 ```
 
 Sends a view-content event via the pixel API.
 
 ### Parameters
 
-#### fields
-
-[`ViewContentFields`](#../interfaces/ViewContentFields) | `T`
+| Parameter | Type |
+| ------ | ------ |
+| `fields` | [`ViewContentFields`](#../interfaces/ViewContentFields) \| `T` |
 
 ### Returns
 
@@ -770,19 +701,10 @@ Common fields shared across all tracking event types.
 
 ## Properties
 
-### funnel?
-
-```ts
-optional funnel: string;
-```
-
-***
-
-### testData?
-
-```ts
-optional testData: string;
-```
+| Property | Type |
+| ------ | ------ |
+| <a id="funnel"></a> `funnel?` | `string` |
+| <a id="testdata"></a> `testData?` | `string` |
 
   ### <a id="FunnelStartedFields"></a>FunnelStartedFields
 
@@ -798,35 +720,11 @@ Fields for a funnel-started tracking event.
 
 ## Properties
 
-### funnel?
-
-```ts
-optional funnel: string;
-```
-
-### Inherited from
-
-[`CommonFields`](#CommonFields).[`funnel`](CommonFields.md#funnel)
-
-***
-
-### testData?
-
-```ts
-optional testData: string;
-```
-
-### Inherited from
-
-[`CommonFields`](#CommonFields).[`testData`](CommonFields.md#testdata)
-
-***
-
-### name
-
-```ts
-name: string;
-```
+| Property | Type | Inherited from |
+| ------ | ------ | ------ |
+| <a id="funnel"></a> `funnel?` | `string` | [`CommonFields`](#CommonFields).[`funnel`](CommonFields.md#funnel) |
+| <a id="testdata"></a> `testData?` | `string` | [`CommonFields`](#CommonFields).[`testData`](CommonFields.md#testdata) |
+| <a id="name"></a> `name` | `string` | - |
 
   ### <a id="PurchaseFields"></a>PurchaseFields
 
@@ -842,59 +740,14 @@ Fields for a purchase tracking event.
 
 ## Properties
 
-### funnel?
-
-```ts
-optional funnel: string;
-```
-
-### Inherited from
-
-[`CommonFields`](#CommonFields).[`funnel`](CommonFields.md#funnel)
-
-***
-
-### testData?
-
-```ts
-optional testData: string;
-```
-
-### Inherited from
-
-[`CommonFields`](#CommonFields).[`testData`](CommonFields.md#testdata)
-
-***
-
-### id
-
-```ts
-id: string;
-```
-
-***
-
-### name?
-
-```ts
-optional name: string;
-```
-
-***
-
-### price?
-
-```ts
-optional price: number;
-```
-
-***
-
-### value?
-
-```ts
-optional value: number;
-```
+| Property | Type | Inherited from |
+| ------ | ------ | ------ |
+| <a id="funnel"></a> `funnel?` | `string` | [`CommonFields`](#CommonFields).[`funnel`](CommonFields.md#funnel) |
+| <a id="testdata"></a> `testData?` | `string` | [`CommonFields`](#CommonFields).[`testData`](CommonFields.md#testdata) |
+| <a id="id"></a> `id` | `string` | - |
+| <a id="name"></a> `name?` | `string` | - |
+| <a id="price"></a> `price?` | `number` | - |
+| <a id="value"></a> `value?` | `number` | - |
 
   ### <a id="TestStartedFields"></a>TestStartedFields
 
@@ -910,35 +763,11 @@ Fields for a test-started tracking event (e.g. A/B test).
 
 ## Properties
 
-### funnel?
-
-```ts
-optional funnel: string;
-```
-
-### Inherited from
-
-[`CommonFields`](#CommonFields).[`funnel`](CommonFields.md#funnel)
-
-***
-
-### testData?
-
-```ts
-optional testData: string;
-```
-
-### Inherited from
-
-[`CommonFields`](#CommonFields).[`testData`](CommonFields.md#testdata)
-
-***
-
-### name
-
-```ts
-name: string;
-```
+| Property | Type | Inherited from |
+| ------ | ------ | ------ |
+| <a id="funnel"></a> `funnel?` | `string` | [`CommonFields`](#CommonFields).[`funnel`](CommonFields.md#funnel) |
+| <a id="testdata"></a> `testData?` | `string` | [`CommonFields`](#CommonFields).[`testData`](CommonFields.md#testdata) |
+| <a id="name"></a> `name` | `string` | - |
 
   ### <a id="UserClickFields"></a>UserClickFields
 
@@ -954,59 +783,14 @@ Fields for a user click tracking event.
 
 ## Properties
 
-### funnel?
-
-```ts
-optional funnel: string;
-```
-
-### Inherited from
-
-[`CommonFields`](#CommonFields).[`funnel`](CommonFields.md#funnel)
-
-***
-
-### testData?
-
-```ts
-optional testData: string;
-```
-
-### Inherited from
-
-[`CommonFields`](#CommonFields).[`testData`](CommonFields.md#testdata)
-
-***
-
-### elementName
-
-```ts
-elementName: string;
-```
-
-***
-
-### elementType
-
-```ts
-elementType: string;
-```
-
-***
-
-### intent?
-
-```ts
-optional intent: string;
-```
-
-***
-
-### placement?
-
-```ts
-optional placement: string;
-```
+| Property | Type | Inherited from |
+| ------ | ------ | ------ |
+| <a id="funnel"></a> `funnel?` | `string` | [`CommonFields`](#CommonFields).[`funnel`](CommonFields.md#funnel) |
+| <a id="testdata"></a> `testData?` | `string` | [`CommonFields`](#CommonFields).[`testData`](CommonFields.md#testdata) |
+| <a id="elementname"></a> `elementName` | `string` | - |
+| <a id="elementtype"></a> `elementType` | `string` | - |
+| <a id="intent"></a> `intent?` | `string` | - |
+| <a id="placement"></a> `placement?` | `string` | - |
 
   ### <a id="UserEvent"></a>UserEvent
 
@@ -1018,151 +802,27 @@ Represents a single user tracking event to be sent to the pixel API.
 
 ## Properties
 
-### cid
-
-```ts
-cid: string;
-```
-
-***
-
-### create\_time?
-
-```ts
-optional create_time: number;
-```
-
-***
-
-### email?
-
-```ts
-optional email: string;
-```
-
-***
-
-### email\_hash?
-
-```ts
-optional email_hash: string;
-```
-
-***
-
-### event?
-
-```ts
-optional event: string;
-```
-
-***
-
-### event\_id?
-
-```ts
-optional event_id: string;
-```
-
-***
-
-### exids?
-
-```ts
-optional exids: ExIds;
-```
-
-***
-
-### fields?
-
-```ts
-optional fields: Record<string, unknown>;
-```
-
-***
-
-### host?
-
-```ts
-optional host: string;
-```
-
-***
-
-### pathname?
-
-```ts
-optional pathname: string;
-```
-
-***
-
-### pixel?
-
-```ts
-optional pixel: string;
-```
-
-***
-
-### receive\_time?
-
-```ts
-optional receive_time: number;
-```
-
-***
-
-### referrer?
-
-```ts
-optional referrer: object;
-```
-
-### local
-
-```ts
-local: string;
-```
-
-### session
-
-```ts
-session: string;
-```
-
-***
-
-### rid?
-
-```ts
-optional rid: string;
-```
-
-***
-
-### system?
-
-```ts
-optional system: ParsedResult;
-```
-
-***
-
-### uid?
-
-```ts
-optional uid: string;
-```
-
-***
-
-### utm?
-
-```ts
-optional utm: Record<string, string>[] | Record<string, string[]>;
-```
+| Property | Type |
+| ------ | ------ |
+| <a id="cid"></a> `cid` | `string` |
+| <a id="create_time"></a> `create_time?` | `number` |
+| <a id="email"></a> `email?` | `string` |
+| <a id="email_hash"></a> `email_hash?` | `string` |
+| <a id="event"></a> `event?` | `string` |
+| <a id="event_id"></a> `event_id?` | `string` |
+| <a id="exids"></a> `exids?` | `ExIds` |
+| <a id="fields"></a> `fields?` | `Record`\<`string`, `unknown`\> |
+| <a id="host"></a> `host?` | `string` |
+| <a id="pathname"></a> `pathname?` | `string` |
+| <a id="pixel"></a> `pixel?` | `string` |
+| <a id="receive_time"></a> `receive_time?` | `number` |
+| <a id="referrer"></a> `referrer?` | \{ `local`: `string`; `session`: `string`; \} |
+| `referrer.local` | `string` |
+| `referrer.session` | `string` |
+| <a id="rid"></a> `rid?` | `string` |
+| <a id="system"></a> `system?` | `ParsedResult` |
+| <a id="uid"></a> `uid?` | `string` |
+| <a id="utm"></a> `utm?` | `Record`\<`string`, `string`\>[] \| `Record`\<`string`, `string`[]\> |
 
   ### <a id="ViewContentFields"></a>ViewContentFields
 
@@ -1178,43 +838,12 @@ Fields for a view-content tracking event.
 
 ## Properties
 
-### funnel?
-
-```ts
-optional funnel: string;
-```
-
-### Inherited from
-
-[`CommonFields`](#CommonFields).[`funnel`](CommonFields.md#funnel)
-
-***
-
-### testData?
-
-```ts
-optional testData: string;
-```
-
-### Inherited from
-
-[`CommonFields`](#CommonFields).[`testData`](CommonFields.md#testdata)
-
-***
-
-### name
-
-```ts
-name: string;
-```
-
-***
-
-### path
-
-```ts
-path: string;
-```
+| Property | Type | Inherited from |
+| ------ | ------ | ------ |
+| <a id="funnel"></a> `funnel?` | `string` | [`CommonFields`](#CommonFields).[`funnel`](CommonFields.md#funnel) |
+| <a id="testdata"></a> `testData?` | `string` | [`CommonFields`](#CommonFields).[`testData`](CommonFields.md#testdata) |
+| <a id="name"></a> `name` | `string` | - |
+| <a id="path"></a> `path` | `string` | - |
 
   ### <a id="XyLabsTrackingEventJson"></a>XyLabsTrackingEventJson
 
@@ -1226,147 +855,26 @@ JSON structure for an XY Labs tracking event as stored or transmitted.
 
 ## Properties
 
-### cid
-
-```ts
-cid: string;
-```
-
-***
-
-### create\_time?
-
-```ts
-optional create_time: number;
-```
-
-***
-
-### email?
-
-```ts
-optional email: string;
-```
-
-***
-
-### email\_hash?
-
-```ts
-optional email_hash: string;
-```
-
-***
-
-### event?
-
-```ts
-optional event: string;
-```
-
-***
-
-### event\_id?
-
-```ts
-optional event_id: string;
-```
-
-***
-
-### exids?
-
-```ts
-optional exids: Record<string, string>;
-```
-
-***
-
-### fields?
-
-```ts
-optional fields: Record<string, unknown>;
-```
-
-***
-
-### host?
-
-```ts
-optional host: string;
-```
-
-***
-
-### ip?
-
-```ts
-optional ip: string;
-```
-
-***
-
-### pathname?
-
-```ts
-optional pathname: string;
-```
-
-***
-
-### pixel?
-
-```ts
-optional pixel: string;
-```
-
-***
-
-### receive\_time?
-
-```ts
-optional receive_time: number;
-```
-
-***
-
-### rid?
-
-```ts
-optional rid: string;
-```
-
-***
-
-### system?
-
-```ts
-optional system: unknown;
-```
-
-***
-
-### ua?
-
-```ts
-optional ua: string;
-```
-
-***
-
-### uid?
-
-```ts
-optional uid: string;
-```
-
-***
-
-### utm?
-
-```ts
-optional utm: Record<string, string>[] | Record<string, string[]>;
-```
+| Property | Type |
+| ------ | ------ |
+| <a id="cid"></a> `cid` | `string` |
+| <a id="create_time"></a> `create_time?` | `number` |
+| <a id="email"></a> `email?` | `string` |
+| <a id="email_hash"></a> `email_hash?` | `string` |
+| <a id="event"></a> `event?` | `string` |
+| <a id="event_id"></a> `event_id?` | `string` |
+| <a id="exids"></a> `exids?` | `Record`\<`string`, `string`\> |
+| <a id="fields"></a> `fields?` | `Record`\<`string`, `unknown`\> |
+| <a id="host"></a> `host?` | `string` |
+| <a id="ip"></a> `ip?` | `string` |
+| <a id="pathname"></a> `pathname?` | `string` |
+| <a id="pixel"></a> `pixel?` | `string` |
+| <a id="receive_time"></a> `receive_time?` | `number` |
+| <a id="rid"></a> `rid?` | `string` |
+| <a id="system"></a> `system?` | `unknown` |
+| <a id="ua"></a> `ua?` | `string` |
+| <a id="uid"></a> `uid?` | `string` |
+| <a id="utm"></a> `utm?` | `Record`\<`string`, `string`\>[] \| `Record`\<`string`, `string`[]\> |
 
 ### type-aliases
 

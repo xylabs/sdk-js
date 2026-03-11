@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/storage**
@@ -23,8 +25,10 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Interfaces
 
-- [ReadonlyKeyValueStore](#interfaces/ReadonlyKeyValueStore)
-- [KeyValueStore](#interfaces/KeyValueStore)
+| Interface | Description |
+| ------ | ------ |
+| [ReadonlyKeyValueStore](#interfaces/ReadonlyKeyValueStore) | A readonly storage device. |
+| [KeyValueStore](#interfaces/KeyValueStore) | A read/write storage device. |
 
 ### interfaces
 
@@ -42,31 +46,26 @@ A read/write storage device.
 
 ## Type Parameters
 
-### TValue
-
-`TValue`
-
-### TKey
-
-`TKey` = `string`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TValue` | - |
+| `TKey` | `string` |
 
 ## Methods
 
 ### get()
 
 ```ts
-get(key): Promisable<TValue | undefined>;
+get(key: TKey): Promisable<TValue | undefined>;
 ```
 
 Returns a promise that resolves to the value for the given key.
 
 ### Parameters
 
-#### key
-
-`TKey`
-
-The key to get the value for.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `key` | `TKey` | The key to get the value for. |
 
 ### Returns
 
@@ -113,18 +112,16 @@ Removes all entries from the store.
 ### delete()
 
 ```ts
-delete(key): Promisable<void>;
+delete(key: TKey): Promisable<void>;
 ```
 
 Deletes the entry with the given key.
 
 ### Parameters
 
-#### key
-
-`TKey`
-
-The key of the entry to delete
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `key` | `TKey` | The key of the entry to delete |
 
 ### Returns
 
@@ -135,24 +132,17 @@ The key of the entry to delete
 ### set()
 
 ```ts
-set(key, value): Promisable<void>;
+set(key: TKey, value: TValue): Promisable<void>;
 ```
 
 Sets a value for the given key, creating or updating the entry.
 
 ### Parameters
 
-#### key
-
-`TKey`
-
-The key to set
-
-#### value
-
-`TValue`
-
-The value to store
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `key` | `TKey` | The key to set |
+| `value` | `TValue` | The value to store |
 
 ### Returns
 
@@ -172,31 +162,26 @@ A readonly storage device.
 
 ## Type Parameters
 
-### TValue
-
-`TValue`
-
-### TKey
-
-`TKey` = `string`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TValue` | - |
+| `TKey` | `string` |
 
 ## Methods
 
 ### get()
 
 ```ts
-get(key): Promisable<TValue | undefined>;
+get(key: TKey): Promisable<TValue | undefined>;
 ```
 
 Returns a promise that resolves to the value for the given key.
 
 ### Parameters
 
-#### key
-
-`TKey`
-
-The key to get the value for.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `key` | `TKey` | The key to get the value for. |
 
 ### Returns
 

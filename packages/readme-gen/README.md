@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/readme-gen**
@@ -23,7 +25,9 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Functions
 
-- [generateReadmeFiles](#functions/generateReadmeFiles)
+| Function | Description |
+| ------ | ------ |
+| [generateReadmeFiles](#functions/generateReadmeFiles) | Generates README.md files for all workspace packages using a shared template. Fills each README with package metadata, an optional body, and auto-generated TypeDoc reference. |
 
 ### functions
 
@@ -34,11 +38,17 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 ***
 
 ```ts
-function generateReadmeFiles(): Promise<void>;
+function generateReadmeFiles(customTemplatePath?: string): Promise<void>;
 ```
 
 Generates README.md files for all workspace packages using a shared template.
 Fills each README with package metadata, an optional body, and auto-generated TypeDoc reference.
+
+## Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `customTemplatePath?` | `string` |
 
 ## Returns
 

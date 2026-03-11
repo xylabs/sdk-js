@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/error**
@@ -23,14 +25,18 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Type Aliases
 
-- [AssertConfig](#type-aliases/AssertConfig)
+| Type Alias | Description |
+| ------ | ------ |
+| [AssertConfig](#type-aliases/AssertConfig) | Configuration for assertion behavior: a static message string, a boolean toggle, or a callback. |
 
 ## Functions
 
-- [assertError](#functions/assertError)
-- [handleError](#functions/handleError)
-- [handleErrorAsync](#functions/handleErrorAsync)
-- [isError](#functions/isError)
+| Function | Description |
+| ------ | ------ |
+| [assertError](#functions/assertError) | Throws an Error based on the assert configuration when a value fails validation. |
+| [handleError](#functions/handleError) | Invokes the handler if the value is an Error, otherwise re-throws it. |
+| [handleErrorAsync](#functions/handleErrorAsync) | Async version of handleError. Invokes the async handler if the value is an Error, otherwise re-throws it. |
+| [isError](#functions/isError) | Type guard that checks whether a value is an Error instance. |
 
 ### functions
 
@@ -42,32 +48,20 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ```ts
 function assertError(
-   value, 
-   assert, 
-   defaultMessage): undefined;
+   value: unknown, 
+   assert: AssertConfig | undefined, 
+   defaultMessage: string): undefined;
 ```
 
 Throws an Error based on the assert configuration when a value fails validation.
 
 ## Parameters
 
-### value
-
-`unknown`
-
-The value being validated
-
-### assert
-
-Assertion config controlling the error message
-
-[`AssertConfig`](#../type-aliases/AssertConfig) | `undefined`
-
-### defaultMessage
-
-`string`
-
-Fallback message if no custom message is provided
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `unknown` | The value being validated |
+| `assert` | [`AssertConfig`](#../type-aliases/AssertConfig) \| `undefined` | Assertion config controlling the error message |
+| `defaultMessage` | `string` | Fallback message if no custom message is provided |
 
 ## Returns
 
@@ -80,30 +74,23 @@ Fallback message if no custom message is provided
 ***
 
 ```ts
-function handleError<T>(error, handler): T;
+function handleError<T>(error: any, handler: (error: Error) => T): T;
 ```
 
 Invokes the handler if the value is an Error, otherwise re-throws it.
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Parameters
 
-### error
-
-`any`
-
-The caught value to inspect
-
-### handler
-
-(`error`) => `T`
-
-Callback invoked with the Error if it is one
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `error` | `any` | The caught value to inspect |
+| `handler` | (`error`: `Error`) => `T` | Callback invoked with the Error if it is one |
 
 ## Returns
 
@@ -118,30 +105,23 @@ The handler's return value
 ***
 
 ```ts
-function handleErrorAsync<T>(error, handler): Promise<T>;
+function handleErrorAsync<T>(error: any, handler: (error: Error) => Promise<T>): Promise<T>;
 ```
 
 Async version of handleError. Invokes the async handler if the value is an Error, otherwise re-throws it.
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Parameters
 
-### error
-
-`any`
-
-The caught value to inspect
-
-### handler
-
-(`error`) => `Promise`\<`T`\>
-
-Async callback invoked with the Error if it is one
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `error` | `any` | The caught value to inspect |
+| `handler` | (`error`: `Error`) => `Promise`\<`T`\> | Async callback invoked with the Error if it is one |
 
 ## Returns
 
@@ -158,16 +138,16 @@ The handler's resolved return value
 ## Call Signature
 
 ```ts
-function isError(value): value is Error;
+function isError(value: unknown): value is Error;
 ```
 
 Type guard that checks whether a value is an Error instance.
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -176,22 +156,22 @@ Type guard that checks whether a value is an Error instance.
 ## Call Signature
 
 ```ts
-function isError<T>(value): value is Extract<T, Error>;
+function isError<T>(value: T): value is Extract<T, Error>;
 ```
 
 Type guard that checks whether a value is an Error instance.
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 

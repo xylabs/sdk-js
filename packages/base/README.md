@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/base**
@@ -23,19 +25,25 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Classes
 
-- [Base](#classes/Base)
-- [UniqueBase](#classes/UniqueBase)
+| Class | Description |
+| ------ | ------ |
+| [Base](#classes/Base) | Abstract base class providing logging, telemetry, and global instance tracking with WeakRef-based GC. |
+| [UniqueBase](#classes/UniqueBase) | Base class that registers itself as globally unique, preventing duplicate module instances. |
 
 ## Type Aliases
 
-- [BaseClassName](#type-aliases/BaseClassName)
-- [BaseParamsFields](#type-aliases/BaseParamsFields)
-- [BaseParams](#type-aliases/BaseParams)
+| Type Alias | Description |
+| ------ | ------ |
+| [BaseClassName](#type-aliases/BaseClassName) | Branded string type representing a class name used for global instance tracking. |
+| [BaseParamsFields](#type-aliases/BaseParamsFields) | Common parameter fields available to all Base instances (logger, meter, tracer). |
+| [BaseParams](#type-aliases/BaseParams) | Parameters for constructing a Base instance, combining BaseParamsFields with optional additional params. |
 
 ## Functions
 
-- [disableGloballyUnique](#functions/disableGloballyUnique)
-- [globallyUnique](#functions/globallyUnique)
+| Function | Description |
+| ------ | ------ |
+| [disableGloballyUnique](#functions/disableGloballyUnique) | Disables global uniqueness checks, allowing duplicate registrations without throwing. |
+| [globallyUnique](#functions/globallyUnique) | Registers a value as globally unique under the given name and domain. Throws if a different value is already registered under the same key. |
 
 ### classes
 
@@ -53,25 +61,23 @@ Abstract base class providing logging, telemetry, and global instance tracking w
 
 ## Type Parameters
 
-### TParams
-
-`TParams` *extends* [`BaseParams`](#../type-aliases/BaseParams) = [`BaseParams`](#../type-aliases/BaseParams)
-
-The parameter type, extending BaseParams
+| Type Parameter | Default type | Description |
+| ------ | ------ | ------ |
+| `TParams` *extends* [`BaseParams`](#../type-aliases/BaseParams) | [`BaseParams`](#../type-aliases/BaseParams) | The parameter type, extending BaseParams |
 
 ## Constructors
 
 ### Constructor
 
 ```ts
-new Base<TParams>(params): Base<TParams>;
+new Base<TParams>(params: BaseParams<TParams>): Base<TParams>;
 ```
 
 ### Parameters
 
-#### params
-
-[`BaseParams`](#../type-aliases/BaseParams)\<`TParams`\>
+| Parameter | Type |
+| ------ | ------ |
+| `params` | [`BaseParams`](#../type-aliases/BaseParams)\<`TParams`\> |
 
 ### Returns
 
@@ -79,27 +85,11 @@ new Base<TParams>(params): Base<TParams>;
 
 ## Properties
 
-### defaultLogger?
-
-```ts
-static optional defaultLogger: Logger;
-```
-
-***
-
-### globalInstances
-
-```ts
-readonly static globalInstances: Record<BaseClassName, WeakRef<Base>[]> = {};
-```
-
-***
-
-### globalInstancesCountHistory
-
-```ts
-readonly static globalInstancesCountHistory: Record<BaseClassName, number[]> = {};
-```
+| Property | Modifier | Type | Default value |
+| ------ | ------ | ------ | ------ |
+| <a id="defaultlogger"></a> `defaultLogger?` | `static` | `Logger` | `undefined` |
+| <a id="globalinstances"></a> `globalInstances` | `readonly` | `Record`\<[`BaseClassName`](#../type-aliases/BaseClassName), `WeakRef`\<`Base`\>[]\> | `{}` |
+| <a id="globalinstancescounthistory"></a> `globalInstancesCountHistory` | `readonly` | `Record`\<[`BaseClassName`](#../type-aliases/BaseClassName), `number`[]\> | `{}` |
 
 ## Accessors
 
@@ -118,14 +108,14 @@ get static historyInterval(): number;
 ### Set Signature
 
 ```ts
-set static historyInterval(value): void;
+set static historyInterval(value: number): void;
 ```
 
 #### Parameters
 
-##### value
-
-`number`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `number` |
 
 #### Returns
 
@@ -148,14 +138,14 @@ get static historyTime(): number;
 ### Set Signature
 
 ```ts
-set static historyTime(value): void;
+set static historyTime(value: number): void;
 ```
 
 #### Parameters
 
-##### value
-
-`number`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `number` |
 
 #### Returns
 
@@ -178,14 +168,14 @@ get static maxGcFrequency(): number;
 ### Set Signature
 
 ```ts
-set static maxGcFrequency(value): void;
+set static maxGcFrequency(value: number): void;
 ```
 
 #### Parameters
 
-##### value
-
-`number`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `number` |
 
 #### Returns
 
@@ -268,14 +258,14 @@ get tracer(): Tracer | undefined;
 ### Call Signature
 
 ```ts
-static gc(force?): void;
+static gc(force?: boolean): void;
 ```
 
 #### Parameters
 
-##### force?
-
-`boolean`
+| Parameter | Type |
+| ------ | ------ |
+| `force?` | `boolean` |
 
 #### Returns
 
@@ -284,14 +274,14 @@ static gc(force?): void;
 ### Call Signature
 
 ```ts
-static gc(className): void;
+static gc(className: BaseClassName): void;
 ```
 
 #### Parameters
 
-##### className
-
-[`BaseClassName`](#../type-aliases/BaseClassName)
+| Parameter | Type |
+| ------ | ------ |
+| `className` | [`BaseClassName`](#../type-aliases/BaseClassName) |
 
 #### Returns
 
@@ -302,14 +292,14 @@ static gc(className): void;
 ### instanceCount()
 
 ```ts
-static instanceCount(className): number;
+static instanceCount(className: BaseClassName): number;
 ```
 
 ### Parameters
 
-#### className
-
-[`BaseClassName`](#../type-aliases/BaseClassName)
+| Parameter | Type |
+| ------ | ------ |
+| `className` | [`BaseClassName`](#../type-aliases/BaseClassName) |
 
 ### Returns
 
@@ -365,23 +355,23 @@ Base class that registers itself as globally unique, preventing duplicate module
 
 ## Type Parameters
 
-### TParams
-
-`TParams` *extends* [`BaseParams`](#../type-aliases/BaseParams) = [`BaseParams`](#../type-aliases/BaseParams)
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TParams` *extends* [`BaseParams`](#../type-aliases/BaseParams) | [`BaseParams`](#../type-aliases/BaseParams) |
 
 ## Constructors
 
 ### Constructor
 
 ```ts
-new UniqueBase<TParams>(params): UniqueBase<TParams>;
+new UniqueBase<TParams>(params: BaseParams<TParams>): UniqueBase<TParams>;
 ```
 
 ### Parameters
 
-#### params
-
-[`BaseParams`](#../type-aliases/BaseParams)\<`TParams`\>
+| Parameter | Type |
+| ------ | ------ |
+| `params` | [`BaseParams`](#../type-aliases/BaseParams)\<`TParams`\> |
 
 ### Returns
 
@@ -393,63 +383,14 @@ new UniqueBase<TParams>(params): UniqueBase<TParams>;
 
 ## Properties
 
-### defaultLogger?
-
-```ts
-static optional defaultLogger: Logger;
-```
-
-### Inherited from
-
-[`Base`](#Base).[`defaultLogger`](Base.md#defaultlogger)
-
-***
-
-### globalInstances
-
-```ts
-readonly static globalInstances: Record<BaseClassName, WeakRef<Base>[]> = {};
-```
-
-### Inherited from
-
-[`Base`](#Base).[`globalInstances`](Base.md#globalinstances)
-
-***
-
-### globalInstancesCountHistory
-
-```ts
-readonly static globalInstancesCountHistory: Record<BaseClassName, number[]> = {};
-```
-
-### Inherited from
-
-[`Base`](#Base).[`globalInstancesCountHistory`](Base.md#globalinstancescounthistory)
-
-***
-
-### uniqueDomain
-
-```ts
-readonly static uniqueDomain: "xy" = 'xy';
-```
-
-***
-
-### uniqueName
-
-```ts
-readonly static uniqueName: string;
-```
-
-***
-
-### uniqueNameXyo
-
-```ts
-readonly static uniqueNameXyo: string;
-```
+| Property | Modifier | Type | Default value | Inherited from |
+| ------ | ------ | ------ | ------ | ------ |
+| <a id="defaultlogger"></a> `defaultLogger?` | `static` | `Logger` | `undefined` | [`Base`](#Base).[`defaultLogger`](Base.md#defaultlogger) |
+| <a id="globalinstances"></a> `globalInstances` | `readonly` | `Record`\<[`BaseClassName`](#../type-aliases/BaseClassName), `WeakRef`\<[`Base`](#Base)\>[]\> | `{}` | [`Base`](#Base).[`globalInstances`](Base.md#globalinstances) |
+| <a id="globalinstancescounthistory"></a> `globalInstancesCountHistory` | `readonly` | `Record`\<[`BaseClassName`](#../type-aliases/BaseClassName), `number`[]\> | `{}` | [`Base`](#Base).[`globalInstancesCountHistory`](Base.md#globalinstancescounthistory) |
+| <a id="uniquedomain"></a> `uniqueDomain` | `readonly` | `"xy"` | `'xy'` | - |
+| <a id="uniquename"></a> `uniqueName` | `readonly` | `string` | `undefined` | - |
+| <a id="uniquenamexyo"></a> `uniqueNameXyo` | `readonly` | `string` | `undefined` | - |
 
 ## Accessors
 
@@ -468,14 +409,14 @@ get static historyInterval(): number;
 ### Set Signature
 
 ```ts
-set static historyInterval(value): void;
+set static historyInterval(value: number): void;
 ```
 
 #### Parameters
 
-##### value
-
-`number`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `number` |
 
 #### Returns
 
@@ -502,14 +443,14 @@ get static historyTime(): number;
 ### Set Signature
 
 ```ts
-set static historyTime(value): void;
+set static historyTime(value: number): void;
 ```
 
 #### Parameters
 
-##### value
-
-`number`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `number` |
 
 #### Returns
 
@@ -536,14 +477,14 @@ get static maxGcFrequency(): number;
 ### Set Signature
 
 ```ts
-set static maxGcFrequency(value): void;
+set static maxGcFrequency(value: number): void;
 ```
 
 #### Parameters
 
-##### value
-
-`number`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `number` |
 
 #### Returns
 
@@ -650,14 +591,14 @@ get tracer(): Tracer | undefined;
 ### Call Signature
 
 ```ts
-static gc(force?): void;
+static gc(force?: boolean): void;
 ```
 
 #### Parameters
 
-##### force?
-
-`boolean`
+| Parameter | Type |
+| ------ | ------ |
+| `force?` | `boolean` |
 
 #### Returns
 
@@ -670,14 +611,14 @@ static gc(force?): void;
 ### Call Signature
 
 ```ts
-static gc(className): void;
+static gc(className: BaseClassName): void;
 ```
 
 #### Parameters
 
-##### className
-
-[`BaseClassName`](#../type-aliases/BaseClassName)
+| Parameter | Type |
+| ------ | ------ |
+| `className` | [`BaseClassName`](#../type-aliases/BaseClassName) |
 
 #### Returns
 
@@ -692,14 +633,14 @@ static gc(className): void;
 ### instanceCount()
 
 ```ts
-static instanceCount(className): number;
+static instanceCount(className: BaseClassName): number;
 ```
 
 ### Parameters
 
-#### className
-
-[`BaseClassName`](#../type-aliases/BaseClassName)
+| Parameter | Type |
+| ------ | ------ |
+| `className` | [`BaseClassName`](#../type-aliases/BaseClassName) |
 
 ### Returns
 
@@ -783,9 +724,9 @@ Disables global uniqueness checks, allowing duplicate registrations without thro
 
 ```ts
 function globallyUnique(
-   name, 
-   value, 
-   domain?): string;
+   name: string | symbol, 
+   value: unknown, 
+   domain?: string): string;
 ```
 
 Registers a value as globally unique under the given name and domain.
@@ -793,23 +734,11 @@ Throws if a different value is already registered under the same key.
 
 ## Parameters
 
-### name
-
-The unique name or symbol
-
-`string` | `symbol`
-
-### value
-
-`unknown`
-
-The value to register
-
-### domain?
-
-`string` = `'global'`
-
-The namespace domain (default 'global')
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `name` | `string` \| `symbol` | `undefined` | The unique name or symbol |
+| `value` | `unknown` | `undefined` | The value to register |
+| `domain` | `string` | `'global'` | The namespace domain (default 'global') |
 
 ## Returns
 
@@ -826,18 +755,18 @@ The fully qualified unique name
 ***
 
 ```ts
-type BaseClassName = string & object;
+type BaseClassName = string & {
+  __baseClassName: true;
+};
 ```
 
 Branded string type representing a class name used for global instance tracking.
 
 ## Type Declaration
 
-### \_\_baseClassName
-
-```ts
-__baseClassName: true;
-```
+| Name | Type |
+| ------ | ------ |
+| `__baseClassName` | `true` |
 
   ### <a id="BaseParams"></a>BaseParams
 
@@ -853,9 +782,9 @@ Parameters for constructing a Base instance, combining BaseParamsFields with opt
 
 ## Type Parameters
 
-### TAdditionalParams
-
-`TAdditionalParams` *extends* `EmptyObject` = `EmptyObject`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TAdditionalParams` *extends* `EmptyObject` | `EmptyObject` |
 
   ### <a id="BaseParamsFields"></a>BaseParamsFields
 
@@ -864,34 +793,22 @@ Parameters for constructing a Base instance, combining BaseParamsFields with opt
 ***
 
 ```ts
-type BaseParamsFields = object;
+type BaseParamsFields = {
+  logger?: Logger;
+  meterProvider?: MeterProvider;
+  traceProvider?: TracerProvider;
+};
 ```
 
 Common parameter fields available to all Base instances (logger, meter, tracer).
 
 ## Properties
 
-### logger?
-
-```ts
-optional logger: Logger;
-```
-
-***
-
-### meterProvider?
-
-```ts
-optional meterProvider: MeterProvider;
-```
-
-***
-
-### traceProvider?
-
-```ts
-optional traceProvider: TracerProvider;
-```
+| Property | Type |
+| ------ | ------ |
+| <a id="logger"></a> `logger?` | `Logger` |
+| <a id="meterprovider"></a> `meterProvider?` | `MeterProvider` |
+| <a id="traceprovider"></a> `traceProvider?` | `TracerProvider` |
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

@@ -15,6 +15,8 @@
 
 SDK for base code for Api repos that use express and deploy on AWS ECS
 
+
+
 ## Reference
 
 **@xylabs/express**
@@ -23,87 +25,97 @@ SDK for base code for Api repos that use express and deploy on AWS ECS
 
 ## Classes
 
-- [WrappedWinstonLogger](#classes/WrappedWinstonLogger)
-- [Counters](#classes/Counters)
-- [Profiler](#classes/Profiler)
+| Class | Description |
+| ------ | ------ |
+| [WrappedWinstonLogger](#classes/WrappedWinstonLogger) | Wrap Winston logger methods to adapt to familiar console logging methods |
+| [Counters](#classes/Counters) | Static counter registry for tracking named numeric metrics. |
+| [Profiler](#classes/Profiler) | Measures and records the execution duration of async operations by name. |
 
 ## Interfaces
 
-- [RouteDefinition](#interfaces/RouteDefinition)
-- [Empty](#interfaces/Empty)
-- [LoggerOptions](#interfaces/LoggerOptions)
-- [ExpressError](#interfaces/ExpressError)
-- [Source](#interfaces/Source)
-- [ApiError](#interfaces/ApiError)
-- [HrefWithMeta](#interfaces/HrefWithMeta)
-- [IRelationshipSelfLink](#interfaces/IRelationshipSelfLink)
-- [IRelationshipRelatedLink](#interfaces/IRelationshipRelatedLink)
-- [IRelationshipLinks](#interfaces/IRelationshipLinks)
-- [IRelationshipData](#interfaces/IRelationshipData)
-- [ApiResourceIdentifierObject](#interfaces/ApiResourceIdentifierObject)
-- [ApiResourceObject](#interfaces/ApiResourceObject)
-- [JsonApi](#interfaces/JsonApi)
-- [ApiResponseBase](#interfaces/ApiResponseBase)
-- [ApiDataResponse](#interfaces/ApiDataResponse)
-- [ApiErrorResponse](#interfaces/ApiErrorResponse)
+| Interface | Description |
+| ------ | ------ |
+| [RouteDefinition](#interfaces/RouteDefinition) | Defines an Express route with its HTTP method, path, and handler(s). |
+| [Empty](#interfaces/Empty) | Empty object type used as a default for request/response body generics. |
+| [LoggerOptions](#interfaces/LoggerOptions) | Configuration options for creating a logger instance. |
+| [ExpressError](#interfaces/ExpressError) | An Error with an optional HTTP status code for Express error handling. |
+| [Source](#interfaces/Source) | An object containing references to the source of the error |
+| [ApiError](#interfaces/ApiError) | - |
+| [HrefWithMeta](#interfaces/HrefWithMeta) | A link with an href and associated metadata. |
+| [IRelationshipSelfLink](#interfaces/IRelationshipSelfLink) | A relationship link pointing to the relationship itself. |
+| [IRelationshipRelatedLink](#interfaces/IRelationshipRelatedLink) | A relationship link pointing to a related resource. |
+| [IRelationshipLinks](#interfaces/IRelationshipLinks) | Contains the links for a JSON:API relationship. |
+| [IRelationshipData](#interfaces/IRelationshipData) | Contains the resource linkage data for a JSON:API relationship. |
+| [ApiResourceIdentifierObject](#interfaces/ApiResourceIdentifierObject) | Within a given API, each resource object's type and id pair MUST identify a single, unique resource. (The set of URIs controlled by a server, or multiple servers acting as one, constitute an API.) |
+| [ApiResourceObject](#interfaces/ApiResourceObject) | A JSON:API resource object with optional attributes, links, meta, and relationships. |
+| [JsonApi](#interfaces/JsonApi) | JSON:API version and metadata descriptor. |
+| [ApiResponseBase](#interfaces/ApiResponseBase) | Base interface for all JSON:API responses, including optional links and metadata. |
+| [ApiDataResponse](#interfaces/ApiDataResponse) | A successful JSON:API response containing primary data and optional included resources. |
+| [ApiErrorResponse](#interfaces/ApiErrorResponse) | A JSON:API error response containing one or more error objects. |
 
 ## Type Aliases
 
-- [HttpMethod](#type-aliases/HttpMethod)
-- [NoReqParams](#type-aliases/NoReqParams)
-- [NoResBody](#type-aliases/NoResBody)
-- [NoReqBody](#type-aliases/NoReqBody)
-- [NoReqQuery](#type-aliases/NoReqQuery)
-- [NoLocals](#type-aliases/NoLocals)
-- [LoggerMeta](#type-aliases/LoggerMeta)
-- [LoggerVerbosity](#type-aliases/LoggerVerbosity)
-- [~~LogFunction~~](#type-aliases/LogFunction)
-- [~~Logger~~](#type-aliases/Logger)
-- [ParseFunc](#type-aliases/ParseFunc)
-- [ApiLink](#type-aliases/ApiLink)
-- [ApiLinks](#type-aliases/ApiLinks)
-- [ResourceLinkage](#type-aliases/ResourceLinkage)
-- [RelationshipMeta](#type-aliases/RelationshipMeta)
-- [Relationship](#type-aliases/Relationship)
-- [ApiResponse](#type-aliases/ApiResponse)
+| Type Alias | Description |
+| ------ | ------ |
+| [HttpMethod](#type-aliases/HttpMethod) | Supported HTTP methods for route definitions. |
+| [NoReqParams](#type-aliases/NoReqParams) | Default type for request route parameters. |
+| [NoResBody](#type-aliases/NoResBody) | Default type for response body when none is specified. |
+| [NoReqBody](#type-aliases/NoReqBody) | Default type for request body when none is specified. |
+| [NoReqQuery](#type-aliases/NoReqQuery) | Default type for request query parameters. |
+| [NoLocals](#type-aliases/NoLocals) | Default type for response locals. |
+| [LoggerMeta](#type-aliases/LoggerMeta) | Metadata key-value pairs attached to log entries. |
+| [LoggerVerbosity](#type-aliases/LoggerVerbosity) | Application-level log verbosity levels. |
+| [~~LogFunction~~](#type-aliases/LogFunction) | - |
+| [~~Logger~~](#type-aliases/Logger) | - |
+| [ParseFunc](#type-aliases/ParseFunc) | A function that parses a string value into the target type. |
+| [ApiLink](#type-aliases/ApiLink) | A JSON:API link, either a simple URL string or an object with href and metadata. |
+| [ApiLinks](#type-aliases/ApiLinks) | A collection of named JSON:API links. |
+| [ResourceLinkage](#type-aliases/ResourceLinkage) | Resource linkage in a compound document allows a client to link together all of the included resource objects without having to GET any URLs via links. Resource linkage MUST be represented as one of the following: • null for empty to-one relationships. • an empty array ([]) for empty to-many relationships. • a single resource identifier object for non-empty to-one relationships. • an array of resource identifier objects for non-empty to-many relationships. |
+| [RelationshipMeta](#type-aliases/RelationshipMeta) | Non-standard metadata associated with a JSON:API relationship. |
+| [Relationship](#type-aliases/Relationship) | The value of the relationships key MUST be an object (a "relationships object"). Members of the relationships object ("relationships") represent references from the resource object in which it’s defined to other resource objects. Relationships may be to-one or to-many. |
+| [ApiResponse](#type-aliases/ApiResponse) | A JSON:API response, either a data response or an error response. |
 
 ## Variables
 
-- [notImplemented](#variables/notImplemented)
-- [EmptyParamsZod](#variables/EmptyParamsZod)
-- [EmptyQueryParamsZod](#variables/EmptyQueryParamsZod)
-- [ValidateRequestDefaults](#variables/ValidateRequestDefaults)
-- [DefaultJsonBodyParserOptionsLimit](#variables/DefaultJsonBodyParserOptionsLimit)
-- [DefaultJsonBodyParserOptionsTypes](#variables/DefaultJsonBodyParserOptionsTypes)
-- [DefaultJsonBodyParserOptions](#variables/DefaultJsonBodyParserOptions)
-- [jsonBodyParser](#variables/jsonBodyParser)
-- [standardResponses](#variables/standardResponses)
+| Variable | Description |
+| ------ | ------ |
+| [notImplemented](#variables/notImplemented) | Express request handler that responds with a 501 Not Implemented error. |
+| [EmptyParamsZod](#variables/EmptyParamsZod) | Empty Zod schema for requests with no parameters. |
+| [EmptyQueryParamsZod](#variables/EmptyQueryParamsZod) | Empty Zod schema for requests with no query parameters. |
+| [ValidateRequestDefaults](#variables/ValidateRequestDefaults) | Default validation schemas for request handler validator. |
+| [DefaultJsonBodyParserOptionsLimit](#variables/DefaultJsonBodyParserOptionsLimit) | The default maximum request body size for the JSON Body Parser |
+| [DefaultJsonBodyParserOptionsTypes](#variables/DefaultJsonBodyParserOptionsTypes) | The default MIME types for the JSON Body Parser |
+| [DefaultJsonBodyParserOptions](#variables/DefaultJsonBodyParserOptions) | The default options for the JSON Body Parser |
+| [jsonBodyParser](#variables/jsonBodyParser) | A JSON Body Parser middleware handler initialized with the default options |
+| [standardResponses](#variables/standardResponses) | Connect middleware to enable the transform of all responses to match the standard response format (compatible with JSON API) |
 
 ## Functions
 
-- [addRouteDefinitions](#functions/addRouteDefinitions)
-- [asyncHandler](#functions/asyncHandler)
-- [errorToJsonHandler](#functions/errorToJsonHandler)
-- [getHttpHeader](#functions/getHttpHeader)
-- [getDefaultLogger](#functions/getDefaultLogger)
-- [getLogger](#functions/getLogger)
-- [compactObject](#functions/compactObject)
-- [~~tryParse~~](#functions/tryParse)
-- [requestHandlerValidator](#functions/requestHandlerValidator)
-- [enableCaseSensitiveRouting](#functions/enableCaseSensitiveRouting)
-- [disableCaseSensitiveRouting](#functions/disableCaseSensitiveRouting)
-- [enableExpressDefaultPoweredByHeader](#functions/enableExpressDefaultPoweredByHeader)
-- [disableExpressDefaultPoweredByHeader](#functions/disableExpressDefaultPoweredByHeader)
-- [customPoweredByHeader](#functions/customPoweredByHeader)
-- [getJsonBodyParserOptions](#functions/getJsonBodyParserOptions)
-- [getJsonBodyParser](#functions/getJsonBodyParser)
-- [useRequestCounters](#functions/useRequestCounters)
-- [responseProfiler](#functions/responseProfiler)
-- [getResponseMetadata](#functions/getResponseMetadata)
-- [standardErrors](#functions/standardErrors)
-- [setRawResponseFormat](#functions/setRawResponseFormat)
-- [clearRawResponseFormat](#functions/clearRawResponseFormat)
-- [isRawResponseFormatSet](#functions/isRawResponseFormatSet)
+| Function | Description |
+| ------ | ------ |
+| [addRouteDefinitions](#functions/addRouteDefinitions) | Registers an array of route definitions on an Express application. |
+| [asyncHandler](#functions/asyncHandler) | Wraps an async Express request handler to forward rejected promises to the error handler. |
+| [errorToJsonHandler](#functions/errorToJsonHandler) | Express error handler that logs the error and sends a JSON response with the error message and status code. |
+| [getHttpHeader](#functions/getHttpHeader) | Since there can be multiple of certain HTTP headers or to prevent ugliness if someone did send us multiple instances of a header we only expect one of, this method grabs the 1st/only one of the desired header |
+| [getDefaultLogger](#functions/getDefaultLogger) | Returns the singleton default logger instance, creating one if it does not exist. |
+| [getLogger](#functions/getLogger) | Returns a cached Winston-backed logger at the specified verbosity level. |
+| [compactObject](#functions/compactObject) | Returns a shallow copy of the object with all null and undefined values removed. |
+| [~~tryParse~~](#functions/tryParse) | - |
+| [requestHandlerValidator](#functions/requestHandlerValidator) | Factory for Express middleware that validates request and response objects using Zod schemas. |
+| [enableCaseSensitiveRouting](#functions/enableCaseSensitiveRouting) | Enable case sensitivity. When enabled, "/Foo" and "/foo" are different routes. When disabled, "/Foo" and "/foo" are treated the same. |
+| [disableCaseSensitiveRouting](#functions/disableCaseSensitiveRouting) | Disable case sensitivity. When enabled, "/Foo" and "/foo" are different routes. When disabled, "/Foo" and "/foo" are treated the same. |
+| [enableExpressDefaultPoweredByHeader](#functions/enableExpressDefaultPoweredByHeader) | By default Express appends the `X-Powered-By: Express` header to all responses. Calling this method enables that behavior. |
+| [disableExpressDefaultPoweredByHeader](#functions/disableExpressDefaultPoweredByHeader) | By default Express appends the `X-Powered-By: Express` header to all responses. Calling this method disables that behavior. |
+| [customPoweredByHeader](#functions/customPoweredByHeader) | Express middleware that sets the X-Powered-By header to 'XYO'. |
+| [getJsonBodyParserOptions](#functions/getJsonBodyParserOptions) | Gets the default JSON Body Parser options merged with the supplied options with the supplied options taking precedence |
+| [getJsonBodyParser](#functions/getJsonBodyParser) | Get a JSON Body Parser connect middleware handler |
+| [useRequestCounters](#functions/useRequestCounters) | Registers middleware that increments per-path request counters and exposes a /stats endpoint. |
+| [responseProfiler](#functions/responseProfiler) | Connect middleware to enable profiling of response lifecycle timing. To effectively profile the response timing, this middleware needs to be called first when initializing your Express App |
+| [getResponseMetadata](#functions/getResponseMetadata) | Extracts response metadata from res.locals, computing profile duration if profiling was started. |
+| [standardErrors](#functions/standardErrors) | Express error handler that logs the error and sends a JSON:API-compliant error response. |
+| [setRawResponseFormat](#functions/setRawResponseFormat) | Flags the response to forgo the standard response envelope and return the raw response body to the client |
+| [clearRawResponseFormat](#functions/clearRawResponseFormat) | Clears any flags on the response, allowing the response to use the default standard response envelope |
+| [isRawResponseFormatSet](#functions/isRawResponseFormatSet) | Checks if there are any flags on the response that would cause it to forgo the standard response envelope and return the raw response body to the client |
 
 ### classes
 
@@ -129,29 +141,24 @@ new Counters(): Counters;
 
 ## Properties
 
-### counters
-
-```ts
-static counters: Record<string, number> = {};
-```
+| Property | Modifier | Type | Default value |
+| ------ | ------ | ------ | ------ |
+| <a id="counters"></a> `counters` | `static` | `Record`\<`string`, `number`\> | `{}` |
 
 ## Methods
 
 ### inc()
 
 ```ts
-static inc(name, count?): void;
+static inc(name: string, count?: number): void;
 ```
 
 ### Parameters
 
-#### name
-
-`string`
-
-#### count?
-
-`number` = `1`
+| Parameter | Type | Default value |
+| ------ | ------ | ------ |
+| `name` | `string` | `undefined` |
+| `count` | `number` | `1` |
 
 ### Returns
 
@@ -162,18 +169,15 @@ static inc(name, count?): void;
 ### max()
 
 ```ts
-static max(name, count): void;
+static max(name: string, count: number): void;
 ```
 
 ### Parameters
 
-#### name
-
-`string`
-
-#### count
-
-`number`
+| Parameter | Type |
+| ------ | ------ |
+| `name` | `string` |
+| `count` | `number` |
 
 ### Returns
 
@@ -184,18 +188,15 @@ static max(name, count): void;
 ### min()
 
 ```ts
-static min(name, count): void;
+static min(name: string, count: number): void;
 ```
 
 ### Parameters
 
-#### name
-
-`string`
-
-#### count
-
-`number`
+| Parameter | Type |
+| ------ | ------ |
+| `name` | `string` |
+| `count` | `number` |
 
 ### Returns
 
@@ -223,35 +224,30 @@ new Profiler(): Profiler;
 
 ## Properties
 
-### stats
-
-```ts
-stats: Record<string, number> = {};
-```
+| Property | Type | Default value |
+| ------ | ------ | ------ |
+| <a id="stats"></a> `stats` | `Record`\<`string`, `number`\> | `{}` |
 
 ## Methods
 
 ### profile()
 
 ```ts
-profile<T>(name, promise): Promise<T>;
+profile<T>(name: string, promise: Promise<T>): Promise<T>;
 ```
 
 ### Type Parameters
 
-#### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-#### name
-
-`string`
-
-#### promise
-
-`Promise`\<`T`\>
+| Parameter | Type |
+| ------ | ------ |
+| `name` | `string` |
+| `promise` | `Promise`\<`T`\> |
 
 ### Returns
 
@@ -275,14 +271,14 @@ console logging methods
 ### Constructor
 
 ```ts
-new WrappedWinstonLogger(winston): WrappedWinstonLogger;
+new WrappedWinstonLogger(winston: Logger): WrappedWinstonLogger;
 ```
 
 ### Parameters
 
-#### winston
-
-`Logger`
+| Parameter | Type |
+| ------ | ------ |
+| `winston` | `Logger` |
 
 ### Returns
 
@@ -290,95 +286,15 @@ new WrappedWinstonLogger(winston): WrappedWinstonLogger;
 
 ## Properties
 
-### winston
-
-```ts
-protected readonly winston: Logger;
-```
-
-***
-
-### debug
-
-```ts
-debug: LogFunction;
-```
-
-### Implementation of
-
-```ts
-Logger.debug
-```
-
-***
-
-### error
-
-```ts
-error: LogFunction;
-```
-
-### Implementation of
-
-```ts
-Logger.error
-```
-
-***
-
-### info
-
-```ts
-info: LogFunction;
-```
-
-### Implementation of
-
-```ts
-Logger.info
-```
-
-***
-
-### log
-
-```ts
-log: LogFunction;
-```
-
-### Implementation of
-
-```ts
-Logger.log
-```
-
-***
-
-### trace
-
-```ts
-trace: LogFunction;
-```
-
-### Implementation of
-
-```ts
-Logger.trace
-```
-
-***
-
-### warn
-
-```ts
-warn: LogFunction;
-```
-
-### Implementation of
-
-```ts
-Logger.warn
-```
+| Property | Modifier | Type |
+| ------ | ------ | ------ |
+| <a id="winston"></a> `winston` | `readonly` | `Logger` |
+| <a id="debug"></a> `debug` | `public` | `LogFunction` |
+| <a id="error"></a> `error` | `public` | `LogFunction` |
+| <a id="info"></a> `info` | `public` | `LogFunction` |
+| <a id="log"></a> `log` | `public` | `LogFunction` |
+| <a id="trace"></a> `trace` | `public` | `LogFunction` |
+| <a id="warn"></a> `warn` | `public` | `LogFunction` |
 
 ### functions
 
@@ -389,24 +305,17 @@ Logger.warn
 ***
 
 ```ts
-function addRouteDefinitions(app, routeDefinitions): void;
+function addRouteDefinitions(app: Express, routeDefinitions: RouteDefinition<RequestHandler<ParamsDictionary, any, any, ParsedQs, Record<string, any>>>[]): void;
 ```
 
 Registers an array of route definitions on an Express application.
 
 ## Parameters
 
-### app
-
-`Express`
-
-The Express application to register routes on.
-
-### routeDefinitions
-
-[`RouteDefinition`](#../interfaces/RouteDefinition)\<`RequestHandler`\<`ParamsDictionary`, `any`, `any`, `ParsedQs`, `Record`\<`string`, `any`\>\>\>[]
-
-The route definitions to register.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `app` | `Express` | The Express application to register routes on. |
+| `routeDefinitions` | [`RouteDefinition`](#../interfaces/RouteDefinition)\<`RequestHandler`\<`ParamsDictionary`, `any`, `any`, `ParsedQs`, `Record`\<`string`, `any`\>\>\>[] | The route definitions to register. |
 
 ## Returns
 
@@ -419,40 +328,26 @@ The route definitions to register.
 ***
 
 ```ts
-function asyncHandler<P, ResBody, ReqBody, ReqQuery, Locals>(fn): (req, res, next) => Promise<unknown>;
+function asyncHandler<P, ResBody, ReqBody, ReqQuery, Locals>(fn: RequestHandler<P, ResBody, ReqBody, ReqQuery, Locals>): (req: Request<P, ResBody, ReqBody, ReqQuery, Locals>, res: Response<ResBody, Locals>, next: NextFunction) => Promise<unknown>;
 ```
 
 Wraps an async Express request handler to forward rejected promises to the error handler.
 
 ## Type Parameters
 
-### P
-
-`P` = `ParamsDictionary`
-
-### ResBody
-
-`ResBody` = [`Empty`](#../interfaces/Empty)
-
-### ReqBody
-
-`ReqBody` = [`Empty`](#../interfaces/Empty)
-
-### ReqQuery
-
-`ReqQuery` = `ParsedQs`
-
-### Locals
-
-`Locals` *extends* [`NoLocals`](#../type-aliases/NoLocals) = [`NoLocals`](#../type-aliases/NoLocals)
+| Type Parameter | Default type |
+| ------ | ------ |
+| `P` | `ParamsDictionary` |
+| `ResBody` | [`Empty`](#../interfaces/Empty) |
+| `ReqBody` | [`Empty`](#../interfaces/Empty) |
+| `ReqQuery` | `ParsedQs` |
+| `Locals` *extends* [`NoLocals`](#../type-aliases/NoLocals) | [`NoLocals`](#../type-aliases/NoLocals) |
 
 ## Parameters
 
-### fn
-
-`RequestHandler`\<`P`, `ResBody`, `ReqBody`, `ReqQuery`, `Locals`\>
-
-The async request handler to wrap.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `fn` | `RequestHandler`\<`P`, `ResBody`, `ReqBody`, `ReqQuery`, `Locals`\> | The async request handler to wrap. |
 
 ## Returns
 
@@ -460,24 +355,18 @@ A request handler that catches async errors and passes them to next().
 
 ```ts
 (
-   req, 
-   res, 
-next): Promise<unknown>;
+   req: Request<P, ResBody, ReqBody, ReqQuery, Locals>, 
+   res: Response<ResBody, Locals>, 
+next: NextFunction): Promise<unknown>;
 ```
 
 ### Parameters
 
-### req
-
-`Request`\<`P`, `ResBody`, `ReqBody`, `ReqQuery`, `Locals`\>
-
-### res
-
-`Response`\<`ResBody`, `Locals`\>
-
-### next
-
-`NextFunction`
+| Parameter | Type |
+| ------ | ------ |
+| `req` | `Request`\<`P`, `ResBody`, `ReqBody`, `ReqQuery`, `Locals`\> |
+| `res` | `Response`\<`ResBody`, `Locals`\> |
+| `next` | `NextFunction` |
 
 ### Returns
 
@@ -490,7 +379,7 @@ next): Promise<unknown>;
 ***
 
 ```ts
-function clearRawResponseFormat(res): void;
+function clearRawResponseFormat(res: Response): void;
 ```
 
 Clears any flags on the response, allowing the response to
@@ -498,11 +387,9 @@ use the default standard response envelope
 
 ## Parameters
 
-### res
-
-`Response`
-
-The response to set to the standard response format
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `res` | `Response` | The response to set to the standard response format |
 
 ## Returns
 
@@ -515,24 +402,22 @@ The response to set to the standard response format
 ***
 
 ```ts
-function compactObject<T>(obj): T;
+function compactObject<T>(obj: T): T;
 ```
 
 Returns a shallow copy of the object with all null and undefined values removed.
 
 ## Type Parameters
 
-### T
-
-`T` *extends* `Record`\<`string`, `unknown`\>
+| Type Parameter |
+| ------ |
+| `T` *extends* `Record`\<`string`, `unknown`\> |
 
 ## Parameters
 
-### obj
-
-`T`
-
-The object to compact.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `obj` | `T` | The object to compact. |
 
 ## Returns
 
@@ -548,26 +433,20 @@ A new object with only defined, non-null properties.
 
 ```ts
 function customPoweredByHeader(
-   req, 
-   res, 
-   next): void;
+   req: Request, 
+   res: Response, 
+   next: NextFunction): void;
 ```
 
 Express middleware that sets the X-Powered-By header to 'XYO'.
 
 ## Parameters
 
-### req
-
-`Request`
-
-### res
-
-`Response`
-
-### next
-
-`NextFunction`
+| Parameter | Type |
+| ------ | ------ |
+| `req` | `Request` |
+| `res` | `Response` |
+| `next` | `NextFunction` |
 
 ## Returns
 
@@ -580,7 +459,7 @@ Express middleware that sets the X-Powered-By header to 'XYO'.
 ***
 
 ```ts
-function disableCaseSensitiveRouting(app): void;
+function disableCaseSensitiveRouting(app: Express): void;
 ```
 
 Disable case sensitivity. When enabled, "/Foo" and "/foo" are different
@@ -588,11 +467,9 @@ routes. When disabled, "/Foo" and "/foo" are treated the same.
 
 ## Parameters
 
-### app
-
-`Express`
-
-The Express app to disable the header on.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `app` | `Express` | The Express app to disable the header on. |
 
 ## Returns
 
@@ -605,7 +482,7 @@ The Express app to disable the header on.
 ***
 
 ```ts
-function disableExpressDefaultPoweredByHeader(app): void;
+function disableExpressDefaultPoweredByHeader(app: Express): void;
 ```
 
 By default Express appends the `X-Powered-By: Express` header to
@@ -613,11 +490,9 @@ all responses. Calling this method disables that behavior.
 
 ## Parameters
 
-### app
-
-`Express`
-
-The Express app to disable the header on.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `app` | `Express` | The Express app to disable the header on. |
 
 ## Returns
 
@@ -630,7 +505,7 @@ The Express app to disable the header on.
 ***
 
 ```ts
-function enableCaseSensitiveRouting(app): void;
+function enableCaseSensitiveRouting(app: Express): void;
 ```
 
 Enable case sensitivity. When enabled, "/Foo" and "/foo" are different
@@ -638,11 +513,9 @@ routes. When disabled, "/Foo" and "/foo" are treated the same.
 
 ## Parameters
 
-### app
-
-`Express`
-
-The Express app to disable the header on.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `app` | `Express` | The Express app to disable the header on. |
 
 ## Returns
 
@@ -655,7 +528,7 @@ The Express app to disable the header on.
 ***
 
 ```ts
-function enableExpressDefaultPoweredByHeader(app): void;
+function enableExpressDefaultPoweredByHeader(app: Express): void;
 ```
 
 By default Express appends the `X-Powered-By: Express` header to
@@ -663,11 +536,9 @@ all responses. Calling this method enables that behavior.
 
 ## Parameters
 
-### app
-
-`Express`
-
-The Express app to disable the header on.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `app` | `Express` | The Express app to disable the header on. |
 
 ## Returns
 
@@ -681,39 +552,22 @@ The Express app to disable the header on.
 
 ```ts
 function errorToJsonHandler(
-   error, 
-   req, 
-   res, 
-   next): void;
+   error: ExpressError, 
+   req: Request, 
+   res: Response, 
+   next: NextFunction): void;
 ```
 
 Express error handler that logs the error and sends a JSON response with the error message and status code.
 
 ## Parameters
 
-### error
-
-[`ExpressError`](#../interfaces/ExpressError)
-
-The Express error to handle.
-
-### req
-
-`Request`
-
-The incoming request.
-
-### res
-
-`Response`
-
-The outgoing response.
-
-### next
-
-`NextFunction`
-
-The next middleware function.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `error` | [`ExpressError`](#../interfaces/ExpressError) | The Express error to handle. |
+| `req` | `Request` | The incoming request. |
+| `res` | `Response` | The outgoing response. |
+| `next` | `NextFunction` | The next middleware function. |
 
 ## Returns
 
@@ -744,7 +598,7 @@ The default logger.
 ***
 
 ```ts
-function getHttpHeader(header, req): string | undefined;
+function getHttpHeader(header: string, req: Request): string | undefined;
 ```
 
 Since there can be multiple of certain HTTP headers or
@@ -754,17 +608,10 @@ method grabs the 1st/only one of the desired header
 
 ## Parameters
 
-### header
-
-`string`
-
-The header to find
-
-### req
-
-`Request`
-
-The received HTTP request (with headers)
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `header` | `string` | The header to find |
+| `req` | `Request` | The received HTTP request (with headers) |
 
 ## Returns
 
@@ -779,18 +626,16 @@ The first or only occurrence of the specified HTTP header
 ***
 
 ```ts
-function getJsonBodyParser(options?): NextHandleFunction;
+function getJsonBodyParser(options?: OptionsJson): NextHandleFunction;
 ```
 
 Get a JSON Body Parser connect middleware handler
 
 ## Parameters
 
-### options?
-
-`OptionsJson` = `DefaultJsonBodyParserOptions`
-
-The options for the JSON Body Parser
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `options` | `OptionsJson` | `DefaultJsonBodyParserOptions` | The options for the JSON Body Parser |
 
 ## Returns
 
@@ -805,7 +650,7 @@ A middleware function that parses JSON bodies
 ***
 
 ```ts
-function getJsonBodyParserOptions(options?): OptionsJson;
+function getJsonBodyParserOptions(options?: Partial<OptionsJson>): OptionsJson;
 ```
 
 Gets the default JSON Body Parser options merged with the supplied options
@@ -813,11 +658,9 @@ with the supplied options taking precedence
 
 ## Parameters
 
-### options?
-
-`Partial`\<`OptionsJson`\>
-
-The options to override the default JSON Body Parser options with
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `options?` | `Partial`\<`OptionsJson`\> | The options to override the default JSON Body Parser options with |
 
 ## Returns
 
@@ -833,18 +676,16 @@ precedence over the default
 ***
 
 ```ts
-function getLogger(minVerbosity?): Logger;
+function getLogger(minVerbosity?: LoggerVerbosity): Logger;
 ```
 
 Returns a cached Winston-backed logger at the specified verbosity level.
 
 ## Parameters
 
-### minVerbosity?
-
-[`LoggerVerbosity`](#../type-aliases/LoggerVerbosity) = `'info'`
-
-The minimum log level to output. Defaults to 'info'.
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `minVerbosity` | [`LoggerVerbosity`](#../type-aliases/LoggerVerbosity) | `'info'` | The minimum log level to output. Defaults to 'info'. |
 
 ## Returns
 
@@ -859,18 +700,16 @@ A logger instance configured for the given verbosity.
 ***
 
 ```ts
-function getResponseMetadata(res): Record<string, unknown>;
+function getResponseMetadata(res: Response): Record<string, unknown>;
 ```
 
 Extracts response metadata from res.locals, computing profile duration if profiling was started.
 
 ## Parameters
 
-### res
-
-`Response`
-
-The Express response to extract metadata from.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `res` | `Response` | The Express response to extract metadata from. |
 
 ## Returns
 
@@ -885,7 +724,7 @@ The metadata record including any profiling information.
 ***
 
 ```ts
-function isRawResponseFormatSet(res): boolean;
+function isRawResponseFormatSet(res: Response): boolean;
 ```
 
 Checks if there are any flags on the response that would cause it
@@ -894,9 +733,9 @@ body to the client
 
 ## Parameters
 
-### res
-
-`Response`
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `res` | `Response` | - |
 
 ## Returns
 
@@ -911,63 +750,44 @@ True if there are any flags on the response, false otherwise
 ***
 
 ```ts
-function requestHandlerValidator<TParams, TQuery, TBody, TResponse>(schemas?): (handler) => RequestHandler;
+function requestHandlerValidator<TParams, TQuery, TBody, TResponse>(schemas?: Partial<{
+  body: TBody;
+  params: TParams;
+  query: TQuery;
+  response: TResponse;
+}>): (handler: (req: Request<output<TParams>, output<TResponse>, output<TBody>, output<TQuery>>, res: Response<output<TResponse>>, next: NextFunction) => unknown) => RequestHandler;
 ```
 
 Factory for Express middleware that validates request and response objects using Zod schemas.
 
 ## Type Parameters
 
-### TParams
-
-`TParams` *extends* 
-  \| `ZodObject`\<\{
-\}, `$catchall`\<`ZodUnion`\<readonly \[`ZodString`, `ZodArray`\<`ZodString`\>\]\>\>\>
-  \| `ZodType`\<`Record`\<`string`, `string`\>, `unknown`, `$ZodTypeInternals`\<`Record`\<`string`, `string`\>, `unknown`\>\> = `ZodObject`\<\{
-\}, `$catchall`\<`ZodUnion`\<readonly \[`ZodString`, `ZodArray`\<`ZodString`\>\]\>\>\>
-
-### TQuery
-
-`TQuery` *extends* 
-  \| `ZodObject`\<\{
-\}, `$catchall`\<`ZodUnion`\<readonly \[`ZodString`, `ZodArray`\<`ZodString`\>\]\>\>\>
-  \| `ZodType`\<`Record`\<`string`, `string` \| `string`[]\>, `unknown`, `$ZodTypeInternals`\<`Record`\<`string`, `string` \| `string`[]\>, `unknown`\>\> = `ZodObject`\<\{
-\}, `$catchall`\<`ZodUnion`\<readonly \[`ZodString`, `ZodArray`\<`ZodString`\>\]\>\>\>
-
-### TBody
-
-`TBody` *extends* `ZodType`\<`unknown`, `unknown`, `$ZodTypeInternals`\<`unknown`, `unknown`\>\> = `ZodType`\<`unknown`, `unknown`, `$ZodTypeInternals`\<`unknown`, `unknown`\>\>
-
-### TResponse
-
-`TResponse` *extends* `ZodType`\<`unknown`, `unknown`, `$ZodTypeInternals`\<`unknown`, `unknown`\>\> = `ZodType`\<`unknown`, `unknown`, `$ZodTypeInternals`\<`unknown`, `unknown`\>\>
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TParams` *extends* \| `ZodObject`\<\{ \}, `$catchall`\<`ZodUnion`\<readonly \[`ZodString`, `ZodArray`\<`ZodString`\>\]\>\>\> \| `ZodType`\<`Record`\<`string`, `string`\>, `unknown`, `$ZodTypeInternals`\<`Record`\<`string`, `string`\>, `unknown`\>\> | `ZodObject`\<\{ \}, `$catchall`\<`ZodUnion`\<readonly \[`ZodString`, `ZodArray`\<`ZodString`\>\]\>\>\> |
+| `TQuery` *extends* \| `ZodObject`\<\{ \}, `$catchall`\<`ZodUnion`\<readonly \[`ZodString`, `ZodArray`\<`ZodString`\>\]\>\>\> \| `ZodType`\<`Record`\<`string`, `string` \| `string`[]\>, `unknown`, `$ZodTypeInternals`\<`Record`\<`string`, `string` \| `string`[]\>, `unknown`\>\> | `ZodObject`\<\{ \}, `$catchall`\<`ZodUnion`\<readonly \[`ZodString`, `ZodArray`\<`ZodString`\>\]\>\>\> |
+| `TBody` *extends* `ZodType`\<`unknown`, `unknown`, `$ZodTypeInternals`\<`unknown`, `unknown`\>\> | `ZodType`\<`unknown`, `unknown`, `$ZodTypeInternals`\<`unknown`, `unknown`\>\> |
+| `TResponse` *extends* `ZodType`\<`unknown`, `unknown`, `$ZodTypeInternals`\<`unknown`, `unknown`\>\> | `ZodType`\<`unknown`, `unknown`, `$ZodTypeInternals`\<`unknown`, `unknown`\>\> |
 
 ## Parameters
 
-### schemas?
-
-`Partial`\<\{
-  `body`: `TBody`;
-  `params`: `TParams`;
-  `query`: `TQuery`;
-  `response`: `TResponse`;
-\}\>
-
-The Zod schemas to use for validation.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `schemas?` | `Partial`\<\{ `body`: `TBody`; `params`: `TParams`; `query`: `TQuery`; `response`: `TResponse`; \}\> | The Zod schemas to use for validation. |
 
 ## Returns
 
 A middleware function for validating requests and responses.
 
 ```ts
-(handler): RequestHandler;
+(handler: (req: Request<output<TParams>, output<TResponse>, output<TBody>, output<TQuery>>, res: Response<output<TResponse>>, next: NextFunction) => unknown): RequestHandler;
 ```
 
 ### Parameters
 
-### handler
-
-(`req`, `res`, `next`) => `unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `handler` | (`req`: `Request`\<`output`\<`TParams`\>, `output`\<`TResponse`\>, `output`\<`TBody`\>, `output`\<`TQuery`\>\>, `res`: `Response`\<`output`\<`TResponse`\>\>, `next`: `NextFunction`) => `unknown` |
 
 ### Returns
 
@@ -981,9 +801,9 @@ A middleware function for validating requests and responses.
 
 ```ts
 function responseProfiler(
-   _req, 
-   res, 
-   next): void;
+   _req: Request, 
+   res: Response, 
+   next: NextFunction): void;
 ```
 
 Connect middleware to enable profiling of response lifecycle timing. To effectively profile
@@ -992,23 +812,11 @@ App
 
 ## Parameters
 
-### \_req
-
-`Request`
-
-The request
-
-### res
-
-`Response`
-
-The response
-
-### next
-
-`NextFunction`
-
-The next function
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `_req` | `Request` | The request |
+| `res` | `Response` | The response |
+| `next` | `NextFunction` | The next function |
 
 ## Returns
 
@@ -1029,7 +837,7 @@ app.use(responseProfiler)
 ***
 
 ```ts
-function setRawResponseFormat(res): void;
+function setRawResponseFormat(res: Response): void;
 ```
 
 Flags the response to forgo the standard response envelope
@@ -1037,11 +845,9 @@ and return the raw response body to the client
 
 ## Parameters
 
-### res
-
-`Response`
-
-The response to disable the standard response format on
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `res` | `Response` | The response to disable the standard response format on |
 
 ## Returns
 
@@ -1055,39 +861,22 @@ The response to disable the standard response format on
 
 ```ts
 function standardErrors(
-   err, 
-   req, 
-   res, 
-   next): void;
+   err: ExpressError | undefined, 
+   req: Request, 
+   res: Response, 
+   next: NextFunction): void;
 ```
 
 Express error handler that logs the error and sends a JSON:API-compliant error response.
 
 ## Parameters
 
-### err
-
-The error to handle, or undefined if no error.
-
-[`ExpressError`](#../interfaces/ExpressError) | `undefined`
-
-### req
-
-`Request`
-
-The incoming request.
-
-### res
-
-`Response`
-
-The outgoing response.
-
-### next
-
-`NextFunction`
-
-The next middleware function.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `err` | [`ExpressError`](#../interfaces/ExpressError) \| `undefined` | The error to handle, or undefined if no error. |
+| `req` | `Request` | The incoming request. |
+| `res` | `Response` | The outgoing response. |
+| `next` | `NextFunction` | The next middleware function. |
 
 ## Returns
 
@@ -1100,28 +889,30 @@ The next middleware function.
 ***
 
 ```ts
-function tryParse<T>(func, value?): T & object | undefined;
+function tryParse<T>(func: ParseFunc<T>, value?: string): 
+  | T & {
+}
+  | undefined;
 ```
 
 ## Type Parameters
 
-### T
-
-`T` = `number`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` | `number` |
 
 ## Parameters
 
-### func
-
-[`ParseFunc`](#../type-aliases/ParseFunc)\<`T`\>
-
-### value?
-
-`string`
+| Parameter | Type |
+| ------ | ------ |
+| `func` | [`ParseFunc`](#../type-aliases/ParseFunc)\<`T`\> |
+| `value?` | `string` |
 
 ## Returns
 
-`T` & `object` \| `undefined`
+  \| `T` & \{
+\}
+  \| `undefined`
 
 ## Deprecated
 
@@ -1134,18 +925,16 @@ use zod instead
 ***
 
 ```ts
-function useRequestCounters(app): void;
+function useRequestCounters(app: Application): void;
 ```
 
 Registers middleware that increments per-path request counters and exposes a /stats endpoint.
 
 ## Parameters
 
-### app
-
-`Application`
-
-The Express application to attach counters to.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `app` | `Application` | The Express application to attach counters to. |
 
 ## Returns
 
@@ -1167,61 +956,19 @@ A successful JSON:API response containing primary data and optional included res
 
 ## Type Parameters
 
-### T
-
-`T` *extends* [`ApiResourceIdentifierObject`](#ApiResourceIdentifierObject)
+| Type Parameter |
+| ------ |
+| `T` *extends* [`ApiResourceIdentifierObject`](#ApiResourceIdentifierObject) |
 
 ## Properties
 
-### jsonapi?
-
-```ts
-optional jsonapi: JsonApi;
-```
-
-### Inherited from
-
-[`ApiResponseBase`](#ApiResponseBase).[`jsonapi`](ApiResponseBase.md#jsonapi)
-
-***
-
-### links?
-
-```ts
-optional links: ApiLinks;
-```
-
-### Inherited from
-
-[`ApiResponseBase`](#ApiResponseBase).[`links`](ApiResponseBase.md#links)
-
-***
-
-### meta?
-
-```ts
-optional meta: Record<string, unknown>;
-```
-
-### Inherited from
-
-[`ApiResponseBase`](#ApiResponseBase).[`meta`](ApiResponseBase.md#meta)
-
-***
-
-### data
-
-```ts
-data: T;
-```
-
-***
-
-### included?
-
-```ts
-optional included: ApiResourceObject[];
-```
+| Property | Type | Inherited from |
+| ------ | ------ | ------ |
+| <a id="jsonapi"></a> `jsonapi?` | [`JsonApi`](#JsonApi) | [`ApiResponseBase`](#ApiResponseBase).[`jsonapi`](ApiResponseBase.md#jsonapi) |
+| <a id="links"></a> `links?` | [`ApiLinks`](#../type-aliases/ApiLinks) | [`ApiResponseBase`](#ApiResponseBase).[`links`](ApiResponseBase.md#links) |
+| <a id="meta"></a> `meta?` | `Record`\<`string`, `unknown`\> | [`ApiResponseBase`](#ApiResponseBase).[`meta`](ApiResponseBase.md#meta) |
+| <a id="data"></a> `data` | `T` | - |
+| <a id="included"></a> `included?` | [`ApiResourceObject`](#ApiResourceObject)[] | - |
 
   ### <a id="ApiError"></a>ApiError
 
@@ -1231,84 +978,16 @@ optional included: ApiResourceObject[];
 
 ## Properties
 
-### code?
-
-```ts
-optional code: string;
-```
-
-An application-specific error code, expressed as a string value.
-
-***
-
-### detail?
-
-```ts
-optional detail: string;
-```
-
-A human-readable explanation specific to this occurrence of the problem. Like title, this field's value can be localized.
-
-***
-
-### id?
-
-```ts
-optional id: string;
-```
-
-A unique identifier for this particular occurrence of the problem.
-
-***
-
-### links?
-
-```ts
-optional links: ApiLinks;
-```
-
-A links object containing the following members:
-   about: a link that leads to further details about this particular occurrence of the problem
-
-***
-
-### meta?
-
-```ts
-optional meta: Record<string, unknown>;
-```
-
-A meta object containing non-standard meta-information about the error.
-
-***
-
-### source?
-
-```ts
-optional source: Source;
-```
-
-An object containing references to the source of the error, optionally including any of the following members:
-
-***
-
-### status?
-
-```ts
-optional status: string;
-```
-
-The HTTP status code applicable to this problem, expressed as a string value.
-
-***
-
-### title?
-
-```ts
-optional title: string;
-```
-
-A short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization.
+| Property | Type | Description |
+| ------ | ------ | ------ |
+| <a id="code"></a> `code?` | `string` | An application-specific error code, expressed as a string value. |
+| <a id="detail"></a> `detail?` | `string` | A human-readable explanation specific to this occurrence of the problem. Like title, this field's value can be localized. |
+| <a id="id"></a> `id?` | `string` | A unique identifier for this particular occurrence of the problem. |
+| <a id="links"></a> `links?` | [`ApiLinks`](#../type-aliases/ApiLinks) | A links object containing the following members: about: a link that leads to further details about this particular occurrence of the problem |
+| <a id="meta"></a> `meta?` | `Record`\<`string`, `unknown`\> | A meta object containing non-standard meta-information about the error. |
+| <a id="source"></a> `source?` | [`Source`](#Source) | An object containing references to the source of the error, optionally including any of the following members: |
+| <a id="status"></a> `status?` | `string` | The HTTP status code applicable to this problem, expressed as a string value. |
+| <a id="title"></a> `title?` | `string` | A short, human-readable summary of the problem that SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization. |
 
   ### <a id="ApiErrorResponse"></a>ApiErrorResponse
 
@@ -1324,47 +1003,12 @@ A JSON:API error response containing one or more error objects.
 
 ## Properties
 
-### jsonapi?
-
-```ts
-optional jsonapi: JsonApi;
-```
-
-### Inherited from
-
-[`ApiResponseBase`](#ApiResponseBase).[`jsonapi`](ApiResponseBase.md#jsonapi)
-
-***
-
-### links?
-
-```ts
-optional links: ApiLinks;
-```
-
-### Inherited from
-
-[`ApiResponseBase`](#ApiResponseBase).[`links`](ApiResponseBase.md#links)
-
-***
-
-### meta?
-
-```ts
-optional meta: Record<string, unknown>;
-```
-
-### Inherited from
-
-[`ApiResponseBase`](#ApiResponseBase).[`meta`](ApiResponseBase.md#meta)
-
-***
-
-### errors
-
-```ts
-errors: ApiError[];
-```
+| Property | Type | Inherited from |
+| ------ | ------ | ------ |
+| <a id="jsonapi"></a> `jsonapi?` | [`JsonApi`](#JsonApi) | [`ApiResponseBase`](#ApiResponseBase).[`jsonapi`](ApiResponseBase.md#jsonapi) |
+| <a id="links"></a> `links?` | [`ApiLinks`](#../type-aliases/ApiLinks) | [`ApiResponseBase`](#ApiResponseBase).[`links`](ApiResponseBase.md#links) |
+| <a id="meta"></a> `meta?` | `Record`\<`string`, `unknown`\> | [`ApiResponseBase`](#ApiResponseBase).[`meta`](ApiResponseBase.md#meta) |
+| <a id="errors"></a> `errors` | [`ApiError`](#ApiError)[] | - |
 
   ### <a id="ApiResourceIdentifierObject"></a>ApiResourceIdentifierObject
 
@@ -1381,24 +1025,10 @@ Within a given API, each resource object's type and id pair MUST identify a sing
 
 ## Properties
 
-### id
-
-```ts
-id: string;
-```
-
-The id member is not required when the resource object originates at the client and represents a new resource to be created on the server.
-
-***
-
-### type
-
-```ts
-type: string;
-```
-
-The type member is used to describe resource objects that share common attributes and relationships.
-The values of type members MUST adhere to the same constraints as member names.
+| Property | Type | Description |
+| ------ | ------ | ------ |
+| <a id="id"></a> `id` | `string` | The id member is not required when the resource object originates at the client and represents a new resource to be created on the server. |
+| <a id="type"></a> `type` | `string` | The type member is used to describe resource objects that share common attributes and relationships. The values of type members MUST adhere to the same constraints as member names. |
 
   ### <a id="ApiResourceObject"></a>ApiResourceObject
 
@@ -1414,72 +1044,14 @@ A JSON:API resource object with optional attributes, links, meta, and relationsh
 
 ## Properties
 
-### id
-
-```ts
-id: string;
-```
-
-The id member is not required when the resource object originates at the client and represents a new resource to be created on the server.
-
-### Inherited from
-
-[`ApiResourceIdentifierObject`](#ApiResourceIdentifierObject).[`id`](ApiResourceIdentifierObject.md#id)
-
-***
-
-### type
-
-```ts
-type: string;
-```
-
-The type member is used to describe resource objects that share common attributes and relationships.
-The values of type members MUST adhere to the same constraints as member names.
-
-### Inherited from
-
-[`ApiResourceIdentifierObject`](#ApiResourceIdentifierObject).[`type`](ApiResourceIdentifierObject.md#type)
-
-***
-
-### attributes?
-
-```ts
-optional attributes: Record<string, unknown>;
-```
-
-An attributes object representing some of the resource's data.
-
-***
-
-### links?
-
-```ts
-optional links: ApiLinks;
-```
-
-A links object containing links related to the resource.
-
-***
-
-### meta?
-
-```ts
-optional meta: Record<string, unknown>;
-```
-
-A meta object containing non-standard meta-information about a resource that can not be represented as an attribute or relationship.
-
-***
-
-### relationships?
-
-```ts
-optional relationships: Record<string, Relationship>;
-```
-
-A relationships object describing relationships between the resource and other JSON:API resources.
+| Property | Type | Description | Inherited from |
+| ------ | ------ | ------ | ------ |
+| <a id="id"></a> `id` | `string` | The id member is not required when the resource object originates at the client and represents a new resource to be created on the server. | [`ApiResourceIdentifierObject`](#ApiResourceIdentifierObject).[`id`](ApiResourceIdentifierObject.md#id) |
+| <a id="type"></a> `type` | `string` | The type member is used to describe resource objects that share common attributes and relationships. The values of type members MUST adhere to the same constraints as member names. | [`ApiResourceIdentifierObject`](#ApiResourceIdentifierObject).[`type`](ApiResourceIdentifierObject.md#type) |
+| <a id="attributes"></a> `attributes?` | `Record`\<`string`, `unknown`\> | An attributes object representing some of the resource's data. | - |
+| <a id="links"></a> `links?` | [`ApiLinks`](#../type-aliases/ApiLinks) | A links object containing links related to the resource. | - |
+| <a id="meta"></a> `meta?` | `Record`\<`string`, `unknown`\> | A meta object containing non-standard meta-information about a resource that can not be represented as an attribute or relationship. | - |
+| <a id="relationships"></a> `relationships?` | `Record`\<`string`, [`Relationship`](#../type-aliases/Relationship)\> | A relationships object describing relationships between the resource and other JSON:API resources. | - |
 
   ### <a id="ApiResponseBase"></a>ApiResponseBase
 
@@ -1496,27 +1068,11 @@ Base interface for all JSON:API responses, including optional links and metadata
 
 ## Properties
 
-### jsonapi?
-
-```ts
-optional jsonapi: JsonApi;
-```
-
-***
-
-### links?
-
-```ts
-optional links: ApiLinks;
-```
-
-***
-
-### meta?
-
-```ts
-optional meta: Record<string, unknown>;
-```
+| Property | Type |
+| ------ | ------ |
+| <a id="jsonapi"></a> `jsonapi?` | [`JsonApi`](#JsonApi) |
+| <a id="links"></a> `links?` | [`ApiLinks`](#../type-aliases/ApiLinks) |
+| <a id="meta"></a> `meta?` | `Record`\<`string`, `unknown`\> |
 
   ### <a id="Empty"></a>Empty
 
@@ -1540,11 +1096,9 @@ An Error with an optional HTTP status code for Express error handling.
 
 ## Properties
 
-### statusCode?
-
-```ts
-optional statusCode: number;
-```
+| Property | Type |
+| ------ | ------ |
+| <a id="statuscode"></a> `statusCode?` | `number` |
 
   ### <a id="HrefWithMeta"></a>HrefWithMeta
 
@@ -1556,19 +1110,10 @@ A link with an href and associated metadata.
 
 ## Properties
 
-### href
-
-```ts
-href: string;
-```
-
-***
-
-### meta
-
-```ts
-meta: Record<string, unknown>;
-```
+| Property | Type |
+| ------ | ------ |
+| <a id="href"></a> `href` | `string` |
+| <a id="meta"></a> `meta` | `Record`\<`string`, `unknown`\> |
 
   ### <a id="IRelationshipData"></a>IRelationshipData
 
@@ -1580,11 +1125,9 @@ Contains the resource linkage data for a JSON:API relationship.
 
 ## Properties
 
-### data
-
-```ts
-data: ResourceLinkage;
-```
+| Property | Type |
+| ------ | ------ |
+| <a id="data"></a> `data` | [`ResourceLinkage`](#../type-aliases/ResourceLinkage) |
 
   ### <a id="IRelationshipLinks"></a>IRelationshipLinks
 
@@ -1596,13 +1139,9 @@ Contains the links for a JSON:API relationship.
 
 ## Properties
 
-### links
-
-```ts
-links: 
-  | IRelationshipSelfLink
-  | IRelationshipRelatedLink;
-```
+| Property | Type |
+| ------ | ------ |
+| <a id="links"></a> `links` | \| [`IRelationshipSelfLink`](#IRelationshipSelfLink) \| [`IRelationshipRelatedLink`](#IRelationshipRelatedLink) |
 
   ### <a id="IRelationshipRelatedLink"></a>IRelationshipRelatedLink
 
@@ -1614,13 +1153,9 @@ A relationship link pointing to a related resource.
 
 ## Properties
 
-### related
-
-```ts
-related: string;
-```
-
-A related resource link
+| Property | Type | Description |
+| ------ | ------ | ------ |
+| <a id="related"></a> `related` | `string` | A related resource link |
 
   ### <a id="IRelationshipSelfLink"></a>IRelationshipSelfLink
 
@@ -1632,15 +1167,9 @@ A relationship link pointing to the relationship itself.
 
 ## Properties
 
-### self
-
-```ts
-self: string;
-```
-
-A link for the relationship itself (a "relationship link"). This link allows the client to directly manipulate the relationship.
-For example, removing an author through an article’s relationship URL would disconnect the person from the article without
-deleting the people resource itself. When fetched successfully, this link returns the linkage for the related resources as its primary data.
+| Property | Type | Description |
+| ------ | ------ | ------ |
+| <a id="self"></a> `self` | `string` | A link for the relationship itself (a "relationship link"). This link allows the client to directly manipulate the relationship. For example, removing an author through an article’s relationship URL would disconnect the person from the article without deleting the people resource itself. When fetched successfully, this link returns the linkage for the related resources as its primary data. |
 
   ### <a id="JsonApi"></a>JsonApi
 
@@ -1652,19 +1181,10 @@ JSON:API version and metadata descriptor.
 
 ## Properties
 
-### meta?
-
-```ts
-optional meta: Record<string, unknown>;
-```
-
-***
-
-### version?
-
-```ts
-optional version: "1.0" | "1.1";
-```
+| Property | Type |
+| ------ | ------ |
+| <a id="meta"></a> `meta?` | `Record`\<`string`, `unknown`\> |
+| <a id="version"></a> `version?` | `"1.0"` \| `"1.1"` |
 
   ### <a id="LoggerOptions"></a>LoggerOptions
 
@@ -1676,19 +1196,10 @@ Configuration options for creating a logger instance.
 
 ## Properties
 
-### defaultMeta?
-
-```ts
-optional defaultMeta: LoggerMeta;
-```
-
-***
-
-### level?
-
-```ts
-optional level: LoggerVerbosity;
-```
+| Property | Type |
+| ------ | ------ |
+| <a id="defaultmeta"></a> `defaultMeta?` | [`LoggerMeta`](#../type-aliases/LoggerMeta) |
+| <a id="level"></a> `level?` | [`LoggerVerbosity`](#../type-aliases/LoggerVerbosity) |
 
   ### <a id="RouteDefinition"></a>RouteDefinition
 
@@ -1700,33 +1211,17 @@ Defines an Express route with its HTTP method, path, and handler(s).
 
 ## Type Parameters
 
-### H
-
-`H` *extends* `RequestHandler` = `RequestHandler`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `H` *extends* `RequestHandler` | `RequestHandler` |
 
 ## Properties
 
-### handlers
-
-```ts
-handlers: H | H[];
-```
-
-***
-
-### method
-
-```ts
-method: HttpMethod;
-```
-
-***
-
-### path
-
-```ts
-path: string | RegExp;
-```
+| Property | Type |
+| ------ | ------ |
+| <a id="handlers"></a> `handlers` | `H` \| `H`[] |
+| <a id="method"></a> `method` | [`HttpMethod`](#../type-aliases/HttpMethod) |
+| <a id="path"></a> `path` | `string` \| `RegExp` |
 
   ### <a id="Source"></a>Source
 
@@ -1738,24 +1233,10 @@ An object containing references to the source of the error
 
 ## Properties
 
-### parameter?
-
-```ts
-optional parameter: string;
-```
-
-A string indicating which URI query parameter caused the error.
-
-***
-
-### pointer?
-
-```ts
-optional pointer: string;
-```
-
-A JSON Pointer [RFC6901] to the associated entity in the request document [e.g. "/data" for a primary data object,
-or "/data/attributes/title" for a specific attribute].
+| Property | Type | Description |
+| ------ | ------ | ------ |
+| <a id="parameter"></a> `parameter?` | `string` | A string indicating which URI query parameter caused the error. |
+| <a id="pointer"></a> `pointer?` | `string` | A JSON Pointer [RFC6901] to the associated entity in the request document [e.g. "/data" for a primary data object, or "/data/attributes/title" for a specific attribute]. |
 
 ### type-aliases
 
@@ -1799,9 +1280,9 @@ A JSON:API response, either a data response or an error response.
 
 ## Type Parameters
 
-### T
-
-`T` *extends* [`ApiResourceIdentifierObject`](#../interfaces/ApiResourceIdentifierObject)
+| Type Parameter |
+| ------ |
+| `T` *extends* [`ApiResourceIdentifierObject`](#../interfaces/ApiResourceIdentifierObject) |
 
   ### <a id="HttpMethod"></a>HttpMethod
 
@@ -1934,22 +1415,22 @@ Default type for response body when none is specified.
 ***
 
 ```ts
-type ParseFunc<T> = (value) => T;
+type ParseFunc<T> = (value: string) => T;
 ```
 
 A function that parses a string value into the target type.
 
 ## Type Parameters
 
-### T
-
-`T` = `number`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` | `number` |
 
 ## Parameters
 
-### value
-
-`string`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `string` |
 
 ## Returns
 
@@ -2076,38 +1557,26 @@ Empty Zod schema for requests with no query parameters.
 ***
 
 ```ts
-const ValidateRequestDefaults: object;
+const ValidateRequestDefaults: {
+  params: ZodObject<{
+  }, $catchall<ZodString>>;
+  query: ZodObject<{
+  }, $catchall<ZodUnion<readonly [ZodString, ZodArray<ZodString>]>>>;
+  body: ZodOptional<ZodJSONSchema>;
+  response: ZodOptional<ZodJSONSchema>;
+};
 ```
 
 Default validation schemas for request handler validator.
 
 ## Type Declaration
 
-### params
-
-```ts
-params: ZodObject<{
-}, $catchall<ZodString>> = EmptyParamsZod;
-```
-
-### query
-
-```ts
-query: ZodObject<{
-}, $catchall<ZodUnion<readonly [ZodString, ZodArray<ZodString>]>>> = EmptyQueryParamsZod;
-```
-
-### body
-
-```ts
-body: ZodOptional<ZodJSONSchema>;
-```
-
-### response
-
-```ts
-response: ZodOptional<ZodJSONSchema>;
-```
+| Name | Type | Default value |
+| ------ | ------ | ------ |
+| <a id="property-params"></a> `params` | `ZodObject`\<\{ \}, `$catchall`\<`ZodString`\>\> | `EmptyParamsZod` |
+| <a id="property-query"></a> `query` | `ZodObject`\<\{ \}, `$catchall`\<`ZodUnion`\<readonly \[`ZodString`, `ZodArray`\<`ZodString`\>\]\>\>\> | `EmptyQueryParamsZod` |
+| <a id="property-body"></a> `body` | `ZodOptional`\<`ZodJSONSchema`\> | - |
+| <a id="property-response"></a> `response` | `ZodOptional`\<`ZodJSONSchema`\> | - |
 
   ### <a id="jsonBodyParser"></a>jsonBodyParser
 

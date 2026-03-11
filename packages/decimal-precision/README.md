@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/decimal-precision**
@@ -23,9 +25,11 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Functions
 
-- [fromFixedPoint](#functions/fromFixedPoint)
-- [toDecimalPrecision](#functions/toDecimalPrecision)
-- [toFixedPoint](#functions/toFixedPoint)
+| Function | Description |
+| ------ | ------ |
+| [fromFixedPoint](#functions/fromFixedPoint) | Converts a fixed-point bigint back to a whole-number bigint by dividing out the decimal places. |
+| [toDecimalPrecision](#functions/toDecimalPrecision) | Formats a number to the specified number of significant digits, returning a string with minimal trailing zeros. |
+| [toFixedPoint](#functions/toFixedPoint) | Converts a bigint or decimal string to a fixed-point bigint representation. |
 
 ### functions
 
@@ -36,24 +40,17 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 ***
 
 ```ts
-function fromFixedPoint(value, places?): bigint;
+function fromFixedPoint(value: bigint, places?: number): bigint;
 ```
 
 Converts a fixed-point bigint back to a whole-number bigint by dividing out the decimal places.
 
 ## Parameters
 
-### value
-
-`bigint`
-
-The fixed-point bigint value to convert
-
-### places?
-
-`number` = `18`
-
-Number of decimal places (default 18)
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `value` | `bigint` | `undefined` | The fixed-point bigint value to convert |
+| `places` | `number` | `18` | Number of decimal places (default 18) |
 
 ## Returns
 
@@ -68,24 +65,17 @@ The whole-number bigint result
 ***
 
 ```ts
-function toDecimalPrecision(value, digits): string;
+function toDecimalPrecision(value: number, digits: number): string;
 ```
 
 Formats a number to the specified number of significant digits, returning a string with minimal trailing zeros.
 
 ## Parameters
 
-### value
-
-`number`
-
-The number to format
-
-### digits
-
-`number`
-
-The number of significant digits
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `number` | The number to format |
+| `digits` | `number` | The number of significant digits |
 
 ## Returns
 
@@ -100,24 +90,17 @@ A string representation of the number with the specified precision
 ***
 
 ```ts
-function toFixedPoint(value, places?): bigint;
+function toFixedPoint(value: string | bigint, places?: number): bigint;
 ```
 
 Converts a bigint or decimal string to a fixed-point bigint representation.
 
 ## Parameters
 
-### value
-
-The value to convert (bigint or string with optional decimal point)
-
-`string` | `bigint`
-
-### places?
-
-`number` = `18`
-
-Number of decimal places (default 18)
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `value` | `string` \| `bigint` | `undefined` | The value to convert (bigint or string with optional decimal point) |
+| `places` | `number` | `18` | Number of decimal places (default 18) |
 
 ## Returns
 

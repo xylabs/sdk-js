@@ -15,6 +15,8 @@
 
 XYLabs Logger Library
 
+
+
 ## Reference
 
 **@xylabs/logger**
@@ -23,30 +25,40 @@ XYLabs Logger Library
 
 ## Classes
 
-- [ConsoleLogger](#classes/ConsoleLogger)
-- [IdLogger](#classes/IdLogger)
-- [LevelLogger](#classes/LevelLogger)
-- [SilentLogger](#classes/SilentLogger)
+| Class | Description |
+| ------ | ------ |
+| [ConsoleLogger](#classes/ConsoleLogger) | A LevelLogger that delegates to the global `console` object. |
+| [IdLogger](#classes/IdLogger) | A logger wrapper that prefixes every log message with a bracketed identifier. Useful for distinguishing log output from different components or instances. |
+| [LevelLogger](#classes/LevelLogger) | A logger that filters messages based on a configured log level. Methods for levels above the configured threshold return a no-op function. |
+| [SilentLogger](#classes/SilentLogger) | A logger that does not log anything. This is useful when you want to disable logging like when running unit tests or in silent mode. It implements the `Logger` interface but all methods are no-op functions. |
 
 ## Interfaces
 
-- [Logger](#interfaces/Logger)
+| Interface | Description |
+| ------ | ------ |
+| [Logger](#interfaces/Logger) | Interface to handle overlap between Winston & `console` with as much congruency as possible. |
 
 ## Type Aliases
 
-- [LogFunction](#type-aliases/LogFunction)
-- [LogLevelKey](#type-aliases/LogLevelKey)
-- [LogVerbosity](#type-aliases/LogVerbosity)
-- [LogLevelValue](#type-aliases/LogLevelValue)
+| Type Alias | Description |
+| ------ | ------ |
+| [LogFunction](#type-aliases/LogFunction) | A generic logging function that accepts any number of arguments. |
+| [LogLevelKey](#type-aliases/LogLevelKey) | String key for a log level (e.g. 'error', 'warn', 'info'). |
+| [LogVerbosity](#type-aliases/LogVerbosity) | Alias for LogLevelKey, representing the verbosity setting as a string. |
+| [LogLevelValue](#type-aliases/LogLevelValue) | Numeric value of a log level (1 through 6). |
 
 ## Variables
 
-- [LogLevel](#variables/LogLevel)
+| Variable | Description |
+| ------ | ------ |
+| [LogLevel](#variables/LogLevel) | Numeric log level values, from least verbose (error=1) to most verbose (trace=6). |
 
 ## Functions
 
-- [NoOpLogFunction](#functions/NoOpLogFunction)
-- [getFunctionName](#functions/getFunctionName)
+| Function | Description |
+| ------ | ------ |
+| [NoOpLogFunction](#functions/NoOpLogFunction) | A log function that silently discards all arguments. |
+| [getFunctionName](#functions/getFunctionName) | Retrieves the name of the calling function by inspecting the stack trace. |
 
 ### classes
 
@@ -67,14 +79,14 @@ A LevelLogger that delegates to the global `console` object.
 ### Constructor
 
 ```ts
-new ConsoleLogger(level?): ConsoleLogger;
+new ConsoleLogger(level?: LogLevelValue): ConsoleLogger;
 ```
 
 ### Parameters
 
-#### level?
-
-[`LogLevelValue`](#../type-aliases/LogLevelValue) = `LogLevel.warn`
+| Parameter | Type | Default value |
+| ------ | ------ | ------ |
+| `level` | [`LogLevelValue`](#../type-aliases/LogLevelValue) | `LogLevel.warn` |
 
 ### Returns
 
@@ -86,27 +98,10 @@ new ConsoleLogger(level?): ConsoleLogger;
 
 ## Properties
 
-### level
-
-```ts
-readonly level: LogLevelValue;
-```
-
-### Inherited from
-
-[`LevelLogger`](#LevelLogger).[`level`](LevelLogger.md#level)
-
-***
-
-### logger
-
-```ts
-readonly logger: Logger;
-```
-
-### Inherited from
-
-[`LevelLogger`](#LevelLogger).[`logger`](LevelLogger.md#logger)
+| Property | Modifier | Type | Inherited from |
+| ------ | ------ | ------ | ------ |
+| <a id="level"></a> `level` | `readonly` | [`LogLevelValue`](#../type-aliases/LogLevelValue) | [`LevelLogger`](#LevelLogger).[`level`](LevelLogger.md#level) |
+| <a id="logger"></a> `logger` | `readonly` | [`Logger`](#../interfaces/Logger) | [`LevelLogger`](#LevelLogger).[`logger`](LevelLogger.md#logger) |
 
 ## Accessors
 
@@ -234,18 +229,15 @@ Useful for distinguishing log output from different components or instances.
 ### Constructor
 
 ```ts
-new IdLogger(logger, id?): IdLogger;
+new IdLogger(logger: Logger, id?: () => string): IdLogger;
 ```
 
 ### Parameters
 
-#### logger
-
-[`Logger`](#../interfaces/Logger)
-
-#### id?
-
-() => `string`
+| Parameter | Type |
+| ------ | ------ |
+| `logger` | [`Logger`](#../interfaces/Logger) |
+| `id?` | () => `string` |
 
 ### Returns
 
@@ -258,14 +250,14 @@ new IdLogger(logger, id?): IdLogger;
 ### Set Signature
 
 ```ts
-set id(id): void;
+set id(id: string): void;
 ```
 
 #### Parameters
 
-##### id
-
-`string`
+| Parameter | Type |
+| ------ | ------ |
+| `id` | `string` |
 
 #### Returns
 
@@ -276,14 +268,14 @@ set id(id): void;
 ### debug()
 
 ```ts
-debug(...data): void;
+debug(...data: unknown[]): void;
 ```
 
 ### Parameters
 
-#### data
-
-...`unknown`[]
+| Parameter | Type |
+| ------ | ------ |
+| ...`data` | `unknown`[] |
 
 ### Returns
 
@@ -300,14 +292,14 @@ Logger.debug
 ### error()
 
 ```ts
-error(...data): void;
+error(...data: unknown[]): void;
 ```
 
 ### Parameters
 
-#### data
-
-...`unknown`[]
+| Parameter | Type |
+| ------ | ------ |
+| ...`data` | `unknown`[] |
 
 ### Returns
 
@@ -324,14 +316,14 @@ Logger.error
 ### info()
 
 ```ts
-info(...data): void;
+info(...data: unknown[]): void;
 ```
 
 ### Parameters
 
-#### data
-
-...`unknown`[]
+| Parameter | Type |
+| ------ | ------ |
+| ...`data` | `unknown`[] |
 
 ### Returns
 
@@ -348,14 +340,14 @@ Logger.info
 ### log()
 
 ```ts
-log(...data): void;
+log(...data: unknown[]): void;
 ```
 
 ### Parameters
 
-#### data
-
-...`unknown`[]
+| Parameter | Type |
+| ------ | ------ |
+| ...`data` | `unknown`[] |
 
 ### Returns
 
@@ -372,14 +364,14 @@ Logger.log
 ### trace()
 
 ```ts
-trace(...data): void;
+trace(...data: unknown[]): void;
 ```
 
 ### Parameters
 
-#### data
-
-...`unknown`[]
+| Parameter | Type |
+| ------ | ------ |
+| ...`data` | `unknown`[] |
 
 ### Returns
 
@@ -396,14 +388,14 @@ Logger.trace
 ### warn()
 
 ```ts
-warn(...data): void;
+warn(...data: unknown[]): void;
 ```
 
 ### Parameters
 
-#### data
-
-...`unknown`[]
+| Parameter | Type |
+| ------ | ------ |
+| ...`data` | `unknown`[] |
 
 ### Returns
 
@@ -437,18 +429,15 @@ Methods for levels above the configured threshold return a no-op function.
 ### Constructor
 
 ```ts
-new LevelLogger(logger, level?): LevelLogger;
+new LevelLogger(logger: Logger, level?: LogLevelValue): LevelLogger;
 ```
 
 ### Parameters
 
-#### logger
-
-[`Logger`](#../interfaces/Logger)
-
-#### level?
-
-[`LogLevelValue`](#../type-aliases/LogLevelValue) = `LogLevel.warn`
+| Parameter | Type | Default value |
+| ------ | ------ | ------ |
+| `logger` | [`Logger`](#../interfaces/Logger) | `undefined` |
+| `level` | [`LogLevelValue`](#../type-aliases/LogLevelValue) | `LogLevel.warn` |
 
 ### Returns
 
@@ -456,19 +445,10 @@ new LevelLogger(logger, level?): LevelLogger;
 
 ## Properties
 
-### level
-
-```ts
-readonly level: LogLevelValue;
-```
-
-***
-
-### logger
-
-```ts
-readonly logger: Logger;
-```
+| Property | Modifier | Type |
+| ------ | ------ | ------ |
+| <a id="level"></a> `level` | `readonly` | [`LogLevelValue`](#../type-aliases/LogLevelValue) |
+| <a id="logger"></a> `logger` | `readonly` | [`Logger`](#../interfaces/Logger) |
 
 ## Accessors
 
@@ -608,147 +588,14 @@ new SilentLogger(): SilentLogger;
 
 ## Properties
 
-### debug()
-
-```ts
-readonly debug: (..._data) => undefined = NoOpLogFunction;
-```
-
-A log function that silently discards all arguments.
-
-### Parameters
-
-#### \_data
-
-...`unknown`[]
-
-### Returns
-
-`undefined`
-
-### Implementation of
-
-[`Logger`](#../interfaces/Logger).[`debug`](../interfaces/Logger.md#debug)
-
-***
-
-### error()
-
-```ts
-readonly error: (..._data) => undefined = NoOpLogFunction;
-```
-
-A log function that silently discards all arguments.
-
-### Parameters
-
-#### \_data
-
-...`unknown`[]
-
-### Returns
-
-`undefined`
-
-### Implementation of
-
-[`Logger`](#../interfaces/Logger).[`error`](../interfaces/Logger.md#error)
-
-***
-
-### info()
-
-```ts
-readonly info: (..._data) => undefined = NoOpLogFunction;
-```
-
-A log function that silently discards all arguments.
-
-### Parameters
-
-#### \_data
-
-...`unknown`[]
-
-### Returns
-
-`undefined`
-
-### Implementation of
-
-[`Logger`](#../interfaces/Logger).[`info`](../interfaces/Logger.md#info)
-
-***
-
-### log()
-
-```ts
-readonly log: (..._data) => undefined = NoOpLogFunction;
-```
-
-A log function that silently discards all arguments.
-
-### Parameters
-
-#### \_data
-
-...`unknown`[]
-
-### Returns
-
-`undefined`
-
-### Implementation of
-
-[`Logger`](#../interfaces/Logger).[`log`](../interfaces/Logger.md#log)
-
-***
-
-### trace()
-
-```ts
-readonly trace: (..._data) => undefined = NoOpLogFunction;
-```
-
-A log function that silently discards all arguments.
-
-### Parameters
-
-#### \_data
-
-...`unknown`[]
-
-### Returns
-
-`undefined`
-
-### Implementation of
-
-[`Logger`](#../interfaces/Logger).[`trace`](../interfaces/Logger.md#trace)
-
-***
-
-### warn()
-
-```ts
-readonly warn: (..._data) => undefined = NoOpLogFunction;
-```
-
-A log function that silently discards all arguments.
-
-### Parameters
-
-#### \_data
-
-...`unknown`[]
-
-### Returns
-
-`undefined`
-
-### Implementation of
-
-[`Logger`](#../interfaces/Logger).[`warn`](../interfaces/Logger.md#warn)
+| Property | Modifier | Type | Default value |
+| ------ | ------ | ------ | ------ |
+| <a id="debug"></a> `debug` | `readonly` | (...`_data`: `unknown`[]) => `undefined` | `NoOpLogFunction` |
+| <a id="error"></a> `error` | `readonly` | (...`_data`: `unknown`[]) => `undefined` | `NoOpLogFunction` |
+| <a id="info"></a> `info` | `readonly` | (...`_data`: `unknown`[]) => `undefined` | `NoOpLogFunction` |
+| <a id="log"></a> `log` | `readonly` | (...`_data`: `unknown`[]) => `undefined` | `NoOpLogFunction` |
+| <a id="trace"></a> `trace` | `readonly` | (...`_data`: `unknown`[]) => `undefined` | `NoOpLogFunction` |
+| <a id="warn"></a> `warn` | `readonly` | (...`_data`: `unknown`[]) => `undefined` | `NoOpLogFunction` |
 
 ### functions
 
@@ -759,16 +606,16 @@ A log function that silently discards all arguments.
 ***
 
 ```ts
-function NoOpLogFunction(..._data): undefined;
+function NoOpLogFunction(..._data: unknown[]): undefined;
 ```
 
 A log function that silently discards all arguments.
 
 ## Parameters
 
-### \_data
-
-...`unknown`[]
+| Parameter | Type |
+| ------ | ------ |
+| ...`_data` | `unknown`[] |
 
 ## Returns
 
@@ -781,18 +628,16 @@ A log function that silently discards all arguments.
 ***
 
 ```ts
-function getFunctionName(depth?): string;
+function getFunctionName(depth?: number): string;
 ```
 
 Retrieves the name of the calling function by inspecting the stack trace.
 
 ## Parameters
 
-### depth?
-
-`number` = `2`
-
-The stack frame depth to inspect (default: 2, the caller's caller).
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `depth` | `number` | `2` | The stack frame depth to inspect (default: 2, the caller's caller). |
 
 ## Returns
 
@@ -813,51 +658,14 @@ Interface to handle overlap between Winston &
 
 ## Properties
 
-### debug
-
-```ts
-debug: LogFunction;
-```
-
-***
-
-### error
-
-```ts
-error: LogFunction;
-```
-
-***
-
-### info
-
-```ts
-info: LogFunction;
-```
-
-***
-
-### log
-
-```ts
-log: LogFunction;
-```
-
-***
-
-### trace
-
-```ts
-trace: LogFunction;
-```
-
-***
-
-### warn
-
-```ts
-warn: LogFunction;
-```
+| Property | Type |
+| ------ | ------ |
+| <a id="debug"></a> `debug` | [`LogFunction`](#../type-aliases/LogFunction) |
+| <a id="error"></a> `error` | [`LogFunction`](#../type-aliases/LogFunction) |
+| <a id="info"></a> `info` | [`LogFunction`](#../type-aliases/LogFunction) |
+| <a id="log"></a> `log` | [`LogFunction`](#../type-aliases/LogFunction) |
+| <a id="trace"></a> `trace` | [`LogFunction`](#../type-aliases/LogFunction) |
+| <a id="warn"></a> `warn` | [`LogFunction`](#../type-aliases/LogFunction) |
 
 ### type-aliases
 
@@ -868,16 +676,16 @@ warn: LogFunction;
 ***
 
 ```ts
-type LogFunction = (...data) => void;
+type LogFunction = (...data: unknown[]) => void;
 ```
 
 A generic logging function that accepts any number of arguments.
 
 ## Parameters
 
-### data
-
-...`unknown`[]
+| Parameter | Type |
+| ------ | ------ |
+| ...`data` | `unknown`[] |
 
 ## Returns
 

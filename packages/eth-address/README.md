@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/eth-address**
@@ -23,13 +25,17 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Classes
 
-- [EthAddressWrapper](#classes/EthAddressWrapper)
+| Class | Description |
+| ------ | ------ |
+| [EthAddressWrapper](#classes/EthAddressWrapper) | Wrapper around an Ethereum address providing parsing, formatting, validation, and checksum support. |
 
 ## Functions
 
-- [isEthAddressWrapper](#functions/isEthAddressWrapper)
-- [ellipsize](#functions/ellipsize)
-- [padHex](#functions/padHex)
+| Function | Description |
+| ------ | ------ |
+| [isEthAddressWrapper](#functions/isEthAddressWrapper) | Type guard that checks if the given object is an instance of EthAddressWrapper. |
+| [ellipsize](#functions/ellipsize) | Truncates a string to show the first and last `length` characters separated by an ellipsis. |
+| [padHex](#functions/padHex) | - |
 
 ### classes
 
@@ -46,14 +52,14 @@ Wrapper around an Ethereum address providing parsing, formatting, validation, an
 ### Constructor
 
 ```ts
-protected new EthAddressWrapper(address): EthAddressWrapper;
+protected new EthAddressWrapper(address: bigint): EthAddressWrapper;
 ```
 
 ### Parameters
 
-#### address
-
-`bigint`
+| Parameter | Type |
+| ------ | ------ |
+| `address` | `bigint` |
 
 ### Returns
 
@@ -64,18 +70,15 @@ protected new EthAddressWrapper(address): EthAddressWrapper;
 ### fromString()
 
 ```ts
-static fromString(value?, base?): EthAddressWrapper | undefined;
+static fromString(value?: string, base?: number): EthAddressWrapper | undefined;
 ```
 
 ### Parameters
 
-#### value?
-
-`string`
-
-#### base?
-
-`number` = `16`
+| Parameter | Type | Default value |
+| ------ | ------ | ------ |
+| `value?` | `string` | `undefined` |
+| `base?` | `number` | `16` |
 
 ### Returns
 
@@ -86,18 +89,15 @@ static fromString(value?, base?): EthAddressWrapper | undefined;
 ### parse()
 
 ```ts
-static parse(value, base?): EthAddressWrapper | undefined;
+static parse(value: unknown, base?: number): EthAddressWrapper | undefined;
 ```
 
 ### Parameters
 
-#### value
-
-`unknown`
-
-#### base?
-
-`number`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
+| `base?` | `number` |
 
 ### Returns
 
@@ -108,14 +108,14 @@ static parse(value, base?): EthAddressWrapper | undefined;
 ### validate()
 
 ```ts
-static validate(address): boolean;
+static validate(address: string): boolean;
 ```
 
 ### Parameters
 
-#### address
-
-`string`
+| Parameter | Type |
+| ------ | ------ |
+| `address` | `string` |
 
 ### Returns
 
@@ -126,14 +126,14 @@ static validate(address): boolean;
 ### equals()
 
 ```ts
-equals(address?): boolean;
+equals(address?: string | EthAddressWrapper | null): boolean;
 ```
 
 ### Parameters
 
-#### address?
-
-`string` | `EthAddressWrapper` | `null`
+| Parameter | Type |
+| ------ | ------ |
+| `address?` | `string` \| `EthAddressWrapper` \| `null` |
 
 ### Returns
 
@@ -192,14 +192,14 @@ toLowerCaseString(): string;
 ### toShortString()
 
 ```ts
-toShortString(length?): string;
+toShortString(length?: number): string;
 ```
 
 ### Parameters
 
-#### length?
-
-`number` = `2`
+| Parameter | Type | Default value |
+| ------ | ------ | ------ |
+| `length` | `number` | `2` |
 
 ### Returns
 
@@ -210,18 +210,15 @@ toShortString(length?): string;
 ### toString()
 
 ```ts
-toString(checksum?, chainId?): string;
+toString(checksum?: boolean, chainId?: string): string;
 ```
 
 ### Parameters
 
-#### checksum?
-
-`boolean`
-
-#### chainId?
-
-`string`
+| Parameter | Type |
+| ------ | ------ |
+| `checksum?` | `boolean` |
+| `chainId?` | `string` |
 
 ### Returns
 
@@ -248,24 +245,17 @@ validate(): boolean;
 ***
 
 ```ts
-function ellipsize(value, length?): string;
+function ellipsize(value: string, length?: number): string;
 ```
 
 Truncates a string to show the first and last `length` characters separated by an ellipsis.
 
 ## Parameters
 
-### value
-
-`string`
-
-The string to ellipsize
-
-### length?
-
-`number` = `2`
-
-Number of characters to keep at each end (default 2)
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `value` | `string` | `undefined` | The string to ellipsize |
+| `length` | `number` | `2` | Number of characters to keep at each end (default 2) |
 
 ## Returns
 
@@ -280,18 +270,19 @@ The ellipsized string
 ***
 
 ```ts
-function isEthAddressWrapper(obj): obj is { type: string } & EthAddressWrapper;
+function isEthAddressWrapper(obj: {
+  type: string;
+}): obj is { type: string } & EthAddressWrapper;
 ```
 
 Type guard that checks if the given object is an instance of EthAddressWrapper.
 
 ## Parameters
 
-### obj
-
-### type
-
-`string`
+| Parameter | Type |
+| ------ | ------ |
+| `obj` | \{ `type`: `string`; \} |
+| `obj.type` | `string` |
 
 ## Returns
 
@@ -304,18 +295,15 @@ Type guard that checks if the given object is an instance of EthAddressWrapper.
 ***
 
 ```ts
-function padHex(hex, byteCount?): string;
+function padHex(hex: string, byteCount?: number): string;
 ```
 
 ## Parameters
 
-### hex
-
-`string`
-
-### byteCount?
-
-`number` = `0`
+| Parameter | Type | Default value |
+| ------ | ------ | ------ |
+| `hex` | `string` | `undefined` |
+| `byteCount` | `number` | `0` |
 
 ## Returns
 

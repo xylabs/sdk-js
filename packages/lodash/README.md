@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/lodash**
@@ -23,7 +25,9 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Variables
 
-- [default](#variables/default)
+| Variable | Description |
+| ------ | ------ |
+| [default](#variables/default) | - |
 
 ### variables
 
@@ -34,7 +38,8 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 ***
 
 ```ts
-default: object;
+default: {
+};
 ```
 
 

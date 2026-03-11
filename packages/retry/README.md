@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/retry**
@@ -23,12 +25,16 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Interfaces
 
-- [RetryConfig](#interfaces/RetryConfig)
-- [RetryConfigWithComplete](#interfaces/RetryConfigWithComplete)
+| Interface | Description |
+| ------ | ------ |
+| [RetryConfig](#interfaces/RetryConfig) | Configuration for retry behavior. |
+| [RetryConfigWithComplete](#interfaces/RetryConfigWithComplete) | Retry configuration extended with a custom completion check. |
 
 ## Functions
 
-- [retry](#functions/retry)
+| Function | Description |
+| ------ | ------ |
+| [retry](#functions/retry) | Retries an async function with exponential backoff until it completes or retries are exhausted. |
 
 ### functions
 
@@ -39,30 +45,23 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 ***
 
 ```ts
-function retry<T>(func, config?): Promise<T | undefined>;
+function retry<T>(func: () => Promisable<T | undefined>, config?: RetryConfigWithComplete<T>): Promise<T | undefined>;
 ```
 
 Retries an async function with exponential backoff until it completes or retries are exhausted.
 
 ## Type Parameters
 
-### T
-
-`T` = `unknown`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` | `unknown` |
 
 ## Parameters
 
-### func
-
-() => `Promisable`\<`T` \| `undefined`\>
-
-The function to retry.
-
-### config?
-
-[`RetryConfigWithComplete`](#../interfaces/RetryConfigWithComplete)\<`T`\>
-
-Optional retry configuration including backoff, interval, retries, and completion check.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `func` | () => `Promisable`\<`T` \| `undefined`\> | The function to retry. |
+| `config?` | [`RetryConfigWithComplete`](#../interfaces/RetryConfigWithComplete)\<`T`\> | Optional retry configuration including backoff, interval, retries, and completion check. |
 
 ## Returns
 
@@ -86,33 +85,11 @@ Configuration for retry behavior.
 
 ## Properties
 
-### backoff?
-
-```ts
-optional backoff: number;
-```
-
-Multiplier applied to the interval after each retry. Defaults to 2.
-
-***
-
-### interval?
-
-```ts
-optional interval: number;
-```
-
-Initial delay in milliseconds between retries. Defaults to 100.
-
-***
-
-### retries?
-
-```ts
-optional retries: number;
-```
-
-Maximum number of retry attempts. Defaults to 0 (no retries).
+| Property | Type | Description |
+| ------ | ------ | ------ |
+| <a id="backoff"></a> `backoff?` | `number` | Multiplier applied to the interval after each retry. Defaults to 2. |
+| <a id="interval"></a> `interval?` | `number` | Initial delay in milliseconds between retries. Defaults to 100. |
+| <a id="retries"></a> `retries?` | `number` | Maximum number of retry attempts. Defaults to 0 (no retries). |
 
   ### <a id="RetryConfigWithComplete"></a>RetryConfigWithComplete
 
@@ -128,71 +105,18 @@ Retry configuration extended with a custom completion check.
 
 ## Type Parameters
 
-### T
-
-`T` = `unknown`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` | `unknown` |
 
 ## Properties
 
-### backoff?
-
-```ts
-optional backoff: number;
-```
-
-Multiplier applied to the interval after each retry. Defaults to 2.
-
-### Inherited from
-
-[`RetryConfig`](#RetryConfig).[`backoff`](RetryConfig.md#backoff)
-
-***
-
-### interval?
-
-```ts
-optional interval: number;
-```
-
-Initial delay in milliseconds between retries. Defaults to 100.
-
-### Inherited from
-
-[`RetryConfig`](#RetryConfig).[`interval`](RetryConfig.md#interval)
-
-***
-
-### retries?
-
-```ts
-optional retries: number;
-```
-
-Maximum number of retry attempts. Defaults to 0 (no retries).
-
-### Inherited from
-
-[`RetryConfig`](#RetryConfig).[`retries`](RetryConfig.md#retries)
-
-***
-
-### complete()?
-
-```ts
-optional complete: (result?) => boolean;
-```
-
-Determines whether the result is considered complete. Defaults to checking for a defined value.
-
-### Parameters
-
-#### result?
-
-`T`
-
-### Returns
-
-`boolean`
+| Property | Type | Description | Inherited from |
+| ------ | ------ | ------ | ------ |
+| <a id="backoff"></a> `backoff?` | `number` | Multiplier applied to the interval after each retry. Defaults to 2. | [`RetryConfig`](#RetryConfig).[`backoff`](RetryConfig.md#backoff) |
+| <a id="interval"></a> `interval?` | `number` | Initial delay in milliseconds between retries. Defaults to 100. | [`RetryConfig`](#RetryConfig).[`interval`](RetryConfig.md#interval) |
+| <a id="retries"></a> `retries?` | `number` | Maximum number of retry attempts. Defaults to 0 (no retries). | [`RetryConfig`](#RetryConfig).[`retries`](RetryConfig.md#retries) |
+| <a id="complete"></a> `complete?` | (`result?`: `T`) => `boolean` | Determines whether the result is considered complete. Defaults to checking for a defined value. | - |
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

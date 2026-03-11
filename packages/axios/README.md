@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/axios**
@@ -23,16 +25,22 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Classes
 
-- [~~AxiosJson~~](#classes/AxiosJson)
+| Class | Description |
+| ------ | ------ |
+| [~~AxiosJson~~](#classes/AxiosJson) | - |
 
 ## Variables
 
-- [axiosJson](#variables/axiosJson)
-- [~~axios~~](#variables/axios)
+| Variable | Description |
+| ------ | ------ |
+| [axiosJson](#variables/axiosJson) | - |
+| [~~axios~~](#variables/axios) | - |
 
 ## Functions
 
-- [axiosJsonConfig](#functions/axiosJsonConfig)
+| Function | Description |
+| ------ | ------ |
+| [axiosJsonConfig](#functions/axiosJsonConfig) | Creates an Axios config preconfigured for JSON requests with optional gzip compression. Request bodies exceeding `compressLength` (default 1024 bytes) are automatically gzip-compressed. |
 
 ### classes
 
@@ -55,14 +63,14 @@ use axiosJsonConfig instead
 ### Constructor
 
 ```ts
-new AxiosJson(config?): AxiosJson;
+new AxiosJson(config?: RawAxiosJsonRequestConfig): AxiosJson;
 ```
 
 ### Parameters
 
-#### config?
-
-`RawAxiosJsonRequestConfig`
+| Parameter | Type |
+| ------ | ------ |
+| `config?` | `RawAxiosJsonRequestConfig` |
 
 ### Returns
 
@@ -79,14 +87,14 @@ Axios.constructor
 ### ~~axiosConfig()~~
 
 ```ts
-static axiosConfig(config?): RawAxiosJsonRequestConfig;
+static axiosConfig(config?: RawAxiosJsonRequestConfig): RawAxiosJsonRequestConfig;
 ```
 
 ### Parameters
 
-#### config?
-
-`RawAxiosJsonRequestConfig` = `{}`
+| Parameter | Type |
+| ------ | ------ |
+| `config` | `RawAxiosJsonRequestConfig` |
 
 ### Returns
 
@@ -97,14 +105,14 @@ static axiosConfig(config?): RawAxiosJsonRequestConfig;
 ### ~~create()~~
 
 ```ts
-static create(config?): Axios;
+static create(config?: RawAxiosJsonRequestConfig): Axios;
 ```
 
 ### Parameters
 
-#### config?
-
-`RawAxiosJsonRequestConfig`
+| Parameter | Type |
+| ------ | ------ |
+| `config?` | `RawAxiosJsonRequestConfig` |
 
 ### Returns
 
@@ -119,7 +127,7 @@ static create(config?): Axios;
 ***
 
 ```ts
-function axiosJsonConfig(config?): RawAxiosJsonRequestConfig;
+function axiosJsonConfig(config?: RawAxiosJsonRequestConfig): RawAxiosJsonRequestConfig;
 ```
 
 Creates an Axios config preconfigured for JSON requests with optional gzip compression.
@@ -127,11 +135,9 @@ Request bodies exceeding `compressLength` (default 1024 bytes) are automatically
 
 ## Parameters
 
-### config?
-
-`RawAxiosJsonRequestConfig` = `{}`
-
-Base Axios config, optionally including a `compressLength` threshold
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `config` | `RawAxiosJsonRequestConfig` | Base Axios config, optionally including a `compressLength` threshold |
 
 ## Returns
 

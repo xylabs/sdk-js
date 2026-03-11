@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/set**
@@ -23,9 +25,11 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Functions
 
-- [difference](#functions/difference)
-- [intersection](#functions/intersection)
-- [union](#functions/union)
+| Function | Description |
+| ------ | ------ |
+| [difference](#functions/difference) | Returns a new set containing elements in `a` that are not in `b`. |
+| [intersection](#functions/intersection) | Returns a new set containing only elements present in both `a` and `b`. |
+| [union](#functions/union) | Returns a new set containing all elements from both `a` and `b`. |
 
 ### functions
 
@@ -36,30 +40,23 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 ***
 
 ```ts
-function difference<TKey>(a, b): Set<TKey>;
+function difference<TKey>(a: Set<TKey>, b: Set<TKey>): Set<TKey>;
 ```
 
 Returns a new set containing elements in `a` that are not in `b`.
 
 ## Type Parameters
 
-### TKey
-
-`TKey`
+| Type Parameter |
+| ------ |
+| `TKey` |
 
 ## Parameters
 
-### a
-
-`Set`\<`TKey`\>
-
-The source set
-
-### b
-
-`Set`\<`TKey`\>
-
-The set of elements to exclude
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `a` | `Set`\<`TKey`\> | The source set |
+| `b` | `Set`\<`TKey`\> | The set of elements to exclude |
 
 ## Returns
 
@@ -74,30 +71,23 @@ A new set representing the difference of `a` and `b`
 ***
 
 ```ts
-function intersection<TKey>(a, b): Set<TKey>;
+function intersection<TKey>(a: Set<TKey>, b: Set<TKey>): Set<TKey>;
 ```
 
 Returns a new set containing only elements present in both `a` and `b`.
 
 ## Type Parameters
 
-### TKey
-
-`TKey`
+| Type Parameter |
+| ------ |
+| `TKey` |
 
 ## Parameters
 
-### a
-
-`Set`\<`TKey`\>
-
-The first set
-
-### b
-
-`Set`\<`TKey`\>
-
-The second set
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `a` | `Set`\<`TKey`\> | The first set |
+| `b` | `Set`\<`TKey`\> | The second set |
 
 ## Returns
 
@@ -112,30 +102,23 @@ A new set representing the intersection of `a` and `b`
 ***
 
 ```ts
-function union<TKey>(a, b): Set<TKey>;
+function union<TKey>(a: Set<TKey>, b: Set<TKey>): Set<TKey>;
 ```
 
 Returns a new set containing all elements from both `a` and `b`.
 
 ## Type Parameters
 
-### TKey
-
-`TKey`
+| Type Parameter |
+| ------ |
+| `TKey` |
 
 ## Parameters
 
-### a
-
-`Set`\<`TKey`\>
-
-The first set
-
-### b
-
-`Set`\<`TKey`\>
-
-The second set
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `a` | `Set`\<`TKey`\> | The first set |
+| `b` | `Set`\<`TKey`\> | The second set |
 
 ## Returns
 

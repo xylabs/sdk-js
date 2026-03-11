@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/url**
@@ -23,9 +25,11 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Modules
 
-- [index-browser](#index-browser/README)
-- [index-neutral](#index-neutral/README)
-- [index-node](#index-node/README)
+| Module | Description |
+| ------ | ------ |
+| [index-browser](#index-browser/README) | - |
+| [index-neutral](#index-neutral/README) | - |
+| [index-node](#index-node/README) | - |
 
 ### index-browser
 
@@ -38,18 +42,16 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 ***
 
 ```ts
-function isLocalhost(hostname): boolean;
+function isLocalhost(hostname: string): boolean;
 ```
 
 Checks whether a hostname refers to the local machine (localhost, 127.0.0.1, ::1, or *.localhost).
 
 ## Parameters
 
-### hostname
-
-`string`
-
-The hostname to check
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `hostname` | `string` | The hostname to check |
 
 ## Returns
 
@@ -66,20 +68,17 @@ The hostname to check
 ***
 
 ```ts
-const URL: (url, base?) => URL;
+const URL: (url: string | URL, base?: string | URL) => URL;
 ```
 
 Browser-specific URL class, aliased from the global `URL`.
 
 ## Parameters
 
-### url
-
-`string` | `URL`
-
-### base?
-
-`string` | `URL`
+| Parameter | Type |
+| ------ | ------ |
+| `url` | `string` \| `URL` |
+| `base?` | `string` \| `URL` |
 
 ## Returns
 
@@ -96,20 +95,17 @@ Browser-specific URL class, aliased from the global `URL`.
 ***
 
 ```ts
-const URL: (url, base?) => URL;
+const URL: (url: string | URL, base?: string | URL) => URL;
 ```
 
 Platform-neutral URL class, aliased from the global `URL`.
 
 ## Parameters
 
-### url
-
-`string` | `URL`
-
-### base?
-
-`string` | `URL`
+| Parameter | Type |
+| ------ | ------ |
+| `url` | `string` \| `URL` |
+| `base?` | `string` \| `URL` |
 
 ## Returns
 
@@ -126,20 +122,17 @@ Platform-neutral URL class, aliased from the global `URL`.
 ***
 
 ```ts
-const URL: (url, base?) => URL;
+const URL: (url: string | URL, base?: string | URL) => URL;
 ```
 
 Node.js-specific URL class, imported from the `node:url` module.
 
 ## Parameters
 
-### url
-
-`string` | `URL`
-
-### base?
-
-`string` | `URL`
+| Parameter | Type |
+| ------ | ------ |
+| `url` | `string` \| `URL` |
+| `base?` | `string` \| `URL` |
 
 ## Returns
 

@@ -48,6 +48,20 @@ export async function generateTypeDoc(packageLocation: string, entryPoints: stri
       excludeInternal: true,
       excludePrivate: true,
       sort: ['source-order'],
+      expandObjects: true,
+      expandParameters: true,
+      parametersFormat: 'table',
+      propertiesFormat: 'table',
+      enumMembersFormat: 'table',
+      typeDeclarationFormat: 'table',
+      indexFormat: 'table',
+      tableColumnSettings: {
+        hideDefaults: false,
+        hideInherited: false,
+        hideModifiers: false,
+        hideOverrides: false,
+        hideSources: true,
+      },
     }
 
     // Create temporary typedoc.json file

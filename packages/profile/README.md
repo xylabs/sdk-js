@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/profile**
@@ -23,13 +25,17 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Type Aliases
 
-- [Profiler](#type-aliases/Profiler)
+| Type Alias | Description |
+| ------ | ------ |
+| [Profiler](#type-aliases/Profiler) | A record of named timing entries, where each key maps to an array of timestamps. |
 
 ## Functions
 
-- [createProfiler](#functions/createProfiler)
-- [profile](#functions/profile)
-- [profileReport](#functions/profileReport)
+| Function | Description |
+| ------ | ------ |
+| [createProfiler](#functions/createProfiler) | Creates a new empty profiler instance. |
+| [profile](#functions/profile) | Records a timestamp for the given profile name. |
+| [profileReport](#functions/profileReport) | Generates a report of elapsed times for each profiled entry. |
 
 ### functions
 
@@ -56,24 +62,17 @@ Creates a new empty profiler instance.
 ***
 
 ```ts
-function profile(profiler, name): void;
+function profile(profiler: Profiler, name: string): void;
 ```
 
 Records a timestamp for the given profile name.
 
 ## Parameters
 
-### profiler
-
-[`Profiler`](#../type-aliases/Profiler)
-
-The profiler instance to record into.
-
-### name
-
-`string`
-
-The name of the timing entry.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `profiler` | [`Profiler`](#../type-aliases/Profiler) | The profiler instance to record into. |
+| `name` | `string` | The name of the timing entry. |
 
 ## Returns
 
@@ -86,18 +85,16 @@ The name of the timing entry.
 ***
 
 ```ts
-function profileReport(profiler): Record<string, number>;
+function profileReport(profiler: Profiler): Record<string, number>;
 ```
 
 Generates a report of elapsed times for each profiled entry.
 
 ## Parameters
 
-### profiler
-
-[`Profiler`](#../type-aliases/Profiler)
-
-The profiler instance to report on.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `profiler` | [`Profiler`](#../type-aliases/Profiler) | The profiler instance to report on. |
 
 ## Returns
 

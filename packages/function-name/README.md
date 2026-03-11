@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/function-name**
@@ -23,7 +25,9 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Functions
 
-- [functionName](#functions/functionName)
+| Function | Description |
+| ------ | ------ |
+| [functionName](#functions/functionName) | Returns the name of the calling function by inspecting the stack trace. |
 
 ### functions
 
@@ -34,18 +38,16 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 ***
 
 ```ts
-function functionName(depth?): string;
+function functionName(depth?: number): string;
 ```
 
 Returns the name of the calling function by inspecting the stack trace.
 
 ## Parameters
 
-### depth?
-
-`number` = `2`
-
-The stack frame depth to read the function name from (default: 2).
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `depth` | `number` | `2` | The stack frame depth to read the function name from (default: 2). |
 
 ## Returns
 

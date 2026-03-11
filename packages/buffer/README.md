@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/buffer**
@@ -23,8 +25,10 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Modules
 
-- [index-browser](#index-browser/README)
-- [index-node](#index-node/README)
+| Module | Description |
+| ------ | ------ |
+| [index-browser](#index-browser/README) | - |
+| [index-node](#index-node/README) | - |
 
 ### index-browser
 

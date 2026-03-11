@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/delay**
@@ -23,7 +25,9 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Functions
 
-- [delay](#functions/delay)
+| Function | Description |
+| ------ | ------ |
+| [delay](#functions/delay) | Returns a promise that resolves after the specified number of milliseconds. |
 
 ### functions
 
@@ -34,18 +38,16 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 ***
 
 ```ts
-function delay(ms): Promise<unknown>;
+function delay(ms: number): Promise<unknown>;
 ```
 
 Returns a promise that resolves after the specified number of milliseconds.
 
 ## Parameters
 
-### ms
-
-`number`
-
-The number of milliseconds to delay.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `ms` | `number` | The number of milliseconds to delay. |
 
 ## Returns
 

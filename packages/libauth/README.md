@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/libauth**
@@ -23,7 +25,9 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Variables
 
-- [~~libauth~~](#variables/libauth)
+| Variable | Description |
+| ------ | ------ |
+| [~~libauth~~](#variables/libauth) | - |
 
 ### variables
 

@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/exists**
@@ -23,7 +25,9 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Functions
 
-- [exists](#functions/exists)
+| Function | Description |
+| ------ | ------ |
+| [exists](#functions/exists) | Used to type narrow an object which is possibly null or undefined. Works well with functional Array methods. For example: |
 
 ### functions
 
@@ -34,7 +38,7 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 ***
 
 ```ts
-function exists<T>(x?): x is NonNullable<T>;
+function exists<T>(x?: T | null): x is NonNullable<T>;
 ```
 
 Used to type narrow an object which is possibly null or undefined. Works well
@@ -42,17 +46,15 @@ with functional Array methods. For example:
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Parameters
 
-### x?
-
-The object which is potentially undefined or null
-
-`T` | `null`
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `x?` | `T` \| `null` | The object which is potentially undefined or null |
 
 ## Returns
 

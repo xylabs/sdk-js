@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/array**
@@ -23,15 +25,17 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Functions
 
-- [containsAll](#functions/containsAll)
-- [distinct](#functions/distinct)
-- [filterAs](#functions/filterAs)
-- [filterAsync](#functions/filterAsync)
-- [findAs](#functions/findAs)
-- [findLastAs](#functions/findLastAs)
-- [flatten](#functions/flatten)
-- [uniq](#functions/uniq)
-- [uniqBy](#functions/uniqBy)
+| Function | Description |
+| ------ | ------ |
+| [containsAll](#functions/containsAll) | Checks whether the source array contains every element in the target array. |
+| [distinct](#functions/distinct) | Array filter callback that removes duplicate values, with correct NaN handling. Use with `array.filter(distinct)`. |
+| [filterAs](#functions/filterAs) | Maps each element using the predicate and filters out nullish results. |
+| [filterAsync](#functions/filterAsync) | Returns the elements of an array that meet the condition specified in a callback function. |
+| [findAs](#functions/findAs) | Maps each element using the predicate and returns the first non-nullish result. |
+| [findLastAs](#functions/findLastAs) | Maps each element using the predicate and returns the last non-nullish result. |
+| [flatten](#functions/flatten) | Concatenates two values or arrays into a single flat array, filtering out nullish entries. |
+| [uniq](#functions/uniq) | Returns a new array with duplicate values removed. |
+| [uniqBy](#functions/uniqBy) | Returns a new array with duplicates removed, using a key function for comparison. |
 
 ### functions
 
@@ -42,30 +46,23 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 ***
 
 ```ts
-function containsAll<T>(source, target): boolean;
+function containsAll<T>(source: T[], target: T[]): boolean;
 ```
 
 Checks whether the source array contains every element in the target array.
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Parameters
 
-### source
-
-`T`[]
-
-The array to search within
-
-### target
-
-`T`[]
-
-The elements that must all be present
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `source` | `T`[] | The array to search within |
+| `target` | `T`[] | The elements that must all be present |
 
 ## Returns
 
@@ -81,9 +78,9 @@ True if every target element exists in source
 
 ```ts
 function distinct<T>(
-   value, 
-   index, 
-   array): boolean;
+   value: T, 
+   index: number, 
+   array: T[]): boolean;
 ```
 
 Array filter callback that removes duplicate values, with correct NaN handling.
@@ -91,23 +88,17 @@ Use with `array.filter(distinct)`.
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Parameters
 
-### value
-
-`T`
-
-### index
-
-`number`
-
-### array
-
-`T`[]
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
+| `index` | `number` |
+| `array` | `T`[] |
 
 ## Returns
 
@@ -120,34 +111,24 @@ Use with `array.filter(distinct)`.
 ***
 
 ```ts
-function filterAs<In, Out>(x, predicate): NonNullable<Out>[];
+function filterAs<In, Out>(x: In[], predicate: (a: In) => Out): NonNullable<Out>[];
 ```
 
 Maps each element using the predicate and filters out nullish results.
 
 ## Type Parameters
 
-### In
-
-`In`
-
-### Out
-
-`Out`
+| Type Parameter |
+| ------ |
+| `In` |
+| `Out` |
 
 ## Parameters
 
-### x
-
-`In`[]
-
-The input array
-
-### predicate
-
-(`a`) => `Out`
-
-Transform function applied to each element
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `x` | `In`[] | The input array |
+| `predicate` | (`a`: `In`) => `Out` | Transform function applied to each element |
 
 ## Returns
 
@@ -162,30 +143,23 @@ Array of non-nullish transformed values
 ***
 
 ```ts
-function filterAsync<T>(array, predicate): Promise<T[]>;
+function filterAsync<T>(array: T[], predicate: (value: T, index: number, array: T[]) => Promise<boolean>): Promise<T[]>;
 ```
 
 Returns the elements of an array that meet the condition specified in a callback function.
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Parameters
 
-### array
-
-`T`[]
-
-The array to filter.
-
-### predicate
-
-(`value`, `index`, `array`) => `Promise`\<`boolean`\>
-
-A function that accepts up to three arguments. The filter method calls the predicate function one time for each element in the array.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `array` | `T`[] | The array to filter. |
+| `predicate` | (`value`: `T`, `index`: `number`, `array`: `T`[]) => `Promise`\<`boolean`\> | A function that accepts up to three arguments. The filter method calls the predicate function one time for each element in the array. |
 
 ## Returns
 
@@ -200,34 +174,24 @@ The elements of an array that meet the condition specified in a callback functio
 ***
 
 ```ts
-function findAs<In, Out>(x, predicate): NonNullable<Out> | undefined;
+function findAs<In, Out>(x: In[], predicate: (a: In) => Out): NonNullable<Out> | undefined;
 ```
 
 Maps each element using the predicate and returns the first non-nullish result.
 
 ## Type Parameters
 
-### In
-
-`In`
-
-### Out
-
-`Out`
+| Type Parameter |
+| ------ |
+| `In` |
+| `Out` |
 
 ## Parameters
 
-### x
-
-`In`[]
-
-The input array
-
-### predicate
-
-(`a`) => `Out`
-
-Transform function applied to each element
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `x` | `In`[] | The input array |
+| `predicate` | (`a`: `In`) => `Out` | Transform function applied to each element |
 
 ## Returns
 
@@ -242,34 +206,24 @@ The first non-nullish transformed value, or undefined
 ***
 
 ```ts
-function findLastAs<In, Out>(x, predicate): NonNullable<Out> | undefined;
+function findLastAs<In, Out>(x: In[], predicate: (a: In) => Out): NonNullable<Out> | undefined;
 ```
 
 Maps each element using the predicate and returns the last non-nullish result.
 
 ## Type Parameters
 
-### In
-
-`In`
-
-### Out
-
-`Out`
+| Type Parameter |
+| ------ |
+| `In` |
+| `Out` |
 
 ## Parameters
 
-### x
-
-`In`[]
-
-The input array
-
-### predicate
-
-(`a`) => `Out`
-
-Transform function applied to each element
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `x` | `In`[] | The input array |
+| `predicate` | (`a`: `In`) => `Out` | Transform function applied to each element |
 
 ## Returns
 
@@ -284,30 +238,23 @@ The last non-nullish transformed value, or undefined
 ***
 
 ```ts
-function flatten<T>(a?, b?): T[];
+function flatten<T>(a?: T | ConcatArray<T>, b?: T | ConcatArray<T>): T[];
 ```
 
 Concatenates two values or arrays into a single flat array, filtering out nullish entries.
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Parameters
 
-### a?
-
-First value or array
-
-`T` | `ConcatArray`\<`T`\>
-
-### b?
-
-Second value or array
-
-`T` | `ConcatArray`\<`T`\>
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `a?` | `T` \| `ConcatArray`\<`T`\> | First value or array |
+| `b?` | `T` \| `ConcatArray`\<`T`\> | Second value or array |
 
 ## Returns
 
@@ -322,24 +269,22 @@ A flat array of non-nullish elements
 ***
 
 ```ts
-function uniq<T>(arr): T[];
+function uniq<T>(arr: T[]): T[];
 ```
 
 Returns a new array with duplicate values removed.
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Parameters
 
-### arr
-
-`T`[]
-
-The input array
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `arr` | `T`[] | The input array |
 
 ## Returns
 
@@ -354,34 +299,24 @@ A deduplicated array
 ***
 
 ```ts
-function uniqBy<T, I>(arr, iteratee): T[];
+function uniqBy<T, I>(arr: T[], iteratee: (item: T) => I): T[];
 ```
 
 Returns a new array with duplicates removed, using a key function for comparison.
 
 ## Type Parameters
 
-### T
-
-`T`
-
-### I
-
-`I`
+| Type Parameter |
+| ------ |
+| `T` |
+| `I` |
 
 ## Parameters
 
-### arr
-
-`T`[]
-
-The input array
-
-### iteratee
-
-(`item`) => `I`
-
-Function that returns the key to compare by
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `arr` | `T`[] | The input array |
+| `iteratee` | (`item`: `T`) => `I` | Function that returns the key to compare by |
 
 ## Returns
 

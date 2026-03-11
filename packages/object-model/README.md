@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/object-model**
@@ -23,19 +25,23 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Interfaces
 
-- [TypeCheckConfig](#interfaces/TypeCheckConfig)
-- [TypeCheckRequiredConfig](#interfaces/TypeCheckRequiredConfig)
-- [TypeCheckOptionalConfig](#interfaces/TypeCheckOptionalConfig)
+| Interface | Description |
+| ------ | ------ |
+| [TypeCheckConfig](#interfaces/TypeCheckConfig) | Configuration options for type check functions, with optional logging. |
+| [TypeCheckRequiredConfig](#interfaces/TypeCheckRequiredConfig) | Type check configuration that marks the value as required, causing assertions on failure. |
+| [TypeCheckOptionalConfig](#interfaces/TypeCheckOptionalConfig) | Type check configuration that marks the value as optional, returning undefined on failure. |
 
 ## Type Aliases
 
-- [AnyObject](#type-aliases/AnyObject)
-- [AsTypeFunction](#type-aliases/AsTypeFunction)
-- [AsOptionalTypeFunction](#type-aliases/AsOptionalTypeFunction)
-- [Compare](#type-aliases/Compare)
-- [EmptyObject](#type-aliases/EmptyObject)
-- [StringOrAlertFunction](#type-aliases/StringOrAlertFunction)
-- [TypeCheck](#type-aliases/TypeCheck)
+| Type Alias | Description |
+| ------ | ------ |
+| [AnyObject](#type-aliases/AnyObject) | Any object, which means that it does not enforce the set of fields that it has. Extending from AnyObject will result in a type that includes the universal set of field names |
+| [AsTypeFunction](#type-aliases/AsTypeFunction) | A type-narrowing function that attempts to cast a value to T, with optional assertion and configuration overloads. |
+| [AsOptionalTypeFunction](#type-aliases/AsOptionalTypeFunction) | A simplified type-narrowing function that returns T or undefined, without assertion support. |
+| [Compare](#type-aliases/Compare) | A comparator function that returns a negative number if a < b, zero if a == b, and a positive number if a > b. |
+| [EmptyObject](#type-aliases/EmptyObject) | An empty object, which means that it does enforce the set of field names, defaulting to an empty set until extended from, which then adds only those additional fields |
+| [StringOrAlertFunction](#type-aliases/StringOrAlertFunction) | A string message or function that produces an assertion error message for a failed type check. |
+| [TypeCheck](#type-aliases/TypeCheck) | A type guard function that checks whether a value conforms to type T, with optional configuration. |
 
 ### interfaces
 
@@ -54,11 +60,9 @@ Configuration options for type check functions, with optional logging.
 
 ## Properties
 
-### log?
-
-```ts
-optional log: boolean | Logger;
-```
+| Property | Type |
+| ------ | ------ |
+| <a id="log"></a> `log?` | `boolean` \| `Logger` |
 
   ### <a id="TypeCheckOptionalConfig"></a>TypeCheckOptionalConfig
 
@@ -74,23 +78,10 @@ Type check configuration that marks the value as optional, returning undefined o
 
 ## Properties
 
-### log?
-
-```ts
-optional log: boolean | Logger;
-```
-
-### Inherited from
-
-[`TypeCheckConfig`](#TypeCheckConfig).[`log`](TypeCheckConfig.md#log)
-
-***
-
-### required
-
-```ts
-required: false;
-```
+| Property | Type | Inherited from |
+| ------ | ------ | ------ |
+| <a id="log"></a> `log?` | `boolean` \| `Logger` | [`TypeCheckConfig`](#TypeCheckConfig).[`log`](TypeCheckConfig.md#log) |
+| <a id="required"></a> `required` | `false` | - |
 
   ### <a id="TypeCheckRequiredConfig"></a>TypeCheckRequiredConfig
 
@@ -106,23 +97,10 @@ Type check configuration that marks the value as required, causing assertions on
 
 ## Properties
 
-### log?
-
-```ts
-optional log: boolean | Logger;
-```
-
-### Inherited from
-
-[`TypeCheckConfig`](#TypeCheckConfig).[`log`](TypeCheckConfig.md#log)
-
-***
-
-### required
-
-```ts
-required: true;
-```
+| Property | Type | Inherited from |
+| ------ | ------ | ------ |
+| <a id="log"></a> `log?` | `boolean` \| `Logger` | [`TypeCheckConfig`](#TypeCheckConfig).[`log`](TypeCheckConfig.md#log) |
+| <a id="required"></a> `required` | `true` | - |
 
 ### type-aliases
 
@@ -146,28 +124,28 @@ will result in a type that includes the universal set of field names
 ***
 
 ```ts
-type AsOptionalTypeFunction<T> = <TType>(value) => TType | undefined;
+type AsOptionalTypeFunction<T> = <TType>(value: AnyNonPromise) => TType | undefined;
 ```
 
 A simplified type-narrowing function that returns T or undefined, without assertion support.
 
 ## Type Parameters
 
-### T
-
-`T` *extends* `AnyNonPromise` = `AnyNonPromise`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` *extends* `AnyNonPromise` | `AnyNonPromise` |
 
 ## Type Parameters
 
-### TType
-
-`TType` *extends* `AnyNonPromise`
+| Type Parameter |
+| ------ |
+| `TType` *extends* `AnyNonPromise` |
 
 ## Parameters
 
-### value
-
-`AnyNonPromise`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `AnyNonPromise` |
 
 ## Returns
 
@@ -181,12 +159,16 @@ A simplified type-narrowing function that returns T or undefined, without assert
 
 ```ts
 type AsTypeFunction<T> = {
-<TType>  (value): TType | undefined;
-<TType>  (value, config): TType;
-<TType>  (value, config): TType | undefined;
-<TType>  (value, assert): TType | undefined;
-<TType>  (value, assert, config): TType;
-<TType>  (value, assert, config): TType | undefined;
+<TType>  (value: AnyNonPromise): TType | undefined;
+<TType>  (value: AnyNonPromise, config: TypeCheckRequiredConfig): TType;
+<TType>  (value: AnyNonPromise, config: 
+  | TypeCheckConfig
+  | TypeCheckOptionalConfig): TType | undefined;
+<TType>  (value: AnyNonPromise, assert: StringOrAlertFunction<TType>): TType | undefined;
+<TType>  (value: AnyNonPromise, assert: StringOrAlertFunction<TType>, config: TypeCheckRequiredConfig): TType;
+<TType>  (value: AnyNonPromise, assert: StringOrAlertFunction<TType>, config: 
+  | TypeCheckConfig
+  | TypeCheckOptionalConfig): TType | undefined;
 };
 ```
 
@@ -194,27 +176,27 @@ A type-narrowing function that attempts to cast a value to T, with optional asse
 
 ## Type Parameters
 
-### T
-
-`T` *extends* `AnyNonPromise` = `AnyNonPromise`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` *extends* `AnyNonPromise` | `AnyNonPromise` |
 
 ## Call Signature
 
 ```ts
-<TType>(value): TType | undefined;
+<TType>(value: AnyNonPromise): TType | undefined;
 ```
 
 ### Type Parameters
 
-### TType
-
-`TType` *extends* `AnyNonPromise`
+| Type Parameter |
+| ------ |
+| `TType` *extends* `AnyNonPromise` |
 
 ### Parameters
 
-### value
-
-`AnyNonPromise`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `AnyNonPromise` |
 
 ### Returns
 
@@ -223,24 +205,21 @@ A type-narrowing function that attempts to cast a value to T, with optional asse
 ## Call Signature
 
 ```ts
-<TType>(value, config): TType;
+<TType>(value: AnyNonPromise, config: TypeCheckRequiredConfig): TType;
 ```
 
 ### Type Parameters
 
-### TType
-
-`TType` *extends* `AnyNonPromise`
+| Type Parameter |
+| ------ |
+| `TType` *extends* `AnyNonPromise` |
 
 ### Parameters
 
-### value
-
-`AnyNonPromise`
-
-### config
-
-[`TypeCheckRequiredConfig`](#../interfaces/TypeCheckRequiredConfig)
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `AnyNonPromise` |
+| `config` | [`TypeCheckRequiredConfig`](#../interfaces/TypeCheckRequiredConfig) |
 
 ### Returns
 
@@ -249,24 +228,23 @@ A type-narrowing function that attempts to cast a value to T, with optional asse
 ## Call Signature
 
 ```ts
-<TType>(value, config): TType | undefined;
+<TType>(value: AnyNonPromise, config: 
+  | TypeCheckConfig
+  | TypeCheckOptionalConfig): TType | undefined;
 ```
 
 ### Type Parameters
 
-### TType
-
-`TType` *extends* `AnyNonPromise`
+| Type Parameter |
+| ------ |
+| `TType` *extends* `AnyNonPromise` |
 
 ### Parameters
 
-### value
-
-`AnyNonPromise`
-
-### config
-
-[`TypeCheckConfig`](#../interfaces/TypeCheckConfig) | [`TypeCheckOptionalConfig`](#../interfaces/TypeCheckOptionalConfig)
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `AnyNonPromise` |
+| `config` | \| [`TypeCheckConfig`](#../interfaces/TypeCheckConfig) \| [`TypeCheckOptionalConfig`](#../interfaces/TypeCheckOptionalConfig) |
 
 ### Returns
 
@@ -275,24 +253,21 @@ A type-narrowing function that attempts to cast a value to T, with optional asse
 ## Call Signature
 
 ```ts
-<TType>(value, assert): TType | undefined;
+<TType>(value: AnyNonPromise, assert: StringOrAlertFunction<TType>): TType | undefined;
 ```
 
 ### Type Parameters
 
-### TType
-
-`TType` *extends* `AnyNonPromise`
+| Type Parameter |
+| ------ |
+| `TType` *extends* `AnyNonPromise` |
 
 ### Parameters
 
-### value
-
-`AnyNonPromise`
-
-### assert
-
-[`StringOrAlertFunction`](#StringOrAlertFunction)\<`TType`\>
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `AnyNonPromise` |
+| `assert` | [`StringOrAlertFunction`](#StringOrAlertFunction)\<`TType`\> |
 
 ### Returns
 
@@ -302,30 +277,24 @@ A type-narrowing function that attempts to cast a value to T, with optional asse
 
 ```ts
 <TType>(
-   value, 
-   assert, 
-   config): TType;
+   value: AnyNonPromise, 
+   assert: StringOrAlertFunction<TType>, 
+   config: TypeCheckRequiredConfig): TType;
 ```
 
 ### Type Parameters
 
-### TType
-
-`TType` *extends* `AnyNonPromise`
+| Type Parameter |
+| ------ |
+| `TType` *extends* `AnyNonPromise` |
 
 ### Parameters
 
-### value
-
-`AnyNonPromise`
-
-### assert
-
-[`StringOrAlertFunction`](#StringOrAlertFunction)\<`TType`\>
-
-### config
-
-[`TypeCheckRequiredConfig`](#../interfaces/TypeCheckRequiredConfig)
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `AnyNonPromise` |
+| `assert` | [`StringOrAlertFunction`](#StringOrAlertFunction)\<`TType`\> |
+| `config` | [`TypeCheckRequiredConfig`](#../interfaces/TypeCheckRequiredConfig) |
 
 ### Returns
 
@@ -335,30 +304,26 @@ A type-narrowing function that attempts to cast a value to T, with optional asse
 
 ```ts
 <TType>(
-   value, 
-   assert, 
-   config): TType | undefined;
+   value: AnyNonPromise, 
+   assert: StringOrAlertFunction<TType>, 
+   config: 
+  | TypeCheckConfig
+  | TypeCheckOptionalConfig): TType | undefined;
 ```
 
 ### Type Parameters
 
-### TType
-
-`TType` *extends* `AnyNonPromise`
+| Type Parameter |
+| ------ |
+| `TType` *extends* `AnyNonPromise` |
 
 ### Parameters
 
-### value
-
-`AnyNonPromise`
-
-### assert
-
-[`StringOrAlertFunction`](#StringOrAlertFunction)\<`TType`\>
-
-### config
-
-[`TypeCheckConfig`](#../interfaces/TypeCheckConfig) | [`TypeCheckOptionalConfig`](#../interfaces/TypeCheckOptionalConfig)
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `AnyNonPromise` |
+| `assert` | [`StringOrAlertFunction`](#StringOrAlertFunction)\<`TType`\> |
+| `config` | \| [`TypeCheckConfig`](#../interfaces/TypeCheckConfig) \| [`TypeCheckOptionalConfig`](#../interfaces/TypeCheckOptionalConfig) |
 
 ### Returns
 
@@ -371,26 +336,23 @@ A type-narrowing function that attempts to cast a value to T, with optional asse
 ***
 
 ```ts
-type Compare<T> = (a, b) => number;
+type Compare<T> = (a: T, b: T) => number;
 ```
 
 A comparator function that returns a negative number if a < b, zero if a == b, and a positive number if a > b.
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Parameters
 
-### a
-
-`T`
-
-### b
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `a` | `T` |
+| `b` | `T` |
 
 ## Returns
 
@@ -403,7 +365,7 @@ A comparator function that returns a negative number if a < b, zero if a == b, a
 ***
 
 ```ts
-type EmptyObject<T> = Exclude<{ [K in keyof T]?: never }, unknown[] | (...args) => unknown | null>;
+type EmptyObject<T> = Exclude<{ [K in keyof T]?: never }, unknown[] | (...args: unknown[]) => unknown | null>;
 ```
 
 An empty object, which means that it does enforce the set of field names, defaulting to an empty set until
@@ -411,9 +373,9 @@ extended from, which then adds only those additional fields
 
 ## Type Parameters
 
-### T
-
-`T` *extends* `object` = `object`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` *extends* `object` | `object` |
 
   ### <a id="StringOrAlertFunction"></a>StringOrAlertFunction
 
@@ -429,9 +391,9 @@ A string message or function that produces an assertion error message for a fail
 
 ## Type Parameters
 
-### T
-
-`T` *extends* `AnyNonPromise`
+| Type Parameter |
+| ------ |
+| `T` *extends* `AnyNonPromise` |
 
   ### <a id="TypeCheck"></a>TypeCheck
 
@@ -441,9 +403,12 @@ A string message or function that produces an assertion error message for a fail
 
 ```ts
 type TypeCheck<T> = {
-  (obj): obj is T;
-  (obj, config): obj is T;
-  (obj, config): obj is T;
+  (obj: AnyNonPromise): obj is T;
+  (obj: AnyNonPromise, config: TypeCheckConfig): obj is T;
+  (obj: AnyNonPromise, config: 
+  | number
+  | TypeCheckConfig
+  | undefined): obj is T;
 };
 ```
 
@@ -451,21 +416,21 @@ A type guard function that checks whether a value conforms to type T, with optio
 
 ## Type Parameters
 
-### T
-
-`T` *extends* `TypedValue`
+| Type Parameter |
+| ------ |
+| `T` *extends* `TypedValue` |
 
 ## Call Signature
 
 ```ts
-(obj): obj is T;
+(obj: AnyNonPromise): obj is T;
 ```
 
 ### Parameters
 
-### obj
-
-`AnyNonPromise`
+| Parameter | Type |
+| ------ | ------ |
+| `obj` | `AnyNonPromise` |
 
 ### Returns
 
@@ -474,18 +439,15 @@ A type guard function that checks whether a value conforms to type T, with optio
 ## Call Signature
 
 ```ts
-(obj, config): obj is T;
+(obj: AnyNonPromise, config: TypeCheckConfig): obj is T;
 ```
 
 ### Parameters
 
-### obj
-
-`AnyNonPromise`
-
-### config
-
-[`TypeCheckConfig`](#../interfaces/TypeCheckConfig)
+| Parameter | Type |
+| ------ | ------ |
+| `obj` | `AnyNonPromise` |
+| `config` | [`TypeCheckConfig`](#../interfaces/TypeCheckConfig) |
 
 ### Returns
 
@@ -494,18 +456,18 @@ A type guard function that checks whether a value conforms to type T, with optio
 ## Call Signature
 
 ```ts
-(obj, config): obj is T;
+(obj: AnyNonPromise, config: 
+  | number
+  | TypeCheckConfig
+  | undefined): obj is T;
 ```
 
 ### Parameters
 
-### obj
-
-`AnyNonPromise`
-
-### config
-
-`number` | [`TypeCheckConfig`](#../interfaces/TypeCheckConfig) | `undefined`
+| Parameter | Type |
+| ------ | ------ |
+| `obj` | `AnyNonPromise` |
+| `config` | \| `number` \| [`TypeCheckConfig`](#../interfaces/TypeCheckConfig) \| `undefined` |
 
 ### Returns
 

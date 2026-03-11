@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/zod**
@@ -23,21 +25,27 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Interfaces
 
-- [ZodFactoryConfigObject](#interfaces/ZodFactoryConfigObject)
+| Interface | Description |
+| ------ | ------ |
+| [ZodFactoryConfigObject](#interfaces/ZodFactoryConfigObject) | Configuration object for zod factory functions, providing a name for error messages. |
 
 ## Type Aliases
 
-- [ZodFactoryConfig](#type-aliases/ZodFactoryConfig)
-- [AllZodFactories](#type-aliases/AllZodFactories)
+| Type Alias | Description |
+| ------ | ------ |
+| [ZodFactoryConfig](#type-aliases/ZodFactoryConfig) | Configuration for zod factory assertion behavior, either an AssertConfig or a named config object. |
+| [AllZodFactories](#type-aliases/AllZodFactories) | - |
 
 ## Functions
 
-- [zodAllFactory](#functions/zodAllFactory)
-- [zodAsAsyncFactory](#functions/zodAsAsyncFactory)
-- [zodAsFactory](#functions/zodAsFactory)
-- [zodIsFactory](#functions/zodIsFactory)
-- [zodToAsyncFactory](#functions/zodToAsyncFactory)
-- [zodToFactory](#functions/zodToFactory)
+| Function | Description |
+| ------ | ------ |
+| [zodAllFactory](#functions/zodAllFactory) | Creates a bundle of `is`, `as`, and `to` factory functions for a given zod schema. |
+| [zodAsAsyncFactory](#functions/zodAsAsyncFactory) | Creates an async function that validates a value against a zod schema and returns it with a narrowed type. Uses `safeParseAsync` for schemas with async refinements. When called without an assert config, returns undefined on failure. |
+| [zodAsFactory](#functions/zodAsFactory) | Creates a function that validates a value against a zod schema and returns it with a narrowed type. When called without an assert config, returns undefined on failure. When called with an assert config, throws on failure. |
+| [zodIsFactory](#functions/zodIsFactory) | Creates a type guard function that checks if a value matches a zod schema. |
+| [zodToAsyncFactory](#functions/zodToAsyncFactory) | Creates an async function that converts a value to the zod schema type, delegating to `zodAsAsyncFactory` internally. Provides overloads for optional assertion: without assert config resolves to undefined on failure, with assert config throws on failure. |
+| [zodToFactory](#functions/zodToFactory) | Creates a function that converts a value to the zod schema type, delegating to `zodAsFactory` internally. Provides overloads for optional assertion: without assert config returns undefined on failure, with assert config throws on failure. |
 
 ### functions
 
@@ -48,7 +56,12 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 ***
 
 ```ts
-function zodAllFactory<T, TName>(zod, name): object;
+function zodAllFactory<T, TName>(zod: ZodType<T>, name: TName): {
+[key: string]: {
+<T>  (value: T): T & T | undefined;
+<T>  (value: T, assert: ZodFactoryConfig): T & T;
+};
+};
 ```
 
 **`Alpha`**
@@ -57,31 +70,28 @@ Creates a bundle of `is`, `as`, and `to` factory functions for a given zod schem
 
 ## Type Parameters
 
-### T
-
-`T`
-
-### TName
-
-`TName` *extends* `string`
+| Type Parameter |
+| ------ |
+| `T` |
+| `TName` *extends* `string` |
 
 ## Parameters
 
-### zod
-
-`ZodType`\<`T`\>
-
-The zod schema to validate against
-
-### name
-
-`TName`
-
-The name used to suffix the generated function names (e.g. 'Address' produces `isAddress`, `asAddress`, `toAddress`)
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `zod` | `ZodType`\<`T`\> | The zod schema to validate against |
+| `name` | `TName` | The name used to suffix the generated function names (e.g. 'Address' produces `isAddress`, `asAddress`, `toAddress`) |
 
 ## Returns
 
-`object`
+```ts
+{
+[key: string]: {
+<T>  (value: T): T & T | undefined;
+<T>  (value: T, assert: ZodFactoryConfig): T & T;
+};
+}
+```
 
 An object containing `is<Name>`, `as<Name>`, and `to<Name>` functions
 
@@ -92,9 +102,9 @@ An object containing `is<Name>`, `as<Name>`, and `to<Name>` functions
 ***
 
 ```ts
-function zodAsAsyncFactory<TZod>(zod, name): {
-<T>  (value): Promise<T & TZod | undefined>;
-<T>  (value, assert): Promise<T & TZod>;
+function zodAsAsyncFactory<TZod>(zod: ZodType<TZod>, name: string): {
+<T>  (value: T): Promise<T & TZod | undefined>;
+<T>  (value: T, assert: ZodFactoryConfig): Promise<T & TZod>;
 };
 ```
 
@@ -103,67 +113,57 @@ Uses `safeParseAsync` for schemas with async refinements. When called without an
 
 ## Type Parameters
 
-### TZod
-
-`TZod`
+| Type Parameter |
+| ------ |
+| `TZod` |
 
 ## Parameters
 
-### zod
-
-`ZodType`\<`TZod`\>
-
-The zod schema to validate against
-
-### name
-
-`string`
-
-A name used in error messages for identification
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `zod` | `ZodType`\<`TZod`\> | The zod schema to validate against |
+| `name` | `string` | A name used in error messages for identification |
 
 ## Returns
 
 An async function that validates and narrows the type of a value
 
 ```ts
-<T>(value): Promise<T & TZod | undefined>;
+<T>(value: T): Promise<T & TZod | undefined>;
 ```
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
 `Promise`\<`T` & `TZod` \| `undefined`\>
 
 ```ts
-<T>(value, assert): Promise<T & TZod>;
+<T>(value: T, assert: ZodFactoryConfig): Promise<T & TZod>;
 ```
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
-
-### assert
-
-[`ZodFactoryConfig`](#../type-aliases/ZodFactoryConfig)
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
+| `assert` | [`ZodFactoryConfig`](#../type-aliases/ZodFactoryConfig) |
 
 ### Returns
 
@@ -176,9 +176,9 @@ An async function that validates and narrows the type of a value
 ***
 
 ```ts
-function zodAsFactory<TZod>(zod, name): {
-<T>  (value): T & TZod | undefined;
-<T>  (value, assert): T & TZod;
+function zodAsFactory<TZod>(zod: ZodType<TZod>, name: string): {
+<T>  (value: T): T & TZod | undefined;
+<T>  (value: T, assert: ZodFactoryConfig): T & TZod;
 };
 ```
 
@@ -187,67 +187,57 @@ When called without an assert config, returns undefined on failure. When called 
 
 ## Type Parameters
 
-### TZod
-
-`TZod`
+| Type Parameter |
+| ------ |
+| `TZod` |
 
 ## Parameters
 
-### zod
-
-`ZodType`\<`TZod`\>
-
-The zod schema to validate against
-
-### name
-
-`string`
-
-A name used in error messages for identification
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `zod` | `ZodType`\<`TZod`\> | The zod schema to validate against |
+| `name` | `string` | A name used in error messages for identification |
 
 ## Returns
 
 A function that validates and narrows the type of a value
 
 ```ts
-<T>(value): T & TZod | undefined;
+<T>(value: T): T & TZod | undefined;
 ```
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
 `T` & `TZod` \| `undefined`
 
 ```ts
-<T>(value, assert): T & TZod;
+<T>(value: T, assert: ZodFactoryConfig): T & TZod;
 ```
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
-
-### assert
-
-[`ZodFactoryConfig`](#../type-aliases/ZodFactoryConfig)
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
+| `assert` | [`ZodFactoryConfig`](#../type-aliases/ZodFactoryConfig) |
 
 ### Returns
 
@@ -260,44 +250,42 @@ A function that validates and narrows the type of a value
 ***
 
 ```ts
-function zodIsFactory<TZod>(zod): <T>(value) => value is T & TZod;
+function zodIsFactory<TZod>(zod: ZodType<TZod>): <T>(value: T) => value is T & TZod;
 ```
 
 Creates a type guard function that checks if a value matches a zod schema.
 
 ## Type Parameters
 
-### TZod
-
-`TZod`
+| Type Parameter |
+| ------ |
+| `TZod` |
 
 ## Parameters
 
-### zod
-
-`ZodType`\<`TZod`\>
-
-The zod schema to validate against
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `zod` | `ZodType`\<`TZod`\> | The zod schema to validate against |
 
 ## Returns
 
 A type guard function that returns true if the value passes validation
 
 ```ts
-<T>(value): value is T & TZod;
+<T>(value: T): value is T & TZod;
 ```
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -310,9 +298,9 @@ A type guard function that returns true if the value passes validation
 ***
 
 ```ts
-function zodToAsyncFactory<TZod>(zod, name): {
-<T>  (value): Promise<T & TZod | undefined>;
-<T>  (value, assert): Promise<T & TZod>;
+function zodToAsyncFactory<TZod>(zod: ZodType<TZod>, name: string): {
+<T>  (value: T): Promise<T & TZod | undefined>;
+<T>  (value: T, assert: ZodFactoryConfig): Promise<T & TZod>;
 };
 ```
 
@@ -321,67 +309,57 @@ Provides overloads for optional assertion: without assert config resolves to und
 
 ## Type Parameters
 
-### TZod
-
-`TZod`
+| Type Parameter |
+| ------ |
+| `TZod` |
 
 ## Parameters
 
-### zod
-
-`ZodType`\<`TZod`\>
-
-The zod schema to validate against
-
-### name
-
-`string`
-
-A name used in error messages for identification
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `zod` | `ZodType`\<`TZod`\> | The zod schema to validate against |
+| `name` | `string` | A name used in error messages for identification |
 
 ## Returns
 
 An async function that validates and converts a value to the schema type
 
 ```ts
-<T>(value): Promise<T & TZod | undefined>;
+<T>(value: T): Promise<T & TZod | undefined>;
 ```
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
 `Promise`\<`T` & `TZod` \| `undefined`\>
 
 ```ts
-<T>(value, assert): Promise<T & TZod>;
+<T>(value: T, assert: ZodFactoryConfig): Promise<T & TZod>;
 ```
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
-
-### assert
-
-[`ZodFactoryConfig`](#../type-aliases/ZodFactoryConfig)
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
+| `assert` | [`ZodFactoryConfig`](#../type-aliases/ZodFactoryConfig) |
 
 ### Returns
 
@@ -394,9 +372,9 @@ An async function that validates and converts a value to the schema type
 ***
 
 ```ts
-function zodToFactory<TZod>(zod, name): {
-<T>  (value): T & TZod | undefined;
-<T>  (value, assert): T & TZod;
+function zodToFactory<TZod>(zod: ZodType<TZod>, name: string): {
+<T>  (value: T): T & TZod | undefined;
+<T>  (value: T, assert: ZodFactoryConfig): T & TZod;
 };
 ```
 
@@ -405,67 +383,57 @@ Provides overloads for optional assertion: without assert config returns undefin
 
 ## Type Parameters
 
-### TZod
-
-`TZod`
+| Type Parameter |
+| ------ |
+| `TZod` |
 
 ## Parameters
 
-### zod
-
-`ZodType`\<`TZod`\>
-
-The zod schema to validate against
-
-### name
-
-`string`
-
-A name used in error messages for identification
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `zod` | `ZodType`\<`TZod`\> | The zod schema to validate against |
+| `name` | `string` | A name used in error messages for identification |
 
 ## Returns
 
 A function that validates and converts a value to the schema type
 
 ```ts
-<T>(value): T & TZod | undefined;
+<T>(value: T): T & TZod | undefined;
 ```
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
 `T` & `TZod` \| `undefined`
 
 ```ts
-<T>(value, assert): T & TZod;
+<T>(value: T, assert: ZodFactoryConfig): T & TZod;
 ```
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
-
-### assert
-
-[`ZodFactoryConfig`](#../type-aliases/ZodFactoryConfig)
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
+| `assert` | [`ZodFactoryConfig`](#../type-aliases/ZodFactoryConfig) |
 
 ### Returns
 
@@ -483,11 +451,9 @@ Configuration object for zod factory functions, providing a name for error messa
 
 ## Properties
 
-### name
-
-```ts
-name: string;
-```
+| Property | Type |
+| ------ | ------ |
+| <a id="name"></a> `name` | `string` |
 
 ### type-aliases
 
@@ -505,13 +471,10 @@ type AllZodFactories<TType, TName> = { [K in `is${TName}`]: ReturnType<typeof zo
 
 ## Type Parameters
 
-### TType
-
-`TType`
-
-### TName
-
-`TName` *extends* `string`
+| Type Parameter |
+| ------ |
+| `TType` |
+| `TName` *extends* `string` |
 
   ### <a id="ZodFactoryConfig"></a>ZodFactoryConfig
 

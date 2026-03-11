@@ -42,11 +42,11 @@
     "*.ts"
   ],
   "devDependencies": {
-    "@xylabs/eslint-config-flat": "~7.4.13",
+    "@xylabs/eslint-config-flat": "~7.4.15",
     "@xylabs/threads": "~5.0.84",
-    "@xylabs/ts-scripts-yarn3": "~7.4.13",
-    "@xylabs/tsconfig": "~7.4.13",
-    "eslint": "~9.39.4",
+    "@xylabs/ts-scripts-yarn3": "~7.4.15",
+    "@xylabs/tsconfig": "~7.4.15",
+    "eslint": "~10.0.3",
     "observable-fns": "~0.6.1",
     "typescript": "~5.9.3",
     "vitest": "~4.0.18"

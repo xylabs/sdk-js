@@ -15,7 +15,9 @@
 
 {{description}}
 
-{{typedoc}}
+{{body}}
+
+{{reference}}
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)
 

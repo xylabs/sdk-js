@@ -15,6 +15,8 @@
 
 Base functionality used throughout XYO TypeScript/JavaScript libraries that access Mongo DB
 
+
+
 ## Reference
 
 **@xylabs/mongo**
@@ -23,17 +25,23 @@ Base functionality used throughout XYO TypeScript/JavaScript libraries that acce
 
 ## Classes
 
-- [BaseMongoSdk](#classes/BaseMongoSdk)
-- [MongoClientWrapper](#classes/MongoClientWrapper)
+| Class | Description |
+| ------ | ------ |
+| [BaseMongoSdk](#classes/BaseMongoSdk) | Provides a typed wrapper around common MongoDB collection operations. |
+| [MongoClientWrapper](#classes/MongoClientWrapper) | Manages a shared pool of MongoClient instances, reusing connections by URI. |
 
 ## Interfaces
 
-- [BaseMongoSdkPublicConfig](#interfaces/BaseMongoSdkPublicConfig)
-- [BaseMongoSdkPrivateConfig](#interfaces/BaseMongoSdkPrivateConfig)
+| Interface | Description |
+| ------ | ------ |
+| [BaseMongoSdkPublicConfig](#interfaces/BaseMongoSdkPublicConfig) | Public configuration options for the Mongo SDK, safe to expose to clients. |
+| [BaseMongoSdkPrivateConfig](#interfaces/BaseMongoSdkPrivateConfig) | Private configuration options for the Mongo SDK containing connection credentials. |
 
 ## Type Aliases
 
-- [BaseMongoSdkConfig](#type-aliases/BaseMongoSdkConfig)
+| Type Alias | Description |
+| ------ | ------ |
+| [BaseMongoSdkConfig](#type-aliases/BaseMongoSdkConfig) | Combined public and private MongoDB SDK configuration. |
 
 ### classes
 
@@ -47,23 +55,23 @@ Provides a typed wrapper around common MongoDB collection operations.
 
 ## Type Parameters
 
-### T
-
-`T` *extends* `Document`
+| Type Parameter |
+| ------ |
+| `T` *extends* `Document` |
 
 ## Constructors
 
 ### Constructor
 
 ```ts
-new BaseMongoSdk<T>(config): BaseMongoSdk<T>;
+new BaseMongoSdk<T>(config: BaseMongoSdkConfig): BaseMongoSdk<T>;
 ```
 
 ### Parameters
 
-#### config
-
-[`BaseMongoSdkConfig`](#../type-aliases/BaseMongoSdkConfig)
+| Parameter | Type |
+| ------ | ------ |
+| `config` | [`BaseMongoSdkConfig`](#../type-aliases/BaseMongoSdkConfig) |
 
 ### Returns
 
@@ -71,13 +79,9 @@ new BaseMongoSdk<T>(config): BaseMongoSdk<T>;
 
 ## Properties
 
-### config
-
-```ts
-config: BaseMongoSdkConfig;
-```
-
-The MongoDB SDK configuration for this instance.
+| Property | Type | Description |
+| ------ | ------ | ------ |
+| <a id="config"></a> `config` | [`BaseMongoSdkConfig`](#../type-aliases/BaseMongoSdkConfig) | The MongoDB SDK configuration for this instance. |
 
 ## Accessors
 
@@ -100,18 +104,16 @@ Returns the MongoDB connection URI, either from the config or constructed from i
 ### deleteMany()
 
 ```ts
-deleteMany(filter): Promise<DeleteResult>;
+deleteMany(filter: Filter<T>): Promise<DeleteResult>;
 ```
 
 Deletes all documents matching the filter.
 
 ### Parameters
 
-#### filter
-
-`Filter`\<`T`\>
-
-The query filter to match documents for deletion
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `filter` | `Filter`\<`T`\> | The query filter to match documents for deletion |
 
 ### Returns
 
@@ -122,18 +124,16 @@ The query filter to match documents for deletion
 ### deleteOne()
 
 ```ts
-deleteOne(filter): Promise<DeleteResult>;
+deleteOne(filter: Filter<T>): Promise<DeleteResult>;
 ```
 
 Deletes the first document matching the filter.
 
 ### Parameters
 
-#### filter
-
-`Filter`\<`T`\>
-
-The query filter to match a document for deletion
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `filter` | `Filter`\<`T`\> | The query filter to match a document for deletion |
 
 ### Returns
 
@@ -144,18 +144,16 @@ The query filter to match a document for deletion
 ### find()
 
 ```ts
-find(filter): Promise<FindCursor<WithId<T>>>;
+find(filter: Filter<T>): Promise<FindCursor<WithId<T>>>;
 ```
 
 Finds all documents matching the filter and returns a cursor.
 
 ### Parameters
 
-#### filter
-
-`Filter`\<`T`\>
-
-The query filter
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `filter` | `Filter`\<`T`\> | The query filter |
 
 ### Returns
 
@@ -166,18 +164,16 @@ The query filter
 ### findOne()
 
 ```ts
-findOne(filter): Promise<WithId<T> | null>;
+findOne(filter: Filter<T>): Promise<WithId<T> | null>;
 ```
 
 Finds a single document matching the filter.
 
 ### Parameters
 
-#### filter
-
-`Filter`\<`T`\>
-
-The query filter
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `filter` | `Filter`\<`T`\> | The query filter |
 
 ### Returns
 
@@ -190,24 +186,17 @@ The matched document, or `null` if not found
 ### insertMany()
 
 ```ts
-insertMany(items, options?): Promise<InsertManyResult<T>>;
+insertMany(items: OptionalUnlessRequiredId<T>[], options?: BulkWriteOptions): Promise<InsertManyResult<T>>;
 ```
 
 Inserts multiple documents into the collection.
 
 ### Parameters
 
-#### items
-
-`OptionalUnlessRequiredId`\<`T`\>[]
-
-The documents to insert
-
-#### options?
-
-`BulkWriteOptions`
-
-Optional bulk write options
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `items` | `OptionalUnlessRequiredId`\<`T`\>[] | The documents to insert |
+| `options?` | `BulkWriteOptions` | Optional bulk write options |
 
 ### Returns
 
@@ -218,24 +207,17 @@ Optional bulk write options
 ### insertOne()
 
 ```ts
-insertOne(item, options?): Promise<InsertOneResult<T>>;
+insertOne(item: OptionalUnlessRequiredId<T>, options?: InsertOneOptions): Promise<InsertOneResult<T>>;
 ```
 
 Inserts a single document into the collection.
 
 ### Parameters
 
-#### item
-
-`OptionalUnlessRequiredId`\<`T`\>
-
-The document to insert
-
-#### options?
-
-`InsertOneOptions`
-
-Optional insert options
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `item` | `OptionalUnlessRequiredId`\<`T`\> | The document to insert |
+| `options?` | `InsertOneOptions` | Optional insert options |
 
 ### Returns
 
@@ -247,32 +229,20 @@ Optional insert options
 
 ```ts
 replaceOne(
-   filter, 
-   item, 
-options?): Promise<UpdateResult<T>>;
+   filter: Filter<T>, 
+   item: OptionalUnlessRequiredId<T>, 
+options?: ReplaceOptions): Promise<UpdateResult<T>>;
 ```
 
 Replaces a single document matching the filter.
 
 ### Parameters
 
-#### filter
-
-`Filter`\<`T`\>
-
-The query filter to match the document
-
-#### item
-
-`OptionalUnlessRequiredId`\<`T`\>
-
-The replacement document
-
-#### options?
-
-`ReplaceOptions`
-
-Optional replace options
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `filter` | `Filter`\<`T`\> | The query filter to match the document |
+| `item` | `OptionalUnlessRequiredId`\<`T`\> | The replacement document |
+| `options?` | `ReplaceOptions` | Optional replace options |
 
 ### Returns
 
@@ -283,24 +253,17 @@ Optional replace options
 ### updateOne()
 
 ```ts
-updateOne(filter, fields): Promise<UpdateResult<T>>;
+updateOne(filter: Filter<T>, fields: UpdateFilter<T>): Promise<UpdateResult<T>>;
 ```
 
 Updates a single document matching the filter without upserting.
 
 ### Parameters
 
-#### filter
-
-`Filter`\<`T`\>
-
-The query filter to match the document
-
-#### fields
-
-`UpdateFilter`\<`T`\>
-
-The update operations to apply
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `filter` | `Filter`\<`T`\> | The query filter to match the document |
+| `fields` | `UpdateFilter`\<`T`\> | The update operations to apply |
 
 ### Returns
 
@@ -311,24 +274,17 @@ The update operations to apply
 ### upsertOne()
 
 ```ts
-upsertOne(filter, fields): Promise<UpdateResult<T>>;
+upsertOne(filter: Filter<T>, fields: UpdateFilter<T>): Promise<UpdateResult<T>>;
 ```
 
 Updates a single document matching the filter, inserting it if it does not exist.
 
 ### Parameters
 
-#### filter
-
-`Filter`\<`T`\>
-
-The query filter to match the document
-
-#### fields
-
-`UpdateFilter`\<`T`\>
-
-The update operations to apply
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `filter` | `Filter`\<`T`\> | The query filter to match the document |
+| `fields` | `UpdateFilter`\<`T`\> | The update operations to apply |
 
 ### Returns
 
@@ -339,24 +295,22 @@ The update operations to apply
 ### useCollection()
 
 ```ts
-useCollection<R>(func): Promise<R>;
+useCollection<R>(func: (collection: Collection<T>) => R | Promise<R>): Promise<R>;
 ```
 
 Executes a callback with access to the configured MongoDB collection.
 
 ### Type Parameters
 
-#### R
-
-`R`
+| Type Parameter |
+| ------ |
+| `R` |
 
 ### Parameters
 
-#### func
-
-(`collection`) => `R` \| `Promise`\<`R`\>
-
-A callback receiving the typed collection
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `func` | (`collection`: `Collection`\<`T`\>) => `R` \| `Promise`\<`R`\> | A callback receiving the typed collection |
 
 ### Returns
 
@@ -369,24 +323,22 @@ The result of the callback
 ### useMongo()
 
 ```ts
-useMongo<R>(func): Promise<R>;
+useMongo<R>(func: (client: MongoClient) => R | Promise<R>): Promise<R>;
 ```
 
 Executes a callback with a connected MongoClient, handling connection and disconnection.
 
 ### Type Parameters
 
-#### R
-
-`R`
+| Type Parameter |
+| ------ |
+| `R` |
 
 ### Parameters
 
-#### func
-
-(`client`) => `R` \| `Promise`\<`R`\>
-
-A callback receiving the connected MongoClient
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `func` | (`client`: `MongoClient`) => `R` \| `Promise`\<`R`\> | A callback receiving the connected MongoClient |
 
 ### Returns
 
@@ -408,24 +360,18 @@ Manages a shared pool of MongoClient instances, reusing connections by URI.
 
 ```ts
 new MongoClientWrapper(
-   uri, 
-   maxPoolSize?, 
-   closeDelay?): MongoClientWrapper;
+   uri: string, 
+   maxPoolSize?: number, 
+   closeDelay?: number): MongoClientWrapper;
 ```
 
 ### Parameters
 
-#### uri
-
-`string`
-
-#### maxPoolSize?
-
-`number`
-
-#### closeDelay?
-
-`number`
+| Parameter | Type |
+| ------ | ------ |
+| `uri` | `string` |
+| `maxPoolSize?` | `number` |
+| `closeDelay?` | `number` |
 
 ### Returns
 
@@ -433,13 +379,9 @@ new MongoClientWrapper(
 
 ## Properties
 
-### clients
-
-```ts
-readonly static clients: Map<string, MongoClientWrapper>;
-```
-
-Global cache of wrapper instances keyed by connection URI.
+| Property | Modifier | Type | Description |
+| ------ | ------ | ------ | ------ |
+| <a id="clients"></a> `clients` | `readonly` | `Map`\<`string`, `MongoClientWrapper`\> | Global cache of wrapper instances keyed by connection URI. |
 
 ## Methods
 
@@ -447,32 +389,20 @@ Global cache of wrapper instances keyed by connection URI.
 
 ```ts
 static get(
-   uri, 
-   poolSize?, 
-   closeDelay?): MongoClientWrapper;
+   uri: string, 
+   poolSize?: number, 
+   closeDelay?: number): MongoClientWrapper;
 ```
 
 Gets or creates a cached MongoClientWrapper for the given URI.
 
 ### Parameters
 
-#### uri
-
-`string`
-
-The MongoDB connection URI
-
-#### poolSize?
-
-`number`
-
-Maximum connection pool size
-
-#### closeDelay?
-
-`number`
-
-Delay in milliseconds before closing idle connections
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `uri` | `string` | The MongoDB connection URI |
+| `poolSize?` | `number` | Maximum connection pool size |
+| `closeDelay?` | `number` | Delay in milliseconds before closing idle connections |
 
 ### Returns
 
@@ -534,53 +464,13 @@ Private configuration options for the Mongo SDK containing connection credential
 
 ## Properties
 
-### dbConnectionString?
-
-```ts
-optional dbConnectionString: string;
-```
-
-A full MongoDB connection string, used instead of individual credential fields.
-
-***
-
-### dbDomain?
-
-```ts
-optional dbDomain: string;
-```
-
-The MongoDB Atlas cluster domain.
-
-***
-
-### dbName?
-
-```ts
-optional dbName: string;
-```
-
-The database name to connect to.
-
-***
-
-### dbPassword?
-
-```ts
-optional dbPassword: string;
-```
-
-The password for MongoDB authentication.
-
-***
-
-### dbUserName?
-
-```ts
-optional dbUserName: string;
-```
-
-The username for MongoDB authentication.
+| Property | Type | Description |
+| ------ | ------ | ------ |
+| <a id="dbconnectionstring"></a> `dbConnectionString?` | `string` | A full MongoDB connection string, used instead of individual credential fields. |
+| <a id="dbdomain"></a> `dbDomain?` | `string` | The MongoDB Atlas cluster domain. |
+| <a id="dbname"></a> `dbName?` | `string` | The database name to connect to. |
+| <a id="dbpassword"></a> `dbPassword?` | `string` | The password for MongoDB authentication. |
+| <a id="dbusername"></a> `dbUserName?` | `string` | The username for MongoDB authentication. |
 
   ### <a id="BaseMongoSdkPublicConfig"></a>BaseMongoSdkPublicConfig
 
@@ -592,33 +482,11 @@ Public configuration options for the Mongo SDK, safe to expose to clients.
 
 ## Properties
 
-### closeDelay?
-
-```ts
-optional closeDelay: number;
-```
-
-Delay in milliseconds before closing idle connections.
-
-***
-
-### collection
-
-```ts
-collection: string;
-```
-
-The MongoDB collection name to operate on.
-
-***
-
-### maxPoolSize?
-
-```ts
-optional maxPoolSize: number;
-```
-
-Maximum number of connections in the connection pool.
+| Property | Type | Description |
+| ------ | ------ | ------ |
+| <a id="closedelay"></a> `closeDelay?` | `number` | Delay in milliseconds before closing idle connections. |
+| <a id="collection"></a> `collection` | `string` | The MongoDB collection name to operate on. |
+| <a id="maxpoolsize"></a> `maxPoolSize?` | `number` | Maximum number of connections in the connection pool. |
 
 ### type-aliases
 

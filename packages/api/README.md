@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/api**
@@ -23,24 +25,34 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Classes
 
-- [ApiClient](#classes/ApiClient)
-- [ApiEndpoint](#classes/ApiEndpoint)
+| Class | Description |
+| ------ | ------ |
+| [ApiClient](#classes/ApiClient) | Abstract base class for API clients that provides stage and token configuration. |
+| [ApiEndpoint](#classes/ApiEndpoint) | Generic REST API endpoint wrapper that supports fetching and inserting typed data. |
 
 ## Interfaces
 
-- [ApiConfig](#interfaces/ApiConfig)
+| Interface | Description |
+| ------ | ------ |
+| [ApiConfig](#interfaces/ApiConfig) | Configuration for connecting to an API, including domain, authentication, and user identification. |
 
 ## Type Aliases
 
-- [ApiStage](#type-aliases/ApiStage)
+| Type Alias | Description |
+| ------ | ------ |
+| [ApiStage](#type-aliases/ApiStage) | A valid API stage value ('prod', 'beta', or 'local'). |
 
 ## Variables
 
-- [ApiStage](#variables/ApiStage)
+| Variable | Description |
+| ------ | ------ |
+| [ApiStage](#variables/ApiStage) | Deployment stage identifiers for API environments. |
 
 ## Functions
 
-- [getApiStage](#functions/getApiStage)
+| Function | Description |
+| ------ | ------ |
+| [getApiStage](#functions/getApiStage) | Determines the API stage based on the hostname. |
 
 ### classes
 
@@ -57,18 +69,15 @@ Abstract base class for API clients that provides stage and token configuration.
 ### Constructor
 
 ```ts
-new ApiClient(token?, stage?): ApiClient;
+new ApiClient(token?: string | null, stage?: ApiStage): ApiClient;
 ```
 
 ### Parameters
 
-#### token?
-
-`string` | `null`
-
-#### stage?
-
-[`ApiStage`](#../type-aliases/ApiStage)
+| Parameter | Type |
+| ------ | ------ |
+| `token?` | `string` \| `null` |
+| `stage?` | [`ApiStage`](#../type-aliases/ApiStage) |
 
 ### Returns
 
@@ -76,19 +85,10 @@ new ApiClient(token?, stage?): ApiClient;
 
 ## Properties
 
-### stage?
-
-```ts
-protected optional stage: ApiStage;
-```
-
-***
-
-### token?
-
-```ts
-protected optional token: string | null;
-```
+| Property | Modifier | Type |
+| ------ | ------ | ------ |
+| <a id="stage"></a> `stage?` | `protected` | [`ApiStage`](#../type-aliases/ApiStage) |
+| <a id="token"></a> `token?` | `protected` | `string` \| `null` |
 
 ## Methods
 
@@ -112,29 +112,24 @@ Generic REST API endpoint wrapper that supports fetching and inserting typed dat
 
 ## Type Parameters
 
-### T
-
-`T`
-
-The type of data returned by the endpoint
+| Type Parameter | Description |
+| ------ | ------ |
+| `T` | The type of data returned by the endpoint |
 
 ## Constructors
 
 ### Constructor
 
 ```ts
-new ApiEndpoint<T>(config, path): ApiEndpoint<T>;
+new ApiEndpoint<T>(config: ApiConfig, path: string): ApiEndpoint<T>;
 ```
 
 ### Parameters
 
-#### config
-
-[`ApiConfig`](#../interfaces/ApiConfig)
-
-#### path
-
-`string`
+| Parameter | Type |
+| ------ | ------ |
+| `config` | [`ApiConfig`](#../interfaces/ApiConfig) |
+| `path` | `string` |
 
 ### Returns
 
@@ -183,14 +178,14 @@ get(): Promise<T | NonNullable<T>>;
 ### insert()
 
 ```ts
-insert(value): Promise<T>;
+insert(value: T): Promise<T>;
 ```
 
 ### Parameters
 
-#### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -205,18 +200,16 @@ insert(value): Promise<T>;
 ***
 
 ```ts
-function getApiStage(hostname): "beta" | "local" | "prod";
+function getApiStage(hostname: string): "beta" | "local" | "prod";
 ```
 
 Determines the API stage based on the hostname.
 
 ## Parameters
 
-### hostname
-
-`string`
-
-The hostname to evaluate
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `hostname` | `string` | The hostname to evaluate |
 
 ## Returns
 
@@ -236,35 +229,12 @@ Configuration for connecting to an API, including domain, authentication, and us
 
 ## Properties
 
-### apiDomain
-
-```ts
-apiDomain: string;
-```
-
-***
-
-### apiKey?
-
-```ts
-optional apiKey: string;
-```
-
-***
-
-### jwtToken?
-
-```ts
-optional jwtToken: string;
-```
-
-***
-
-### userid?
-
-```ts
-optional userid: string;
-```
+| Property | Type |
+| ------ | ------ |
+| <a id="apidomain"></a> `apiDomain` | `string` |
+| <a id="apikey"></a> `apiKey?` | `string` |
+| <a id="jwttoken"></a> `jwtToken?` | `string` |
+| <a id="userid"></a> `userid?` | `string` |
 
 ### type-aliases
 

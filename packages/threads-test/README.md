@@ -15,6 +15,8 @@
 
 Web workers & worker threads as simple as a function call
 
+
+
 ## Reference
 
 **@xylabs/threads-test**
@@ -23,7 +25,9 @@ Web workers & worker threads as simple as a function call
 
 ## Variables
 
-- [x](#variables/x)
+| Variable | Description |
+| ------ | ------ |
+| [x](#variables/x) | Placeholder export for the threads-test package. |
 
 ### variables
 

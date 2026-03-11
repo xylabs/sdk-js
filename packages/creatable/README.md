@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/creatable**
@@ -23,34 +25,42 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Classes
 
-- [AbstractCreatable](#classes/AbstractCreatable)
-- [AbstractCreatableWithFactory](#classes/AbstractCreatableWithFactory)
-- [Factory](#classes/Factory)
+| Class | Description |
+| ------ | ------ |
+| [AbstractCreatable](#classes/AbstractCreatable) | Base class for objects that follow an asynchronous creation and lifecycle pattern. Instances must be created via the static `create` method rather than direct construction. Provides start/stop lifecycle management with status tracking and telemetry support. |
+| [AbstractCreatableWithFactory](#classes/AbstractCreatableWithFactory) | Extends AbstractCreatable with a static `factory` method for creating pre-configured CreatableFactory instances. |
+| [Factory](#classes/Factory) | A concrete factory that wraps a Creatable class with default parameters and labels. Instances are created by merging caller-provided params over the factory defaults. |
 
 ## Interfaces
 
-- [CreatableFactory](#interfaces/CreatableFactory)
-- [Creatable](#interfaces/Creatable)
-- [CreatableWithFactory](#interfaces/CreatableWithFactory)
-- [CreatableInstance](#interfaces/CreatableInstance)
-- [RequiredCreatableParams](#interfaces/RequiredCreatableParams)
-- [CreatableParams](#interfaces/CreatableParams)
-- [CreatableStatusReporter](#interfaces/CreatableStatusReporter)
-- [Labels](#interfaces/Labels)
-- [WithLabels](#interfaces/WithLabels)
-- [WithOptionalLabels](#interfaces/WithOptionalLabels)
+| Interface | Description |
+| ------ | ------ |
+| [CreatableFactory](#interfaces/CreatableFactory) | A factory interface for creating instances of a Creatable with pre-configured parameters. Unlike the full Creatable, this only exposes the `create` method. |
+| [Creatable](#interfaces/Creatable) | Static interface for classes that support asynchronous creation. Provides the `create`, `createHandler`, and `paramsHandler` static methods used to construct instances through the creatable lifecycle. |
+| [CreatableWithFactory](#interfaces/CreatableWithFactory) | Extends Creatable with a `factory` method that produces pre-configured CreatableFactory instances. |
+| [CreatableInstance](#interfaces/CreatableInstance) | Represents a created instance with a managed lifecycle (start/stop) and event emission. |
+| [RequiredCreatableParams](#interfaces/RequiredCreatableParams) | The minimum required parameters for constructing a creatable. |
+| [CreatableParams](#interfaces/CreatableParams) | Parameters for creating a creatable instance, combining required params with emitter params. |
+| [CreatableStatusReporter](#interfaces/CreatableStatusReporter) | Reports status changes for a creatable, supporting progress tracking and error reporting. |
+| [Labels](#interfaces/Labels) | Object used to represent labels identifying a resource. |
+| [WithLabels](#interfaces/WithLabels) | Interface for objects that have labels. |
+| [WithOptionalLabels](#interfaces/WithOptionalLabels) | Interface for objects that have labels. |
 
 ## Type Aliases
 
-- [CreatableName](#type-aliases/CreatableName)
-- [StandardCreatableStatus](#type-aliases/StandardCreatableStatus)
-- [CreatableStatus](#type-aliases/CreatableStatus)
+| Type Alias | Description |
+| ------ | ------ |
+| [CreatableName](#type-aliases/CreatableName) | A branded string type used as the name identifier for creatables. |
+| [StandardCreatableStatus](#type-aliases/StandardCreatableStatus) | The standard lifecycle statuses a creatable can transition through. |
+| [CreatableStatus](#type-aliases/CreatableStatus) | A creatable's status, optionally extended with additional custom status values. |
 
 ## Functions
 
-- [creatable](#functions/creatable)
-- [creatableFactory](#functions/creatableFactory)
-- [hasAllLabels](#functions/hasAllLabels)
+| Function | Description |
+| ------ | ------ |
+| [creatable](#functions/creatable) | Class annotation to be used to decorate Modules which support an asynchronous creation pattern |
+| [creatableFactory](#functions/creatableFactory) | Class annotation to be used to decorate Modules which support an asynchronous creation factory pattern |
+| [hasAllLabels](#functions/hasAllLabels) | Returns true if the source object has all the labels from the required set |
 
 ### classes
 
@@ -74,31 +84,25 @@ Provides start/stop lifecycle management with status tracking and telemetry supp
 
 ## Type Parameters
 
-### TParams
-
-`TParams` *extends* [`CreatableParams`](#../interfaces/CreatableParams) = [`CreatableParams`](#../interfaces/CreatableParams)
-
-### TEventData
-
-`TEventData` *extends* `EventData` = `EventData`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TParams` *extends* [`CreatableParams`](#../interfaces/CreatableParams) | [`CreatableParams`](#../interfaces/CreatableParams) |
+| `TEventData` *extends* `EventData` | `EventData` |
 
 ## Constructors
 
 ### Constructor
 
 ```ts
-new AbstractCreatable<TParams, TEventData>(key, params): AbstractCreatable<TParams, TEventData>;
+new AbstractCreatable<TParams, TEventData>(key: unknown, params: Partial<TParams & RequiredCreatableParams>): AbstractCreatable<TParams, TEventData>;
 ```
 
 ### Parameters
 
-#### key
-
-`unknown`
-
-#### params
-
-`Partial`\<`TParams` & [`RequiredCreatableParams`](#../interfaces/RequiredCreatableParams)\>
+| Parameter | Type |
+| ------ | ------ |
+| `key` | `unknown` |
+| `params` | `Partial`\<`TParams` & [`RequiredCreatableParams`](#../interfaces/RequiredCreatableParams)\> |
 
 ### Returns
 
@@ -112,79 +116,14 @@ BaseEmitter<Partial<TParams & RequiredCreatableParams>, TEventData>.constructor
 
 ## Properties
 
-### defaultLogger?
-
-```ts
-static optional defaultLogger: Logger;
-```
-
-### Inherited from
-
-```ts
-BaseEmitter.defaultLogger
-```
-
-***
-
-### globalInstances
-
-```ts
-readonly static globalInstances: Record<BaseClassName, WeakRef<Base>[]>;
-```
-
-### Inherited from
-
-```ts
-BaseEmitter.globalInstances
-```
-
-***
-
-### globalInstancesCountHistory
-
-```ts
-readonly static globalInstancesCountHistory: Record<BaseClassName, number[]>;
-```
-
-### Inherited from
-
-```ts
-BaseEmitter.globalInstancesCountHistory
-```
-
-***
-
-### defaultLogger?
-
-```ts
-optional defaultLogger: Logger;
-```
-
-Optional default logger for this instance.
-
-***
-
-### \_startPromise
-
-```ts
-protected _startPromise: Promisable<boolean> | undefined;
-```
-
-***
-
-### eventData
-
-```ts
-eventData: TEventData;
-```
-
-Type-level reference to the event data shape for external type queries.
-
-### Inherited from
-
-```ts
-BaseEmitter.eventData
-```
+| Property | Modifier | Type | Description | Inherited from |
+| ------ | ------ | ------ | ------ | ------ |
+| <a id="defaultlogger"></a> `defaultLogger?` | `static` | `Logger` | - | `BaseEmitter.defaultLogger` |
+| <a id="globalinstances"></a> `globalInstances` | `readonly` | `Record`\<`BaseClassName`, `WeakRef`\<`Base`\>[]\> | - | `BaseEmitter.globalInstances` |
+| <a id="globalinstancescounthistory"></a> `globalInstancesCountHistory` | `readonly` | `Record`\<`BaseClassName`, `number`[]\> | - | `BaseEmitter.globalInstancesCountHistory` |
+| <a id="defaultlogger-1"></a> `defaultLogger?` | `public` | `Logger` | Optional default logger for this instance. | - |
+| <a id="_startpromise"></a> `_startPromise` | `protected` | `Promisable`\<`boolean`\> \| `undefined` | - | - |
+| <a id="eventdata"></a> `eventData` | `public` | `TEventData` | Type-level reference to the event data shape for external type queries. | `BaseEmitter.eventData` |
 
 ## Accessors
 
@@ -203,14 +142,14 @@ get static historyInterval(): number;
 ### Set Signature
 
 ```ts
-set static historyInterval(value): void;
+set static historyInterval(value: number): void;
 ```
 
 #### Parameters
 
-##### value
-
-`number`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `number` |
 
 #### Returns
 
@@ -239,14 +178,14 @@ get static historyTime(): number;
 ### Set Signature
 
 ```ts
-set static historyTime(value): void;
+set static historyTime(value: number): void;
 ```
 
 #### Parameters
 
-##### value
-
-`number`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `number` |
 
 #### Returns
 
@@ -275,14 +214,14 @@ get static maxGcFrequency(): number;
 ### Set Signature
 
 ```ts
-set static maxGcFrequency(value): void;
+set static maxGcFrequency(value: number): void;
 ```
 
 #### Parameters
 
-##### value
-
-`number`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `number` |
 
 #### Returns
 
@@ -470,14 +409,14 @@ The status reporter used to broadcast lifecycle changes.
 ### Call Signature
 
 ```ts
-static gc(force?): void;
+static gc(force?: boolean): void;
 ```
 
 #### Parameters
 
-##### force?
-
-`boolean`
+| Parameter | Type |
+| ------ | ------ |
+| `force?` | `boolean` |
 
 #### Returns
 
@@ -492,14 +431,14 @@ BaseEmitter.gc
 ### Call Signature
 
 ```ts
-static gc(className): void;
+static gc(className: BaseClassName): void;
 ```
 
 #### Parameters
 
-##### className
-
-`BaseClassName`
+| Parameter | Type |
+| ------ | ------ |
+| `className` | `BaseClassName` |
 
 #### Returns
 
@@ -516,14 +455,14 @@ BaseEmitter.gc
 ### instanceCount()
 
 ```ts
-static instanceCount(className): number;
+static instanceCount(className: BaseClassName): number;
 ```
 
 ### Parameters
 
-#### className
-
-`BaseClassName`
+| Parameter | Type |
+| ------ | ------ |
+| `className` | `BaseClassName` |
 
 ### Returns
 
@@ -594,7 +533,7 @@ BaseEmitter.stopHistory
 ### create()
 
 ```ts
-static create<T>(this, inParams?): Promise<T>;
+static create<T>(this: Creatable<T>, inParams?: Partial<T["params"]>): Promise<T>;
 ```
 
 Asynchronously creates a new instance by processing params, constructing,
@@ -602,21 +541,16 @@ and running both static and instance createHandlers.
 
 ### Type Parameters
 
-#### T
-
-`T` *extends* [`CreatableInstance`](#../interfaces/CreatableInstance)\<[`CreatableParams`](#../interfaces/CreatableParams), `EventData`\>
+| Type Parameter |
+| ------ |
+| `T` *extends* [`CreatableInstance`](#../interfaces/CreatableInstance)\<[`CreatableParams`](#../interfaces/CreatableParams), `EventData`\> |
 
 ### Parameters
 
-#### this
-
-[`Creatable`](#../interfaces/Creatable)\<`T`\>
-
-#### inParams?
-
-`Partial`\<`T`\[`"params"`\]\> = `{}`
-
-Optional partial parameters to configure the instance
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `this` | [`Creatable`](#../interfaces/Creatable)\<`T`\> | - |
+| `inParams` | `Partial`\<`T`\[`"params"`\]\> | Optional partial parameters to configure the instance |
 
 ### Returns
 
@@ -629,7 +563,7 @@ The fully initialized instance
 ### createHandler()
 
 ```ts
-static createHandler<T>(this, instance): Promisable<T>;
+static createHandler<T>(this: Creatable<T>, instance: T): Promisable<T>;
 ```
 
 Static hook called during creation to perform additional initialization.
@@ -637,21 +571,16 @@ Override in subclasses to customize post-construction setup.
 
 ### Type Parameters
 
-#### T
-
-`T` *extends* [`CreatableInstance`](#../interfaces/CreatableInstance)\<[`CreatableParams`](#../interfaces/CreatableParams), `EventData`\>
+| Type Parameter |
+| ------ |
+| `T` *extends* [`CreatableInstance`](#../interfaces/CreatableInstance)\<[`CreatableParams`](#../interfaces/CreatableParams), `EventData`\> |
 
 ### Parameters
 
-#### this
-
-[`Creatable`](#../interfaces/Creatable)\<`T`\>
-
-#### instance
-
-`T`
-
-The newly constructed instance
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `this` | [`Creatable`](#../interfaces/Creatable)\<`T`\> | - |
+| `instance` | `T` | The newly constructed instance |
 
 ### Returns
 
@@ -664,7 +593,7 @@ The instance, potentially modified
 ### paramsHandler()
 
 ```ts
-static paramsHandler<T>(this, params?): Promisable<T["params"]>;
+static paramsHandler<T>(this: Creatable<T>, params?: Partial<T["params"]>): Promisable<T["params"]>;
 ```
 
 Static hook called during creation to validate and transform params.
@@ -672,21 +601,16 @@ Override in subclasses to add default values or validation.
 
 ### Type Parameters
 
-#### T
-
-`T` *extends* [`CreatableInstance`](#../interfaces/CreatableInstance)\<[`CreatableParams`](#../interfaces/CreatableParams), `EventData`\>
+| Type Parameter |
+| ------ |
+| `T` *extends* [`CreatableInstance`](#../interfaces/CreatableInstance)\<[`CreatableParams`](#../interfaces/CreatableParams), `EventData`\> |
 
 ### Parameters
 
-#### this
-
-[`Creatable`](#../interfaces/Creatable)\<`T`\>
-
-#### params?
-
-`Partial`\<`T`\[`"params"`\]\> = `{}`
-
-The raw partial params provided to `create`
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `this` | [`Creatable`](#../interfaces/Creatable)\<`T`\> | - |
+| `params` | `Partial`\<`T`\[`"params"`\]\> | The raw partial params provided to `create` |
 
 ### Returns
 
@@ -713,7 +637,7 @@ Instance-level creation hook. Override in subclasses to perform setup after cons
 ### paramsValidator()
 
 ```ts
-paramsValidator(params): TParams & RequiredCreatableParams<void>;
+paramsValidator(params: Partial<TParams & RequiredCreatableParams>): TParams & RequiredCreatableParams<void>;
 ```
 
 Validates and returns the merged params, ensuring required fields are present.
@@ -721,11 +645,9 @@ Override in subclasses to add custom validation logic.
 
 ### Parameters
 
-#### params
-
-`Partial`\<`TParams` & [`RequiredCreatableParams`](#../interfaces/RequiredCreatableParams)\>
-
-The raw partial params to validate
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `params` | `Partial`\<`TParams` & [`RequiredCreatableParams`](#../interfaces/RequiredCreatableParams)\> | The raw partial params to validate |
 
 ### Returns
 
@@ -738,30 +660,23 @@ The validated params
 ### span()
 
 ```ts
-span<T>(name, fn): T;
+span<T>(name: string, fn: () => T): T;
 ```
 
 Executes a function within a telemetry span.
 
 ### Type Parameters
 
-#### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-#### name
-
-`string`
-
-The span name
-
-#### fn
-
-() => `T`
-
-The function to execute within the span
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `name` | `string` | The span name |
+| `fn` | () => `T` | The function to execute within the span |
 
 ### Returns
 
@@ -773,38 +688,26 @@ The function to execute within the span
 
 ```ts
 spanAsync<T>(
-   name, 
-   fn, 
-config?): Promise<T>;
+   name: string, 
+   fn: () => Promise<T>, 
+config?: SpanConfig): Promise<T>;
 ```
 
 Executes an async function within a telemetry span.
 
 ### Type Parameters
 
-#### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-#### name
-
-`string`
-
-The span name
-
-#### fn
-
-() => `Promise`\<`T`\>
-
-The async function to execute within the span
-
-#### config?
-
-`SpanConfig` = `{}`
-
-Optional span configuration
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `name` | `string` | The span name |
+| `fn` | () => `Promise`\<`T`\> | The async function to execute within the span |
+| `config` | `SpanConfig` | Optional span configuration |
 
 ### Returns
 
@@ -830,7 +733,7 @@ Thread-safe via mutex. Returns true if already started or started successfully.
 ### started()
 
 ```ts
-started(notStartedAction?): boolean;
+started(notStartedAction?: "error" | "throw" | "warn" | "log" | "none"): boolean;
 ```
 
 Checks whether this instance is currently started.
@@ -838,11 +741,9 @@ Takes an action if not started, based on the notStartedAction parameter.
 
 ### Parameters
 
-#### notStartedAction?
-
-What to do if not started: 'error'/'throw' throws, 'warn'/'log' logs, 'none' is silent
-
-`"error"` | `"throw"` | `"warn"` | `"log"` | `"none"`
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `notStartedAction` | `"error"` \| `"throw"` \| `"warn"` \| `"log"` \| `"none"` | `'log'` | What to do if not started: 'error'/'throw' throws, 'warn'/'log' logs, 'none' is silent |
 
 ### Returns
 
@@ -855,24 +756,17 @@ True if started, false otherwise
 ### startedAsync()
 
 ```ts
-startedAsync(notStartedAction?, tryStart?): Promise<boolean>;
+startedAsync(notStartedAction?: "error" | "throw" | "warn" | "log" | "none", tryStart?: boolean): Promise<boolean>;
 ```
 
 Async version of `started` that can optionally auto-start the instance.
 
 ### Parameters
 
-#### notStartedAction?
-
-What to do if not started and auto-start is disabled
-
-`"error"` | `"throw"` | `"warn"` | `"log"` | `"none"`
-
-#### tryStart?
-
-`boolean` = `true`
-
-If true, attempts to start the instance automatically
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `notStartedAction` | `"error"` \| `"throw"` \| `"warn"` \| `"log"` \| `"none"` | `'log'` | What to do if not started and auto-start is disabled |
+| `tryStart` | `boolean` | `true` | If true, attempts to start the instance automatically |
 
 ### Returns
 
@@ -900,7 +794,7 @@ Thread-safe via mutex. Returns true if already stopped or stopped successfully.
 ### \_noOverride()
 
 ```ts
-protected _noOverride(functionName?): void;
+protected _noOverride(functionName?: string): void;
 ```
 
 Asserts that the given function has not been overridden in a subclass.
@@ -908,9 +802,9 @@ Used to enforce the handler pattern (override `startHandler` not `start`).
 
 ### Parameters
 
-#### functionName?
-
-`string` = `...`
+| Parameter | Type |
+| ------ | ------ |
+| `functionName` | `string` |
 
 ### Returns
 
@@ -923,20 +817,17 @@ Used to enforce the handler pattern (override `startHandler` not `start`).
 ### Call Signature
 
 ```ts
-protected setStatus(value, progress?): void;
+protected setStatus(value: "creating" | "created" | "starting" | "started" | "stopping" | "stopped", progress?: number): void;
 ```
 
 Sets the lifecycle status and reports it via the status reporter.
 
 #### Parameters
 
-##### value
-
-`"creating"` | `"created"` | `"starting"` | `"started"` | `"stopping"` | `"stopped"`
-
-##### progress?
-
-`number`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `"creating"` \| `"created"` \| `"starting"` \| `"started"` \| `"stopping"` \| `"stopped"` |
+| `progress?` | `number` |
 
 #### Returns
 
@@ -945,20 +836,17 @@ Sets the lifecycle status and reports it via the status reporter.
 ### Call Signature
 
 ```ts
-protected setStatus(value, error?): void;
+protected setStatus(value: "error", error?: Error): void;
 ```
 
 Sets the lifecycle status and reports it via the status reporter.
 
 #### Parameters
 
-##### value
-
-`"error"`
-
-##### error?
-
-`Error`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `"error"` |
+| `error?` | `Error` |
 
 #### Returns
 
@@ -997,18 +885,16 @@ Override in subclasses to define stop behavior. Throw an error on failure.
 ### clearListeners()
 
 ```ts
-clearListeners(eventNames): this;
+clearListeners(eventNames: keyof TEventData | keyof TEventData[]): this;
 ```
 
 Removes all listeners for the specified event name(s).
 
 ### Parameters
 
-#### eventNames
-
-One or more event names to clear listeners for.
-
-keyof `TEventData` | keyof `TEventData`[]
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventNames` | keyof `TEventData` \| keyof `TEventData`[] | One or more event names to clear listeners for. |
 
 ### Returns
 
@@ -1027,34 +913,24 @@ BaseEmitter.clearListeners
 ### emit()
 
 ```ts
-emit<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
+emit<TEventName, TEventArgs>(eventName: TEventName, eventArgs: TEventArgs): Promise<void>;
 ```
 
 Emits an event, invoking all registered listeners concurrently.
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* `string` \| `number` \| `symbol` = keyof `TEventData`
-
-#### TEventArgs
-
-`TEventArgs` *extends* `EventArgs` = `TEventData`\[`TEventName`\]
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TEventName` *extends* `string` \| `number` \| `symbol` | keyof `TEventData` |
+| `TEventArgs` *extends* `EventArgs` | `TEventData`\[`TEventName`\] |
 
 ### Parameters
 
-#### eventName
-
-`TEventName`
-
-The event to emit.
-
-#### eventArgs
-
-`TEventArgs`
-
-The data to pass to listeners.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventName` | `TEventName` | The event to emit. |
+| `eventArgs` | `TEventArgs` | The data to pass to listeners. |
 
 ### Returns
 
@@ -1071,34 +947,24 @@ BaseEmitter.emit
 ### emitSerial()
 
 ```ts
-emitSerial<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
+emitSerial<TEventName, TEventArgs>(eventName: TEventName, eventArgs: TEventArgs): Promise<void>;
 ```
 
 Emits an event, invoking all registered listeners sequentially in order.
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* `string` \| `number` \| `symbol` = keyof `TEventData`
-
-#### TEventArgs
-
-`TEventArgs` *extends* `EventArgs` = `TEventData`\[`TEventName`\]
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TEventName` *extends* `string` \| `number` \| `symbol` | keyof `TEventData` |
+| `TEventArgs` *extends* `EventArgs` | `TEventData`\[`TEventName`\] |
 
 ### Parameters
 
-#### eventName
-
-`TEventName`
-
-The event to emit.
-
-#### eventArgs
-
-`TEventArgs`
-
-The data to pass to listeners.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventName` | `TEventName` | The event to emit. |
+| `eventArgs` | `TEventArgs` | The data to pass to listeners. |
 
 ### Returns
 
@@ -1115,18 +981,16 @@ BaseEmitter.emitSerial
 ### listenerCount()
 
 ```ts
-listenerCount(eventNames): number;
+listenerCount(eventNames: keyof TEventData | keyof TEventData[]): number;
 ```
 
 Returns the total number of listeners registered for the specified event name(s).
 
 ### Parameters
 
-#### eventNames
-
-One or more event names to count listeners for.
-
-keyof `TEventData` | keyof `TEventData`[]
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventNames` | keyof `TEventData` \| keyof `TEventData`[] | One or more event names to count listeners for. |
 
 ### Returns
 
@@ -1145,30 +1009,23 @@ BaseEmitter.listenerCount
 ### off()
 
 ```ts
-off<TEventName>(eventNames, listener): void;
+off<TEventName>(eventNames: TEventName | TEventName[], listener: EventListener<TEventData[TEventName]>): void;
 ```
 
 Removes a specific listener from the specified event name(s).
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* `string` \| `number` \| `symbol`
+| Type Parameter |
+| ------ |
+| `TEventName` *extends* `string` \| `number` \| `symbol` |
 
 ### Parameters
 
-#### eventNames
-
-One or more event names to unsubscribe from.
-
-`TEventName` | `TEventName`[]
-
-#### listener
-
-`EventListener`\<`TEventData`\[`TEventName`\]\>
-
-The listener to remove.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventNames` | `TEventName` \| `TEventName`[] | One or more event names to unsubscribe from. |
+| `listener` | `EventListener`\<`TEventData`\[`TEventName`\]\> | The listener to remove. |
 
 ### Returns
 
@@ -1185,18 +1042,16 @@ BaseEmitter.off
 ### offAny()
 
 ```ts
-offAny(listener): void;
+offAny(listener: EventAnyListener): void;
 ```
 
 Removes a wildcard listener that was receiving all events.
 
 ### Parameters
 
-#### listener
-
-`EventAnyListener`
-
-The wildcard listener to remove.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `listener` | `EventAnyListener` | The wildcard listener to remove. |
 
 ### Returns
 
@@ -1213,30 +1068,23 @@ BaseEmitter.offAny
 ### on()
 
 ```ts
-on<TEventName>(eventNames, listener): () => void;
+on<TEventName>(eventNames: TEventName | TEventName[], listener: EventListener<TEventData[TEventName]>): () => void;
 ```
 
 Subscribes a listener to the specified event name(s).
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* `string` \| `number` \| `symbol`
+| Type Parameter |
+| ------ |
+| `TEventName` *extends* `string` \| `number` \| `symbol` |
 
 ### Parameters
 
-#### eventNames
-
-One or more event names to listen for.
-
-`TEventName` | `TEventName`[]
-
-#### listener
-
-`EventListener`\<`TEventData`\[`TEventName`\]\>
-
-The callback to invoke when the event fires.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventNames` | `TEventName` \| `TEventName`[] | One or more event names to listen for. |
+| `listener` | `EventListener`\<`TEventData`\[`TEventName`\]\> | The callback to invoke when the event fires. |
 
 ### Returns
 
@@ -1261,18 +1109,16 @@ BaseEmitter.on
 ### onAny()
 
 ```ts
-onAny(listener): () => void;
+onAny(listener: EventAnyListener): () => void;
 ```
 
 Subscribes a wildcard listener that receives all events.
 
 ### Parameters
 
-#### listener
-
-`EventAnyListener`
-
-The callback to invoke for any event.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `listener` | `EventAnyListener` | The callback to invoke for any event. |
 
 ### Returns
 
@@ -1297,30 +1143,23 @@ BaseEmitter.onAny
 ### once()
 
 ```ts
-once<TEventName>(eventName, listener): () => void;
+once<TEventName>(eventName: TEventName, listener: EventListener<TEventData[TEventName]>): () => void;
 ```
 
 Subscribes a listener that will be invoked only once for the specified event, then automatically removed.
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* `string` \| `number` \| `symbol`
+| Type Parameter |
+| ------ |
+| `TEventName` *extends* `string` \| `number` \| `symbol` |
 
 ### Parameters
 
-#### eventName
-
-`TEventName`
-
-The event to listen for.
-
-#### listener
-
-`EventListener`\<`TEventData`\[`TEventName`\]\>
-
-The callback to invoke once.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventName` | `TEventName` | The event to listen for. |
+| `listener` | `EventListener`\<`TEventData`\[`TEventName`\]\> | The callback to invoke once. |
 
 ### Returns
 
@@ -1355,31 +1194,25 @@ pre-configured CreatableFactory instances.
 
 ## Type Parameters
 
-### TParams
-
-`TParams` *extends* [`CreatableParams`](#../interfaces/CreatableParams) = [`CreatableParams`](#../interfaces/CreatableParams)
-
-### TEventData
-
-`TEventData` *extends* `EventData` = `EventData`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TParams` *extends* [`CreatableParams`](#../interfaces/CreatableParams) | [`CreatableParams`](#../interfaces/CreatableParams) |
+| `TEventData` *extends* `EventData` | `EventData` |
 
 ## Constructors
 
 ### Constructor
 
 ```ts
-new AbstractCreatableWithFactory<TParams, TEventData>(key, params): AbstractCreatableWithFactory<TParams, TEventData>;
+new AbstractCreatableWithFactory<TParams, TEventData>(key: unknown, params: Partial<TParams & RequiredCreatableParams>): AbstractCreatableWithFactory<TParams, TEventData>;
 ```
 
 ### Parameters
 
-#### key
-
-`unknown`
-
-#### params
-
-`Partial`\<`TParams` & [`RequiredCreatableParams`](#../interfaces/RequiredCreatableParams)\>
+| Parameter | Type |
+| ------ | ------ |
+| `key` | `unknown` |
+| `params` | `Partial`\<`TParams` & [`RequiredCreatableParams`](#../interfaces/RequiredCreatableParams)\> |
 
 ### Returns
 
@@ -1391,79 +1224,14 @@ new AbstractCreatableWithFactory<TParams, TEventData>(key, params): AbstractCrea
 
 ## Properties
 
-### defaultLogger?
-
-```ts
-static optional defaultLogger: Logger;
-```
-
-### Inherited from
-
-[`AbstractCreatable`](#AbstractCreatable).[`defaultLogger`](AbstractCreatable.md#defaultlogger)
-
-***
-
-### globalInstances
-
-```ts
-readonly static globalInstances: Record<BaseClassName, WeakRef<Base>[]>;
-```
-
-### Inherited from
-
-[`AbstractCreatable`](#AbstractCreatable).[`globalInstances`](AbstractCreatable.md#globalinstances)
-
-***
-
-### globalInstancesCountHistory
-
-```ts
-readonly static globalInstancesCountHistory: Record<BaseClassName, number[]>;
-```
-
-### Inherited from
-
-[`AbstractCreatable`](#AbstractCreatable).[`globalInstancesCountHistory`](AbstractCreatable.md#globalinstancescounthistory)
-
-***
-
-### defaultLogger?
-
-```ts
-optional defaultLogger: Logger;
-```
-
-Optional default logger for this instance.
-
-### Inherited from
-
-[`AbstractCreatable`](#AbstractCreatable).[`defaultLogger`](AbstractCreatable.md#defaultlogger-1)
-
-***
-
-### \_startPromise
-
-```ts
-protected _startPromise: Promisable<boolean> | undefined;
-```
-
-### Inherited from
-
-[`AbstractCreatable`](#AbstractCreatable).[`_startPromise`](AbstractCreatable.md#_startpromise)
-
-***
-
-### eventData
-
-```ts
-eventData: TEventData;
-```
-
-Type-level reference to the event data shape for external type queries.
-
-### Inherited from
-
-[`AbstractCreatable`](#AbstractCreatable).[`eventData`](AbstractCreatable.md#eventdata)
+| Property | Modifier | Type | Description | Inherited from |
+| ------ | ------ | ------ | ------ | ------ |
+| <a id="defaultlogger"></a> `defaultLogger?` | `static` | `Logger` | - | [`AbstractCreatable`](#AbstractCreatable).[`defaultLogger`](AbstractCreatable.md#defaultlogger) |
+| <a id="globalinstances"></a> `globalInstances` | `readonly` | `Record`\<`BaseClassName`, `WeakRef`\<`Base`\>[]\> | - | [`AbstractCreatable`](#AbstractCreatable).[`globalInstances`](AbstractCreatable.md#globalinstances) |
+| <a id="globalinstancescounthistory"></a> `globalInstancesCountHistory` | `readonly` | `Record`\<`BaseClassName`, `number`[]\> | - | [`AbstractCreatable`](#AbstractCreatable).[`globalInstancesCountHistory`](AbstractCreatable.md#globalinstancescounthistory) |
+| <a id="defaultlogger-1"></a> `defaultLogger?` | `public` | `Logger` | Optional default logger for this instance. | [`AbstractCreatable`](#AbstractCreatable).[`defaultLogger`](AbstractCreatable.md#defaultlogger-1) |
+| <a id="_startpromise"></a> `_startPromise` | `protected` | `Promisable`\<`boolean`\> \| `undefined` | - | [`AbstractCreatable`](#AbstractCreatable).[`_startPromise`](AbstractCreatable.md#_startpromise) |
+| <a id="eventdata"></a> `eventData` | `public` | `TEventData` | Type-level reference to the event data shape for external type queries. | [`AbstractCreatable`](#AbstractCreatable).[`eventData`](AbstractCreatable.md#eventdata) |
 
 ## Accessors
 
@@ -1482,14 +1250,14 @@ get static historyInterval(): number;
 ### Set Signature
 
 ```ts
-set static historyInterval(value): void;
+set static historyInterval(value: number): void;
 ```
 
 #### Parameters
 
-##### value
-
-`number`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `number` |
 
 #### Returns
 
@@ -1516,14 +1284,14 @@ get static historyTime(): number;
 ### Set Signature
 
 ```ts
-set static historyTime(value): void;
+set static historyTime(value: number): void;
 ```
 
 #### Parameters
 
-##### value
-
-`number`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `number` |
 
 #### Returns
 
@@ -1550,14 +1318,14 @@ get static maxGcFrequency(): number;
 ### Set Signature
 
 ```ts
-set static maxGcFrequency(value): void;
+set static maxGcFrequency(value: number): void;
 ```
 
 #### Parameters
 
-##### value
-
-`number`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `number` |
 
 #### Returns
 
@@ -1749,14 +1517,14 @@ The status reporter used to broadcast lifecycle changes.
 ### Call Signature
 
 ```ts
-static gc(force?): void;
+static gc(force?: boolean): void;
 ```
 
 #### Parameters
 
-##### force?
-
-`boolean`
+| Parameter | Type |
+| ------ | ------ |
+| `force?` | `boolean` |
 
 #### Returns
 
@@ -1769,14 +1537,14 @@ static gc(force?): void;
 ### Call Signature
 
 ```ts
-static gc(className): void;
+static gc(className: BaseClassName): void;
 ```
 
 #### Parameters
 
-##### className
-
-`BaseClassName`
+| Parameter | Type |
+| ------ | ------ |
+| `className` | `BaseClassName` |
 
 #### Returns
 
@@ -1791,14 +1559,14 @@ static gc(className): void;
 ### instanceCount()
 
 ```ts
-static instanceCount(className): number;
+static instanceCount(className: BaseClassName): number;
 ```
 
 ### Parameters
 
-#### className
-
-`BaseClassName`
+| Parameter | Type |
+| ------ | ------ |
+| `className` | `BaseClassName` |
 
 ### Returns
 
@@ -1861,7 +1629,7 @@ static stopHistory(): void;
 ### create()
 
 ```ts
-static create<T>(this, inParams?): Promise<T>;
+static create<T>(this: Creatable<T>, inParams?: Partial<T["params"]>): Promise<T>;
 ```
 
 Asynchronously creates a new instance by processing params, constructing,
@@ -1869,21 +1637,16 @@ and running both static and instance createHandlers.
 
 ### Type Parameters
 
-#### T
-
-`T` *extends* [`CreatableInstance`](#../interfaces/CreatableInstance)\<[`CreatableParams`](#../interfaces/CreatableParams), `EventData`\>
+| Type Parameter |
+| ------ |
+| `T` *extends* [`CreatableInstance`](#../interfaces/CreatableInstance)\<[`CreatableParams`](#../interfaces/CreatableParams), `EventData`\> |
 
 ### Parameters
 
-#### this
-
-[`Creatable`](#../interfaces/Creatable)\<`T`\>
-
-#### inParams?
-
-`Partial`\<`T`\[`"params"`\]\> = `{}`
-
-Optional partial parameters to configure the instance
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `this` | [`Creatable`](#../interfaces/Creatable)\<`T`\> | - |
+| `inParams` | `Partial`\<`T`\[`"params"`\]\> | Optional partial parameters to configure the instance |
 
 ### Returns
 
@@ -1900,7 +1663,7 @@ The fully initialized instance
 ### createHandler()
 
 ```ts
-static createHandler<T>(this, instance): Promisable<T>;
+static createHandler<T>(this: Creatable<T>, instance: T): Promisable<T>;
 ```
 
 Static hook called during creation to perform additional initialization.
@@ -1908,21 +1671,16 @@ Override in subclasses to customize post-construction setup.
 
 ### Type Parameters
 
-#### T
-
-`T` *extends* [`CreatableInstance`](#../interfaces/CreatableInstance)\<[`CreatableParams`](#../interfaces/CreatableParams), `EventData`\>
+| Type Parameter |
+| ------ |
+| `T` *extends* [`CreatableInstance`](#../interfaces/CreatableInstance)\<[`CreatableParams`](#../interfaces/CreatableParams), `EventData`\> |
 
 ### Parameters
 
-#### this
-
-[`Creatable`](#../interfaces/Creatable)\<`T`\>
-
-#### instance
-
-`T`
-
-The newly constructed instance
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `this` | [`Creatable`](#../interfaces/Creatable)\<`T`\> | - |
+| `instance` | `T` | The newly constructed instance |
 
 ### Returns
 
@@ -1939,7 +1697,7 @@ The instance, potentially modified
 ### paramsHandler()
 
 ```ts
-static paramsHandler<T>(this, params?): Promisable<T["params"]>;
+static paramsHandler<T>(this: Creatable<T>, params?: Partial<T["params"]>): Promisable<T["params"]>;
 ```
 
 Static hook called during creation to validate and transform params.
@@ -1947,21 +1705,16 @@ Override in subclasses to add default values or validation.
 
 ### Type Parameters
 
-#### T
-
-`T` *extends* [`CreatableInstance`](#../interfaces/CreatableInstance)\<[`CreatableParams`](#../interfaces/CreatableParams), `EventData`\>
+| Type Parameter |
+| ------ |
+| `T` *extends* [`CreatableInstance`](#../interfaces/CreatableInstance)\<[`CreatableParams`](#../interfaces/CreatableParams), `EventData`\> |
 
 ### Parameters
 
-#### this
-
-[`Creatable`](#../interfaces/Creatable)\<`T`\>
-
-#### params?
-
-`Partial`\<`T`\[`"params"`\]\> = `{}`
-
-The raw partial params provided to `create`
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `this` | [`Creatable`](#../interfaces/Creatable)\<`T`\> | - |
+| `params` | `Partial`\<`T`\[`"params"`\]\> | The raw partial params provided to `create` |
 
 ### Returns
 
@@ -1996,7 +1749,7 @@ Instance-level creation hook. Override in subclasses to perform setup after cons
 ### paramsValidator()
 
 ```ts
-paramsValidator(params): TParams & RequiredCreatableParams<void>;
+paramsValidator(params: Partial<TParams & RequiredCreatableParams>): TParams & RequiredCreatableParams<void>;
 ```
 
 Validates and returns the merged params, ensuring required fields are present.
@@ -2004,11 +1757,9 @@ Override in subclasses to add custom validation logic.
 
 ### Parameters
 
-#### params
-
-`Partial`\<`TParams` & [`RequiredCreatableParams`](#../interfaces/RequiredCreatableParams)\>
-
-The raw partial params to validate
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `params` | `Partial`\<`TParams` & [`RequiredCreatableParams`](#../interfaces/RequiredCreatableParams)\> | The raw partial params to validate |
 
 ### Returns
 
@@ -2025,30 +1776,23 @@ The validated params
 ### span()
 
 ```ts
-span<T>(name, fn): T;
+span<T>(name: string, fn: () => T): T;
 ```
 
 Executes a function within a telemetry span.
 
 ### Type Parameters
 
-#### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-#### name
-
-`string`
-
-The span name
-
-#### fn
-
-() => `T`
-
-The function to execute within the span
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `name` | `string` | The span name |
+| `fn` | () => `T` | The function to execute within the span |
 
 ### Returns
 
@@ -2064,38 +1808,26 @@ The function to execute within the span
 
 ```ts
 spanAsync<T>(
-   name, 
-   fn, 
-config?): Promise<T>;
+   name: string, 
+   fn: () => Promise<T>, 
+config?: SpanConfig): Promise<T>;
 ```
 
 Executes an async function within a telemetry span.
 
 ### Type Parameters
 
-#### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-#### name
-
-`string`
-
-The span name
-
-#### fn
-
-() => `Promise`\<`T`\>
-
-The async function to execute within the span
-
-#### config?
-
-`SpanConfig` = `{}`
-
-Optional span configuration
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `name` | `string` | The span name |
+| `fn` | () => `Promise`\<`T`\> | The async function to execute within the span |
+| `config` | `SpanConfig` | Optional span configuration |
 
 ### Returns
 
@@ -2129,7 +1861,7 @@ Thread-safe via mutex. Returns true if already started or started successfully.
 ### started()
 
 ```ts
-started(notStartedAction?): boolean;
+started(notStartedAction?: "error" | "throw" | "warn" | "log" | "none"): boolean;
 ```
 
 Checks whether this instance is currently started.
@@ -2137,11 +1869,9 @@ Takes an action if not started, based on the notStartedAction parameter.
 
 ### Parameters
 
-#### notStartedAction?
-
-What to do if not started: 'error'/'throw' throws, 'warn'/'log' logs, 'none' is silent
-
-`"error"` | `"throw"` | `"warn"` | `"log"` | `"none"`
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `notStartedAction` | `"error"` \| `"throw"` \| `"warn"` \| `"log"` \| `"none"` | `'log'` | What to do if not started: 'error'/'throw' throws, 'warn'/'log' logs, 'none' is silent |
 
 ### Returns
 
@@ -2158,24 +1888,17 @@ True if started, false otherwise
 ### startedAsync()
 
 ```ts
-startedAsync(notStartedAction?, tryStart?): Promise<boolean>;
+startedAsync(notStartedAction?: "error" | "throw" | "warn" | "log" | "none", tryStart?: boolean): Promise<boolean>;
 ```
 
 Async version of `started` that can optionally auto-start the instance.
 
 ### Parameters
 
-#### notStartedAction?
-
-What to do if not started and auto-start is disabled
-
-`"error"` | `"throw"` | `"warn"` | `"log"` | `"none"`
-
-#### tryStart?
-
-`boolean` = `true`
-
-If true, attempts to start the instance automatically
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `notStartedAction` | `"error"` \| `"throw"` \| `"warn"` \| `"log"` \| `"none"` | `'log'` | What to do if not started and auto-start is disabled |
+| `tryStart` | `boolean` | `true` | If true, attempts to start the instance automatically |
 
 ### Returns
 
@@ -2211,7 +1934,7 @@ Thread-safe via mutex. Returns true if already stopped or stopped successfully.
 ### \_noOverride()
 
 ```ts
-protected _noOverride(functionName?): void;
+protected _noOverride(functionName?: string): void;
 ```
 
 Asserts that the given function has not been overridden in a subclass.
@@ -2219,9 +1942,9 @@ Used to enforce the handler pattern (override `startHandler` not `start`).
 
 ### Parameters
 
-#### functionName?
-
-`string` = `...`
+| Parameter | Type |
+| ------ | ------ |
+| `functionName` | `string` |
 
 ### Returns
 
@@ -2238,20 +1961,17 @@ Used to enforce the handler pattern (override `startHandler` not `start`).
 ### Call Signature
 
 ```ts
-protected setStatus(value, progress?): void;
+protected setStatus(value: "creating" | "created" | "starting" | "started" | "stopping" | "stopped", progress?: number): void;
 ```
 
 Sets the lifecycle status and reports it via the status reporter.
 
 #### Parameters
 
-##### value
-
-`"creating"` | `"created"` | `"starting"` | `"started"` | `"stopping"` | `"stopped"`
-
-##### progress?
-
-`number`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `"creating"` \| `"created"` \| `"starting"` \| `"started"` \| `"stopping"` \| `"stopped"` |
+| `progress?` | `number` |
 
 #### Returns
 
@@ -2264,20 +1984,17 @@ Sets the lifecycle status and reports it via the status reporter.
 ### Call Signature
 
 ```ts
-protected setStatus(value, error?): void;
+protected setStatus(value: "error", error?: Error): void;
 ```
 
 Sets the lifecycle status and reports it via the status reporter.
 
 #### Parameters
 
-##### value
-
-`"error"`
-
-##### error?
-
-`Error`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `"error"` |
+| `error?` | `Error` |
 
 #### Returns
 
@@ -2329,36 +2046,26 @@ Override in subclasses to define stop behavior. Throw an error on failure.
 
 ```ts
 static factory<T>(
-   this, 
-   params?, 
-labels?): CreatableFactory<T>;
+   this: Creatable<T>, 
+   params?: Partial<T["params"]>, 
+labels?: Labels): CreatableFactory<T>;
 ```
 
 Creates a factory that produces instances of this class with pre-configured params and labels.
 
 ### Type Parameters
 
-#### T
-
-`T` *extends* [`CreatableInstance`](#../interfaces/CreatableInstance)\<[`CreatableParams`](#../interfaces/CreatableParams), `EventData`\>
+| Type Parameter |
+| ------ |
+| `T` *extends* [`CreatableInstance`](#../interfaces/CreatableInstance)\<[`CreatableParams`](#../interfaces/CreatableParams), `EventData`\> |
 
 ### Parameters
 
-#### this
-
-[`Creatable`](#../interfaces/Creatable)\<`T`\>
-
-#### params?
-
-`Partial`\<`T`\[`"params"`\]\>
-
-Default parameters for instances created by the factory
-
-#### labels?
-
-[`Labels`](#../interfaces/Labels)
-
-Labels to assign to created instances
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `this` | [`Creatable`](#../interfaces/Creatable)\<`T`\> | - |
+| `params?` | `Partial`\<`T`\[`"params"`\]\> | Default parameters for instances created by the factory |
+| `labels?` | [`Labels`](#../interfaces/Labels) | Labels to assign to created instances |
 
 ### Returns
 
@@ -2369,18 +2076,16 @@ Labels to assign to created instances
 ### clearListeners()
 
 ```ts
-clearListeners(eventNames): this;
+clearListeners(eventNames: keyof TEventData | keyof TEventData[]): this;
 ```
 
 Removes all listeners for the specified event name(s).
 
 ### Parameters
 
-#### eventNames
-
-One or more event names to clear listeners for.
-
-keyof `TEventData` | keyof `TEventData`[]
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventNames` | keyof `TEventData` \| keyof `TEventData`[] | One or more event names to clear listeners for. |
 
 ### Returns
 
@@ -2397,34 +2102,24 @@ This instance for chaining.
 ### emit()
 
 ```ts
-emit<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
+emit<TEventName, TEventArgs>(eventName: TEventName, eventArgs: TEventArgs): Promise<void>;
 ```
 
 Emits an event, invoking all registered listeners concurrently.
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* `string` \| `number` \| `symbol` = keyof `TEventData`
-
-#### TEventArgs
-
-`TEventArgs` *extends* `EventArgs` = `TEventData`\[`TEventName`\]
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TEventName` *extends* `string` \| `number` \| `symbol` | keyof `TEventData` |
+| `TEventArgs` *extends* `EventArgs` | `TEventData`\[`TEventName`\] |
 
 ### Parameters
 
-#### eventName
-
-`TEventName`
-
-The event to emit.
-
-#### eventArgs
-
-`TEventArgs`
-
-The data to pass to listeners.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventName` | `TEventName` | The event to emit. |
+| `eventArgs` | `TEventArgs` | The data to pass to listeners. |
 
 ### Returns
 
@@ -2439,34 +2134,24 @@ The data to pass to listeners.
 ### emitSerial()
 
 ```ts
-emitSerial<TEventName, TEventArgs>(eventName, eventArgs): Promise<void>;
+emitSerial<TEventName, TEventArgs>(eventName: TEventName, eventArgs: TEventArgs): Promise<void>;
 ```
 
 Emits an event, invoking all registered listeners sequentially in order.
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* `string` \| `number` \| `symbol` = keyof `TEventData`
-
-#### TEventArgs
-
-`TEventArgs` *extends* `EventArgs` = `TEventData`\[`TEventName`\]
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TEventName` *extends* `string` \| `number` \| `symbol` | keyof `TEventData` |
+| `TEventArgs` *extends* `EventArgs` | `TEventData`\[`TEventName`\] |
 
 ### Parameters
 
-#### eventName
-
-`TEventName`
-
-The event to emit.
-
-#### eventArgs
-
-`TEventArgs`
-
-The data to pass to listeners.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventName` | `TEventName` | The event to emit. |
+| `eventArgs` | `TEventArgs` | The data to pass to listeners. |
 
 ### Returns
 
@@ -2481,18 +2166,16 @@ The data to pass to listeners.
 ### listenerCount()
 
 ```ts
-listenerCount(eventNames): number;
+listenerCount(eventNames: keyof TEventData | keyof TEventData[]): number;
 ```
 
 Returns the total number of listeners registered for the specified event name(s).
 
 ### Parameters
 
-#### eventNames
-
-One or more event names to count listeners for.
-
-keyof `TEventData` | keyof `TEventData`[]
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventNames` | keyof `TEventData` \| keyof `TEventData`[] | One or more event names to count listeners for. |
 
 ### Returns
 
@@ -2509,30 +2192,23 @@ The total listener count.
 ### off()
 
 ```ts
-off<TEventName>(eventNames, listener): void;
+off<TEventName>(eventNames: TEventName | TEventName[], listener: EventListener<TEventData[TEventName]>): void;
 ```
 
 Removes a specific listener from the specified event name(s).
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* `string` \| `number` \| `symbol`
+| Type Parameter |
+| ------ |
+| `TEventName` *extends* `string` \| `number` \| `symbol` |
 
 ### Parameters
 
-#### eventNames
-
-One or more event names to unsubscribe from.
-
-`TEventName` | `TEventName`[]
-
-#### listener
-
-`EventListener`\<`TEventData`\[`TEventName`\]\>
-
-The listener to remove.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventNames` | `TEventName` \| `TEventName`[] | One or more event names to unsubscribe from. |
+| `listener` | `EventListener`\<`TEventData`\[`TEventName`\]\> | The listener to remove. |
 
 ### Returns
 
@@ -2547,18 +2223,16 @@ The listener to remove.
 ### offAny()
 
 ```ts
-offAny(listener): void;
+offAny(listener: EventAnyListener): void;
 ```
 
 Removes a wildcard listener that was receiving all events.
 
 ### Parameters
 
-#### listener
-
-`EventAnyListener`
-
-The wildcard listener to remove.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `listener` | `EventAnyListener` | The wildcard listener to remove. |
 
 ### Returns
 
@@ -2573,30 +2247,23 @@ The wildcard listener to remove.
 ### on()
 
 ```ts
-on<TEventName>(eventNames, listener): () => void;
+on<TEventName>(eventNames: TEventName | TEventName[], listener: EventListener<TEventData[TEventName]>): () => void;
 ```
 
 Subscribes a listener to the specified event name(s).
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* `string` \| `number` \| `symbol`
+| Type Parameter |
+| ------ |
+| `TEventName` *extends* `string` \| `number` \| `symbol` |
 
 ### Parameters
 
-#### eventNames
-
-One or more event names to listen for.
-
-`TEventName` | `TEventName`[]
-
-#### listener
-
-`EventListener`\<`TEventData`\[`TEventName`\]\>
-
-The callback to invoke when the event fires.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventNames` | `TEventName` \| `TEventName`[] | One or more event names to listen for. |
+| `listener` | `EventListener`\<`TEventData`\[`TEventName`\]\> | The callback to invoke when the event fires. |
 
 ### Returns
 
@@ -2619,18 +2286,16 @@ An unsubscribe function.
 ### onAny()
 
 ```ts
-onAny(listener): () => void;
+onAny(listener: EventAnyListener): () => void;
 ```
 
 Subscribes a wildcard listener that receives all events.
 
 ### Parameters
 
-#### listener
-
-`EventAnyListener`
-
-The callback to invoke for any event.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `listener` | `EventAnyListener` | The callback to invoke for any event. |
 
 ### Returns
 
@@ -2653,30 +2318,23 @@ An unsubscribe function.
 ### once()
 
 ```ts
-once<TEventName>(eventName, listener): () => void;
+once<TEventName>(eventName: TEventName, listener: EventListener<TEventData[TEventName]>): () => void;
 ```
 
 Subscribes a listener that will be invoked only once for the specified event, then automatically removed.
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* `string` \| `number` \| `symbol`
+| Type Parameter |
+| ------ |
+| `TEventName` *extends* `string` \| `number` \| `symbol` |
 
 ### Parameters
 
-#### eventName
-
-`TEventName`
-
-The event to listen for.
-
-#### listener
-
-`EventListener`\<`TEventData`\[`TEventName`\]\>
-
-The callback to invoke once.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `eventName` | `TEventName` | The event to listen for. |
+| `listener` | `EventListener`\<`TEventData`\[`TEventName`\]\> | The callback to invoke once. |
 
 ### Returns
 
@@ -2705,9 +2363,9 @@ Instances are created by merging caller-provided params over the factory default
 
 ## Type Parameters
 
-### T
-
-`T` *extends* [`CreatableInstance`](#../interfaces/CreatableInstance) = [`CreatableInstance`](#../interfaces/CreatableInstance)
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` *extends* [`CreatableInstance`](#../interfaces/CreatableInstance) | [`CreatableInstance`](#../interfaces/CreatableInstance) |
 
 ## Implements
 
@@ -2719,24 +2377,18 @@ Instances are created by merging caller-provided params over the factory default
 
 ```ts
 new Factory<T>(
-   creatable, 
-   params?, 
-labels?): Factory<T>;
+   creatable: Creatable<T>, 
+   params?: Partial<T["params"]>, 
+labels?: Labels): Factory<T>;
 ```
 
 ### Parameters
 
-#### creatable
-
-[`Creatable`](#../interfaces/Creatable)\<`T`\>
-
-#### params?
-
-`Partial`\<`T`\[`"params"`\]\>
-
-#### labels?
-
-[`Labels`](#../interfaces/Labels) = `{}`
+| Parameter | Type |
+| ------ | ------ |
+| `creatable` | [`Creatable`](#../interfaces/Creatable)\<`T`\> |
+| `params?` | `Partial`\<`T`\[`"params"`\]\> |
+| `labels?` | [`Labels`](#../interfaces/Labels) |
 
 ### Returns
 
@@ -2744,33 +2396,11 @@ labels?): Factory<T>;
 
 ## Properties
 
-### creatable
-
-```ts
-creatable: Creatable<T>;
-```
-
-The Creatable class this factory delegates creation to.
-
-***
-
-### defaultParams?
-
-```ts
-optional defaultParams: Partial<T["params"]>;
-```
-
-Default parameters merged into every `create` call.
-
-***
-
-### labels?
-
-```ts
-optional labels: Labels;
-```
-
-Labels identifying resources created by this factory.
+| Property | Type | Description |
+| ------ | ------ | ------ |
+| <a id="creatable"></a> `creatable` | [`Creatable`](#../interfaces/Creatable)\<`T`\> | The Creatable class this factory delegates creation to. |
+| <a id="defaultparams"></a> `defaultParams?` | `Partial`\<`T`\[`"params"`\]\> | Default parameters merged into every `create` call. |
+| <a id="labels"></a> `labels?` | [`Labels`](#../interfaces/Labels) | Labels identifying resources created by this factory. |
 
 ## Methods
 
@@ -2778,38 +2408,26 @@ Labels identifying resources created by this factory.
 
 ```ts
 static withParams<T>(
-   creatableModule, 
-   params?, 
-labels?): Factory<T>;
+   creatableModule: Creatable<T>, 
+   params?: Partial<T["params"]>, 
+labels?: Labels): Factory<T>;
 ```
 
 Creates a new Factory instance with the given default params and labels.
 
 ### Type Parameters
 
-#### T
-
-`T` *extends* [`CreatableInstance`](#../interfaces/CreatableInstance)\<[`CreatableParams`](#../interfaces/CreatableParams), `EventData`\>
+| Type Parameter |
+| ------ |
+| `T` *extends* [`CreatableInstance`](#../interfaces/CreatableInstance)\<[`CreatableParams`](#../interfaces/CreatableParams), `EventData`\> |
 
 ### Parameters
 
-#### creatableModule
-
-[`Creatable`](#../interfaces/Creatable)\<`T`\>
-
-The Creatable class to wrap
-
-#### params?
-
-`Partial`\<`T`\[`"params"`\]\>
-
-Default parameters for new instances
-
-#### labels?
-
-[`Labels`](#../interfaces/Labels) = `{}`
-
-Labels to assign to created instances
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `creatableModule` | [`Creatable`](#../interfaces/Creatable)\<`T`\> | The Creatable class to wrap |
+| `params?` | `Partial`\<`T`\[`"params"`\]\> | Default parameters for new instances |
+| `labels?` | [`Labels`](#../interfaces/Labels) | Labels to assign to created instances |
 
 ### Returns
 
@@ -2820,18 +2438,16 @@ Labels to assign to created instances
 ### create()
 
 ```ts
-create(params?): Promise<T>;
+create(params?: Partial<T["params"]>): Promise<T>;
 ```
 
 Creates a new instance, merging the provided params over the factory defaults.
 
 ### Parameters
 
-#### params?
-
-`Partial`\<`T`\[`"params"`\]\>
-
-Optional parameters to override the factory defaults
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `params?` | `Partial`\<`T`\[`"params"`\]\> | Optional parameters to override the factory defaults |
 
 ### Returns
 
@@ -2850,7 +2466,7 @@ Optional parameters to override the factory defaults
 ***
 
 ```ts
-function creatable<T>(): <U>(constructor) => void;
+function creatable<T>(): <U>(constructor: U) => void;
 ```
 
 Class annotation to be used to decorate Modules which support
@@ -2858,9 +2474,9 @@ an asynchronous creation pattern
 
 ## Type Parameters
 
-### T
-
-`T` *extends* [`CreatableInstance`](#../interfaces/CreatableInstance)\<[`CreatableParams`](#../interfaces/CreatableParams), `EventData`\>
+| Type Parameter |
+| ------ |
+| `T` *extends* [`CreatableInstance`](#../interfaces/CreatableInstance)\<[`CreatableParams`](#../interfaces/CreatableParams), `EventData`\> |
 
 ## Returns
 
@@ -2868,20 +2484,20 @@ The decorated Module requiring it implement the members
 of the CreatableModule as statics properties/methods
 
 ```ts
-<U>(constructor): void;
+<U>(constructor: U): void;
 ```
 
 ### Type Parameters
 
-### U
-
-`U` *extends* [`Creatable`](#../interfaces/Creatable)\<`T`\>
+| Type Parameter |
+| ------ |
+| `U` *extends* [`Creatable`](#../interfaces/Creatable)\<`T`\> |
 
 ### Parameters
 
-### constructor
-
-`U`
+| Parameter | Type |
+| ------ | ------ |
+| `constructor` | `U` |
 
 ### Returns
 
@@ -2894,7 +2510,7 @@ of the CreatableModule as statics properties/methods
 ***
 
 ```ts
-function creatableFactory(): <U>(constructor) => void;
+function creatableFactory(): <U>(constructor: U) => void;
 ```
 
 Class annotation to be used to decorate Modules which support
@@ -2906,20 +2522,20 @@ The decorated Module requiring it implement the members
 of the CreatableModule as statics properties/methods
 
 ```ts
-<U>(constructor): void;
+<U>(constructor: U): void;
 ```
 
 ### Type Parameters
 
-### U
-
-`U` *extends* [`CreatableFactory`](#../interfaces/CreatableFactory)\<[`CreatableInstance`](#../interfaces/CreatableInstance)\<[`CreatableParams`](#../interfaces/CreatableParams), `EventData`\>\>
+| Type Parameter |
+| ------ |
+| `U` *extends* [`CreatableFactory`](#../interfaces/CreatableFactory)\<[`CreatableInstance`](#../interfaces/CreatableInstance)\<[`CreatableParams`](#../interfaces/CreatableParams), `EventData`\>\> |
 
 ### Parameters
 
-### constructor
-
-`U`
+| Parameter | Type |
+| ------ | ------ |
+| `constructor` | `U` |
 
 ### Returns
 
@@ -2932,24 +2548,17 @@ of the CreatableModule as statics properties/methods
 ***
 
 ```ts
-function hasAllLabels(source?, required?): boolean;
+function hasAllLabels(source?: Labels, required?: Labels): boolean;
 ```
 
 Returns true if the source object has all the labels from the required set
 
 ## Parameters
 
-### source?
-
-[`Labels`](#../interfaces/Labels)
-
-Source object to check against
-
-### required?
-
-[`Labels`](#../interfaces/Labels)
-
-Set of labels to check for in source
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `source?` | [`Labels`](#../interfaces/Labels) | Source object to check against |
+| `required?` | [`Labels`](#../interfaces/Labels) | Set of labels to check for in source |
 
 ## Returns
 
@@ -2975,29 +2584,26 @@ used to construct instances through the creatable lifecycle.
 
 ## Type Parameters
 
-### T
-
-`T` *extends* [`CreatableInstance`](#CreatableInstance) = [`CreatableInstance`](#CreatableInstance)
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` *extends* [`CreatableInstance`](#CreatableInstance) | [`CreatableInstance`](#CreatableInstance) |
 
 ## Constructors
 
 ### Constructor
 
 ```ts
-new Creatable(key, params): T & AbstractCreatable<T["params"], EventData>;
+new Creatable(key: unknown, params: Partial<CreatableParams>): T & AbstractCreatable<T["params"], EventData>;
 ```
 
 Constructs a new raw instance. Should not be called directly; use `create` instead.
 
 ### Parameters
 
-#### key
-
-`unknown`
-
-#### params
-
-`Partial`\<[`CreatableParams`](#CreatableParams)\>
+| Parameter | Type |
+| ------ | ------ |
+| `key` | `unknown` |
+| `params` | `Partial`\<[`CreatableParams`](#CreatableParams)\> |
 
 ### Returns
 
@@ -3005,39 +2611,32 @@ Constructs a new raw instance. Should not be called directly; use `create` inste
 
 ## Properties
 
-### defaultLogger?
-
-```ts
-optional defaultLogger: Logger;
-```
-
-Optional default logger shared across instances created by this class.
+| Property | Type | Description |
+| ------ | ------ | ------ |
+| <a id="defaultlogger"></a> `defaultLogger?` | `Logger` | Optional default logger shared across instances created by this class. |
 
 ## Methods
 
 ### create()
 
 ```ts
-create<T>(this, params?): Promise<T>;
+create<T>(this: Creatable<T>, params?: Partial<T["params"]>): Promise<T>;
 ```
 
 Asynchronously creates and initializes a new instance with the given params.
 
 ### Type Parameters
 
-#### T
-
-`T` *extends* [`CreatableInstance`](#CreatableInstance)\<[`CreatableParams`](#CreatableParams), `EventData`\>
+| Type Parameter |
+| ------ |
+| `T` *extends* [`CreatableInstance`](#CreatableInstance)\<[`CreatableParams`](#CreatableParams), `EventData`\> |
 
 ### Parameters
 
-#### this
-
-`Creatable`\<`T`\>
-
-#### params?
-
-`Partial`\<`T`\[`"params"`\]\>
+| Parameter | Type |
+| ------ | ------ |
+| `this` | `Creatable`\<`T`\> |
+| `params?` | `Partial`\<`T`\[`"params"`\]\> |
 
 ### Returns
 
@@ -3048,26 +2647,23 @@ Asynchronously creates and initializes a new instance with the given params.
 ### createHandler()
 
 ```ts
-createHandler<T>(this, instance): Promisable<T>;
+createHandler<T>(this: Creatable<T>, instance: T): Promisable<T>;
 ```
 
 Hook called after construction to perform additional initialization on the instance.
 
 ### Type Parameters
 
-#### T
-
-`T` *extends* [`CreatableInstance`](#CreatableInstance)\<[`CreatableParams`](#CreatableParams), `EventData`\>
+| Type Parameter |
+| ------ |
+| `T` *extends* [`CreatableInstance`](#CreatableInstance)\<[`CreatableParams`](#CreatableParams), `EventData`\> |
 
 ### Parameters
 
-#### this
-
-`Creatable`\<`T`\>
-
-#### instance
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `this` | `Creatable`\<`T`\> |
+| `instance` | `T` |
 
 ### Returns
 
@@ -3078,26 +2674,23 @@ Hook called after construction to perform additional initialization on the insta
 ### paramsHandler()
 
 ```ts
-paramsHandler<T>(this, params?): Promisable<T["params"] & RequiredCreatableParams<void>>;
+paramsHandler<T>(this: Creatable<T>, params?: Partial<T["params"]>): Promisable<T["params"] & RequiredCreatableParams<void>>;
 ```
 
 Hook called to validate and transform params before instance construction.
 
 ### Type Parameters
 
-#### T
-
-`T` *extends* [`CreatableInstance`](#CreatableInstance)\<[`CreatableParams`](#CreatableParams), `EventData`\>
+| Type Parameter |
+| ------ |
+| `T` *extends* [`CreatableInstance`](#CreatableInstance)\<[`CreatableParams`](#CreatableParams), `EventData`\> |
 
 ### Parameters
 
-#### this
-
-`Creatable`\<`T`\>
-
-#### params?
-
-`Partial`\<`T`\[`"params"`\]\>
+| Parameter | Type |
+| ------ | ------ |
+| `this` | `Creatable`\<`T`\> |
+| `params?` | `Partial`\<`T`\[`"params"`\]\> |
 
 ### Returns
 
@@ -3123,29 +2716,26 @@ Unlike the full Creatable, this only exposes the `create` method.
 
 ## Type Parameters
 
-### T
-
-`T` *extends* [`CreatableInstance`](#CreatableInstance) = [`CreatableInstance`](#CreatableInstance)
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` *extends* [`CreatableInstance`](#CreatableInstance) | [`CreatableInstance`](#CreatableInstance) |
 
 ## Methods
 
 ### create()
 
 ```ts
-create(this, params?): Promise<T>;
+create(this: CreatableFactory<T>, params?: Partial<T["params"]>): Promise<T>;
 ```
 
 Creates a new instance, merging the provided params with the factory's defaults.
 
 ### Parameters
 
-#### this
-
-`CreatableFactory`\<`T`\>
-
-#### params?
-
-`Partial`\<`T`\[`"params"`\]\>
+| Parameter | Type |
+| ------ | ------ |
+| `this` | `CreatableFactory`\<`T`\> |
+| `params?` | `Partial`\<`T`\[`"params"`\]\> |
 
 ### Returns
 
@@ -3165,93 +2755,36 @@ Represents a created instance with a managed lifecycle (start/stop) and event em
 
 ## Type Parameters
 
-### TParams
-
-`TParams` *extends* [`CreatableParams`](#CreatableParams) = [`CreatableParams`](#CreatableParams)
-
-### TEventData
-
-`TEventData` *extends* `EventData` = `EventData`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TParams` *extends* [`CreatableParams`](#CreatableParams) | [`CreatableParams`](#CreatableParams) |
+| `TEventData` *extends* `EventData` | `EventData` |
 
 ## Properties
 
-### eventData
-
-```ts
-eventData: TEventData;
-```
-
-The event data type associated with this instance.
-
-### Overrides
-
-```ts
-EventEmitter.eventData
-```
-
-***
-
-### name
-
-```ts
-name: CreatableName;
-```
-
-The name identifier for this instance.
-
-***
-
-### params
-
-```ts
-params: TParams;
-```
-
-The parameters used to configure this instance.
-
-***
-
-### start()
-
-```ts
-start: () => Promise<boolean>;
-```
-
-Starts the instance. Resolves to true if started successfully.
-
-### Returns
-
-`Promise`\<`boolean`\>
-
-***
-
-### stop()
-
-```ts
-stop: () => Promise<boolean>;
-```
-
-Stops the instance. Resolves to true if stopped successfully.
-
-### Returns
-
-`Promise`\<`boolean`\>
+| Property | Type | Description | Overrides |
+| ------ | ------ | ------ | ------ |
+| <a id="eventdata"></a> `eventData` | `TEventData` | The event data type associated with this instance. | `EventEmitter.eventData` |
+| <a id="name"></a> `name` | [`CreatableName`](#../type-aliases/CreatableName) | The name identifier for this instance. | - |
+| <a id="params"></a> `params` | `TParams` | The parameters used to configure this instance. | - |
+| <a id="start"></a> `start` | () => `Promise`\<`boolean`\> | Starts the instance. Resolves to true if started successfully. | - |
+| <a id="stop"></a> `stop` | () => `Promise`\<`boolean`\> | Stops the instance. Resolves to true if stopped successfully. | - |
 
 ## Methods
 
 ### clearListeners()
 
 ```ts
-clearListeners(eventNames): void;
+clearListeners(eventNames: keyof TEventData | keyof TEventData[]): void;
 ```
 
 Removes all listeners for the specified event name(s).
 
 ### Parameters
 
-#### eventNames
-
-keyof `TEventData` | keyof `TEventData`[]
+| Parameter | Type |
+| ------ | ------ |
+| `eventNames` | keyof `TEventData` \| keyof `TEventData`[] |
 
 ### Returns
 
@@ -3268,26 +2801,23 @@ EventEmitter.clearListeners
 ### emit()
 
 ```ts
-emit<TEventName>(eventName, eventArgs): Promise<void>;
+emit<TEventName>(eventName: TEventName, eventArgs: TEventData[TEventName]): Promise<void>;
 ```
 
 Emits an event, invoking all registered listeners concurrently.
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* `string` \| `number` \| `symbol`
+| Type Parameter |
+| ------ |
+| `TEventName` *extends* `string` \| `number` \| `symbol` |
 
 ### Parameters
 
-#### eventName
-
-`TEventName`
-
-#### eventArgs
-
-`TEventData`\[`TEventName`\]
+| Parameter | Type |
+| ------ | ------ |
+| `eventName` | `TEventName` |
+| `eventArgs` | `TEventData`\[`TEventName`\] |
 
 ### Returns
 
@@ -3304,26 +2834,23 @@ EventEmitter.emit
 ### emitSerial()
 
 ```ts
-emitSerial<TEventName>(eventName, eventArgs): Promise<void>;
+emitSerial<TEventName>(eventName: TEventName, eventArgs: TEventData[TEventName]): Promise<void>;
 ```
 
 Emits an event, invoking all registered listeners sequentially in order.
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* `string` \| `number` \| `symbol`
+| Type Parameter |
+| ------ |
+| `TEventName` *extends* `string` \| `number` \| `symbol` |
 
 ### Parameters
 
-#### eventName
-
-`TEventName`
-
-#### eventArgs
-
-`TEventData`\[`TEventName`\]
+| Parameter | Type |
+| ------ | ------ |
+| `eventName` | `TEventName` |
+| `eventArgs` | `TEventData`\[`TEventName`\] |
 
 ### Returns
 
@@ -3340,16 +2867,16 @@ EventEmitter.emitSerial
 ### listenerCount()
 
 ```ts
-listenerCount(eventNames): number;
+listenerCount(eventNames: keyof TEventData | keyof TEventData[]): number;
 ```
 
 Returns the total number of listeners registered for the specified event name(s).
 
 ### Parameters
 
-#### eventNames
-
-keyof `TEventData` | keyof `TEventData`[]
+| Parameter | Type |
+| ------ | ------ |
+| `eventNames` | keyof `TEventData` \| keyof `TEventData`[] |
 
 ### Returns
 
@@ -3366,26 +2893,23 @@ EventEmitter.listenerCount
 ### off()
 
 ```ts
-off<TEventName>(eventNames, listener): void;
+off<TEventName>(eventNames: TEventName | TEventName[], listener: EventListener<TEventData[TEventName]>): void;
 ```
 
 Removes a specific listener from the specified event name(s).
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* `string` \| `number` \| `symbol`
+| Type Parameter |
+| ------ |
+| `TEventName` *extends* `string` \| `number` \| `symbol` |
 
 ### Parameters
 
-#### eventNames
-
-`TEventName` | `TEventName`[]
-
-#### listener
-
-`EventListener`\<`TEventData`\[`TEventName`\]\>
+| Parameter | Type |
+| ------ | ------ |
+| `eventNames` | `TEventName` \| `TEventName`[] |
+| `listener` | `EventListener`\<`TEventData`\[`TEventName`\]\> |
 
 ### Returns
 
@@ -3402,16 +2926,16 @@ EventEmitter.off
 ### offAny()
 
 ```ts
-offAny(listener): void;
+offAny(listener: Promise<void> | EventAnyListener): void;
 ```
 
 Removes a wildcard listener that was receiving all events.
 
 ### Parameters
 
-#### listener
-
-`Promise`\<`void`\> | `EventAnyListener`
+| Parameter | Type |
+| ------ | ------ |
+| `listener` | `Promise`\<`void`\> \| `EventAnyListener` |
 
 ### Returns
 
@@ -3428,26 +2952,23 @@ EventEmitter.offAny
 ### on()
 
 ```ts
-on<TEventName>(eventNames, listener): EventUnsubscribeFunction;
+on<TEventName>(eventNames: TEventName | TEventName[], listener: EventListener<TEventData[TEventName]>): EventUnsubscribeFunction;
 ```
 
 Subscribes a listener to the specified event name(s) and returns an unsubscribe function.
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* `string` \| `number` \| `symbol`
+| Type Parameter |
+| ------ |
+| `TEventName` *extends* `string` \| `number` \| `symbol` |
 
 ### Parameters
 
-#### eventNames
-
-`TEventName` | `TEventName`[]
-
-#### listener
-
-`EventListener`\<`TEventData`\[`TEventName`\]\>
+| Parameter | Type |
+| ------ | ------ |
+| `eventNames` | `TEventName` \| `TEventName`[] |
+| `listener` | `EventListener`\<`TEventData`\[`TEventName`\]\> |
 
 ### Returns
 
@@ -3464,16 +2985,16 @@ EventEmitter.on
 ### onAny()
 
 ```ts
-onAny(listener): EventUnsubscribeFunction;
+onAny(listener: EventAnyListener): EventUnsubscribeFunction;
 ```
 
 Subscribes a wildcard listener that receives all events and returns an unsubscribe function.
 
 ### Parameters
 
-#### listener
-
-`EventAnyListener`
+| Parameter | Type |
+| ------ | ------ |
+| `listener` | `EventAnyListener` |
 
 ### Returns
 
@@ -3490,26 +3011,23 @@ EventEmitter.onAny
 ### once()
 
 ```ts
-once<TEventName>(eventName, listener): EventUnsubscribeFunction;
+once<TEventName>(eventName: TEventName, listener: EventListener<TEventData[TEventName]>): EventUnsubscribeFunction;
 ```
 
 Subscribes a listener that will be invoked only once for the specified event, then automatically removed.
 
 ### Type Parameters
 
-#### TEventName
-
-`TEventName` *extends* `string` \| `number` \| `symbol`
+| Type Parameter |
+| ------ |
+| `TEventName` *extends* `string` \| `number` \| `symbol` |
 
 ### Parameters
 
-#### eventName
-
-`TEventName`
-
-#### listener
-
-`EventListener`\<`TEventData`\[`TEventName`\]\>
+| Parameter | Type |
+| ------ | ------ |
+| `eventName` | `TEventName` |
+| `listener` | `EventListener`\<`TEventData`\[`TEventName`\]\> |
 
 ### Returns
 
@@ -3535,67 +3053,13 @@ Parameters for creating a creatable instance, combining required params with emi
 
 ## Properties
 
-### logger?
-
-```ts
-optional logger: Logger;
-```
-
-### Inherited from
-
-[`RequiredCreatableParams`](#RequiredCreatableParams).[`logger`](RequiredCreatableParams.md#logger)
-
-***
-
-### meterProvider?
-
-```ts
-optional meterProvider: MeterProvider;
-```
-
-### Inherited from
-
-[`RequiredCreatableParams`](#RequiredCreatableParams).[`meterProvider`](RequiredCreatableParams.md#meterprovider)
-
-***
-
-### traceProvider?
-
-```ts
-optional traceProvider: TracerProvider;
-```
-
-### Inherited from
-
-[`RequiredCreatableParams`](#RequiredCreatableParams).[`traceProvider`](RequiredCreatableParams.md#traceprovider)
-
-***
-
-### name?
-
-```ts
-optional name: CreatableName;
-```
-
-Optional name identifying this creatable instance.
-
-### Inherited from
-
-[`RequiredCreatableParams`](#RequiredCreatableParams).[`name`](RequiredCreatableParams.md#name)
-
-***
-
-### statusReporter?
-
-```ts
-optional statusReporter: CreatableStatusReporter<void>;
-```
-
-Optional reporter for broadcasting status changes.
-
-### Inherited from
-
-[`RequiredCreatableParams`](#RequiredCreatableParams).[`statusReporter`](RequiredCreatableParams.md#statusreporter)
+| Property | Type | Description | Inherited from |
+| ------ | ------ | ------ | ------ |
+| <a id="logger"></a> `logger?` | `Logger` | - | [`RequiredCreatableParams`](#RequiredCreatableParams).[`logger`](RequiredCreatableParams.md#logger) |
+| <a id="meterprovider"></a> `meterProvider?` | `MeterProvider` | - | [`RequiredCreatableParams`](#RequiredCreatableParams).[`meterProvider`](RequiredCreatableParams.md#meterprovider) |
+| <a id="traceprovider"></a> `traceProvider?` | `TracerProvider` | - | [`RequiredCreatableParams`](#RequiredCreatableParams).[`traceProvider`](RequiredCreatableParams.md#traceprovider) |
+| <a id="name"></a> `name?` | [`CreatableName`](#../type-aliases/CreatableName) | Optional name identifying this creatable instance. | [`RequiredCreatableParams`](#RequiredCreatableParams).[`name`](RequiredCreatableParams.md#name) |
+| <a id="statusreporter"></a> `statusReporter?` | [`CreatableStatusReporter`](#CreatableStatusReporter)\<`void`\> | Optional reporter for broadcasting status changes. | [`RequiredCreatableParams`](#RequiredCreatableParams).[`statusReporter`](RequiredCreatableParams.md#statusreporter) |
 
   ### <a id="CreatableStatusReporter"></a>CreatableStatusReporter
 
@@ -3607,9 +3071,9 @@ Reports status changes for a creatable, supporting progress tracking and error r
 
 ## Type Parameters
 
-### TAdditionalStatus
-
-`TAdditionalStatus` *extends* `void` \| `string` = `void`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TAdditionalStatus` *extends* `void` \| `string` | `void` |
 
 ## Methods
 
@@ -3619,26 +3083,27 @@ Reports status changes for a creatable, supporting progress tracking and error r
 
 ```ts
 report(
-   name, 
-   status, 
-   progress): void;
+   name: BaseClassName, 
+   status: 
+  | "creating"
+  | "created"
+  | "starting"
+  | "started"
+  | "stopping"
+  | "stopped"
+  | Exclude<TAdditionalStatus extends void ? StandardCreatableStatus : TAdditionalStatus, "error">, 
+   progress: number): void;
 ```
 
 Report a non-error status with a numeric progress value.
 
 #### Parameters
 
-##### name
-
-`BaseClassName`
-
-##### status
-
-`"creating"` | `"created"` | `"starting"` | `"started"` | `"stopping"` | `"stopped"` | `Exclude`\<`TAdditionalStatus` *extends* `void` ? [`StandardCreatableStatus`](#../type-aliases/StandardCreatableStatus) : `TAdditionalStatus`, `"error"`\>
-
-##### progress
-
-`number`
+| Parameter | Type |
+| ------ | ------ |
+| `name` | `BaseClassName` |
+| `status` | \| `"creating"` \| `"created"` \| `"starting"` \| `"started"` \| `"stopping"` \| `"stopped"` \| `Exclude`\<`TAdditionalStatus` *extends* `void` ? [`StandardCreatableStatus`](#../type-aliases/StandardCreatableStatus) : `TAdditionalStatus`, `"error"`\> |
+| `progress` | `number` |
 
 #### Returns
 
@@ -3648,26 +3113,22 @@ Report a non-error status with a numeric progress value.
 
 ```ts
 report(
-   name, 
-   status, 
-   error): void;
+   name: BaseClassName, 
+   status: 
+  | "error"
+  | Extract<TAdditionalStatus extends void ? StandardCreatableStatus : TAdditionalStatus, "error">, 
+   error: Error): void;
 ```
 
 Report an error status with the associated Error.
 
 #### Parameters
 
-##### name
-
-`BaseClassName`
-
-##### status
-
-`"error"` | `Extract`\<`TAdditionalStatus` *extends* `void` ? [`StandardCreatableStatus`](#../type-aliases/StandardCreatableStatus) : `TAdditionalStatus`, `"error"`\>
-
-##### error
-
-`Error`
+| Parameter | Type |
+| ------ | ------ |
+| `name` | `BaseClassName` |
+| `status` | \| `"error"` \| `Extract`\<`TAdditionalStatus` *extends* `void` ? [`StandardCreatableStatus`](#../type-aliases/StandardCreatableStatus) : `TAdditionalStatus`, `"error"`\> |
+| `error` | `Error` |
 
 #### Returns
 
@@ -3676,20 +3137,17 @@ Report an error status with the associated Error.
 ### Call Signature
 
 ```ts
-report(name, status): void;
+report(name: BaseClassName, status: CreatableStatus<TAdditionalStatus>): void;
 ```
 
 Report a status change without progress or error details.
 
 #### Parameters
 
-##### name
-
-`BaseClassName`
-
-##### status
-
-[`CreatableStatus`](#../type-aliases/CreatableStatus)\<`TAdditionalStatus`\>
+| Parameter | Type |
+| ------ | ------ |
+| `name` | `BaseClassName` |
+| `status` | [`CreatableStatus`](#../type-aliases/CreatableStatus)\<`TAdditionalStatus`\> |
 
 #### Returns
 
@@ -3709,29 +3167,26 @@ Extends Creatable with a `factory` method that produces pre-configured Creatable
 
 ## Type Parameters
 
-### T
-
-`T` *extends* [`CreatableInstance`](#CreatableInstance) = [`CreatableInstance`](#CreatableInstance)
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` *extends* [`CreatableInstance`](#CreatableInstance) | [`CreatableInstance`](#CreatableInstance) |
 
 ## Constructors
 
 ### Constructor
 
 ```ts
-new CreatableWithFactory(key, params): T & AbstractCreatable<T["params"], EventData>;
+new CreatableWithFactory(key: unknown, params: Partial<CreatableParams>): T & AbstractCreatable<T["params"], EventData>;
 ```
 
 Constructs a new raw instance. Should not be called directly; use `create` instead.
 
 ### Parameters
 
-#### key
-
-`unknown`
-
-#### params
-
-`Partial`\<[`CreatableParams`](#CreatableParams)\>
+| Parameter | Type |
+| ------ | ------ |
+| `key` | `unknown` |
+| `params` | `Partial`\<[`CreatableParams`](#CreatableParams)\> |
 
 ### Returns
 
@@ -3743,43 +3198,32 @@ Constructs a new raw instance. Should not be called directly; use `create` inste
 
 ## Properties
 
-### defaultLogger?
-
-```ts
-optional defaultLogger: Logger;
-```
-
-Optional default logger shared across instances created by this class.
-
-### Inherited from
-
-[`Creatable`](#Creatable).[`defaultLogger`](Creatable.md#defaultlogger)
+| Property | Type | Description | Inherited from |
+| ------ | ------ | ------ | ------ |
+| <a id="defaultlogger"></a> `defaultLogger?` | `Logger` | Optional default logger shared across instances created by this class. | [`Creatable`](#Creatable).[`defaultLogger`](Creatable.md#defaultlogger) |
 
 ## Methods
 
 ### create()
 
 ```ts
-create<T>(this, params?): Promise<T>;
+create<T>(this: Creatable<T>, params?: Partial<T["params"]>): Promise<T>;
 ```
 
 Asynchronously creates and initializes a new instance with the given params.
 
 ### Type Parameters
 
-#### T
-
-`T` *extends* [`CreatableInstance`](#CreatableInstance)\<[`CreatableParams`](#CreatableParams), `EventData`\>
+| Type Parameter |
+| ------ |
+| `T` *extends* [`CreatableInstance`](#CreatableInstance)\<[`CreatableParams`](#CreatableParams), `EventData`\> |
 
 ### Parameters
 
-#### this
-
-[`Creatable`](#Creatable)\<`T`\>
-
-#### params?
-
-`Partial`\<`T`\[`"params"`\]\>
+| Parameter | Type |
+| ------ | ------ |
+| `this` | [`Creatable`](#Creatable)\<`T`\> |
+| `params?` | `Partial`\<`T`\[`"params"`\]\> |
 
 ### Returns
 
@@ -3794,26 +3238,23 @@ Asynchronously creates and initializes a new instance with the given params.
 ### createHandler()
 
 ```ts
-createHandler<T>(this, instance): Promisable<T>;
+createHandler<T>(this: Creatable<T>, instance: T): Promisable<T>;
 ```
 
 Hook called after construction to perform additional initialization on the instance.
 
 ### Type Parameters
 
-#### T
-
-`T` *extends* [`CreatableInstance`](#CreatableInstance)\<[`CreatableParams`](#CreatableParams), `EventData`\>
+| Type Parameter |
+| ------ |
+| `T` *extends* [`CreatableInstance`](#CreatableInstance)\<[`CreatableParams`](#CreatableParams), `EventData`\> |
 
 ### Parameters
 
-#### this
-
-[`Creatable`](#Creatable)\<`T`\>
-
-#### instance
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `this` | [`Creatable`](#Creatable)\<`T`\> |
+| `instance` | `T` |
 
 ### Returns
 
@@ -3828,26 +3269,23 @@ Hook called after construction to perform additional initialization on the insta
 ### paramsHandler()
 
 ```ts
-paramsHandler<T>(this, params?): Promisable<T["params"] & RequiredCreatableParams<void>>;
+paramsHandler<T>(this: Creatable<T>, params?: Partial<T["params"]>): Promisable<T["params"] & RequiredCreatableParams<void>>;
 ```
 
 Hook called to validate and transform params before instance construction.
 
 ### Type Parameters
 
-#### T
-
-`T` *extends* [`CreatableInstance`](#CreatableInstance)\<[`CreatableParams`](#CreatableParams), `EventData`\>
+| Type Parameter |
+| ------ |
+| `T` *extends* [`CreatableInstance`](#CreatableInstance)\<[`CreatableParams`](#CreatableParams), `EventData`\> |
 
 ### Parameters
 
-#### this
-
-[`Creatable`](#Creatable)\<`T`\>
-
-#### params?
-
-`Partial`\<`T`\[`"params"`\]\>
+| Parameter | Type |
+| ------ | ------ |
+| `this` | [`Creatable`](#Creatable)\<`T`\> |
+| `params?` | `Partial`\<`T`\[`"params"`\]\> |
 
 ### Returns
 
@@ -3863,32 +3301,26 @@ Hook called to validate and transform params before instance construction.
 
 ```ts
 factory<T>(
-   this, 
-   params?, 
-labels?): CreatableFactory<T>;
+   this: Creatable<T>, 
+   params?: Partial<T["params"]>, 
+labels?: Labels): CreatableFactory<T>;
 ```
 
 Creates a factory with the given default params and labels.
 
 ### Type Parameters
 
-#### T
-
-`T` *extends* [`CreatableInstance`](#CreatableInstance)\<[`CreatableParams`](#CreatableParams), `EventData`\>
+| Type Parameter |
+| ------ |
+| `T` *extends* [`CreatableInstance`](#CreatableInstance)\<[`CreatableParams`](#CreatableParams), `EventData`\> |
 
 ### Parameters
 
-#### this
-
-[`Creatable`](#Creatable)\<`T`\>
-
-#### params?
-
-`Partial`\<`T`\[`"params"`\]\>
-
-#### labels?
-
-[`Labels`](#Labels)
+| Parameter | Type |
+| ------ | ------ |
+| `this` | [`Creatable`](#Creatable)\<`T`\> |
+| `params?` | `Partial`\<`T`\[`"params"`\]\> |
+| `labels?` | [`Labels`](#Labels) |
 
 ### Returns
 
@@ -3926,71 +3358,19 @@ The minimum required parameters for constructing a creatable.
 
 ## Type Parameters
 
-### TAdditionalStatus
-
-`TAdditionalStatus` *extends* [`CreatableStatus`](#../type-aliases/CreatableStatus) \| `void` = `void`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TAdditionalStatus` *extends* [`CreatableStatus`](#../type-aliases/CreatableStatus) \| `void` | `void` |
 
 ## Properties
 
-### logger?
-
-```ts
-optional logger: Logger;
-```
-
-### Inherited from
-
-```ts
-BaseEmitterParams.logger
-```
-
-***
-
-### meterProvider?
-
-```ts
-optional meterProvider: MeterProvider;
-```
-
-### Inherited from
-
-```ts
-BaseEmitterParams.meterProvider
-```
-
-***
-
-### traceProvider?
-
-```ts
-optional traceProvider: TracerProvider;
-```
-
-### Inherited from
-
-```ts
-BaseEmitterParams.traceProvider
-```
-
-***
-
-### name?
-
-```ts
-optional name: CreatableName;
-```
-
-Optional name identifying this creatable instance.
-
-***
-
-### statusReporter?
-
-```ts
-optional statusReporter: CreatableStatusReporter<TAdditionalStatus>;
-```
-
-Optional reporter for broadcasting status changes.
+| Property | Type | Description | Inherited from |
+| ------ | ------ | ------ | ------ |
+| <a id="logger"></a> `logger?` | `Logger` | - | `BaseEmitterParams.logger` |
+| <a id="meterprovider"></a> `meterProvider?` | `MeterProvider` | - | `BaseEmitterParams.meterProvider` |
+| <a id="traceprovider"></a> `traceProvider?` | `TracerProvider` | - | `BaseEmitterParams.traceProvider` |
+| <a id="name"></a> `name?` | [`CreatableName`](#../type-aliases/CreatableName) | Optional name identifying this creatable instance. | - |
+| <a id="statusreporter"></a> `statusReporter?` | [`CreatableStatusReporter`](#CreatableStatusReporter)\<`TAdditionalStatus`\> | Optional reporter for broadcasting status changes. | - |
 
   ### <a id="WithLabels"></a>WithLabels
 
@@ -4002,17 +3382,15 @@ Interface for objects that have labels.
 
 ## Type Parameters
 
-### T
-
-`T` *extends* [`Labels`](#Labels) = [`Labels`](#Labels)
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` *extends* [`Labels`](#Labels) | [`Labels`](#Labels) |
 
 ## Properties
 
-### labels
-
-```ts
-labels: T;
-```
+| Property | Type |
+| ------ | ------ |
+| <a id="labels"></a> `labels` | `T` |
 
   ### <a id="WithOptionalLabels"></a>WithOptionalLabels
 
@@ -4024,17 +3402,15 @@ Interface for objects that have labels.
 
 ## Type Parameters
 
-### T
-
-`T` *extends* [`Labels`](#Labels) = [`Labels`](#Labels)
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` *extends* [`Labels`](#Labels) | [`Labels`](#Labels) |
 
 ## Properties
 
-### labels?
-
-```ts
-optional labels: T;
-```
+| Property | Type |
+| ------ | ------ |
+| <a id="labels"></a> `labels?` | `T` |
 
 ### type-aliases
 
@@ -4066,9 +3442,9 @@ A creatable's status, optionally extended with additional custom status values.
 
 ## Type Parameters
 
-### TAdditionalStatus
-
-`TAdditionalStatus` *extends* `void` \| `string` = `void`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TAdditionalStatus` *extends* `void` \| `string` | `void` |
 
   ### <a id="StandardCreatableStatus"></a>StandardCreatableStatus
 

@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/typeof**
@@ -23,64 +25,68 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Type Aliases
 
-- [Brand](#type-aliases/Brand)
-- [IdentityFunction](#type-aliases/IdentityFunction)
-- [FieldType](#type-aliases/FieldType)
-- [ObjectTypeShape](#type-aliases/ObjectTypeShape)
-- [TypeOfTypes](#type-aliases/TypeOfTypes)
-- [TypedValue](#type-aliases/TypedValue)
-- [TypedKey](#type-aliases/TypedKey)
-- [TypedObject](#type-aliases/TypedObject)
-- [TypedArray](#type-aliases/TypedArray)
-- [AnyFunction](#type-aliases/AnyFunction)
-- [RecordKey](#type-aliases/RecordKey)
+| Type Alias | Description |
+| ------ | ------ |
+| [Brand](#type-aliases/Brand) | Creates a branded type by intersecting base type T with brand type B, enabling nominal typing in TypeScript. |
+| [IdentityFunction](#type-aliases/IdentityFunction) | A type guard function that narrows an unknown value to type T. |
+| [FieldType](#type-aliases/FieldType) | Union of string literals representing the possible types of an object field. |
+| [ObjectTypeShape](#type-aliases/ObjectTypeShape) | Describes the expected shape of an object by mapping each key to its expected field type. |
+| [TypeOfTypes](#type-aliases/TypeOfTypes) | Union of string literals representing the possible results of the extended `typeOf` function. |
+| [TypedValue](#type-aliases/TypedValue) | A value that can appear in a typed object tree (primitives, objects, arrays, functions, and symbols). |
+| [TypedKey](#type-aliases/TypedKey) | A valid key for a typed object. Defaults to string | number | symbol unless narrowed by T. |
+| [TypedObject](#type-aliases/TypedObject) | An object whose keys are TypedKey and whose values are TypedValue. |
+| [TypedArray](#type-aliases/TypedArray) | An array of TypedValue elements. |
+| [AnyFunction](#type-aliases/AnyFunction) | A function type that accepts any arguments and returns unknown. |
+| [RecordKey](#type-aliases/RecordKey) | A union of valid object key types. |
 
 ## Functions
 
-- [isTypedKey](#functions/isTypedKey)
-- [isTypedValue](#functions/isTypedValue)
-- [isTypedArray](#functions/isTypedArray)
-- [isValidTypedFieldPair](#functions/isValidTypedFieldPair)
-- [isTypedObject](#functions/isTypedObject)
-- [ifDefined](#functions/ifDefined)
-- [ifTypeOf](#functions/ifTypeOf)
-- [isUndefined](#functions/isUndefined)
-- [isDefined](#functions/isDefined)
-- [isNull](#functions/isNull)
-- [isDefinedNotNull](#functions/isDefinedNotNull)
-- [isUndefinedOrNull](#functions/isUndefinedOrNull)
-- [isBigInt](#functions/isBigInt)
-- [isString](#functions/isString)
-- [isNumber](#functions/isNumber)
-- [isObject](#functions/isObject)
-- [isArray](#functions/isArray)
-- [isFunction](#functions/isFunction)
-- [isSymbol](#functions/isSymbol)
-- [isEmptyObject](#functions/isEmptyObject)
-- [isEmptyString](#functions/isEmptyString)
-- [isEmptyArray](#functions/isEmptyArray)
-- [isPopulatedArray](#functions/isPopulatedArray)
-- [isEmpty](#functions/isEmpty)
-- [isFalsy](#functions/isFalsy)
-- [isTruthy](#functions/isTruthy)
-- [isBoolean](#functions/isBoolean)
-- [isDateString](#functions/isDateString)
-- [isDate](#functions/isDate)
-- [isRegExp](#functions/isRegExp)
-- [isError](#functions/isError)
-- [isPromise](#functions/isPromise)
-- [isPromiseLike](#functions/isPromiseLike)
-- [isMap](#functions/isMap)
-- [isArrayBufferView](#functions/isArrayBufferView)
-- [isSet](#functions/isSet)
-- [isWeakMap](#functions/isWeakMap)
-- [isWeakSet](#functions/isWeakSet)
-- [isDataView](#functions/isDataView)
-- [isBlob](#functions/isBlob)
-- [isFile](#functions/isFile)
-- [isType](#functions/isType)
-- [typeOf](#functions/typeOf)
-- [validateType](#functions/validateType)
+| Function | Description |
+| ------ | ------ |
+| [isTypedKey](#functions/isTypedKey) | Type guard that checks whether a value is a valid TypedKey (string, bigint, number, or symbol). |
+| [isTypedValue](#functions/isTypedValue) | Type guard that checks whether a value is a valid TypedValue. |
+| [isTypedArray](#functions/isTypedArray) | Type guard that checks whether a value is a TypedArray (an array where every element is a TypedValue). |
+| [isValidTypedFieldPair](#functions/isValidTypedFieldPair) | Type guard that checks whether a key-value pair has a valid TypedKey and TypedValue. |
+| [isTypedObject](#functions/isTypedObject) | Type guard that checks whether a value is a TypedObject (an object with TypedKey keys and TypedValue values). |
+| [ifDefined](#functions/ifDefined) | Invokes the callback only if the value is neither null nor undefined. |
+| [ifTypeOf](#functions/ifTypeOf) | Invokes the callback if the value matches the specified type, with an optional additional predicate. |
+| [isUndefined](#functions/isUndefined) | Type guard that checks whether a value is undefined. |
+| [isDefined](#functions/isDefined) | Type guard that checks whether a value is not undefined. |
+| [isNull](#functions/isNull) | Type guard that checks whether a value is null. |
+| [isDefinedNotNull](#functions/isDefinedNotNull) | Type guard that checks whether a value is neither undefined nor null. |
+| [isUndefinedOrNull](#functions/isUndefinedOrNull) | Type guard that checks whether a value is undefined or null. |
+| [isBigInt](#functions/isBigInt) | Type guard that checks whether a value is a bigint. |
+| [isString](#functions/isString) | Type guard that checks whether a value is a string. |
+| [isNumber](#functions/isNumber) | Type guard that checks whether a value is a number. |
+| [isObject](#functions/isObject) | Type guard that checks whether a value is a plain object (not null and not an array). |
+| [isArray](#functions/isArray) | Type guard that checks whether a value is an array. |
+| [isFunction](#functions/isFunction) | Type guard that checks whether a value is a function. |
+| [isSymbol](#functions/isSymbol) | Type guard that checks whether a value is a symbol. |
+| [isEmptyObject](#functions/isEmptyObject) | Type guard that checks whether a value is an object with no own keys. |
+| [isEmptyString](#functions/isEmptyString) | Type guard that checks whether a value is an empty string. |
+| [isEmptyArray](#functions/isEmptyArray) | Type guard that checks whether a value is an empty array. |
+| [isPopulatedArray](#functions/isPopulatedArray) | Type guard that checks whether a value is a non-empty array. |
+| [isEmpty](#functions/isEmpty) | Type guard that checks whether a value is empty (empty string, empty array, or empty object). |
+| [isFalsy](#functions/isFalsy) | Type guard that checks whether a value is falsy (0, null, undefined, false, '', or 0n). |
+| [isTruthy](#functions/isTruthy) | Type guard that checks whether a value is truthy (not 0, null, undefined, false, '', or 0n). |
+| [isBoolean](#functions/isBoolean) | Type guard that checks whether a value is a boolean. |
+| [isDateString](#functions/isDateString) | Type guard that checks whether a value is a string that can be parsed as a valid date. |
+| [isDate](#functions/isDate) | Type guard that checks whether a value is a Date instance. |
+| [isRegExp](#functions/isRegExp) | Type guard that checks whether a value is a RegExp instance. |
+| [isError](#functions/isError) | Type guard that checks whether a value is an Error instance. |
+| [isPromise](#functions/isPromise) | Type guard that checks whether a value is a Promise instance. |
+| [isPromiseLike](#functions/isPromiseLike) | Type guard that checks whether a value is promise-like (has a `then` method). |
+| [isMap](#functions/isMap) | Type guard that checks whether a value is a Map instance. |
+| [isArrayBufferView](#functions/isArrayBufferView) | Type guard that checks whether a value is an ArrayBufferView (e.g., TypedArray or DataView). |
+| [isSet](#functions/isSet) | Type guard that checks whether a value is a Set instance. |
+| [isWeakMap](#functions/isWeakMap) | Type guard that checks whether a value is a WeakMap instance. |
+| [isWeakSet](#functions/isWeakSet) | Type guard that checks whether a value is a WeakSet instance. |
+| [isDataView](#functions/isDataView) | Type guard that checks whether a value is a DataView instance. |
+| [isBlob](#functions/isBlob) | Type guard that checks whether a value is a Blob instance. |
+| [isFile](#functions/isFile) | Type guard that checks whether a value is a File instance. |
+| [isType](#functions/isType) | Checks whether a value matches the expected field type, with correct handling for arrays and nulls. |
+| [typeOf](#functions/typeOf) | Extended typeof that distinguishes arrays from objects (unlike native `typeof`). |
+| [validateType](#functions/validateType) | Validates that a value matches the expected type, returning the value and any errors. |
 
 ### functions
 
@@ -91,30 +97,23 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 ***
 
 ```ts
-function ifDefined<T>(value, func): T | undefined;
+function ifDefined<T>(value: T, func: (value: T) => void): T | undefined;
 ```
 
 Invokes the callback only if the value is neither null nor undefined.
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Parameters
 
-### value
-
-`T`
-
-The value to check.
-
-### func
-
-(`value`) => `void`
-
-The callback to invoke with the value if it is defined.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `T` | The value to check. |
+| `func` | (`value`: `T`) => `void` | The callback to invoke with the value if it is defined. |
 
 ## Returns
 
@@ -130,49 +129,29 @@ The value if defined, or undefined otherwise.
 
 ```ts
 function ifTypeOf<T, R>(
-   typeName, 
-   value, 
-   trueFunc, 
-   isFunc?): R | undefined;
+   typeName: TypeOfTypes, 
+   value: unknown, 
+   trueFunc: (value: T) => R, 
+   isFunc?: (value: T) => boolean): R | undefined;
 ```
 
 Invokes the callback if the value matches the specified type, with an optional additional predicate.
 
 ## Type Parameters
 
-### T
-
-`T`
-
-### R
-
-`R`
+| Type Parameter |
+| ------ |
+| `T` |
+| `R` |
 
 ## Parameters
 
-### typeName
-
-[`TypeOfTypes`](#../type-aliases/TypeOfTypes)
-
-The expected type name to match against.
-
-### value
-
-`unknown`
-
-The value to check.
-
-### trueFunc
-
-(`value`) => `R`
-
-The callback to invoke if the type matches.
-
-### isFunc?
-
-(`value`) => `boolean`
-
-Optional additional predicate that must also return true.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `typeName` | [`TypeOfTypes`](#../type-aliases/TypeOfTypes) | The expected type name to match against. |
+| `value` | `unknown` | The value to check. |
+| `trueFunc` | (`value`: `T`) => `R` | The callback to invoke if the type matches. |
+| `isFunc?` | (`value`: `T`) => `boolean` | Optional additional predicate that must also return true. |
 
 ## Returns
 
@@ -189,16 +168,16 @@ The result of trueFunc if the type matches (and isFunc passes), or undefined.
 ## Call Signature
 
 ```ts
-function isArray(value): value is readonly unknown[];
+function isArray(value: unknown): value is readonly unknown[];
 ```
 
 Type guard that checks whether a value is an array.
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -207,22 +186,22 @@ Type guard that checks whether a value is an array.
 ## Call Signature
 
 ```ts
-function isArray<T>(value): value is Extract<T, readonly unknown[]>;
+function isArray<T>(value: T): value is Extract<T, readonly unknown[]>;
 ```
 
 Type guard that checks whether a value is an array.
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -237,16 +216,16 @@ Type guard that checks whether a value is an array.
 ## Call Signature
 
 ```ts
-function isArrayBufferView(value): value is ArrayBufferView<ArrayBufferLike>;
+function isArrayBufferView(value: unknown): value is ArrayBufferView<ArrayBufferLike>;
 ```
 
 Type guard that checks whether a value is an ArrayBufferView (e.g., TypedArray or DataView).
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -255,22 +234,22 @@ Type guard that checks whether a value is an ArrayBufferView (e.g., TypedArray o
 ## Call Signature
 
 ```ts
-function isArrayBufferView<T>(value): value is Extract<T, ArrayBufferView<ArrayBufferLike>>;
+function isArrayBufferView<T>(value: T): value is Extract<T, ArrayBufferView<ArrayBufferLike>>;
 ```
 
 Type guard that checks whether a value is an ArrayBufferView (e.g., TypedArray or DataView).
 
 ### Type Parameters
 
-### T
-
-`T` *extends* `ArrayBufferView`\<`ArrayBufferLike`\>
+| Type Parameter |
+| ------ |
+| `T` *extends* `ArrayBufferView`\<`ArrayBufferLike`\> |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -285,16 +264,16 @@ Type guard that checks whether a value is an ArrayBufferView (e.g., TypedArray o
 ## Call Signature
 
 ```ts
-function isBigInt(value): value is bigint;
+function isBigInt(value: unknown): value is bigint;
 ```
 
 Type guard that checks whether a value is a bigint.
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -303,22 +282,22 @@ Type guard that checks whether a value is a bigint.
 ## Call Signature
 
 ```ts
-function isBigInt<T>(value): value is Extract<T, bigint>;
+function isBigInt<T>(value: T): value is Extract<T, bigint>;
 ```
 
 Type guard that checks whether a value is a bigint.
 
 ### Type Parameters
 
-### T
-
-`T` *extends* `bigint`
+| Type Parameter |
+| ------ |
+| `T` *extends* `bigint` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -333,16 +312,16 @@ Type guard that checks whether a value is a bigint.
 ## Call Signature
 
 ```ts
-function isBlob(value): value is Blob;
+function isBlob(value: unknown): value is Blob;
 ```
 
 Type guard that checks whether a value is a Blob instance.
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -351,22 +330,22 @@ Type guard that checks whether a value is a Blob instance.
 ## Call Signature
 
 ```ts
-function isBlob<T>(value): value is Extract<T, Blob>;
+function isBlob<T>(value: T): value is Extract<T, Blob>;
 ```
 
 Type guard that checks whether a value is a Blob instance.
 
 ### Type Parameters
 
-### T
-
-`T` *extends* `Blob`
+| Type Parameter |
+| ------ |
+| `T` *extends* `Blob` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -381,16 +360,16 @@ Type guard that checks whether a value is a Blob instance.
 ## Call Signature
 
 ```ts
-function isBoolean(value): value is boolean;
+function isBoolean(value: unknown): value is boolean;
 ```
 
 Type guard that checks whether a value is a boolean.
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -399,22 +378,22 @@ Type guard that checks whether a value is a boolean.
 ## Call Signature
 
 ```ts
-function isBoolean<T>(value): value is Extract<T, boolean>;
+function isBoolean<T>(value: T): value is Extract<T, boolean>;
 ```
 
 Type guard that checks whether a value is a boolean.
 
 ### Type Parameters
 
-### T
-
-`T` *extends* `boolean`
+| Type Parameter |
+| ------ |
+| `T` *extends* `boolean` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -429,16 +408,16 @@ Type guard that checks whether a value is a boolean.
 ## Call Signature
 
 ```ts
-function isDataView(value): value is DataView<ArrayBufferLike>;
+function isDataView(value: unknown): value is DataView<ArrayBufferLike>;
 ```
 
 Type guard that checks whether a value is a DataView instance.
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -447,22 +426,22 @@ Type guard that checks whether a value is a DataView instance.
 ## Call Signature
 
 ```ts
-function isDataView<T>(value): value is Extract<T, DataView<ArrayBufferLike>>;
+function isDataView<T>(value: T): value is Extract<T, DataView<ArrayBufferLike>>;
 ```
 
 Type guard that checks whether a value is a DataView instance.
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -477,16 +456,16 @@ Type guard that checks whether a value is a DataView instance.
 ## Call Signature
 
 ```ts
-function isDate(value): value is Date;
+function isDate(value: unknown): value is Date;
 ```
 
 Type guard that checks whether a value is a Date instance.
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -495,22 +474,22 @@ Type guard that checks whether a value is a Date instance.
 ## Call Signature
 
 ```ts
-function isDate<T>(value): value is Extract<T, Date>;
+function isDate<T>(value: T): value is Extract<T, Date>;
 ```
 
 Type guard that checks whether a value is a Date instance.
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -525,16 +504,16 @@ Type guard that checks whether a value is a Date instance.
 ## Call Signature
 
 ```ts
-function isDateString(value): value is string;
+function isDateString(value: unknown): value is string;
 ```
 
 Type guard that checks whether a value is a string that can be parsed as a valid date.
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -543,22 +522,22 @@ Type guard that checks whether a value is a string that can be parsed as a valid
 ## Call Signature
 
 ```ts
-function isDateString<T>(value): value is Extract<T, string>;
+function isDateString<T>(value: T): value is Extract<T, string>;
 ```
 
 Type guard that checks whether a value is a string that can be parsed as a valid date.
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -571,22 +550,22 @@ Type guard that checks whether a value is a string that can be parsed as a valid
 ***
 
 ```ts
-function isDefined<T>(value): value is Exclude<T, undefined>;
+function isDefined<T>(value: T): value is Exclude<T, undefined>;
 ```
 
 Type guard that checks whether a value is not undefined.
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ## Returns
 
@@ -599,22 +578,22 @@ Type guard that checks whether a value is not undefined.
 ***
 
 ```ts
-function isDefinedNotNull<T>(value): value is Exclude<T, null | undefined>;
+function isDefinedNotNull<T>(value: T): value is Exclude<T, null | undefined>;
 ```
 
 Type guard that checks whether a value is neither undefined nor null.
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ## Returns
 
@@ -629,22 +608,22 @@ value is Exclude\<T, null \| undefined\>
 ## Call Signature
 
 ```ts
-function isEmpty<T>(value): value is T;
+function isEmpty<T>(value: unknown): value is T;
 ```
 
 Type guard that checks whether a value is empty (empty string, empty array, or empty object).
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -653,30 +632,24 @@ Type guard that checks whether a value is empty (empty string, empty array, or e
 ## Call Signature
 
 ```ts
-function isEmpty<K, V, T>(value): value is Extract<T, Record<K, never>>;
+function isEmpty<K, V, T>(value: T): value is Extract<T, Record<K, never>>;
 ```
 
 Type guard that checks whether a value is empty (empty string, empty array, or empty object).
 
 ### Type Parameters
 
-### K
-
-`K` *extends* [`RecordKey`](#../type-aliases/RecordKey)
-
-### V
-
-`V`
-
-### T
-
-`T` *extends* `Record`\<`K`, `V`\>
+| Type Parameter |
+| ------ |
+| `K` *extends* [`RecordKey`](#../type-aliases/RecordKey) |
+| `V` |
+| `T` *extends* `Record`\<`K`, `V`\> |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -685,22 +658,22 @@ Type guard that checks whether a value is empty (empty string, empty array, or e
 ## Call Signature
 
 ```ts
-function isEmpty<T>(value): value is Extract<T, never[]>;
+function isEmpty<T>(value: T): value is Extract<T, never[]>;
 ```
 
 Type guard that checks whether a value is empty (empty string, empty array, or empty object).
 
 ### Type Parameters
 
-### T
-
-`T` *extends* `unknown`[]
+| Type Parameter |
+| ------ |
+| `T` *extends* `unknown`[] |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -715,16 +688,16 @@ Type guard that checks whether a value is empty (empty string, empty array, or e
 ## Call Signature
 
 ```ts
-function isEmptyArray(value): value is [];
+function isEmptyArray(value: unknown): value is [];
 ```
 
 Type guard that checks whether a value is an empty array.
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -733,22 +706,22 @@ Type guard that checks whether a value is an empty array.
 ## Call Signature
 
 ```ts
-function isEmptyArray<T>(value): value is Extract<T, unknown[]>;
+function isEmptyArray<T>(value: T): value is Extract<T, unknown[]>;
 ```
 
 Type guard that checks whether a value is an empty array.
 
 ### Type Parameters
 
-### T
-
-`T` *extends* `unknown`[]
+| Type Parameter |
+| ------ |
+| `T` *extends* `unknown`[] |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -763,16 +736,16 @@ Type guard that checks whether a value is an empty array.
 ## Call Signature
 
 ```ts
-function isEmptyObject(value): value is {};
+function isEmptyObject(value: unknown): value is {};
 ```
 
 Type guard that checks whether a value is an object with no own keys.
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -781,30 +754,24 @@ Type guard that checks whether a value is an object with no own keys.
 ## Call Signature
 
 ```ts
-function isEmptyObject<K, V, T>(value): value is Extract<T, Record<K, never>>;
+function isEmptyObject<K, V, T>(value: T): value is Extract<T, Record<K, never>>;
 ```
 
 Type guard that checks whether a value is an object with no own keys.
 
 ### Type Parameters
 
-### K
-
-`K` *extends* [`RecordKey`](#../type-aliases/RecordKey)
-
-### V
-
-`V`
-
-### T
-
-`T` *extends* `Record`\<`K`, `V`\>
+| Type Parameter |
+| ------ |
+| `K` *extends* [`RecordKey`](#../type-aliases/RecordKey) |
+| `V` |
+| `T` *extends* `Record`\<`K`, `V`\> |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -819,16 +786,16 @@ Type guard that checks whether a value is an object with no own keys.
 ## Call Signature
 
 ```ts
-function isEmptyString(value): value is "";
+function isEmptyString(value: unknown): value is "";
 ```
 
 Type guard that checks whether a value is an empty string.
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -837,22 +804,22 @@ Type guard that checks whether a value is an empty string.
 ## Call Signature
 
 ```ts
-function isEmptyString<T>(value): value is Extract<T, "">;
+function isEmptyString<T>(value: T): value is Extract<T, "">;
 ```
 
 Type guard that checks whether a value is an empty string.
 
 ### Type Parameters
 
-### T
-
-`T` *extends* `string`
+| Type Parameter |
+| ------ |
+| `T` *extends* `string` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -867,16 +834,16 @@ Type guard that checks whether a value is an empty string.
 ## Call Signature
 
 ```ts
-function isError(value): value is Error;
+function isError(value: unknown): value is Error;
 ```
 
 Type guard that checks whether a value is an Error instance.
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -885,22 +852,22 @@ Type guard that checks whether a value is an Error instance.
 ## Call Signature
 
 ```ts
-function isError<T>(value): value is Extract<T, Error>;
+function isError<T>(value: T): value is Extract<T, Error>;
 ```
 
 Type guard that checks whether a value is an Error instance.
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -915,22 +882,22 @@ Type guard that checks whether a value is an Error instance.
 ## Call Signature
 
 ```ts
-function isFalsy<T>(value): value is Extract<T, false | "" | 0 | 0n | null | undefined>;
+function isFalsy<T>(value: T): value is Extract<T, false | "" | 0 | 0n | null | undefined>;
 ```
 
 Type guard that checks whether a value is falsy (0, null, undefined, false, '', or 0n).
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -939,22 +906,22 @@ value is Extract\<T, false \| "" \| 0 \| 0n \| null \| undefined\>
 ## Call Signature
 
 ```ts
-function isFalsy<T>(value): value is Extract<T, false>;
+function isFalsy<T>(value: T): value is Extract<T, false>;
 ```
 
 Type guard that checks whether a value is falsy (0, null, undefined, false, '', or 0n).
 
 ### Type Parameters
 
-### T
-
-`T` *extends* `boolean`
+| Type Parameter |
+| ------ |
+| `T` *extends* `boolean` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -963,22 +930,22 @@ Type guard that checks whether a value is falsy (0, null, undefined, false, '', 
 ## Call Signature
 
 ```ts
-function isFalsy<T>(value): value is Extract<T, 0>;
+function isFalsy<T>(value: T): value is Extract<T, 0>;
 ```
 
 Type guard that checks whether a value is falsy (0, null, undefined, false, '', or 0n).
 
 ### Type Parameters
 
-### T
-
-`T` *extends* `number`
+| Type Parameter |
+| ------ |
+| `T` *extends* `number` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -987,22 +954,22 @@ Type guard that checks whether a value is falsy (0, null, undefined, false, '', 
 ## Call Signature
 
 ```ts
-function isFalsy<T>(value): value is Extract<T, 0n>;
+function isFalsy<T>(value: T): value is Extract<T, 0n>;
 ```
 
 Type guard that checks whether a value is falsy (0, null, undefined, false, '', or 0n).
 
 ### Type Parameters
 
-### T
-
-`T` *extends* `bigint`
+| Type Parameter |
+| ------ |
+| `T` *extends* `bigint` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -1011,22 +978,22 @@ Type guard that checks whether a value is falsy (0, null, undefined, false, '', 
 ## Call Signature
 
 ```ts
-function isFalsy<T>(value): value is Extract<T, null>;
+function isFalsy<T>(value: T): value is Extract<T, null>;
 ```
 
 Type guard that checks whether a value is falsy (0, null, undefined, false, '', or 0n).
 
 ### Type Parameters
 
-### T
-
-`T` *extends* `null`
+| Type Parameter |
+| ------ |
+| `T` *extends* `null` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -1035,22 +1002,22 @@ Type guard that checks whether a value is falsy (0, null, undefined, false, '', 
 ## Call Signature
 
 ```ts
-function isFalsy<T>(value): value is Extract<T, undefined>;
+function isFalsy<T>(value: T): value is Extract<T, undefined>;
 ```
 
 Type guard that checks whether a value is falsy (0, null, undefined, false, '', or 0n).
 
 ### Type Parameters
 
-### T
-
-`T` *extends* `undefined`
+| Type Parameter |
+| ------ |
+| `T` *extends* `undefined` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -1059,22 +1026,22 @@ Type guard that checks whether a value is falsy (0, null, undefined, false, '', 
 ## Call Signature
 
 ```ts
-function isFalsy<T>(value): value is Extract<T, "">;
+function isFalsy<T>(value: T): value is Extract<T, "">;
 ```
 
 Type guard that checks whether a value is falsy (0, null, undefined, false, '', or 0n).
 
 ### Type Parameters
 
-### T
-
-`T` *extends* `string`
+| Type Parameter |
+| ------ |
+| `T` *extends* `string` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -1089,16 +1056,16 @@ Type guard that checks whether a value is falsy (0, null, undefined, false, '', 
 ## Call Signature
 
 ```ts
-function isFile(value): value is File;
+function isFile(value: unknown): value is File;
 ```
 
 Type guard that checks whether a value is a File instance.
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -1107,22 +1074,22 @@ Type guard that checks whether a value is a File instance.
 ## Call Signature
 
 ```ts
-function isFile<T>(value): value is Extract<T, File>;
+function isFile<T>(value: T): value is Extract<T, File>;
 ```
 
 Type guard that checks whether a value is a File instance.
 
 ### Type Parameters
 
-### T
-
-`T` *extends* `File`
+| Type Parameter |
+| ------ |
+| `T` *extends* `File` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -1137,16 +1104,16 @@ Type guard that checks whether a value is a File instance.
 ## Call Signature
 
 ```ts
-function isFunction(value): value is AnyFunction;
+function isFunction(value: unknown): value is AnyFunction;
 ```
 
 Type guard that checks whether a value is a function.
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -1155,22 +1122,22 @@ Type guard that checks whether a value is a function.
 ## Call Signature
 
 ```ts
-function isFunction<T>(value): value is Extract<T, AnyFunction>;
+function isFunction<T>(value: T): value is Extract<T, AnyFunction>;
 ```
 
 Type guard that checks whether a value is a function.
 
 ### Type Parameters
 
-### T
-
-`T` *extends* [`AnyFunction`](#../type-aliases/AnyFunction)
+| Type Parameter |
+| ------ |
+| `T` *extends* [`AnyFunction`](#../type-aliases/AnyFunction) |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -1185,16 +1152,16 @@ Type guard that checks whether a value is a function.
 ## Call Signature
 
 ```ts
-function isMap(value): value is Map<unknown, unknown>;
+function isMap(value: unknown): value is Map<unknown, unknown>;
 ```
 
 Type guard that checks whether a value is a Map instance.
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -1203,30 +1170,24 @@ Type guard that checks whether a value is a Map instance.
 ## Call Signature
 
 ```ts
-function isMap<K, V, T>(value): value is Extract<T, Map<K, V>>;
+function isMap<K, V, T>(value: T): value is Extract<T, Map<K, V>>;
 ```
 
 Type guard that checks whether a value is a Map instance.
 
 ### Type Parameters
 
-### K
-
-`K`
-
-### V
-
-`V`
-
-### T
-
-`T` *extends* `Map`\<`K`, `V`\>
+| Type Parameter |
+| ------ |
+| `K` |
+| `V` |
+| `T` *extends* `Map`\<`K`, `V`\> |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -1241,16 +1202,16 @@ Type guard that checks whether a value is a Map instance.
 ## Call Signature
 
 ```ts
-function isNull(value): value is null;
+function isNull(value: unknown): value is null;
 ```
 
 Type guard that checks whether a value is null.
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -1259,22 +1220,22 @@ Type guard that checks whether a value is null.
 ## Call Signature
 
 ```ts
-function isNull<T>(value): value is Extract<T, null>;
+function isNull<T>(value: T): value is Extract<T, null>;
 ```
 
 Type guard that checks whether a value is null.
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -1289,16 +1250,16 @@ Type guard that checks whether a value is null.
 ## Call Signature
 
 ```ts
-function isNumber(value): value is number;
+function isNumber(value: unknown): value is number;
 ```
 
 Type guard that checks whether a value is a number.
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -1307,22 +1268,22 @@ Type guard that checks whether a value is a number.
 ## Call Signature
 
 ```ts
-function isNumber<T>(value): value is Extract<T, number>;
+function isNumber<T>(value: T): value is Extract<T, number>;
 ```
 
 Type guard that checks whether a value is a number.
 
 ### Type Parameters
 
-### T
-
-`T` *extends* `number`
+| Type Parameter |
+| ------ |
+| `T` *extends* `number` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -1337,16 +1298,16 @@ Type guard that checks whether a value is a number.
 ## Call Signature
 
 ```ts
-function isObject(value): value is object;
+function isObject(value: unknown): value is object;
 ```
 
 Type guard that checks whether a value is a plain object (not null and not an array).
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -1355,22 +1316,22 @@ Type guard that checks whether a value is a plain object (not null and not an ar
 ## Call Signature
 
 ```ts
-function isObject<T>(value): value is Extract<T, object>;
+function isObject<T>(value: T): value is Extract<T, object>;
 ```
 
 Type guard that checks whether a value is a plain object (not null and not an array).
 
 ### Type Parameters
 
-### T
-
-`T` *extends* `object`
+| Type Parameter |
+| ------ |
+| `T` *extends* `object` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -1385,16 +1346,16 @@ Type guard that checks whether a value is a plain object (not null and not an ar
 ## Call Signature
 
 ```ts
-function isPopulatedArray(value): value is readonly unknown[];
+function isPopulatedArray(value: unknown): value is readonly unknown[];
 ```
 
 Type guard that checks whether a value is a non-empty array.
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -1403,22 +1364,22 @@ Type guard that checks whether a value is a non-empty array.
 ## Call Signature
 
 ```ts
-function isPopulatedArray<T>(value): value is Extract<T, readonly unknown[]>;
+function isPopulatedArray<T>(value: T): value is Extract<T, readonly unknown[]>;
 ```
 
 Type guard that checks whether a value is a non-empty array.
 
 ### Type Parameters
 
-### T
-
-`T` *extends* `unknown`[]
+| Type Parameter |
+| ------ |
+| `T` *extends* `unknown`[] |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -1433,16 +1394,16 @@ Type guard that checks whether a value is a non-empty array.
 ## Call Signature
 
 ```ts
-function isPromise(value): value is Promise<unknown>;
+function isPromise(value: unknown): value is Promise<unknown>;
 ```
 
 Type guard that checks whether a value is a Promise instance.
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -1451,22 +1412,22 @@ Type guard that checks whether a value is a Promise instance.
 ## Call Signature
 
 ```ts
-function isPromise<T>(value): value is Extract<T, Promise<unknown>>;
+function isPromise<T>(value: T): value is Extract<T, Promise<unknown>>;
 ```
 
 Type guard that checks whether a value is a Promise instance.
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -1481,16 +1442,16 @@ Type guard that checks whether a value is a Promise instance.
 ## Call Signature
 
 ```ts
-function isPromiseLike(value): value is Promise<unknown>;
+function isPromiseLike(value: unknown): value is Promise<unknown>;
 ```
 
 Type guard that checks whether a value is promise-like (has a `then` method).
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -1499,22 +1460,22 @@ Type guard that checks whether a value is promise-like (has a `then` method).
 ## Call Signature
 
 ```ts
-function isPromiseLike<T>(value): value is Extract<T, Promise<unknown>>;
+function isPromiseLike<T>(value: T): value is Extract<T, Promise<unknown>>;
 ```
 
 Type guard that checks whether a value is promise-like (has a `then` method).
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -1529,16 +1490,16 @@ Type guard that checks whether a value is promise-like (has a `then` method).
 ## Call Signature
 
 ```ts
-function isRegExp(value): value is RegExp;
+function isRegExp(value: unknown): value is RegExp;
 ```
 
 Type guard that checks whether a value is a RegExp instance.
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -1547,22 +1508,22 @@ Type guard that checks whether a value is a RegExp instance.
 ## Call Signature
 
 ```ts
-function isRegExp<T>(value): value is Extract<T, RegExp>;
+function isRegExp<T>(value: T): value is Extract<T, RegExp>;
 ```
 
 Type guard that checks whether a value is a RegExp instance.
 
 ### Type Parameters
 
-### T
-
-`T` *extends* `RegExp`
+| Type Parameter |
+| ------ |
+| `T` *extends* `RegExp` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -1577,16 +1538,16 @@ Type guard that checks whether a value is a RegExp instance.
 ## Call Signature
 
 ```ts
-function isSet(value): value is Set<unknown>;
+function isSet(value: unknown): value is Set<unknown>;
 ```
 
 Type guard that checks whether a value is a Set instance.
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -1595,22 +1556,22 @@ Type guard that checks whether a value is a Set instance.
 ## Call Signature
 
 ```ts
-function isSet<T>(value): value is Extract<T, Set<unknown>>;
+function isSet<T>(value: unknown): value is Extract<T, Set<unknown>>;
 ```
 
 Type guard that checks whether a value is a Set instance.
 
 ### Type Parameters
 
-### T
-
-`T` *extends* `Set`\<`unknown`\>
+| Type Parameter |
+| ------ |
+| `T` *extends* `Set`\<`unknown`\> |
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -1625,16 +1586,16 @@ Type guard that checks whether a value is a Set instance.
 ## Call Signature
 
 ```ts
-function isString(value): value is string;
+function isString(value: unknown): value is string;
 ```
 
 Type guard that checks whether a value is a string.
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -1643,22 +1604,22 @@ Type guard that checks whether a value is a string.
 ## Call Signature
 
 ```ts
-function isString<T>(value): value is Extract<T, string>;
+function isString<T>(value: T): value is Extract<T, string>;
 ```
 
 Type guard that checks whether a value is a string.
 
 ### Type Parameters
 
-### T
-
-`T` *extends* `string`
+| Type Parameter |
+| ------ |
+| `T` *extends* `string` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -1673,16 +1634,16 @@ Type guard that checks whether a value is a string.
 ## Call Signature
 
 ```ts
-function isSymbol(value): value is symbol;
+function isSymbol(value: unknown): value is symbol;
 ```
 
 Type guard that checks whether a value is a symbol.
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -1691,22 +1652,22 @@ Type guard that checks whether a value is a symbol.
 ## Call Signature
 
 ```ts
-function isSymbol<T>(value): value is Extract<T, symbol>;
+function isSymbol<T>(value: T): value is Extract<T, symbol>;
 ```
 
 Type guard that checks whether a value is a symbol.
 
 ### Type Parameters
 
-### T
-
-`T` *extends* `symbol`
+| Type Parameter |
+| ------ |
+| `T` *extends* `symbol` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -1721,22 +1682,22 @@ Type guard that checks whether a value is a symbol.
 ## Call Signature
 
 ```ts
-function isTruthy<T>(value): value is Exclude<T, false | "" | 0 | 0n | null | undefined>;
+function isTruthy<T>(value: T): value is Exclude<T, false | "" | 0 | 0n | null | undefined>;
 ```
 
 Type guard that checks whether a value is truthy (not 0, null, undefined, false, '', or 0n).
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -1745,22 +1706,22 @@ value is Exclude\<T, false \| "" \| 0 \| 0n \| null \| undefined\>
 ## Call Signature
 
 ```ts
-function isTruthy<T>(value): value is Extract<T, true>;
+function isTruthy<T>(value: T): value is Extract<T, true>;
 ```
 
 Type guard that checks whether a value is truthy (not 0, null, undefined, false, '', or 0n).
 
 ### Type Parameters
 
-### T
-
-`T` *extends* `boolean`
+| Type Parameter |
+| ------ |
+| `T` *extends* `boolean` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -1769,22 +1730,22 @@ Type guard that checks whether a value is truthy (not 0, null, undefined, false,
 ## Call Signature
 
 ```ts
-function isTruthy<T>(value): value is Extract<T, number>;
+function isTruthy<T>(value: T): value is Extract<T, number>;
 ```
 
 Type guard that checks whether a value is truthy (not 0, null, undefined, false, '', or 0n).
 
 ### Type Parameters
 
-### T
-
-`T` *extends* `number`
+| Type Parameter |
+| ------ |
+| `T` *extends* `number` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -1793,22 +1754,22 @@ Type guard that checks whether a value is truthy (not 0, null, undefined, false,
 ## Call Signature
 
 ```ts
-function isTruthy<T>(value): value is Extract<T, bigint>;
+function isTruthy<T>(value: T): value is Extract<T, bigint>;
 ```
 
 Type guard that checks whether a value is truthy (not 0, null, undefined, false, '', or 0n).
 
 ### Type Parameters
 
-### T
-
-`T` *extends* `bigint`
+| Type Parameter |
+| ------ |
+| `T` *extends* `bigint` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -1817,22 +1778,22 @@ Type guard that checks whether a value is truthy (not 0, null, undefined, false,
 ## Call Signature
 
 ```ts
-function isTruthy<T>(value): value is Extract<T, null>;
+function isTruthy<T>(value: T): value is Extract<T, null>;
 ```
 
 Type guard that checks whether a value is truthy (not 0, null, undefined, false, '', or 0n).
 
 ### Type Parameters
 
-### T
-
-`T` *extends* `null`
+| Type Parameter |
+| ------ |
+| `T` *extends* `null` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -1841,22 +1802,22 @@ Type guard that checks whether a value is truthy (not 0, null, undefined, false,
 ## Call Signature
 
 ```ts
-function isTruthy<T>(value): value is Extract<T, undefined>;
+function isTruthy<T>(value: T): value is Extract<T, undefined>;
 ```
 
 Type guard that checks whether a value is truthy (not 0, null, undefined, false, '', or 0n).
 
 ### Type Parameters
 
-### T
-
-`T` *extends* `undefined`
+| Type Parameter |
+| ------ |
+| `T` *extends* `undefined` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -1865,22 +1826,22 @@ Type guard that checks whether a value is truthy (not 0, null, undefined, false,
 ## Call Signature
 
 ```ts
-function isTruthy<T>(value): value is Extract<T, string>;
+function isTruthy<T>(value: T): value is Extract<T, string>;
 ```
 
 Type guard that checks whether a value is truthy (not 0, null, undefined, false, '', or 0n).
 
 ### Type Parameters
 
-### T
-
-`T` *extends* `string`
+| Type Parameter |
+| ------ |
+| `T` *extends* `string` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -1893,24 +1854,17 @@ Type guard that checks whether a value is truthy (not 0, null, undefined, false,
 ***
 
 ```ts
-function isType(value, expectedType): boolean;
+function isType(value: unknown, expectedType: FieldType): boolean;
 ```
 
 Checks whether a value matches the expected field type, with correct handling for arrays and nulls.
 
 ## Parameters
 
-### value
-
-`unknown`
-
-The value to check.
-
-### expectedType
-
-[`FieldType`](#../type-aliases/FieldType)
-
-The expected type string.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `unknown` | The value to check. |
+| `expectedType` | [`FieldType`](#../type-aliases/FieldType) | The expected type string. |
 
 ## Returns
 
@@ -1925,18 +1879,16 @@ True if the value matches the expected type.
 ***
 
 ```ts
-function isTypedArray(value): value is TypedArray;
+function isTypedArray(value: unknown): value is TypedArray;
 ```
 
 Type guard that checks whether a value is a TypedArray (an array where every element is a TypedValue).
 
 ## Parameters
 
-### value
-
-`unknown`
-
-The value to check.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `unknown` | The value to check. |
 
 ## Returns
 
@@ -1951,18 +1903,16 @@ True if the value is an array of TypedValue elements.
 ***
 
 ```ts
-function isTypedKey(value): value is string | number | symbol;
+function isTypedKey(value: unknown): value is string | number | symbol;
 ```
 
 Type guard that checks whether a value is a valid TypedKey (string, bigint, number, or symbol).
 
 ## Parameters
 
-### value
-
-`unknown`
-
-The value to check.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `unknown` | The value to check. |
 
 ## Returns
 
@@ -1977,18 +1927,16 @@ True if the value is a valid TypedKey.
 ***
 
 ```ts
-function isTypedObject(value): value is TypedObject;
+function isTypedObject(value: unknown): value is TypedObject;
 ```
 
 Type guard that checks whether a value is a TypedObject (an object with TypedKey keys and TypedValue values).
 
 ## Parameters
 
-### value
-
-`unknown`
-
-The value to check.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `unknown` | The value to check. |
 
 ## Returns
 
@@ -2003,18 +1951,16 @@ True if the value is a valid TypedObject.
 ***
 
 ```ts
-function isTypedValue(value): value is TypedValue;
+function isTypedValue(value: unknown): value is TypedValue;
 ```
 
 Type guard that checks whether a value is a valid TypedValue.
 
 ## Parameters
 
-### value
-
-`unknown`
-
-The value to check.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `unknown` | The value to check. |
 
 ## Returns
 
@@ -2031,16 +1977,16 @@ True if the value is a string, number, boolean, null, TypedObject, or TypedArray
 ## Call Signature
 
 ```ts
-function isUndefined(value): value is undefined;
+function isUndefined(value: unknown): value is undefined;
 ```
 
 Type guard that checks whether a value is undefined.
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -2049,22 +1995,22 @@ Type guard that checks whether a value is undefined.
 ## Call Signature
 
 ```ts
-function isUndefined<T>(value): value is Extract<T, undefined>;
+function isUndefined<T>(value: T): value is Extract<T, undefined>;
 ```
 
 Type guard that checks whether a value is undefined.
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -2079,16 +2025,16 @@ Type guard that checks whether a value is undefined.
 ## Call Signature
 
 ```ts
-function isUndefinedOrNull(value): value is null | undefined;
+function isUndefinedOrNull(value: unknown): value is null | undefined;
 ```
 
 Type guard that checks whether a value is undefined or null.
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -2097,22 +2043,22 @@ value is null \| undefined
 ## Call Signature
 
 ```ts
-function isUndefinedOrNull<T>(value): value is Extract<T, null | undefined>;
+function isUndefinedOrNull<T>(value: T): value is Extract<T, null | undefined>;
 ```
 
 Type guard that checks whether a value is undefined or null.
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -2125,18 +2071,16 @@ value is Extract\<T, null \| undefined\>
 ***
 
 ```ts
-function isValidTypedFieldPair(pair): pair is [key: string | number | symbol, value: TypedValue];
+function isValidTypedFieldPair(pair: [unknown, unknown]): pair is [key: string | number | symbol, value: TypedValue];
 ```
 
 Type guard that checks whether a key-value pair has a valid TypedKey and TypedValue.
 
 ## Parameters
 
-### pair
-
-\[`unknown`, `unknown`\]
-
-A tuple of [key, value] to validate.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `pair` | \[`unknown`, `unknown`\] | A tuple of [key, value] to validate. |
 
 ## Returns
 
@@ -2153,16 +2097,16 @@ True if the key is a TypedKey and the value is a TypedValue.
 ## Call Signature
 
 ```ts
-function isWeakMap(value): value is WeakMap<WeakKey, unknown>;
+function isWeakMap(value: unknown): value is WeakMap<WeakKey, unknown>;
 ```
 
 Type guard that checks whether a value is a WeakMap instance.
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -2171,30 +2115,24 @@ Type guard that checks whether a value is a WeakMap instance.
 ## Call Signature
 
 ```ts
-function isWeakMap<K, V, T>(value): value is Extract<T, WeakMap<K, V>>;
+function isWeakMap<K, V, T>(value: T): value is Extract<T, WeakMap<K, V>>;
 ```
 
 Type guard that checks whether a value is a WeakMap instance.
 
 ### Type Parameters
 
-### K
-
-`K` *extends* `WeakKey`
-
-### V
-
-`V`
-
-### T
-
-`T` *extends* `WeakMap`\<`K`, `V`\>
+| Type Parameter |
+| ------ |
+| `K` *extends* `WeakKey` |
+| `V` |
+| `T` *extends* `WeakMap`\<`K`, `V`\> |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -2209,16 +2147,16 @@ Type guard that checks whether a value is a WeakMap instance.
 ## Call Signature
 
 ```ts
-function isWeakSet(value): value is WeakSet<WeakKey>;
+function isWeakSet(value: unknown): value is WeakSet<WeakKey>;
 ```
 
 Type guard that checks whether a value is a WeakSet instance.
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -2227,26 +2165,23 @@ Type guard that checks whether a value is a WeakSet instance.
 ## Call Signature
 
 ```ts
-function isWeakSet<K, T>(value): value is Extract<T, WeakSet<K>>;
+function isWeakSet<K, T>(value: T): value is Extract<T, WeakSet<K>>;
 ```
 
 Type guard that checks whether a value is a WeakSet instance.
 
 ### Type Parameters
 
-### K
-
-`K` *extends* `WeakKey`
-
-### T
-
-`T` *extends* `WeakSet`\<`K`\>
+| Type Parameter |
+| ------ |
+| `K` *extends* `WeakKey` |
+| `T` *extends* `WeakSet`\<`K`\> |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -2259,24 +2194,22 @@ Type guard that checks whether a value is a WeakSet instance.
 ***
 
 ```ts
-function typeOf<T>(item): TypeOfTypes;
+function typeOf<T>(item: T): TypeOfTypes;
 ```
 
 Extended typeof that distinguishes arrays from objects (unlike native `typeof`).
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Parameters
 
-### item
-
-`T`
-
-The value to check.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `item` | `T` | The value to check. |
 
 ## Returns
 
@@ -2292,38 +2225,26 @@ The type of the item as a TypeOfTypes string.
 
 ```ts
 function validateType<T>(
-   typeName, 
-   value, 
-   optional?): [T | undefined, Error[]];
+   typeName: TypeOfTypes, 
+   value: T, 
+   optional?: boolean): [T | undefined, Error[]];
 ```
 
 Validates that a value matches the expected type, returning the value and any errors.
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Parameters
 
-### typeName
-
-[`TypeOfTypes`](#../type-aliases/TypeOfTypes)
-
-The expected type name.
-
-### value
-
-`T`
-
-The value to validate.
-
-### optional?
-
-`boolean` = `false`
-
-If true, undefined values are accepted without error.
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `typeName` | [`TypeOfTypes`](#../type-aliases/TypeOfTypes) | `undefined` | The expected type name. |
+| `value` | `T` | `undefined` | The value to validate. |
+| `optional` | `boolean` | `false` | If true, undefined values are accepted without error. |
 
 ## Returns
 
@@ -2340,16 +2261,16 @@ A tuple of [value or undefined, array of errors].
 ***
 
 ```ts
-type AnyFunction = (...args) => unknown;
+type AnyFunction = (...args: unknown[]) => unknown;
 ```
 
 A function type that accepts any arguments and returns unknown.
 
 ## Parameters
 
-### args
-
-...`unknown`[]
+| Parameter | Type |
+| ------ | ------ |
+| ...`args` | `unknown`[] |
 
 ## Returns
 
@@ -2369,13 +2290,10 @@ Creates a branded type by intersecting base type T with brand type B, enabling n
 
 ## Type Parameters
 
-### T
-
-`T`
-
-### B
-
-`B`
+| Type Parameter |
+| ------ |
+| `T` |
+| `B` |
 
   ### <a id="FieldType"></a>FieldType
 
@@ -2404,22 +2322,22 @@ Union of string literals representing the possible types of an object field.
 ***
 
 ```ts
-type IdentityFunction<T> = (value) => value is T;
+type IdentityFunction<T> = (value: unknown) => value is T;
 ```
 
 A type guard function that narrows an unknown value to type T.
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ## Returns
 
@@ -2498,9 +2416,9 @@ A valid key for a typed object. Defaults to string | number | symbol unless narr
 
 ## Type Parameters
 
-### T
-
-`T` *extends* `string` \| `void` = `void`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` *extends* `string` \| `void` | `void` |
 
   ### <a id="TypedObject"></a>TypedObject
 

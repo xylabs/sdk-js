@@ -54,8 +54,8 @@ async function tryLoadReadmeReference(location: string) {
  * Generates README.md files for all workspace packages using a shared template.
  * Fills each README with package metadata, an optional body, and auto-generated TypeDoc reference.
  */
-export async function generateReadmeFiles() {
-  const template = await readFile(templatePath(), 'utf8')
+export async function generateReadmeFiles(customTemplatePath?: string) {
+  const template = await readFile(customTemplatePath ?? templatePath(), 'utf8')
   const pkgs = yarnWorkspaces()
 
   for (const { location } of pkgs) {

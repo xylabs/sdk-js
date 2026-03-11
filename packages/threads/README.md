@@ -15,6 +15,8 @@
 
 Web workers & worker threads as simple as a function call
 
+
+
 ## Reference
 
 **@xylabs/threads**
@@ -23,8 +25,10 @@ Web workers & worker threads as simple as a function call
 
 ## Modules
 
-- [index-browser](#index-browser/README)
-- [index-node](#index-node/README)
+| Module | Description |
+| ------ | ------ |
+| [index-browser](#index-browser/README) | - |
+| [index-node](#index-node/README) | - |
 
 ### index-browser
 
@@ -39,7 +43,7 @@ Web workers & worker threads as simple as a function call
 ## Call Signature
 
 ```ts
-function Transfer(transferable): TransferDescriptor;
+function Transfer(transferable: Transferable): TransferDescriptor;
 ```
 
 Mark a transferable object as such, so it will no be serialized and
@@ -56,11 +60,9 @@ unless the receiving thread transfers it back again!
 
 ### Parameters
 
-### transferable
-
-`Transferable`
-
-Array buffer, message port or similar.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `transferable` | `Transferable` | Array buffer, message port or similar. |
 
 ### Returns
 
@@ -73,7 +75,7 @@ Array buffer, message port or similar.
 ## Call Signature
 
 ```ts
-function Transfer<T>(payload, transferables): TransferDescriptor;
+function Transfer<T>(payload: T, transferables: Transferable[]): TransferDescriptor;
 ```
 
 Mark transferable objects within an arbitrary object or array as
@@ -91,19 +93,16 @@ unless the receiving thread transfers it back again!
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### payload
-
-`T`
-
-### transferables
-
-`Transferable`[]
+| Parameter | Type |
+| ------ | ------ |
+| `payload` | `T` |
+| `transferables` | `Transferable`[] |
 
 ### Returns
 
@@ -138,18 +137,16 @@ True if running in a worker, false otherwise.
 ***
 
 ```ts
-function registerSerializer(serializer): void;
+function registerSerializer(serializer: SerializerImplementation<JsonSerializable>): void;
 ```
 
 Register a custom serializer to extend the default serialization behavior for worker messages.
 
 ## Parameters
 
-### serializer
-
-[`SerializerImplementation`](#../interfaces/SerializerImplementation)\<[`JsonSerializable`](#../type-aliases/JsonSerializable)\>
-
-The serializer implementation to register.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `serializer` | [`SerializerImplementation`](#../interfaces/SerializerImplementation)\<[`JsonSerializable`](#../type-aliases/JsonSerializable)\> | The serializer implementation to register. |
 
 ## Returns
 
@@ -162,7 +159,9 @@ The serializer implementation to register.
 ***
 
 ```ts
-function spawn<Exposed>(worker, options?): Promise<ExposedAs<Exposed>>;
+function spawn<Exposed>(worker: Worker, options?: {
+  timeout?: number;
+}): Promise<ExposedAs<Exposed>>;
 ```
 
 Spawn a new thread. Takes a fresh worker instance, wraps it in a thin
@@ -171,25 +170,17 @@ the worker has initialized successfully.
 
 ## Type Parameters
 
-### Exposed
-
-`Exposed` *extends* `WorkerFunction` \| `WorkerModule`\<`any`\> = `ArbitraryWorkerInterface`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `Exposed` *extends* `WorkerFunction` \| `WorkerModule`\<`any`\> | `ArbitraryWorkerInterface` |
 
 ## Parameters
 
-### worker
-
-`Worker`
-
-Instance of `Worker`. Either a web worker or `worker_threads` worker.
-
-### options?
-
-### timeout?
-
-`number`
-
-Init message timeout. Default: 10000 or set by environment variable.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `worker` | `Worker` | Instance of `Worker`. Either a web worker or `worker_threads` worker. |
+| `options?` | \{ `timeout?`: `number`; \} | - |
+| `options.timeout?` | `number` | Init message timeout. Default: 10000 or set by environment variable. |
 
 ## Returns
 
@@ -209,16 +200,16 @@ concurrency.
 
 ## Type Parameters
 
-### ThreadType
-
-`ThreadType` *extends* [`Thread`](#../type-aliases/Thread)
+| Type Parameter |
+| ------ |
+| `ThreadType` *extends* [`Thread`](#../type-aliases/Thread) |
 
 ## Methods
 
 ### completed()
 
 ```ts
-completed(allowResolvingImmediately?): Promise<any>;
+completed(allowResolvingImmediately?: boolean): Promise<any>;
 ```
 
 Returns a promise that resolves once the task queue is emptied.
@@ -226,11 +217,9 @@ Promise will be rejected if any task fails.
 
 ### Parameters
 
-#### allowResolvingImmediately?
-
-`boolean`
-
-Set to `true` to resolve immediately if task queue is currently empty.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `allowResolvingImmediately?` | `boolean` | Set to `true` to resolve immediately if task queue is currently empty. |
 
 ### Returns
 
@@ -241,7 +230,7 @@ Set to `true` to resolve immediately if task queue is currently empty.
 ### settled()
 
 ```ts
-settled(allowResolvingImmediately?): Promise<Error[]>;
+settled(allowResolvingImmediately?: boolean): Promise<Error[]>;
 ```
 
 Returns a promise that resolves once the task queue is emptied.
@@ -249,11 +238,9 @@ Failing tasks will not cause the promise to be rejected.
 
 ### Parameters
 
-#### allowResolvingImmediately?
-
-`boolean`
-
-Set to `true` to resolve immediately if task queue is currently empty.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `allowResolvingImmediately?` | `boolean` | Set to `true` to resolve immediately if task queue is currently empty. |
 
 ### Returns
 
@@ -278,7 +265,7 @@ Returns an observable that yields pool events.
 ### queue()
 
 ```ts
-queue<Return>(task): QueuedTask<ThreadType, Return>;
+queue<Return>(task: TaskRunFunction<ThreadType, Return>): QueuedTask<ThreadType, Return>;
 ```
 
 Queue a task and return a promise that resolves once the task has been dequeued,
@@ -286,17 +273,15 @@ started and finished.
 
 ### Type Parameters
 
-#### Return
-
-`Return`
+| Type Parameter |
+| ------ |
+| `Return` |
 
 ### Parameters
 
-#### task
-
-`TaskRunFunction`\<`ThreadType`, `Return`\>
-
-An async function that takes a thread instance and invokes it.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `task` | `TaskRunFunction`\<`ThreadType`, `Return`\> | An async function that takes a thread instance and invokes it. |
 
 ### Returns
 
@@ -307,18 +292,16 @@ An async function that takes a thread instance and invokes it.
 ### terminate()
 
 ```ts
-terminate(force?): Promise<void>;
+terminate(force?: boolean): Promise<void>;
 ```
 
 Terminate all pool threads.
 
 ### Parameters
 
-#### force?
-
-`boolean`
-
-Set to `true` to kill the thread even if it cannot be stopped gracefully.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `force?` | `boolean` | Set to `true` to kill the thread even if it cannot be stopped gracefully. |
 
 ### Returns
 
@@ -334,56 +317,16 @@ Task that has been `pool.queued()`-ed.
 
 ## Type Parameters
 
-### ThreadType
-
-`ThreadType` *extends* [`Thread`](#../type-aliases/Thread)
-
-### Return
-
-`Return`
+| Type Parameter |
+| ------ |
+| `ThreadType` *extends* [`Thread`](#../type-aliases/Thread) |
+| `Return` |
 
 ## Properties
 
-### then()
-
-```ts
-then: <TResult1, TResult2>(onfulfilled?, onrejected?) => Promise<TResult1 | TResult2>;
-```
-
-`QueuedTask` is thenable, so you can `await` it.
-Resolves when the task has successfully been executed. Rejects if the task fails.
-
-Attaches callbacks for the resolution and/or rejection of the Promise.
-
-### Type Parameters
-
-#### TResult1
-
-`TResult1` = `Return`
-
-#### TResult2
-
-`TResult2` = `never`
-
-### Parameters
-
-#### onfulfilled?
-
-The callback to execute when the Promise is resolved.
-
-(`value`) => `TResult1` \| `PromiseLike`\<`TResult1`\> | `null`
-
-#### onrejected?
-
-The callback to execute when the Promise is rejected.
-
-(`reason`) => `TResult2` \| `PromiseLike`\<`TResult2`\> | `null`
-
-### Returns
-
-`Promise`\<`TResult1` \| `TResult2`\>
-
-A Promise for the completion of which ever callback is executed.
+| Property | Type | Description |
+| ------ | ------ | ------ |
+| <a id="then"></a> `then` | \<`TResult1`, `TResult2`\>(`onfulfilled?`: (`value`: `Return`) => `TResult1` \| `PromiseLike`\<`TResult1`\> \| `null`, `onrejected?`: (`reason`: `any`) => `TResult2` \| `PromiseLike`\<`TResult2`\> \| `null`) => `Promise`\<`TResult1` \| `TResult2`\> | `QueuedTask` is thenable, so you can `await` it. Resolves when the task has successfully been executed. Rejects if the task fails. |
 
 ## Methods
 
@@ -409,27 +352,24 @@ A serializer that can convert between a message format and an input type.
 
 ## Type Parameters
 
-### Msg
-
-`Msg` = [`JsonSerializable`](#../type-aliases/JsonSerializable)
-
-### Input
-
-`Input` = `any`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `Msg` | [`JsonSerializable`](#../type-aliases/JsonSerializable) |
+| `Input` | `any` |
 
 ## Methods
 
 ### deserialize()
 
 ```ts
-deserialize(message): Input;
+deserialize(message: Msg): Input;
 ```
 
 ### Parameters
 
-#### message
-
-`Msg`
+| Parameter | Type |
+| ------ | ------ |
+| `message` | `Msg` |
 
 ### Returns
 
@@ -440,14 +380,14 @@ deserialize(message): Input;
 ### serialize()
 
 ```ts
-serialize(input): Msg;
+serialize(input: Input): Msg;
 ```
 
 ### Parameters
 
-#### input
-
-`Input`
+| Parameter | Type |
+| ------ | ------ |
+| `input` | `Input` |
 
 ### Returns
 
@@ -463,31 +403,25 @@ A serializer implementation that receives a fallback (default) serializer for ch
 
 ## Type Parameters
 
-### Msg
-
-`Msg` = [`JsonSerializable`](#../type-aliases/JsonSerializable)
-
-### Input
-
-`Input` = `any`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `Msg` | [`JsonSerializable`](#../type-aliases/JsonSerializable) |
+| `Input` | `any` |
 
 ## Methods
 
 ### deserialize()
 
 ```ts
-deserialize(message, defaultDeserialize): Input;
+deserialize(message: Msg, defaultDeserialize: (msg: Msg) => Input): Input;
 ```
 
 ### Parameters
 
-#### message
-
-`Msg`
-
-#### defaultDeserialize
-
-(`msg`) => `Input`
+| Parameter | Type |
+| ------ | ------ |
+| `message` | `Msg` |
+| `defaultDeserialize` | (`msg`: `Msg`) => `Input` |
 
 ### Returns
 
@@ -498,18 +432,15 @@ deserialize(message, defaultDeserialize): Input;
 ### serialize()
 
 ```ts
-serialize(input, defaultSerialize): Msg;
+serialize(input: Input, defaultSerialize: (inp: Input) => Msg): Msg;
 ```
 
 ### Parameters
 
-#### input
-
-`Input`
-
-#### defaultSerialize
-
-(`inp`) => `Msg`
+| Parameter | Type |
+| ------ | ------ |
+| `input` | `Input` |
+| `defaultSerialize` | (`inp`: `Input`) => `Msg` |
 
 ### Returns
 
@@ -525,33 +456,17 @@ Descriptor wrapping a value with its associated transferable objects for zero-co
 
 ## Type Parameters
 
-### T
-
-`T` = `any`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` | `any` |
 
 ## Properties
 
-### \[$transferable\]
-
-```ts
-[$transferable]: true;
-```
-
-***
-
-### send
-
-```ts
-send: T;
-```
-
-***
-
-### transferables
-
-```ts
-transferables: Transferable[];
-```
+| Property | Type |
+| ------ | ------ |
+| <a id="transferable"></a> `[$transferable]` | `true` |
+| <a id="send"></a> `send` | `T` |
+| <a id="transferables"></a> `transferables` | `Transferable`[] |
 
   ### namespaces
 
@@ -571,9 +486,9 @@ type Event<ThreadType> = PoolEvent<ThreadType>;
 
 ## Type Parameters
 
-### ThreadType
-
-`ThreadType` *extends* [`Thread`](#../../../type-aliases/Thread) = `any`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `ThreadType` *extends* [`Thread`](#../../../type-aliases/Thread) | `any` |
 
         ### <a id="EventType"></a>EventType
 
@@ -613,9 +528,9 @@ Maps a worker's exposed API type to its corresponding thread type (`FunctionThre
 
 ## Type Parameters
 
-### Exposed
-
-`Exposed` *extends* `WorkerFunction` \| `WorkerModule`\<`any`\>
+| Type Parameter |
+| ------ |
+| `Exposed` *extends* `WorkerFunction` \| `WorkerModule`\<`any`\> |
 
     ### <a id="FunctionThread"></a>FunctionThread
 
@@ -631,13 +546,10 @@ A thread wrapping a single exposed function.
 
 ## Type Parameters
 
-### Args
-
-`Args` *extends* `any`[] = `any`[]
-
-### ReturnType
-
-`ReturnType` = `any`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `Args` *extends* `any`[] | `any`[] |
+| `ReturnType` | `any` |
 
     ### <a id="JsonSerializable"></a>JsonSerializable
 
@@ -669,9 +581,9 @@ A thread wrapping an exposed module of functions.
 
 ## Type Parameters
 
-### Methods
-
-`Methods` *extends* `ModuleMethods` = `any`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `Methods` *extends* `ModuleMethods` | `any` |
 
     ### <a id="Thread"></a>Thread
 
@@ -730,18 +642,18 @@ Default serializer that handles Error instances and passes other values through.
 ***
 
 ```ts
-Pool: <ThreadType>(spawnWorker, optionsOrSize?) => WorkerPool<ThreadType> & object;
+Pool: <ThreadType>(spawnWorker: () => Promise<ThreadType>, optionsOrSize?: number | PoolOptions) => WorkerPool<ThreadType> & {
+  EventType: typeof PoolEventType;
+};
 ```
 
 Thread pool constructor. Creates a new pool and spawns its worker threads.
 
 ## Type Declaration
 
-### EventType
-
-```ts
-EventType: typeof PoolEventType;
-```
+| Name | Type |
+| ------ | ------ |
+| `EventType` | *typeof* `PoolEventType` |
 
     ### <a id="Thread"></a>Thread
 
@@ -750,84 +662,22 @@ EventType: typeof PoolEventType;
 ***
 
 ```ts
-Thread: object;
+Thread: {
+  errors: Observable<Error>;
+  events: Observable<WorkerEvent>;
+  terminate: Promise<void>;
+};
 ```
 
 Thread utility functions. Use them to manage or inspect a `spawn()`-ed thread.
 
 ## Type Declaration
 
-### errors()
-
-```ts
-errors<ThreadT>(thread): Observable<Error>;
-```
-
-Return an observable that can be used to subscribe to all errors happening in the thread.
-
-### Type Parameters
-
-#### ThreadT
-
-`ThreadT` *extends* `Thread`
-
-### Parameters
-
-#### thread
-
-`ThreadT`
-
-### Returns
-
-`Observable`\<`Error`\>
-
-### events()
-
-```ts
-events<ThreadT>(thread): Observable<WorkerEvent>;
-```
-
-Return an observable that can be used to subscribe to internal events happening in the thread. Useful for debugging.
-
-### Type Parameters
-
-#### ThreadT
-
-`ThreadT` *extends* `Thread`
-
-### Parameters
-
-#### thread
-
-`ThreadT`
-
-### Returns
-
-`Observable`\<`WorkerEvent`\>
-
-### terminate()
-
-```ts
-terminate<ThreadT>(thread): Promise<void>;
-```
-
-Terminate a thread. Remember to terminate every thread when you are done using it.
-
-### Type Parameters
-
-#### ThreadT
-
-`ThreadT` *extends* `Thread`
-
-### Parameters
-
-#### thread
-
-`ThreadT`
-
-### Returns
-
-`Promise`\<`void`\>
+| Name | Type | Description |
+| ------ | ------ | ------ |
+| `errors()` | (`thread`: `ThreadT`) => `Observable`\<`Error`\> | Return an observable that can be used to subscribe to all errors happening in the thread. |
+| `events()` | (`thread`: `ThreadT`) => `Observable`\<`WorkerEvent`\> | Return an observable that can be used to subscribe to internal events happening in the thread. Useful for debugging. |
+| `terminate()` | (`thread`: `ThreadT`) => `Promise`\<`void`\> | Terminate a thread. Remember to terminate every thread when you are done using it. |
 
     ### <a id="Worker"></a>Worker
 

@@ -15,6 +15,8 @@
 
 Base functionality used throughout XYO TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/sdk-meta**
@@ -23,24 +25,30 @@ Base functionality used throughout XYO TypeScript/JavaScript libraries
 
 ## Interfaces
 
-- [Meta](#interfaces/Meta)
-- [OpenGraphMeta](#interfaces/OpenGraphMeta)
-- [OpenGraphStructured](#interfaces/OpenGraphStructured)
-- [TwitterMeta](#interfaces/TwitterMeta)
-- [TwitterApp](#interfaces/TwitterApp)
-- [TwitterPlayer](#interfaces/TwitterPlayer)
+| Interface | Description |
+| ------ | ------ |
+| [Meta](#interfaces/Meta) | Represents page metadata including Open Graph and Twitter card properties. |
+| [OpenGraphMeta](#interfaces/OpenGraphMeta) | Open Graph protocol metadata for rich link previews. |
+| [OpenGraphStructured](#interfaces/OpenGraphStructured) | Structured properties for an Open Graph media object (image, video, or audio). |
+| [TwitterMeta](#interfaces/TwitterMeta) | https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup |
+| [TwitterApp](#interfaces/TwitterApp) | Twitter App Card metadata containing app store identifiers, names, and URLs per platform. |
+| [TwitterPlayer](#interfaces/TwitterPlayer) | https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/player-card |
 
 ## Type Aliases
 
-- [StringIndexable](#type-aliases/StringIndexable)
-- [OpenGraphStructuredProperty](#type-aliases/OpenGraphStructuredProperty)
+| Type Alias | Description |
+| ------ | ------ |
+| [StringIndexable](#type-aliases/StringIndexable) | An object with string keys and arbitrary values, used for recursive meta flattening. |
+| [OpenGraphStructuredProperty](#type-aliases/OpenGraphStructuredProperty) | A structured Open Graph property value: a URL string, a structured object, or an array of either. |
 
 ## Functions
 
-- [mergeDocumentHead](#functions/mergeDocumentHead)
-- [getMetaAsDict](#functions/getMetaAsDict)
-- [addMetaToHead](#functions/addMetaToHead)
-- [metaBuilder](#functions/metaBuilder)
+| Function | Description |
+| ------ | ------ |
+| [mergeDocumentHead](#functions/mergeDocumentHead) | Merges meta tags from the source HTML head into the destination HTML head. Existing meta tags with matching property attributes are replaced; others are appended. |
+| [getMetaAsDict](#functions/getMetaAsDict) | Recursively flattens a nested meta object into a flat dictionary with colon-delimited keys. |
+| [addMetaToHead](#functions/addMetaToHead) | Adds or replaces a meta tag in the document head. |
+| [metaBuilder](#functions/metaBuilder) | Injects meta properties, title, and description into an HTML string. |
 
 ### functions
 
@@ -52,32 +60,20 @@ Base functionality used throughout XYO TypeScript/JavaScript libraries
 
 ```ts
 function addMetaToHead(
-   $, 
-   name, 
-   value): void;
+   $: CheerioAPI, 
+   name: string, 
+   value: string | object): void;
 ```
 
 Adds or replaces a meta tag in the document head.
 
 ## Parameters
 
-### $
-
-`CheerioAPI`
-
-The Cheerio API instance for the document.
-
-### name
-
-`string`
-
-The meta property name.
-
-### value
-
-The meta content value (string, array, or nested object).
-
-`string` | `object`
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `$` | `CheerioAPI` | The Cheerio API instance for the document. |
+| `name` | `string` | The meta property name. |
+| `value` | `string` \| `object` | The meta content value (string, array, or nested object). |
 
 ## Returns
 
@@ -90,24 +86,17 @@ The meta content value (string, array, or nested object).
 ***
 
 ```ts
-function getMetaAsDict(obj, parentKey?): Record<string, string>;
+function getMetaAsDict(obj: StringIndexable, parentKey?: string): Record<string, string>;
 ```
 
 Recursively flattens a nested meta object into a flat dictionary with colon-delimited keys.
 
 ## Parameters
 
-### obj
-
-[`StringIndexable`](#../type-aliases/StringIndexable)
-
-The nested object to flatten.
-
-### parentKey?
-
-`string`
-
-The accumulated key prefix from parent levels.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `obj` | [`StringIndexable`](#../type-aliases/StringIndexable) | The nested object to flatten. |
+| `parentKey?` | `string` | The accumulated key prefix from parent levels. |
 
 ## Returns
 
@@ -122,7 +111,7 @@ A flat record mapping colon-delimited property names to string values.
 ***
 
 ```ts
-function mergeDocumentHead(destination, source): string;
+function mergeDocumentHead(destination: string, source: string): string;
 ```
 
 Merges meta tags from the source HTML head into the destination HTML head.
@@ -130,17 +119,10 @@ Existing meta tags with matching property attributes are replaced; others are ap
 
 ## Parameters
 
-### destination
-
-`string`
-
-The base HTML string to merge into.
-
-### source
-
-`string`
-
-The HTML string whose head meta tags will be merged.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `destination` | `string` | The base HTML string to merge into. |
+| `source` | `string` | The HTML string whose head meta tags will be merged. |
 
 ## Returns
 
@@ -156,32 +138,20 @@ The merged HTML string.
 
 ```ts
 function metaBuilder(
-   html, 
-   meta, 
-   handler?): string;
+   html: string, 
+   meta: Meta, 
+   handler?: string): string;
 ```
 
 Injects meta properties, title, and description into an HTML string.
 
 ## Parameters
 
-### html
-
-`string`
-
-The base HTML string to modify.
-
-### meta
-
-[`Meta`](#../interfaces/Meta)
-
-The metadata to inject.
-
-### handler?
-
-`string`
-
-Optional meta-handler property value to include.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `html` | `string` | The base HTML string to modify. |
+| `meta` | [`Meta`](#../interfaces/Meta) | The metadata to inject. |
+| `handler?` | `string` | Optional meta-handler property value to include. |
 
 ## Returns
 
@@ -201,35 +171,12 @@ Represents page metadata including Open Graph and Twitter card properties.
 
 ## Properties
 
-### description?
-
-```ts
-optional description: string;
-```
-
-***
-
-### og?
-
-```ts
-optional og: OpenGraphMeta;
-```
-
-***
-
-### title?
-
-```ts
-optional title: string;
-```
-
-***
-
-### twitter?
-
-```ts
-optional twitter: TwitterMeta;
-```
+| Property | Type |
+| ------ | ------ |
+| <a id="description"></a> `description?` | `string` |
+| <a id="og"></a> `og?` | [`OpenGraphMeta`](#OpenGraphMeta) |
+| <a id="title"></a> `title?` | `string` |
+| <a id="twitter"></a> `twitter?` | [`TwitterMeta`](#TwitterMeta) |
 
   ### <a id="OpenGraphMeta"></a>OpenGraphMeta
 
@@ -241,83 +188,18 @@ Open Graph protocol metadata for rich link previews.
 
 ## Properties
 
-### audio?
-
-```ts
-optional audio: OpenGraphStructuredProperty;
-```
-
-***
-
-### description?
-
-```ts
-optional description: string;
-```
-
-***
-
-### determiner?
-
-```ts
-optional determiner: string;
-```
-
-***
-
-### image?
-
-```ts
-optional image: OpenGraphStructuredProperty;
-```
-
-***
-
-### locale?
-
-```ts
-optional locale: string | string[];
-```
-
-***
-
-### site\_name?
-
-```ts
-optional site_name: string;
-```
-
-***
-
-### title?
-
-```ts
-optional title: string;
-```
-
-***
-
-### type?
-
-```ts
-optional type: string;
-```
-
-***
-
-### url?
-
-```ts
-optional url: string;
-```
-
-***
-
-### video?
-
-```ts
-optional video: OpenGraphStructuredProperty;
-```
+| Property | Type |
+| ------ | ------ |
+| <a id="audio"></a> `audio?` | [`OpenGraphStructuredProperty`](#../type-aliases/OpenGraphStructuredProperty) |
+| <a id="description"></a> `description?` | `string` |
+| <a id="determiner"></a> `determiner?` | `string` |
+| <a id="image"></a> `image?` | [`OpenGraphStructuredProperty`](#../type-aliases/OpenGraphStructuredProperty) |
+| <a id="locale"></a> `locale?` | `string` \| `string`[] |
+| <a id="site_name"></a> `site_name?` | `string` |
+| <a id="title"></a> `title?` | `string` |
+| <a id="type"></a> `type?` | `string` |
+| <a id="url"></a> `url?` | `string` |
+| <a id="video"></a> `video?` | [`OpenGraphStructuredProperty`](#../type-aliases/OpenGraphStructuredProperty) |
 
   ### <a id="OpenGraphStructured"></a>OpenGraphStructured
 
@@ -329,59 +211,15 @@ Structured properties for an Open Graph media object (image, video, or audio).
 
 ## Properties
 
-### ?
-
-```ts
-optional : string;
-```
-
-***
-
-### alt?
-
-```ts
-optional alt: string;
-```
-
-***
-
-### height?
-
-```ts
-optional height: number;
-```
-
-***
-
-### secure\_url?
-
-```ts
-optional secure_url: string;
-```
-
-***
-
-### type?
-
-```ts
-optional type: string;
-```
-
-***
-
-### url?
-
-```ts
-optional url: string;
-```
-
-***
-
-### width?
-
-```ts
-optional width: number;
-```
+| Property | Type |
+| ------ | ------ |
+| <a id="_"></a> `?` | `string` |
+| <a id="alt"></a> `alt?` | `string` |
+| <a id="height"></a> `height?` | `number` |
+| <a id="secure_url"></a> `secure_url?` | `string` |
+| <a id="type"></a> `type?` | `string` |
+| <a id="url"></a> `url?` | `string` |
+| <a id="width"></a> `width?` | `number` |
 
   ### <a id="TwitterApp"></a>TwitterApp
 
@@ -393,81 +231,20 @@ Twitter App Card metadata containing app store identifiers, names, and URLs per 
 
 ## Properties
 
-### id?
-
-```ts
-optional id: object;
-```
-
-### googleplay?
-
-```ts
-optional googleplay: string;
-```
-
-### ipad?
-
-```ts
-optional ipad: string;
-```
-
-### iphone?
-
-```ts
-optional iphone: string;
-```
-
-***
-
-### name?
-
-```ts
-optional name: object;
-```
-
-### googleplay?
-
-```ts
-optional googleplay: string;
-```
-
-### ipad?
-
-```ts
-optional ipad: string;
-```
-
-### iphone?
-
-```ts
-optional iphone: string;
-```
-
-***
-
-### url?
-
-```ts
-optional url: object;
-```
-
-### googleplay?
-
-```ts
-optional googleplay: string;
-```
-
-### ipad?
-
-```ts
-optional ipad: string;
-```
-
-### iphone?
-
-```ts
-optional iphone: string;
-```
+| Property | Type |
+| ------ | ------ |
+| <a id="id"></a> `id?` | \{ `googleplay?`: `string`; `ipad?`: `string`; `iphone?`: `string`; \} |
+| `id.googleplay?` | `string` |
+| `id.ipad?` | `string` |
+| `id.iphone?` | `string` |
+| <a id="name"></a> `name?` | \{ `googleplay?`: `string`; `ipad?`: `string`; `iphone?`: `string`; \} |
+| `name.googleplay?` | `string` |
+| `name.ipad?` | `string` |
+| `name.iphone?` | `string` |
+| <a id="url"></a> `url?` | \{ `googleplay?`: `string`; `ipad?`: `string`; `iphone?`: `string`; \} |
+| `url.googleplay?` | `string` |
+| `url.ipad?` | `string` |
+| `url.iphone?` | `string` |
 
   ### <a id="TwitterMeta"></a>TwitterMeta
 
@@ -479,143 +256,22 @@ https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup
 
 ## Properties
 
-### app?
-
-```ts
-optional app: TwitterApp;
-```
-
-***
-
-### card?
-
-```ts
-optional card: "summary" | "summary_large_image" | "app" | "player";
-```
-
-The card type. Used with all cards. Fallback: og:type.
-If an og:type, og:title and og:description exist in the markup but
-twitter:card is absent, then a summary card may be rendered.
-
-***
-
-### creator?
-
-```ts
-optional creator: object;
-```
-
-### ?
-
-```ts
-optional : string;
-```
-
-The
-
-#### Username
-
-of content creator. Used with summary_large_image cards
-
-### id?
-
-```ts
-optional id: string;
-```
-
-Twitter user ID of content creator. Used with summary,
-summary_large_image cards
-
-***
-
-### description?
-
-```ts
-optional description: string;
-```
-
-Description of content (maximum 200 characters). Used with summary,
-summary_large_image, player cards. Fallback: og:description.
-
-***
-
-### image?
-
-```ts
-optional image: object;
-```
-
-### ?
-
-```ts
-optional : string;
-```
-
-URL of image to use in the card. Images must be less than 5MB in size.
-JPG, PNG, WEBP and GIF formats are supported. Only the first frame of
-an animated GIF will be used. SVG is not supported. Used with summary,
-summary_large_image, player cards. Fallback: og:image
-
-### alt?
-
-```ts
-optional alt: string;
-```
-
-A text description of the image conveying the essential nature of
-an image to users who are visually impaired. Maximum 420
-characters. Used with summary, summary_large_image, player cards
-
-***
-
-### player?
-
-```ts
-optional player: TwitterPlayer;
-```
-
-***
-
-### site?
-
-```ts
-optional site: object;
-```
-
-The
-
-### ?
-
-```ts
-optional : string;
-```
-
-### id?
-
-```ts
-optional id: string;
-```
-
-Same as twitter:site, but the user’s Twitter ID. Either
-twitter:site or twitter:site:id is required. Used with
-summary, summary_large_image, player cards
-
-### Username
-
-of website. Either twitter:site or twitter:site:id is
-required. Used with summary, summary_large_image, app, player
-cards
-
-***
-
-### title?
-
-```ts
-optional title: string;
-```
-
-Title of content (max 70 characters). Used with summary,
-summary_large_image, player cards. Fallback: og:title.
+| Property | Type | Description |
+| ------ | ------ | ------ |
+| <a id="app"></a> `app?` | [`TwitterApp`](#TwitterApp) | - |
+| <a id="card"></a> `card?` | `"summary"` \| `"summary_large_image"` \| `"app"` \| `"player"` | The card type. Used with all cards. Fallback: og:type. If an og:type, og:title and og:description exist in the markup but twitter:card is absent, then a summary card may be rendered. |
+| <a id="creator"></a> `creator?` | \{ `?`: `string`; `id?`: `string`; \} | - |
+| `creator.?` | `string` | The **Username** of content creator. Used with summary_large_image cards |
+| `creator.id?` | `string` | Twitter user ID of content creator. Used with summary, summary_large_image cards |
+| <a id="description"></a> `description?` | `string` | Description of content (maximum 200 characters). Used with summary, summary_large_image, player cards. Fallback: og:description. |
+| <a id="image"></a> `image?` | \{ `?`: `string`; `alt?`: `string`; \} | - |
+| `image.?` | `string` | URL of image to use in the card. Images must be less than 5MB in size. JPG, PNG, WEBP and GIF formats are supported. Only the first frame of an animated GIF will be used. SVG is not supported. Used with summary, summary_large_image, player cards. Fallback: og:image |
+| `image.alt?` | `string` | A text description of the image conveying the essential nature of an image to users who are visually impaired. Maximum 420 characters. Used with summary, summary_large_image, player cards |
+| <a id="player"></a> `player?` | [`TwitterPlayer`](#TwitterPlayer) | - |
+| <a id="site"></a> `site?` | \{ `?`: `string`; `id?`: `string`; \} | The **Username** of website. Either twitter:site or twitter:site:id is required. Used with summary, summary_large_image, app, player cards |
+| `site.?` | `string` | - |
+| `site.id?` | `string` | Same as twitter:site, but the user’s Twitter ID. Either twitter:site or twitter:site:id is required. Used with summary, summary_large_image, player cards |
+| <a id="title"></a> `title?` | `string` | Title of content (max 70 characters). Used with summary, summary_large_image, player cards. Fallback: og:title. |
 
   ### <a id="TwitterPlayer"></a>TwitterPlayer
 
@@ -627,45 +283,12 @@ https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/player
 
 ## Properties
 
-### 
-
-```ts
-: string;
-```
-
-HTTPS URL to iFrame player. This must be a HTTPS URL which does not
-generate active mixed content warnings in a web browser. The audio or
-video player must not require plugins such as Adobe Flash.
-
-***
-
-### height?
-
-```ts
-optional height: number;
-```
-
-Height of iframe in pixels. Used with player card
-
-***
-
-### stream?
-
-```ts
-optional stream: string;
-```
-
-URL to raw video or audio stream. Used with player card
-
-***
-
-### width?
-
-```ts
-optional width: number;
-```
-
-Width of iframe in pixels. Used with player card
+| Property | Type | Description |
+| ------ | ------ | ------ |
+| <a id="_"></a> `` | `string` | HTTPS URL to iFrame player. This must be a HTTPS URL which does not generate active mixed content warnings in a web browser. The audio or video player must not require plugins such as Adobe Flash. |
+| <a id="height"></a> `height?` | `number` | Height of iframe in pixels. Used with player card |
+| <a id="stream"></a> `stream?` | `string` | URL to raw video or audio stream. Used with player card |
+| <a id="width"></a> `width?` | `number` | Width of iframe in pixels. Used with player card |
 
 ### type-aliases
 
@@ -691,7 +314,9 @@ A structured Open Graph property value: a URL string, a structured object, or an
 ***
 
 ```ts
-type StringIndexable = object;
+type StringIndexable = {
+[key: string]: any;
+};
 ```
 
 An object with string keys and arbitrary values, used for recursive meta flattening.

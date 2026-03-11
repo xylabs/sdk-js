@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/enum**
@@ -23,13 +25,17 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Type Aliases
 
-- [Enum](#type-aliases/Enum)
-- [EnumKey](#type-aliases/EnumKey)
-- [EnumValue](#type-aliases/EnumValue)
+| Type Alias | Description |
+| ------ | ------ |
+| [Enum](#type-aliases/Enum) | A utility type that, given a `Record<string, unknown>`, returns a readonly version of that record. This results in a type where all properties of `T` are readonly. |
+| [EnumKey](#type-aliases/EnumKey) | A utility type that, given an `Enum` object, returns the union of its keys. |
+| [EnumValue](#type-aliases/EnumValue) | A utility type that, given an `Enum` object, returns the union of its values. |
 
 ## Functions
 
-- [Enum](#functions/Enum)
+| Function | Description |
+| ------ | ------ |
+| [Enum](#functions/Enum) | Transforms a given record object into a readonly "enum-like" structure while preserving the literal types of its values. This allows you to use the returned object both at runtime (for lookups) and at compile time (for strongly typed values). |
 
 ### functions
 
@@ -40,7 +46,7 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 ***
 
 ```ts
-function Enum<T>(obj): Enum<T>;
+function Enum<T>(obj: Readonly<T>): Enum<T>;
 ```
 
 Transforms a given record object into a readonly "enum-like" structure while preserving
@@ -52,19 +58,15 @@ ensure you annotate your object with `as const` before passing it to `Enum`.
 
 ## Type Parameters
 
-### T
-
-`T` *extends* `Record`\<`string` \| `number` \| `symbol`, `unknown`\>
-
-A record type with string keys and any kind of values.
+| Type Parameter | Description |
+| ------ | ------ |
+| `T` *extends* `Record`\<`string` \| `number` \| `symbol`, `unknown`\> | A record type with string keys and any kind of values. |
 
 ## Parameters
 
-### obj
-
-`Readonly`\<`T`\>
-
-A readonly record object annotated with `as const`.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `obj` | `Readonly`\<`T`\> | A readonly record object annotated with `as const`. |
 
 ## Returns
 
@@ -125,11 +127,9 @@ of that record. This results in a type where all properties of `T` are readonly.
 
 ## Type Parameters
 
-### T
-
-`T` *extends* `Readonly`\<`Record`\<`string` \| `number` \| `symbol`, `unknown`\>\>
-
-The record type to make readonly.
+| Type Parameter | Description |
+| ------ | ------ |
+| `T` *extends* `Readonly`\<`Record`\<`string` \| `number` \| `symbol`, `unknown`\>\> | The record type to make readonly. |
 
 ## Example
 
@@ -168,13 +168,10 @@ A utility type that, given an `Enum` object, returns the union of its keys.
 
 ## Type Parameters
 
-### T
-
-`T` *extends* `Record`\<`string` \| `number` \| `symbol`, `unknown`\>
-
-### K
-
-`K` = [`Enum`](#Enum)\<`T`\>
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` *extends* `Record`\<`string` \| `number` \| `symbol`, `unknown`\> | - |
+| `K` | [`Enum`](#Enum)\<`T`\> |
 
   ### <a id="EnumValue"></a>EnumValue
 
@@ -190,13 +187,10 @@ A utility type that, given an `Enum` object, returns the union of its values.
 
 ## Type Parameters
 
-### T
-
-`T` *extends* `Record`\<`string` \| `number` \| `symbol`, `unknown`\>
-
-### K
-
-`K` = [`Enum`](#Enum)\<`T`\>
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` *extends* `Record`\<`string` \| `number` \| `symbol`, `unknown`\> | - |
+| `K` | [`Enum`](#Enum)\<`T`\> |
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

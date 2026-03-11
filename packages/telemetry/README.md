@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/telemetry**
@@ -23,16 +25,20 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Interfaces
 
-- [SpanConfig](#interfaces/SpanConfig)
+| Interface | Description |
+| ------ | ------ |
+| [SpanConfig](#interfaces/SpanConfig) | Configuration options for span creation and execution. |
 
 ## Functions
 
-- [cloneContextWithoutSpan](#functions/cloneContextWithoutSpan)
-- [span](#functions/span)
-- [spanRoot](#functions/spanRoot)
-- [spanAsync](#functions/spanAsync)
-- [spanRootAsync](#functions/spanRootAsync)
-- [timeBudget](#functions/timeBudget)
+| Function | Description |
+| ------ | ------ |
+| [cloneContextWithoutSpan](#functions/cloneContextWithoutSpan) | Creates a new OpenTelemetry context that preserves baggage and custom keys but has no active span. |
+| [span](#functions/span) | Executes a synchronous function within an OpenTelemetry span, recording status and exceptions. |
+| [spanRoot](#functions/spanRoot) | Executes a synchronous function within a new root span that has no parent, even if a span is already active. |
+| [spanAsync](#functions/spanAsync) | Executes an async function within an OpenTelemetry span, with optional time budget monitoring. |
+| [spanRootAsync](#functions/spanRootAsync) | Executes an async function within a new root span (no parent), with optional time budget monitoring. |
+| [timeBudget](#functions/timeBudget) | Executes an async function and logs a warning if it exceeds the given time budget. |
 
 ### functions
 
@@ -43,24 +49,17 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 ***
 
 ```ts
-function cloneContextWithoutSpan(activeCtx, configKeys?): Context;
+function cloneContextWithoutSpan(activeCtx: Context, configKeys?: symbol[]): Context;
 ```
 
 Creates a new OpenTelemetry context that preserves baggage and custom keys but has no active span.
 
 ## Parameters
 
-### activeCtx
-
-`Context`
-
-The context to clone from.
-
-### configKeys?
-
-`symbol`[] = `[]`
-
-Additional context keys to copy.
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `activeCtx` | `Context` | `undefined` | The context to clone from. |
+| `configKeys` | `symbol`[] | `[]` | Additional context keys to copy. |
 
 ## Returns
 
@@ -76,38 +75,26 @@ A new context with baggage but no parent span.
 
 ```ts
 function span<T>(
-   name, 
-   fn, 
-   tracer?): T;
+   name: string, 
+   fn: () => T, 
+   tracer?: Tracer): T;
 ```
 
 Executes a synchronous function within an OpenTelemetry span, recording status and exceptions.
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Parameters
 
-### name
-
-`string`
-
-The span name.
-
-### fn
-
-() => `T`
-
-The function to execute.
-
-### tracer?
-
-`Tracer`
-
-Optional tracer to use.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `name` | `string` | The span name. |
+| `fn` | () => `T` | The function to execute. |
+| `tracer?` | `Tracer` | Optional tracer to use. |
 
 ## Returns
 
@@ -123,38 +110,26 @@ The return value of `fn`.
 
 ```ts
 function spanAsync<T>(
-   name, 
-   fn, 
-config?): Promise<T>;
+   name: string, 
+   fn: () => Promise<T>, 
+config?: SpanConfig): Promise<T>;
 ```
 
 Executes an async function within an OpenTelemetry span, with optional time budget monitoring.
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Parameters
 
-### name
-
-`string`
-
-The span name.
-
-### fn
-
-() => `Promise`\<`T`\>
-
-The async function to execute.
-
-### config?
-
-[`SpanConfig`](#../interfaces/SpanConfig) = `{}`
-
-Optional span configuration (tracer, logger, time budget).
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `name` | `string` | The span name. |
+| `fn` | () => `Promise`\<`T`\> | The async function to execute. |
+| `config` | [`SpanConfig`](#../interfaces/SpanConfig) | Optional span configuration (tracer, logger, time budget). |
 
 ## Returns
 
@@ -170,38 +145,26 @@ The resolved value of `fn`.
 
 ```ts
 function spanRoot<T>(
-   name, 
-   fn, 
-   tracer?): T;
+   name: string, 
+   fn: () => T, 
+   tracer?: Tracer): T;
 ```
 
 Executes a synchronous function within a new root span that has no parent, even if a span is already active.
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Parameters
 
-### name
-
-`string`
-
-The span name.
-
-### fn
-
-() => `T`
-
-The function to execute.
-
-### tracer?
-
-`Tracer`
-
-Optional tracer to use.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `name` | `string` | The span name. |
+| `fn` | () => `T` | The function to execute. |
+| `tracer?` | `Tracer` | Optional tracer to use. |
 
 ## Returns
 
@@ -217,38 +180,26 @@ The return value of `fn`.
 
 ```ts
 function spanRootAsync<T>(
-   name, 
-   fn, 
-config?): Promise<T>;
+   name: string, 
+   fn: () => Promise<T>, 
+config?: SpanConfig): Promise<T>;
 ```
 
 Executes an async function within a new root span (no parent), with optional time budget monitoring.
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Parameters
 
-### name
-
-`string`
-
-The span name.
-
-### fn
-
-() => `Promise`\<`T`\>
-
-The async function to execute.
-
-### config?
-
-[`SpanConfig`](#../interfaces/SpanConfig) = `{}`
-
-Optional span configuration (tracer, logger, time budget).
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `name` | `string` | The span name. |
+| `fn` | () => `Promise`\<`T`\> | The async function to execute. |
+| `config` | [`SpanConfig`](#../interfaces/SpanConfig) | Optional span configuration (tracer, logger, time budget). |
 
 ## Returns
 
@@ -264,52 +215,30 @@ The resolved value of `fn`.
 
 ```ts
 function timeBudget<TResult>(
-   name, 
-   logger, 
-   func, 
-   budget, 
-status?): Promise<TResult>;
+   name: string, 
+   logger: Logger | undefined, 
+   func: () => Promise<TResult>, 
+   budget: number, 
+status?: boolean): Promise<TResult>;
 ```
 
 Executes an async function and logs a warning if it exceeds the given time budget.
 
 ## Type Parameters
 
-### TResult
-
-`TResult`
+| Type Parameter |
+| ------ |
+| `TResult` |
 
 ## Parameters
 
-### name
-
-`string`
-
-A label for the function, used in warning messages.
-
-### logger
-
-The logger to use for budget-exceeded warnings.
-
-`Logger` | `undefined`
-
-### func
-
-() => `Promise`\<`TResult`\>
-
-The async function to execute.
-
-### budget
-
-`number`
-
-The time budget in milliseconds.
-
-### status?
-
-`boolean` = `false`
-
-If true, logs periodic warnings while the function is still running.
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `name` | `string` | `undefined` | A label for the function, used in warning messages. |
+| `logger` | `Logger` \| `undefined` | `undefined` | The logger to use for budget-exceeded warnings. |
+| `func` | () => `Promise`\<`TResult`\> | `undefined` | The async function to execute. |
+| `budget` | `number` | `undefined` | The time budget in milliseconds. |
+| `status` | `boolean` | `false` | If true, logs periodic warnings while the function is still running. |
 
 ## Returns
 
@@ -329,33 +258,11 @@ Configuration options for span creation and execution.
 
 ## Properties
 
-### logger?
-
-```ts
-optional logger: Logger | null;
-```
-
-Optional logger for time budget warnings. Falls back to console if not provided.
-
-***
-
-### timeBudgetLimit?
-
-```ts
-optional timeBudgetLimit: number;
-```
-
-Maximum allowed execution time in milliseconds before logging a warning.
-
-***
-
-### tracer?
-
-```ts
-optional tracer: Tracer;
-```
-
-OpenTelemetry tracer to use. Defaults to a tracer named after the span.
+| Property | Type | Description |
+| ------ | ------ | ------ |
+| <a id="logger"></a> `logger?` | `Logger` \| `null` | Optional logger for time budget warnings. Falls back to console if not provided. |
+| <a id="timebudgetlimit"></a> `timeBudgetLimit?` | `number` | Maximum allowed execution time in milliseconds before logging a warning. |
+| <a id="tracer"></a> `tracer?` | `Tracer` | OpenTelemetry tracer to use. Defaults to a tracer named after the span. |
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

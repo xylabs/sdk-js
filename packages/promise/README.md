@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/promise**
@@ -23,33 +25,41 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Classes
 
-- [PromiseEx](#classes/PromiseEx)
+| Class | Description |
+| ------ | ------ |
+| [PromiseEx](#classes/PromiseEx) | An extended Promise that carries an optional attached value and supports cancellation. The value can be inspected via the `then` or `value` methods to conditionally cancel. |
 
 ## Interfaces
 
-- [PromiseType](#interfaces/PromiseType)
+| Interface | Description |
+| ------ | ------ |
+| [PromiseType](#interfaces/PromiseType) | An interface representing any thenable (promise-like) object. |
 
 ## Type Aliases
 
-- [PromiseExSubFunc](#type-aliases/PromiseExSubFunc)
-- [PromiseExFunc](#type-aliases/PromiseExFunc)
-- [PromiseExValueFunc](#type-aliases/PromiseExValueFunc)
-- [Promisable](#type-aliases/Promisable)
-- [PromisableArray](#type-aliases/PromisableArray)
-- [OptionalPromisable](#type-aliases/OptionalPromisable)
-- [OptionalPromisableArray](#type-aliases/OptionalPromisableArray)
-- [NullablePromisable](#type-aliases/NullablePromisable)
-- [NullablePromisableArray](#type-aliases/NullablePromisableArray)
-- [AsyncMutex](#type-aliases/AsyncMutex)
-- [AnyNonPromise](#type-aliases/AnyNonPromise)
+| Type Alias | Description |
+| ------ | ------ |
+| [PromiseExSubFunc](#type-aliases/PromiseExSubFunc) | A resolve/reject callback used within PromiseEx. |
+| [PromiseExFunc](#type-aliases/PromiseExFunc) | The executor function passed to the PromiseEx constructor. |
+| [PromiseExValueFunc](#type-aliases/PromiseExValueFunc) | A callback that inspects the attached value and returns whether to cancel the promise. |
+| [Promisable](#type-aliases/Promisable) | A value that may be a Promise, PromiseEx, or a plain synchronous value. |
+| [PromisableArray](#type-aliases/PromisableArray) | A Promisable that resolves to an array. |
+| [OptionalPromisable](#type-aliases/OptionalPromisable) | A Promisable that may resolve to undefined. |
+| [OptionalPromisableArray](#type-aliases/OptionalPromisableArray) | A Promisable array where elements may be undefined. |
+| [NullablePromisable](#type-aliases/NullablePromisable) | A Promisable that may resolve to null. |
+| [NullablePromisableArray](#type-aliases/NullablePromisableArray) | A Promisable array where elements may be null. |
+| [AsyncMutex](#type-aliases/AsyncMutex) | - |
+| [AnyNonPromise](#type-aliases/AnyNonPromise) | Any non-promise typed value, excluding thenables. |
 
 ## Functions
 
-- [fulfilled](#functions/fulfilled)
-- [fulfilledValues](#functions/fulfilledValues)
-- [rejected](#functions/rejected)
-- [toPromise](#functions/toPromise)
-- [isPromise](#functions/isPromise)
+| Function | Description |
+| ------ | ------ |
+| [fulfilled](#functions/fulfilled) | For use with Promise.allSettled to filter only successful results |
+| [fulfilledValues](#functions/fulfilledValues) | For use with Promise.allSettled to reduce to only successful result values |
+| [rejected](#functions/rejected) | For use with Promise.allSettled to filter only rejected results |
+| [toPromise](#functions/toPromise) | Wraps a value in a Promise if it is not already one. |
+| [isPromise](#functions/isPromise) | Type guard that checks whether a value is a Promise instance. |
 
 ### classes
 
@@ -68,31 +78,25 @@ The value can be inspected via the `then` or `value` methods to conditionally ca
 
 ## Type Parameters
 
-### T
-
-`T`
-
-### V
-
-`V` = `void`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` | - |
+| `V` | `void` |
 
 ## Constructors
 
 ### Constructor
 
 ```ts
-new PromiseEx<T, V>(func, value?): PromiseEx<T, V>;
+new PromiseEx<T, V>(func: PromiseExFunc<T>, value?: V): PromiseEx<T, V>;
 ```
 
 ### Parameters
 
-#### func
-
-[`PromiseExFunc`](#../type-aliases/PromiseExFunc)\<`T`\>
-
-#### value?
-
-`V`
+| Parameter | Type |
+| ------ | ------ |
+| `func` | [`PromiseExFunc`](#../type-aliases/PromiseExFunc)\<`T`\> |
+| `value?` | `V` |
 
 ### Returns
 
@@ -106,13 +110,9 @@ Promise<T>.constructor
 
 ## Properties
 
-### cancelled?
-
-```ts
-optional cancelled: boolean;
-```
-
-Whether the promise has been cancelled via a value callback.
+| Property | Type | Description |
+| ------ | ------ | ------ |
+| <a id="cancelled"></a> `cancelled?` | `boolean` | Whether the promise has been cancelled via a value callback. |
 
 ## Methods
 
@@ -120,40 +120,29 @@ Whether the promise has been cancelled via a value callback.
 
 ```ts
 then<TResult1, TResult2>(
-   onfulfilled?, 
-   onrejected?, 
-onvalue?): Promise<TResult1 | TResult2>;
+   onfulfilled?: (value: T) => TResult1 | PromiseLike<TResult1> | null, 
+   onrejected?: 
+  | (reason: unknown) => TResult2 | PromiseLike<TResult2>
+  | null, 
+onvalue?: (value?: V) => boolean): Promise<TResult1 | TResult2>;
 ```
 
 Attaches callbacks for the resolution and/or rejection of the Promise.
 
 ### Type Parameters
 
-#### TResult1
-
-`TResult1` = `T`
-
-#### TResult2
-
-`TResult2` = `never`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `TResult1` | `T` |
+| `TResult2` | `never` |
 
 ### Parameters
 
-#### onfulfilled?
-
-The callback to execute when the Promise is resolved.
-
-(`value`) => `TResult1` \| `PromiseLike`\<`TResult1`\> | `null`
-
-#### onrejected?
-
-The callback to execute when the Promise is rejected.
-
-(`reason`) => `TResult2` \| `PromiseLike`\<`TResult2`\> | `null`
-
-#### onvalue?
-
-(`value?`) => `boolean`
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `onfulfilled?` | (`value`: `T`) => `TResult1` \| `PromiseLike`\<`TResult1`\> \| `null` | The callback to execute when the Promise is resolved. |
+| `onrejected?` | \| (`reason`: `unknown`) => `TResult2` \| `PromiseLike`\<`TResult2`\> \| `null` | The callback to execute when the Promise is rejected. |
+| `onvalue?` | (`value?`: `V`) => `boolean` | - |
 
 ### Returns
 
@@ -172,18 +161,16 @@ Promise.then
 ### value()
 
 ```ts
-value(onvalue?): PromiseEx<T, V>;
+value(onvalue?: (value?: V) => boolean): PromiseEx<T, V>;
 ```
 
 Inspects the attached value via the callback; if it returns true, marks the promise as cancelled.
 
 ### Parameters
 
-#### onvalue?
-
-(`value?`) => `boolean`
-
-A callback that receives the attached value and returns whether to cancel.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `onvalue?` | (`value?`: `V`) => `boolean` | A callback that receives the attached value and returns whether to cancel. |
 
 ### Returns
 
@@ -200,22 +187,22 @@ This instance for chaining.
 ***
 
 ```ts
-function fulfilled<T>(val): val is PromiseFulfilledResult<T>;
+function fulfilled<T>(val: PromiseSettledResult<T>): val is PromiseFulfilledResult<T>;
 ```
 
 For use with Promise.allSettled to filter only successful results
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Parameters
 
-### val
-
-`PromiseSettledResult`\<`T`\>
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `val` | `PromiseSettledResult`\<`T`\> | - |
 
 ## Returns
 
@@ -228,26 +215,23 @@ For use with Promise.allSettled to filter only successful results
 ***
 
 ```ts
-function fulfilledValues<T>(previousValue, currentValue): T[];
+function fulfilledValues<T>(previousValue: T[], currentValue: PromiseSettledResult<T>): T[];
 ```
 
 For use with Promise.allSettled to reduce to only successful result values
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Parameters
 
-### previousValue
-
-`T`[]
-
-### currentValue
-
-`PromiseSettledResult`\<`T`\>
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `previousValue` | `T`[] | - |
+| `currentValue` | `PromiseSettledResult`\<`T`\> | - |
 
 ## Returns
 
@@ -280,16 +264,16 @@ const results = settled.reduce<string[]>(fulfilledValues, [])
 ## Call Signature
 
 ```ts
-function isPromise(value): value is Promise<unknown>;
+function isPromise(value: unknown): value is Promise<unknown>;
 ```
 
 Type guard that checks whether a value is a Promise instance.
 
 ### Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ### Returns
 
@@ -298,22 +282,22 @@ Type guard that checks whether a value is a Promise instance.
 ## Call Signature
 
 ```ts
-function isPromise<T>(value): value is Extract<T, Promise<unknown>>;
+function isPromise<T>(value: T): value is Extract<T, Promise<unknown>>;
 ```
 
 Type guard that checks whether a value is a Promise instance.
 
 ### Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ### Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ### Returns
 
@@ -326,22 +310,22 @@ Type guard that checks whether a value is a Promise instance.
 ***
 
 ```ts
-function rejected<T>(val): val is PromiseRejectedResult;
+function rejected<T>(val: PromiseSettledResult<T>): val is PromiseRejectedResult;
 ```
 
 For use with Promise.allSettled to filter only rejected results
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Parameters
 
-### val
-
-`PromiseSettledResult`\<`T`\>
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `val` | `PromiseSettledResult`\<`T`\> | - |
 
 ## Returns
 
@@ -354,24 +338,22 @@ For use with Promise.allSettled to filter only rejected results
 ***
 
 ```ts
-function toPromise<T>(value): Promise<T>;
+function toPromise<T>(value: Promisable<T>): Promise<T>;
 ```
 
 Wraps a value in a Promise if it is not already one.
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Parameters
 
-### value
-
-[`Promisable`](#../type-aliases/Promisable)\<`T`\>
-
-A value that may or may not be a Promise.
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | [`Promisable`](#../type-aliases/Promisable)\<`T`\> | A value that may or may not be a Promise. |
 
 ## Returns
 
@@ -391,15 +373,9 @@ An interface representing any thenable (promise-like) object.
 
 ## Properties
 
-### then()
-
-```ts
-then: () => unknown;
-```
-
-### Returns
-
-`unknown`
+| Property | Type |
+| ------ | ------ |
+| <a id="then"></a> `then` | () => `unknown` |
 
 ### type-aliases
 
@@ -427,9 +403,9 @@ type AsyncMutex<T> = Promise<T>;
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Description
 
@@ -449,13 +425,10 @@ A Promisable that may resolve to null.
 
 ## Type Parameters
 
-### T
-
-`T`
-
-### V
-
-`V` = `never`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` | - |
+| `V` | `never` |
 
   ### <a id="NullablePromisableArray"></a>NullablePromisableArray
 
@@ -471,13 +444,10 @@ A Promisable array where elements may be null.
 
 ## Type Parameters
 
-### T
-
-`T`
-
-### V
-
-`V` = `never`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` | - |
+| `V` | `never` |
 
   ### <a id="OptionalPromisable"></a>OptionalPromisable
 
@@ -493,13 +463,10 @@ A Promisable that may resolve to undefined.
 
 ## Type Parameters
 
-### T
-
-`T`
-
-### V
-
-`V` = `never`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` | - |
+| `V` | `never` |
 
   ### <a id="OptionalPromisableArray"></a>OptionalPromisableArray
 
@@ -515,13 +482,10 @@ A Promisable array where elements may be undefined.
 
 ## Type Parameters
 
-### T
-
-`T`
-
-### V
-
-`V` = `never`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` | - |
+| `V` | `never` |
 
   ### <a id="Promisable"></a>Promisable
 
@@ -537,13 +501,10 @@ A value that may be a Promise, PromiseEx, or a plain synchronous value.
 
 ## Type Parameters
 
-### T
-
-`T`
-
-### V
-
-`V` = `never`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` | - |
+| `V` | `never` |
 
   ### <a id="PromisableArray"></a>PromisableArray
 
@@ -559,13 +520,10 @@ A Promisable that resolves to an array.
 
 ## Type Parameters
 
-### T
-
-`T`
-
-### V
-
-`V` = `never`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` | - |
+| `V` | `never` |
 
   ### <a id="PromiseExFunc"></a>PromiseExFunc
 
@@ -574,26 +532,23 @@ A Promisable that resolves to an array.
 ***
 
 ```ts
-type PromiseExFunc<T> = (resolve?, reject?) => void;
+type PromiseExFunc<T> = (resolve?: PromiseExSubFunc<T, void>, reject?: PromiseExSubFunc<T, void>) => void;
 ```
 
 The executor function passed to the PromiseEx constructor.
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Parameters
 
-### resolve?
-
-[`PromiseExSubFunc`](#PromiseExSubFunc)\<`T`, `void`\>
-
-### reject?
-
-[`PromiseExSubFunc`](#PromiseExSubFunc)\<`T`, `void`\>
+| Parameter | Type |
+| ------ | ------ |
+| `resolve?` | [`PromiseExSubFunc`](#PromiseExSubFunc)\<`T`, `void`\> |
+| `reject?` | [`PromiseExSubFunc`](#PromiseExSubFunc)\<`T`, `void`\> |
 
 ## Returns
 
@@ -606,26 +561,23 @@ The executor function passed to the PromiseEx constructor.
 ***
 
 ```ts
-type PromiseExSubFunc<T, TResult> = (value) => TResult;
+type PromiseExSubFunc<T, TResult> = (value: T) => TResult;
 ```
 
 A resolve/reject callback used within PromiseEx.
 
 ## Type Parameters
 
-### T
-
-`T`
-
-### TResult
-
-`TResult` = `T`
+| Type Parameter | Default type |
+| ------ | ------ |
+| `T` | - |
+| `TResult` | `T` |
 
 ## Parameters
 
-### value
-
-`T`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `T` |
 
 ## Returns
 
@@ -638,22 +590,22 @@ A resolve/reject callback used within PromiseEx.
 ***
 
 ```ts
-type PromiseExValueFunc<V> = (value?) => boolean;
+type PromiseExValueFunc<V> = (value?: V) => boolean;
 ```
 
 A callback that inspects the attached value and returns whether to cancel the promise.
 
 ## Type Parameters
 
-### V
-
-`V`
+| Type Parameter |
+| ------ |
+| `V` |
 
 ## Parameters
 
-### value?
-
-`V`
+| Parameter | Type |
+| ------ | ------ |
+| `value?` | `V` |
 
 ## Returns
 

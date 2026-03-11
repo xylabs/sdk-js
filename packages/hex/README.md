@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/hex**
@@ -23,77 +25,85 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Interfaces
 
-- [HexConfig](#interfaces/HexConfig)
+| Interface | Description |
+| ------ | ------ |
+| [HexConfig](#interfaces/HexConfig) | Configuration of validation and output format |
 
 ## Type Aliases
 
-- [AddressTransformZodType](#type-aliases/AddressTransformZodType)
-- [AddressValidationZodType](#type-aliases/AddressValidationZodType)
-- [Address](#type-aliases/Address)
-- [EthAddress](#type-aliases/EthAddress)
-- [HashBitLength](#type-aliases/HashBitLength)
-- [BrandedHash](#type-aliases/BrandedHash)
-- [Hash](#type-aliases/Hash)
-- [BrandedHex](#type-aliases/BrandedHex)
-- [Hex](#type-aliases/Hex)
+| Type Alias | Description |
+| ------ | ------ |
+| [AddressTransformZodType](#type-aliases/AddressTransformZodType) | The output type of AddressTransformZod after parsing and transformation. |
+| [AddressValidationZodType](#type-aliases/AddressValidationZodType) | The output type of AddressValidationZod after parsing. |
+| [Address](#type-aliases/Address) | A validated 20-byte address string type, inferred from the AddressZod schema. |
+| [EthAddress](#type-aliases/EthAddress) | Branded type representing a validated Ethereum address with 0x prefix. |
+| [HashBitLength](#type-aliases/HashBitLength) | Valid bit lengths for hash values. |
+| [BrandedHash](#type-aliases/BrandedHash) | Branded type representing a validated hash hex string. |
+| [Hash](#type-aliases/Hash) | A validated hash string type, inferred from the HashZod schema. |
+| [BrandedHex](#type-aliases/BrandedHex) | Branded type representing a validated lowercase hex string. |
+| [Hex](#type-aliases/Hex) | A validated hex string type, inferred from the HexZod schema. |
 
 ## Variables
 
-- [HexRegEx](#variables/HexRegEx)
-- [HexRegExWithPrefix](#variables/HexRegExWithPrefix)
-- [AddressTransformZod](#variables/AddressTransformZod)
-- [AddressValidationZod](#variables/AddressValidationZod)
-- [ZERO\_ADDRESS](#variables/ZERO_ADDRESS)
-- [ADDRESS\_LENGTH](#variables/ADDRESS_LENGTH)
-- [AddressRegEx](#variables/AddressRegEx)
-- [AddressZod](#variables/AddressZod)
-- [EthAddressRegEx](#variables/EthAddressRegEx)
-- [EthAddressToStringZod](#variables/EthAddressToStringZod)
-- [~~EthAddressToStringSchema~~](#variables/EthAddressToStringSchema)
-- [EthAddressFromStringZod](#variables/EthAddressFromStringZod)
-- [~~EthAddressFromStringSchema~~](#variables/EthAddressFromStringSchema)
-- [ETH\_ZERO\_ADDRESS](#variables/ETH_ZERO_ADDRESS)
-- [EthAddressZod](#variables/EthAddressZod)
-- [HASH\_LENGTH](#variables/HASH_LENGTH)
-- [HashRegEx](#variables/HashRegEx)
-- [ZERO\_HASH](#variables/ZERO_HASH)
-- [HashBitLength](#variables/HashBitLength)
-- [HashZod](#variables/HashZod)
-- [HashToJsonZod](#variables/HashToJsonZod)
-- [JsonToHashZod](#variables/JsonToHashZod)
-- [HexZod](#variables/HexZod)
-- [BigIntToJsonZod](#variables/BigIntToJsonZod)
-- [JsonToBigIntZod](#variables/JsonToBigIntZod)
+| Variable | Description |
+| ------ | ------ |
+| [HexRegEx](#variables/HexRegEx) | Regular expression matching a lowercase hex string without prefix. |
+| [HexRegExWithPrefix](#variables/HexRegExWithPrefix) | Regular expression matching a lowercase hex string with a 0x prefix. |
+| [AddressTransformZod](#variables/AddressTransformZod) | Zod schema that accepts a string, bigint, or number and transforms it into a validated Address. |
+| [AddressValidationZod](#variables/AddressValidationZod) | Zod schema that validates a string is a properly formatted 40-character hex address. |
+| [ZERO\_ADDRESS](#variables/ZERO_ADDRESS) | A 160-bit zero address constant. |
+| [ADDRESS\_LENGTH](#variables/ADDRESS_LENGTH) | The character length of an address hex string (40 hex characters / 20 bytes). |
+| [AddressRegEx](#variables/AddressRegEx) | Regular expression matching a 20-byte (40 hex character) address string. |
+| [AddressZod](#variables/AddressZod) | Zod schema that validates and transforms a string into a branded Address type. |
+| [EthAddressRegEx](#variables/EthAddressRegEx) | Regular expression matching a 20-byte Ethereum address with 0x prefix (mixed case). |
+| [EthAddressToStringZod](#variables/EthAddressToStringZod) | Zod schema that validates a string is a properly formatted Ethereum address. |
+| [~~EthAddressToStringSchema~~](#variables/EthAddressToStringSchema) | - |
+| [EthAddressFromStringZod](#variables/EthAddressFromStringZod) | Zod schema that validates and transforms a string into an EthAddress type. |
+| [~~EthAddressFromStringSchema~~](#variables/EthAddressFromStringSchema) | - |
+| [ETH\_ZERO\_ADDRESS](#variables/ETH_ZERO_ADDRESS) | The zero Ethereum address constant (0x followed by 40 zero characters). |
+| [EthAddressZod](#variables/EthAddressZod) | Zod schema that validates a string as a properly formatted Ethereum address using regex and type guard. |
+| [HASH\_LENGTH](#variables/HASH_LENGTH) | The byte length of a standard hash (32 bytes / 256 bits). |
+| [HashRegEx](#variables/HashRegEx) | Regular expression matching a 32-byte (64 hex character) hash string. |
+| [ZERO\_HASH](#variables/ZERO_HASH) | A 256-bit zero hash constant. |
+| [HashBitLength](#variables/HashBitLength) | Array of all valid hash bit lengths for runtime validation. |
+| [HashZod](#variables/HashZod) | Zod schema that validates and transforms a string into a branded Hash type. |
+| [HashToJsonZod](#variables/HashToJsonZod) | Zod schema that transforms a Hash to a plain string for JSON serialization. |
+| [JsonToHashZod](#variables/JsonToHashZod) | Zod schema that parses a JSON string into a validated Hash, throwing on invalid input. |
+| [HexZod](#variables/HexZod) | Zod schema that validates and transforms a string into a branded Hex type. |
+| [BigIntToJsonZod](#variables/BigIntToJsonZod) | Zod schema that transforms a non-negative BigInt into a hex string for JSON serialization. |
+| [JsonToBigIntZod](#variables/JsonToBigIntZod) | Zod schema that parses a JSON hex string into a BigInt. |
 
 ## Functions
 
-- [HexRegExMinMax](#functions/HexRegExMinMax)
-- [HexRegExMinMaxMixedCaseWithPrefix](#functions/HexRegExMinMaxMixedCaseWithPrefix)
-- [asAddress](#functions/asAddress)
-- [asAddressV2](#functions/asAddressV2)
-- [isAddress](#functions/isAddress)
-- [isAddressV2](#functions/isAddressV2)
-- [toAddress](#functions/toAddress)
-- [toAddressV2](#functions/toAddressV2)
-- [toEthAddress](#functions/toEthAddress)
-- [isEthAddress](#functions/isEthAddress)
-- [asEthAddress](#functions/asEthAddress)
-- [asHash](#functions/asHash)
-- [isHashBitLength](#functions/isHashBitLength)
-- [isHash](#functions/isHash)
-- [asHex](#functions/asHex)
-- [hexFrom](#functions/hexFrom)
-- [hexFromArrayBuffer](#functions/hexFromArrayBuffer)
-- [hexFromBigInt](#functions/hexFromBigInt)
-- [hexFromHexString](#functions/hexFromHexString)
-- [hexFromNumber](#functions/hexFromNumber)
-- [isHex](#functions/isHex)
-- [isHexZero](#functions/isHexZero)
-- [toHexLegacy](#functions/toHexLegacy)
-- [bitsToNibbles](#functions/bitsToNibbles)
-- [nibblesToBits](#functions/nibblesToBits)
-- [toHex](#functions/toHex)
-- [hexToBigInt](#functions/hexToBigInt)
+| Function | Description |
+| ------ | ------ |
+| [HexRegExMinMax](#functions/HexRegExMinMax) | Creates a RegExp matching lowercase hex strings with a byte length in the given range. |
+| [HexRegExMinMaxMixedCaseWithPrefix](#functions/HexRegExMinMaxMixedCaseWithPrefix) | Creates a RegExp matching mixed-case hex strings with a 0x prefix and a byte length in the given range. |
+| [asAddress](#functions/asAddress) | Attempts to coerce a value into an Address type, returning undefined or throwing based on the assert config. |
+| [asAddressV2](#functions/asAddressV2) | - |
+| [isAddress](#functions/isAddress) | Type guard that checks whether a value is a valid 160-bit address. |
+| [isAddressV2](#functions/isAddressV2) | - |
+| [toAddress](#functions/toAddress) | Converts a value to a 160-bit Address hex string. |
+| [toAddressV2](#functions/toAddressV2) | - |
+| [toEthAddress](#functions/toEthAddress) | Converts a value to a 0x-prefixed Ethereum address string. |
+| [isEthAddress](#functions/isEthAddress) | Type guard that checks whether a value is a valid 0x-prefixed Ethereum address. |
+| [asEthAddress](#functions/asEthAddress) | Attempts to coerce a value into an EthAddress, returning undefined or throwing based on the assert config. |
+| [asHash](#functions/asHash) | Attempts to coerce a value into a Hash type, returning undefined or throwing based on the assert config. |
+| [isHashBitLength](#functions/isHashBitLength) | Type guard that checks whether a value is a valid hash bit length. |
+| [isHash](#functions/isHash) | Type guard that checks whether a value is a valid hash of the specified bit length. |
+| [asHex](#functions/asHex) | Attempts to coerce a value into a Hex type, returning undefined or throwing based on the assert config. |
+| [hexFrom](#functions/hexFrom) | Takes unknown value and tries our best to convert it to a hex string |
+| [hexFromArrayBuffer](#functions/hexFromArrayBuffer) | Convert an ArrayBuffer to a hex string |
+| [hexFromBigInt](#functions/hexFromBigInt) | Convert a bigint to a hex string |
+| [hexFromHexString](#functions/hexFromHexString) | Normalizes a hex string by stripping an optional 0x prefix, lowercasing, and padding to byte/bit boundaries. |
+| [hexFromNumber](#functions/hexFromNumber) | Converts a number to a hex string by converting to BigInt first. |
+| [isHex](#functions/isHex) | Type guard that checks whether a value is a valid hex string. |
+| [isHexZero](#functions/isHexZero) | Checks whether a hex string represents a zero value. |
+| [toHexLegacy](#functions/toHexLegacy) | Converts an ArrayBuffer to a hex string without padding or normalization. |
+| [bitsToNibbles](#functions/bitsToNibbles) | Converts a bit count to the equivalent number of hex nibbles (4 bits each). |
+| [nibblesToBits](#functions/nibblesToBits) | Converts a nibble count to the equivalent number of bits. |
+| [toHex](#functions/toHex) | takes any value and tries our best to convert it to a hex string |
+| [hexToBigInt](#functions/hexToBigInt) | Converts a Hex string to a BigInt. |
 
 ### functions
 
@@ -104,24 +114,17 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 ***
 
 ```ts
-function HexRegExMinMax(minBytes?, maxBytes?): RegExp;
+function HexRegExMinMax(minBytes?: number, maxBytes?: number): RegExp;
 ```
 
 Creates a RegExp matching lowercase hex strings with a byte length in the given range.
 
 ## Parameters
 
-### minBytes?
-
-`number` = `0`
-
-Minimum number of bytes (default 0)
-
-### maxBytes?
-
-`number` = `...`
-
-Maximum number of bytes
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `minBytes` | `number` | `0` | Minimum number of bytes (default 0) |
+| `maxBytes` | `number` | `...` | Maximum number of bytes |
 
 ## Returns
 
@@ -136,24 +139,17 @@ A RegExp for validating hex strings within the byte range
 ***
 
 ```ts
-function HexRegExMinMaxMixedCaseWithPrefix(minBytes?, maxBytes?): RegExp;
+function HexRegExMinMaxMixedCaseWithPrefix(minBytes?: number, maxBytes?: number): RegExp;
 ```
 
 Creates a RegExp matching mixed-case hex strings with a 0x prefix and a byte length in the given range.
 
 ## Parameters
 
-### minBytes?
-
-`number` = `0`
-
-Minimum number of bytes (default 0)
-
-### maxBytes?
-
-`number` = `...`
-
-Maximum number of bytes
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `minBytes` | `number` | `0` | Minimum number of bytes (default 0) |
+| `maxBytes` | `number` | `...` | Maximum number of bytes |
 
 ## Returns
 
@@ -170,18 +166,16 @@ A RegExp for validating prefixed hex strings within the byte range
 ## Call Signature
 
 ```ts
-function asAddress(value): BrandedAddress | undefined;
+function asAddress(value: unknown): BrandedAddress | undefined;
 ```
 
 Attempts to coerce a value into an Address type, returning undefined or throwing based on the assert config.
 
 ### Parameters
 
-### value
-
-`unknown`
-
-The value to coerce (must be a string)
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `unknown` | The value to coerce (must be a string) |
 
 ### Returns
 
@@ -192,24 +186,17 @@ The value as Address, or undefined if coercion fails and assert is not set
 ## Call Signature
 
 ```ts
-function asAddress(value, assert): BrandedAddress;
+function asAddress(value: unknown, assert: AssertConfig): BrandedAddress;
 ```
 
 Attempts to coerce a value into an Address type, returning undefined or throwing based on the assert config.
 
 ### Parameters
 
-### value
-
-`unknown`
-
-The value to coerce (must be a string)
-
-### assert
-
-`AssertConfig`
-
-If provided, throws on failure instead of returning undefined
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `unknown` | The value to coerce (must be a string) |
+| `assert` | `AssertConfig` | If provided, throws on failure instead of returning undefined |
 
 ### Returns
 
@@ -224,20 +211,17 @@ The value as Address, or undefined if coercion fails and assert is not set
 ***
 
 ```ts
-function asAddressV2(value, assert?): BrandedAddress | undefined;
+function asAddressV2(value: unknown, assert?: boolean): BrandedAddress | undefined;
 ```
 
 **`Alpha`**
 
 ## Parameters
 
-### value
-
-`unknown`
-
-### assert?
-
-`boolean` = `false`
+| Parameter | Type | Default value |
+| ------ | ------ | ------ |
+| `value` | `unknown` | `undefined` |
+| `assert` | `boolean` | `false` |
 
 ## Returns
 
@@ -252,18 +236,16 @@ function asAddressV2(value, assert?): BrandedAddress | undefined;
 ## Call Signature
 
 ```ts
-function asEthAddress(value): EthAddress | undefined;
+function asEthAddress(value: unknown): EthAddress | undefined;
 ```
 
 Attempts to coerce a value into an EthAddress, returning undefined or throwing based on the assert config.
 
 ### Parameters
 
-### value
-
-`unknown`
-
-The value to coerce (must be a string)
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `unknown` | The value to coerce (must be a string) |
 
 ### Returns
 
@@ -274,24 +256,17 @@ The value as EthAddress, or undefined if coercion fails and assert is not set
 ## Call Signature
 
 ```ts
-function asEthAddress(value, assert): EthAddress;
+function asEthAddress(value: unknown, assert: AssertConfig): EthAddress;
 ```
 
 Attempts to coerce a value into an EthAddress, returning undefined or throwing based on the assert config.
 
 ### Parameters
 
-### value
-
-`unknown`
-
-The value to coerce (must be a string)
-
-### assert
-
-`AssertConfig`
-
-If provided, throws on failure instead of returning undefined
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `unknown` | The value to coerce (must be a string) |
+| `assert` | `AssertConfig` | If provided, throws on failure instead of returning undefined |
 
 ### Returns
 
@@ -308,18 +283,16 @@ The value as EthAddress, or undefined if coercion fails and assert is not set
 ## Call Signature
 
 ```ts
-function asHash(value): BrandedHash | undefined;
+function asHash(value: unknown): BrandedHash | undefined;
 ```
 
 Attempts to coerce a value into a Hash type, returning undefined or throwing based on the assert config.
 
 ### Parameters
 
-### value
-
-`unknown`
-
-The value to coerce (must be a string)
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `unknown` | The value to coerce (must be a string) |
 
 ### Returns
 
@@ -330,24 +303,17 @@ The value as Hash, or undefined if coercion fails and assert is not set
 ## Call Signature
 
 ```ts
-function asHash(value, assert): BrandedHash;
+function asHash(value: unknown, assert: AssertConfig): BrandedHash;
 ```
 
 Attempts to coerce a value into a Hash type, returning undefined or throwing based on the assert config.
 
 ### Parameters
 
-### value
-
-`unknown`
-
-The value to coerce (must be a string)
-
-### assert
-
-`AssertConfig`
-
-If provided, throws on failure instead of returning undefined
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `unknown` | The value to coerce (must be a string) |
+| `assert` | `AssertConfig` | If provided, throws on failure instead of returning undefined |
 
 ### Returns
 
@@ -364,18 +330,16 @@ The value as Hash, or undefined if coercion fails and assert is not set
 ## Call Signature
 
 ```ts
-function asHex(value): BrandedHex | undefined;
+function asHex(value: unknown): BrandedHex | undefined;
 ```
 
 Attempts to coerce a value into a Hex type, returning undefined or throwing based on the assert config.
 
 ### Parameters
 
-### value
-
-`unknown`
-
-The value to coerce (must be a string)
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `unknown` | The value to coerce (must be a string) |
 
 ### Returns
 
@@ -386,24 +350,17 @@ The value as Hex, or undefined if coercion fails and assert is not set
 ## Call Signature
 
 ```ts
-function asHex(value, assert): BrandedHex;
+function asHex(value: unknown, assert: AssertConfig): BrandedHex;
 ```
 
 Attempts to coerce a value into a Hex type, returning undefined or throwing based on the assert config.
 
 ### Parameters
 
-### value
-
-`unknown`
-
-The value to coerce (must be a string)
-
-### assert
-
-`AssertConfig`
-
-If provided, throws on failure instead of returning undefined
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `unknown` | The value to coerce (must be a string) |
+| `assert` | `AssertConfig` | If provided, throws on failure instead of returning undefined |
 
 ### Returns
 
@@ -418,18 +375,16 @@ The value as Hex, or undefined if coercion fails and assert is not set
 ***
 
 ```ts
-function bitsToNibbles(value): number;
+function bitsToNibbles(value: number): number;
 ```
 
 Converts a bit count to the equivalent number of hex nibbles (4 bits each).
 
 ## Parameters
 
-### value
-
-`number`
-
-The number of bits (must be a multiple of 4)
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `number` | The number of bits (must be a multiple of 4) |
 
 ## Returns
 
@@ -444,24 +399,17 @@ The number of nibbles
 ***
 
 ```ts
-function hexFrom(value, config?): BrandedHex;
+function hexFrom(value: string | number | bigint | ArrayBufferLike, config?: HexConfig): BrandedHex;
 ```
 
 Takes unknown value and tries our best to convert it to a hex string
 
 ## Parameters
 
-### value
-
-Supported types are string, number, bigint, and ArrayBuffer
-
-`string` | `number` | `bigint` | `ArrayBufferLike`
-
-### config?
-
-[`HexConfig`](#../interfaces/HexConfig)
-
-Configuration of output format and validation
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `string` \| `number` \| `bigint` \| `ArrayBufferLike` | Supported types are string, number, bigint, and ArrayBuffer |
+| `config?` | [`HexConfig`](#../interfaces/HexConfig) | Configuration of output format and validation |
 
 ## Returns
 
@@ -474,24 +422,17 @@ Configuration of output format and validation
 ***
 
 ```ts
-function hexFromArrayBuffer(buffer, config?): BrandedHex;
+function hexFromArrayBuffer(buffer: ArrayBufferLike, config?: HexConfig): BrandedHex;
 ```
 
 Convert an ArrayBuffer to a hex string
 
 ## Parameters
 
-### buffer
-
-`ArrayBufferLike`
-
-The buffer to be converted
-
-### config?
-
-[`HexConfig`](#../interfaces/HexConfig)
-
-Configuration of output format and validation
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `buffer` | `ArrayBufferLike` | The buffer to be converted |
+| `config?` | [`HexConfig`](#../interfaces/HexConfig) | Configuration of output format and validation |
 
 ## Returns
 
@@ -504,24 +445,17 @@ Configuration of output format and validation
 ***
 
 ```ts
-function hexFromBigInt(value, config?): BrandedHex;
+function hexFromBigInt(value: bigint, config?: HexConfig): BrandedHex;
 ```
 
 Convert a bigint to a hex string
 
 ## Parameters
 
-### value
-
-`bigint`
-
-The bigint to be converted
-
-### config?
-
-[`HexConfig`](#../interfaces/HexConfig) = `{}`
-
-Configuration of output format and validation
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `bigint` | The bigint to be converted |
+| `config` | [`HexConfig`](#../interfaces/HexConfig) | Configuration of output format and validation |
 
 ## Returns
 
@@ -534,24 +468,17 @@ Configuration of output format and validation
 ***
 
 ```ts
-function hexFromHexString(value, config?): BrandedHex;
+function hexFromHexString(value: string, config?: HexConfig): BrandedHex;
 ```
 
 Normalizes a hex string by stripping an optional 0x prefix, lowercasing, and padding to byte/bit boundaries.
 
 ## Parameters
 
-### value
-
-`string`
-
-The hex string to normalize (with or without 0x prefix)
-
-### config?
-
-[`HexConfig`](#../interfaces/HexConfig) = `{}`
-
-Configuration for prefix, byteSize, and bitLength padding
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `string` | The hex string to normalize (with or without 0x prefix) |
+| `config` | [`HexConfig`](#../interfaces/HexConfig) | Configuration for prefix, byteSize, and bitLength padding |
 
 ## Returns
 
@@ -566,24 +493,17 @@ The normalized Hex string
 ***
 
 ```ts
-function hexFromNumber(value, config?): BrandedHex;
+function hexFromNumber(value: number, config?: HexConfig): BrandedHex;
 ```
 
 Converts a number to a hex string by converting to BigInt first.
 
 ## Parameters
 
-### value
-
-`number`
-
-The number to convert
-
-### config?
-
-[`HexConfig`](#../interfaces/HexConfig)
-
-Optional hex output configuration
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `number` | The number to convert |
+| `config?` | [`HexConfig`](#../interfaces/HexConfig) | Optional hex output configuration |
 
 ## Returns
 
@@ -598,18 +518,16 @@ The hex string representation
 ***
 
 ```ts
-function hexToBigInt(hex): bigint;
+function hexToBigInt(hex: BrandedHex): bigint;
 ```
 
 Converts a Hex string to a BigInt.
 
 ## Parameters
 
-### hex
-
-[`BrandedHex`](#../type-aliases/BrandedHex)
-
-The hex string to convert
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `hex` | [`BrandedHex`](#../type-aliases/BrandedHex) | The hex string to convert |
 
 ## Returns
 
@@ -624,24 +542,17 @@ The BigInt representation of the hex value
 ***
 
 ```ts
-function isAddress(value, config?): value is BrandedAddress;
+function isAddress(value: unknown, config?: HexConfig): value is BrandedAddress;
 ```
 
 Type guard that checks whether a value is a valid 160-bit address.
 
 ## Parameters
 
-### value
-
-`unknown`
-
-The value to check
-
-### config?
-
-[`HexConfig`](#../interfaces/HexConfig) = `{}`
-
-Optional hex config (defaults to 160-bit, no prefix)
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `unknown` | The value to check |
+| `config` | [`HexConfig`](#../interfaces/HexConfig) | Optional hex config (defaults to 160-bit, no prefix) |
 
 ## Returns
 
@@ -656,16 +567,16 @@ True if the value is a valid Address
 ***
 
 ```ts
-function isAddressV2(value): value is BrandedAddress;
+function isAddressV2(value: unknown): value is BrandedAddress;
 ```
 
 **`Alpha`**
 
 ## Parameters
 
-### value
-
-`unknown`
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
 
 ## Returns
 
@@ -678,24 +589,17 @@ function isAddressV2(value): value is BrandedAddress;
 ***
 
 ```ts
-function isEthAddress(value, config?): value is EthAddress;
+function isEthAddress(value: unknown, config?: HexConfig): value is EthAddress;
 ```
 
 Type guard that checks whether a value is a valid 0x-prefixed Ethereum address.
 
 ## Parameters
 
-### value
-
-`unknown`
-
-The value to check
-
-### config?
-
-[`HexConfig`](#../interfaces/HexConfig) = `{}`
-
-Optional hex config (defaults to 160-bit with prefix)
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `unknown` | The value to check |
+| `config` | [`HexConfig`](#../interfaces/HexConfig) | Optional hex config (defaults to 160-bit with prefix) |
 
 ## Returns
 
@@ -710,24 +614,17 @@ True if the value is a valid EthAddress
 ***
 
 ```ts
-function isHash(value, bitLength?): value is BrandedHash;
+function isHash(value: unknown, bitLength?: HashBitLength): value is BrandedHash;
 ```
 
 Type guard that checks whether a value is a valid hash of the specified bit length.
 
 ## Parameters
 
-### value
-
-`unknown`
-
-The value to check
-
-### bitLength?
-
-[`HashBitLength`](#../type-aliases/HashBitLength) = `256`
-
-The expected bit length of the hash (defaults to 256)
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `value` | `unknown` | `undefined` | The value to check |
+| `bitLength` | [`HashBitLength`](#../type-aliases/HashBitLength) | `256` | The expected bit length of the hash (defaults to 256) |
 
 ## Returns
 
@@ -742,18 +639,16 @@ True if the value is a valid Hash
 ***
 
 ```ts
-function isHashBitLength(value): value is HashBitLength;
+function isHashBitLength(value: unknown): value is HashBitLength;
 ```
 
 Type guard that checks whether a value is a valid hash bit length.
 
 ## Parameters
 
-### value
-
-`unknown`
-
-The value to check
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `unknown` | The value to check |
 
 ## Returns
 
@@ -768,24 +663,17 @@ True if the value is one of the supported HashBitLength values
 ***
 
 ```ts
-function isHex(value, config?): value is BrandedHex;
+function isHex(value: unknown, config?: HexConfig): value is BrandedHex;
 ```
 
 Type guard that checks whether a value is a valid hex string.
 
 ## Parameters
 
-### value
-
-`unknown`
-
-The value to check
-
-### config?
-
-[`HexConfig`](#../interfaces/HexConfig)
-
-Optional configuration for prefix and bit length validation
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `unknown` | The value to check |
+| `config?` | [`HexConfig`](#../interfaces/HexConfig) | Optional configuration for prefix and bit length validation |
 
 ## Returns
 
@@ -800,18 +688,16 @@ True if the value is a valid Hex string
 ***
 
 ```ts
-function isHexZero(value?): boolean | undefined;
+function isHexZero(value?: string): boolean | undefined;
 ```
 
 Checks whether a hex string represents a zero value.
 
 ## Parameters
 
-### value?
-
-`string`
-
-The hex string to check
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value?` | `string` | The hex string to check |
 
 ## Returns
 
@@ -826,18 +712,16 @@ True if zero, false if non-zero, or undefined if the input is not a string
 ***
 
 ```ts
-function nibblesToBits(value): number;
+function nibblesToBits(value: number): number;
 ```
 
 Converts a nibble count to the equivalent number of bits.
 
 ## Parameters
 
-### value
-
-`number`
-
-The number of nibbles
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `number` | The number of nibbles |
 
 ## Returns
 
@@ -852,24 +736,17 @@ The number of bits
 ***
 
 ```ts
-function toAddress(value, config?): BrandedAddress;
+function toAddress(value: string | number | bigint | ArrayBufferLike, config?: HexConfig): BrandedAddress;
 ```
 
 Converts a value to a 160-bit Address hex string.
 
 ## Parameters
 
-### value
-
-The value to convert (string, number, bigint, or ArrayBuffer)
-
-`string` | `number` | `bigint` | `ArrayBufferLike`
-
-### config?
-
-[`HexConfig`](#../interfaces/HexConfig) = `{}`
-
-Optional hex config (defaults to 160-bit, no prefix)
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `string` \| `number` \| `bigint` \| `ArrayBufferLike` | The value to convert (string, number, bigint, or ArrayBuffer) |
+| `config` | [`HexConfig`](#../interfaces/HexConfig) | Optional hex config (defaults to 160-bit, no prefix) |
 
 ## Returns
 
@@ -884,20 +761,17 @@ The value as an Address
 ***
 
 ```ts
-function toAddressV2(value, assert?): BrandedAddress | undefined;
+function toAddressV2(value: unknown, assert?: boolean): BrandedAddress | undefined;
 ```
 
 **`Alpha`**
 
 ## Parameters
 
-### value
-
-`unknown`
-
-### assert?
-
-`boolean` = `false`
+| Parameter | Type | Default value |
+| ------ | ------ | ------ |
+| `value` | `unknown` | `undefined` |
+| `assert` | `boolean` | `false` |
 
 ## Returns
 
@@ -910,24 +784,17 @@ function toAddressV2(value, assert?): BrandedAddress | undefined;
 ***
 
 ```ts
-function toEthAddress(value, config?): EthAddress;
+function toEthAddress(value: string | number | bigint | ArrayBufferLike, config?: HexConfig): EthAddress;
 ```
 
 Converts a value to a 0x-prefixed Ethereum address string.
 
 ## Parameters
 
-### value
-
-The value to convert (string, number, bigint, or ArrayBuffer)
-
-`string` | `number` | `bigint` | `ArrayBufferLike`
-
-### config?
-
-[`HexConfig`](#../interfaces/HexConfig) = `{}`
-
-Optional hex config (defaults to 160-bit, no inner prefix)
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `string` \| `number` \| `bigint` \| `ArrayBufferLike` | The value to convert (string, number, bigint, or ArrayBuffer) |
+| `config` | [`HexConfig`](#../interfaces/HexConfig) | Optional hex config (defaults to 160-bit, no inner prefix) |
 
 ## Returns
 
@@ -942,24 +809,17 @@ The value as an EthAddress
 ***
 
 ```ts
-function toHex(value, config?): BrandedHex;
+function toHex(value: string | number | bigint | ArrayBufferLike, config?: HexConfig): BrandedHex;
 ```
 
 takes any value and tries our best to convert it to a hex string
 
 ## Parameters
 
-### value
-
-Supported types are string, number, bigint, and ArrayBuffer
-
-`string` | `number` | `bigint` | `ArrayBufferLike`
-
-### config?
-
-[`HexConfig`](#../interfaces/HexConfig) = `{}`
-
-Configuration of output format and validation
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `value` | `string` \| `number` \| `bigint` \| `ArrayBufferLike` | Supported types are string, number, bigint, and ArrayBuffer |
+| `config` | [`HexConfig`](#../interfaces/HexConfig) | Configuration of output format and validation |
 
 ## Returns
 
@@ -972,18 +832,16 @@ Configuration of output format and validation
 ***
 
 ```ts
-function toHexLegacy(buffer): string;
+function toHexLegacy(buffer: ArrayBuffer): string;
 ```
 
 Converts an ArrayBuffer to a hex string without padding or normalization.
 
 ## Parameters
 
-### buffer
-
-`ArrayBuffer`
-
-The ArrayBuffer to convert
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `buffer` | `ArrayBuffer` | The ArrayBuffer to convert |
 
 ## Returns
 
@@ -1003,27 +861,11 @@ Configuration of validation and output format
 
 ## Properties
 
-### bitLength?
-
-```ts
-optional bitLength: number;
-```
-
-***
-
-### byteSize?
-
-```ts
-optional byteSize: number;
-```
-
-***
-
-### prefix?
-
-```ts
-optional prefix: boolean;
-```
+| Property | Type |
+| ------ | ------ |
+| <a id="bitlength"></a> `bitLength?` | `number` |
+| <a id="bytesize"></a> `byteSize?` | `number` |
+| <a id="prefix"></a> `prefix?` | `boolean` |
 
 ### type-aliases
 

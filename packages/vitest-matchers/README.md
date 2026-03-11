@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/vitest-matchers**
@@ -23,11 +25,15 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Interfaces
 
-- [ExpectationResult](#interfaces/ExpectationResult)
+| Interface | Description |
+| ------ | ------ |
+| [ExpectationResult](#interfaces/ExpectationResult) | Result returned by a custom matcher function. |
 
 ## Variables
 
-- [matchers](#variables/matchers)
+| Variable | Description |
+| ------ | ------ |
+| [matchers](#variables/matchers) | Collection of custom Vitest matchers extending the built-in `expect` assertions. |
 
 ### interfaces
 
@@ -41,47 +47,12 @@ Result returned by a custom matcher function.
 
 ## Properties
 
-### actual?
-
-```ts
-optional actual: unknown;
-```
-
-The actual value received by the matcher.
-
-***
-
-### expected?
-
-```ts
-optional expected: unknown;
-```
-
-The expected value the matcher compared against.
-
-***
-
-### message()
-
-```ts
-message: () => string;
-```
-
-Returns a human-readable failure or negation message.
-
-### Returns
-
-`string`
-
-***
-
-### pass
-
-```ts
-pass: boolean;
-```
-
-Whether the matcher assertion passed.
+| Property | Type | Description |
+| ------ | ------ | ------ |
+| <a id="actual"></a> `actual?` | `unknown` | The actual value received by the matcher. |
+| <a id="expected"></a> `expected?` | `unknown` | The expected value the matcher compared against. |
+| <a id="message"></a> `message` | () => `string` | Returns a human-readable failure or negation message. |
+| <a id="pass"></a> `pass` | `boolean` | Whether the matcher assertion passed. |
 
 ### variables
 
@@ -92,524 +63,68 @@ Whether the matcher assertion passed.
 ***
 
 ```ts
-const matchers: object;
+const matchers: {
+  toBeArrayOfSize: ExpectationResult;
+  toBeArray: ExpectationResult;
+  toBeOneOf: ExpectationResult;
+  toBeNegative: ExpectationResult;
+  toBePositive: ExpectationResult;
+  toBeNumber: (received: unknown) => ExpectationResult;
+  toBeFunction: (received: unknown) => ExpectationResult;
+  toBeString: (received: unknown) => ExpectationResult;
+  toBeObject: ExpectationResult;
+  toBeInteger: ExpectationResult;
+  toBeFalse: ExpectationResult;
+  toBeTrue: ExpectationResult;
+  toContainAllValues: {
+     pass: boolean;
+     message: () => string;
+  };
+  toContainKey: {
+     pass: boolean;
+     message: () => string;
+  };
+  toInclude: {
+     pass: boolean;
+     message: () => string;
+  };
+  toIncludeAllMembers: ExpectationResult;
+  toContainAllKeys: ExpectationResult;
+  toContainValues: ExpectationResult;
+  toBeEmpty: ExpectationResult;
+  toBeValidDate: {
+     pass: boolean;
+     message: () => string;
+  };
+};
 ```
 
 Collection of custom Vitest matchers extending the built-in `expect` assertions.
 
 ## Type Declaration
 
-### toBeArrayOfSize()
-
-```ts
-toBeArrayOfSize(received, expectedSize): ExpectationResult;
-```
-
-Asserts the received value is an array with the specified length.
-
-### Parameters
-
-#### received
-
-`unknown`
-
-The value to check.
-
-#### expectedSize
-
-`number`
-
-The expected array length.
-
-### Returns
-
-[`ExpectationResult`](#../interfaces/ExpectationResult)
-
-### toBeArray()
-
-```ts
-toBeArray(received): ExpectationResult;
-```
-
-Asserts the received value is an array.
-
-### Parameters
-
-#### received
-
-`unknown`
-
-The value to check.
-
-### Returns
-
-[`ExpectationResult`](#../interfaces/ExpectationResult)
-
-### toBeOneOf()
-
-```ts
-toBeOneOf(received, expected): ExpectationResult;
-```
-
-Asserts the received value is one of the values in the expected array.
-
-### Parameters
-
-#### received
-
-`unknown`
-
-The value to check.
-
-#### expected
-
-`unknown`[]
-
-The array of acceptable values.
-
-### Returns
-
-[`ExpectationResult`](#../interfaces/ExpectationResult)
-
-### toBeNegative()
-
-```ts
-toBeNegative(received): ExpectationResult;
-```
-
-Asserts the received number is negative (less than zero).
-
-### Parameters
-
-#### received
-
-`number`
-
-The number to check.
-
-### Returns
-
-[`ExpectationResult`](#../interfaces/ExpectationResult)
-
-### toBePositive()
-
-```ts
-toBePositive(received): ExpectationResult;
-```
-
-Asserts the received number is positive (greater than zero).
-
-### Parameters
-
-#### received
-
-`number`
-
-The number to check.
-
-### Returns
-
-[`ExpectationResult`](#../interfaces/ExpectationResult)
-
-### toBeNumber()
-
-```ts
-toBeNumber: (received) => ExpectationResult;
-```
-
-Asserts the received value is of type `number` and not NaN.
-
-### Parameters
-
-#### received
-
-`unknown`
-
-The value to check.
-
-### Returns
-
-[`ExpectationResult`](#../interfaces/ExpectationResult)
-
-### toBeFunction()
-
-```ts
-toBeFunction: (received) => ExpectationResult;
-```
-
-Asserts the received value is of type `function`.
-
-### Parameters
-
-#### received
-
-`unknown`
-
-The value to check.
-
-### Returns
-
-[`ExpectationResult`](#../interfaces/ExpectationResult)
-
-### toBeString()
-
-```ts
-toBeString: (received) => ExpectationResult;
-```
-
-Asserts the received value is of type `string`.
-
-### Parameters
-
-#### received
-
-`unknown`
-
-The value to check.
-
-### Returns
-
-[`ExpectationResult`](#../interfaces/ExpectationResult)
-
-### toBeObject()
-
-```ts
-toBeObject(received): ExpectationResult;
-```
-
-Asserts the received value is a plain object (not an array or null).
-
-### Parameters
-
-#### received
-
-`unknown`
-
-The value to check.
-
-### Returns
-
-[`ExpectationResult`](#../interfaces/ExpectationResult)
-
-### toBeInteger()
-
-```ts
-toBeInteger(received): ExpectationResult;
-```
-
-Asserts the received number is an integer.
-
-### Parameters
-
-#### received
-
-`number`
-
-The number to check.
-
-### Returns
-
-[`ExpectationResult`](#../interfaces/ExpectationResult)
-
-### toBeFalse()
-
-```ts
-toBeFalse(received): ExpectationResult;
-```
-
-Asserts the received value is strictly `false`.
-
-### Parameters
-
-#### received
-
-`unknown`
-
-The value to check.
-
-### Returns
-
-[`ExpectationResult`](#../interfaces/ExpectationResult)
-
-### toBeTrue()
-
-```ts
-toBeTrue(received): ExpectationResult;
-```
-
-Asserts the received value is strictly `true`.
-
-### Parameters
-
-#### received
-
-`unknown`
-
-The value to check.
-
-### Returns
-
-[`ExpectationResult`](#../interfaces/ExpectationResult)
-
-### toContainAllValues()
-
-```ts
-toContainAllValues(received, expectedValues): object;
-```
-
-Asserts that all expected values are present in the received array or object values.
-
-### Parameters
-
-#### received
-
-`unknown`
-
-The array or object to check.
-
-#### expectedValues
-
-`unknown`[]
-
-The values that must all be present.
-
-### Returns
-
-`object`
-
-#### pass
-
-```ts
-pass: boolean = false;
-```
-
-#### message()
-
-```ts
-message: () => string;
-```
-
-##### Returns
-
-`string`
-
-### toContainKey()
-
-```ts
-toContainKey(received, key): object;
-```
-
-Asserts that the received object contains the specified key.
-
-### Parameters
-
-#### received
-
-`object`
-
-The object to check.
-
-#### key
-
-`string`
-
-The key that should be present.
-
-### Returns
-
-`object`
-
-#### pass
-
-```ts
-pass: boolean = true;
-```
-
-#### message()
-
-```ts
-message: () => string;
-```
-
-##### Returns
-
-`string`
-
-### toInclude()
-
-```ts
-toInclude(received, value): object;
-```
-
-Asserts that the received array, string, or object values include the specified value.
-
-### Parameters
-
-#### received
-
-`unknown`
-
-The array, string, or object to search within.
-
-#### value
-
-`any`
-
-The value to look for.
-
-### Returns
-
-`object`
-
-#### pass
-
-```ts
-pass: boolean;
-```
-
-#### message()
-
-```ts
-message: () => string;
-```
-
-##### Returns
-
-`string`
-
-### toIncludeAllMembers()
-
-```ts
-toIncludeAllMembers(received, expected): ExpectationResult;
-```
-
-Asserts that the received array includes all members of the expected array.
-
-### Parameters
-
-#### received
-
-`unknown`[]
-
-The array to check.
-
-#### expected
-
-`unknown`[]
-
-The members that must all be present.
-
-### Returns
-
-[`ExpectationResult`](#../interfaces/ExpectationResult)
-
-### toContainAllKeys()
-
-```ts
-toContainAllKeys(received, expectedKeys): ExpectationResult;
-```
-
-Asserts that the received object contains all of the specified keys.
-
-### Parameters
-
-#### received
-
-`object`
-
-The object to check.
-
-#### expectedKeys
-
-`string`[]
-
-The keys that must all be present.
-
-### Returns
-
-[`ExpectationResult`](#../interfaces/ExpectationResult)
-
-### toContainValues()
-
-```ts
-toContainValues(received, expectedValues): ExpectationResult;
-```
-
-Asserts that the received object contains all of the specified values (using deep equality).
-
-### Parameters
-
-#### received
-
-`object`
-
-The object to check.
-
-#### expectedValues
-
-`unknown`[]
-
-The values that must all be present.
-
-### Returns
-
-[`ExpectationResult`](#../interfaces/ExpectationResult)
-
-### toBeEmpty()
-
-```ts
-toBeEmpty(received): ExpectationResult;
-```
-
-Asserts the received value is empty (zero-length array/string, empty object, or empty Map/Set).
-
-### Parameters
-
-#### received
-
-`unknown`
-
-The value to check.
-
-### Returns
-
-[`ExpectationResult`](#../interfaces/ExpectationResult)
-
-### toBeValidDate()
-
-```ts
-toBeValidDate(received): object;
-```
-
-Asserts the received value is a valid Date instance (not an invalid date).
-
-### Parameters
-
-#### received
-
-`unknown`
-
-The value to check.
-
-### Returns
-
-`object`
-
-#### pass
-
-```ts
-pass: boolean = isValid;
-```
-
-#### message()
-
-```ts
-message: () => string;
-```
-
-##### Returns
-
-`string`
+| Name | Type | Description |
+| ------ | ------ | ------ |
+| `toBeArrayOfSize()` | (`received`: `unknown`, `expectedSize`: `number`) => [`ExpectationResult`](#../interfaces/ExpectationResult) | Asserts the received value is an array with the specified length. |
+| `toBeArray()` | (`received`: `unknown`) => [`ExpectationResult`](#../interfaces/ExpectationResult) | Asserts the received value is an array. |
+| `toBeOneOf()` | (`received`: `unknown`, `expected`: `unknown`[]) => [`ExpectationResult`](#../interfaces/ExpectationResult) | Asserts the received value is one of the values in the expected array. |
+| `toBeNegative()` | (`received`: `number`) => [`ExpectationResult`](#../interfaces/ExpectationResult) | Asserts the received number is negative (less than zero). |
+| `toBePositive()` | (`received`: `number`) => [`ExpectationResult`](#../interfaces/ExpectationResult) | Asserts the received number is positive (greater than zero). |
+| <a id="property-tobenumber"></a> `toBeNumber()` | (`received`: `unknown`) => [`ExpectationResult`](#../interfaces/ExpectationResult) | Asserts the received value is of type `number` and not NaN. |
+| <a id="property-tobefunction"></a> `toBeFunction()` | (`received`: `unknown`) => [`ExpectationResult`](#../interfaces/ExpectationResult) | Asserts the received value is of type `function`. |
+| <a id="property-tobestring"></a> `toBeString()` | (`received`: `unknown`) => [`ExpectationResult`](#../interfaces/ExpectationResult) | Asserts the received value is of type `string`. |
+| `toBeObject()` | (`received`: `unknown`) => [`ExpectationResult`](#../interfaces/ExpectationResult) | Asserts the received value is a plain object (not an array or null). |
+| `toBeInteger()` | (`received`: `number`) => [`ExpectationResult`](#../interfaces/ExpectationResult) | Asserts the received number is an integer. |
+| `toBeFalse()` | (`received`: `unknown`) => [`ExpectationResult`](#../interfaces/ExpectationResult) | Asserts the received value is strictly `false`. |
+| `toBeTrue()` | (`received`: `unknown`) => [`ExpectationResult`](#../interfaces/ExpectationResult) | Asserts the received value is strictly `true`. |
+| `toContainAllValues()` | (`received`: `unknown`, `expectedValues`: `unknown`[]) => \{ `pass`: `boolean`; `message`: () => `string`; \} | Asserts that all expected values are present in the received array or object values. |
+| `toContainKey()` | (`received`: `object`, `key`: `string`) => \{ `pass`: `boolean`; `message`: () => `string`; \} | Asserts that the received object contains the specified key. |
+| `toInclude()` | (`received`: `unknown`, `value`: `any`) => \{ `pass`: `boolean`; `message`: () => `string`; \} | Asserts that the received array, string, or object values include the specified value. |
+| `toIncludeAllMembers()` | (`received`: `unknown`[], `expected`: `unknown`[]) => [`ExpectationResult`](#../interfaces/ExpectationResult) | Asserts that the received array includes all members of the expected array. |
+| `toContainAllKeys()` | (`received`: `object`, `expectedKeys`: `string`[]) => [`ExpectationResult`](#../interfaces/ExpectationResult) | Asserts that the received object contains all of the specified keys. |
+| `toContainValues()` | (`received`: `object`, `expectedValues`: `unknown`[]) => [`ExpectationResult`](#../interfaces/ExpectationResult) | Asserts that the received object contains all of the specified values (using deep equality). |
+| `toBeEmpty()` | (`received`: `unknown`) => [`ExpectationResult`](#../interfaces/ExpectationResult) | Asserts the received value is empty (zero-length array/string, empty object, or empty Map/Set). |
+| `toBeValidDate()` | (`received`: `unknown`) => \{ `pass`: `boolean`; `message`: () => `string`; \} | Asserts the received value is a valid Date instance (not an invalid date). |
 
 
 Part of [sdk-js](https://www.npmjs.com/package/@xyo-network/sdk-js)

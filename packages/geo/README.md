@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/geo**
@@ -23,39 +25,47 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Classes
 
-- [GeoJson](#classes/GeoJson)
-- [LayerBase](#classes/LayerBase)
-- [MercatorBoundingBox](#classes/MercatorBoundingBox)
-- [MercatorLngLat](#classes/MercatorLngLat)
+| Class | Description |
+| ------ | ------ |
+| [GeoJson](#classes/GeoJson) | Provides GeoJSON geometry and MapBox source generation from a quadkey. |
+| [LayerBase](#classes/LayerBase) | Abstract base class for managing MapBox map layers with add/remove lifecycle. |
+| [MercatorBoundingBox](#classes/MercatorBoundingBox) | A Mercator bounding box extending MapBox LngLatBounds. |
+| [MercatorLngLat](#classes/MercatorLngLat) | A Mercator coordinate extending MapBox LngLat. |
 
 ## Type Aliases
 
-- [MercatorTile](#type-aliases/MercatorTile)
-- [MercatorBoundary](#type-aliases/MercatorBoundary)
+| Type Alias | Description |
+| ------ | ------ |
+| [MercatorTile](#type-aliases/MercatorTile) | A Mercator tile represented as [x, y, zoom]. |
+| [MercatorBoundary](#type-aliases/MercatorBoundary) | An ordered array of MercatorLngLat points forming a boundary. |
 
 ## Variables
 
-- [d2r](#variables/d2r)
-- [r2d](#variables/r2d)
+| Variable | Description |
+| ------ | ------ |
+| [d2r](#variables/d2r) | Conversion factor from degrees to radians. |
+| [r2d](#variables/r2d) | Conversion factor from radians to degrees. |
 
 ## Functions
 
-- [boundingBoxToBoundary](#functions/boundingBoxToBoundary)
-- [boundingBoxToCenter](#functions/boundingBoxToCenter)
-- [boundingBoxToPolygon](#functions/boundingBoxToPolygon)
-- [tileFromPoint](#functions/tileFromPoint)
-- [tileFromQuadkey](#functions/tileFromQuadkey)
-- [tileToBoundingBox](#functions/tileToBoundingBox)
-- [tileToChildren](#functions/tileToChildren)
-- [tileToGeoJson](#functions/tileToGeoJson)
-- [tileToParent](#functions/tileToParent)
-- [tileToPoint](#functions/tileToPoint)
-- [tileToQuadkey](#functions/tileToQuadkey)
-- [tileToSiblings](#functions/tileToSiblings)
-- [tilesEqual](#functions/tilesEqual)
-- [tilesFromBoundingBox](#functions/tilesFromBoundingBox)
-- [hasSiblings](#functions/hasSiblings)
-- [tilesHasTile](#functions/tilesHasTile)
+| Function | Description |
+| ------ | ------ |
+| [boundingBoxToBoundary](#functions/boundingBoxToBoundary) | Converts a bounding box to an ordered boundary polygon (closed ring of corner points). |
+| [boundingBoxToCenter](#functions/boundingBoxToCenter) | Computes the center point of a bounding box as [lng, lat], rounded to the specified decimal places. |
+| [boundingBoxToPolygon](#functions/boundingBoxToPolygon) | Converts a bounding box to a GeoJSON Polygon geometry. |
+| [tileFromPoint](#functions/tileFromPoint) | Converts a geographic point to the integer Mercator tile containing it at the given zoom level. |
+| [tileFromQuadkey](#functions/tileFromQuadkey) | Converts a quadkey string to a Mercator tile [x, y, zoom]. |
+| [tileToBoundingBox](#functions/tileToBoundingBox) | Converts a Mercator tile to its geographic bounding box. |
+| [tileToChildren](#functions/tileToChildren) | Returns the four child tiles at one zoom level higher. |
+| [tileToGeoJson](#functions/tileToGeoJson) | Converts a Mercator tile to a GeoJSON Polygon geometry. |
+| [tileToParent](#functions/tileToParent) | Returns the parent tile at one zoom level lower. |
+| [tileToPoint](#functions/tileToPoint) | Returns the center point of a Mercator tile. |
+| [tileToQuadkey](#functions/tileToQuadkey) | Converts a Mercator tile to its quadkey string representation. |
+| [tileToSiblings](#functions/tileToSiblings) | Returns the four sibling tiles (children of the parent tile) for the given tile. |
+| [tilesEqual](#functions/tilesEqual) | Checks whether two Mercator tiles are equal by comparing their x, y, and zoom values. |
+| [tilesFromBoundingBox](#functions/tilesFromBoundingBox) | Returns all Mercator tiles that intersect the given bounding box at the specified zoom level. |
+| [hasSiblings](#functions/hasSiblings) | Checks whether all four siblings of the given tile exist in the tile array. |
+| [tilesHasTile](#functions/tilesHasTile) | Checks whether a specific tile exists in the given tile array. |
 
 ### classes
 
@@ -72,14 +82,14 @@ Provides GeoJSON geometry and MapBox source generation from a quadkey.
 ### Constructor
 
 ```ts
-new GeoJson(quadkey): GeoJson;
+new GeoJson(quadkey: string): GeoJson;
 ```
 
 ### Parameters
 
-#### quadkey
-
-`string`
+| Parameter | Type |
+| ------ | ------ |
+| `quadkey` | `string` |
 
 ### Returns
 
@@ -90,18 +100,16 @@ new GeoJson(quadkey): GeoJson;
 ### featureCollection()
 
 ```ts
-static featureCollection(features): FeatureCollection;
+static featureCollection(features: Feature<Geometry, GeoJsonProperties>[]): FeatureCollection;
 ```
 
 Creates a GeoJSON FeatureCollection from an array of features.
 
 ### Parameters
 
-#### features
-
-`Feature`\<`Geometry`, `GeoJsonProperties`\>[]
-
-The features to include
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `features` | `Feature`\<`Geometry`, `GeoJsonProperties`\>[] | The features to include |
 
 ### Returns
 
@@ -114,18 +122,16 @@ A GeoJSON FeatureCollection
 ### featuresSource()
 
 ```ts
-static featuresSource(data): GeoJSONSourceSpecification;
+static featuresSource(data: FeatureCollection): GeoJSONSourceSpecification;
 ```
 
 Creates a MapBox GeoJSON source specification from a FeatureCollection.
 
 ### Parameters
 
-#### data
-
-`FeatureCollection`
-
-The FeatureCollection to use as the source data
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `data` | `FeatureCollection` | The FeatureCollection to use as the source data |
 
 ### Returns
 
@@ -138,18 +144,16 @@ A MapBox GeoJSON source specification
 ### geometryFeature()
 
 ```ts
-static geometryFeature(geometry): Feature;
+static geometryFeature(geometry: Geometry): Feature;
 ```
 
 Wraps a geometry object in a GeoJSON Feature.
 
 ### Parameters
 
-#### geometry
-
-`Geometry`
-
-The geometry to wrap
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `geometry` | `Geometry` | The geometry to wrap |
 
 ### Returns
 
@@ -307,27 +311,24 @@ Abstract base class for managing MapBox map layers with add/remove lifecycle.
 
 ## Type Parameters
 
-### T
-
-`T` *extends* `MapBox.Layer`
+| Type Parameter |
+| ------ |
+| `T` *extends* `MapBox.Layer` |
 
 ## Constructors
 
 ### Constructor
 
 ```ts
-new LayerBase<T>(id, source): LayerBase<T>;
+new LayerBase<T>(id: string, source: string): LayerBase<T>;
 ```
 
 ### Parameters
 
-#### id
-
-`string`
-
-#### source
-
-`string`
+| Parameter | Type |
+| ------ | ------ |
+| `id` | `string` |
+| `source` | `string` |
 
 ### Returns
 
@@ -335,43 +336,27 @@ new LayerBase<T>(id, source): LayerBase<T>;
 
 ## Properties
 
-### id
-
-```ts
-id: string;
-```
-
-***
-
-### source
-
-```ts
-source: string;
-```
+| Property | Type |
+| ------ | ------ |
+| <a id="id"></a> `id` | `string` |
+| <a id="source"></a> `source` | `string` |
 
 ## Methods
 
 ### update()
 
 ```ts
-update(map, show?): void;
+update(map: Map$1, show?: boolean): void;
 ```
 
 Removes and re-adds the layer on the map, optionally hiding it.
 
 ### Parameters
 
-#### map
-
-`Map$1`
-
-The MapBox map instance
-
-#### show?
-
-`boolean` = `true`
-
-Whether to show the layer after updating (default true)
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `map` | `Map$1` | `undefined` | The MapBox map instance |
+| `show` | `boolean` | `true` | Whether to show the layer after updating (default true) |
 
 ### Returns
 
@@ -408,18 +393,18 @@ A Mercator bounding box extending MapBox LngLatBounds.
 ### Constructor
 
 ```ts
-new MercatorBoundingBox(sw?, ne?): MercatorBoundingBox;
+new MercatorBoundingBox(sw?: 
+  | [number, number, number, number]
+  | LngLatLike
+  | [LngLatLike, LngLatLike], ne?: LngLatLike): MercatorBoundingBox;
 ```
 
 ### Parameters
 
-#### sw?
-
-\[`number`, `number`, `number`, `number`\] | `LngLatLike` | \[`LngLatLike`, `LngLatLike`\]
-
-#### ne?
-
-`LngLatLike`
+| Parameter | Type |
+| ------ | ------ |
+| `sw?` | \| \[`number`, `number`, `number`, `number`\] \| `LngLatLike` \| \[`LngLatLike`, `LngLatLike`\] |
+| `ne?` | `LngLatLike` |
 
 ### Returns
 
@@ -448,18 +433,15 @@ A Mercator coordinate extending MapBox LngLat.
 ### Constructor
 
 ```ts
-new MercatorLngLat(lng, lat): MercatorLngLat;
+new MercatorLngLat(lng: number, lat: number): MercatorLngLat;
 ```
 
 ### Parameters
 
-#### lng
-
-`number`
-
-#### lat
-
-`number`
+| Parameter | Type |
+| ------ | ------ |
+| `lng` | `number` |
+| `lat` | `number` |
 
 ### Returns
 
@@ -480,18 +462,16 @@ MapBox.LngLat.constructor
 ***
 
 ```ts
-function boundingBoxToBoundary(box): MercatorBoundary;
+function boundingBoxToBoundary(box: MercatorBoundingBox): MercatorBoundary;
 ```
 
 Converts a bounding box to an ordered boundary polygon (closed ring of corner points).
 
 ## Parameters
 
-### box
-
-[`MercatorBoundingBox`](#../classes/MercatorBoundingBox)
-
-The bounding box to convert
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `box` | [`MercatorBoundingBox`](#../classes/MercatorBoundingBox) | The bounding box to convert |
 
 ## Returns
 
@@ -506,24 +486,17 @@ An array of corner points forming a closed boundary
 ***
 
 ```ts
-function boundingBoxToCenter(boundingBox, decimal?): number[];
+function boundingBoxToCenter(boundingBox: MercatorBoundingBox, decimal?: number): number[];
 ```
 
 Computes the center point of a bounding box as [lng, lat], rounded to the specified decimal places.
 
 ## Parameters
 
-### boundingBox
-
-[`MercatorBoundingBox`](#../classes/MercatorBoundingBox)
-
-The bounding box to find the center of
-
-### decimal?
-
-`number` = `6`
-
-Number of decimal places for rounding (default 6)
+| Parameter | Type | Default value | Description |
+| ------ | ------ | ------ | ------ |
+| `boundingBox` | [`MercatorBoundingBox`](#../classes/MercatorBoundingBox) | `undefined` | The bounding box to find the center of |
+| `decimal` | `number` | `6` | Number of decimal places for rounding (default 6) |
 
 ## Returns
 
@@ -538,18 +511,16 @@ A [longitude, latitude] tuple representing the center
 ***
 
 ```ts
-function boundingBoxToPolygon(box): Polygon;
+function boundingBoxToPolygon(box: MercatorBoundingBox): Polygon;
 ```
 
 Converts a bounding box to a GeoJSON Polygon geometry.
 
 ## Parameters
 
-### box
-
-[`MercatorBoundingBox`](#../classes/MercatorBoundingBox)
-
-The bounding box to convert
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `box` | [`MercatorBoundingBox`](#../classes/MercatorBoundingBox) | The bounding box to convert |
 
 ## Returns
 
@@ -564,24 +535,17 @@ A GeoJSON Polygon representing the bounding box
 ***
 
 ```ts
-function hasSiblings(tiles, tile): boolean;
+function hasSiblings(tiles: MercatorTile[], tile: MercatorTile): boolean;
 ```
 
 Checks whether all four siblings of the given tile exist in the tile array.
 
 ## Parameters
 
-### tiles
-
-[`MercatorTile`](#../type-aliases/MercatorTile)[]
-
-The array of tiles to search
-
-### tile
-
-[`MercatorTile`](#../type-aliases/MercatorTile)
-
-The tile whose siblings to check for
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `tiles` | [`MercatorTile`](#../type-aliases/MercatorTile)[] | The array of tiles to search |
+| `tile` | [`MercatorTile`](#../type-aliases/MercatorTile) | The tile whose siblings to check for |
 
 ## Returns
 
@@ -596,24 +560,17 @@ True if all siblings are present in the array
 ***
 
 ```ts
-function tileFromPoint(point, z): MercatorTile;
+function tileFromPoint(point: MercatorLngLat, z: number): MercatorTile;
 ```
 
 Converts a geographic point to the integer Mercator tile containing it at the given zoom level.
 
 ## Parameters
 
-### point
-
-[`MercatorLngLat`](#../classes/MercatorLngLat)
-
-The geographic coordinate
-
-### z
-
-`number`
-
-The zoom level
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `point` | [`MercatorLngLat`](#../classes/MercatorLngLat) | The geographic coordinate |
+| `z` | `number` | The zoom level |
 
 ## Returns
 
@@ -628,18 +585,16 @@ The tile as [x, y, zoom]
 ***
 
 ```ts
-function tileFromQuadkey(quadkey): MercatorTile;
+function tileFromQuadkey(quadkey: string): MercatorTile;
 ```
 
 Converts a quadkey string to a Mercator tile [x, y, zoom].
 
 ## Parameters
 
-### quadkey
-
-`string`
-
-The quadkey string to decode
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `quadkey` | `string` | The quadkey string to decode |
 
 ## Returns
 
@@ -654,18 +609,16 @@ The tile as [x, y, zoom]
 ***
 
 ```ts
-function tileToBoundingBox(tile): MercatorBoundingBox;
+function tileToBoundingBox(tile: MercatorTile): MercatorBoundingBox;
 ```
 
 Converts a Mercator tile to its geographic bounding box.
 
 ## Parameters
 
-### tile
-
-[`MercatorTile`](#../type-aliases/MercatorTile)
-
-The tile as [x, y, zoom]
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `tile` | [`MercatorTile`](#../type-aliases/MercatorTile) | The tile as [x, y, zoom] |
 
 ## Returns
 
@@ -680,18 +633,16 @@ The bounding box covering the tile's geographic extent
 ***
 
 ```ts
-function tileToChildren(tile): MercatorTile[];
+function tileToChildren(tile: MercatorTile): MercatorTile[];
 ```
 
 Returns the four child tiles at one zoom level higher.
 
 ## Parameters
 
-### tile
-
-[`MercatorTile`](#../type-aliases/MercatorTile)
-
-The parent tile as [x, y, zoom]
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `tile` | [`MercatorTile`](#../type-aliases/MercatorTile) | The parent tile as [x, y, zoom] |
 
 ## Returns
 
@@ -706,18 +657,16 @@ An array of four child tiles at zoom + 1
 ***
 
 ```ts
-function tileToGeoJson(tile): Polygon;
+function tileToGeoJson(tile: MercatorTile): Polygon;
 ```
 
 Converts a Mercator tile to a GeoJSON Polygon geometry.
 
 ## Parameters
 
-### tile
-
-[`MercatorTile`](#../type-aliases/MercatorTile)
-
-The tile as [x, y, zoom]
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `tile` | [`MercatorTile`](#../type-aliases/MercatorTile) | The tile as [x, y, zoom] |
 
 ## Returns
 
@@ -732,18 +681,16 @@ A GeoJSON Polygon representing the tile's geographic extent
 ***
 
 ```ts
-function tileToParent(tile): MercatorTile;
+function tileToParent(tile: MercatorTile): MercatorTile;
 ```
 
 Returns the parent tile at one zoom level lower.
 
 ## Parameters
 
-### tile
-
-[`MercatorTile`](#../type-aliases/MercatorTile)
-
-The tile as [x, y, zoom]
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `tile` | [`MercatorTile`](#../type-aliases/MercatorTile) | The tile as [x, y, zoom] |
 
 ## Returns
 
@@ -758,18 +705,16 @@ The parent tile at zoom - 1
 ***
 
 ```ts
-function tileToPoint(tile): MercatorLngLat;
+function tileToPoint(tile: MercatorTile): MercatorLngLat;
 ```
 
 Returns the center point of a Mercator tile.
 
 ## Parameters
 
-### tile
-
-[`MercatorTile`](#../type-aliases/MercatorTile)
-
-The tile as [x, y, zoom]
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `tile` | [`MercatorTile`](#../type-aliases/MercatorTile) | The tile as [x, y, zoom] |
 
 ## Returns
 
@@ -784,18 +729,16 @@ The center coordinate as a MercatorLngLat
 ***
 
 ```ts
-function tileToQuadkey(param0): string;
+function tileToQuadkey(param0: MercatorTile): string;
 ```
 
 Converts a Mercator tile to its quadkey string representation.
 
 ## Parameters
 
-### param0
-
-[`MercatorTile`](#../type-aliases/MercatorTile)
-
-The tile as [tileX, tileY, tileZoom]
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `param0` | [`MercatorTile`](#../type-aliases/MercatorTile) | The tile as [tileX, tileY, tileZoom] |
 
 ## Returns
 
@@ -810,18 +753,16 @@ The quadkey string encoding the tile's position and zoom
 ***
 
 ```ts
-function tileToSiblings(tile): MercatorTile[];
+function tileToSiblings(tile: MercatorTile): MercatorTile[];
 ```
 
 Returns the four sibling tiles (children of the parent tile) for the given tile.
 
 ## Parameters
 
-### tile
-
-[`MercatorTile`](#../type-aliases/MercatorTile)
-
-The tile as [x, y, zoom]
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `tile` | [`MercatorTile`](#../type-aliases/MercatorTile) | The tile as [x, y, zoom] |
 
 ## Returns
 
@@ -836,24 +777,17 @@ An array of four sibling tiles at the same zoom level
 ***
 
 ```ts
-function tilesEqual(param0, param1): boolean;
+function tilesEqual(param0: MercatorTile, param1: MercatorTile): boolean;
 ```
 
 Checks whether two Mercator tiles are equal by comparing their x, y, and zoom values.
 
 ## Parameters
 
-### param0
-
-[`MercatorTile`](#../type-aliases/MercatorTile)
-
-The first tile as [x, y, zoom]
-
-### param1
-
-[`MercatorTile`](#../type-aliases/MercatorTile)
-
-The second tile as [x, y, zoom]
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `param0` | [`MercatorTile`](#../type-aliases/MercatorTile) | The first tile as [x, y, zoom] |
+| `param1` | [`MercatorTile`](#../type-aliases/MercatorTile) | The second tile as [x, y, zoom] |
 
 ## Returns
 
@@ -868,24 +802,17 @@ True if both tiles have identical coordinates and zoom
 ***
 
 ```ts
-function tilesFromBoundingBox(box, zoom): MercatorTile[];
+function tilesFromBoundingBox(box: MercatorBoundingBox, zoom: number): MercatorTile[];
 ```
 
 Returns all Mercator tiles that intersect the given bounding box at the specified zoom level.
 
 ## Parameters
 
-### box
-
-[`MercatorBoundingBox`](#../classes/MercatorBoundingBox)
-
-The geographic bounding box
-
-### zoom
-
-`number`
-
-The zoom level
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `box` | [`MercatorBoundingBox`](#../classes/MercatorBoundingBox) | The geographic bounding box |
+| `zoom` | `number` | The zoom level |
 
 ## Returns
 
@@ -900,24 +827,17 @@ An array of tiles covering the bounding box
 ***
 
 ```ts
-function tilesHasTile(tiles, tile): boolean;
+function tilesHasTile(tiles: MercatorTile[], tile: MercatorTile): boolean;
 ```
 
 Checks whether a specific tile exists in the given tile array.
 
 ## Parameters
 
-### tiles
-
-[`MercatorTile`](#../type-aliases/MercatorTile)[]
-
-The array of tiles to search
-
-### tile
-
-[`MercatorTile`](#../type-aliases/MercatorTile)
-
-The tile to look for
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `tiles` | [`MercatorTile`](#../type-aliases/MercatorTile)[] | The array of tiles to search |
+| `tile` | [`MercatorTile`](#../type-aliases/MercatorTile) | The tile to look for |
 
 ## Returns
 

@@ -44,8 +44,8 @@
     "@xylabs/exists": "~5.0.84"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.4.13",
-    "@xylabs/tsconfig": "~7.4.13",
+    "@xylabs/ts-scripts-yarn3": "~7.4.15",
+    "@xylabs/tsconfig": "~7.4.15",
     "@xylabs/vitest-extended": "~5.0.84",
     "typescript": "~5.9.3",
     "vitest": "~4.0.18"

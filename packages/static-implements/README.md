@@ -15,6 +15,8 @@
 
 Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
+
+
 ## Reference
 
 **@xylabs/static-implements**
@@ -23,7 +25,9 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 
 ## Functions
 
-- [staticImplements](#functions/staticImplements)
+| Function | Description |
+| ------ | ------ |
+| [staticImplements](#functions/staticImplements) | Annotation to decorate classes which implement static methods |
 
 ### functions
 
@@ -34,16 +38,16 @@ Base functionality used throughout XY Labs TypeScript/JavaScript libraries
 ***
 
 ```ts
-function staticImplements<T>(): <U>(constructor) => void;
+function staticImplements<T>(): <U>(constructor: U) => void;
 ```
 
 Annotation to decorate classes which implement static methods
 
 ## Type Parameters
 
-### T
-
-`T`
+| Type Parameter |
+| ------ |
+| `T` |
 
 ## Returns
 
@@ -51,20 +55,20 @@ The decorated class requiring it to implement
 the members of the the type as static properties/methods
 
 ```ts
-<U>(constructor): void;
+<U>(constructor: U): void;
 ```
 
 ### Type Parameters
 
-### U
-
-`U`
+| Type Parameter |
+| ------ |
+| `U` |
 
 ### Parameters
 
-### constructor
-
-`U`
+| Parameter | Type |
+| ------ | ------ |
+| `constructor` | `U` |
 
 ### Returns
 

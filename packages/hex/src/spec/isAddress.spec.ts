@@ -4,7 +4,7 @@ import {
 
 import {
   ADDRESS_LENGTH,
-  asAddress,
+  asAddress, asAddressV2,
   isAddress, isAddressV2,
 } from '../address/index.ts'
 
@@ -81,5 +81,69 @@ describe('isAddressV2', () => {
     expect(isAddressV2(123)).toBe(false)
     expect(isAddressV2(null)).toBe(false)
     expect(isAddressV2()).toBe(false)
+  })
+})
+
+describe('asAddress', () => {
+  it('returns a valid 40-character hex address', () => {
+    expect(asAddress(validAddress)).toBe(validAddress)
+  })
+
+  it('returns undefined for an address that is too short', () => {
+    expect(asAddress(tooShort)).toBeUndefined()
+  })
+
+  it('returns undefined for an address that is too long', () => {
+    expect(asAddress(tooLong)).toBeUndefined()
+  })
+
+  it('returns undefined for non-hex characters', () => {
+    expect(asAddress('g'.repeat(ADDRESS_LENGTH))).toBeUndefined()
+  })
+
+  it('returns undefined for a 39-char address that has the correct byte count but wrong character count', () => {
+    expect(oneCharShortCorrectBytes.length).toBe(ADDRESS_LENGTH - 1)
+    expect(Math.ceil(oneCharShortCorrectBytes.length / 2)).toBe(ADDRESS_LENGTH / 2)
+    expect(asAddress(oneCharShortCorrectBytes)).toBeUndefined()
+  })
+
+  it('strips 0x prefix and returns the address', () => {
+    expect(asAddress('0x' + validAddress)).toBe(validAddress)
+  })
+
+  it('returns undefined for non-string values', () => {
+    expect(asAddress(123)).toBeUndefined()
+    expect(asAddress(null)).toBeUndefined()
+    expect(asAddress(undefined)).toBeUndefined()
+  })
+})
+
+describe('asAddressV2', () => {
+  it('returns a valid 40-character hex address', () => {
+    expect(asAddressV2(validAddress)).toBe(validAddress)
+  })
+
+  it('returns undefined for an address that is too short', () => {
+    expect(asAddressV2(tooShort)).toBeUndefined()
+  })
+
+  it('returns undefined for an address that is too long', () => {
+    expect(asAddressV2(tooLong)).toBeUndefined()
+  })
+
+  it('returns undefined for non-hex characters', () => {
+    expect(asAddressV2('g'.repeat(ADDRESS_LENGTH))).toBeUndefined()
+  })
+
+  it('returns undefined for a 39-char address that has the correct byte count but wrong character count', () => {
+    expect(oneCharShortCorrectBytes.length).toBe(ADDRESS_LENGTH - 1)
+    expect(Math.ceil(oneCharShortCorrectBytes.length / 2)).toBe(ADDRESS_LENGTH / 2)
+    expect(asAddressV2(oneCharShortCorrectBytes)).toBeUndefined()
+  })
+
+  it('returns undefined for non-string values', () => {
+    expect(asAddressV2(123)).toBeUndefined()
+    expect(asAddressV2(null)).toBeUndefined()
+    expect(asAddressV2(undefined)).toBeUndefined()
   })
 })

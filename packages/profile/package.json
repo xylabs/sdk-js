@@ -43,10 +43,10 @@
     "!**/*.test.*"
   ],
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.4.17",
-    "@xylabs/tsconfig": "~7.4.17",
+    "@xylabs/ts-scripts-yarn3": "~7.4.24",
+    "@xylabs/tsconfig": "~7.4.24",
     "typescript": "~5.9.3",
-    "vitest": "^4.0.18"
+    "vitest": "^4.1.0"
   },
   "engines": {
     "node": ">=18"

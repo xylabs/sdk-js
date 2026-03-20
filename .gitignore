@@ -1,12 +1,37 @@
-node_modules
-dist
-build
-docs
-bin
-.DS_Store
+# Build outputs (root)
+/build
+/dist
+/docs
+/storybook-static
+
+# Build outputs (packages)
+packages/*/build
+packages/*/dist
+packages/*/docs
+packages/*/storybook-static
+
+# Coverage
+/coverage
+packages/*/coverage
+
+# TypeScript
+*.tsbuildinfo
+
+# Logs
 *.log
-.rollup.cache
-.tsconfig*
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+
+# Node
+node_modules
+
+# Yarn
 .pnp.*
 .yarn/*
 !.yarn/patches
@@ -15,15 +40,17 @@ bin
 !.yarn/sdks
 !.yarn/versions
 
-.idea
-
-.idea
+# Lint
 .eslintcache
-.env
 
-*.heapprofile
+# Claude Code
+.claude
+CLAUDE.local.md
+
+# Claude Code worktrees
+.claude-worktrees
+
+# Custom
+CLAUDE.MD
 coverage
 scripts/.temp-typedoc/
-.claude
-
-CLAUDE.MD

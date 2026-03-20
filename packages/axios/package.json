@@ -47,11 +47,11 @@
   "devDependencies": {
     "@types/pako": "~2.0.4",
     "@xylabs/logger": "~5.0.86",
-    "@xylabs/ts-scripts-yarn3": "~7.4.17",
-    "@xylabs/tsconfig": "~7.4.17",
+    "@xylabs/ts-scripts-yarn3": "~7.4.24",
+    "@xylabs/tsconfig": "~7.4.24",
     "axios": "^1.13.6",
     "typescript": "~5.9.3",
-    "vitest": "~4.0.18"
+    "vitest": "^4.1.0"
   },
   "peerDependencies": {
     "axios": "^1"

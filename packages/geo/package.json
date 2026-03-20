@@ -42,13 +42,13 @@
   ],
   "dependencies": {
     "@types/geojson": "~7946.0.16",
-    "mapbox-gl": "~3.19.1"
+    "mapbox-gl": "~3.20.0"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.4.17",
-    "@xylabs/tsconfig": "~7.4.17",
+    "@xylabs/ts-scripts-yarn3": "~7.4.24",
+    "@xylabs/tsconfig": "~7.4.24",
     "typescript": "~5.9.3",
-    "vitest": "~4.0.18"
+    "vitest": "^4.1.0"
   },
   "packageManager": "yarn@3.2.0",
   "publishConfig": {
